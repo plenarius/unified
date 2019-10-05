@@ -20,6 +20,11 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -32,6 +37,21 @@
    <div id="projectname">NWNX-Unified
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -43,16 +63,6 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -89,10 +99,10 @@ $(document).ready(function(){initNavTree('md_Plugins_MaxLevel_Documentation_READ
 <div class="title">MaxLevel Plugin Reference </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md82"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md81"></a>
 Description</h1>
 <p>This plugin extends the maximum level possibility from 40 to 60. The plugin provides normal level up alerting and procedure with a few minor issues. Feats and Ability Points follow their normal progression. Spell counts known and gained can be configured for the additional levels.</p>
-<h1><a class="anchor" id="autotoc_md83"></a>
+<h1><a class="anchor" id="autotoc_md82"></a>
 Environment Variables</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -100,19 +110,19 @@ Environment Variables</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>NWNX_MAXLEVEL_MAX</code>  </td><td class="markdownTableBodyCenter">41-60  </td><td class="markdownTableBodyCenter">null  </td><td class="markdownTableBodyNone">Maximum level you wish to support.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md84"></a>
+<h1><a class="anchor" id="autotoc_md83"></a>
 Required Plugins</h1>
 <ul>
 <li>The <code>NWNX_ELC</code> plugin is also needed to bypass the level restriction. No configuration is necessary though, merely loading this plugin is sufficient.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md85"></a>
+<h1><a class="anchor" id="autotoc_md84"></a>
 Issues</h1>
 <ul>
 <li>Spellcasters may not change spells when levelling up</li>
 <li>Next Level XP on Character Sheet shows an incorrect value</li>
 <li>The hook to <code>CNWSCreatureStats::CanLevelUp</code> used in this plugin conflicts with its usage in the <code>NWNX_Creature_LevelUp</code> function. There are workarounds for this but would require changing some source, removing the hook in NWNX_Creature.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md86"></a>
+<h1><a class="anchor" id="autotoc_md85"></a>
 Setup</h1>
 <ul>
 <li>Define your max levels variable in your server environment. <div class="fragment"><div class="line">export NWNX_MAXLEVEL_MAX=45</div>

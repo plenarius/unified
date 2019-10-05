@@ -20,6 +20,11 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -32,6 +37,21 @@
    <div id="projectname">NWNX-Unified
    </div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -43,16 +63,6 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -66,7 +76,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('md_CHANGELOG.html','');});
+$(document).ready(function(){initNavTree('changelog.html','');});
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -89,12 +99,26 @@ $(document).ready(function(){initNavTree('md_CHANGELOG.html','');});
 <div class="title">Changelog </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#autotoc_md0">&lt;a href=&quot;https://github.com/nwnxee/unified/compare/build8186-2...HEAD&quot;&gt;Unreleased&lt;/a&gt;</a><ul><li class="level2"><a href="#autotoc_md1">Added</a><ul><ul><li class="level4"><a href="#autotoc_md2">New Plugins</a></li>
+<li class="level4"><a href="#autotoc_md3">New NWScript Functions</a></li>
+</ul>
+</ul>
+</li>
+<li class="level2"><a href="#autotoc_md4">Changed</a></li>
+<li class="level2"><a href="#autotoc_md5">Deprecated</a></li>
+<li class="level2"><a href="#autotoc_md6">Removed</a></li>
+<li class="level2"><a href="#autotoc_md7">Fixed</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="textblock"><p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
+<h1><a class="anchor" id="autotoc_md0"></a>
 &lt;a href="https://github.com/nwnxee/unified/compare/build8186-2...HEAD"&gt;Unreleased&lt;/a&gt;</h1>
 <p>NOTICE: The ABI has changed, please make sure to update your <a class="el" href="nwnx_8nss.html">nwnx.nss</a> and recompile all your scripts.</p>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<h2><a class="anchor" id="autotoc_md1"></a>
 Added</h2>
 <ul>
 <li>Added support to skip building certain plugins by setting an environment variable, for example: <code>NWNX_SKIP_PLUGINS="JVM;Lua;Mono;Ruby;SpellChecker"</code></li>
@@ -141,7 +165,7 @@ Added</h2>
 <li>WebHook: Added support for richer Slack-compatible messages</li>
 <li>Util: Added the environment variable <code>NWNX_UTIL_PRE_MODULE_START_SCRIPT=scriptname</code> which lets you set a nwscript that runs before the OnModuleLoad event </li>
 </ul>
-<h4><a class="anchor" id="autotoc_md3"></a>
+<h4><a class="anchor" id="autotoc_md2"></a>
 New Plugins</h4>
 <p>The following plugins were added:</p><ul>
 <li><b>Appearance</b>: Allows the appearance and some other things of creatures to be overridden per player</li>
@@ -161,7 +185,7 @@ New Plugins</h4>
 <li><b>SkillRanks</b>: Adds functions to create feats and perform actions that manipulate the calculations of skill ranks</li>
 <li><b>Visibility</b>: Allows the visibility of objects to be overridden globally or per player </li>
 </ul>
-<h4><a class="anchor" id="autotoc_md4"></a>
+<h4><a class="anchor" id="autotoc_md3"></a>
 New NWScript Functions</h4>
 <ul>
 <li>Administration: GetPlayOption()</li>
@@ -317,7 +341,7 @@ New NWScript Functions</h4>
 <li>Visibility: SetVisibilityOverride()</li>
 <li>Weapon: SetWeaponIsMonkWeapon()</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Changed</h2>
 <ul>
 <li>Core: The nwnx.txt logfile will now be written to the UserDirectory</li>
@@ -329,18 +353,18 @@ Changed</h2>
 <li>Events: Changed <code>NUM_LEVELS</code> to <code>AMOUNT</code> for DMActionEvent GiveLevel</li>
 <li>Player: StartGuiTimingBar() now accepts a type for pre-defined text</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Deprecated</h2>
 <ul>
 <li>Player: {Get/Set}VisibilityOverride() are deprecated, please use the new Visibility plugin!</li>
 <li>Object: {Get/Set}Portrait() are deprecated, please use the native {Get/Set}PortraitResRef() functions instead!</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Removed</h2>
 <ul>
 <li>The following plugins were removed: Names, BehaviourTree</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Fixed</h2>
 <ul>
 <li>Administration: Fixed a nullptr crash in Get{DM/Player}Password()</li>
