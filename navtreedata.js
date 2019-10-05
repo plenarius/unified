@@ -38,10 +38,9 @@ var NAVTREE =
       [ "You're awesome, let me pay you", "index.html#autotoc_md276", null ],
       [ "Contact", "index.html#autotoc_md277", null ]
     ] ],
-    [ "Changelog", "changelog.html", null ],
     [ "Documentation", null, [
       [ "Changelog", "changelog.html", [
-        [ "<a href=\"https://github.com/nwnxee/unified/compare/build8186-2...HEAD\">Unreleased</a>", "changelog.html#autotoc_md0", [
+        [ "Unreleased", "changelog.html#autotoc_md0", [
           [ "Added", "changelog.html#autotoc_md1", null ],
           [ "Changed", "changelog.html#autotoc_md4", null ],
           [ "Deprecated", "changelog.html#autotoc_md5", null ],
@@ -310,15 +309,8 @@ var NAVTREE =
       [ "Todo List", "todo.html", null ],
       [ "Deprecated List", "deprecated.html", null ]
     ] ],
-    [ "Plugins and Core Lib API", "modules.html", "modules" ],
-    [ "Classes", "annotated.html", [
-      [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Variables", "functions_vars.html", null ]
-      ] ]
-    ] ],
+    [ "Plugins and Core Lib Functions", "modules.html", "modules" ],
+    [ "Structs", "annotated.html", "annotated" ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
@@ -334,13 +326,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group__area.html#gae5afc2a9aa6c4071741253704ed505cc",
-"group__damage.html",
-"group__object.html#ga8d2422ae72309e9b11de49c7cafbb799",
-"group__rename.html#ga36cef09d9765eaa9e08d3eb4f5b223df",
-"md_Core_Documentation_README.html",
-"md_Plugins_WebHook_Documentation_README.html#autotoc_md258",
-"nwnx__redis_8nss.html#afc640f1f6e675ab5372174be68836957"
+"group__area.html#gaff6d5d664b29aa9999a7c5de80a57d80",
+"group__damage.html#ga6cdb61971c650ff07be52f2f0c2d02b8",
+"group__object.html#gaa3258879a30942ebe9ff1cb28262ed21",
+"group__rename.html#ga575681e01d33e2f8307dd67372173d4e",
+"md_Core_Documentation_README.html#autotoc_md13",
+"md_Plugins_WebHook_Documentation_README.html#autotoc_md262",
+"nwnx__redis_8nss.html#affd51a6b56cb4f6e53dec42d524d1d74"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

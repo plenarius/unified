@@ -1,4 +1,4 @@
-var annotated_dup =
+var annotated =
 [
     [ "NWNX_Creature_MemorisedSpell", "structNWNX__Creature__MemorisedSpell.html", "structNWNX__Creature__MemorisedSpell" ],
     [ "NWNX_Creature_SpecialAbility", "structNWNX__Creature__SpecialAbility.html", "structNWNX__Creature__SpecialAbility" ],
