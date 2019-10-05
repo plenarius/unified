@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_15efd2878c933b01c608ce4aca89bbf6" kind="dir">
+    <compoundname>Plugins/Time/NWScript</compoundname>
+    <innerfile refid="nwnx__time_8nss">nwnx_time.nss</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Time/NWScript/"/>
+  </compounddef>
+</doxygen>

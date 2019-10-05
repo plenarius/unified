@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_ce92b3ebeae221968cfbe8aae0d60ffe" kind="dir">
+    <compoundname>Core/NWScript</compoundname>
+    <innerfile refid="nwnx_8nss">nwnx.nss</innerfile>
+    <innerfile refid="nwnx__consts_8nss">nwnx_consts.nss</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Core/NWScript/"/>
+  </compounddef>
+</doxygen>

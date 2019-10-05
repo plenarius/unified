@@ -1,0 +1,507 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__encounter_8nss" kind="file" language="C++">
+    <compoundname>nwnx_encounter.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+      <node id="1">
+        <label>Plugins/Encounter/NWScript/nwnx_encounter.nss</label>
+        <link refid="nwnx__encounter_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structNWNX__Encounter__CreatureListEntry" prot="public">NWNX_Encounter_CreatureListEntry</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__encounter_1ga5520d2e57f6ca7692c81d047205397fe" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Encounter</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Encounter</name>
+        <initializer>= &quot;NWNX_Encounter&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="7" column="14" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__encounter_1ga57d47ecbb856f487ee70f7fce6c4b3f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Encounter_GetNumberOfCreaturesInEncounterList</definition>
+        <argsstring>(object encounter)</argsstring>
+        <name>NWNX_Encounter_GetNumberOfCreaturesInEncounterList</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <briefdescription>
+<para>Get the number of creatures in the encounter list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of creatures in the encounter list. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="66" column="5" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="66" bodyend="74" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="20" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1ga7d6f20a2a2036d9bdff05235f3dd9f0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref></type>
+        <definition>struct NWNX_Encounter_CreatureListEntry NWNX_Encounter_GetEncounterCreatureByIndex</definition>
+        <argsstring>(object encounter, int index)</argsstring>
+        <name>NWNX_Encounter_GetEncounterCreatureByIndex</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Gets the encounter creature list entry at the specified index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the creature in the encounter list. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An <ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="66" column="5" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="76" bodyend="91" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="20" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1gac6953a870158522005e6638d872a6f6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Encounter_SetEncounterCreatureByIndex</definition>
+        <argsstring>(object encounter, int index, struct NWNX_Encounter_CreatureListEntry creatureEntry)</argsstring>
+        <name>NWNX_Encounter_SetEncounterCreatureByIndex</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref></type>
+          <declname>creatureEntry</declname>
+        </param>
+        <briefdescription>
+<para>Set the encounter creature list entry at the specified index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the creature in the encounter list. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>creatureEntry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="93" column="6" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="93" bodyend="104" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="32" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1ga63e14a9f74bbee43dd845a24491d232a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Encounter_GetFactionId</definition>
+        <argsstring>(object encounter)</argsstring>
+        <name>NWNX_Encounter_GetFactionId</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <briefdescription>
+<para>Get the faction id of encounter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The faction id. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="106" column="5" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="106" bodyend="114" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="37" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1gad85333d88eb73973046fb706f02f6319" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Encounter_SetFactionId</definition>
+        <argsstring>(object encounter, int factionId)</argsstring>
+        <name>NWNX_Encounter_SetFactionId</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>factionId</declname>
+        </param>
+        <briefdescription>
+<para>Set the faction id of encounter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>factionId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The faction id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="116" column="6" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="116" bodyend="124" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="42" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1ga50d5e4ba9e9bd44bc30354ef815a5fa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Encounter_GetPlayerTriggeredOnly</definition>
+        <argsstring>(object encounter)</argsstring>
+        <name>NWNX_Encounter_GetPlayerTriggeredOnly</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <briefdescription>
+<para>Get if encounter is player triggered only. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE is encounter is player triggered only. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="126" column="5" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="126" bodyend="134" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="47" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1gab4fb5b83a7852007af7714b3e6e33fd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Encounter_SetPlayerTriggeredOnly</definition>
+        <argsstring>(object encounter, int playerTriggeredOnly)</argsstring>
+        <name>NWNX_Encounter_SetPlayerTriggeredOnly</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>playerTriggeredOnly</declname>
+        </param>
+        <briefdescription>
+<para>Set if encounter is player triggered only. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>playerTriggeredOnly</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE/FALSE </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="136" column="6" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="136" bodyend="144" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="52" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1gac5518f02ee12132540934acfcd58c780" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Encounter_GetResetTime</definition>
+        <argsstring>(object encounter)</argsstring>
+        <name>NWNX_Encounter_GetResetTime</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <briefdescription>
+<para>Get the reset time of encounter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The seconds the encounter is defined to reset. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="146" column="5" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="146" bodyend="154" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="57" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1ga1094adf1239743f918d6aaeddbdea885" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Encounter_SetResetTime</definition>
+        <argsstring>(object encounter, int resetTime)</argsstring>
+        <name>NWNX_Encounter_SetResetTime</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>resetTime</declname>
+        </param>
+        <briefdescription>
+<para>Set the reset time of encounter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>resetTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The seconds the encounter will reset. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="156" column="6" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="156" bodyend="164" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="62" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_Encounter<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_Encounter&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="structNWNX__Encounter__CreatureListEntry" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Encounter__CreatureListEntry_1afd224e140c4b64e6ad8e9c20c7e265c6" kindref="member">resref</ref>;<sp/></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Encounter__CreatureListEntry_1a9097b69d43e0f0e13d28b122f129c566" kindref="member">challengeRating</ref>;<sp/></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Encounter__CreatureListEntry_1ad9fd36779fea2410a0c7c91ca019d601" kindref="member">unique</ref>;<sp/></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1ga57d47ecbb856f487ee70f7fce6c4b3f4" kindref="member">NWNX_Encounter_GetNumberOfCreaturesInEncounterList</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref><sp/><ref refid="group__encounter_1ga7d6f20a2a2036d9bdff05235f3dd9f0e" kindref="member">NWNX_Encounter_GetEncounterCreatureByIndex</ref>(object<sp/>encounter,<sp/>int<sp/>index);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1gac6953a870158522005e6638d872a6f6a" kindref="member">NWNX_Encounter_SetEncounterCreatureByIndex</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref><sp/>creatureEntry);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1ga63e14a9f74bbee43dd845a24491d232a" kindref="member">NWNX_Encounter_GetFactionId</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1gad85333d88eb73973046fb706f02f6319" kindref="member">NWNX_Encounter_SetFactionId</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>factionId);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1ga50d5e4ba9e9bd44bc30354ef815a5fa1" kindref="member">NWNX_Encounter_GetPlayerTriggeredOnly</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1gab4fb5b83a7852007af7714b3e6e33fd8" kindref="member">NWNX_Encounter_SetPlayerTriggeredOnly</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>playerTriggeredOnly);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1gac5518f02ee12132540934acfcd58c780" kindref="member">NWNX_Encounter_GetResetTime</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1ga1094adf1239743f918d6aaeddbdea885" kindref="member">NWNX_Encounter_SetResetTime</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resetTime);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1ga57d47ecbb856f487ee70f7fce6c4b3f4" kindref="member">NWNX_Encounter_GetNumberOfCreaturesInEncounterList</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetNumberOfCreaturesInEncounterList&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Encounter,<sp/>sFunc,<sp/>encounter);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref><sp/><ref refid="group__encounter_1ga7d6f20a2a2036d9bdff05235f3dd9f0e" kindref="member">NWNX_Encounter_GetEncounterCreatureByIndex</ref>(object<sp/>encounter,<sp/>int<sp/>index)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetEncounterCreatureByIndex&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref><sp/>creatureEntry;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Encounter,<sp/>sFunc,<sp/>index);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Encounter,<sp/>sFunc,<sp/>encounter);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>creatureEntry.unique<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>creatureEntry.challengeRating<sp/>=<sp/>NWNX_GetReturnValueFloat(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>creatureEntry.resref<sp/>=<sp/>NWNX_GetReturnValueString(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>creatureEntry;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1gac6953a870158522005e6638d872a6f6a" kindref="member">NWNX_Encounter_SetEncounterCreatureByIndex</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,<sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref><sp/>creatureEntry)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetEncounterCreatureByIndex&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Encounter,<sp/>sFunc,<sp/>creatureEntry.<ref refid="structNWNX__Encounter__CreatureListEntry_1ad9fd36779fea2410a0c7c91ca019d601" kindref="member">unique</ref>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Encounter,<sp/>sFunc,<sp/>creatureEntry.<ref refid="structNWNX__Encounter__CreatureListEntry_1a9097b69d43e0f0e13d28b122f129c566" kindref="member">challengeRating</ref>);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Encounter,<sp/>sFunc,<sp/>creatureEntry.<ref refid="structNWNX__Encounter__CreatureListEntry_1afd224e140c4b64e6ad8e9c20c7e265c6" kindref="member">resref</ref>);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Encounter,<sp/>sFunc,<sp/>index);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Encounter,<sp/>sFunc,<sp/>encounter);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1ga63e14a9f74bbee43dd845a24491d232a" kindref="member">NWNX_Encounter_GetFactionId</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetFactionId&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Encounter,<sp/>sFunc,<sp/>encounter);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1gad85333d88eb73973046fb706f02f6319" kindref="member">NWNX_Encounter_SetFactionId</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>factionId)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetFactionId&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Encounter,<sp/>sFunc,<sp/>factionId);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Encounter,<sp/>sFunc,<sp/>encounter);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1ga50d5e4ba9e9bd44bc30354ef815a5fa1" kindref="member">NWNX_Encounter_GetPlayerTriggeredOnly</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetPlayerTriggeredOnly&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Encounter,<sp/>sFunc,<sp/>encounter);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1gab4fb5b83a7852007af7714b3e6e33fd8" kindref="member">NWNX_Encounter_SetPlayerTriggeredOnly</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>playerTriggeredOnly)</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetPlayerTriggeredOnly&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Encounter,<sp/>sFunc,<sp/>playerTriggeredOnly);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Encounter,<sp/>sFunc,<sp/>encounter);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1gac5518f02ee12132540934acfcd58c780" kindref="member">NWNX_Encounter_GetResetTime</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetResetTime&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Encounter,<sp/>sFunc,<sp/>encounter);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__encounter_1ga1094adf1239743f918d6aaeddbdea885" kindref="member">NWNX_Encounter_SetResetTime</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>encounter,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resetTime)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetResetTime&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Encounter,<sp/>sFunc,<sp/>resetTime);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Encounter,<sp/>sFunc,<sp/>encounter);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Encounter,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss"/>
+  </compounddef>
+</doxygen>

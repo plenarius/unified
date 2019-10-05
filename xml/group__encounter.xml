@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__encounter" kind="group">
+    <compoundname>encounter</compoundname>
+    <title>Encounter</title>
+    <innerfile refid="nwnx__encounter_8nss">nwnx_encounter.nss</innerfile>
+    <innerclass refid="structNWNX__Encounter__CreatureListEntry" prot="public">NWNX_Encounter_CreatureListEntry</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__encounter_1ga5520d2e57f6ca7692c81d047205397fe" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Encounter</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Encounter</name>
+        <initializer>= &quot;NWNX_Encounter&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="7" column="14" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__encounter_1ga57d47ecbb856f487ee70f7fce6c4b3f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Encounter_GetNumberOfCreaturesInEncounterList</definition>
+        <argsstring>(object encounter)</argsstring>
+        <name>NWNX_Encounter_GetNumberOfCreaturesInEncounterList</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <briefdescription>
+<para>Get the number of creatures in the encounter list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of creatures in the encounter list. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="66" column="5" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="66" bodyend="74" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="20" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1ga7d6f20a2a2036d9bdff05235f3dd9f0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref></type>
+        <definition>struct NWNX_Encounter_CreatureListEntry NWNX_Encounter_GetEncounterCreatureByIndex</definition>
+        <argsstring>(object encounter, int index)</argsstring>
+        <name>NWNX_Encounter_GetEncounterCreatureByIndex</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Gets the encounter creature list entry at the specified index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the creature in the encounter list. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An <ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="66" column="5" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="76" bodyend="91" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="20" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1gac6953a870158522005e6638d872a6f6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Encounter_SetEncounterCreatureByIndex</definition>
+        <argsstring>(object encounter, int index, struct NWNX_Encounter_CreatureListEntry creatureEntry)</argsstring>
+        <name>NWNX_Encounter_SetEncounterCreatureByIndex</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref></type>
+          <declname>creatureEntry</declname>
+        </param>
+        <briefdescription>
+<para>Set the encounter creature list entry at the specified index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the creature in the encounter list. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>creatureEntry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="structNWNX__Encounter__CreatureListEntry" kindref="compound">NWNX_Encounter_CreatureListEntry</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="93" column="6" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="93" bodyend="104" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="32" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1ga63e14a9f74bbee43dd845a24491d232a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Encounter_GetFactionId</definition>
+        <argsstring>(object encounter)</argsstring>
+        <name>NWNX_Encounter_GetFactionId</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <briefdescription>
+<para>Get the faction id of encounter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The faction id. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="106" column="5" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="106" bodyend="114" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="37" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1gad85333d88eb73973046fb706f02f6319" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Encounter_SetFactionId</definition>
+        <argsstring>(object encounter, int factionId)</argsstring>
+        <name>NWNX_Encounter_SetFactionId</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>factionId</declname>
+        </param>
+        <briefdescription>
+<para>Set the faction id of encounter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>factionId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The faction id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="116" column="6" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="116" bodyend="124" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="42" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1ga50d5e4ba9e9bd44bc30354ef815a5fa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Encounter_GetPlayerTriggeredOnly</definition>
+        <argsstring>(object encounter)</argsstring>
+        <name>NWNX_Encounter_GetPlayerTriggeredOnly</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <briefdescription>
+<para>Get if encounter is player triggered only. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE is encounter is player triggered only. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="126" column="5" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="126" bodyend="134" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="47" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1gab4fb5b83a7852007af7714b3e6e33fd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Encounter_SetPlayerTriggeredOnly</definition>
+        <argsstring>(object encounter, int playerTriggeredOnly)</argsstring>
+        <name>NWNX_Encounter_SetPlayerTriggeredOnly</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>playerTriggeredOnly</declname>
+        </param>
+        <briefdescription>
+<para>Set if encounter is player triggered only. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>playerTriggeredOnly</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE/FALSE </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="136" column="6" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="136" bodyend="144" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="52" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1gac5518f02ee12132540934acfcd58c780" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Encounter_GetResetTime</definition>
+        <argsstring>(object encounter)</argsstring>
+        <name>NWNX_Encounter_GetResetTime</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <briefdescription>
+<para>Get the reset time of encounter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The seconds the encounter is defined to reset. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="146" column="5" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="146" bodyend="154" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="57" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__encounter_1ga1094adf1239743f918d6aaeddbdea885" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Encounter_SetResetTime</definition>
+        <argsstring>(object encounter, int resetTime)</argsstring>
+        <name>NWNX_Encounter_SetResetTime</name>
+        <param>
+          <type>object</type>
+          <declname>encounter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>resetTime</declname>
+        </param>
+        <briefdescription>
+<para>Set the reset time of encounter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The encounter object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>resetTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The seconds the encounter will reset. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Encounter/NWScript/nwnx_encounter.nss" line="156" column="6" bodyfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" bodystart="156" bodyend="164" declfile="Plugins/Encounter/NWScript/nwnx_encounter.nss" declline="62" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Functions exposing additional encounter properties. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

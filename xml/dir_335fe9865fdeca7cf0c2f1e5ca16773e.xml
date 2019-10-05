@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_335fe9865fdeca7cf0c2f1e5ca16773e" kind="dir">
+    <compoundname>Plugins/Visibility/NWScript</compoundname>
+    <innerfile refid="nwnx__visibility_8nss">nwnx_visibility.nss</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Visibility/NWScript/"/>
+  </compounddef>
+</doxygen>

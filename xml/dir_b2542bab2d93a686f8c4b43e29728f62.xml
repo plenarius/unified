@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_b2542bab2d93a686f8c4b43e29728f62" kind="dir">
+    <compoundname>Plugins/Lua/NWScript</compoundname>
+    <innerfile refid="nwnx__lua_8nss">nwnx_lua.nss</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Lua/NWScript/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_Metrics_InfluxDB_Documentation_README" kind="page">
+    <compoundname>md_Plugins_Metrics_InfluxDB_Documentation_README</compoundname>
+    <title>Metrics_InfluxDB Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_Metrics_InfluxDB_Documentation_README_1autotoc_md87">
+<title>Description</title>
+<para>Exports profiling information to Influx DB.</para>
+</sect1>
+<sect1 id="md_Plugins_Metrics_InfluxDB_Documentation_README_1autotoc_md88">
+<title>InfluxDB setup</title>
+<para>Install InfluxDB and create a database called &quot;nwn&quot;. (You can call it what you like, but the database name needs to match in the next section.</para>
+<para>In the influxdb.conf file, in the &quot;udp&quot; section, enable the UDP port and set it&apos;s default database to <computeroutput>nwn</computeroutput> <verbatim>[[udp]]
+  enabled = true
+  bind-address = &quot;:8089&quot;
+  database = &quot;nwn&quot;
+  # retention-policy = &quot;&quot;
+</verbatim></para>
+</sect1>
+<sect1 id="md_Plugins_Metrics_InfluxDB_Documentation_README_1autotoc_md89">
+<title>Environment Variables</title>
+<para><table rows="3" cols="3"><row>
+<entry thead="yes"><para>Variable Name  </para>
+</entry><entry thead="yes"><para>Type  </para>
+</entry><entry thead="yes"><para>Default Value   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>NWNX_METRICS_INFLUXDB_HOST  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><emphasis>none</emphasis>   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>NWNX_METRICS_INFLUXDB_PORT  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><emphasis>none</emphasis>   </para>
+</entry></row>
+</table>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

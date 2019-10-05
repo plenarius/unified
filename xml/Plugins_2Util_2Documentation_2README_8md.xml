@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2Util_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Util<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Provide<sp/>various<sp/>utility<sp/>functions<sp/>that<sp/>don&apos;t<sp/>have<sp/>a<sp/>better<sp/>home</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/>Name<sp/>|<sp/>Value<sp/>|<sp/>Default<sp/>|<sp/>Notes<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-------------<sp/>|<sp/>:---:<sp/>|<sp/>-------<sp/>|<sp/>-----<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_UTIL_PRE_MODULE_START_SCRIPT`<sp/>|<sp/>string<sp/>|<sp/>Unset<sp/>|<sp/>Allows<sp/>you<sp/>to<sp/>set<sp/>a<sp/>NWScript<sp/>that<sp/>runs<sp/>before<sp/>the<sp/>OnModuleLoad<sp/>event</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Util/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

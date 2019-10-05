@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_WebHook_Documentation_README" kind="page">
+    <compoundname>md_Plugins_WebHook_Documentation_README</compoundname>
+    <title>WebHook Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_WebHook_Documentation_README_1autotoc_md257">
+<title>Description</title>
+<para>Allows the sending of WebHooks. At the moment, only slack application/json format is supported. See <ulink url="https://api.slack.com/incoming-webhooks">https://api.slack.com/incoming-webhooks</ulink>.</para>
+<para>Events exist for SUCCESS or FAILURE.</para>
+<para><itemizedlist>
+<listitem><para>Top tip: Append <computeroutput>/slack</computeroutput> to the end of a Discord webhook url for it to work.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_Plugins_WebHook_Documentation_README_1autotoc_md258">
+<title>Limitations</title>
+<para>For added security, it is highly recommended to set your webhook path as an environment variable and use <computeroutput>NWNX_Util_GetEnvironmentVariable</computeroutput> to construct your path.</para>
+</sect1>
+<sect1 id="md_Plugins_WebHook_Documentation_README_1autotoc_md259">
+<title>Example usage</title>
+<sect3 id="md_Plugins_WebHook_Documentation_README_1autotoc_md260">
+<title>Example 1</title>
+<para>The builder wants to be notified with a simple message when the module has completed start up<itemizedlist>
+<listitem><para>At the end of the <computeroutput>on_module_load</computeroutput> script, add the following: <programlisting filename=".c"><codeline><highlight class="preprocessor">#include<sp/>&quot;nwnx_webhook&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">...</highlight></codeline>
+<codeline><highlight class="normal">NWNX_WebHook_SendWebHookHTTPS(</highlight><highlight class="stringliteral">&quot;discordapp.com&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__util_1gab0151e2741596a3a9f1ece22c62f9c9b" kindref="member">NWNX_Util_GetEnvironmentVariable</ref>(</highlight><highlight class="stringliteral">&quot;NWNX_WEBHOOK_DEVELOPER_CHANNEL&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&quot;Module<sp/>has<sp/>completed<sp/>start<sp/>up.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">...</highlight></codeline>
+</programlisting></para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md_Plugins_WebHook_Documentation_README_1autotoc_md261">
+<title>Example 2</title>
+<para>The builder wishes to create a function to post a bug report to the Discord developer channel.</para>
+<para><programlisting filename=".c"><codeline><highlight class="preprocessor">#include<sp/>&quot;nwnx_time&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;nwnx_util&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;nwnx_webhook_rch&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ReportBug(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sMessage,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oReporter=OBJECT_INVALID)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oArea<sp/>=<sp/>GetArea(oReporter);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__WebHook__Message" kindref="compound">NWNX_WebHook_Message</ref><sp/>stMessage;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a8ac91259adbe62020d5da36142876618" kindref="member">sUsername</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWN<sp/>Reporter&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a559adb85d80133938e6512d12a69e18f" kindref="member">sText</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Bug<sp/>Report&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1ac953fbd1f38da318dceff4ee6570bf89" kindref="member">sAvatarURL</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://example.com/img/icon.png&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a8e2be188c362c871de82fcbe48ee34de" kindref="member">sTitle</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Add<sp/>to<sp/>Gitlab?&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a5b54b5b3f4d996f1921fcd0bf6dd20a4" kindref="member">sURL</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://gitlab.example.com/nwn/module/issues/new?issue[title]=&quot;</highlight><highlight class="normal">+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;NWN+Bug+Report&amp;issue[description]=&quot;</highlight><highlight class="normal">+<ref refid="group__util_1ga564949f840217db246ad1e3750eb124a" kindref="member">NWNX_Util_EncodeStringForURL</ref>(sMessage);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a1e438925f97be57ac69401f43d0e16bf" kindref="member">sColor</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;#FF0000&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a2752ebbb220b5a26142e8f63c2da5e60" kindref="member">sAuthorName</ref><sp/>=<sp/>GetName(oReporter)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>(&quot;</highlight><highlight class="normal">+<sp/>GetPCPlayerName(oReporter)+</highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a9761f89d8969406957e196240b676a67" kindref="member">sAuthorIconURL</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://example.com/img/portrait/&quot;</highlight><highlight class="normal"><sp/>+<sp/>GetStringLowerCase(GetPortraitResRef(oReporter))<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;t.png&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a916266d0a0a14ebdcd227583fc006bcf" kindref="member">sThumbnailURL</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://example.com/img/portrait/po_beetle_s.png&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a6cf4f0629f99364bbb1b7196b7e64a0f" kindref="member">sDescription</ref><sp/>=<sp/>sMessage;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a5bfee6f02624338caa9e8d4ed51ffa0f" kindref="member">sFooterText</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;My_Module_1.00&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a57a6314cfacf3f4244058402965b1f20" kindref="member">sField1Name</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Area<sp/>Name&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1ae6ca50f2fc799a581ea7714864559026" kindref="member">sField1Value</ref><sp/>=<sp/>GetName(oArea);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a98c5c51f0229b0428230cd00eb3e582e" kindref="member">iField1Inline</ref><sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1ac94747113373880fe34da76ab9ccba4f" kindref="member">sField2Name</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Area<sp/>Tag&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1aa1df21fae063b94b82e2f3429410d243" kindref="member">sField2Value</ref><sp/>=<sp/>GetTag(oArea);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a838a7f626332023398ebb5965ac0fdde" kindref="member">iField2Inline</ref><sp/>=<sp/>TRUE;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1af2a9aa3908d087a99d6d3795047af16a" kindref="member">sField3Name</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Location&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1ad140bcf66224acce998f2d7ca3edd547" kindref="member">sField3Value</ref><sp/>=<sp/>NWNXLocationToString(GetLocation(oReporter));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1acc31ee95b8eeebba9f5d970bcc796c90" kindref="member">iTimestamp</ref><sp/>=<sp/><ref refid="group__time_1gaed436a2343d1fe0c4cc0ad59f23164db" kindref="member">NWNX_Time_GetTimeStamp</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sConstructedMsg<sp/>=<sp/><ref refid="group__webhook_1gaa00d5470aa2ba99e649e08770ac86bb6" kindref="member">NWNX_WebHook_BuildMessageForWebHook</ref>(</highlight><highlight class="stringliteral">&quot;discordapp.com&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__util_1gab0151e2741596a3a9f1ece22c62f9c9b" kindref="member">NWNX_Util_GetEnvironmentVariable</ref>(</highlight><highlight class="stringliteral">&quot;NWNX_WEBHOOK_DEVELOPER_CHANNEL&quot;</highlight><highlight class="normal">),<sp/>stMessage);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__webhook_1ga619daabd1f5b9034e0b9326524a0562d" kindref="member">NWNX_WebHook_SendWebHookHTTPS</ref>(</highlight><highlight class="stringliteral">&quot;discordapp.com&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__util_1gab0151e2741596a3a9f1ece22c62f9c9b" kindref="member">NWNX_Util_GetEnvironmentVariable</ref>(</highlight><highlight class="stringliteral">&quot;NWNX_WEBHOOK_DEVELOPER_CHANNEL&quot;</highlight><highlight class="normal">),<sp/>sConstructedMsg);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+</sect3>
+<sect3 id="md_Plugins_WebHook_Documentation_README_1autotoc_md262">
+<title>Example 3</title>
+<para>The builder wishes to resend a WebHook when one is disallowed due to rate limitations.<itemizedlist>
+<listitem><para>In module <computeroutput>OnModuleLoad</computeroutput> add: <programlisting filename=".c"><codeline><highlight class="normal">NWNX_Events_SubscribeEvent(</highlight><highlight class="stringliteral">&quot;NWNX_ON_WEBHOOK_FAILED&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;event_webhook&quot;</highlight><highlight class="normal">);</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para>Create new <computeroutput>event_webhook</computeroutput> script and enter the following: <programlisting filename=".c"><codeline><highlight class="preprocessor">#include<sp/>&quot;nwnx_events&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;nwnx_webhook&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>main()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oModule<sp/>=<sp/>OBJECT_SELF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sCurrentEvent<sp/>=<sp/>NWNX_Events_GetCurrentEvent();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sCurrentEvent<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;NWNX_ON_WEBHOOK_FAILED&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iStatus<sp/>=<sp/>StringToInt(NWNX_Events_GetEventData(</highlight><highlight class="stringliteral">&quot;STATUS&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Status<sp/>429<sp/>means<sp/>it<sp/>was<sp/>Rate<sp/>Limited</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(iStatus<sp/>==<sp/>429)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>is<sp/>sent<sp/>in<sp/>milliseconds</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>delayToSend<sp/>=<sp/>StringToFloat(NWNX_Events_GetEventData(</highlight><highlight class="stringliteral">&quot;RETRY_AFTER&quot;</highlight><highlight class="normal">))<sp/>/<sp/>1000.0f;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PrintString(</highlight><highlight class="stringliteral">&quot;WebHook<sp/>rate<sp/>limited,<sp/>resending<sp/>in<sp/>&quot;</highlight><highlight class="normal">+FloatToString(delayToSend)+</highlight><highlight class="stringliteral">&quot;<sp/>seconds.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sMessage<sp/>=<sp/>NWNX_Events_GetEventData(</highlight><highlight class="stringliteral">&quot;MESSAGE&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sHost<sp/>=<sp/>NWNX_Events_GetEventData(</highlight><highlight class="stringliteral">&quot;HOST&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sPath<sp/>=<sp/>NWNX_Events_GetEventData(</highlight><highlight class="stringliteral">&quot;PATH&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__webhook_1ga8030e0fe61e40060c60246dd1cc2f5cc" kindref="member">NWNX_WebHook_ResendWebHookHTTPS</ref>(sHost,<sp/>sPath,<sp/>sMessage,<sp/>delayToSend);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+</listitem></itemizedlist>
+</para>
+</sect3>
+<sect3 id="md_Plugins_WebHook_Documentation_README_1autotoc_md263">
+<title>Example 4</title>
+<para>The builder wishes to notify the general discord channel when a PC reaches a new level.<itemizedlist>
+<listitem><para>In module <computeroutput>OnModuleLoad</computeroutput> add: <programlisting filename=".c"><codeline><highlight class="normal">NWNX_Events_SubscribeEvent(</highlight><highlight class="stringliteral">&quot;NWNX_ON_LEVEL_UP_AFTER&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;event_level&quot;</highlight><highlight class="normal">);</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para>Create new <computeroutput>event_level</computeroutput> script and enter the following: <programlisting filename=".c"><codeline><highlight class="preprocessor">#include<sp/>&quot;nwnx_events&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;nwnx_time&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;nwnx_util&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;nwnx_webhook_rch&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>main()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_SELF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sCurrentEvent<sp/>=<sp/>NWNX_Events_GetCurrentEvent();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sCurrentEvent<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;NWNX_ON_LEVEL_UP_AFTER&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__WebHook__Message" kindref="compound">NWNX_WebHook_Message</ref><sp/>stMessage;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a8ac91259adbe62020d5da36142876618" kindref="member">sUsername</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWN<sp/>Reporter&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1ac953fbd1f38da318dceff4ee6570bf89" kindref="member">sAvatarURL</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://example.com/img/icon.png&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a8e2be188c362c871de82fcbe48ee34de" kindref="member">sTitle</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;New<sp/>Level!&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a1e438925f97be57ac69401f43d0e16bf" kindref="member">sColor</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;#0000FF&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a2752ebbb220b5a26142e8f63c2da5e60" kindref="member">sAuthorName</ref><sp/>=<sp/>GetName(oPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a9761f89d8969406957e196240b676a67" kindref="member">sAuthorIconURL</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://example.com/img/portrait/&quot;</highlight><highlight class="normal"><sp/>+<sp/>GetStringLowerCase(GetPortraitResRef(oPC))<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;t.png&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a916266d0a0a14ebdcd227583fc006bcf" kindref="member">sThumbnailURL</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;https://example.com/img/portrait/&quot;</highlight><highlight class="normal"><sp/>+<sp/>GetStringLowerCase(GetPortraitResRef(oPC))<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;s.png&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a6cf4f0629f99364bbb1b7196b7e64a0f" kindref="member">sDescription</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;**&quot;</highlight><highlight class="normal"><sp/>+<sp/>GetName(oPC)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;**<sp/>has<sp/>reached<sp/>level<sp/>**&quot;</highlight><highlight class="normal">+IntToString(GetHitDice(oPC))+</highlight><highlight class="stringliteral">&quot;**!<sp/>:tada:&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1a5bfee6f02624338caa9e8d4ed51ffa0f" kindref="member">sFooterText</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;My_Module_1.00&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>stMessage.<ref refid="structNWNX__WebHook__Message_1acc31ee95b8eeebba9f5d970bcc796c90" kindref="member">iTimestamp</ref><sp/>=<sp/><ref refid="group__time_1gaed436a2343d1fe0c4cc0ad59f23164db" kindref="member">NWNX_Time_GetTimeStamp</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sConstructedMsg<sp/>=<sp/><ref refid="group__webhook_1gaa00d5470aa2ba99e649e08770ac86bb6" kindref="member">NWNX_WebHook_BuildMessageForWebHook</ref>(</highlight><highlight class="stringliteral">&quot;hook.slack.com&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__util_1gab0151e2741596a3a9f1ece22c62f9c9b" kindref="member">NWNX_Util_GetEnvironmentVariable</ref>(</highlight><highlight class="stringliteral">&quot;NWNX_WEBHOOK_PUBLIC_CHANNEL&quot;</highlight><highlight class="normal">),<sp/>stMessage);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__webhook_1ga619daabd1f5b9034e0b9326524a0562d" kindref="member">NWNX_WebHook_SendWebHookHTTPS</ref>(</highlight><highlight class="stringliteral">&quot;hook.slack.com&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__util_1gab0151e2741596a3a9f1ece22c62f9c9b" kindref="member">NWNX_Util_GetEnvironmentVariable</ref>(</highlight><highlight class="stringliteral">&quot;NWNX_WEBHOOK_PUBLIC_CHANNEL&quot;</highlight><highlight class="normal">),<sp/>sConstructedMsg);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_WebHook_Documentation_README_1autotoc_md264">
+<title>Note on Portraits as Images</title>
+<para>You may have noticed in this example how portraits are being used in the WebHooks as images. If you want to know how I converted portraits to images to use for this, here were the commands used: <programlisting filename=".bash"><codeline><highlight class="normal">mkdir<sp/>/tmp/tga</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>From<sp/>the<sp/>top<sp/>level<sp/>you<sp/>wish<sp/>to<sp/>search<sp/>for<sp/>your<sp/>portraits</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Don&apos;t<sp/>forget<sp/>to<sp/>include<sp/>the<sp/>stock<sp/>portraits<sp/>here<sp/>as<sp/>well!</highlight></codeline>
+<codeline><highlight class="normal">find<sp/>.<sp/>\(<sp/>-iname<sp/>&quot;*_t.tga&quot;<sp/>-o<sp/>-iname<sp/>&quot;*_s.tga&quot;<sp/>\)<sp/>-exec<sp/>cp<sp/>--<sp/>&quot;{}&quot;<sp/>/tmp/tga<sp/>\;</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>/tmp/tga</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Make<sp/>them<sp/>all<sp/>lowercase</highlight></codeline>
+<codeline><highlight class="normal">rename<sp/>-f<sp/>&apos;y/A-Z/a-z/&apos;<sp/>*</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Convert<sp/>to<sp/>png<sp/>while<sp/>cropping<sp/>bottom<sp/>unused<sp/>portion<sp/>of<sp/>tga</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>i<sp/>in<sp/>*_t.tga;<sp/>do<sp/>convert<sp/>$i<sp/>-crop<sp/>16x25+0+0<sp/>$i.png;<sp/>done</highlight></codeline>
+<codeline><highlight class="normal">for<sp/>i<sp/>in<sp/>*_s.tga;<sp/>do<sp/>convert<sp/>$i<sp/>-crop<sp/>32x50+0+0<sp/>$i.png;<sp/>done</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Rename<sp/>from<sp/>foo.tga.png<sp/>to<sp/>foo.png</highlight></codeline>
+<codeline><highlight class="normal">rename<sp/>s/tga.png/png/<sp/>*.tga.png</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>/tmp/png</highlight></codeline>
+<codeline><highlight class="normal">mv<sp/>*.png<sp/>/tmp/png</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Now<sp/>upload<sp/>to<sp/>your<sp/>web<sp/>server</highlight></codeline>
+</programlisting> </para>
+</sect4>
+</sect3>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

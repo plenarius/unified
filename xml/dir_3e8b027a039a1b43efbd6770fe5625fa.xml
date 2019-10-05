@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_3e8b027a039a1b43efbd6770fe5625fa" kind="dir">
+    <compoundname>Plugins/SQL</compoundname>
+    <innerdir refid="dir_724086b6818de788d80ecbf507394ee0">Plugins/SQL/Documentation</innerdir>
+    <innerdir refid="dir_fcd578daabf7ec3b3318322144ed9e37">Plugins/SQL/NWScript</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/SQL/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="structNWNX__Creature__SpecialAbility" kind="struct" language="C++" prot="public">
+    <compoundname>NWNX_Creature_SpecialAbility</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structNWNX__Creature__SpecialAbility_1a12855dd394f582dfae061237afa14172" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Creature_SpecialAbility::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+<para>The spell id. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Creature/NWScript/nwnx_creature.nss" line="80" column="9" bodyfile="Plugins/Creature/NWScript/nwnx_creature.nss" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Creature__SpecialAbility_1a29feef7d645de43a1d4c9e7b923b0d58" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Creature_SpecialAbility::ready</definition>
+        <argsstring></argsstring>
+        <name>ready</name>
+        <briefdescription>
+<para>Whether it can be used. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Creature/NWScript/nwnx_creature.nss" line="81" column="9" bodyfile="Plugins/Creature/NWScript/nwnx_creature.nss" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Creature__SpecialAbility_1a15cf0191817ec4432918e349d765f094" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Creature_SpecialAbility::level</definition>
+        <argsstring></argsstring>
+        <name>level</name>
+        <briefdescription>
+<para>The level of the ability. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Creature/NWScript/nwnx_creature.nss" line="82" column="9" bodyfile="Plugins/Creature/NWScript/nwnx_creature.nss" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A creature special ability. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Creature/NWScript/nwnx_creature.nss" line="79" column="1" bodyfile="Plugins/Creature/NWScript/nwnx_creature.nss" bodystart="78" bodyend="83"/>
+    <listofallmembers>
+      <member refid="structNWNX__Creature__SpecialAbility_1a12855dd394f582dfae061237afa14172" prot="public" virt="non-virtual"><scope>NWNX_Creature_SpecialAbility</scope><name>id</name></member>
+      <member refid="structNWNX__Creature__SpecialAbility_1a15cf0191817ec4432918e349d765f094" prot="public" virt="non-virtual"><scope>NWNX_Creature_SpecialAbility</scope><name>level</name></member>
+      <member refid="structNWNX__Creature__SpecialAbility_1a29feef7d645de43a1d4c9e7b923b0d58" prot="public" virt="non-virtual"><scope>NWNX_Creature_SpecialAbility</scope><name>ready</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

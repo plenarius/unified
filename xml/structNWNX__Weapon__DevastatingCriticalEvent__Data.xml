@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="structNWNX__Weapon__DevastatingCriticalEvent__Data" kind="struct" language="C++" prot="public">
+    <compoundname>NWNX_Weapon_DevastatingCriticalEvent_Data</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structNWNX__Weapon__DevastatingCriticalEvent__Data_1a0ab39f5f5fdd4c3c995f8b84a5193c6a" prot="public" static="no" mutable="no">
+        <type>object</type>
+        <definition>object NWNX_Weapon_DevastatingCriticalEvent_Data::oWeapon</definition>
+        <argsstring></argsstring>
+        <name>oWeapon</name>
+        <briefdescription>
+<para>The weapon used to cause the event. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="27" column="12" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Weapon__DevastatingCriticalEvent__Data_1a05c644a763be5a9e7614b16137de7c23" prot="public" static="no" mutable="no">
+        <type>object</type>
+        <definition>object NWNX_Weapon_DevastatingCriticalEvent_Data::oTarget</definition>
+        <argsstring></argsstring>
+        <name>oTarget</name>
+        <briefdescription>
+<para>The target hit with a devastating critical. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="28" column="12" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Weapon__DevastatingCriticalEvent__Data_1ad61f6ae678343f3781deacdb33efb27d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Weapon_DevastatingCriticalEvent_Data::nDamage</definition>
+        <argsstring></argsstring>
+        <name>nDamage</name>
+        <briefdescription>
+<para>The damage points delivered. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="29" column="9" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Devastating critical event data. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="26" column="1" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="25" bodyend="30"/>
+    <listofallmembers>
+      <member refid="structNWNX__Weapon__DevastatingCriticalEvent__Data_1ad61f6ae678343f3781deacdb33efb27d" prot="public" virt="non-virtual"><scope>NWNX_Weapon_DevastatingCriticalEvent_Data</scope><name>nDamage</name></member>
+      <member refid="structNWNX__Weapon__DevastatingCriticalEvent__Data_1a05c644a763be5a9e7614b16137de7c23" prot="public" virt="non-virtual"><scope>NWNX_Weapon_DevastatingCriticalEvent_Data</scope><name>oTarget</name></member>
+      <member refid="structNWNX__Weapon__DevastatingCriticalEvent__Data_1a0ab39f5f5fdd4c3c995f8b84a5193c6a" prot="public" virt="non-virtual"><scope>NWNX_Weapon_DevastatingCriticalEvent_Data</scope><name>oWeapon</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_SpellChecker_Documentation_README" kind="page">
+    <compoundname>md_Plugins_SpellChecker_Documentation_README</compoundname>
+    <title>SpellChecker Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_SpellChecker_Documentation_README_1autotoc_md215">
+<title>Description</title>
+<para>Spell checking through Hunspell 1.4.1 and up</para>
+</sect1>
+<sect1 id="md_Plugins_SpellChecker_Documentation_README_1autotoc_md216">
+<title>How to install?</title>
+<para>Note: More heavily tested on 1.4.1 but works on 1.6.</para>
+<para>Hunspell is installed by default on some systems, if it&apos;s not: sudo apt-get install libhunspell-1.4-0:i386</para>
+<para>If you wish to build (which you likely do if you&apos;re here) This also includes the necessary files above sudo apt-get install libhunspell-dev:i386</para>
+<para>Alternatively, you can find hunspells source here: <ulink url="https://github.com/hunspell/hunspell/releases">https://github.com/hunspell/hunspell/releases</ulink></para>
+<para>For easily installed dictionary list:</para>
+<para>apt-cache search hunspell</para>
+<para>sudo apt-get install hunspell-en-us for English (United States)</para>
+<para>The package requires a 32-bit version of libhunspell.so</para>
+<para>If this doesn&apos;t exist with your OS&apos;s i386 libaries and you have libhunspell 1.4 or above installed try running:</para>
+<para>Example for Debian: sudo ln -s /usr/lib/i386-linux-gnu/libhunspell-1.4.so.0 /usr/lib/i386-linux-gnu/libhunspell.so</para>
+<para>You can also use the above method to update hunspell to a newer version (may not be supported)</para>
+</sect1>
+<sect1 id="md_Plugins_SpellChecker_Documentation_README_1autotoc_md217">
+<title>Environment Variables</title>
+<para><programlisting><codeline><highlight class="normal">NWNX_SPELL_PATH_AFF<sp/>[optional]:<sp/>The<sp/>path<sp/>to<sp/>the<sp/>aff<sp/>file.<sp/>By<sp/>default<sp/>/usr/share/hunspell/en_US.aff<sp/>is<sp/>used.</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SPELL_PATH_DIC<sp/>[optional]:<sp/>The<sp/>path<sp/>to<sp/>the<sp/>dic<sp/>file.<sp/>By<sp/>default<sp/>/usr/share/hunspell/en_US.dic<sp/>is<sp/>used.</highlight></codeline>
+</programlisting> </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_efcc7e8cb6d48fa5ae53e4b1e4942f85" kind="dir">
+    <compoundname>Plugins/Creature</compoundname>
+    <innerdir refid="dir_321bd27f57e8a9035bde45e83bfd0787">Plugins/Creature/Documentation</innerdir>
+    <innerdir refid="dir_df2c9402d4c835b594b2af66d6709907">Plugins/Creature/NWScript</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Creature/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_Tweaks_Documentation_README" kind="page">
+    <compoundname>md_Plugins_Tweaks_Documentation_README</compoundname>
+    <title>Tweaks Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_Tweaks_Documentation_README_1autotoc_md243">
+<title>Description</title>
+<para>Tweaks stuff. See below.</para>
+</sect1>
+<sect1 id="md_Plugins_Tweaks_Documentation_README_1autotoc_md244">
+<title>Environment Variables</title>
+<para><itemizedlist>
+<listitem><para><computeroutput>NWNX_TWEAKS_HIDE_CLASSES_ON_CHAR_LIST</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_PLAYER_DYING_HP_LIMIT</computeroutput>: Between 0 and -127</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_DISABLE_PAUSE</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_DISABLE_QUICKSAVE</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_COMPARE_VARIABLES_WHEN_MERGING</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_PARRY_ALL_ATTACKS</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_SNEAK_ATTACK_IGNORE_CRIT_IMMUNITY</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_PRESERVE_DEPLETED_ITEMS</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_DISABLE_SHADOWS</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_HIDE_DMS_ON_CHAR_LIST</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_DISABLE_MONK_ABILITIES_WHEN_POLYMORPHED</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_STRINGTOINT_BASE_TO_AUTO</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_DEAD_CREATURES_TRIGGER_ON_AREA_EXIT</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_PRESERVE_ACTIONS_ON_DM_POSSESS</computeroutput>: true or false</para>
+</listitem><listitem><para><computeroutput>NWNX_TWEAKS_FIX_GREATER_SANCTUARY_BUG</computeroutput>: true or false </para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

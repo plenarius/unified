@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_Profiler_Documentation_README" kind="page">
+    <compoundname>md_Plugins_Profiler_Documentation_README</compoundname>
+    <title>Profiler Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_Profiler_Documentation_README_1autotoc_md105">
+<title>Description</title>
+<para>Acquires shared hooks to expose various useful metrics.</para>
+</sect1>
+<sect1 id="md_Plugins_Profiler_Documentation_README_1autotoc_md106">
+<title>Environment Variables</title>
+<para><table rows="18" cols="3"><row>
+<entry thead="yes"><para>Variable Name  </para>
+</entry><entry thead="yes"><para>Type  </para>
+</entry><entry thead="yes"><para>Default Value   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ENABLE_OVERHEAD_COMPENSATION  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>true   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>OVERHEAD_COMPENSTION_FORCE  </para>
+</entry><entry thead="no"><para>int64_t  </para>
+</entry><entry thead="no"><para><emphasis>none</emphasis>   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>OVERHEAD_COMPENSATION_RUNS  </para>
+</entry><entry thead="no"><para>size_t  </para>
+</entry><entry thead="no"><para>500   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>OVERHEAD_COMPENSATION_RECALIBRATE  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>false   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>OVERHEAD_COMPENSATION_RECALIBRATION_PERIOD  </para>
+</entry><entry thead="no"><para>uint32_t  </para>
+</entry><entry thead="no"><para>1000   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ENABLE_AI_MASTER_UPDATES  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>true   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>AI_MASTER_UPDATES_OVERKILL  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>false   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ENABLE_MAIN_LOOP  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>true   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ENABLE_NET_LAYER  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>true   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ENABLE_NET_MESSAGES  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>true   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ENABLE_OBJECT_AI_UPDATES  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>false   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ENABLE_OBJECT_EVENT_HANDLERS  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>false   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ENABLE_PATHING  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>true   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ENABLE_SCRIPTS  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>true   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>SCRIPTS_AREA_TIMINGS  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>true   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>SCRIPTS_TYPE_TIMINGS  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>true   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ENABLE_TICKRATE  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>true   </para>
+</entry></row>
+</table>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

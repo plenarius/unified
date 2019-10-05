@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2Profiler_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Profiler<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Acquires<sp/>shared<sp/>hooks<sp/>to<sp/>expose<sp/>various<sp/>useful<sp/>metrics.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/>Name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/><sp/>Type<sp/><sp/><sp/>|<sp/>Default<sp/>Value<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-------------<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>:------:<sp/>|<sp/>-------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>ENABLE_OVERHEAD_COMPENSATION<sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>true<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>OVERHEAD_COMPENSTION_FORCE<sp/><sp/><sp/><sp/><sp/>|<sp/>int64_t<sp/><sp/>|<sp/>_none_<sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>OVERHEAD_COMPENSATION_RUNS<sp/><sp/><sp/><sp/><sp/>|<sp/>size_t<sp/><sp/><sp/>|<sp/>500<sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>OVERHEAD_COMPENSATION_RECALIBRATE<sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/>|<sp/>false<sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>OVERHEAD_COMPENSATION_RECALIBRATION_PERIOD<sp/>|<sp/>uint32_t<sp/>|<sp/>1000<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>ENABLE_AI_MASTER_UPDATES<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>true<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>AI_MASTER_UPDATES_OVERKILL<sp/><sp/><sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>false<sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>ENABLE_MAIN_LOOP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>true<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>ENABLE_NET_LAYER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>true<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>ENABLE_NET_MESSAGES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>true<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>ENABLE_OBJECT_AI_UPDATES<sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>false<sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>ENABLE_OBJECT_EVENT_HANDLERS<sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>false<sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>ENABLE_PATHING<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>true<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>ENABLE_SCRIPTS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>true<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>SCRIPTS_AREA_TIMINGS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>true<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>SCRIPTS_TYPE_TIMINGS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>true<sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>ENABLE_TICKRATE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>bool<sp/><sp/><sp/><sp/><sp/>|<sp/>true<sp/><sp/><sp/><sp/>|</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Profiler/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

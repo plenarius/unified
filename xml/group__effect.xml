@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__effect" kind="group">
+    <compoundname>effect</compoundname>
+    <title>Effect</title>
+    <innerfile refid="nwnx__effect_8nss">nwnx_effect.nss</innerfile>
+    <innerclass refid="structNWNX__EffectUnpacked" prot="public">NWNX_EffectUnpacked</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__effect_1ga92cd5f42fe610803f30f5383242cd6cc" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Effect</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Effect</name>
+        <initializer>= &quot;NWNX_Effect&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="7" column="14" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__effect_1ga10a9c2babd8ee53cf383342585b239e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref></type>
+        <definition>struct NWNX_EffectUnpacked NWNX_Effect_UnpackEffect</definition>
+        <argsstring>(effect e)</argsstring>
+        <name>NWNX_Effect_UnpackEffect</name>
+        <param>
+          <type>effect</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Convert native effect type to unpacked structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The effect to convert. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A constructed <ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="84" column="8" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="88" bodyend="142" declfile="Plugins/Effect/NWScript/nwnx_effect.nss" declline="7" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__effect_1ga8c7e4f71ab7b12105e5051ec90e9fd2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>effect</type>
+        <definition>effect NWNX_Effect_PackEffect</definition>
+        <argsstring>(struct NWNX_EffectUnpacked e)</argsstring>
+        <name>NWNX_Effect_PackEffect</name>
+        <param>
+          <type>struct <ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref></type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Convert unpacked effect structure to native type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref> structure to convert. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The effect. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="143" column="8" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="143" bodyend="194" declfile="Plugins/Effect/NWScript/nwnx_effect.nss" declline="66" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__effect_1ga3c6b1b67f4bd4332f8b2b4fdf8217aec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>effect</type>
+        <definition>effect NWNX_Effect_SetEffectExpiredScript</definition>
+        <argsstring>(effect e, string script, string data=&quot;&quot;)</argsstring>
+        <name>NWNX_Effect_SetEffectExpiredScript</name>
+        <param>
+          <type>effect</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>script</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>data</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Set a script with optional data that runs when an effect expires. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The effect. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>script</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The script to run when the effect expires. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Any other data you wish to send back to the script. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="remark"><para>OBJECT_SELF in the script is the object the effect is applied to. </para>
+</simplesect>
+<simplesect kind="note"><para>Only works for TEMPORARY and PERMANENT effects applied to an object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="196" column="8" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="196" bodyend="207" declfile="Plugins/Effect/NWScript/nwnx_effect.nss" declline="74" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__effect_1gabb4f9e4e4b8315cda42c1e7dc4d2dff3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Effect_GetEffectExpiredData</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Effect_GetEffectExpiredData</name>
+        <briefdescription>
+<para>Get the data set with <ref refid="group__effect_1ga3c6b1b67f4bd4332f8b2b4fdf8217aec" kindref="member">NWNX_Effect_SetEffectExpiredScript()</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Should only be called from a script set with <ref refid="group__effect_1ga3c6b1b67f4bd4332f8b2b4fdf8217aec" kindref="member">NWNX_Effect_SetEffectExpiredScript()</ref>. </para>
+</simplesect>
+<simplesect kind="return"><para>The data attached to the effect. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="209" column="8" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="209" bodyend="216" declfile="Plugins/Effect/NWScript/nwnx_effect.nss" declline="79" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__effect_1ga9dfcfd6d65f0e22b66dd9c6b51df5484" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>object</type>
+        <definition>object NWNX_Effect_GetEffectExpiredCreator</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Effect_GetEffectExpiredCreator</name>
+        <briefdescription>
+<para>Get the effect creator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Should only be called from a script set with <ref refid="group__effect_1ga3c6b1b67f4bd4332f8b2b4fdf8217aec" kindref="member">NWNX_Effect_SetEffectExpiredScript()</ref>. </para>
+</simplesect>
+<simplesect kind="return"><para>The object from which the effect originated. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="218" column="8" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="218" bodyend="225" declfile="Plugins/Effect/NWScript/nwnx_effect.nss" declline="84" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Utility functions to manipulate the builtin effect type. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

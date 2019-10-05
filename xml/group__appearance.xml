@@ -1,0 +1,340 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__appearance" kind="group">
+    <compoundname>appearance</compoundname>
+    <title>Appearance</title>
+    <innerfile refid="nwnx__appearance_8nss">nwnx_appearance.nss</innerfile>
+      <sectiondef kind="user-defined">
+      <header>Appearance Types</header>
+      <description><para><anchor id="group__appearance_1appearance_types"/> The various types of changes that can be made to how a PC is perceived. </para>
+</description>
+      <memberdef kind="variable" id="group__appearance_1ga65cf82443790a3e6abd3ff328fdfefbe" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_APPEARANCE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_APPEARANCE</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>APPEARANCE_TYPE_* or -1 to remove. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="14" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__appearance_1gaf39cd9dc8b45b45b9869c17b0ad74ecc" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_GENDER</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_GENDER</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>GENDER_* or -1 to remove. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="15" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__appearance_1ga965bfe6cb8e12082dd09b98c3333cfd4" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_HITPOINTS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_HITPOINTS</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>0-GetMaxHitPoints(oCreature) or -1 to remove </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This is visual only. Does not change the Examine Window health status. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="19" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__appearance_1ga6a208bee1fa4735c1bf31a4367760ef3" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_HAIR_COLOR</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_HAIR_COLOR</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>0-175 or -1 to remove </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="20" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__appearance_1gab3a4d3beaadaac74bd883e1993599bdf" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_SKIN_COLOR</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_SKIN_COLOR</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+<para>0-175 or -1 to remove </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="21" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__appearance_1ga9a05396d725bcd3c2a855a26d26843c9" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_PHENOTYPE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_PHENOTYPE</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+<para>PHENOTYPE_* or -1 to remove. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="22" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__appearance_1gaf601b870403113b2c559de40732adcd6" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_HEAD_TYPE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_HEAD_TYPE</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+<para>0-? or -1 to remove </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="23" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__appearance_1ga91511e3b70e17f6656c2ebe841a6ab94" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_SOUNDSET</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_SOUNDSET</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+<para>See soundset.2da or -1 to remove. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="24" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__appearance_1ga2fcd956e0a0f733dc438c78f16502c36" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_TAIL_TYPE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_TAIL_TYPE</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+<para>CREATURE_TAIL_TYPE_* or see tailmodel.2da, -1 to remove. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="25" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__appearance_1ga644b04a8c340d3e31b4dd79a95a5a8d6" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_WING_TYPE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_WING_TYPE</name>
+        <initializer>= 9</initializer>
+        <briefdescription>
+<para>CREATURE_WING_TYPE_* or see wingmodel.2da, -1 to remove. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="26" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__appearance_1gaa8ab8ccbe3ff47192ef7367c1ea0e347" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_FOOTSTEP_SOUND</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_FOOTSTEP_SOUND</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>0-17 or see footstepsounds.2da, -1 to remove </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="27" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__appearance_1ga132a6f839050229094581fe7dd7a2dc5" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_APPEARANCE_TYPE_PORTRAIT</definition>
+        <argsstring></argsstring>
+        <name>NWNX_APPEARANCE_TYPE_PORTRAIT</name>
+        <initializer>= 11</initializer>
+        <briefdescription>
+<para>See portraits.2da, -1 to remove. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Does not change the Examine Window portrait. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="31" column="11" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__appearance_1ga8510e32794eaa2f6319b0455c6d21a1f" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Appearance</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Appearance</name>
+        <initializer>= &quot;NWNX_Appearance&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="7" column="14" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__appearance_1ga4db3e3265de8c297a3ac75cf9c17af29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Appearance_SetOverride</definition>
+        <argsstring>(object oPlayer, object oCreature, int nType, int nValue)</argsstring>
+        <name>NWNX_Appearance_SetOverride</name>
+        <param>
+          <type>object</type>
+          <declname>oPlayer</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oCreature</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nValue</declname>
+        </param>
+        <briefdescription>
+<para>Override a creature&apos;s appearance type for a player. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oPlayer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player who will see/hear things differently. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oCreature</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target creature whose appearance type to alter for oPlayer. Can be a PC. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="group__appearance_1appearance_types" kindref="member">Appearance Type</ref> to set. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new value for the appearance type. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="50" column="6" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="50" bodyend="60" declfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" declline="39" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__appearance_1gacbfeb0e65785612fe0c50d5e6a1b9cee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Appearance_GetOverride</definition>
+        <argsstring>(object oPlayer, object oCreature, int nType)</argsstring>
+        <name>NWNX_Appearance_GetOverride</name>
+        <param>
+          <type>object</type>
+          <declname>oPlayer</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oCreature</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <briefdescription>
+<para>Get a creature&apos;s appearance type for a player. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oPlayer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player who see/hear things differently. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oCreature</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target creature whose appearance type is altered for oPlayer. Can be a PC. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="group__appearance_1appearance_types" kindref="member">Appearance Type</ref> to get. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value for the appearance type or -1 when not set. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Appearance/NWScript/nwnx_appearance.nss" line="62" column="5" bodyfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" bodystart="62" bodyend="73" declfile="Plugins/Appearance/NWScript/nwnx_appearance.nss" declline="46" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Allows the appearance and some other things of creatures to be overridden per player. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

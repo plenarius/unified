@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_bcc50344ec4d2f717a0c7004278094df" kind="dir">
+    <compoundname>Plugins/Effect/NWScript</compoundname>
+    <innerfile refid="nwnx__effect_8nss">nwnx_effect.nss</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Effect/NWScript/"/>
+  </compounddef>
+</doxygen>

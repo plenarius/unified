@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_Reveal_Documentation_README" kind="page">
+    <compoundname>md_Plugins_Reveal_Documentation_README</compoundname>
+    <title>Reveal Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_Reveal_Documentation_README_1autotoc_md197">
+<title>Environment Variables</title>
+<para>None</para>
+</sect1>
+<sect1 id="md_Plugins_Reveal_Documentation_README_1autotoc_md198">
+<title>Description</title>
+<para>This plugin allows the selective revealing of a stealthing character to another character or their party.</para>
+<para><table rows="3" cols="2"><row>
+<entry thead="yes"><para>Script function  </para>
+</entry><entry thead="yes"><para>Description   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>NWNX_Reveal_RevealTo  </para>
+</entry><entry thead="no"><para>Selectively reveals the character oHiding to the character oObserver, until the next time oHiding stealths out of sight. iDetectionMethod can be specified to determine whether oHiding is seen or heard.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>NWNX_Reveal_SetRevealToParty  </para>
+</entry><entry thead="no"><para>Sets whether oHiding remains visible to the character&apos;s party through stealth. iDetectionMethod can be specified to determine whether oHiding is seen or heard.   </para>
+</entry></row>
+</table>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

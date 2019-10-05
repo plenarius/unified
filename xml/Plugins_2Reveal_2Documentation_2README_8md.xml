@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2Reveal_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Reveal<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">None</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>plugin<sp/>allows<sp/>the<sp/>selective<sp/>revealing<sp/>of<sp/>a<sp/>stealthing<sp/>character<sp/>to<sp/>another<sp/>character<sp/>or<sp/>their<sp/>party.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Script<sp/>function<sp/>|<sp/>Description<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">----------------|-------------</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Reveal_RevealTo<sp/>|<sp/>Selectively<sp/>reveals<sp/>the<sp/>character<sp/>oHiding<sp/>to<sp/>the<sp/>character<sp/>oObserver,<sp/>until<sp/>the<sp/>next<sp/>time<sp/>oHiding<sp/>stealths<sp/>out<sp/>of<sp/>sight.<sp/>iDetectionMethod<sp/>can<sp/>be<sp/>specified<sp/>to<sp/>determine<sp/>whether<sp/>oHiding<sp/>is<sp/>seen<sp/>or<sp/>heard.</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Reveal_SetRevealToParty<sp/>|<sp/>Sets<sp/>whether<sp/>oHiding<sp/>remains<sp/>visible<sp/>to<sp/>the<sp/>character&apos;s<sp/>party<sp/>through<sp/>stealth.<sp/>iDetectionMethod<sp/>can<sp/>be<sp/>specified<sp/>to<sp/>determine<sp/>whether<sp/>oHiding<sp/>is<sp/>seen<sp/>or<sp/>heard.</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Reveal/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_ThreadWatchdog_Documentation_README" kind="page">
+    <compoundname>md_Plugins_ThreadWatchdog_Documentation_README</compoundname>
+    <title>ThreadWatchdog Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_ThreadWatchdog_Documentation_README_1autotoc_md234">
+<title>Description</title>
+</sect1>
+<sect1 id="md_Plugins_ThreadWatchdog_Documentation_README_1autotoc_md235">
+<title>Environment Variables</title>
+<para><itemizedlist>
+<listitem><para><computeroutput>NWNX_THREADWATCHDOG_PERIOD</computeroutput>: Set the period at which the watchdog fires, in seconds</para>
+</listitem><listitem><para><computeroutput>NWNX_THREADWATCHDOG_KILL_THRESHOLD</computeroutput>: Number of successive long stall detections needed to kill the server </para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

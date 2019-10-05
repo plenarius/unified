@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_Effect_Documentation_README" kind="page">
+    <compoundname>md_Plugins_Effect_Documentation_README</compoundname>
+    <title>Effect Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_Effect_Documentation_README_1autotoc_md44">
+<title>Description</title>
+<para>Provide various utility functions to manipulate builtin effect type</para>
+</sect1>
+<sect1 id="md_Plugins_Effect_Documentation_README_1autotoc_md45">
+<title>Environment Variables</title>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

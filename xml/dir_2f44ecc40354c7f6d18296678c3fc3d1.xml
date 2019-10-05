@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_2f44ecc40354c7f6d18296678c3fc3d1" kind="dir">
+    <compoundname>Plugins/Redis/NWScript</compoundname>
+    <innerfile refid="nwnx__redis_8nss">nwnx_redis.nss</innerfile>
+    <innerfile refid="nwnx__redis__lib_8nss">nwnx_redis_lib.nss</innerfile>
+    <innerfile refid="nwnx__redis__ps_8nss">nwnx_redis_ps.nss</innerfile>
+    <innerfile refid="nwnx__redis__short_8nss">nwnx_redis_short.nss</innerfile>
+    <innerfile refid="on__pubsub_8nss">on_pubsub.nss</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Redis/NWScript/"/>
+  </compounddef>
+</doxygen>

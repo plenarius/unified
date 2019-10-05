@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="changelog" kind="page">
+    <compoundname>changelog</compoundname>
+    <title>Changelog</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>All notable changes to this project will be documented in this file.</para>
+<para>The format is based on <ulink url="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</ulink>.</para>
+<sect1 id="changelog_1autotoc_md0">
+<title>Unreleased</title>
+<para><ulink url="https://github.com/nwnxee/unified/compare/build8186-2...HEAD">https://github.com/nwnxee/unified/compare/build8186-2...HEAD</ulink></para>
+<para>NOTICE: The ABI has changed, please make sure to update your <ref refid="nwnx_8nss" kindref="compound">nwnx.nss</ref> and recompile all your scripts.</para>
+<sect2 id="changelog_1autotoc_md1">
+<title>Added</title>
+<para><itemizedlist>
+<listitem><para>Added support to skip building certain plugins by setting an environment variable, for example: <computeroutput>NWNX_SKIP_PLUGINS=&quot;JVM;Lua;Mono;Ruby;SpellChecker&quot;</computeroutput></para>
+</listitem><listitem><para>Added support to build out of tree plugins with the following environment variable: <computeroutput>NWNX_ADDITIONAL_PLUGINS=/path/to/Plugin1;/path/to/Plugin2</computeroutput></para>
+</listitem><listitem><para>Added string localization support. Only Russian/Cyrillic supported at the moment. Use environment variable <computeroutput>NWNX_CORE_LOCALE=ru</computeroutput></para>
+</listitem><listitem><para>Core: Allow changing default plugin state from &apos;load all&apos; to &apos;skip all&apos; with the following environment variable: <computeroutput>NWNX_CORE_SKIP_ALL=y</computeroutput>. Use <computeroutput>NWNX_PLUGIN_SKIP=n</computeroutput> to enable specific plugins in this case.</para>
+</listitem><listitem><para>Core: Allow passing engine structures to nwnx (Effect/Itemproperty)</para>
+</listitem><listitem><para>Core: Added the environment variable <computeroutput>NWNX_CORE_SHUTDOWN_SCRIPT=scriptname</computeroutput> which lets you set a nwscript that runs when the server shuts down</para>
+</listitem><listitem><para>Core: Added Util functions to call various script events</para>
+</listitem><listitem><para>Core: NWNX will now log the resref of areas it&apos;s trying to load when running log level <computeroutput>7</computeroutput></para>
+</listitem><listitem><para>Events: New events: SkillEvents, MapEvents, EffectEvents, QuickChatEvents, InventoryEvents, BarterEvents, TrapEvents, TimingBarEvents, LevelEvents, WebHookEvents</para>
+</listitem><listitem><para>Events: The following events are now skippable: FeatEvents, ItemEvents, HealersKitEvents, CombatModeEvents, PartyEvents, SkillEvents, MapEvents, PolymorphEvents, DMActionEvents, ClientConnectEvents, SpellEvents, QuickChatEvents, InventoryEvents, BarterEvents (START only), TrapEvents, StickyPlayerNameReservedEvent, StealthEvent</para>
+</listitem><listitem><para>Events: You can now get the current event name with a nwscript function</para>
+</listitem><listitem><para>Events: Added On{Listen/Spot}Detection events to StealthEvents</para>
+</listitem><listitem><para>Events: Added On{Un}Polymorph events as PolymorphEvents</para>
+</listitem><listitem><para>Events: Added Event Data for SpawnObject, GiveItem, GiveAlignment, Heal, Kill, ToggleInvulnerabilty, ForceRest, Limbo, ToggleAI, ToggleImmortal, Goto, Possess, PossessFullPower, ToggleLock, DisableTrap, JumpToPoint, JumpTargetToPoint, JumpAllPlayersToPoint, ChangeDifficulty, ViewInventory, SpawnTrapOnObject events in DMActionEvents</para>
+</listitem><listitem><para>Events: Added OnClientConnect events that fire before the player sees the server vault.</para>
+</listitem><listitem><para>Events: Added ItemInventory{Open/Close}, ItemInventory{Add/Remove}Item, ScrollLearn, DestroyObject and DecrementStackSize events to ItemEvents</para>
+</listitem><listitem><para>Events: Added {Set|Clear}MemorizedSpellSlot events to SpellEvents</para>
+</listitem><listitem><para>Events: Added AmmoReload events that are used when the engine is looking for ammunition to reload</para>
+</listitem><listitem><para>Events: Added Run{Un}Equip events to ItemEvents</para>
+</listitem><listitem><para>Events: Added Barter Start/End events</para>
+</listitem><listitem><para>Events: Added AIAction{Disarm|Examine|Flag|Recover|Set}Trap events</para>
+</listitem><listitem><para>Events: Added Timing Bar events</para>
+</listitem><listitem><para>Events: Added Sticky Player Name Reserved event allowing builders to use another method instead of knownservernames.2da to validate player names and cd keys</para>
+</listitem><listitem><para>Events: Added Level{Up|UpAutomatic|Down} events to LevelEvents</para>
+</listitem><listitem><para>Events: Added WebHook Success/Failure events with rate limit feedback</para>
+</listitem><listitem><para>Events: Added UseLoreOnItem and PayToIdentifyItem events</para>
+</listitem><listitem><para>Events: Added {Add|Remove}Gold events to InventoryEvents</para>
+</listitem><listitem><para>Events: Added PVP Attitude Change event</para>
+</listitem><listitem><para>Events: Added SplitItem event to ItemEvents</para>
+</listitem><listitem><para>Events: Added WalkToWaypoint, AttackObject and ForceMoveToObject events to InputEvents</para>
+</listitem><listitem><para>Events: Added Surface Material Change events</para>
+</listitem><listitem><para>Profiler: Support profiler perf scopes via nwscript</para>
+</listitem><listitem><para>SQL: Added support for SQLite</para>
+</listitem><listitem><para>Tweaks: DisableQuickSave</para>
+</listitem><listitem><para>Tweaks: HideDMsOnCharList</para>
+</listitem><listitem><para>Tweaks: DisableMonkAbilitiesWhenPolymorphed</para>
+</listitem><listitem><para>Tweaks: StringToIntBaseToAuto</para>
+</listitem><listitem><para>Tweaks: DeadCreatureFiresOnAreaExit</para>
+</listitem><listitem><para>Tweaks: PreserveActionsOnDMPossess</para>
+</listitem><listitem><para>Tweaks: FixGreaterSanctuaryBug</para>
+</listitem><listitem><para>Weapon: Feat and Base Item names were added to LOG_INFO feedback</para>
+</listitem><listitem><para>WebHook: Added support for richer Slack-compatible messages</para>
+</listitem><listitem><para>Util: Added the environment variable <computeroutput>NWNX_UTIL_PRE_MODULE_START_SCRIPT=scriptname</computeroutput> which lets you set a nwscript that runs before the OnModuleLoad event </para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="changelog_1autotoc_md2">
+<title>New Plugins</title>
+<para>The following plugins were added:<itemizedlist>
+<listitem><para><bold>Appearance</bold>: Allows the appearance and some other things of creatures to be overridden per player</para>
+</listitem><listitem><para><bold>Area</bold>: Adds functions exposing additional area properties</para>
+</listitem><listitem><para><bold>CombatModes</bold>: Allows subscribing to Combat Mode toggle events. The Events plugin is needed to subscribe to the CombatMode events</para>
+</listitem><listitem><para><bold>Effect</bold>: Provides various utility functions to manipulate builtin effect types</para>
+</listitem><listitem><para><bold>Experimental</bold>: Adds experimental functionality that&apos;s not really useful for the general user. The following environmental variable needs to be true for the plugin to load: <computeroutput>NWNX_CORE_LOAD_EXPERIMENTAL_PLUGIN=y</computeroutput></para>
+</listitem><listitem><para><bold>ELC</bold>: A customisable replacement for ValidateCharacter: ELC &amp; ILR</para>
+</listitem><listitem><para><bold>Encounter</bold>: Adds functions exposing additional encounter properties</para>
+</listitem><listitem><para><bold>Feedback</bold>: Allows combatlog, feedback and &apos;quest journal updated&apos; messages to be hidden globally or per player</para>
+</listitem><listitem><para><bold>ItemProperty</bold>: Provides various utility functions to manipulate builtin itemproperty types</para>
+</listitem><listitem><para><bold>MaxLevel</bold>: Extends support for levels up to 60</para>
+</listitem><listitem><para><bold>Race</bold>: Provides the ability to specify a variety of inate modifiers for new or existing races or subraces via script or 2da</para>
+</listitem><listitem><para><bold>Regex</bold>: Adds functions to search and replace strings using regular expressions.</para>
+</listitem><listitem><para><bold>Rename</bold>: Adds functions to facilitate renaming, overriding and customization of player names</para>
+</listitem><listitem><para><bold>Reveal</bold>: Adds functions to allow the selective revealing of a stealthed character to another character or their party.</para>
+</listitem><listitem><para><bold>SkillRanks</bold>: Adds functions to create feats and perform actions that manipulate the calculations of skill ranks</para>
+</listitem><listitem><para><bold>Visibility</bold>: Allows the visibility of objects to be overridden globally or per player </para>
+</listitem></itemizedlist>
+</para>
+</sect4>
+<sect4 id="changelog_1autotoc_md3">
+<title>New NWScript Functions</title>
+<para><itemizedlist>
+<listitem><para>Administration: GetPlayOption()</para>
+</listitem><listitem><para>Administration: SetPlayOption()</para>
+</listitem><listitem><para>Administration: DeleteTURD()</para>
+</listitem><listitem><para>Appearance: {Get|Set}Override()</para>
+</listitem><listitem><para>Area: GetNumberOfPlayersInArea()</para>
+</listitem><listitem><para>Area: GetLastEntered()</para>
+</listitem><listitem><para>Area: GetLastLeft()</para>
+</listitem><listitem><para>Area: GetPVPSetting()</para>
+</listitem><listitem><para>Area: SetPVPSetting()</para>
+</listitem><listitem><para>Area: GetAreaSpotModifier()</para>
+</listitem><listitem><para>Area: SetAreaSpotModifier()</para>
+</listitem><listitem><para>Area: GetAreaListenModifier()</para>
+</listitem><listitem><para>Area: SetAreaListenModifier()</para>
+</listitem><listitem><para>Area: GetNoRestingAllowed()</para>
+</listitem><listitem><para>Area: SetNoRestingAllowed()</para>
+</listitem><listitem><para>Area: GetWindPower()</para>
+</listitem><listitem><para>Area: SetWindPower()</para>
+</listitem><listitem><para>Area: GetWeatherChance()</para>
+</listitem><listitem><para>Area: SetWeatherChance()</para>
+</listitem><listitem><para>Area: GetFogClipDistance()</para>
+</listitem><listitem><para>Area: SetFogClipDistance()</para>
+</listitem><listitem><para>Area: GetShadowOpacity()</para>
+</listitem><listitem><para>Area: SetShadowOpacity()</para>
+</listitem><listitem><para>Area: GetDayNightCycle()</para>
+</listitem><listitem><para>Area: SetDayNightCycle()</para>
+</listitem><listitem><para>Area: {Get|Set}SunMoonColors()</para>
+</listitem><listitem><para>Area: CreateTransition()</para>
+</listitem><listitem><para>Area: {Get|Set}TileAnimationLoop()</para>
+</listitem><listitem><para>Chat: GetChatHearingDistance()</para>
+</listitem><listitem><para>Chat: SetChatHearingDistance()</para>
+</listitem><listitem><para>Creature: GetAttackBonus()</para>
+</listitem><listitem><para>Creature: GetHighestLevelOfFeat()</para>
+</listitem><listitem><para>Creature: GetFeatRemainingUses()</para>
+</listitem><listitem><para>Creature: GetFeatTotalUses()</para>
+</listitem><listitem><para>Creature: SetFeatRemainingUses()</para>
+</listitem><listitem><para>Creature: GetTotalEffectBonus()</para>
+</listitem><listitem><para>Creature: SetOriginalName()</para>
+</listitem><listitem><para>Creature: GetOriginalName()</para>
+</listitem><listitem><para>Creature: SetSpellResistance()</para>
+</listitem><listitem><para>Creature: GetPrePolymorphAbilityScore()</para>
+</listitem><listitem><para>Creature: {Get|Set}MovementRateFactor()</para>
+</listitem><listitem><para>Creature: Set{AnimalCompanion|Familiar}CreatureType()</para>
+</listitem><listitem><para>Creature: Set{AnimalCompanion|Familiar}Name()</para>
+</listitem><listitem><para>Damage: SetAttackEventScript()</para>
+</listitem><listitem><para>Damage: GetAttackEventData()</para>
+</listitem><listitem><para>Damage: SetAttackEventData()</para>
+</listitem><listitem><para>Damage: DealDamage()</para>
+</listitem><listitem><para>Effect: PackEffect()</para>
+</listitem><listitem><para>Effect: UnpackEffect()</para>
+</listitem><listitem><para>Effect: SetEffectExpiredScript()</para>
+</listitem><listitem><para>Effect: GetEffectExpiredData()</para>
+</listitem><listitem><para>Effect: GetEffectExpiredCreator()</para>
+</listitem><listitem><para>Encounter: GetNumberOfCreaturesInEncounterList()</para>
+</listitem><listitem><para>Encounter: GetEncounterCreatureByIndex()</para>
+</listitem><listitem><para>Encounter: SetEncounterCreatureByIndex()</para>
+</listitem><listitem><para>Encounter: GetFactionId()</para>
+</listitem><listitem><para>Encounter: SetFactionId()</para>
+</listitem><listitem><para>Encounter: GetPlayerTriggeredOnly()</para>
+</listitem><listitem><para>Encounter: SetPlayerTriggeredOnly()</para>
+</listitem><listitem><para>Encounter: GetResetTime()</para>
+</listitem><listitem><para>Encounter: SetResetTime()</para>
+</listitem><listitem><para>ELC: SetELCScript()</para>
+</listitem><listitem><para>ELC: EnableCustomELCCheck()</para>
+</listitem><listitem><para>ELC: SkipValidationFailure()</para>
+</listitem><listitem><para>ELC: GetValidationFailureType()</para>
+</listitem><listitem><para>ELC: GetValidationFailureSubType()</para>
+</listitem><listitem><para>ELC: GetValidationFailureMessageStrRef()</para>
+</listitem><listitem><para>ELC: SetValidationFailureMessageStrRef()</para>
+</listitem><listitem><para>ELC: GetValidationFailureItem();</para>
+</listitem><listitem><para>ELC: GetValidationFailureLevel();</para>
+</listitem><listitem><para>ELC: GetValidationFailureSkillID();</para>
+</listitem><listitem><para>ELC: GetValidationFailureFeatID();</para>
+</listitem><listitem><para>ELC: GetValidationFailureSpellID();</para>
+</listitem><listitem><para>Events: GetCurrentEvent()</para>
+</listitem><listitem><para>Events: ToggleDispatchListMode()</para>
+</listitem><listitem><para>Events: AddObjectToDispatchList()</para>
+</listitem><listitem><para>Events: RemoveObjectFromDispatchList()</para>
+</listitem><listitem><para>Feedback: Get{Feedback|CombatLog|JournalUpdated}MessageHidden()</para>
+</listitem><listitem><para>Feedback: Set{Feedback|CombatLog|JournalUpdated}MessageHidden()</para>
+</listitem><listitem><para>Feedback: Set{Feedback|CombatLog}MessageMode()</para>
+</listitem><listitem><para>Item: GetBaseArmorClass()</para>
+</listitem><listitem><para>Item: GetMinEquipLevel()</para>
+</listitem><listitem><para>ItemProperty: PackIP()</para>
+</listitem><listitem><para>ItemProperty: UnpackIP()</para>
+</listitem><listitem><para>Object: GetHasVisualEffect()</para>
+</listitem><listitem><para>Object: CheckFit()</para>
+</listitem><listitem><para>Object: GetDamageImmunity()</para>
+</listitem><listitem><para>Object: AddToArea()</para>
+</listitem><listitem><para>Object: GetPlaceableIsStatic()</para>
+</listitem><listitem><para>Object: SetPlaceableIsStatic()</para>
+</listitem><listitem><para>Object: {Get|Set}AutoRemoveKey()</para>
+</listitem><listitem><para>Object: {Get|Set}TriggerGeometry()</para>
+</listitem><listitem><para>Object: {Add|Remove}IconEffect()</para>
+</listitem><listitem><para>Player: ShowVisualEffect()</para>
+</listitem><listitem><para>Player: ForcePlaceableInventoryWindow()</para>
+</listitem><listitem><para>Player: MusicBackgroundChangeDay()</para>
+</listitem><listitem><para>Player: MusicBackgroundChangeNight()</para>
+</listitem><listitem><para>Player: MusicBackgroundStart()</para>
+</listitem><listitem><para>Player: MusicBackgroundStop()</para>
+</listitem><listitem><para>Player: MusicBattleChange()</para>
+</listitem><listitem><para>Player: MusicBattleStart()</para>
+</listitem><listitem><para>Player: MusicBattleStop()</para>
+</listitem><listitem><para>Player: PlaySound()</para>
+</listitem><listitem><para>Player: SetPlaceableUsable()</para>
+</listitem><listitem><para>Player: SetRestDuration()</para>
+</listitem><listitem><para>Player: ApplyInstantVisualEffectToObject()</para>
+</listitem><listitem><para>Player: UpdateCharacterSheet()</para>
+</listitem><listitem><para>Player: OpenInventory()</para>
+</listitem><listitem><para>Player: GetAreaExplorationState()</para>
+</listitem><listitem><para>Player: SetAreaExplorationState()</para>
+</listitem><listitem><para>Player: SetRestAnimation()</para>
+</listitem><listitem><para>Player: SetObjectVisualTransformOverride()</para>
+</listitem><listitem><para>Player: ApplyLoopingVisualEffectToObject()</para>
+</listitem><listitem><para>Player: SetPlaceableNameOverride()</para>
+</listitem><listitem><para>Player: GetQuestCompleted()</para>
+</listitem><listitem><para>Player: SetPersistentLocation()</para>
+</listitem><listitem><para>Player: UpdateItemName()</para>
+</listitem><listitem><para>Race: SetRacialModifier()</para>
+</listitem><listitem><para>Race: GetParentRace()</para>
+</listitem><listitem><para>Regex: Search()</para>
+</listitem><listitem><para>Regex: Replace()</para>
+</listitem><listitem><para>Rename: SetPCNameOverride()</para>
+</listitem><listitem><para>Rename: GetPCNameOverride()</para>
+</listitem><listitem><para>Rename: ClearPCNameOverride()</para>
+</listitem><listitem><para>Reveal: RevealTo()</para>
+</listitem><listitem><para>Reveal: SetRevealToParty()</para>
+</listitem><listitem><para>SkillRanks: GetSkillFeat()</para>
+</listitem><listitem><para>SkillRanks: GetSkillFeatCountForSkill()</para>
+</listitem><listitem><para>SkillRanks: GetSkillFeatForSkillByIndex()</para>
+</listitem><listitem><para>SkillRanks: SetSkillFeat()</para>
+</listitem><listitem><para>SkillRanks: SetSkillFeatFocusModifier()</para>
+</listitem><listitem><para>SkillRanks: GetBlindnessPenalty()</para>
+</listitem><listitem><para>SkillRanks: SetBlindnessPenalty()</para>
+</listitem><listitem><para>SkillRanks: GetAreaModifier()</para>
+</listitem><listitem><para>SkillRanks: SetAreaModifier()</para>
+</listitem><listitem><para>Util: GenerateUUID()</para>
+</listitem><listitem><para>Util: GetCustomToken()</para>
+</listitem><listitem><para>Util: GetEnvironmentVariable()</para>
+</listitem><listitem><para>Util: EffectToItemProperty()</para>
+</listitem><listitem><para>Util: ItemPropertyToEffect()</para>
+</listitem><listitem><para>Util: StripColors()</para>
+</listitem><listitem><para>Util: IsValidResRef()</para>
+</listitem><listitem><para>Util: GetMinutesPerHour()</para>
+</listitem><listitem><para>Util: SetMinutesPerHour()</para>
+</listitem><listitem><para>Util: EncodeStringForURL()</para>
+</listitem><listitem><para>Util: Get2DARowCount()</para>
+</listitem><listitem><para>Util: Get{First|Next}ResRef()</para>
+</listitem><listitem><para>Util: GetServerTicksPerSecond()</para>
+</listitem><listitem><para>Util: GetLastCreatedObject()</para>
+</listitem><listitem><para>Visibility: GetVisibilityOverride()</para>
+</listitem><listitem><para>Visibility: SetVisibilityOverride()</para>
+</listitem><listitem><para>Weapon: SetWeaponIsMonkWeapon()</para>
+</listitem></itemizedlist>
+</para>
+</sect4>
+</sect2>
+<sect2 id="changelog_1autotoc_md4">
+<title>Changed</title>
+<para><itemizedlist>
+<listitem><para>Core: The nwnx.txt logfile will now be written to the UserDirectory</para>
+</listitem><listitem><para>Chat: LOG_DEBUG suppresses player to player tell specifics</para>
+</listitem><listitem><para>Item: SetWeight now recomputes the possessor&apos;s encumbrance</para>
+</listitem><listitem><para>Docker: Set default log level to 6</para>
+</listitem><listitem><para>Docker: Skip all plugins except ServerLogRedirector by default</para>
+</listitem><listitem><para>Redis: Lots of stuff, be sure to update the redis nwscripts!</para>
+</listitem><listitem><para>Events: Changed <computeroutput>NUM_LEVELS</computeroutput> to <computeroutput>AMOUNT</computeroutput> for DMActionEvent GiveLevel</para>
+</listitem><listitem><para>Player: StartGuiTimingBar() now accepts a type for pre-defined text</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="changelog_1autotoc_md5">
+<title>Deprecated</title>
+<para><itemizedlist>
+<listitem><para>Player: {Get/Set}VisibilityOverride() are deprecated, please use the new Visibility plugin!</para>
+</listitem><listitem><para>Object: {Get/Set}Portrait() are deprecated, please use the native {Get/Set}PortraitResRef() functions instead!</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="changelog_1autotoc_md6">
+<title>Removed</title>
+<para><itemizedlist>
+<listitem><para>The following plugins were removed: Names, BehaviourTree</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="changelog_1autotoc_md7">
+<title>Fixed</title>
+<para><itemizedlist>
+<listitem><para>Administration: Fixed a nullptr crash in Get{DM/Player}Password()</para>
+</listitem><listitem><para>Chat: Fix recursive message skipping</para>
+</listitem><listitem><para>Object: GetLocalVariable and GetLocalVariableCount now work with Area and Module object</para>
+</listitem><listitem><para>Events: DMActionEvents now return valid TARGET event data</para>
+</listitem><listitem><para>Core: Serialization now stores locals and effects for all objects, instead of only items </para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

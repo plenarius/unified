@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__reveal_8nss" kind="file" language="C++">
+    <compoundname>nwnx_reveal.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+      <node id="1">
+        <label>Plugins/Reveal/NWScript/nwnx_reveal.nss</label>
+        <link refid="nwnx__reveal_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="user-defined">
+      <header>Reveal Detection Methods</header>
+      <memberdef kind="variable" id="group__reveal_1gae4bff87fefb21bef87fe4e021fb13ac7" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REVEAL_SEEN</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REVEAL_SEEN</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Seen. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Reveal/NWScript/nwnx_reveal.nss" line="11" column="11" bodyfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__reveal_1gacd928190408f6d69e9448c84141bee7e" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REVEAL_HEARD</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REVEAL_HEARD</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Heard. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Reveal/NWScript/nwnx_reveal.nss" line="12" column="11" bodyfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__reveal_1gab3dc4e695c5e5e69a6c7ce8b10e4a0fa" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Reveal</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Reveal</name>
+        <initializer>= &quot;NWNX_Reveal&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Reveal/NWScript/nwnx_reveal.nss" line="7" column="14" bodyfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__reveal_1ga71f55177ffc85cd14a6981166dffb60a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Reveal_RevealTo</definition>
+        <argsstring>(object oHiding, object oObserver, int iDetectionMethod=NWNX_REVEAL_HEARD)</argsstring>
+        <name>NWNX_Reveal_RevealTo</name>
+        <param>
+          <type>object</type>
+          <declname>oHiding</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oObserver</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iDetectionMethod</declname>
+          <defval><ref refid="group__reveal_1gacd928190408f6d69e9448c84141bee7e" kindref="member">NWNX_REVEAL_HEARD</ref></defval>
+        </param>
+        <briefdescription>
+<para>Selectively reveals the character to an observer until the next time they stealth out of sight. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oHiding</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The creature who is stealthed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oObserver</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The creature to whom the hider is revealed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iDetectionMethod</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Can be specified to determine whether the hidden creature is seen or heard. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Reveal/NWScript/nwnx_reveal.nss" line="29" column="6" bodyfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" bodystart="29" bodyend="38" declfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" declline="19" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__reveal_1ga88cfee3997f219dca4d75eb5c04e2df8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Reveal_SetRevealToParty</definition>
+        <argsstring>(object oHiding, int bReveal, int iDetectionMethod=NWNX_REVEAL_HEARD)</argsstring>
+        <name>NWNX_Reveal_SetRevealToParty</name>
+        <param>
+          <type>object</type>
+          <declname>oHiding</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bReveal</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iDetectionMethod</declname>
+          <defval><ref refid="group__reveal_1gacd928190408f6d69e9448c84141bee7e" kindref="member">NWNX_REVEAL_HEARD</ref></defval>
+        </param>
+        <briefdescription>
+<para>Sets whether a character remains visible to their party through stealth. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oHiding</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The creature who is stealthed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bReveal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE for visible. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iDetectionMethod</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Can be specified to determine whether the hidden creature is seen or heard. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Reveal/NWScript/nwnx_reveal.nss" line="40" column="6" bodyfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" bodystart="40" bodyend="49" declfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" declline="25" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_Reveal<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_Reveal&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__reveal_1gae4bff87fefb21bef87fe4e021fb13ac7" kindref="member">NWNX_REVEAL_SEEN</ref><sp/>=<sp/>1;<sp/></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__reveal_1gacd928190408f6d69e9448c84141bee7e" kindref="member">NWNX_REVEAL_HEARD</ref><sp/>=<sp/>0;<sp/></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__reveal_1ga71f55177ffc85cd14a6981166dffb60a" kindref="member">NWNX_Reveal_RevealTo</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oHiding,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oObserver,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iDetectionMethod<sp/>=<sp/><ref refid="group__reveal_1gacd928190408f6d69e9448c84141bee7e" kindref="member">NWNX_REVEAL_HEARD</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__reveal_1ga88cfee3997f219dca4d75eb5c04e2df8" kindref="member">NWNX_Reveal_SetRevealToParty</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oHiding,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bReveal,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iDetectionMethod<sp/>=<sp/><ref refid="group__reveal_1gacd928190408f6d69e9448c84141bee7e" kindref="member">NWNX_REVEAL_HEARD</ref>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__reveal_1ga71f55177ffc85cd14a6981166dffb60a" kindref="member">NWNX_Reveal_RevealTo</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oHiding,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oObserver,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iDetectionMethod<sp/>=<sp/><ref refid="group__reveal_1gacd928190408f6d69e9448c84141bee7e" kindref="member">NWNX_REVEAL_HEARD</ref>)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;RevealTo&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Reveal,<sp/>sFunc,<sp/>iDetectionMethod);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Reveal,<sp/>sFunc,<sp/>oObserver);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Reveal,<sp/>sFunc,<sp/>oHiding);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Reveal,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__reveal_1ga88cfee3997f219dca4d75eb5c04e2df8" kindref="member">NWNX_Reveal_SetRevealToParty</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oHiding,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bReveal,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iDetectionMethod<sp/>=<sp/><ref refid="group__reveal_1gacd928190408f6d69e9448c84141bee7e" kindref="member">NWNX_REVEAL_HEARD</ref>)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetRevealToParty&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Reveal,<sp/>sFunc,<sp/>iDetectionMethod);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Reveal,<sp/>sFunc,<sp/>bReveal);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Reveal,<sp/>sFunc,<sp/>oHiding);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Reveal,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Reveal/NWScript/nwnx_reveal.nss"/>
+  </compounddef>
+</doxygen>

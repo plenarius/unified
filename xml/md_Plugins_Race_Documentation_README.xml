@@ -1,0 +1,625 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_Race_Documentation_README" kind="page">
+    <compoundname>md_Plugins_Race_Documentation_README</compoundname>
+    <title>Race Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_Race_Documentation_README_1autotoc_md108">
+<title>Description</title>
+<para>This plugin allows for the builder to add new races or subraces and define many traits for the races via 2da entry or scripting. This plugin also applies effects, and weapon properties, versus a parent race to effect a child race, as well as effects vs that specific child race.</para>
+</sect1>
+<sect1 id="md_Plugins_Race_Documentation_README_1autotoc_md109">
+<title>Environmental Variables</title>
+<para><computeroutput>NWNX_RACE_SHOW_EFFECT_ICON</computeroutput> - Helpful when debugging, this shows the effect&apos;s icon (the red and green squares). Some builders may even wish this permanently.</para>
+</sect1>
+<sect1 id="md_Plugins_Race_Documentation_README_1autotoc_md110">
+<title>Required NWNX Plugins</title>
+<para><itemizedlist>
+<listitem><para><computeroutput>NWNX_SkillRanks</computeroutput> - Needed if you&apos;re modifying skill ranks.</para>
+</listitem><listitem><para><computeroutput>NWNX_Util</computeroutput> - Needed if you&apos;re using the 2da method which requires new <computeroutput><ref refid="group__util_1gaed488173b6e22ef52c888d8fe542440f" kindref="member">NWNX_Util_Get2DARowCount()</ref></computeroutput>.</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_Plugins_Race_Documentation_README_1autotoc_md111">
+<title>Setup</title>
+<para>Adding new races is beyond the scope of this documentation. The builder should know how to add new races by adding a new entry in the <computeroutput>racialtypes.2da</computeroutput> as well as adding the appropriate TLK reference identifiers for that new race then adjusting the appropriate columns for their race, including the Ability Score modifications.</para>
+<para>The <bold>NWNX Race plugin does not provide modifications to ability scores</bold>, use the <computeroutput>racialtypes.2da</computeroutput> columns for changing those.</para>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md112">
+<title>The 2da Method</title>
+<para>To use the 2da method, the builder must create a new column at the end of the <computeroutput>racialtypes.2da</computeroutput> named <bold>RacialModsTable</bold>. This column should then be populated with a string value that references another 2da file in which we will define our racial modifiers. Once that is done the builder needs to <bold>include nwnx_race_2da and make sure to run <computeroutput><ref refid="group__race_1gab804f90ff990b3ea62d3f37ee4cbbf1e" kindref="member">NWNX_Race_LoadRacialModifiers()</ref></computeroutput> in their OnModuleLoad script</bold>.</para>
+<para>For example, we&apos;ve inserted a new race called <bold>Aasimar</bold> into <computeroutput>racialtypes.2da</computeroutput> at line 150. In the <computeroutput>RacialModsTable</computeroutput> column we enter <bold>RACEMOD_AASIMAR</bold> (Remember maximum 16 characters, case insensitive)</para>
+<para>We will now create and define our <computeroutput>racemod_aasimar.2da</computeroutput> file and enter appropriate lines for each modifier they will receive. The end result will look something like this:</para>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/><sp/>Param2<sp/><sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/>Race<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RACE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>6<sp/><sp/><sp/><sp/><sp/><sp/><sp/>****<sp/><sp/><sp/><sp/>****</highlight></codeline>
+<codeline><highlight class="normal">1<sp/><sp/><sp/>ColdElectricalAcidResist<sp/><sp/><sp/><sp/>DMGRESIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/>272<sp/><sp/><sp/><sp/><sp/>5<sp/><sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+<codeline><highlight class="normal">2<sp/><sp/><sp/>CharmPersonImmunity<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SPELLIMMUNITY<sp/><sp/><sp/>16<sp/><sp/><sp/><sp/><sp/><sp/>****<sp/><sp/><sp/><sp/>****</highlight></codeline>
+<codeline><highlight class="normal">3<sp/><sp/><sp/>DominatePersonImmune<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SPELLIMMUNITY<sp/><sp/><sp/>45<sp/><sp/><sp/><sp/><sp/><sp/>****<sp/><sp/><sp/><sp/>****</highlight></codeline>
+<codeline><highlight class="normal">4<sp/><sp/><sp/>HoldPersonImmunity<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SPELLIMMUNITY<sp/><sp/><sp/>83<sp/><sp/><sp/><sp/><sp/><sp/>****<sp/><sp/><sp/><sp/>****</highlight></codeline>
+<codeline><highlight class="normal">5<sp/><sp/><sp/>Spot<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SKILL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>17<sp/><sp/><sp/><sp/><sp/><sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+<codeline><highlight class="normal">6<sp/><sp/><sp/>Listen<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SKILL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>6<sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+<codeline><highlight class="normal">7<sp/><sp/><sp/>LightFeatUsage<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FEATUSAGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>1107<sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>10</highlight></codeline>
+<codeline><highlight class="normal">8<sp/><sp/><sp/>UniversalSaves<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAVE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md113">
+<title>The Scripting Method</title>
+<para>The scripting method involves running a command for each race and each modifier OnModuleLoad.</para>
+<para>The end result for the Aasimar using the script method would be something like: <programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_RACE,<sp/>RACIAL_TYPE_HUMAN);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_DMGRESIST,<sp/>272,<sp/>5);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SPELLIMMUNITY,<sp/>16);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SPELLIMMUNITY,<sp/>45);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SPELLIMMUNITY,<sp/>83);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SKILL,<sp/>SKILL_SPOT,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SKILL,<sp/>SKILL_LISTEN,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_FEATUSAGE,<sp/>1107,<sp/>1,<sp/>10);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SAVE,<sp/>0,<sp/>2);</highlight></codeline>
+</programlisting></para>
+</sect2>
+</sect1>
+<sect1 id="md_Plugins_Race_Documentation_README_1autotoc_md114">
+<title>Racial Modifiers</title>
+<para><itemizedlist>
+<listitem><para><ulink url="#ab">AB</ulink></para>
+</listitem><listitem><para><ulink url="#abvsrace">ABVSRACE</ulink></para>
+</listitem><listitem><para><ulink url="#ac">AC</ulink></para>
+</listitem><listitem><para><ulink url="#acvsrace">ACVSRACE</ulink></para>
+</listitem><listitem><para><ulink url="#concealment">CONCEALMENT</ulink></para>
+</listitem><listitem><para><ulink url="#dmgreduction">DMGREDUCTION</ulink></para>
+</listitem><listitem><para><ulink url="#dmgresist">DMGRESIST</ulink></para>
+</listitem><listitem><para><ulink url="#dmgimmunity">DMGIMMUNITY</ulink></para>
+</listitem><listitem><para><ulink url="#feat">FEAT</ulink></para>
+</listitem><listitem><para><ulink url="#featusage">FEATUSAGE</ulink></para>
+</listitem><listitem><para><ulink url="#immunity">IMMUNITY</ulink></para>
+</listitem><listitem><para><ulink url="#initiative">INITIATIVE</ulink></para>
+</listitem><listitem><para><ulink url="#movementspeed">MOVEMENTSPEED</ulink></para>
+</listitem><listitem><para><ulink url="#race">RACE</ulink></para>
+</listitem><listitem><para><ulink url="#regeneration">REGENERATION</ulink></para>
+</listitem><listitem><para><ulink url="#save">SAVE</ulink></para>
+</listitem><listitem><para><ulink url="#savevsrace">SAVEVSRACE</ulink></para>
+</listitem><listitem><para><ulink url="#savevstype">SAVEVSTYPE</ulink></para>
+</listitem><listitem><para><ulink url="#skill">SKILL</ulink></para>
+</listitem><listitem><para><ulink url="#spellimmunity">SPELLIMMUNITY</ulink></para>
+</listitem><listitem><para><ulink url="#srchargen">SRCHARGEN</ulink></para>
+</listitem><listitem><para><ulink url="#srinclevel">SRINCLEVEL</ulink></para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+</para>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md115">
+<title>AB</title>
+<para>The <computeroutput>AB</computeroutput> entry is used to modify an attack bonus for a race. Note: this is not a change to the base attack bonus, it&apos;s added on top of that.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = Modifier value (+/-)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md116">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>InateAB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>AB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/>****<sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md117">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_AB,<sp/>1);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md118">
+<title>ABVSRACE</title>
+<para>The <computeroutput>ABVSRACE</computeroutput> entry is used to modify the attack bonus for a race versus another specific race.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = Racial ID from racialtypes.2da</para>
+</listitem><listitem><para>Param2 = Modifier value (+/-)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md119">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>DragonAB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ABVSRACE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>11<sp/><sp/><sp/><sp/><sp/>3<sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md120">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_ABVSRACE,<sp/>RACIAL_TYPE_DRAGON,<sp/>3);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md121">
+<title>AC</title>
+<para>The <computeroutput>AC</computeroutput> entry is used to modify the base AC for a race.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = Modifier value (+/-)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md122">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>InateAC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>AC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/>****<sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md123">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_AC,<sp/>1);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md124">
+<title>ACVSRACE</title>
+<para>The <computeroutput>ACVSRACE</computeroutput> entry is used to modify the base AC for a race versus another specific race.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = Racial ID from racialtypes.2da</para>
+</listitem><listitem><para>Param2 = Modifier value (+/-)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md125">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>DragonAC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ACVSRACE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>11<sp/><sp/><sp/><sp/><sp/>4<sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md126">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_ACVSRACE,<sp/>RACIAL_TYPE_DRAGON,<sp/>4);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md127">
+<title>CONCEALMENT</title>
+<para>The <computeroutput>CONCEALMENT</computeroutput> entry is used to grant an inate concealment to a race.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = Modifier value (1-100)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md128">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>Concealment<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CONCEALMENT<sp/><sp/><sp/><sp/><sp/>30<sp/><sp/><sp/><sp/><sp/>****<sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md129">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_CONCEALMENT,<sp/>30);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md130">
+<title>DMGREDUCTION</title>
+<para>The <computeroutput>DMGREDUCTION</computeroutput> entry gives an inate damage reduction</para>
+<para><itemizedlist>
+<listitem><para>Param1 = Points to soak (+)</para>
+</listitem><listitem><para>Param2 = Level of soak (+)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md131">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>DR_SOAK5_PLUS5<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DMGREDUCTION<sp/><sp/><sp/><sp/>5<sp/><sp/><sp/><sp/><sp/><sp/>5<sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+<codeline><highlight class="normal">1<sp/><sp/><sp/><sp/>DR_SOAK10_PLUS4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DMGREDUCTION<sp/><sp/><sp/><sp/>10<sp/><sp/><sp/><sp/><sp/>4<sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md132">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_DMGREDUCTION,<sp/>5,<sp/>5);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_DMGREDUCTION,<sp/>10,<sp/>4);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md133">
+<title>DMGRESIST</title>
+<para>The <computeroutput>DMGRESIST</computeroutput> entry gives an inate resistance to damage types</para>
+<para><itemizedlist>
+<listitem><para>Param1 = The damage type, can be a single Damage Type integer or multiple Damage Type integers summed. You can also just do each on its own line if you&apos;d prefer. Hex can be used for the scripting method if preferred.</para>
+</listitem><listitem><para>Param2 = Points to resist (+)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md134">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>FireDamageResist<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DMGRESIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/>256<sp/><sp/><sp/><sp/>10<sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+<codeline><highlight class="normal">1<sp/><sp/><sp/><sp/>FireColdDamageResist<sp/><sp/><sp/><sp/><sp/>DMGRESIST<sp/><sp/><sp/><sp/><sp/><sp/><sp/>288<sp/><sp/><sp/><sp/>5<sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md135">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_DMGRESIST,<sp/>DAMAGE_TYPE_FIRE,<sp/>10);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_DMGRESIST,<sp/>DAMAGE_TYPE_FIRE<sp/>&amp;<sp/>DAMAGE_TYPE_COLD,<sp/>5);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md136">
+<title>DMGIMMUNITY</title>
+<para>The <computeroutput>DMGIMMUNITY</computeroutput> entry gives an inate immunity to damage types</para>
+<para><itemizedlist>
+<listitem><para>Param1 = The damage type, can be a single Damage Type integer or multiple Damage Type integers summed. You can also just do each on its own line if you&apos;d prefer. Hex can be used for the scripting method if preferred.</para>
+</listitem><listitem><para>Param2 = Percentage to resist (+/-)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md137">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>FireDamageImmunity<sp/><sp/><sp/><sp/><sp/><sp/><sp/>DMGIMMUNITY<sp/><sp/><sp/><sp/><sp/>256<sp/><sp/><sp/><sp/>100<sp/><sp/><sp/><sp/>****</highlight></codeline>
+<codeline><highlight class="normal">1<sp/><sp/><sp/><sp/>AcidDamageVulnerability<sp/><sp/>DMGIMMUNITY<sp/><sp/><sp/><sp/><sp/>16<sp/><sp/><sp/><sp/><sp/>-50<sp/><sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md138">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_DMGIMMUNITY,<sp/>DAMAGE_TYPE_FIRE,<sp/>100);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_DMGIMMUNITY,<sp/>DAMAGE_TYPE_ACID,<sp/>-50);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md139">
+<title>FEAT</title>
+<para>The <computeroutput>FEAT</computeroutput> entry awards a feat at a specified level. This feat is awarded after the creature levels up. Level 1 feats can still be added using the <bold>FeatsTable</bold> column of the <computeroutput>racialtypes.2da</computeroutput>.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = The row in feat.2da</para>
+</listitem><listitem><para>Param2 = The level to grant the feat</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md140">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>IronWill<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FEAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>22<sp/><sp/><sp/><sp/><sp/>3<sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md141">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_FEAT,<sp/>22,<sp/>3);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md142">
+<title>FEATUSAGE</title>
+<para>The <computeroutput>FEATUSAGE</computeroutput> controls the amount of usages a race will have based upon their character level for a custom feat they are granted.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = The row in feat.2da</para>
+</listitem><listitem><para>Param2 = Usages a day granted at character creation</para>
+</listitem><listitem><para>Param3 = Additional usages a day granted for this many levels</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md143">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>LightFeatUsage<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FEATUSAGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>1101<sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/>5</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md144">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_FEATUSAGE,<sp/>1101,<sp/>1,<sp/>5);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md145">
+<title>IMMUNITY</title>
+<para>The <computeroutput>IMMUNITY</computeroutput> entry is used to grant the race a total immunity to a variety of effects.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = The IMMUNITY_TYPE_ constant value</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md146">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>FearImmunity<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IMMUNITY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>4<sp/><sp/><sp/><sp/><sp/><sp/>****<sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md147">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_IMMUNITY,<sp/>IMMUNITY_TYPE_FEAR);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md148">
+<title>INITIATIVE</title>
+<para>The <computeroutput>INITIATIVE</computeroutput> entry is used to modify the initiative check.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = Modifier value (+/-)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md149">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>PoorInitiative<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>INITIATIVE<sp/><sp/><sp/><sp/><sp/><sp/>-3<sp/><sp/><sp/><sp/><sp/>****<sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md150">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_INITIATIVE,<sp/>-3);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md151">
+<title>MOVEMENTSPEED</title>
+<para>The <computeroutput>MOVEMENTSPEED</computeroutput> can modify the speed at which the race moves by default.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = The percentage change to their speed (-99/+99)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md152">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>Faster<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MOVEMENTSPEED<sp/><sp/><sp/>33<sp/><sp/><sp/><sp/><sp/>****<sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md153">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_MOVEMENTSPEED,<sp/>33);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md154">
+<title>RACE</title>
+<para>The <computeroutput>RACE</computeroutput> entry is used when the race the builder is adding has a parent race with which to inherit some hard coded checks. For example, a Ghostwise Halfling would have its <computeroutput>RACE</computeroutput> set as <computeroutput>3</computeroutput> representing the Halfling race and in turn a player with that race would have an additional +1 to ranged attacks as is set for the Halfling race.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = Race ID from racialtypes.2da</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md155">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>Race<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RACE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>3<sp/><sp/><sp/><sp/><sp/><sp/>****<sp/><sp/><sp/>****</highlight></codeline>
+</programlisting> </para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md156">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_RACE,<sp/>RACIAL_TYPE_HALFLING);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md157">
+<title>REGENERATION</title>
+<para>The <computeroutput>REGENERATION</computeroutput> entry is used to grant the race an inate regeneration.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = How many hitpoints to increase (+)</para>
+</listitem><listitem><para>Param2 = How often in seconds to increase the hitpoints (+)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md158">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>Regeneration<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REGENERATION<sp/><sp/><sp/><sp/>2<sp/><sp/><sp/><sp/><sp/><sp/>6<sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md159">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_REGENERATION,<sp/>2,<sp/>6);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md160">
+<title>SAVE</title>
+<para>The <computeroutput>SAVE</computeroutput> entry is used to modify base save values.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = 0-3 meaning SAVING_THROW_ALL, SAVING_THROW_FORT, SAVING_THROW_REFLEX or SAVING_THROW_WILL</para>
+</listitem><listitem><para>Param2 = Modifier value (+/-)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md161">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>FortitudeVulnerable<sp/><sp/><sp/><sp/><sp/><sp/>SAVE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/>-2<sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md162">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SAVE,<sp/>SAVING_THROW_FORT,<sp/>-2);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md163">
+<title>SAVEVSRACE</title>
+<para>The <computeroutput>SAVEVSRACE</computeroutput> entry is used to modify base save values vs a specific race. Param1 is the Save constant ID and param2 is the target race constant ID and param3 is the modifier.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = 0-3 meaning SAVING_THROW_ALL, SAVING_THROW_FORT, SAVING_THROW_REFLEX or SAVING_THROW_WILL</para>
+</listitem><listitem><para>Param2 = Racial ID from racialtypes.2da</para>
+</listitem><listitem><para>Param3 = Modifier value (+/-)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md164">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>UniversalSaveVsUndead<sp/><sp/><sp/><sp/>SAVEVSRACE<sp/><sp/><sp/><sp/><sp/><sp/>0<sp/><sp/><sp/><sp/><sp/><sp/>24<sp/><sp/><sp/><sp/><sp/>5</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md165">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SAVEVSRACE,<sp/>SAVING_THROW_ALL,<sp/>RACIAL_TYPE_UNDEAD,<sp/>5);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md166">
+<title>SAVEVSTYPE</title>
+<para>The <computeroutput>SAVEVSTYPE</computeroutput> entry is used to modify base save values vs a specific type. Param1 is the Save constant ID and param2 is the Saving Throw Type constant ID and param3 is the modifier.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = 0-3 meaning SAVING_THROW_ALL, SAVING_THROW_FORT, SAVING_THROW_REFLEX or SAVING_THROW_WILL</para>
+</listitem><listitem><para>Param2 = A SAVING_THROW_TYPE_ constant</para>
+</listitem><listitem><para>Param3 = Modifier value (+/-)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md167">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>ReflexSaveVsTraps<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SAVEVSTYPE<sp/><sp/><sp/><sp/><sp/><sp/>2<sp/><sp/><sp/><sp/><sp/><sp/>14<sp/><sp/><sp/><sp/><sp/>3</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md168">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SAVEVSTYPE,<sp/>SAVING_THROW_REFLEX,<sp/>SAVING_THROW_TYPE_TRAP,<sp/>3);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md169">
+<title>SKILL</title>
+<para>The <computeroutput>SKILL</computeroutput> entry is used to modify base skill ranks. Note: This requires the <computeroutput>NWNX_SkillRanks</computeroutput> plugin.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = Skill ID from skills.2da</para>
+</listitem><listitem><para>Param2 = Modifier value (+/-)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md170">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>IntimidateBonus+2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SKILL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>24<sp/><sp/><sp/><sp/><sp/>2<sp/><sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+<codeline><highlight class="normal">1<sp/><sp/><sp/><sp/>HealLimited-2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SKILL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>5<sp/><sp/><sp/><sp/><sp/><sp/>-2<sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+</programlisting> </para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md171">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SKILL,<sp/>SKILL_INTIMIDATE,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SKILL,<sp/>SKILL_HEAL,<sp/>-2);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md172">
+<title>SPELLIMMUNITY</title>
+<para>The <computeroutput>SPELLIMMUNITY</computeroutput> entry is used to grant the race a total immunity to specific spells. Note: Only spells that can be resisted can have immunities.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = The spell row from spells.2da</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md173">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>HorridWiltingImmune<sp/><sp/><sp/><sp/><sp/><sp/>SPELLIMMUNITY<sp/><sp/><sp/>367<sp/><sp/><sp/><sp/>****<sp/><sp/><sp/>****</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md174">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SPELLIMMUNITY,<sp/>SPELL_HORRID_WILTING);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md175">
+<title>SRCHARGEN</title>
+<para>The <computeroutput>SRCHARGEN</computeroutput> entry is used to award the race a default spell resistance on character creation.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = Modifier value (+)</para>
+</listitem><listitem><para>Param2 (Optional) = Maximum value all Spell Resistance racial values can reach</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md176">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>SRAtCharCreation<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SRCHARGEN<sp/><sp/><sp/><sp/><sp/><sp/><sp/>10<sp/><sp/><sp/><sp/><sp/>36<sp/><sp/><sp/><sp/><sp/>****</highlight></codeline>
+</programlisting> </para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md177">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SRCHARGEN,<sp/>10,<sp/>36);</highlight></codeline>
+</programlisting></para>
+<para><hruler/>
+ </para>
+</sect4>
+</sect2>
+<sect2 id="md_Plugins_Race_Documentation_README_1autotoc_md178">
+<title>SRINCLEVEL</title>
+<para>The <computeroutput>SRINCLEVEL</computeroutput> entry is used to award a spell resistance racial bonus as the creature&apos;s level increases.</para>
+<para><itemizedlist>
+<listitem><para>Param1 = Amount of points to increment (+)</para>
+</listitem><listitem><para>Param2 = Level per increment (+)</para>
+</listitem><listitem><para>Param3 = Level at which the incremental gains begin (+)</para>
+</listitem></itemizedlist>
+</para>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md179">
+<title>Example 2da entry</title>
+<para><programlisting filename=".text"><codeline><highlight class="normal">2DA<sp/>V2.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>LABEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Param1<sp/>Param2<sp/>Param3</highlight></codeline>
+<codeline><highlight class="normal">0<sp/><sp/><sp/><sp/>SRIncrementLevels<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SRINCLEVEL<sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/>1<sp/><sp/><sp/><sp/><sp/><sp/>6</highlight></codeline>
+</programlisting></para>
+</sect4>
+<sect4 id="md_Plugins_Race_Documentation_README_1autotoc_md180">
+<title>Example script on_module_load</title>
+<para><programlisting filename=".c"><codeline><highlight class="normal"><ref refid="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" kindref="member">NWNX_Race_SetRacialModifier</ref>(150,<sp/>NWNX_RACE_MODIFIER_SRINCLEVEL,<sp/>1,<sp/>1,<sp/>6);</highlight></codeline>
+</programlisting> </para>
+</sect4>
+</sect2>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

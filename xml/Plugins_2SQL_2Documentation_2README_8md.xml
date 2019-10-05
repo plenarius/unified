@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2SQL_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>SQL<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">General<sp/>data<sp/>access,<sp/>storage<sp/>and<sp/>manipulation<sp/>of<sp/>persistent<sp/>data<sp/>in<sp/>a<sp/>database.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>NWNX_SQL_TYPE</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Controls<sp/>the<sp/>target<sp/>database<sp/>type<sp/>used<sp/>at<sp/>runtime.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Possible<sp/>values<sp/>(case<sp/>insensitive):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>``MYSQL``</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>``POSTGRESQL``</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>``SQLITE``</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__Example__</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_TYPE=POSTGRESQL</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>NWNX_SQL_HOST</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Host<sp/>name<sp/>where<sp/>the<sp/>database<sp/>resides.<sp/><sp/>Typically<sp/>``localhost``<sp/>but<sp/>can<sp/>be<sp/>any<sp/>valid<sp/>host<sp/>name<sp/>or<sp/>IP<sp/>address.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Not<sp/>used<sp/>if<sp/>using<sp/>SQLite.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__Example__</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_HOST=localhost</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>NWNX_SQL_USERNAME</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Database<sp/>username<sp/>used<sp/>for<sp/>the<sp/>connection.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Not<sp/>used<sp/>if<sp/>using<sp/>SQLite.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__Example__</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_USERNAME=nwn_db</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>NWNX_SQL_PASSWORD</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Password<sp/>for<sp/>the<sp/>database<sp/>connection.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Not<sp/>used<sp/>if<sp/>using<sp/>SQLite.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__Example__</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_PASSWORD=lathander_rulez</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>NWNX_SQL_DATABASE</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>database<sp/>to<sp/>connect<sp/>to.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>filename<sp/>of<sp/>the<sp/>database<sp/>when<sp/>using<sp/>SQLite,<sp/>it<sp/>is<sp/>stored<sp/>in<sp/>the<sp/>UserDirectory/database<sp/>folder.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__Example__</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_DATABASE=mymodulename</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>NWNX_SQL_QUERY_METRICS</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Export<sp/>query<sp/>execution<sp/>metrics.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>Metrics_InfluxDB<sp/>plugin<sp/>and<sp/>a<sp/>visualizer<sp/>like<sp/>Grafana<sp/>are<sp/>required<sp/>to<sp/>view<sp/>these<sp/>metrics.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__Example__</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_QUERY_METRICS=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>NWNX_SQL_USE_UTF8</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Convert<sp/>all<sp/>strings<sp/>going<sp/>between<sp/>the<sp/>database<sp/>and<sp/>game<sp/>to/from<sp/>UTF8</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>takes<sp/>into<sp/>account<sp/>the<sp/>core<sp/>locale<sp/>as<sp/>well.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__Example__</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_USE_UTF8=true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>NWNX_SQL_CHARACTER_SET</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Set<sp/>the<sp/>connection&apos;s<sp/>character<sp/>set<sp/>to<sp/>be<sp/>used.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Only<sp/>supported<sp/>on<sp/>mysql.<sp/>For<sp/>pgsql<sp/>and<sp/>sqlite<sp/>this<sp/>can<sp/>be<sp/>achieved<sp/>with<sp/>a<sp/>query.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__Examples__</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_CHARACTER_SET=utf8</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_CHARACTER_SET=cp1251</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/SQL/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

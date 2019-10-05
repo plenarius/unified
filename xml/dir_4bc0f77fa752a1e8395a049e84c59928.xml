@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_4bc0f77fa752a1e8395a049e84c59928" kind="dir">
+    <compoundname>Plugins/WebHook</compoundname>
+    <innerdir refid="dir_c19958ad8bc65928bb9f4db8b7cd86b9">Plugins/WebHook/Documentation</innerdir>
+    <innerdir refid="dir_d026abc894e6ce462d67b263b4cdd96c">Plugins/WebHook/NWScript</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/WebHook/"/>
+  </compounddef>
+</doxygen>

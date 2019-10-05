@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_256177e203c152aedfef65c10e62566f" kind="dir">
+    <compoundname>Plugins/ELC</compoundname>
+    <innerdir refid="dir_040bbd4a6587aa494360a80e9ace6f6c">Plugins/ELC/Documentation</innerdir>
+    <innerdir refid="dir_68a31c9f149299b8e1e76f3f575a05e9">Plugins/ELC/NWScript</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/ELC/"/>
+  </compounddef>
+</doxygen>

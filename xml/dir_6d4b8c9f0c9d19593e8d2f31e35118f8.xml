@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_6d4b8c9f0c9d19593e8d2f31e35118f8" kind="dir">
+    <compoundname>Plugins/Time</compoundname>
+    <innerdir refid="dir_833cd67f96a684adca0c4c83d196644e">Plugins/Time/Documentation</innerdir>
+    <innerdir refid="dir_15efd2878c933b01c608ce4aca89bbf6">Plugins/Time/NWScript</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Time/"/>
+  </compounddef>
+</doxygen>

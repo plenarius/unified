@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="deprecated" kind="page">
+    <compoundname>deprecated</compoundname>
+    <title>Deprecated List</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term>Module <ref refid="group__object_1amgrpdc1d0ee4e23954eb8cfe5e13f725094f" kindref="member">Creature Event Handlers</ref>  </term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000005"/>Will be removed in NWNX:EE 64 bit, use native GetEventScript() and SetEventScript()</para>
+<para></para>
+</listitem>
+<varlistentry><term>Module <ref refid="group__object_1amgrpdc1d0ee4e23954eb8cfe5e13f725094f" kindref="member">Creature Event Handlers</ref>  </term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000005"/>Will be removed in NWNX:EE 64 bit, use native GetEventScript() and SetEventScript()</para>
+<para></para>
+</listitem>
+<varlistentry><term>Module <ref refid="group__object_1amgrp579e4b274891e0cb5b732b732d4d3184" kindref="member">Event Handlers</ref>  </term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000003"/>Will be removed in NWNX:EE 64 bit, use native GetEventScript() and SetEventScript()</para>
+<para></para>
+</listitem>
+<varlistentry><term>Module <ref refid="group__object_1amgrp579e4b274891e0cb5b732b732d4d3184" kindref="member">Event Handlers</ref>  </term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000003"/>Will be removed in NWNX:EE 64 bit, use native GetEventScript() and SetEventScript()</para>
+<para></para>
+</listitem>
+<varlistentry><term>Module <ref refid="group__object_1amgrpdfccca11d1a1cd193059b1cdaa393143" kindref="member">Module Event Handlers</ref>  </term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000004"/>Will be removed in NWNX:EE 64 bit, use native GetEventScript() and SetEventScript()</para>
+<para></para>
+</listitem>
+<varlistentry><term>Module <ref refid="group__object_1amgrpdfccca11d1a1cd193059b1cdaa393143" kindref="member">Module Event Handlers</ref>  </term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000004"/>Will be removed in NWNX:EE 64 bit, use native GetEventScript() and SetEventScript()</para>
+<para></para>
+</listitem>
+<varlistentry><term>Member <ref refid="group__admin_1gaae51b26c3d6572f1854e7f3fd62f41f7" kindref="member">NWNX_Administration_BootPCWithMessage</ref>  (object oPC, int strref)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000001"/>Will be removed in NWNX:EE 64 bit, use native BootPC now.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="group__creature_1ga8669db45c63d3afb38589d966d11abe5" kindref="member">NWNX_Creature_SetAbilityScore</ref>  (object creature, int ability, int value)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000002"/>Use <ref refid="group__creature_1ga7e0289bb93f298bce44527f53611f1b4" kindref="member">NWNX_Creature_SetRawAbilityScore()</ref>. This will be removed in future NWNX releases.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="group__object_1ga26969e5e0f2101dc3f3a70de068d0f19" kindref="member">NWNX_Object_GetEventHandler</ref>  (object obj, int handler)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000007"/>Will be removed in NWNX:EE 64 bit, use native GetEventScript()  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="group__object_1ga2cac6f44d330bd2415462bb226fd3e5a" kindref="member">NWNX_Object_GetPortrait</ref>  (object obj)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000009"/>Use GetPortraitResRef() built-in function instead  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="group__object_1ga8b6fdba0a7380658d21cb749906580aa" kindref="member">NWNX_Object_SetEventHandler</ref>  (object obj, int handler, string script)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000008"/>Will be removed in NWNX:EE 64 bit, use native SetEventScript()  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="group__object_1ga3740ccf9c898e193fef5ebdc3c7857ba" kindref="member">NWNX_Object_SetPortrait</ref>  (object obj, string portrait)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000010"/>Use native SetPortraitResRef() built-in function instead.  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="group__player_1ga6998098a310413ea3e35266587c89d6f" kindref="member">NWNX_Player_GetVisibilityOverride</ref>  (object player, object target)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000013"/>Use <ref refid="group__visibility_1ga40cc33dfa69d9df16d927347917f5218" kindref="member">NWNX_Visibility_GetVisibilityOverride()</ref> instead  </para>
+</listitem>
+<varlistentry><term>Member <ref refid="group__player_1ga22683f3f356138f781d8bd25f53fbc1b" kindref="member">NWNX_Player_SetVisibilityOverride</ref>  (object player, object target, int override)</term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000012"/>Use <ref refid="group__visibility_1gacfbe8fe6e053be016311e24c15a1fd18" kindref="member">NWNX_Visibility_SetVisibilityOverride()</ref> instead  </para>
+</listitem>
+<varlistentry><term>Module <ref refid="group__object_1amgrp9820b7cc15480b6c97d1a8bdc959d38c" kindref="member">Placeable Event Handlers</ref>  </term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000006"/>Will be removed in NWNX:EE 64 bit, use native GetEventScript() and SetEventScript()</para>
+<para></para>
+</listitem>
+<varlistentry><term>Module <ref refid="group__object_1amgrp9820b7cc15480b6c97d1a8bdc959d38c" kindref="member">Placeable Event Handlers</ref>  </term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000006"/>Will be removed in NWNX:EE 64 bit, use native GetEventScript() and SetEventScript()</para>
+<para></para>
+</listitem>
+<varlistentry><term>Module <ref refid="group__player_1amgrp9b8486215910d49b1448efcdf833a0f8" kindref="member">Visibility Types</ref>  </term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000011"/>Use <ref refid="group__visibility_1vis_types" kindref="member">NWNX_Visibility Visibility Types</ref> instead. The various types of visibilities.</para>
+<para></para>
+</listitem>
+<varlistentry><term>Module <ref refid="group__player_1amgrp9b8486215910d49b1448efcdf833a0f8" kindref="member">Visibility Types</ref>  </term></varlistentry>
+<listitem><para><anchor id="deprecated_1_deprecated000011"/>Use <ref refid="group__visibility_1vis_types" kindref="member">NWNX_Visibility Visibility Types</ref> instead. The various types of visibilities.</para>
+<para></para>
+</listitem>
+</variablelist>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

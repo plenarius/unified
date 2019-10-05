@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_b10c1c60be7e35fee5df313cec8c8dbb" kind="dir">
+    <compoundname>Plugins/MaxLevel</compoundname>
+    <innerdir refid="dir_4fccd5e97ad9c8aab4322254a10b56c8">Plugins/MaxLevel/Documentation</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/MaxLevel/"/>
+  </compounddef>
+</doxygen>

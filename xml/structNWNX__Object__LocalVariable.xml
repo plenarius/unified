@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="structNWNX__Object__LocalVariable" kind="struct" language="C++" prot="public">
+    <compoundname>NWNX_Object_LocalVariable</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structNWNX__Object__LocalVariable_1a8d610962730ec74152b0fca0a45fce6d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Object_LocalVariable::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+<para>Int, String, Float, Object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Object/NWScript/nwnx_object.nss" line="91" column="9" bodyfile="Plugins/Object/NWScript/nwnx_object.nss" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Object__LocalVariable_1a71602dfd910b91f55beda204d293e7c4" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_Object_LocalVariable::key</definition>
+        <argsstring></argsstring>
+        <name>key</name>
+        <briefdescription>
+<para>Name of the variable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Object/NWScript/nwnx_object.nss" line="92" column="12" bodyfile="Plugins/Object/NWScript/nwnx_object.nss" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A local variable structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Object/NWScript/nwnx_object.nss" line="90" column="1" bodyfile="Plugins/Object/NWScript/nwnx_object.nss" bodystart="89" bodyend="93"/>
+    <listofallmembers>
+      <member refid="structNWNX__Object__LocalVariable_1a71602dfd910b91f55beda204d293e7c4" prot="public" virt="non-virtual"><scope>NWNX_Object_LocalVariable</scope><name>key</name></member>
+      <member refid="structNWNX__Object__LocalVariable_1a8d610962730ec74152b0fca0a45fce6d" prot="public" virt="non-virtual"><scope>NWNX_Object_LocalVariable</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

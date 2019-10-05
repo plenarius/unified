@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__ruby_8nss" kind="file" language="C++">
+    <compoundname>nwnx_ruby.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Plugins/Ruby/NWScript/nwnx_ruby.nss</label>
+        <link refid="nwnx__ruby_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__ruby_1gac0c336ba4029249c325c8736a848abd9" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Ruby</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Ruby</name>
+        <initializer>= &quot;NWNX_Ruby&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Ruby/NWScript/nwnx_ruby.nss" line="7" column="14" bodyfile="Plugins/Ruby/NWScript/nwnx_ruby.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__ruby_1ga1be911de5fdb8bdd3df814f663f06f42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Ruby_Evaluate</definition>
+        <argsstring>(string sCode)</argsstring>
+        <name>NWNX_Ruby_Evaluate</name>
+        <param>
+          <type>string</type>
+          <declname>sCode</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates some ruby code. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The code to evaluate. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The output of the call. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Ruby/NWScript/nwnx_ruby.nss" line="14" column="8" bodyfile="Plugins/Ruby/NWScript/nwnx_ruby.nss" bodystart="14" bodyend="21" declfile="Plugins/Ruby/NWScript/nwnx_ruby.nss" declline="9" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_Ruby<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_Ruby&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__ruby_1ga1be911de5fdb8bdd3df814f663f06f42" kindref="member">NWNX_Ruby_Evaluate</ref><sp/>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sCode);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__ruby_1ga1be911de5fdb8bdd3df814f663f06f42" kindref="member">NWNX_Ruby_Evaluate</ref><sp/>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sCode)<sp/></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;EVALUATE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString<sp/>(NWNX_Ruby,<sp/>sFunc,<sp/>sCode);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction<sp/>(NWNX_Ruby,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueString<sp/>(NWNX_Ruby,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Ruby/NWScript/nwnx_ruby.nss"/>
+  </compounddef>
+</doxygen>

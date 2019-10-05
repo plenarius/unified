@@ -1,0 +1,854 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__feedback_8nss" kind="file" language="C++">
+    <compoundname>nwnx_feedback.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Plugins/Feedback/NWScript/nwnx_feedback.nss</label>
+        <link refid="nwnx__feedback_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="user-defined">
+      <header>Combat Log Message Types</header>
+      <description><para><anchor id="group__feedback_1combat_log_msgs"/></para>
+</description>
+      <memberdef kind="variable" id="group__feedback_1ga21220ae3bf760c377d8be60dfb141801" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_FEEDBACK_COMBATLOG_SIMPLE_ADJECTIVE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_FEEDBACK_COMBATLOG_SIMPLE_ADJECTIVE</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="20" column="11" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Feedback Message Types</header>
+      <description><para><anchor id="group__feedback_1feedback_msgs"/></para>
+</description>
+      <memberdef kind="variable" id="group__feedback_1ga291f1b8003190dce13ff3472ee847d27" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_FEEDBACK_SKILL_CANT_USE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_FEEDBACK_SKILL_CANT_USE</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="68" column="11" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__feedback_1gaccb3d639cd0664595b56d3ec5d79f938" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Feedback</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Feedback</name>
+        <initializer>= &quot;NWNX_Feedback&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="15" column="14" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__feedback_1gad0f1933e1f2957b798a75fca3c5b98d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Feedback_GetFeedbackMessageHidden</definition>
+        <argsstring>(int nMessage, object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_GetFeedbackMessageHidden</name>
+        <param>
+          <type>int</type>
+          <declname>nMessage</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Gets if feedback message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message identifier from <ref refid="group__feedback_1feedback_msgs" kindref="member">Feedback Messages</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the message is hidden. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="426" column="5" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="426" bodyend="437" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="378" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1ga68dcbf8f5a115248b35907225ceec53a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Feedback_SetFeedbackMessageHidden</definition>
+        <argsstring>(int nMessage, int isHidden, object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_SetFeedbackMessageHidden</name>
+        <param>
+          <type>int</type>
+          <declname>nMessage</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>isHidden</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Sets if feedback message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>isHidden</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE/FALSE </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Personal state overrides the global state which means if a global state is set to TRUE but the personal state is set to FALSE, the message will be shown to the PC. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="439" column="6" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="439" bodyend="449" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="386" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1gae874731db0eb23fa1db4e44629f9261b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Feedback_GetCombatLogMessageHidden</definition>
+        <argsstring>(int nMessage, object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_GetCombatLogMessageHidden</name>
+        <param>
+          <type>int</type>
+          <declname>nMessage</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Gets if combat log message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message identifier from <ref refid="group__feedback_1combat_log_msgs" kindref="member">Combat Log Messages</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the message is hidden. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="451" column="5" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="451" bodyend="462" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="392" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1ga46a034a921ef6011120762dfc1b55a06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Feedback_SetCombatLogMessageHidden</definition>
+        <argsstring>(int nMessage, int isHidden, object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_SetCombatLogMessageHidden</name>
+        <param>
+          <type>int</type>
+          <declname>nMessage</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>isHidden</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Sets if combat log message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>isHidden</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE/FALSE </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Personal state overrides the global state which means if a global state is set to TRUE but the personal state is set to FALSE, the message will be shown to the PC. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="464" column="6" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="464" bodyend="474" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="400" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1gad723108876dccf1552d517aaf8b3e06b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Feedback_GetJournalUpdatedMessageHidden</definition>
+        <argsstring>(object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_GetJournalUpdatedMessageHidden</name>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Gets if the journal update message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the message is hidden. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="476" column="5" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="476" bodyend="487" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="405" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1ga54a0e9e14e11882ae4408b24fb3bdd5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Feedback_SetJournalUpdatedMessageHidden</definition>
+        <argsstring>(int isHidden, object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_SetJournalUpdatedMessageHidden</name>
+        <param>
+          <type>int</type>
+          <declname>isHidden</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Sets if journal update message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>isHidden</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE/FALSE </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Personal state overrides the global state which means if a global state is set to TRUE but the personal state is set to FALSE, the message will be shown to the PC. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="489" column="6" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="489" bodyend="499" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="412" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1gab4f0518108b6ab44095d1d32f7a777ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Feedback_SetFeedbackMessageMode</definition>
+        <argsstring>(int bWhitelist)</argsstring>
+        <name>NWNX_Feedback_SetFeedbackMessageMode</name>
+        <param>
+          <type>int</type>
+          <declname>bWhitelist</declname>
+        </param>
+        <briefdescription>
+<para>Set whether to use a blacklist or whitelist mode for feedback messages. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bWhitelist</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE for all messages to be hidden by default, default FALSE. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="501" column="6" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="501" bodyend="509" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="416" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1ga1e5a9e78de5d4d9d50f527dc245060b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Feedback_SetCombatLogMessageMode</definition>
+        <argsstring>(int bWhitelist)</argsstring>
+        <name>NWNX_Feedback_SetCombatLogMessageMode</name>
+        <param>
+          <type>int</type>
+          <declname>bWhitelist</declname>
+        </param>
+        <briefdescription>
+<para>Set whether to use a blacklist or whitelist mode for combat log messages. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bWhitelist</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE for all messages to be hidden by default, default FALSE. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>If using Whitelist, be sure to whitelist NWNX_FEEDBACK_COMBATLOG_FEEDBACK for feedback messages to work. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="511" column="6" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="511" bodyend="519" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="422" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_Feedback<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_Feedback&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_FEEDBACK_COMBATLOG_SIMPLE_ADJECTIVE<sp/><sp/><sp/><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_SIMPLE_DAMAGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_COMPLEX_DAMAGE<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_COMPLEX_DEATH<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_COMPLEX_ATTACK<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_SPECIAL_ATTACK<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_SAVING_THROW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>7;</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_CAST_SPELL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_USE_SKILL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>9;</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_SPELL_RESISTANCE<sp/><sp/><sp/><sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_FEEDBACK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>11;<sp/>//<sp/>NOTE:<sp/>This<sp/>hides<sp/>ALL<sp/>feedback<sp/>messages,<sp/>to<sp/>hide<sp/>individual<sp/>messages<sp/>use<sp/>NWNX_Feedback_SetFeedbackMessageHidden()</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_COUNTERSPELL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>12;</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_TOUCHATTACK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>13;</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_INITIATIVE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>14;</highlight></codeline>
+<codeline lineno="35"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_DISPEL_MAGIC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>15;</highlight></codeline>
+<codeline lineno="36"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_POLYMORPH<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>17;</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_FEEDBACKSTRING<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>18;</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_VIBRATE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>19;</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBATLOG_UNLOCKACHIEVEMENT<sp/><sp/><sp/>=<sp/>20;</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"></highlight></codeline>
+<codeline lineno="41"><highlight class="comment">//<sp/>1<sp/><sp/>-&gt;<sp/>Simple_Adjective:<sp/>&lt;charname&gt;<sp/>:<sp/>&lt;adjective<sp/>described<sp/>by<sp/>strref&gt;</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">//<sp/>2<sp/><sp/>-&gt;<sp/>Simple_Damage:<sp/>&lt;charname&gt;<sp/>damaged<sp/>:<sp/>&lt;amount&gt;</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">//<sp/>3<sp/><sp/>-&gt;<sp/>Complex_Damage:<sp/>&lt;charname&gt;<sp/>damages<sp/>&lt;charname&gt;<sp/>:<sp/>&lt;amount&gt;</highlight></codeline>
+<codeline lineno="44"><highlight class="comment">//<sp/>4<sp/><sp/>-&gt;<sp/>Complex_Death:<sp/>&lt;charname&gt;<sp/>killed<sp/>&lt;charname&gt;</highlight></codeline>
+<codeline lineno="45"><highlight class="comment">//<sp/>5<sp/><sp/>-&gt;<sp/>Complex_Attack:<sp/>&lt;charname&gt;<sp/>attacks<sp/>&lt;charname&gt;<sp/>:<sp/>*hit*<sp/>/<sp/>*miss*<sp/>/<sp/>*parried*<sp/>:<sp/>(&lt;attack<sp/>roll&gt;<sp/>+<sp/>&lt;attack<sp/>mod&gt;<sp/>=<sp/>&lt;modified<sp/>total&gt;)</highlight></codeline>
+<codeline lineno="46"><highlight class="comment">//<sp/>6<sp/><sp/>-&gt;<sp/>Special_Attack:<sp/>&lt;charname&gt;<sp/>attempts<sp/>&lt;special<sp/>attack&gt;<sp/>on<sp/>&lt;charname&gt;<sp/>:<sp/>*success*<sp/>/<sp/>*failure*<sp/>:<sp/>(&lt;attack<sp/>roll&gt;<sp/>+<sp/>&lt;attack<sp/>mod&gt;<sp/>=<sp/>&lt;modified<sp/>roll&gt;)</highlight></codeline>
+<codeline lineno="47"><highlight class="comment">//<sp/>7<sp/><sp/>-&gt;<sp/>Saving_Throw:<sp/>&lt;charname&gt;<sp/>:<sp/>&lt;saving<sp/>throw<sp/>type&gt;<sp/>:<sp/>*success*<sp/>/<sp/>*failure*<sp/>:<sp/>(&lt;saving<sp/>throw<sp/>roll&gt;<sp/>+<sp/>&lt;saving<sp/>throw<sp/>modifier&gt;<sp/>=<sp/>&lt;modified<sp/>total&gt;)</highlight></codeline>
+<codeline lineno="48"><highlight class="comment">//<sp/>8<sp/><sp/>-&gt;<sp/>Cast_Spell:<sp/>&lt;charname&gt;<sp/>casts<sp/>&lt;spell<sp/>name&gt;<sp/>:<sp/>Spellcraft<sp/>check<sp/>*failure*<sp/>/<sp/>*success*</highlight></codeline>
+<codeline lineno="49"><highlight class="comment">//<sp/>9<sp/><sp/>-&gt;<sp/>Use_Skill:<sp/>&lt;charname&gt;<sp/>:<sp/>&lt;skill<sp/>name&gt;<sp/>:<sp/>*success*<sp/>/<sp/>*failure*<sp/>:<sp/>(&lt;skill<sp/>roll&gt;<sp/>+<sp/>&lt;skill<sp/>modifier&gt;<sp/>=<sp/>&lt;modified<sp/>total&gt;<sp/>vs<sp/>&lt;DC&gt;<sp/>)</highlight></codeline>
+<codeline lineno="50"><highlight class="comment">//<sp/>10<sp/>-&gt;<sp/>Spell_Resistance:<sp/>&lt;charname&gt;<sp/>:<sp/>Spell<sp/>Resistance<sp/>&lt;SR<sp/>value&gt;<sp/>:<sp/>*success*<sp/>/<sp/>*failure*</highlight></codeline>
+<codeline lineno="51"><highlight class="comment">//<sp/>11<sp/>-&gt;<sp/>Feedback:<sp/>Reason<sp/>skill/feat/ability<sp/>failed.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment">//<sp/>12<sp/>-&gt;<sp/>Counterspel:<sp/>&lt;charname&gt;<sp/>casts<sp/>&lt;spell<sp/>name&gt;<sp/>:<sp/>*spell<sp/>countered<sp/>by*<sp/>:<sp/>&lt;charname&gt;<sp/>casting<sp/>&lt;spell<sp/>name&gt;</highlight></codeline>
+<codeline lineno="53"><highlight class="comment">//<sp/>13<sp/>-&gt;<sp/>TouchAttack:<sp/>&lt;charname&gt;<sp/>attempts<sp/>&lt;melee/ranged<sp/>touch<sp/>attack&gt;<sp/>on<sp/>&lt;charname&gt;<sp/>:<sp/>*hit/miss/critical*<sp/>:<sp/>(&lt;attack<sp/>roll&gt;<sp/>+<sp/>&lt;attack<sp/>mod&gt;<sp/>=<sp/>&lt;modified<sp/>roll&gt;)</highlight></codeline>
+<codeline lineno="54"><highlight class="comment">//<sp/>14<sp/>-&gt;<sp/>Initiative:<sp/>&lt;charname&gt;<sp/>:<sp/>Initiative<sp/>Roll<sp/>:<sp/>&lt;total&gt;<sp/>:<sp/>(&lt;roll&gt;<sp/>+<sp/>&lt;modifier&gt;<sp/>=<sp/>&lt;total&gt;)</highlight></codeline>
+<codeline lineno="55"><highlight class="comment">//<sp/>15<sp/>-&gt;<sp/>Dispel_Magic:<sp/>Dispel<sp/>Magic<sp/>:<sp/>&lt;charname&gt;<sp/>:<sp/>&lt;spell<sp/>name&gt;,<sp/>&lt;spell<sp/>name&gt;,<sp/>&lt;spell<sp/>name&gt;...</highlight></codeline>
+<codeline lineno="56"><highlight class="comment">//<sp/>17<sp/>-&gt;<sp/>Unused,<sp/>probably</highlight></codeline>
+<codeline lineno="57"><highlight class="comment">//<sp/>18<sp/>-&gt;<sp/>Same<sp/>as<sp/>11,<sp/>maybe.<sp/>Might<sp/>be<sp/>unused<sp/>too</highlight></codeline>
+<codeline lineno="58"><highlight class="comment">//<sp/>19<sp/>-&gt;<sp/>Unused</highlight></codeline>
+<codeline lineno="59"><highlight class="comment">//<sp/>20<sp/>-&gt;<sp/>Unused</highlight></codeline>
+<codeline lineno="60"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_FEEDBACK_SKILL_CANT_USE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="71"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_CANT_USE_TIMER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="72"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_ANIMALEMPATHY_VALID_TARGETS<sp/><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="73"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_TAUNT_VALID_TARGETS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="74"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_TAUNT_TARGET_IMMUNE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>223;</highlight></codeline>
+<codeline lineno="75"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_PICKPOCKET_STOLE_ITEM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="76"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_PICKPOCKET_STOLE_GOLD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="77"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_PICKPOCKET_ATTEMPTING_TO_STEAL<sp/>=<sp/>46;</highlight></codeline>
+<codeline lineno="78"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_PICKPOCKET_ATTEMPT_DETECTED<sp/><sp/>=<sp/>150;</highlight></codeline>
+<codeline lineno="79"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_PICKPOCKET_STOLE_ITEM_TARGET<sp/>=<sp/>47;</highlight></codeline>
+<codeline lineno="80"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_PICKPOCKET_STOLE_GOLD_TARGET<sp/>=<sp/>48;</highlight></codeline>
+<codeline lineno="81"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_PICKPOCKET_TARGET_BROKE<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>57;</highlight></codeline>
+<codeline lineno="82"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_HEAL_TARGET_NOT_DISPSND<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>55;</highlight></codeline>
+<codeline lineno="83"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_HEAL_VALID_TARGETS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>56;</highlight></codeline>
+<codeline lineno="84"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SKILL_STEALTH_IN_COMBAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>60;</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"></highlight></codeline>
+<codeline lineno="87"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_TARGET_UNAWARE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="88"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ACTION_NOT_POSSIBLE_STATUS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>7;</highlight></codeline>
+<codeline lineno="89"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ACTION_NOT_POSSIBLE_PVP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>187;</highlight></codeline>
+<codeline lineno="90"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ACTION_CANT_REACH_TARGET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>218;</highlight></codeline>
+<codeline lineno="91"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ACTION_NO_LOOT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>247;</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"></highlight></codeline>
+<codeline lineno="94"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_WEIGHT_TOO_ENCUMBERED_TO_RUN<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="95"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_WEIGHT_TOO_ENCUMBERED_WALK_SLOW<sp/><sp/><sp/><sp/>=<sp/>9;</highlight></codeline>
+<codeline lineno="96"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_WEIGHT_TOO_ENCUMBERED_CANT_PICKUP<sp/><sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="97"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_STATS_LEVELUP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="98"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_INVENTORY_FULL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>12;</highlight></codeline>
+<codeline lineno="99"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CONTAINER_FULL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>212;</highlight></codeline>
+<codeline lineno="100"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_TRAP_TRIGGERED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>82;</highlight></codeline>
+<codeline lineno="101"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_DAMAGE_HEALED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>151;</highlight></codeline>
+<codeline lineno="102"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EXPERIENCE_GAINNED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>182;</highlight></codeline>
+<codeline lineno="103"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EXPERIENCE_LOST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>183;</highlight></codeline>
+<codeline lineno="104"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_JOURNALUPDATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>184;<sp/>//<sp/>Doesn&apos;t<sp/>actually<sp/>work,<sp/>use:</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>NWNX_Feedback_{Get/Set}JournalUpdatedMessageHidden()</highlight></codeline>
+<codeline lineno="106"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_BARTER_CANCELLED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>185;</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"></highlight></codeline>
+<codeline lineno="109"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_DETECT_MODE_ACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>83;</highlight></codeline>
+<codeline lineno="110"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_DETECT_MODE_DEACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>84;</highlight></codeline>
+<codeline lineno="111"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_STEALTH_MODE_ACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>85;</highlight></codeline>
+<codeline lineno="112"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_STEALTH_MODE_DEACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>86;</highlight></codeline>
+<codeline lineno="113"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARRY_MODE_ACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>87;</highlight></codeline>
+<codeline lineno="114"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARRY_MODE_DEACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>88;</highlight></codeline>
+<codeline lineno="115"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_POWER_ATTACK_MODE_ACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>89;</highlight></codeline>
+<codeline lineno="116"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_POWER_ATTACK_MODE_DEACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>90;</highlight></codeline>
+<codeline lineno="117"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMPROVED_POWER_ATTACK_MODE_ACTIVATED<sp/>=<sp/>91;</highlight></codeline>
+<codeline lineno="118"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMPROVED_POWER_ATTACK_MODE_DEACTIVATED<sp/>=<sp/>92;</highlight></codeline>
+<codeline lineno="119"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_RAPID_SHOT_MODE_ACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>166;</highlight></codeline>
+<codeline lineno="120"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_RAPID_SHOT_MODE_DEACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>167;</highlight></codeline>
+<codeline lineno="121"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FLURRY_OF_BLOWS_MODE_ACTIVATED<sp/><sp/><sp/><sp/><sp/>=<sp/>168;</highlight></codeline>
+<codeline lineno="122"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FLURRY_OF_BLOWS_MODE_DEACTIVATED<sp/><sp/><sp/>=<sp/>169;</highlight></codeline>
+<codeline lineno="123"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EXPERTISE_MODE_ACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>227;</highlight></codeline>
+<codeline lineno="124"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EXPERTISE_MODE_DEACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>228;</highlight></codeline>
+<codeline lineno="125"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMPROVED_EXPERTISE_MODE_ACTIVATED<sp/><sp/>=<sp/>229;</highlight></codeline>
+<codeline lineno="126"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMPROVED_EXPERTISE_MODE_DEACTIVATED<sp/>=<sp/>230;</highlight></codeline>
+<codeline lineno="127"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_DEFENSIVE_CAST_MODE_ACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>231;</highlight></codeline>
+<codeline lineno="128"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_DEFENSIVE_CAST_MODE_DEACTIVATED<sp/><sp/><sp/><sp/>=<sp/>232;</highlight></codeline>
+<codeline lineno="129"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_MODE_CANNOT_USE_WEAPONS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>188;</highlight></codeline>
+<codeline lineno="130"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_DIRTY_FIGHTING_MODE_ACTIVATED<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>237;</highlight></codeline>
+<codeline lineno="131"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_DIRTY_FIGHTING_MODE_DEACTIVATED<sp/><sp/><sp/><sp/>=<sp/>238;</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"></highlight></codeline>
+<codeline lineno="133"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_DEFENSIVE_STANCE_MODE_ACTIVATED<sp/><sp/><sp/><sp/>=<sp/>252;</highlight></codeline>
+<codeline lineno="134"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_DEFENSIVE_STANCE_MODE_DEACTIVATED<sp/><sp/>=<sp/>253;</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"></highlight></codeline>
+<codeline lineno="137"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_SKILL_SPELL_MODIFIERS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>71;</highlight></codeline>
+<codeline lineno="138"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_UNIDENTIFIED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>76;</highlight></codeline>
+<codeline lineno="139"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_MONK_ABILITIES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>77;</highlight></codeline>
+<codeline lineno="140"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_INSUFFICIENT_LEVEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>98;</highlight></codeline>
+<codeline lineno="141"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_PROFICIENCIES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>119;</highlight></codeline>
+<codeline lineno="142"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_WEAPON_TOO_LARGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>120;</highlight></codeline>
+<codeline lineno="143"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_WEAPON_TOO_SMALL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>260;</highlight></codeline>
+<codeline lineno="144"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_ONE_HANDED_WEAPON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>121;</highlight></codeline>
+<codeline lineno="145"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_TWO_HANDED_WEAPON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>122;</highlight></codeline>
+<codeline lineno="146"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_WEAPON_SWAPPED_OUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>123;</highlight></codeline>
+<codeline lineno="147"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_ONE_CHAIN_WEAPON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>124;</highlight></codeline>
+<codeline lineno="148"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_NATURAL_AC_NO_STACK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>189;</highlight></codeline>
+<codeline lineno="149"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_ARMOUR_AC_NO_STACK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>190;</highlight></codeline>
+<codeline lineno="150"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_SHIELD_AC_NO_STACK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>191;</highlight></codeline>
+<codeline lineno="151"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_DEFLECTION_AC_NO_STACK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>192;</highlight></codeline>
+<codeline lineno="152"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_NO_ARMOR_COMBAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>193;</highlight></codeline>
+<codeline lineno="153"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_RANGER_ABILITIES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>200;</highlight></codeline>
+<codeline lineno="154"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_ALIGNMENT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>207;</highlight></codeline>
+<codeline lineno="155"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_CLASS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>208;</highlight></codeline>
+<codeline lineno="156"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EQUIP_RACE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>209;</highlight></codeline>
+<codeline lineno="157"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_UNEQUIP_NO_ARMOR_COMBAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>194;</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"></highlight></codeline>
+<codeline lineno="160"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_OBJECT_LOCKED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>13;</highlight></codeline>
+<codeline lineno="161"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_OBJECT_NOT_LOCKED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>14;</highlight></codeline>
+<codeline lineno="162"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_OBJECT_SPECIAL_KEY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>15;</highlight></codeline>
+<codeline lineno="163"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_OBJECT_USED_KEY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>16;</highlight></codeline>
+<codeline lineno="164"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_REST_EXCITED_CANT_REST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>17;</highlight></codeline>
+<codeline lineno="165"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_REST_BEGINNING_REST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>18;</highlight></codeline>
+<codeline lineno="166"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_REST_FINISHED_REST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>19;</highlight></codeline>
+<codeline lineno="167"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_REST_CANCEL_REST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>20;</highlight></codeline>
+<codeline lineno="168"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_REST_NOT_ALLOWED_IN_AREA<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>54;</highlight></codeline>
+<codeline lineno="169"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_REST_NOT_ALLOWED_BY_POSSESSED_FAMILIAR<sp/>=<sp/>153;</highlight></codeline>
+<codeline lineno="170"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_REST_NOT_ALLOWED_ENEMIES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>186;</highlight></codeline>
+<codeline lineno="171"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_REST_CANT_UNDER_THIS_EFFECT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>213;</highlight></codeline>
+<codeline lineno="172"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_LOST_TARGET<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>21;</highlight></codeline>
+<codeline lineno="173"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_CANT_CAST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>22;</highlight></codeline>
+<codeline lineno="174"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_CNTRSPELL_TARGET_LOST_TARGET<sp/><sp/>=<sp/>52;</highlight></codeline>
+<codeline lineno="175"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_ARCANE_SPELL_FAILURE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>61;</highlight></codeline>
+<codeline lineno="176"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_CNTRSPELL_TARGET_ARCANE_SPELL_FAILURE<sp/>=<sp/>118;</highlight></codeline>
+<codeline lineno="177"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_ENTANGLE_CONCENTRATION_FAILURE<sp/>=<sp/>65;</highlight></codeline>
+<codeline lineno="178"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_CNTRSPELL_TARGET_ENTANGLE_CONCENTRATION_FAILURE<sp/>=<sp/>147;</highlight></codeline>
+<codeline lineno="179"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_SPELL_INTERRUPTED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>72;</highlight></codeline>
+<codeline lineno="180"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_EFFECT_SPELL_FAILURE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>236;</highlight></codeline>
+<codeline lineno="181"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_CANT_CAST_WHILE_POLYMORPHED<sp/><sp/><sp/>=<sp/>107;</highlight></codeline>
+<codeline lineno="182"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_USE_HANDS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>210;</highlight></codeline>
+<codeline lineno="183"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_USE_MOUTH<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>211;</highlight></codeline>
+<codeline lineno="184"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_DEFCAST_CONCENTRATION_FAILURE<sp/>=<sp/>233;</highlight></codeline>
+<codeline lineno="185"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAST_DEFCAST_CONCENTRATION_SUCCESS<sp/>=<sp/>240;</highlight></codeline>
+<codeline lineno="186"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_USEITEM_CANT_USE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="187"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CONVERSATION_TOOFAR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>58;</highlight></codeline>
+<codeline lineno="188"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CONVERSATION_BUSY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>59;</highlight></codeline>
+<codeline lineno="189"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CONVERSATION_IN_COMBAT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>152;</highlight></codeline>
+<codeline lineno="190"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CHARACTER_INTRANSIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>74;</highlight></codeline>
+<codeline lineno="191"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CHARACTER_OUTTRANSIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>75;</highlight></codeline>
+<codeline lineno="192"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_USEITEM_NOT_EQUIPPED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>244;</highlight></codeline>
+<codeline lineno="193"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_DROPITEM_CANT_DROP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>245;</highlight></codeline>
+<codeline lineno="194"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_DROPITEM_CANT_GIVE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>246;</highlight></codeline>
+<codeline lineno="195"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CLIENT_SERVER_SPELL_MISMATCH<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>259;</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"></highlight></codeline>
+<codeline lineno="198"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_RUNNING_OUT_OF_AMMO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>24;</highlight></codeline>
+<codeline lineno="199"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_OUT_OF_AMMO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>25;</highlight></codeline>
+<codeline lineno="200"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_HENCHMAN_OUT_OF_AMMO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>241;</highlight></codeline>
+<codeline lineno="201"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_DAMAGE_IMMUNITY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>62;</highlight></codeline>
+<codeline lineno="202"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_SPELL_IMMUNITY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>68;</highlight></codeline>
+<codeline lineno="203"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_DAMAGE_RESISTANCE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>63;</highlight></codeline>
+<codeline lineno="204"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_DAMAGE_RESISTANCE_REMAINING<sp/>=<sp/>66;</highlight></codeline>
+<codeline lineno="205"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_DAMAGE_REDUCTION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>64;</highlight></codeline>
+<codeline lineno="206"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_DAMAGE_REDUCTION_REMAINING<sp/><sp/>=<sp/>67;</highlight></codeline>
+<codeline lineno="207"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_SPELL_LEVEL_ABSORPTION<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>69;</highlight></codeline>
+<codeline lineno="208"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_SPELL_LEVEL_ABSORPTION_REMAINING<sp/>=<sp/>70;</highlight></codeline>
+<codeline lineno="209"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_WEAPON_NOT_EFFECTIVE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>117;</highlight></codeline>
+<codeline lineno="210"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_EPIC_DODGE_ATTACK_EVADED<sp/><sp/><sp/><sp/>=<sp/>234;</highlight></codeline>
+<codeline lineno="211"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_MASSIVE_DAMAGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>235;</highlight></codeline>
+<codeline lineno="212"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_SAVED_VS_MASSIVE_DAMAGE<sp/><sp/><sp/><sp/><sp/>=<sp/>254;</highlight></codeline>
+<codeline lineno="213"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_COMBAT_SAVED_VS_DEVASTATING_CRITICAL<sp/>=<sp/>257;</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"></highlight></codeline>
+<codeline lineno="216"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_SAP_VALID_TARGETS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>26;</highlight></codeline>
+<codeline lineno="217"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_KNOCKDOWN_VALID_TARGETS<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>27;</highlight></codeline>
+<codeline lineno="218"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_IMPKNOCKDOWN_VALID_TARGETS<sp/><sp/><sp/><sp/>=<sp/>28;</highlight></codeline>
+<codeline lineno="219"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_CALLED_SHOT_NO_LEGS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>29;</highlight></codeline>
+<codeline lineno="220"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_CALLED_SHOT_NO_ARMS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>30;</highlight></codeline>
+<codeline lineno="221"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_SMITE_GOOD_TARGET_NOT_GOOD<sp/><sp/><sp/><sp/>=<sp/>239;</highlight></codeline>
+<codeline lineno="222"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_SMITE_EVIL_TARGET_NOT_EVIL<sp/><sp/><sp/><sp/>=<sp/>53;</highlight></codeline>
+<codeline lineno="223"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_QUIVERING_PALM_HIGHER_LEVEL<sp/><sp/><sp/>=<sp/>73;</highlight></codeline>
+<codeline lineno="224"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_KEEN_SENSE_DETECT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>195;</highlight></codeline>
+<codeline lineno="225"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_USE_UNARMED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>198;</highlight></codeline>
+<codeline lineno="226"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_USES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>199;</highlight></codeline>
+<codeline lineno="227"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FEAT_USE_WEAPON_OF_CHOICE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>243;</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"></highlight></codeline>
+<codeline lineno="230"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_NEW_LEADER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>31;</highlight></codeline>
+<codeline lineno="231"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_MEMBER_KICKED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>32;</highlight></codeline>
+<codeline lineno="232"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_KICKED_YOU<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>33;</highlight></codeline>
+<codeline lineno="233"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_ALREADY_CONSIDERING<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>34;</highlight></codeline>
+<codeline lineno="234"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_ALREADY_INVOLVED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>35;</highlight></codeline>
+<codeline lineno="235"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_SENT_INVITATION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>36;</highlight></codeline>
+<codeline lineno="236"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_RECEIVED_INVITATION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>37;</highlight></codeline>
+<codeline lineno="237"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_JOINED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>38;</highlight></codeline>
+<codeline lineno="238"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_INVITATION_IGNORED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>39;</highlight></codeline>
+<codeline lineno="239"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_YOU_IGNORED_INVITATION<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>40;</highlight></codeline>
+<codeline lineno="240"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_INVITATION_REJECTED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>41;</highlight></codeline>
+<codeline lineno="241"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_YOU_REJECTED_INVITATION<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>42;</highlight></codeline>
+<codeline lineno="242"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_INVITATION_EXPIRED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>43;</highlight></codeline>
+<codeline lineno="243"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_LEFT_PARTY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>44;</highlight></codeline>
+<codeline lineno="244"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_YOU_LEFT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>45;</highlight></codeline>
+<codeline lineno="245"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_HENCHMAN_LIMIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>49;</highlight></codeline>
+<codeline lineno="246"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_CANNOT_LEAVE_THE_ONE_PARTY<sp/><sp/><sp/>=<sp/>196;</highlight></codeline>
+<codeline lineno="247"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_CANNOT_KICK_FROM_THE_ONE_PARTY<sp/>=<sp/>197;</highlight></codeline>
+<codeline lineno="248"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PARTY_YOU_INVITED_NON_SINGLETON<sp/><sp/><sp/><sp/>=<sp/>202;</highlight></codeline>
+<codeline lineno="249"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PVP_REACTION_DISLIKESYOU<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>203;</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"></highlight></codeline>
+<codeline lineno="252"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ITEM_RECEIVED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>50;</highlight></codeline>
+<codeline lineno="253"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ITEM_LOST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>51;</highlight></codeline>
+<codeline lineno="254"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ITEM_EJECTED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>96;</highlight></codeline>
+<codeline lineno="255"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ITEM_USE_UNIDENTIFIED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>97;</highlight></codeline>
+<codeline lineno="256"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ITEM_GOLD_GAINED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>148;</highlight></codeline>
+<codeline lineno="257"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ITEM_GOLD_LOST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>149;</highlight></codeline>
+<codeline lineno="258"><highlight class="comment"></highlight></codeline>
+<codeline lineno="260"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_LEARN_SCROLL_NOT_SCROLL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>78;</highlight></codeline>
+<codeline lineno="261"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_LEARN_SCROLL_CANT_LEARN_CLASS<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>79;</highlight></codeline>
+<codeline lineno="262"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_LEARN_SCROLL_CANT_LEARN_LEVEL<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>80;</highlight></codeline>
+<codeline lineno="263"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_LEARN_SCROLL_CANT_LEARN_ABILITY<sp/><sp/><sp/><sp/>=<sp/>81;</highlight></codeline>
+<codeline lineno="264"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_LEARN_SCROLL_CANT_LEARN_OPPOSITION<sp/>=<sp/>219;</highlight></codeline>
+<codeline lineno="265"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_LEARN_SCROLL_CANT_LEARN_POSSESS<sp/><sp/><sp/><sp/>=<sp/>220;</highlight></codeline>
+<codeline lineno="266"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_LEARN_SCROLL_CANT_LEARN_KNOWN<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>221;</highlight></codeline>
+<codeline lineno="267"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_LEARN_SCROLL_CANT_LEARN_DIVINE<sp/><sp/><sp/><sp/><sp/>=<sp/>224;</highlight></codeline>
+<codeline lineno="268"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_LEARN_SCROLL_SUCCESS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>222;</highlight></codeline>
+<codeline lineno="269"><highlight class="comment"></highlight></codeline>
+<codeline lineno="271"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FLOATY_TEXT_STRREF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>93;</highlight></codeline>
+<codeline lineno="272"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_FLOATY_TEXT_STRING<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>94;</highlight></codeline>
+<codeline lineno="273"><highlight class="comment"></highlight></codeline>
+<codeline lineno="275"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CANNOT_SELL_PLOT_ITEM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>99;</highlight></codeline>
+<codeline lineno="276"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CANNOT_SELL_CONTAINER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>100;</highlight></codeline>
+<codeline lineno="277"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CANNOT_SELL_ITEM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>101;</highlight></codeline>
+<codeline lineno="278"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_NOT_ENOUGH_GOLD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>102;</highlight></codeline>
+<codeline lineno="279"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_TRANSACTION_SUCCEEDED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>103;</highlight></codeline>
+<codeline lineno="280"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PRICE_TOO_HIGH<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>248;</highlight></codeline>
+<codeline lineno="281"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_STORE_NOT_ENOUGH_GOLD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>249;</highlight></codeline>
+<codeline lineno="282"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CANNOT_SELL_STOLEN_ITEM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>250;</highlight></codeline>
+<codeline lineno="283"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CANNOT_SELL_RESTRICTED_ITEM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>251;</highlight></codeline>
+<codeline lineno="284"><highlight class="comment"></highlight></codeline>
+<codeline lineno="286"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PORTAL_TIMEDOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>104;</highlight></codeline>
+<codeline lineno="287"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PORTAL_INVALID<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>105;</highlight></codeline>
+<codeline lineno="288"><highlight class="comment"></highlight></codeline>
+<codeline lineno="290"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CHAT_TELL_PLAYER_NOT_FOUND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>106;</highlight></codeline>
+<codeline lineno="291"><highlight class="comment"></highlight></codeline>
+<codeline lineno="293"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ALIGNMENT_SHIFT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>108;</highlight></codeline>
+<codeline lineno="294"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ALIGNMENT_PARTY_SHIFT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>111;</highlight></codeline>
+<codeline lineno="295"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ALIGNMENT_CHANGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>109;</highlight></codeline>
+<codeline lineno="296"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ALIGNMENT_RESTRICTED_BY_CLASS_LOST<sp/>=<sp/>110;</highlight></codeline>
+<codeline lineno="297"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ALIGNMENT_RESTRICTED_BY_CLASS_GAIN<sp/>=<sp/>115;</highlight></codeline>
+<codeline lineno="298"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ALIGNMENT_RESTRICTED_WARNING_LOSS<sp/><sp/>=<sp/>116;</highlight></codeline>
+<codeline lineno="299"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ALIGNMENT_RESTRICTED_WARNING_GAIN<sp/><sp/>=<sp/>112;</highlight></codeline>
+<codeline lineno="300"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ALIGNMENT_EPITOME_GAINED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>113;</highlight></codeline>
+<codeline lineno="301"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ALIGNMENT_EPITOME_LOST<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>114;</highlight></codeline>
+<codeline lineno="302"><highlight class="comment"></highlight></codeline>
+<codeline lineno="304"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_DISEASE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>125;</highlight></codeline>
+<codeline lineno="305"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_CRITICAL_HIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>126;</highlight></codeline>
+<codeline lineno="306"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_DEATH_MAGIC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>127;</highlight></codeline>
+<codeline lineno="307"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_FEAR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>128;</highlight></codeline>
+<codeline lineno="308"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_KNOCKDOWN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>129;</highlight></codeline>
+<codeline lineno="309"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_PARALYSIS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>130;</highlight></codeline>
+<codeline lineno="310"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_NEGATIVE_LEVEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>131;</highlight></codeline>
+<codeline lineno="311"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_MIND_SPELLS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>132;</highlight></codeline>
+<codeline lineno="312"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_POISON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>133;</highlight></codeline>
+<codeline lineno="313"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_SNEAK_ATTACK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>134;</highlight></codeline>
+<codeline lineno="314"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_SLEEP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>135;</highlight></codeline>
+<codeline lineno="315"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_DAZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>136;</highlight></codeline>
+<codeline lineno="316"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_CONFUSION<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>137;</highlight></codeline>
+<codeline lineno="317"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_STUN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>138;</highlight></codeline>
+<codeline lineno="318"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_BLINDNESS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>139;</highlight></codeline>
+<codeline lineno="319"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_DEAFNESS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>140;</highlight></codeline>
+<codeline lineno="320"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_CURSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>141;</highlight></codeline>
+<codeline lineno="321"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_CHARM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>142;</highlight></codeline>
+<codeline lineno="322"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_DOMINATE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>143;</highlight></codeline>
+<codeline lineno="323"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_ENTANGLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>144;</highlight></codeline>
+<codeline lineno="324"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_SILENCE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>145;</highlight></codeline>
+<codeline lineno="325"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_IMMUNITY_SLOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>146;</highlight></codeline>
+<codeline lineno="326"><highlight class="comment"></highlight></codeline>
+<codeline lineno="328"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_SUMMONED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>154;</highlight></codeline>
+<codeline lineno="329"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_UNSUMMONING<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>155;</highlight></codeline>
+<codeline lineno="330"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_UNSUMMONING_BECAUSE_REST<sp/>=<sp/>156;</highlight></codeline>
+<codeline lineno="331"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_UNSUMMONING_BECAUSE_DIED<sp/>=<sp/>157;</highlight></codeline>
+<codeline lineno="332"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_DOMINATED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>158;</highlight></codeline>
+<codeline lineno="333"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_DOMINATION_ENDED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>159;</highlight></codeline>
+<codeline lineno="334"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_RECOVER_TRAP<sp/>=<sp/>170;</highlight></codeline>
+<codeline lineno="335"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_BARTER<sp/><sp/>=<sp/>171;</highlight></codeline>
+<codeline lineno="336"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_EQUIP<sp/><sp/><sp/>=<sp/>172;</highlight></codeline>
+<codeline lineno="337"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_REPOSITORY_MOVE<sp/>=<sp/>173;</highlight></codeline>
+<codeline lineno="338"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_PICK_UP<sp/>=<sp/>174;</highlight></codeline>
+<codeline lineno="339"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_DROP<sp/><sp/><sp/><sp/>=<sp/>175;</highlight></codeline>
+<codeline lineno="340"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_UNEQUIP<sp/>=<sp/>176;</highlight></codeline>
+<codeline lineno="341"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_REST<sp/><sp/><sp/><sp/>=<sp/>177;</highlight></codeline>
+<codeline lineno="342"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_DIALOGUE<sp/>=<sp/>178;</highlight></codeline>
+<codeline lineno="343"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_GIVE_ITEM<sp/>=<sp/>179;</highlight></codeline>
+<codeline lineno="344"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_TAKE_ITEM<sp/>=<sp/>180;</highlight></codeline>
+<codeline lineno="345"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ASSOCIATE_POSSESSED_CANNOT_USE_CONTAINER<sp/>=<sp/>181;</highlight></codeline>
+<codeline lineno="346"><highlight class="comment"></highlight></codeline>
+<codeline lineno="348"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SCRIPT_ERROR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>160;</highlight></codeline>
+<codeline lineno="349"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ACTION_LIST_OVERFLOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>161;</highlight></codeline>
+<codeline lineno="350"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EFFECT_LIST_OVERFLOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>162;</highlight></codeline>
+<codeline lineno="351"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_AI_UPDATE_TIME_OVERFLOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>163;</highlight></codeline>
+<codeline lineno="352"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_ACTION_LIST_WIPE_OVERFLOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>164;</highlight></codeline>
+<codeline lineno="353"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_EFFECT_LIST_WIPE_OVERFLOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>165;</highlight></codeline>
+<codeline lineno="354"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SEND_MESSAGE_TO_PC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>204;</highlight></codeline>
+<codeline lineno="355"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SEND_MESSAGE_TO_PC_STRREF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>242;</highlight></codeline>
+<codeline lineno="356"><highlight class="comment"></highlight></codeline>
+<codeline lineno="358"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_GUI_ONLY_PARTY_LEADER_MAY_CLICK<sp/><sp/><sp/><sp/>=<sp/>201;</highlight></codeline>
+<codeline lineno="359"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_PAUSED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>205;</highlight></codeline>
+<codeline lineno="360"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_UNPAUSED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>206;</highlight></codeline>
+<codeline lineno="361"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_REST_YOU_MAY_NOT_AT_THIS_TIME<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>214;</highlight></codeline>
+<codeline lineno="362"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_GUI_CHAR_EXPORT_REQUEST_SENT<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>215;</highlight></codeline>
+<codeline lineno="363"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_GUI_CHAR_EXPORTED_SUCCESSFULLY<sp/><sp/><sp/><sp/><sp/>=<sp/>216;</highlight></codeline>
+<codeline lineno="364"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_GUI_ERROR_CHAR_NOT_EXPORTED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>217;</highlight></codeline>
+<codeline lineno="365"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAMERA_BG<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>255;</highlight></codeline>
+<codeline lineno="366"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAMERA_EQ<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>256;</highlight></codeline>
+<codeline lineno="367"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_CAMERA_CHASECAM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>258;</highlight></codeline>
+<codeline lineno="368"><highlight class="comment"></highlight></codeline>
+<codeline lineno="369"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SAVING<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>225;</highlight></codeline>
+<codeline lineno="370"><highlight class="comment">const<sp/>int<sp/>NWNX_FEEDBACK_SAVE_COMPLETE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>226;</highlight></codeline>
+<codeline lineno="371"><highlight class="comment">*/</highlight></codeline>
+<codeline lineno="373"></codeline>
+<codeline lineno="378"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1gad0f1933e1f2957b798a75fca3c5b98d2" kindref="member">NWNX_Feedback_GetFeedbackMessageHidden</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessage,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID);</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1ga68dcbf8f5a115248b35907225ceec53a" kindref="member">NWNX_Feedback_SetFeedbackMessageHidden</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessage,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>isHidden,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID);</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1gae874731db0eb23fa1db4e44629f9261b" kindref="member">NWNX_Feedback_GetCombatLogMessageHidden</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessage,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID);</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="400"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1ga46a034a921ef6011120762dfc1b55a06" kindref="member">NWNX_Feedback_SetCombatLogMessageHidden</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessage,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>isHidden,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID);</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1gad723108876dccf1552d517aaf8b3e06b" kindref="member">NWNX_Feedback_GetJournalUpdatedMessageHidden</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID);</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1ga54a0e9e14e11882ae4408b24fb3bdd5e" kindref="member">NWNX_Feedback_SetJournalUpdatedMessageHidden</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>isHidden,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID);</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1gab4f0518108b6ab44095d1d32f7a777ea" kindref="member">NWNX_Feedback_SetFeedbackMessageMode</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bWhitelist);</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="422"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1ga1e5a9e78de5d4d9d50f527dc245060b5" kindref="member">NWNX_Feedback_SetCombatLogMessageMode</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bWhitelist);</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"></highlight></codeline>
+<codeline lineno="425"><highlight class="normal"></highlight></codeline>
+<codeline lineno="426"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1gad0f1933e1f2957b798a75fca3c5b98d2" kindref="member">NWNX_Feedback_GetFeedbackMessageHidden</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessage,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID)</highlight></codeline>
+<codeline lineno="427"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetMessageHidden&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessageType<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"></highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessage);</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessageType);</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Feedback,<sp/>sFunc,<sp/>oPC);</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Feedback,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Feedback,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="437"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"></highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1ga68dcbf8f5a115248b35907225ceec53a" kindref="member">NWNX_Feedback_SetFeedbackMessageHidden</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessage,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>isHidden,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID)</highlight></codeline>
+<codeline lineno="440"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetMessageHidden&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessageType<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"></highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>isHidden);</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessage);</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessageType);</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Feedback,<sp/>sFunc,<sp/>oPC);</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Feedback,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="449"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"></highlight></codeline>
+<codeline lineno="451"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1gae874731db0eb23fa1db4e44629f9261b" kindref="member">NWNX_Feedback_GetCombatLogMessageHidden</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessage,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID)</highlight></codeline>
+<codeline lineno="452"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetMessageHidden&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessageType<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"></highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessage);</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessageType);</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Feedback,<sp/>sFunc,<sp/>oPC);</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Feedback,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"></highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Feedback,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="462"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"></highlight></codeline>
+<codeline lineno="464"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1ga46a034a921ef6011120762dfc1b55a06" kindref="member">NWNX_Feedback_SetCombatLogMessageHidden</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessage,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>isHidden,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID)</highlight></codeline>
+<codeline lineno="465"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetMessageHidden&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessageType<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="468"><highlight class="normal"></highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>isHidden);</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessage);</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessageType);</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Feedback,<sp/>sFunc,<sp/>oPC);</highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Feedback,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="474"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"></highlight></codeline>
+<codeline lineno="476"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1gad723108876dccf1552d517aaf8b3e06b" kindref="member">NWNX_Feedback_GetJournalUpdatedMessageHidden</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID)</highlight></codeline>
+<codeline lineno="477"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetMessageHidden&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessageType<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="480"><highlight class="normal"></highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>0);</highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessageType);</highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Feedback,<sp/>sFunc,<sp/>oPC);</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Feedback,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="485"><highlight class="normal"></highlight></codeline>
+<codeline lineno="486"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Feedback,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="487"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="488"><highlight class="normal"></highlight></codeline>
+<codeline lineno="489"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1ga54a0e9e14e11882ae4408b24fb3bdd5e" kindref="member">NWNX_Feedback_SetJournalUpdatedMessageHidden</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>isHidden,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oPC<sp/>=<sp/>OBJECT_INVALID)</highlight></codeline>
+<codeline lineno="490"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="491"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetMessageHidden&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="492"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessageType<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="493"><highlight class="normal"></highlight></codeline>
+<codeline lineno="494"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>isHidden);</highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>0);</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessageType);</highlight></codeline>
+<codeline lineno="497"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Feedback,<sp/>sFunc,<sp/>oPC);</highlight></codeline>
+<codeline lineno="498"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Feedback,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="499"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="500"><highlight class="normal"></highlight></codeline>
+<codeline lineno="501"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1gab4f0518108b6ab44095d1d32f7a777ea" kindref="member">NWNX_Feedback_SetFeedbackMessageMode</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bWhitelist)</highlight></codeline>
+<codeline lineno="502"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetFeedbackMode&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessageType<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="505"><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>bWhitelist);</highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessageType);</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Feedback,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="509"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="510"><highlight class="normal"></highlight></codeline>
+<codeline lineno="511"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__feedback_1ga1e5a9e78de5d4d9d50f527dc245060b5" kindref="member">NWNX_Feedback_SetCombatLogMessageMode</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bWhitelist)</highlight></codeline>
+<codeline lineno="512"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetFeedbackMode&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMessageType<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="515"><highlight class="normal"></highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>bWhitelist);</highlight></codeline>
+<codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Feedback,<sp/>sFunc,<sp/>nMessageType);</highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Feedback,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="519"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss"/>
+  </compounddef>
+</doxygen>

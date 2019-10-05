@@ -1,0 +1,498 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__damage_8nss" kind="file" language="C++">
+    <compoundname>nwnx_damage.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Plugins/Damage/NWScript/nwnx_damage.nss</label>
+        <link refid="nwnx__damage_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structNWNX__Damage__DamageEventData" prot="public">NWNX_Damage_DamageEventData</innerclass>
+    <innerclass refid="structNWNX__Damage__AttackEventData" prot="public">NWNX_Damage_AttackEventData</innerclass>
+    <innerclass refid="structNWNX__Damage__DamageData" prot="public">NWNX_Damage_DamageData</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__damage_1gacccc7b28ff4fb40b556c26b28c46882b" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Damage</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Damage</name>
+        <initializer>= &quot;NWNX_Damage&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="7" column="14" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__damage_1gacc6c89fef62eceff37e865d7833a335c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Damage_SetDamageEventScript</definition>
+        <argsstring>(string sScript, object oOwner=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Damage_SetDamageEventScript</name>
+        <param>
+          <type>string</type>
+          <declname>sScript</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oOwner</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Sets the script to run with a damage event. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sScript</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The script that will handle the damage event. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oOwner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An object if only executing for a specific object or OBJECT_INVALID for global. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="111" column="6" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="111" bodyend="120" declfile="Plugins/Damage/NWScript/nwnx_damage.nss" declline="75" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__damage_1ga70a0495afe874baf67ed2e880f779ed5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__Damage__DamageEventData" kindref="compound">NWNX_Damage_DamageEventData</ref></type>
+        <definition>struct NWNX_Damage_DamageEventData NWNX_Damage_GetDamageEventData</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Damage_GetDamageEventData</name>
+        <briefdescription>
+<para>Get Damage Event Data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A <ref refid="structNWNX__Damage__DamageEventData" kindref="compound">NWNX_Damage_DamageEventData</ref> struct. </para>
+</simplesect>
+<simplesect kind="note"><para>To use only in the Damage Event Script. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="111" column="6" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="122" bodyend="145" declfile="Plugins/Damage/NWScript/nwnx_damage.nss" declline="75" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__damage_1ga2be3550a90599b0cff53f9eaccb09f59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Damage_SetDamageEventData</definition>
+        <argsstring>(struct NWNX_Damage_DamageEventData data)</argsstring>
+        <name>NWNX_Damage_SetDamageEventData</name>
+        <param>
+          <type>struct <ref refid="structNWNX__Damage__DamageEventData" kindref="compound">NWNX_Damage_DamageEventData</ref></type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Set Damage Event Data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="structNWNX__Damage__DamageEventData" kindref="compound">NWNX_Damage_DamageEventData</ref> struct. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>To use only in the Damage Event Script. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="147" column="6" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="147" bodyend="166" declfile="Plugins/Damage/NWScript/nwnx_damage.nss" declline="85" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__damage_1gaa93a1196b5b273c79c8e34972ccdd7cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Damage_SetAttackEventScript</definition>
+        <argsstring>(string sScript, object oOwner=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Damage_SetAttackEventScript</name>
+        <param>
+          <type>string</type>
+          <declname>sScript</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oOwner</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Sets the script to run with an attack event. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sScript</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The script that will handle the attack event. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oOwner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An object if only executing for a specific object or OBJECT_INVALID for global. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="168" column="6" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="168" bodyend="177" declfile="Plugins/Damage/NWScript/nwnx_damage.nss" declline="90" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__damage_1ga6cdb61971c650ff07be52f2f0c2d02b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__Damage__AttackEventData" kindref="compound">NWNX_Damage_AttackEventData</ref></type>
+        <definition>struct NWNX_Damage_AttackEventData NWNX_Damage_GetAttackEventData</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Damage_GetAttackEventData</name>
+        <briefdescription>
+<para>Get Attack Event Data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A <ref refid="structNWNX__Damage__AttackEventData" kindref="compound">NWNX_Damage_AttackEventData</ref> struct. </para>
+</simplesect>
+<simplesect kind="note"><para>To use only in the Attack Event Script. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="168" column="6" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="179" bodyend="206" declfile="Plugins/Damage/NWScript/nwnx_damage.nss" declline="90" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__damage_1gac9d174eaf11af9aa77da1e8b94db2224" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Damage_SetAttackEventData</definition>
+        <argsstring>(struct NWNX_Damage_AttackEventData data)</argsstring>
+        <name>NWNX_Damage_SetAttackEventData</name>
+        <param>
+          <type>struct <ref refid="structNWNX__Damage__AttackEventData" kindref="compound">NWNX_Damage_AttackEventData</ref></type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Set Attack Event Data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="structNWNX__Damage__AttackEventData" kindref="compound">NWNX_Damage_AttackEventData</ref> struct. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>To use only in the Attack Event Script. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="208" column="6" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="208" bodyend="228" declfile="Plugins/Damage/NWScript/nwnx_damage.nss" declline="100" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__damage_1gaa5e0bf54800819528b77bf0e3ec78463" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Damage_DealDamage</definition>
+        <argsstring>(struct NWNX_Damage_DamageData data, object oTarget, object oSource=OBJECT_SELF)</argsstring>
+        <name>NWNX_Damage_DealDamage</name>
+        <param>
+          <type>struct <ref refid="structNWNX__Damage__DamageData" kindref="compound">NWNX_Damage_DamageData</ref></type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oTarget</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oSource</declname>
+          <defval>OBJECT_SELF</defval>
+        </param>
+        <briefdescription>
+<para>Deal damage to a target. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>Permits multiple damage types and checks enhancement bonus for overcoming DR. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="structNWNX__Damage__DamageData" kindref="compound">NWNX_Damage_DamageData</ref> struct. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oTarget</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target object on whom the damage is dealt. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the damage. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="230" column="6" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="230" bodyend="251" declfile="Plugins/Damage/NWScript/nwnx_damage.nss" declline="107" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_Damage<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_Damage&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="structNWNX__Damage__DamageEventData" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Damage__DamageEventData" kindref="compound">NWNX_Damage_DamageEventData</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1adcd2db4021271fd0cba8dfd90e096892" kindref="member">oDamager</ref>;<sp/></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1a393c3d523e8c4cbac372dd3b7b9f62ab" kindref="member">iBludgeoning</ref>;<sp/></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1a4c91e86c8a6ca9a054169846c67e6ce3" kindref="member">iPierce</ref>;<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1aedd89f02fec3bb8c5c3924e1f2c9d1c3" kindref="member">iSlash</ref>;<sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1a3c2787db985cc740e70bd3b3b5af8c5a" kindref="member">iMagical</ref>;<sp/></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1a660030db73bd468d6534e369c902025b" kindref="member">iAcid</ref>;<sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1a4abb22e26f7ab484c221d33550f3aefd" kindref="member">iCold</ref>;<sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1a1c094e1f187bab209e34e9af867cf404" kindref="member">iDivine</ref>;<sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1a77eaede57af8ca3102bce42bd1659406" kindref="member">iElectrical</ref>;<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1af4d87d814017f06147ebadbca2e22ff4" kindref="member">iFire</ref>;<sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1a601b7c06196f6ada8869d941706df008" kindref="member">iNegative</ref>;<sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1af535efda76f147df7aef7bed25a25a10" kindref="member">iPositive</ref>;<sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1ab621265dce87ad6d8f00805455aef99f" kindref="member">iSonic</ref>;<sp/></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData_1a1273adbedbccba5afb3592eadb34ce1b" kindref="member">iBase</ref>;<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="structNWNX__Damage__AttackEventData" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Damage__AttackEventData" kindref="compound">NWNX_Damage_AttackEventData</ref></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1afc184d97f1079b5dfeb7d2ff807ad18a" kindref="member">oTarget</ref>;<sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1aebba350a6ae68da04b1fdd3d98556d30" kindref="member">iBludgeoning</ref>;<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1a7b24cc68dd6f50db4069bc0e3e9facf7" kindref="member">iPierce</ref>;<sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1a4a442823998c0b06cb99d7ac45c0a3d3" kindref="member">iSlash</ref>;<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1a02fb96244bd01690723d23386250b2e9" kindref="member">iMagical</ref>;<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1a2414d16a8249c9b9d3e78a6bdd1d376b" kindref="member">iAcid</ref>;<sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1a77439bb6727bb0e78ad1c145170ac3d5" kindref="member">iCold</ref>;<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1ad76bfe56fadd9f06296452fe451345f7" kindref="member">iDivine</ref>;<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1af83d60735d50ba0926015905279668b6" kindref="member">iElectrical</ref>;<sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1a82dc8d56f564fca63e68fcc2ea8a6943" kindref="member">iFire</ref>;<sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1ae7b76b4e3cb09563e67132a58fec572d" kindref="member">iNegative</ref>;<sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1ada8bc3213c9e2e618ae1cd56ed650836" kindref="member">iPositive</ref>;<sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1a320fa9900bb825ce2f251fbf7a942f60" kindref="member">iSonic</ref>;<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1ae50e334035835e815d0e7ab0891afe1e" kindref="member">iBase</ref>;<sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1abd9b45439358d4428a37e2a695e0eedc" kindref="member">iAttackNumber</ref>;<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1a2f860433eb2ee4d0af58701b077f226b" kindref="member">iAttackResult</ref>;<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1a086c6998c3f5de7813d81ac0e2eecb5f" kindref="member">iAttackType</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1a1d9294445235a4ee280cc4ff1d78cbd0" kindref="member">iSneakAttack</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="structNWNX__Damage__DamageData" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Damage__DamageData" kindref="compound">NWNX_Damage_DamageData</ref></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a9a2a5c4c2fca12b1f2fbb39768a41fd8" kindref="member">iBludgeoning</ref>;<sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1ab5a608d124514061b522fe771505c361" kindref="member">iPierce</ref>;<sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a897eac283c5b8d73e8072ca018fdedb8" kindref="member">iSlash</ref>;<sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a1326f1ace343df63fa43b95a57c2c367" kindref="member">iMagical</ref>;<sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a3b17125888f391553ed71031939b2106" kindref="member">iAcid</ref>;<sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a053b5e861523333bb9eec9cee6f0c2ff" kindref="member">iCold</ref>;<sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a2bafcf37cec79e490fd77391a8c376f0" kindref="member">iDivine</ref>;<sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a4484bc3ade9aeb8ea8a8b5aa467d4623" kindref="member">iElectrical</ref>;<sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a4bc3e288a3ac44e60209d84988d277fc" kindref="member">iFire</ref>;<sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a6c2b056c139270360c2e68fd5bc6ace7" kindref="member">iNegative</ref>;<sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a5f2b292c4fc5f0ebf697994af6d38e04" kindref="member">iPositive</ref>;<sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a7c3afe6cc289c5904aa533d76938521b" kindref="member">iSonic</ref>;<sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData_1a109fcd91eb18b4089214f8cb29268fd7" kindref="member">iPower</ref>;<sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__damage_1gacc6c89fef62eceff37e865d7833a335c" kindref="member">NWNX_Damage_SetDamageEventScript</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sScript,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oOwner=OBJECT_INVALID);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Damage__DamageEventData" kindref="compound">NWNX_Damage_DamageEventData</ref><sp/><ref refid="group__damage_1ga70a0495afe874baf67ed2e880f779ed5" kindref="member">NWNX_Damage_GetDamageEventData</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__damage_1ga2be3550a90599b0cff53f9eaccb09f59" kindref="member">NWNX_Damage_SetDamageEventData</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData" kindref="compound">NWNX_Damage_DamageEventData</ref><sp/>data);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__damage_1gaa93a1196b5b273c79c8e34972ccdd7cb" kindref="member">NWNX_Damage_SetAttackEventScript</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sScript,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oOwner=OBJECT_INVALID);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Damage__AttackEventData" kindref="compound">NWNX_Damage_AttackEventData</ref><sp/><ref refid="group__damage_1ga6cdb61971c650ff07be52f2f0c2d02b8" kindref="member">NWNX_Damage_GetAttackEventData</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__damage_1gac9d174eaf11af9aa77da1e8b94db2224" kindref="member">NWNX_Damage_SetAttackEventData</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData" kindref="compound">NWNX_Damage_AttackEventData</ref><sp/>data);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__damage_1gaa5e0bf54800819528b77bf0e3ec78463" kindref="member">NWNX_Damage_DealDamage</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData" kindref="compound">NWNX_Damage_DamageData</ref><sp/>data,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1afc184d97f1079b5dfeb7d2ff807ad18a" kindref="member">oTarget</ref>,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oSource=OBJECT_SELF);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__damage_1gacc6c89fef62eceff37e865d7833a335c" kindref="member">NWNX_Damage_SetDamageEventScript</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sScript,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oOwner=OBJECT_INVALID)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetEventScript&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Damage,<sp/>sFunc,<sp/>oOwner);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Damage,<sp/>sFunc,<sp/>sScript);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Damage,<sp/>sFunc,<sp/></highlight><highlight class="stringliteral">&quot;DAMAGE&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Damage__DamageEventData" kindref="compound">NWNX_Damage_DamageEventData</ref><sp/><ref refid="group__damage_1ga70a0495afe874baf67ed2e880f779ed5" kindref="member">NWNX_Damage_GetDamageEventData</ref>()</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetDamageEventData&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Damage__DamageEventData" kindref="compound">NWNX_Damage_DamageEventData</ref><sp/>data;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>data.oDamager<sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueObject(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iBludgeoning<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iPierce<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iSlash<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iMagical<sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iAcid<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iCold<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iDivine<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iElectrical<sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iFire<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iNegative<sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iPositive<sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iSonic<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iBase<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__damage_1ga2be3550a90599b0cff53f9eaccb09f59" kindref="member">NWNX_Damage_SetDamageEventData</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageEventData" kindref="compound">NWNX_Damage_DamageEventData</ref><sp/>data)</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetDamageEventData&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1a1273adbedbccba5afb3592eadb34ce1b" kindref="member">iBase</ref>);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1ab621265dce87ad6d8f00805455aef99f" kindref="member">iSonic</ref>);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1af535efda76f147df7aef7bed25a25a10" kindref="member">iPositive</ref>);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1a601b7c06196f6ada8869d941706df008" kindref="member">iNegative</ref>);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1af4d87d814017f06147ebadbca2e22ff4" kindref="member">iFire</ref>);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1a77eaede57af8ca3102bce42bd1659406" kindref="member">iElectrical</ref>);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1a1c094e1f187bab209e34e9af867cf404" kindref="member">iDivine</ref>);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1a4abb22e26f7ab484c221d33550f3aefd" kindref="member">iCold</ref>);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1a660030db73bd468d6534e369c902025b" kindref="member">iAcid</ref>);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1a3c2787db985cc740e70bd3b3b5af8c5a" kindref="member">iMagical</ref>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1aedd89f02fec3bb8c5c3924e1f2c9d1c3" kindref="member">iSlash</ref>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1a4c91e86c8a6ca9a054169846c67e6ce3" kindref="member">iPierce</ref>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageEventData_1a393c3d523e8c4cbac372dd3b7b9f62ab" kindref="member">iBludgeoning</ref>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__damage_1gaa93a1196b5b273c79c8e34972ccdd7cb" kindref="member">NWNX_Damage_SetAttackEventScript</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sScript,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oOwner=OBJECT_INVALID)</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetEventScript&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Damage,<sp/>sFunc,<sp/>oOwner);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Damage,<sp/>sFunc,<sp/>sScript);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Damage,<sp/>sFunc,<sp/></highlight><highlight class="stringliteral">&quot;ATTACK&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Damage__AttackEventData" kindref="compound">NWNX_Damage_AttackEventData</ref><sp/><ref refid="group__damage_1ga6cdb61971c650ff07be52f2f0c2d02b8" kindref="member">NWNX_Damage_GetAttackEventData</ref>()</highlight></codeline>
+<codeline lineno="180"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetAttackEventData&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Damage__AttackEventData" kindref="compound">NWNX_Damage_AttackEventData</ref><sp/>data;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>data.oTarget<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueObject(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iBludgeoning<sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iPierce<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iSlash<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iMagical<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iAcid<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iCold<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iDivine<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iElectrical<sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iFire<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iNegative<sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iPositive<sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iSonic<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iBase<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iAttackNumber<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iAttackResult<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iAttackType<sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>data.iSneakAttack<sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__damage_1gac9d174eaf11af9aa77da1e8b94db2224" kindref="member">NWNX_Damage_SetAttackEventData</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData" kindref="compound">NWNX_Damage_AttackEventData</ref><sp/>data)</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetAttackEventData&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1a2f860433eb2ee4d0af58701b077f226b" kindref="member">iAttackResult</ref>);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1ae50e334035835e815d0e7ab0891afe1e" kindref="member">iBase</ref>);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1a320fa9900bb825ce2f251fbf7a942f60" kindref="member">iSonic</ref>);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1ada8bc3213c9e2e618ae1cd56ed650836" kindref="member">iPositive</ref>);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1ae7b76b4e3cb09563e67132a58fec572d" kindref="member">iNegative</ref>);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1a82dc8d56f564fca63e68fcc2ea8a6943" kindref="member">iFire</ref>);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1af83d60735d50ba0926015905279668b6" kindref="member">iElectrical</ref>);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1ad76bfe56fadd9f06296452fe451345f7" kindref="member">iDivine</ref>);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1a77439bb6727bb0e78ad1c145170ac3d5" kindref="member">iCold</ref>);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1a2414d16a8249c9b9d3e78a6bdd1d376b" kindref="member">iAcid</ref>);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1a02fb96244bd01690723d23386250b2e9" kindref="member">iMagical</ref>);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1a4a442823998c0b06cb99d7ac45c0a3d3" kindref="member">iSlash</ref>);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1a7b24cc68dd6f50db4069bc0e3e9facf7" kindref="member">iPierce</ref>);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__AttackEventData_1aebba350a6ae68da04b1fdd3d98556d30" kindref="member">iBludgeoning</ref>);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__damage_1gaa5e0bf54800819528b77bf0e3ec78463" kindref="member">NWNX_Damage_DealDamage</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__DamageData" kindref="compound">NWNX_Damage_DamageData</ref><sp/>data,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Damage__AttackEventData_1afc184d97f1079b5dfeb7d2ff807ad18a" kindref="member">oTarget</ref>,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oSource)</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;DealDamage&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a109fcd91eb18b4089214f8cb29268fd7" kindref="member">iPower</ref>);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a7c3afe6cc289c5904aa533d76938521b" kindref="member">iSonic</ref>);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a5f2b292c4fc5f0ebf697994af6d38e04" kindref="member">iPositive</ref>);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a6c2b056c139270360c2e68fd5bc6ace7" kindref="member">iNegative</ref>);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a4bc3e288a3ac44e60209d84988d277fc" kindref="member">iFire</ref>);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a4484bc3ade9aeb8ea8a8b5aa467d4623" kindref="member">iElectrical</ref>);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a2bafcf37cec79e490fd77391a8c376f0" kindref="member">iDivine</ref>);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a053b5e861523333bb9eec9cee6f0c2ff" kindref="member">iCold</ref>);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a3b17125888f391553ed71031939b2106" kindref="member">iAcid</ref>);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a1326f1ace343df63fa43b95a57c2c367" kindref="member">iMagical</ref>);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a897eac283c5b8d73e8072ca018fdedb8" kindref="member">iSlash</ref>);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1ab5a608d124514061b522fe771505c361" kindref="member">iPierce</ref>);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Damage,<sp/>sFunc,<sp/>data.<ref refid="structNWNX__Damage__DamageData_1a9a2a5c4c2fca12b1f2fbb39768a41fd8" kindref="member">iBludgeoning</ref>);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Damage,<sp/>sFunc,<sp/><ref refid="structNWNX__Damage__AttackEventData_1afc184d97f1079b5dfeb7d2ff807ad18a" kindref="member">oTarget</ref>);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Damage,<sp/>sFunc,<sp/>oSource);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Damage,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Damage/NWScript/nwnx_damage.nss"/>
+  </compounddef>
+</doxygen>

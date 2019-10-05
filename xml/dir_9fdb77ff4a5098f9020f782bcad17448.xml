@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_9fdb77ff4a5098f9020f782bcad17448" kind="dir">
+    <compoundname>Plugins/Mono</compoundname>
+    <innerdir refid="dir_d8dce9431f8db430a81c77dea1f5bd2e">Plugins/Mono/Documentation</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Mono/"/>
+  </compounddef>
+</doxygen>

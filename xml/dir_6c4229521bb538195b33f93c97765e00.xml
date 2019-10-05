@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_6c4229521bb538195b33f93c97765e00" kind="dir">
+    <compoundname>Plugins/ThreadWatchdog</compoundname>
+    <innerdir refid="dir_cbfc548b8870755e24776a59025565d3">Plugins/ThreadWatchdog/Documentation</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/ThreadWatchdog/"/>
+  </compounddef>
+</doxygen>

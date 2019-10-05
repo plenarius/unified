@@ -1,0 +1,787 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__skillranks_8nss" kind="file" language="C++">
+    <compoundname>nwnx_skillranks.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+      <node id="1">
+        <label>Plugins/SkillRanks/NWScript/nwnx_skillranks.nss</label>
+        <link refid="nwnx__skillranks_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structNWNX__SkillRanks__SkillFeat" prot="public">NWNX_SkillRanks_SkillFeat</innerclass>
+      <sectiondef kind="user-defined">
+      <header>SkillRanks Key Abilities</header>
+      <description><para><anchor id="group__skillranks_1skr_key_abilities"/> The abilities as bits </para>
+</description>
+      <memberdef kind="variable" id="group__skillranks_1ga1db13e2848c6df316ce2e4ac31b5e07a" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_SKILLRANKS_KEY_ABILITY_STRENGTH</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SKILLRANKS_KEY_ABILITY_STRENGTH</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Strength. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="15" column="11" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__skillranks_1ga64778b20c08683a767c08b73380dd399" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_SKILLRANKS_KEY_ABILITY_DEXTERITY</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SKILLRANKS_KEY_ABILITY_DEXTERITY</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>Dexterity. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="16" column="11" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__skillranks_1gac47488975fb36ec044386895c765f5ff" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_SKILLRANKS_KEY_ABILITY_CONSTITUTION</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SKILLRANKS_KEY_ABILITY_CONSTITUTION</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+<para>Constitution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="17" column="11" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__skillranks_1ga00f0fbad3b10c1cd427c4dbc2467113d" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_SKILLRANKS_KEY_ABILITY_INTELLIGENCE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SKILLRANKS_KEY_ABILITY_INTELLIGENCE</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+<para>Intelligence. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="18" column="11" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__skillranks_1ga7dd3c741b09e4111f974d1bf61c35c1c" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_SKILLRANKS_KEY_ABILITY_WISDOM</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SKILLRANKS_KEY_ABILITY_WISDOM</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+<para>Wisdom. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="19" column="11" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__skillranks_1ga9fd8105318e74c9540e9a6a5820246c2" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_SKILLRANKS_KEY_ABILITY_CHARISMA</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SKILLRANKS_KEY_ABILITY_CHARISMA</name>
+        <initializer>= 32</initializer>
+        <briefdescription>
+<para>Charisma. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="20" column="11" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>SkillRanks Key Ability Calculation Method</header>
+      <description><para><anchor id="group__skillranks_1skr_key_ability_calc_bits"/> Constants used to calculate the ability modifier for a skill.</para>
+<para><simplesect kind="warning"><para>Use only one of these calculations in your mask! If you use more than one the first will be used. </para>
+</simplesect>
+</para>
+</description>
+      <memberdef kind="variable" id="group__skillranks_1ga9505c6e837397607102d8ac38c62b81f" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_SKILLRANKS_KEY_ABILITY_CALC_MIN</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SKILLRANKS_KEY_ABILITY_CALC_MIN</name>
+        <initializer>= 64</initializer>
+        <briefdescription>
+<para>Use the minimum value of the provided ability scores. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="29" column="11" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__skillranks_1gacd135cb7afcf82c95e6ab9ffc5b294df" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_SKILLRANKS_KEY_ABILITY_CALC_MAX</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SKILLRANKS_KEY_ABILITY_CALC_MAX</name>
+        <initializer>= 128</initializer>
+        <briefdescription>
+<para>Use the maximum value of the provided ability scores. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="30" column="11" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__skillranks_1ga7f1d000a33a2f550e44fb9e26fce7da6" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_SKILLRANKS_KEY_ABILITY_CALC_AVERAGE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SKILLRANKS_KEY_ABILITY_CALC_AVERAGE</name>
+        <initializer>= 256</initializer>
+        <briefdescription>
+<para>Use the average value of the provided ability scores. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="31" column="11" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__skillranks_1gaa46c6263750af82bf35abd43dad103ee" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_SKILLRANKS_KEY_ABILITY_CALC_SUM</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SKILLRANKS_KEY_ABILITY_CALC_SUM</name>
+        <initializer>= 512</initializer>
+        <briefdescription>
+<para>Use the sum of the provided ability scores. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="32" column="11" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__skillranks_1ga8f096d13678f291c419a5629c2c04c39" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_SkillRanks</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SkillRanks</name>
+        <initializer>= &quot;NWNX_SkillRanks&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="8" column="14" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__skillranks_1gaa51909822635a455deba2201ebb35080" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_SkillRanks_GetSkillFeatCountForSkill</definition>
+        <argsstring>(int iSkill)</argsstring>
+        <name>NWNX_SkillRanks_GetSkillFeatCountForSkill</name>
+        <param>
+          <type>int</type>
+          <declname>iSkill</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iSkill</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The skill to check the feat count. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The count of feats for a specific skill. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="145" column="5" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="145" bodyend="153" declfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" declline="85" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__skillranks_1gaf46fd7507a97f894f3e17b0d2c0e8eea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref></type>
+        <definition>struct NWNX_SkillRanks_SkillFeat NWNX_SkillRanks_GetSkillFeat</definition>
+        <argsstring>(int iSkill, int iFeat)</argsstring>
+        <name>NWNX_SkillRanks_GetSkillFeat</name>
+        <param>
+          <type>int</type>
+          <declname>iSkill</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iFeat</declname>
+        </param>
+        <briefdescription>
+<para>Returns a skill feat. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iSkill</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The skill. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feat. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A constructed <ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="145" column="5" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="180" bodyend="203" declfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" declline="85" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__skillranks_1ga4fe1c3c80628fdc725be375b124382da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref></type>
+        <definition>struct NWNX_SkillRanks_SkillFeat NWNX_SkillRanks_GetSkillFeatForSkillByIndex</definition>
+        <argsstring>(int iSkill, int iIndex)</argsstring>
+        <name>NWNX_SkillRanks_GetSkillFeatForSkillByIndex</name>
+        <param>
+          <type>int</type>
+          <declname>iSkill</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iIndex</declname>
+        </param>
+        <briefdescription>
+<para>Returns a skill feat by index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>Generally used in a loop with <ref refid="group__skillranks_1gaa51909822635a455deba2201ebb35080" kindref="member">NWNX_SkillRanks_GetSkillFeatCountForSkill()</ref>. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iSkill</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The skill. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index in the list of feats for the skill. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A constructed <ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="145" column="5" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="155" bodyend="178" declfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" declline="85" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__skillranks_1gac34e2d7aa9cfa7330914732fa6392e10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_SkillRanks_SetSkillFeat</definition>
+        <argsstring>(struct NWNX_SkillRanks_SkillFeat skillFeat, int createIfNonExistent=FALSE)</argsstring>
+        <name>NWNX_SkillRanks_SetSkillFeat</name>
+        <param>
+          <type>struct <ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref></type>
+          <declname>skillFeat</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>createIfNonExistent</declname>
+          <defval>FALSE</defval>
+        </param>
+        <briefdescription>
+<para>Modifies or creates a skill feat. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>skillFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The defined <ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>createIfNonExistent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE to create if the feat does not exist. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="205" column="6" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="205" bodyend="223" declfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" declline="103" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__skillranks_1gad83eb78b6cff3bac273bb17c32159f0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref></type>
+        <definition>struct NWNX_SkillRanks_SkillFeat NWNX_SkillRanks_AddSkillFeatClass</definition>
+        <argsstring>(struct NWNX_SkillRanks_SkillFeat skillFeat, int iClass)</argsstring>
+        <name>NWNX_SkillRanks_AddSkillFeatClass</name>
+        <param>
+          <type>struct <ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref></type>
+          <declname>skillFeat</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iClass</declname>
+        </param>
+        <briefdescription>
+<para>Add classes to a skill feat instead of working with the <ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">NWNX_SkillRanks_SkillFeat::sClasses</ref> string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Manipulating the sClasses string in the <ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref> struct can be difficult. This function allows the builder to enter one class at a time. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>skillFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref> for which the sClasses field will be modifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iClass</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class to add to the Skill Feat. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The updated <ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="205" column="6" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="225" bodyend="236" declfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" declline="103" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__skillranks_1gab307895f1388e74a89c5aff2aa5fe0e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_SkillRanks_SetSkillFeatFocusModifier</definition>
+        <argsstring>(int iModifier, int iEpic=FALSE)</argsstring>
+        <name>NWNX_SkillRanks_SetSkillFeatFocusModifier</name>
+        <param>
+          <type>int</type>
+          <declname>iModifier</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iEpic</declname>
+          <defval>FALSE</defval>
+        </param>
+        <briefdescription>
+<para>Change the modifier value for Skill Focus and Epic Skill Focus feats. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The stock modifier on Skill Focus and Epic Skill Focus are 3 and 10 respectively, these can be changed with this function. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iModifier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new value for the feat modifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iEpic</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set to TRUE to change the value for Epic Skill Focus. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="238" column="6" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="238" bodyend="245" declfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" declline="120" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__skillranks_1ga1011dba1bd43cd86875ca3ffcfa7e652" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_SkillRanks_GetBlindnessPenalty</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_SkillRanks_GetBlindnessPenalty</name>
+        <briefdescription>
+<para>Gets the current penalty to Dexterity based skills when blind. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The penalty to Dexterity when blind. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="247" column="5" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="247" bodyend="254" declfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" declline="124" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__skillranks_1gade61f23332c91cd4c5b15b63472d4041" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_SkillRanks_SetBlindnessPenalty</definition>
+        <argsstring>(int iModifier)</argsstring>
+        <name>NWNX_SkillRanks_SetBlindnessPenalty</name>
+        <param>
+          <type>int</type>
+          <declname>iModifier</declname>
+        </param>
+        <briefdescription>
+<para>Set the value the Dexterity based skills get decreased due to blindness. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>Default is 4. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iModifier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The penalty to Dexterity when blind. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="256" column="6" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="256" bodyend="262" declfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" declline="129" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__skillranks_1ga6c32e9daa62259c4f923fd954dd7702b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_SkillRanks_GetAreaModifier</definition>
+        <argsstring>(object oArea, int iSkill)</argsstring>
+        <name>NWNX_SkillRanks_GetAreaModifier</name>
+        <param>
+          <type>object</type>
+          <declname>oArea</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iSkill</declname>
+        </param>
+        <briefdescription>
+<para>Get a skill modifier for an area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oArea</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iSkill</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The skill to check. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The modifier to that skill in the area. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="264" column="5" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="264" bodyend="273" declfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" declline="135" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__skillranks_1ga98a356da26953e1b850c981ea52714e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_SkillRanks_SetAreaModifier</definition>
+        <argsstring>(object oArea, int iSkill, int iModifier)</argsstring>
+        <name>NWNX_SkillRanks_SetAreaModifier</name>
+        <param>
+          <type>object</type>
+          <declname>oArea</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iSkill</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iModifier</declname>
+        </param>
+        <briefdescription>
+<para>Sets a skill modifier for the area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oArea</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iSkill</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The skill to change. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iModifier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The modifier to the skill in the area. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" line="275" column="6" bodyfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" bodystart="275" bodyend="283" declfile="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss" declline="141" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_SkillRanks<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_SkillRanks&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga1db13e2848c6df316ce2e4ac31b5e07a" kindref="member">NWNX_SKILLRANKS_KEY_ABILITY_STRENGTH</ref><sp/>=<sp/>1;<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga64778b20c08683a767c08b73380dd399" kindref="member">NWNX_SKILLRANKS_KEY_ABILITY_DEXTERITY</ref><sp/>=<sp/>2;<sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1gac47488975fb36ec044386895c765f5ff" kindref="member">NWNX_SKILLRANKS_KEY_ABILITY_CONSTITUTION</ref><sp/>=<sp/>4;<sp/></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga00f0fbad3b10c1cd427c4dbc2467113d" kindref="member">NWNX_SKILLRANKS_KEY_ABILITY_INTELLIGENCE</ref><sp/>=<sp/>8;<sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga7dd3c741b09e4111f974d1bf61c35c1c" kindref="member">NWNX_SKILLRANKS_KEY_ABILITY_WISDOM</ref><sp/>=<sp/>16;<sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga9fd8105318e74c9540e9a6a5820246c2" kindref="member">NWNX_SKILLRANKS_KEY_ABILITY_CHARISMA</ref><sp/>=<sp/>32;<sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga9505c6e837397607102d8ac38c62b81f" kindref="member">NWNX_SKILLRANKS_KEY_ABILITY_CALC_MIN</ref><sp/>=<sp/>64;<sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1gacd135cb7afcf82c95e6ab9ffc5b294df" kindref="member">NWNX_SKILLRANKS_KEY_ABILITY_CALC_MAX</ref><sp/>=<sp/>128;<sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga7f1d000a33a2f550e44fb9e26fce7da6" kindref="member">NWNX_SKILLRANKS_KEY_ABILITY_CALC_AVERAGE</ref><sp/>=<sp/>256;<sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1gaa46c6263750af82bf35abd43dad103ee" kindref="member">NWNX_SKILLRANKS_KEY_ABILITY_CALC_SUM</ref><sp/>=<sp/>512;<sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="structNWNX__SkillRanks__SkillFeat" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>;<sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a0e294b3acd481896cc1c7ae349aa397a" kindref="member">iFeat</ref>;<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1ac10e1f8652735b57a5bd1f1533a80742" kindref="member">iModifier</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a22471ab7b2b7e7d3ea8b9b3a2c14fd07" kindref="member">iFocusFeat</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">sClasses</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a349f2205b03ebd3c5ed0635dff56d2d2" kindref="member">fClassLevelMod</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1af74a42efd47b5f9bc738cd7b6759a4b7" kindref="member">iAreaFlagsRequired</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a534688bf4035fb5b6040e3c798605369" kindref="member">iAreaFlagsForbidden</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1af739ed67510b85727943101c94b4b1f3" kindref="member">iDayOrNight</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a7dd800dcb05d188252a50c070ae71f2b" kindref="member">bBypassArmorCheckPenalty</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a1c26d25c176cfd36ce4a9007cddd7f0d" kindref="member">iKeyAbilityMask</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1gaa51909822635a455deba2201ebb35080" kindref="member">NWNX_SkillRanks_GetSkillFeatCountForSkill</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iSkill);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/><ref refid="group__skillranks_1gaf46fd7507a97f894f3e17b0d2c0e8eea" kindref="member">NWNX_SkillRanks_GetSkillFeat</ref>(int<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>,<sp/>int<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a0e294b3acd481896cc1c7ae349aa397a" kindref="member">iFeat</ref>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/><ref refid="group__skillranks_1ga4fe1c3c80628fdc725be375b124382da" kindref="member">NWNX_SkillRanks_GetSkillFeatForSkillByIndex</ref>(int<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>,<sp/>int<sp/>iIndex);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1gac34e2d7aa9cfa7330914732fa6392e10" kindref="member">NWNX_SkillRanks_SetSkillFeat</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/>skillFeat,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>createIfNonExistent<sp/>=<sp/>FALSE);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/><ref refid="group__skillranks_1gad83eb78b6cff3bac273bb17c32159f0d" kindref="member">NWNX_SkillRanks_AddSkillFeatClass</ref>(struct<sp/><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/>skillFeat,<sp/>int<sp/>iClass);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1gab307895f1388e74a89c5aff2aa5fe0e9" kindref="member">NWNX_SkillRanks_SetSkillFeatFocusModifier</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1ac10e1f8652735b57a5bd1f1533a80742" kindref="member">iModifier</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iEpic<sp/>=<sp/>FALSE);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga1011dba1bd43cd86875ca3ffcfa7e652" kindref="member">NWNX_SkillRanks_GetBlindnessPenalty</ref>();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1gade61f23332c91cd4c5b15b63472d4041" kindref="member">NWNX_SkillRanks_SetBlindnessPenalty</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1ac10e1f8652735b57a5bd1f1533a80742" kindref="member">iModifier</ref>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga6c32e9daa62259c4f923fd954dd7702b" kindref="member">NWNX_SkillRanks_GetAreaModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oArea,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga98a356da26953e1b850c981ea52714e8" kindref="member">NWNX_SkillRanks_SetAreaModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oArea,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1ac10e1f8652735b57a5bd1f1533a80742" kindref="member">iModifier</ref>);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1gaa51909822635a455deba2201ebb35080" kindref="member">NWNX_SkillRanks_GetSkillFeatCountForSkill</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetSkillFeatCountForSkill&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/><ref refid="group__skillranks_1ga4fe1c3c80628fdc725be375b124382da" kindref="member">NWNX_SkillRanks_GetSkillFeatForSkillByIndex</ref>(int<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>,<sp/>int<sp/>iIndex)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetSkillFeatForSkillByIndex&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>iIndex);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/>skillFeat;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iFeat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iModifier<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iFocusFeat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.sClasses<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueString(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.fClassLevelMod<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueFloat(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iAreaFlagsRequired<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iAreaFlagsForbidden<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iDayOrNight<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.bBypassArmorCheckPenalty<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iKeyAbilityMask<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>skillFeat;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/><ref refid="group__skillranks_1gaf46fd7507a97f894f3e17b0d2c0e8eea" kindref="member">NWNX_SkillRanks_GetSkillFeat</ref>(int<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>,<sp/>int<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a0e294b3acd481896cc1c7ae349aa397a" kindref="member">iFeat</ref>)</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetSkillFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a0e294b3acd481896cc1c7ae349aa397a" kindref="member">iFeat</ref>);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/>skillFeat;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iFeat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="structNWNX__SkillRanks__SkillFeat_1a0e294b3acd481896cc1c7ae349aa397a" kindref="member">iFeat</ref>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iModifier<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iFocusFeat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.sClasses<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueString(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.fClassLevelMod<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueFloat(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iAreaFlagsRequired<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iAreaFlagsForbidden<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iDayOrNight<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.bBypassArmorCheckPenalty<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.iKeyAbilityMask<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>skillFeat;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1gac34e2d7aa9cfa7330914732fa6392e10" kindref="member">NWNX_SkillRanks_SetSkillFeat</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/>skillFeat,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>createIfNonExistent<sp/>=<sp/>FALSE)</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetSkillFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>createIfNonExistent);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1a1c26d25c176cfd36ce4a9007cddd7f0d" kindref="member">iKeyAbilityMask</ref>);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1a7dd800dcb05d188252a50c070ae71f2b" kindref="member">bBypassArmorCheckPenalty</ref>);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1af739ed67510b85727943101c94b4b1f3" kindref="member">iDayOrNight</ref>);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1a534688bf4035fb5b6040e3c798605369" kindref="member">iAreaFlagsForbidden</ref>);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1af74a42efd47b5f9bc738cd7b6759a4b7" kindref="member">iAreaFlagsRequired</ref>);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_SkillRanks,<sp/>sFunc,<sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1a349f2205b03ebd3c5ed0635dff56d2d2" kindref="member">fClassLevelMod</ref>);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>only<sp/>need<sp/>to<sp/>send<sp/>the<sp/>string<sp/>from<sp/>the<sp/>point<sp/>of<sp/>the<sp/>first<sp/>set<sp/>bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_SkillRanks,<sp/>sFunc,<sp/>GetStringRight(skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">sClasses</ref>,<sp/>GetStringLength(skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">sClasses</ref>)-FindSubString(skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">sClasses</ref>,<sp/></highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal">)));</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1a22471ab7b2b7e7d3ea8b9b3a2c14fd07" kindref="member">iFocusFeat</ref>);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1ac10e1f8652735b57a5bd1f1533a80742" kindref="member">iModifier</ref>);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1a0e294b3acd481896cc1c7ae349aa397a" kindref="member">iFeat</ref>);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1a73f5be9c11646af553b30000b2a72da7" kindref="member">iSkill</ref>);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/><ref refid="group__skillranks_1gad83eb78b6cff3bac273bb17c32159f0d" kindref="member">NWNX_SkillRanks_AddSkillFeatClass</ref>(struct<sp/><ref refid="structNWNX__SkillRanks__SkillFeat" kindref="compound">NWNX_SkillRanks_SkillFeat</ref><sp/>skillFeat,<sp/>int<sp/>iClass)</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(GetStringLength(skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">sClasses</ref>)<sp/>&lt;<sp/>255)</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sPad;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>255-GetStringLength(skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">sClasses</ref>);<sp/>i++)<sp/>{<sp/>sPad<sp/>=<sp/>sPad<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;0&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">sClasses</ref><sp/>=<sp/>sPad<sp/>+<sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">sClasses</ref>;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">sClasses</ref><sp/>=<sp/>GetStringLeft(skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">sClasses</ref>,<sp/>254<sp/>-<sp/>iClass)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal"><sp/>+<sp/>GetStringRight(skillFeat.<ref refid="structNWNX__SkillRanks__SkillFeat_1aae9925da408c3283b3fde29b1ebfec20" kindref="member">sClasses</ref>,<sp/>iClass);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>skillFeat;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1gab307895f1388e74a89c5aff2aa5fe0e9" kindref="member">NWNX_SkillRanks_SetSkillFeatFocusModifier</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iModifier,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>epicFocus<sp/>=<sp/>FALSE)</highlight></codeline>
+<codeline lineno="239"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetSkillFeatFocusModifier&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>epicFocus);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>iModifier);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga1011dba1bd43cd86875ca3ffcfa7e652" kindref="member">NWNX_SkillRanks_GetBlindnessPenalty</ref>()</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetBlindnessPenalty&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1gade61f23332c91cd4c5b15b63472d4041" kindref="member">NWNX_SkillRanks_SetBlindnessPenalty</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iModifier)</highlight></codeline>
+<codeline lineno="257"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetBlindnessPenalty&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>iModifier);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga6c32e9daa62259c4f923fd954dd7702b" kindref="member">NWNX_SkillRanks_GetAreaModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oArea,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iSkill)</highlight></codeline>
+<codeline lineno="265"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetAreaModifier&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>iSkill);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_SkillRanks,<sp/>sFunc,<sp/>oArea);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__skillranks_1ga98a356da26953e1b850c981ea52714e8" kindref="member">NWNX_SkillRanks_SetAreaModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oArea,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iSkill,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iModifier)</highlight></codeline>
+<codeline lineno="276"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetAreaModifier&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>iModifier);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SkillRanks,<sp/>sFunc,<sp/>iSkill);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_SkillRanks,<sp/>sFunc,<sp/>oArea);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SkillRanks,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/SkillRanks/NWScript/nwnx_skillranks.nss"/>
+  </compounddef>
+</doxygen>

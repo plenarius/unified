@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_2cb431146d89b7791aff694cfde16a4a" kind="dir">
+    <compoundname>Plugins/SpellChecker</compoundname>
+    <innerdir refid="dir_e962e4b44c1aad42c6e634b7642eeb31">Plugins/SpellChecker/Documentation</innerdir>
+    <innerdir refid="dir_3439960d65add46cb0fddea027b42b21">Plugins/SpellChecker/NWScript</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/SpellChecker/"/>
+  </compounddef>
+</doxygen>

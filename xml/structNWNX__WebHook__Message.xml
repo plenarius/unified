@@ -1,0 +1,694 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="structNWNX__WebHook__Message" kind="struct" language="C++" prot="public">
+    <compoundname>NWNX_WebHook_Message</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a8ac91259adbe62020d5da36142876618" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sUsername</definition>
+        <argsstring></argsstring>
+        <name>sUsername</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/username.html">https://birdie0.github.io/discord-webhooks-guide/structure/username.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="10" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a559adb85d80133938e6512d12a69e18f" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sText</definition>
+        <argsstring></argsstring>
+        <name>sText</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/content.html">https://birdie0.github.io/discord-webhooks-guide/structure/content.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="11" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1ac953fbd1f38da318dceff4ee6570bf89" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sAvatarURL</definition>
+        <argsstring></argsstring>
+        <name>sAvatarURL</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/avatar_url.html">https://birdie0.github.io/discord-webhooks-guide/structure/avatar_url.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="12" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a1e438925f97be57ac69401f43d0e16bf" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sColor</definition>
+        <argsstring></argsstring>
+        <name>sColor</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/color.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/color.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="13" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a2752ebbb220b5a26142e8f63c2da5e60" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sAuthorName</definition>
+        <argsstring></argsstring>
+        <name>sAuthorName</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/author.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/author.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="14" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1acda4237df462e2d4503a529154ea5b8b" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sAuthorURL</definition>
+        <argsstring></argsstring>
+        <name>sAuthorURL</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/author.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/author.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="15" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a9761f89d8969406957e196240b676a67" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sAuthorIconURL</definition>
+        <argsstring></argsstring>
+        <name>sAuthorIconURL</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/author.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/author.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="16" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a8e2be188c362c871de82fcbe48ee34de" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sTitle</definition>
+        <argsstring></argsstring>
+        <name>sTitle</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/title.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/title.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="17" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a5b54b5b3f4d996f1921fcd0bf6dd20a4" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sURL</definition>
+        <argsstring></argsstring>
+        <name>sURL</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/url.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/url.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="18" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a6cf4f0629f99364bbb1b7196b7e64a0f" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sDescription</definition>
+        <argsstring></argsstring>
+        <name>sDescription</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/description.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/description.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="19" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a916266d0a0a14ebdcd227583fc006bcf" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sThumbnailURL</definition>
+        <argsstring></argsstring>
+        <name>sThumbnailURL</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/thumbnail.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/thumbnail.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="20" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1ad1a2af81fea4de75d522d42d357f01ee" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sImageURL</definition>
+        <argsstring></argsstring>
+        <name>sImageURL</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/image.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/image.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="21" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a5bfee6f02624338caa9e8d4ed51ffa0f" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sFooterText</definition>
+        <argsstring></argsstring>
+        <name>sFooterText</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/footer.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/footer.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="22" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a78619e981c65b0433becc29dab96fd75" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sFooterURL</definition>
+        <argsstring></argsstring>
+        <name>sFooterURL</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/footer.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/footer.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="23" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1acc31ee95b8eeebba9f5d970bcc796c90" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_WebHook_Message::iTimestamp</definition>
+        <argsstring></argsstring>
+        <name>iTimestamp</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/timestamp.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/timestamp.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="24" column="9" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a57a6314cfacf3f4244058402965b1f20" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField1Name</definition>
+        <argsstring></argsstring>
+        <name>sField1Name</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="25" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1ae6ca50f2fc799a581ea7714864559026" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField1Value</definition>
+        <argsstring></argsstring>
+        <name>sField1Value</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="26" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a98c5c51f0229b0428230cd00eb3e582e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_WebHook_Message::iField1Inline</definition>
+        <argsstring></argsstring>
+        <name>iField1Inline</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="27" column="9" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1ac94747113373880fe34da76ab9ccba4f" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField2Name</definition>
+        <argsstring></argsstring>
+        <name>sField2Name</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="28" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1aa1df21fae063b94b82e2f3429410d243" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField2Value</definition>
+        <argsstring></argsstring>
+        <name>sField2Value</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="29" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a838a7f626332023398ebb5965ac0fdde" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_WebHook_Message::iField2Inline</definition>
+        <argsstring></argsstring>
+        <name>iField2Inline</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="30" column="9" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1af2a9aa3908d087a99d6d3795047af16a" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField3Name</definition>
+        <argsstring></argsstring>
+        <name>sField3Name</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="31" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1ad140bcf66224acce998f2d7ca3edd547" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField3Value</definition>
+        <argsstring></argsstring>
+        <name>sField3Value</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="32" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a21863d8d913f6716210d0ca835b7b794" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_WebHook_Message::iField3Inline</definition>
+        <argsstring></argsstring>
+        <name>iField3Inline</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="33" column="9" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a41108b212b8ff86848c53d48ae992619" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField4Name</definition>
+        <argsstring></argsstring>
+        <name>sField4Name</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="34" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a014f92efa064359f6360a6230091820c" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField4Value</definition>
+        <argsstring></argsstring>
+        <name>sField4Value</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="35" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1aa606b8da37e0dec234e6a7c5f2562838" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_WebHook_Message::iField4Inline</definition>
+        <argsstring></argsstring>
+        <name>iField4Inline</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="36" column="9" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1ab43baea2c02dad7c2b541e76ceb836c9" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField5Name</definition>
+        <argsstring></argsstring>
+        <name>sField5Name</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="37" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1af237da5c3358bf7ba843609f3e5522ad" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField5Value</definition>
+        <argsstring></argsstring>
+        <name>sField5Value</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="38" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a57f262917b0edfe78d32d1388bbc1dea" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_WebHook_Message::iField5Inline</definition>
+        <argsstring></argsstring>
+        <name>iField5Inline</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="39" column="9" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1afd77404e0c5eca11bf383c50896d276e" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField6Name</definition>
+        <argsstring></argsstring>
+        <name>sField6Name</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="40" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1aede5d86741cf96192df5228c3fae7e59" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField6Value</definition>
+        <argsstring></argsstring>
+        <name>sField6Value</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="41" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1ab5bcc4879744c32a1c3f798e45c34de9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_WebHook_Message::iField6Inline</definition>
+        <argsstring></argsstring>
+        <name>iField6Inline</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="42" column="9" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1adcd42dcbacf76889672ad8f4c2b53306" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField7Name</definition>
+        <argsstring></argsstring>
+        <name>sField7Name</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="43" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1aaca0432ebd98dce6e50d5d992146e94d" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField7Value</definition>
+        <argsstring></argsstring>
+        <name>sField7Value</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="44" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1ac275e0b986065021198979d6c3675e9b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_WebHook_Message::iField7Inline</definition>
+        <argsstring></argsstring>
+        <name>iField7Inline</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="45" column="9" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a420ada6dfc7e696938ab685b8af39a91" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField8Name</definition>
+        <argsstring></argsstring>
+        <name>sField8Name</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="46" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a7db5ee8f6d1cf3ce42bba046d947ff01" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField8Value</definition>
+        <argsstring></argsstring>
+        <name>sField8Value</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="47" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1afba59b7a86a2f2956dde237c882bb4a8" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_WebHook_Message::iField8Inline</definition>
+        <argsstring></argsstring>
+        <name>iField8Inline</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="48" column="9" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a5f0ec56129c27676216f18742d009e92" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField9Name</definition>
+        <argsstring></argsstring>
+        <name>sField9Name</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="49" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a500f02110e23a6c04ba37c4f550a9dc4" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField9Value</definition>
+        <argsstring></argsstring>
+        <name>sField9Value</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="50" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1afd8b5c47c7de32c4c3b29e4111340736" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_WebHook_Message::iField9Inline</definition>
+        <argsstring></argsstring>
+        <name>iField9Inline</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="51" column="9" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a845ba7eadfd2390e6e9acc0db8fd5361" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField10Name</definition>
+        <argsstring></argsstring>
+        <name>sField10Name</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="52" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a8c433df14ee4680cf7016500001fbbce" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_WebHook_Message::sField10Value</definition>
+        <argsstring></argsstring>
+        <name>sField10Value</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="53" column="12" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__WebHook__Message_1a02aa0be5aef4c5608dcbfdeed5184593" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_WebHook_Message::iField10Inline</definition>
+        <argsstring></argsstring>
+        <name>iField10Inline</name>
+        <briefdescription>
+<para><ulink url="https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html">https://birdie0.github.io/discord-webhooks-guide/structure/embed/fields.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="54" column="9" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>For more information on these fields see <ulink url="https://birdie0.github.io/discord-webhooks-guide/">https://birdie0.github.io/discord-webhooks-guide/</ulink>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>URL fields may require <ref refid="group__util_1ga564949f840217db246ad1e3750eb124a" kindref="member">NWNX_Util_EncodeStringForURL()</ref>. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="9" column="27" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="9" bodyend="55"/>
+    <listofallmembers>
+      <member refid="structNWNX__WebHook__Message_1a02aa0be5aef4c5608dcbfdeed5184593" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>iField10Inline</name></member>
+      <member refid="structNWNX__WebHook__Message_1a98c5c51f0229b0428230cd00eb3e582e" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>iField1Inline</name></member>
+      <member refid="structNWNX__WebHook__Message_1a838a7f626332023398ebb5965ac0fdde" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>iField2Inline</name></member>
+      <member refid="structNWNX__WebHook__Message_1a21863d8d913f6716210d0ca835b7b794" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>iField3Inline</name></member>
+      <member refid="structNWNX__WebHook__Message_1aa606b8da37e0dec234e6a7c5f2562838" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>iField4Inline</name></member>
+      <member refid="structNWNX__WebHook__Message_1a57f262917b0edfe78d32d1388bbc1dea" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>iField5Inline</name></member>
+      <member refid="structNWNX__WebHook__Message_1ab5bcc4879744c32a1c3f798e45c34de9" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>iField6Inline</name></member>
+      <member refid="structNWNX__WebHook__Message_1ac275e0b986065021198979d6c3675e9b" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>iField7Inline</name></member>
+      <member refid="structNWNX__WebHook__Message_1afba59b7a86a2f2956dde237c882bb4a8" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>iField8Inline</name></member>
+      <member refid="structNWNX__WebHook__Message_1afd8b5c47c7de32c4c3b29e4111340736" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>iField9Inline</name></member>
+      <member refid="structNWNX__WebHook__Message_1acc31ee95b8eeebba9f5d970bcc796c90" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>iTimestamp</name></member>
+      <member refid="structNWNX__WebHook__Message_1a9761f89d8969406957e196240b676a67" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sAuthorIconURL</name></member>
+      <member refid="structNWNX__WebHook__Message_1a2752ebbb220b5a26142e8f63c2da5e60" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sAuthorName</name></member>
+      <member refid="structNWNX__WebHook__Message_1acda4237df462e2d4503a529154ea5b8b" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sAuthorURL</name></member>
+      <member refid="structNWNX__WebHook__Message_1ac953fbd1f38da318dceff4ee6570bf89" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sAvatarURL</name></member>
+      <member refid="structNWNX__WebHook__Message_1a1e438925f97be57ac69401f43d0e16bf" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sColor</name></member>
+      <member refid="structNWNX__WebHook__Message_1a6cf4f0629f99364bbb1b7196b7e64a0f" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sDescription</name></member>
+      <member refid="structNWNX__WebHook__Message_1a845ba7eadfd2390e6e9acc0db8fd5361" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField10Name</name></member>
+      <member refid="structNWNX__WebHook__Message_1a8c433df14ee4680cf7016500001fbbce" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField10Value</name></member>
+      <member refid="structNWNX__WebHook__Message_1a57a6314cfacf3f4244058402965b1f20" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField1Name</name></member>
+      <member refid="structNWNX__WebHook__Message_1ae6ca50f2fc799a581ea7714864559026" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField1Value</name></member>
+      <member refid="structNWNX__WebHook__Message_1ac94747113373880fe34da76ab9ccba4f" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField2Name</name></member>
+      <member refid="structNWNX__WebHook__Message_1aa1df21fae063b94b82e2f3429410d243" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField2Value</name></member>
+      <member refid="structNWNX__WebHook__Message_1af2a9aa3908d087a99d6d3795047af16a" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField3Name</name></member>
+      <member refid="structNWNX__WebHook__Message_1ad140bcf66224acce998f2d7ca3edd547" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField3Value</name></member>
+      <member refid="structNWNX__WebHook__Message_1a41108b212b8ff86848c53d48ae992619" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField4Name</name></member>
+      <member refid="structNWNX__WebHook__Message_1a014f92efa064359f6360a6230091820c" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField4Value</name></member>
+      <member refid="structNWNX__WebHook__Message_1ab43baea2c02dad7c2b541e76ceb836c9" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField5Name</name></member>
+      <member refid="structNWNX__WebHook__Message_1af237da5c3358bf7ba843609f3e5522ad" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField5Value</name></member>
+      <member refid="structNWNX__WebHook__Message_1afd77404e0c5eca11bf383c50896d276e" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField6Name</name></member>
+      <member refid="structNWNX__WebHook__Message_1aede5d86741cf96192df5228c3fae7e59" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField6Value</name></member>
+      <member refid="structNWNX__WebHook__Message_1adcd42dcbacf76889672ad8f4c2b53306" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField7Name</name></member>
+      <member refid="structNWNX__WebHook__Message_1aaca0432ebd98dce6e50d5d992146e94d" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField7Value</name></member>
+      <member refid="structNWNX__WebHook__Message_1a420ada6dfc7e696938ab685b8af39a91" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField8Name</name></member>
+      <member refid="structNWNX__WebHook__Message_1a7db5ee8f6d1cf3ce42bba046d947ff01" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField8Value</name></member>
+      <member refid="structNWNX__WebHook__Message_1a5f0ec56129c27676216f18742d009e92" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField9Name</name></member>
+      <member refid="structNWNX__WebHook__Message_1a500f02110e23a6c04ba37c4f550a9dc4" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sField9Value</name></member>
+      <member refid="structNWNX__WebHook__Message_1a5bfee6f02624338caa9e8d4ed51ffa0f" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sFooterText</name></member>
+      <member refid="structNWNX__WebHook__Message_1a78619e981c65b0433becc29dab96fd75" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sFooterURL</name></member>
+      <member refid="structNWNX__WebHook__Message_1ad1a2af81fea4de75d522d42d357f01ee" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sImageURL</name></member>
+      <member refid="structNWNX__WebHook__Message_1a559adb85d80133938e6512d12a69e18f" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sText</name></member>
+      <member refid="structNWNX__WebHook__Message_1a916266d0a0a14ebdcd227583fc006bcf" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sThumbnailURL</name></member>
+      <member refid="structNWNX__WebHook__Message_1a8e2be188c362c871de82fcbe48ee34de" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sTitle</name></member>
+      <member refid="structNWNX__WebHook__Message_1a5b54b5b3f4d996f1921fcd0bf6dd20a4" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sURL</name></member>
+      <member refid="structNWNX__WebHook__Message_1a8ac91259adbe62020d5da36142876618" prot="public" virt="non-virtual"><scope>NWNX_WebHook_Message</scope><name>sUsername</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

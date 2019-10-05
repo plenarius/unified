@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__redis__lib_8nss" kind="file" language="C++">
+    <compoundname>nwnx_redis_lib.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+      <node id="1">
+        <label>Plugins/Redis/NWScript/nwnx_redis_lib.nss</label>
+        <link refid="nwnx__redis__lib_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="user-defined">
+      <header>Redis Results</header>
+      <description><para><anchor id="group__redis_1redis_results"/></para>
+</description>
+      <memberdef kind="variable" id="group__redis_1gab7a672986f612c0474b15884d4ba4714" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REDIS_RESULT_ARRAY</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REDIS_RESULT_ARRAY</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Array result. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="13" column="11" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__redis_1ga89968b106abd0520c9439291e34fefd2" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REDIS_RESULT_ERROR</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REDIS_RESULT_ERROR</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>Error result. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This never appears: it is rewritten into STRING for simplicity reasons. const int NWNX_REDIS_RESULT_BULK_STRING = 2; <simplesect kind="note"><para>You can retrieve errors as strings. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="20" column="11" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__redis_1ga40f853d68bf802c51ab570d4cc10ddab" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REDIS_RESULT_INTEGER</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REDIS_RESULT_INTEGER</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+<para>Integer result. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>This cannot represent integers above 32bit. </para>
+</simplesect>
+<simplesect kind="remark"><para>Use <ref refid="group__redis_1ga54287d82441086cf187b5768af08490d" kindref="member">NWNX_Redis_GetResultAsString()</ref> if you need the string representation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="25" column="11" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__redis_1gaf61bd6787078f168bf56d3bda3bc81e1" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REDIS_RESULT_STRING</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REDIS_RESULT_STRING</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+<para>String result. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="28" column="11" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__redis_1ga10893ed75dce2c2ff59333e71d421fc1" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REDIS_RESULT_NULL</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REDIS_RESULT_NULL</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+<para>Null result. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="31" column="11" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__redis_1ga608f081efa201f75c5d53d40eef4e953" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Redis_GetResultType</definition>
+        <argsstring>(int resultId)</argsstring>
+        <name>NWNX_Redis_GetResultType</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <briefdescription>
+<para>Returns the result type as a int. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="66" column="5" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="66" bodyend="71" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="35" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__redis_1gabedacce0398e0eb1059cc18a7c12451b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Redis_GetArrayLength</definition>
+        <argsstring>(int resultId)</argsstring>
+        <name>NWNX_Redis_GetArrayLength</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <briefdescription>
+<para>Gets the length of the given result. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resultId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The length or 0 if the given result wasn&apos;t a list type. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="73" column="5" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="73" bodyend="78" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="40" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__redis_1gaf069924e1457d70316a166ace03e13b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Redis_GetArrayElement</definition>
+        <argsstring>(int resultId, int idx)</argsstring>
+        <name>NWNX_Redis_GetArrayElement</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+<para>Gets a list entry as a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resultId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index in the list. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The list entry, will return &quot;&quot; if the given result is not a list, or if the requested index is out of bounds. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="81" column="5" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="81" bodyend="87" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="47" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__redis_1ga523105181c8d483ce731648bde0d16f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float NWNX_Redis_GetResultAsFloat</definition>
+        <argsstring>(int resultId)</argsstring>
+        <name>NWNX_Redis_GetResultAsFloat</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <briefdescription>
+<para>Gets the given result as a float. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resultId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The result as a float. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="89" column="7" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="89" bodyend="94" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="52" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="group__redis_1ga1348f79753eb3dd2208edf7e63d84553" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Redis_GetResultAsInt</definition>
+        <argsstring>(int resultId)</argsstring>
+        <name>NWNX_Redis_GetResultAsInt</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <briefdescription>
+<para>Gets the given result as an integer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resultId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The result as an integer. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="96" column="5" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="96" bodyend="101" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="57" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__redis_1ga54287d82441086cf187b5768af08490d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Redis_GetResultAsString</definition>
+        <argsstring>(int resultId)</argsstring>
+        <name>NWNX_Redis_GetResultAsString</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <briefdescription>
+<para>Gets the given result as a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resultId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The result as a string. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="103" column="8" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="103" bodyend="108" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="62" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Allows connection and interfacing with a redis server. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"></codeline>
+<codeline lineno="13"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1gab7a672986f612c0474b15884d4ba4714" kindref="member">NWNX_REDIS_RESULT_ARRAY</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"></codeline>
+<codeline lineno="20"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1ga89968b106abd0520c9439291e34fefd2" kindref="member">NWNX_REDIS_RESULT_ERROR</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1ga40f853d68bf802c51ab570d4cc10ddab" kindref="member">NWNX_REDIS_RESULT_INTEGER</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1gaf61bd6787078f168bf56d3bda3bc81e1" kindref="member">NWNX_REDIS_RESULT_STRING</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1ga10893ed75dce2c2ff59333e71d421fc1" kindref="member">NWNX_REDIS_RESULT_NULL</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="33"></codeline>
+<codeline lineno="35"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1ga608f081efa201f75c5d53d40eef4e953" kindref="member">NWNX_Redis_GetResultType</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1gabedacce0398e0eb1059cc18a7c12451b" kindref="member">NWNX_Redis_GetArrayLength</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1gaf069924e1457d70316a166ace03e13b2" kindref="member">NWNX_Redis_GetArrayElement</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="group__redis_1ga523105181c8d483ce731648bde0d16f4" kindref="member">NWNX_Redis_GetResultAsFloat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1ga1348f79753eb3dd2208edf7e63d84553" kindref="member">NWNX_Redis_GetResultAsInt</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__redis_1ga54287d82441086cf187b5768af08490d" kindref="member">NWNX_Redis_GetResultAsString</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1ga608f081efa201f75c5d53d40eef4e953" kindref="member">NWNX_Redis_GetResultType</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultType&quot;</highlight><highlight class="normal">,<sp/>resultId);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultType&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultType&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1gabedacce0398e0eb1059cc18a7c12451b" kindref="member">NWNX_Redis_GetArrayLength</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultArrayLength&quot;</highlight><highlight class="normal">,<sp/>resultId);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultArrayLength&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultArrayLength&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>last</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1gaf069924e1457d70316a166ace03e13b2" kindref="member">NWNX_Redis_GetArrayElement</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultArrayElement&quot;</highlight><highlight class="normal">,<sp/>resultId);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultArrayElement&quot;</highlight><highlight class="normal">,<sp/>idx);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultArrayElement&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultArrayElement&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="group__redis_1ga523105181c8d483ce731648bde0d16f4" kindref="member">NWNX_Redis_GetResultAsFloat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultAsString&quot;</highlight><highlight class="normal">,<sp/>resultId);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultAsString&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>StringToFloat(NWNX_GetReturnValueString(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultAsString&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__redis_1ga1348f79753eb3dd2208edf7e63d84553" kindref="member">NWNX_Redis_GetResultAsInt</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultAsString&quot;</highlight><highlight class="normal">,<sp/>resultId);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultAsString&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>StringToInt(NWNX_GetReturnValueString(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultAsString&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__redis_1ga54287d82441086cf187b5768af08490d" kindref="member">NWNX_Redis_GetResultAsString</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resultId)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultAsString&quot;</highlight><highlight class="normal">,<sp/>resultId);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultAsString&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueString(</highlight><highlight class="stringliteral">&quot;NWNX_Redis&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;GetResultAsString&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss"/>
+  </compounddef>
+</doxygen>

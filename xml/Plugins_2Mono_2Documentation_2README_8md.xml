@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2Mono_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Mono<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Allow<sp/>users<sp/>to<sp/>see<sp/>sharp.<sp/>More<sp/>specifically,<sp/>this<sp/>plugin<sp/>enables<sp/>developers<sp/>to<sp/>write<sp/>scripts<sp/>in<sp/>C#<sp/>using<sp/>the<sp/>Mono<sp/>framework.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>How<sp/>to<sp/>see<sp/>sharp?</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Follow<sp/>these<sp/>instructions<sp/>to<sp/>add<sp/>the<sp/>Mono<sp/>repository<sp/>to<sp/>your<sp/>apt<sp/>sources:<sp/>https://www.mono-project.com/download/stable/#download-lin-debian</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Make<sp/>sure<sp/>the<sp/>version<sp/>at<sp/>the<sp/>top<sp/>of<sp/>the<sp/>above<sp/>page<sp/>is<sp/>5.16.0<sp/>Stable<sp/>(5.16.0.220).<sp/>If<sp/>it<sp/>isn&apos;t,<sp/>install<sp/>libmono-2.0-dev:i386,<sp/>then<sp/>find<sp/>libmono-2.0.a<sp/>and<sp/>copy<sp/>it<sp/>to<sp/>the<sp/>Plugins/Mono/lib<sp/>folder.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Make<sp/>sure<sp/>you<sp/>have<sp/>the<sp/>mono-complete<sp/>package<sp/>installed.<sp/>The<sp/>version<sp/>of<sp/>the<sp/>package<sp/>MUST<sp/>match<sp/>the<sp/>version<sp/>of<sp/>the<sp/>32-bit<sp/>shared<sp/>library<sp/>from<sp/>the<sp/>step<sp/>above.<sp/>If<sp/>it<sp/>doesn&apos;t,<sp/>you<sp/>may<sp/>encounter<sp/>run-time<sp/>failures.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Make<sp/>sure<sp/>you<sp/>have<sp/>a<sp/>binary<sp/>compiled<sp/>that<sp/>exports<sp/>one<sp/>or<sp/>more<sp/>scripts.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>To<sp/>export<sp/>a<sp/>script,<sp/>follow<sp/>this<sp/>structure,<sp/>where<sp/>the<sp/>class<sp/>name<sp/>is<sp/>the<sp/>name<sp/>of<sp/>the<sp/>.nss<sp/>script<sp/>you<sp/>want<sp/>to<sp/>replace.<sp/>If<sp/>I<sp/>had<sp/>m_hb<sp/>set<sp/>to<sp/>the<sp/>module<sp/>heartbeat<sp/>script,<sp/>with<sp/>the<sp/>following<sp/>code,<sp/>when<sp/>the<sp/>m_hb<sp/>would<sp/>be<sp/>called<sp/>in<sp/>nwscript,<sp/>it<sp/>is<sp/>instead<sp/>called<sp/>in<sp/>C#:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">namespace<sp/>NWN.Scripts</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>class<sp/>m_hb</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static<sp/>void<sp/>Main()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Console.WriteLine(&quot;I<sp/>wrote<sp/>this<sp/>line<sp/>from<sp/>Mono!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">--<sp/>This<sp/>also<sp/>works<sp/>for<sp/>StartingConditionals.<sp/>Just<sp/>give<sp/>your<sp/>main<sp/>function<sp/>a<sp/>return<sp/>value<sp/>as<sp/>such,<sp/>and<sp/>return<sp/>NWScript.TR</highlight></codeline>
+<codeline><highlight class="normal">UE<sp/>or<sp/>NWScript.FALSE.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">static<sp/>int<sp/>Main()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>NWScript.GetLevelByClass(NWScript.CLASS_TYPE_CLERIC,<sp/>NWScript.GetPCSpeaker())<sp/>!=<sp/>0<sp/>?<sp/>NWScript.TRUE<sp/>:<sp/>NWScript.FALSE;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>If<sp/>you<sp/>want<sp/>to<sp/>use<sp/>the<sp/>nwscript<sp/>API,<sp/>make<sp/>sure<sp/>to<sp/>compile<sp/>the<sp/>various<sp/>INTERNAL_*.cs<sp/>files<sp/>in<sp/>the<sp/>CSharpAPI<sp/>folder.<sp/>Here<sp/>are<sp/>some<sp/>examples<sp/>of<sp/>using<sp/>the<sp/>API:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">NWScript.SendMessageToPC(NWScript.GetFirstPC(),<sp/>&quot;Rawr!<sp/>It<sp/>is<sp/>me!<sp/>Mario&quot;);</highlight></codeline>
+<codeline><highlight class="normal">NWScript.DelayCommand(1.0f,<sp/>()<sp/>=&gt;<sp/>NWScript.SendMessageToPC(NWScript.GetFirstPC(),<sp/>&quot;Hello!<sp/>This<sp/>is<sp/>a<sp/>delayed<sp/>command.&quot;));</highlight></codeline>
+<codeline><highlight class="normal">NWScript.AssignCommand(NWScript.GetFirstPC(),<sp/>()<sp/>=&gt;<sp/>NWScript.ActionDoCommand(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>()<sp/>=&gt;<sp/>NWScript.ActionSpeakString(&quot;Hello!<sp/>I<sp/>am<sp/>speaking<sp/>this<sp/>string!&quot;)));</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>To<sp/>compile<sp/>your<sp/>scripts,<sp/>invoke<sp/>csc<sp/>as<sp/>such:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>csc<sp/>-platform:x86<sp/>-t:library<sp/>-out:[yourbinarypathgoeshere.so]<sp/>INTERNAL_Internal.cs<sp/>[other<sp/>INTERNAL_*.cs<sp/>scripts<sp/>go<sp/>here<sp/>...]<sp/>[your<sp/>scripts<sp/>go<sp/>here<sp/>...]</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>If<sp/>something<sp/>goes<sp/>wrong,<sp/>try<sp/>setting<sp/>the<sp/>log<sp/>level<sp/>to<sp/>7.<sp/>There<sp/>is<sp/>extensive<sp/>(and<sp/>slow,<sp/>so<sp/>don&apos;t<sp/>always<sp/>leave<sp/>it<sp/>on)<sp/>debug<sp/>logging<sp/>available.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Remote<sp/>Debugging</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">It<sp/>is<sp/>possible<sp/>to<sp/>remotely<sp/>debug<sp/>running<sp/>code<sp/>on<sp/>your<sp/>server<sp/>through<sp/>Visual<sp/>Studio<sp/>2017.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>Install<sp/>VSMonoDebugger<sp/>extension.<sp/>(https://marketplace.visualstudio.com/items?itemName=GordianDotNet.VSMonoDebugger0d62)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Setup<sp/>the<sp/>VSMonoDebugger<sp/>options<sp/>within<sp/>VS2017<sp/>(Mono<sp/>-&gt;<sp/>Settings...)<sp/>such<sp/>that<sp/>it<sp/>has<sp/>the<sp/>correct<sp/>Remote<sp/>Host<sp/>IP.<sp/>Change<sp/>the<sp/>Mono<sp/>Debug<sp/>Port<sp/>to<sp/>10000.<sp/>The<sp/>rest<sp/>of<sp/>the<sp/>options<sp/>do<sp/>not<sp/>matter.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Build<sp/>your<sp/>solution.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Generate<sp/>MDB<sp/>files<sp/>from<sp/>PDB<sp/>files.<sp/>(Mono<sp/>-&gt;<sp/>Build<sp/>Startup<sp/>Project<sp/>with<sp/>MDB<sp/>Files)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Run<sp/>NWNX<sp/>with<sp/>ALLOW_REMOTE_DEBUGGING<sp/>set<sp/>to<sp/>true.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Attach.<sp/>(Mono<sp/>-&gt;<sp/>Attach<sp/>to<sp/>mono<sp/>debugger).</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>If<sp/>your<sp/>breakpoints<sp/>are<sp/>not<sp/>hit,<sp/>the<sp/>MDB<sp/>and<sp/>PDB<sp/>files<sp/>may<sp/>be<sp/>out<sp/>of<sp/>sync.<sp/>On<sp/>your<sp/>server,<sp/>invoke<sp/>`pdb2mdb<sp/>dll_name`<sp/>to<sp/>generate<sp/>an<sp/>up<sp/>to<sp/>date<sp/>MDB.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Limitations</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">There<sp/>is<sp/>no<sp/>support<sp/>for<sp/>hotloading<sp/>yet.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">ASSEMBLY<sp/>[mandatory]:<sp/>The<sp/>path<sp/>to<sp/>the<sp/>compiled<sp/>binary<sp/>containing<sp/>your<sp/>C#<sp/>code.<sp/>Mandatory.</highlight></codeline>
+<codeline><highlight class="normal">SCRIPT_METRICS<sp/>[optional]:<sp/>Whether<sp/>metrics<sp/>are<sp/>exported<sp/>for<sp/>script<sp/>execution<sp/>timings.</highlight></codeline>
+<codeline><highlight class="normal">CLOSURE_METRICS<sp/>[optional]:<sp/>Whether<sp/>metrics<sp/>are<sp/>exported<sp/>for<sp/>closure<sp/>timings.</highlight></codeline>
+<codeline><highlight class="normal">MAIN_LOOP_METRICS<sp/>[optional]:<sp/>Whether<sp/>metrics<sp/>are<sp/>exported<sp/>for<sp/>main<sp/>loop<sp/>tick<sp/>timings.</highlight></codeline>
+<codeline><highlight class="normal">CONFIG_PATH<sp/>[optional]:<sp/>The<sp/>path<sp/>to<sp/>the<sp/>Mono<sp/>config<sp/>file.<sp/>Advanced<sp/>users<sp/>only.</highlight></codeline>
+<codeline><highlight class="normal">BASE_DIRECTORY<sp/>[optional]:<sp/>The<sp/>path<sp/>to<sp/>the<sp/>directory<sp/>where<sp/>your<sp/>code<sp/>lives.<sp/>This<sp/>is<sp/>necessary<sp/>if<sp/>you<sp/>need<sp/>to<sp/>access<sp/>App.config<sp/>files.<sp/>Used<sp/>in<sp/>conjunction<sp/>with<sp/>the<sp/>APP_CONFIG<sp/>environment<sp/>variable.<sp/>Both<sp/>must<sp/>be<sp/>set<sp/>to<sp/>use<sp/>App.config<sp/>files.</highlight></codeline>
+<codeline><highlight class="normal">APP_CONFIG<sp/>[optional]:<sp/>The<sp/>path<sp/>to<sp/>the<sp/>App.config<sp/>file<sp/>used<sp/>for<sp/>your<sp/>project.<sp/>Used<sp/>in<sp/>conjunction<sp/>with<sp/>the<sp/>BASE_DIRECTORY<sp/>environment<sp/>variable.<sp/>Both<sp/>must<sp/>be<sp/>set<sp/>to<sp/>use<sp/>App.config<sp/>files.</highlight></codeline>
+<codeline><highlight class="normal">ALLOW_REMOTE_DEBUGGING<sp/>[optional]:<sp/>If<sp/>specified<sp/>to<sp/>true,<sp/>will<sp/>block<sp/>until<sp/>a<sp/>remote<sp/>debugger<sp/>has<sp/>been<sp/>attached.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Mono/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

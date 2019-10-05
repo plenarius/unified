@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2Player_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Player<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Functions<sp/>exposing<sp/>additional<sp/>player<sp/>properties<sp/>and<sp/>commands.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Function<sp/>Documentation<sp/>and<sp/>Examples</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>SetPersistentLocation()</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>function<sp/>is<sp/>mainly<sp/>used<sp/>so<sp/>after<sp/>a<sp/>server<sp/>restart<sp/>the<sp/>PC<sp/>doesn&apos;t<sp/>need<sp/>to<sp/>load<sp/>the<sp/>starting<sp/>area<sp/>before<sp/>being<sp/>jumped<sp/>to<sp/>their<sp/>persistent<sp/>location.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Another<sp/>example<sp/>usage<sp/>could<sp/>be<sp/>different<sp/>starting<sp/>locations<sp/>for<sp/>new<sp/>characters<sp/>depending<sp/>on<sp/>alignment.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Below<sp/>is<sp/>an<sp/>example<sp/>of<sp/>setting<sp/>a<sp/>player&apos;s<sp/>persistent<sp/>location<sp/>for<sp/>each<sp/>of<sp/>their<sp/>characters<sp/>in<sp/>the<sp/>`NWNX_ON_CLIENT_CONNECT_AFTER`<sp/>event.</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>main()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>object<sp/>oPC<sp/>=<sp/>OBJECT_SELF;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(GetIsDM(oPC))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>string<sp/>sSQL<sp/>=<sp/>&quot;SELECT<sp/>bic_file,<sp/>current_loc<sp/>FROM<sp/>player_tracking<sp/>WHERE<sp/>public_cdkey<sp/>=<sp/>?<sp/>AND<sp/>persistent_locs_loaded<sp/>=<sp/>0&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>string<sp/>sCDKey<sp/>=<sp/>NWNX_Events_GetEventData(&quot;CDKEY&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_SQL_PrepareQuery(sSQL);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedString(0,<sp/>sCDKey);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_SQL_ExecutePreparedQuery();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>nLoaded<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(NWNX_SQL_ReadyToReadNextRow())</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_ReadNextRow();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nLoaded<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>string<sp/>sResRef<sp/>=<sp/>NWNX_SQL_ReadDataInActiveRow(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>location<sp/>lLoc<sp/>=<sp/>NWNXStringToLocation(NWNX_SQL_ReadDataInActiveRow(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>object<sp/>oWP<sp/>=<sp/>CreateObject(OBJECT_TYPE_WAYPOINT,<sp/>&quot;nw_waypoint001&quot;,<sp/>lLoc);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(GetArea(oWP)<sp/>!=<sp/>OBJECT_INVALID)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_Player_SetPersistentLocation(sCDKey,<sp/>sResRef,<sp/>oWP);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(nLoaded)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sSQL<sp/>=<sp/>&quot;UPDATE<sp/>player_tracking<sp/>SET<sp/>persistent_locs_loaded<sp/>=<sp/>1<sp/>WHERE<sp/>public_cdkey<sp/>=<sp/>?&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PrepareQuery(sSQL);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedString(0,<sp/>sCDKey);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_ExecutePreparedQuery();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>this<sp/>example<sp/>make<sp/>you<sp/>would<sp/>make<sp/>sure<sp/>to<sp/>reset<sp/>the<sp/>`persistent_locs_loaded`<sp/>back<sp/>to<sp/>0<sp/>for<sp/>all<sp/>players<sp/>`OnModuleLoad`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>string<sp/>sSQL<sp/>=<sp/>&quot;UPDATE<sp/>player_tracking<sp/>SET<sp/>persistent_locs_loaded<sp/>=<sp/>0&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PrepareQuery(sSQL);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_ExecutePreparedQuery();</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Player/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

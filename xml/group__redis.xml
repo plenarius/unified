@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__redis" kind="group">
+    <compoundname>redis</compoundname>
+    <title>Redis</title>
+    <innerfile refid="nwnx__redis_8nss">nwnx_redis.nss</innerfile>
+    <innerfile refid="nwnx__redis__lib_8nss">nwnx_redis_lib.nss</innerfile>
+    <innerfile refid="nwnx__redis__ps_8nss">nwnx_redis_ps.nss</innerfile>
+    <innerfile refid="on__pubsub_8nss">on_pubsub.nss</innerfile>
+      <sectiondef kind="user-defined">
+      <header>Redis Results</header>
+      <description><para><anchor id="group__redis_1redis_results"/></para>
+</description>
+      <memberdef kind="variable" id="group__redis_1gab7a672986f612c0474b15884d4ba4714" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REDIS_RESULT_ARRAY</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REDIS_RESULT_ARRAY</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Array result. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="13" column="11" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__redis_1ga89968b106abd0520c9439291e34fefd2" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REDIS_RESULT_ERROR</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REDIS_RESULT_ERROR</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>Error result. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This never appears: it is rewritten into STRING for simplicity reasons. const int NWNX_REDIS_RESULT_BULK_STRING = 2; <simplesect kind="note"><para>You can retrieve errors as strings. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="20" column="11" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__redis_1ga40f853d68bf802c51ab570d4cc10ddab" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REDIS_RESULT_INTEGER</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REDIS_RESULT_INTEGER</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+<para>Integer result. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>This cannot represent integers above 32bit. </para>
+</simplesect>
+<simplesect kind="remark"><para>Use <ref refid="group__redis_1ga54287d82441086cf187b5768af08490d" kindref="member">NWNX_Redis_GetResultAsString()</ref> if you need the string representation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="25" column="11" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__redis_1gaf61bd6787078f168bf56d3bda3bc81e1" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REDIS_RESULT_STRING</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REDIS_RESULT_STRING</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+<para>String result. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="28" column="11" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__redis_1ga10893ed75dce2c2ff59333e71d421fc1" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REDIS_RESULT_NULL</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REDIS_RESULT_NULL</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+<para>Null result. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="31" column="11" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__redis_1ga608f081efa201f75c5d53d40eef4e953" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Redis_GetResultType</definition>
+        <argsstring>(int resultId)</argsstring>
+        <name>NWNX_Redis_GetResultType</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <briefdescription>
+<para>Returns the result type as a int. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="66" column="5" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="66" bodyend="71" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="35" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__redis_1gabedacce0398e0eb1059cc18a7c12451b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Redis_GetArrayLength</definition>
+        <argsstring>(int resultId)</argsstring>
+        <name>NWNX_Redis_GetArrayLength</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <briefdescription>
+<para>Gets the length of the given result. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resultId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The length or 0 if the given result wasn&apos;t a list type. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="73" column="5" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="73" bodyend="78" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="40" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__redis_1gaf069924e1457d70316a166ace03e13b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Redis_GetArrayElement</definition>
+        <argsstring>(int resultId, int idx)</argsstring>
+        <name>NWNX_Redis_GetArrayElement</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+<para>Gets a list entry as a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resultId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index in the list. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The list entry, will return &quot;&quot; if the given result is not a list, or if the requested index is out of bounds. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="81" column="5" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="81" bodyend="87" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="47" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__redis_1ga523105181c8d483ce731648bde0d16f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float NWNX_Redis_GetResultAsFloat</definition>
+        <argsstring>(int resultId)</argsstring>
+        <name>NWNX_Redis_GetResultAsFloat</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <briefdescription>
+<para>Gets the given result as a float. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resultId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The result as a float. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="89" column="7" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="89" bodyend="94" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="52" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="group__redis_1ga1348f79753eb3dd2208edf7e63d84553" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Redis_GetResultAsInt</definition>
+        <argsstring>(int resultId)</argsstring>
+        <name>NWNX_Redis_GetResultAsInt</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <briefdescription>
+<para>Gets the given result as an integer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resultId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The result as an integer. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="96" column="5" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="96" bodyend="101" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="57" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__redis_1ga54287d82441086cf187b5768af08490d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Redis_GetResultAsString</definition>
+        <argsstring>(int resultId)</argsstring>
+        <name>NWNX_Redis_GetResultAsString</name>
+        <param>
+          <type>int</type>
+          <declname>resultId</declname>
+        </param>
+        <briefdescription>
+<para>Gets the given result as a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resultId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The result id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The result as a string. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Redis/NWScript/nwnx_redis_lib.nss" line="103" column="8" bodyfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" bodystart="103" bodyend="108" declfile="Plugins/Redis/NWScript/nwnx_redis_lib.nss" declline="62" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Allows connection and interfacing with a redis server. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

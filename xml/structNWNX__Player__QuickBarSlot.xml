@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="structNWNX__Player__QuickBarSlot" kind="struct" language="C++" prot="public">
+    <compoundname>NWNX_Player_QuickBarSlot</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1afcf6328e5234a277b0ba49172cdc8bb9" prot="public" static="no" mutable="no">
+        <type>object</type>
+        <definition>object NWNX_Player_QuickBarSlot::oItem</definition>
+        <argsstring></argsstring>
+        <name>oItem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000053"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="14" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1a3d5171dd8c13dae789950a3e988619a5" prot="public" static="no" mutable="no">
+        <type>object</type>
+        <definition>object NWNX_Player_QuickBarSlot::oSecondaryItem</definition>
+        <argsstring></argsstring>
+        <name>oSecondaryItem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000054"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="15" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1a0600666ebc53dcf8978fdc705307a4b1" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Player_QuickBarSlot::nObjectType</definition>
+        <argsstring></argsstring>
+        <name>nObjectType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000055"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="16" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1ac2d3d25a10df51071e634dbe68aa3cfe" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Player_QuickBarSlot::nMultiClass</definition>
+        <argsstring></argsstring>
+        <name>nMultiClass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000056"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="17" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1a56dcb644edf9084c265a2d701e59362a" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_Player_QuickBarSlot::sResRef</definition>
+        <argsstring></argsstring>
+        <name>sResRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000057"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="18" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1a5585423c0ef44fe9baa1d6e256b16250" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_Player_QuickBarSlot::sCommandLabel</definition>
+        <argsstring></argsstring>
+        <name>sCommandLabel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000058"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="19" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1a3b862612c9ef99a31327bc4eff325f60" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_Player_QuickBarSlot::sCommandLine</definition>
+        <argsstring></argsstring>
+        <name>sCommandLine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000059"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="20" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1a31a5b37e0c667832ae3fa57c97314b4e" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NWNX_Player_QuickBarSlot::sToolTip</definition>
+        <argsstring></argsstring>
+        <name>sToolTip</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000060"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="21" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1a4816df98ce85830f382648ad536f1e59" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Player_QuickBarSlot::nINTParam1</definition>
+        <argsstring></argsstring>
+        <name>nINTParam1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000061"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="22" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1a16178af44fbc703b996ee7d42d73980b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Player_QuickBarSlot::nMetaType</definition>
+        <argsstring></argsstring>
+        <name>nMetaType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000062"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="23" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1ad973e77c76a8bff61f210e4c88c3847a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Player_QuickBarSlot::nDomainLevel</definition>
+        <argsstring></argsstring>
+        <name>nDomainLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000063"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="24" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1ac9251f3b6703b0113937c30477ea0d56" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Player_QuickBarSlot::nAssociateType</definition>
+        <argsstring></argsstring>
+        <name>nAssociateType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000064"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="25" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Player__QuickBarSlot_1a6a017ab874ff47027808370fbc0b571e" prot="public" static="no" mutable="no">
+        <type>object</type>
+        <definition>object NWNX_Player_QuickBarSlot::oAssociate</definition>
+        <argsstring></argsstring>
+        <name>oAssociate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000065"><xreftitle>Todo</xreftitle><xrefdescription><para>Describe </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Player/NWScript/nwnx_player.nss" line="26" column="12" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A quickbar slot. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Player/NWScript/nwnx_player.nss" line="13" column="1" bodyfile="Plugins/Player/NWScript/nwnx_player.nss" bodystart="12" bodyend="27"/>
+    <listofallmembers>
+      <member refid="structNWNX__Player__QuickBarSlot_1ac9251f3b6703b0113937c30477ea0d56" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>nAssociateType</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1ad973e77c76a8bff61f210e4c88c3847a" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>nDomainLevel</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1a4816df98ce85830f382648ad536f1e59" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>nINTParam1</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1a16178af44fbc703b996ee7d42d73980b" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>nMetaType</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1ac2d3d25a10df51071e634dbe68aa3cfe" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>nMultiClass</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1a0600666ebc53dcf8978fdc705307a4b1" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>nObjectType</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1a6a017ab874ff47027808370fbc0b571e" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>oAssociate</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1afcf6328e5234a277b0ba49172cdc8bb9" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>oItem</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1a3d5171dd8c13dae789950a3e988619a5" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>oSecondaryItem</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1a5585423c0ef44fe9baa1d6e256b16250" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>sCommandLabel</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1a3b862612c9ef99a31327bc4eff325f60" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>sCommandLine</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1a56dcb644edf9084c265a2d701e59362a" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>sResRef</name></member>
+      <member refid="structNWNX__Player__QuickBarSlot_1a31a5b37e0c667832ae3fa57c97314b4e" prot="public" virt="non-virtual"><scope>NWNX_Player_QuickBarSlot</scope><name>sToolTip</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

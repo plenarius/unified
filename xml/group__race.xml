@@ -1,0 +1,505 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__race" kind="group">
+    <compoundname>race</compoundname>
+    <title>Race</title>
+    <innerfile refid="nwnx__race_8nss">nwnx_race.nss</innerfile>
+    <innerfile refid="nwnx__race__2da_8nss">nwnx_race_2da.nss</innerfile>
+      <sectiondef kind="user-defined">
+      <header>Racial Modifiers</header>
+      <description><para><anchor id="group__race_1racial_modifiers"/></para>
+</description>
+      <memberdef kind="variable" id="group__race_1ga4a698ce24f3f663775a8d418131edaeb" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_INVALID</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_INVALID</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="13" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1gaab7fe982751745821c2b1dd3e82ae243" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_AB</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_AB</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="14" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1ga92ca11baf510761c396c25cd7cd6e62d" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_ABVSRACE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_ABVSRACE</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="15" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1ga2764ca25d58580933fe71c0643636eb4" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_AC</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_AC</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="16" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1ga268bd591313ab1a0f01133d4f9b18b5f" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_ACVSRACE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_ACVSRACE</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="17" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1ga05f5f5062977be3cd819c12fa136f9c6" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_CONCEALMENT</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_CONCEALMENT</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="18" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1ga591c32b5b9d309a8b897d16658e6bcc7" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_DMGIMMUNITY</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_DMGIMMUNITY</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="19" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1gaecbf8ca60128917d1b58e383baac3c9f" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_DMGREDUCTION</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_DMGREDUCTION</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="20" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1gae47769a7dbf97fa4c3d31343042a622b" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_DMGRESIST</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_DMGRESIST</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="21" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1gada07b335c83ba70aace0c190c61b8ed8" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_FEAT</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_FEAT</name>
+        <initializer>= 9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="22" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1ga9e56c1d901b4598d5e8d878d33f50c04" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_FEATUSAGE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_FEATUSAGE</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="23" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1gaa09f8a7cc99ac652243d1a8f1a775e56" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_IMMUNITY</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_IMMUNITY</name>
+        <initializer>= 11</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="24" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1ga905efddc4ef7f929e7c042ceaf1188cf" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_INITIATIVE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_INITIATIVE</name>
+        <initializer>= 12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="25" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1ga11db9a14433e9a8e666a5d6b1dc807f7" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_MOVEMENTSPEED</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_MOVEMENTSPEED</name>
+        <initializer>= 13</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="26" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1gabd27e620484c5db0a9688c506efdd000" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_RACE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_RACE</name>
+        <initializer>= 14</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="27" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1gaeaa1fa14d18cc965b1d83e7c1eb3d148" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_REGENERATION</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_REGENERATION</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="28" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1ga2718944b0d93d529f781397ce0b8dd4f" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_SAVE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_SAVE</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="29" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1gad7d6db9078587bc95ac28f2a26636c30" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_SAVEVSRACE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_SAVEVSRACE</name>
+        <initializer>= 17</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="30" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1gaa582f61c2877b0d4f74baf31521986d5" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_SAVEVSTYPE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_SAVEVSTYPE</name>
+        <initializer>= 18</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="31" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1gabbb3a1a6bb65b47f9345f6f7d6e782d7" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_SKILL</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_SKILL</name>
+        <initializer>= 19</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="32" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1ga4afefee1c243d6ee74587ff54bef3b07" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_SPELLIMMUNITY</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_SPELLIMMUNITY</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="33" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1ga46636fc9b03e0379a27ba89dc691b4ad" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_SRCHARGEN</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_SRCHARGEN</name>
+        <initializer>= 21</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="34" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__race_1gaf0bc6f3762b6b4eb7d4c8e0618d182cf" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RACE_MODIFIER_SRINCLEVEL</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RACE_MODIFIER_SRINCLEVEL</name>
+        <initializer>= 22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="35" column="11" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__race_1gae13fcdcf250a00412a0f61c5f2b48f8d" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Race</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Race</name>
+        <initializer>= &quot;NWNX_Race&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="7" column="14" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__race_1ga008aebe423e8f5f148e3119c8459d2b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Race_SetRacialModifier</definition>
+        <argsstring>(int iRace, int iMod, int iParam1, int iParam2=0xDEADBEEF, int iParam3=0xDEADBEEF)</argsstring>
+        <name>NWNX_Race_SetRacialModifier</name>
+        <param>
+          <type>int</type>
+          <declname>iRace</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iMod</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iParam1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iParam2</declname>
+          <defval>0xDEADBEEF</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iParam3</declname>
+          <defval>0xDEADBEEF</defval>
+        </param>
+        <briefdescription>
+<para>Sets a racial modifier. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iRace</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The RACIALTYPE_ constant or value in racialtypes.2da. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iMod</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="group__race_1racial_modifiers" kindref="member">racial modifier</ref> to set. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iParam1</parametername>
+<parametername>iParam2</parametername>
+<parametername>iParam3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The parameters for this racial modifier. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="51" column="6" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="51" bodyend="62" declfile="Plugins/Race/NWScript/nwnx_race.nss" declline="42" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__race_1gabaf553f259396e06a67b0e580d2ecaae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Race_GetParentRace</definition>
+        <argsstring>(int iRace)</argsstring>
+        <name>NWNX_Race_GetParentRace</name>
+        <param>
+          <type>int</type>
+          <declname>iRace</declname>
+        </param>
+        <briefdescription>
+<para>Gets the parent race for a race. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iRace</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The race to check for a parent. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The parent race if applicable, if not it just returns the race passed in. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race.nss" line="64" column="5" bodyfile="Plugins/Race/NWScript/nwnx_race.nss" bodystart="64" bodyend="72" declfile="Plugins/Race/NWScript/nwnx_race.nss" declline="47" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__race_1gae2d72337de73db7e5cd65ad47ae73c48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Race_GetModifierConstant</definition>
+        <argsstring>(string raceMod)</argsstring>
+        <name>NWNX_Race_GetModifierConstant</name>
+        <param>
+          <type>string</type>
+          <declname>raceMod</declname>
+        </param>
+        <briefdescription>
+<para>Translate a modifier type from a string to its constant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>raceMod</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The string representation of the constant. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The constant for the race modifier. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race_2da.nss" line="18" column="5" bodyfile="Plugins/Race/NWScript/nwnx_race_2da.nss" bodystart="18" bodyend="43" declfile="Plugins/Race/NWScript/nwnx_race_2da.nss" declline="11" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__race_1gab804f90ff990b3ea62d3f37ee4cbbf1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Race_LoadRacialModifiers</definition>
+        <argsstring>(string sColumnName=&quot;RacialModsTable&quot;)</argsstring>
+        <name>NWNX_Race_LoadRacialModifiers</name>
+        <param>
+          <type>string</type>
+          <declname>sColumnName</declname>
+          <defval>&quot;RacialModsTable&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Loops through racialtypes.2da and checks for a the column for racial modifications and sets them. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Requires <ref refid="group__util_1gaed488173b6e22ef52c888d8fe542440f" kindref="member">NWNX_Util_Get2DARowCount()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Race/NWScript/nwnx_race_2da.nss" line="45" column="6" bodyfile="Plugins/Race/NWScript/nwnx_race_2da.nss" bodystart="45" bodyend="69" declfile="Plugins/Race/NWScript/nwnx_race_2da.nss" declline="16" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Define racial and subrace characteristics. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

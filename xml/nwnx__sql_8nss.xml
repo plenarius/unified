@@ -1,0 +1,732 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__sql_8nss" kind="file" language="C++">
+    <compoundname>nwnx_sql.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+      <node id="1">
+        <label>Plugins/SQL/NWScript/nwnx_sql.nss</label>
+        <link refid="nwnx__sql_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__sql_1ga66d8b47aa6f6afd6f90bfc9b16a9a474" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_SQL</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SQL</name>
+        <initializer>= &quot;NWNX_SQL&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="7" column="14" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__sql_1gae2e0e27014d82accfe4a0e510720515f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_SQL_PrepareQuery</definition>
+        <argsstring>(string query)</argsstring>
+        <name>NWNX_SQL_PrepareQuery</name>
+        <param>
+          <type>string</type>
+          <declname>query</declname>
+        </param>
+        <briefdescription>
+<para>Prepares the provided query for execution. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This does not execute the query. Will also clear any previous state. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>query</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The query to prepare. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the query was successfully prepared. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="101" column="5" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="101" bodyend="108" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="13" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1gab7ec4280f37f01bafe8ce01f30cc7f13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_SQL_ExecutePreparedQuery</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_SQL_ExecutePreparedQuery</name>
+        <briefdescription>
+<para>Executes a query which has been prepared. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The ID of this query if successful, else FALSE. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="110" column="5" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="110" bodyend="116" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="17" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1gad50edb1ed094961a96ef95f8099993ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_SQL_ExecuteQuery</definition>
+        <argsstring>(string query)</argsstring>
+        <name>NWNX_SQL_ExecuteQuery</name>
+        <param>
+          <type>string</type>
+          <declname>query</declname>
+        </param>
+        <briefdescription>
+<para>Directly execute an SQL query. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Clears previously prepared query states. </para>
+</simplesect>
+<simplesect kind="return"><para>The ID of this query if successful, else FALSE. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="118" column="5" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="118" bodyend="129" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="22" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1ga38fdaf8c308512015849ac94ffede3bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_SQL_ReadyToReadNextRow</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_SQL_ReadyToReadNextRow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><anchor id="group__sql_1sql_rtrnr"/><simplesect kind="return"><para>TRUE if one or more rows are ready, FALSE otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="131" column="5" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="131" bodyend="137" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="26" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1gaefc1bce86231177b8f972a8c0dc91a0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_SQL_ReadNextRow</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_SQL_ReadNextRow</name>
+        <briefdescription>
+<para>Reads the next row of returned data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><anchor id="group__sql_1sql_rnr"/><simplesect kind="remark"><para>Should only be called after a successful call to <ref refid="group__sql_1sql_rtrnr" kindref="member">NWNX_SQL_ReadyToReadNextRow()</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="139" column="6" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="139" bodyend="144" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="31" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1ga60dd9ffe0369ff795d4e375452edec51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_SQL_ReadDataInActiveRow</definition>
+        <argsstring>(int column=0)</argsstring>
+        <name>NWNX_SQL_ReadDataInActiveRow</name>
+        <param>
+          <type>int</type>
+          <declname>column</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>column</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The column to read in the active row. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Data at the nth (0-based) column of the active row. </para>
+</simplesect>
+<simplesect kind="remark"><para>Should only be called after a successful call to <ref refid="group__sql_1sql_rnr" kindref="member">NWNX_SQL_ReadNextRow()</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="146" column="8" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="146" bodyend="153" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="36" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1ga7c23e812ad23b10c0906c55941edf930" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_SQL_PreparedInt</definition>
+        <argsstring>(int position, int value)</argsstring>
+        <name>NWNX_SQL_PreparedInt</name>
+        <param>
+          <type>int</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Set the int value of a prepared statement at given position. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The nth ? in a prepared statement. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="156" column="6" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="156" bodyend="163" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="41" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1ga585546f0c7907cecde5a59508cbf4535" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_SQL_PreparedString</definition>
+        <argsstring>(int position, string value)</argsstring>
+        <name>NWNX_SQL_PreparedString</name>
+        <param>
+          <type>int</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Set the string value of a prepared statement at given position. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The nth ? in a prepared statement. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="164" column="6" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="164" bodyend="172" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="46" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1ga50f4a5ce37b584e884d69537338474ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_SQL_PreparedFloat</definition>
+        <argsstring>(int position, float value)</argsstring>
+        <name>NWNX_SQL_PreparedFloat</name>
+        <param>
+          <type>int</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Set the float value of a prepared statement at given position. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The nth ? in a prepared statement. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="173" column="6" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="173" bodyend="181" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="51" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1ga99d7c8b847ee2a8fb1103163a33f0f45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_SQL_PreparedObjectId</definition>
+        <argsstring>(int position, object value)</argsstring>
+        <name>NWNX_SQL_PreparedObjectId</name>
+        <param>
+          <type>int</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Set the ObjectId value of a prepared statement at given position. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The nth ? in a prepared statement. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="182" column="6" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="182" bodyend="190" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="56" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1ga2e14ee8c124bb36c70e65314d5c1f298" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_SQL_PreparedObjectFull</definition>
+        <argsstring>(int position, object value)</argsstring>
+        <name>NWNX_SQL_PreparedObjectFull</name>
+        <param>
+          <type>int</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Set the full serialized object value of a prepared statement at given position. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The nth ? in a prepared statement. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="191" column="6" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="191" bodyend="198" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="61" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1gaf4eea3861e1332019eb602926a9ed497" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>object</type>
+        <definition>object NWNX_SQL_ReadFullObjectInActiveRow</definition>
+        <argsstring>(int column=0, object owner=OBJECT_INVALID, float x=0.0, float y=0.0, float z=0.0)</argsstring>
+        <name>NWNX_SQL_ReadFullObjectInActiveRow</name>
+        <param>
+          <type>int</type>
+          <declname>column</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>owner</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+          <defval>0.0</defval>
+        </param>
+        <briefdescription>
+<para>Like NWNX_SQL_ReadDataInActiveRow, but for full serialized objects. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The object will be deserialized and created in the game. New object ID is returned.</para>
+<para>The exact behavior depends on type of deserialized object and owner object:<itemizedlist>
+<listitem><para>If object is an item, and owner if placeable, creature or container, the item will be created in its inventory</para>
+</listitem><listitem><para>If owner is an area, the object will be created on the ground at Vector(x,y,z)</para>
+</listitem><listitem><para>Otherwise, the object will be created outside the world and needs to be ported manually.</para>
+</listitem></itemizedlist>
+</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>column</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The column to read in the active row. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>owner</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The owner of the object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+<parametername>y</parametername>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The vector for objects to be placed in areas. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The deserialized object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="200" column="8" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="200" bodyend="211" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="76" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1ga8ef34d627cbf32714b82bbc11b201665" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_SQL_GetAffectedRows</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_SQL_GetAffectedRows</name>
+        <briefdescription>
+<para>Gets the rows affected by a query. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>This command is for non-row-based statements like INSERT, UPDATE, DELETE, etc. </para>
+</simplesect>
+<simplesect kind="return"><para>Number of rows affected by SQL statement or -1 if the query was not non-row-based. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="213" column="5" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="213" bodyend="219" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="81" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1ga4fbbffe1e86ad0e677185395b52949f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_SQL_GetDatabaseType</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_SQL_GetDatabaseType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the database type. <simplesect kind="return"><para>The database type we&apos;re interacting with. </para>
+</simplesect>
+<simplesect kind="remark"><para>This is the same value as the value of NWNX_SQL_TYPE environment variable. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="221" column="8" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="221" bodyend="227" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="86" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1ga62eac22694f19682a18f6e01a5bc6e02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_SQL_DestroyPreparedQuery</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_SQL_DestroyPreparedQuery</name>
+        <briefdescription>
+<para>Free any resources attached to an existing prepared query. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>Resources are automatically freed when a new query is prepared, so calling this isn&apos;t necessary. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="229" column="6" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="229" bodyend="234" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="90" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1gae466d7b9d1eaa42f683115d6aa94f27b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_SQL_GetLastError</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_SQL_GetLastError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The last error message generated by the database. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="236" column="8" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="236" bodyend="242" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="93" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__sql_1ga20bd6aab821d657863d4ae05758536d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_SQL_GetPreparedQueryParamCount</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_SQL_GetPreparedQueryParamCount</name>
+        <briefdescription>
+<para>Gets the number of parameteres expected by a prepared query. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Returns the number of parameters expected by the prepared query or -1 if no query is prepared. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SQL/NWScript/nwnx_sql.nss" line="244" column="5" bodyfile="Plugins/SQL/NWScript/nwnx_sql.nss" bodystart="244" bodyend="250" declfile="Plugins/SQL/NWScript/nwnx_sql.nss" declline="97" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_SQL<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_SQL&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gae2e0e27014d82accfe4a0e510720515f" kindref="member">NWNX_SQL_PrepareQuery</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>query);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gab7ec4280f37f01bafe8ce01f30cc7f13" kindref="member">NWNX_SQL_ExecutePreparedQuery</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gad50edb1ed094961a96ef95f8099993ef" kindref="member">NWNX_SQL_ExecuteQuery</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>query);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga38fdaf8c308512015849ac94ffede3bb" kindref="member">NWNX_SQL_ReadyToReadNextRow</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gaefc1bce86231177b8f972a8c0dc91a0b" kindref="member">NWNX_SQL_ReadNextRow</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga60dd9ffe0369ff795d4e375452edec51" kindref="member">NWNX_SQL_ReadDataInActiveRow</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column<sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga7c23e812ad23b10c0906c55941edf930" kindref="member">NWNX_SQL_PreparedInt</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga585546f0c7907cecde5a59508cbf4535" kindref="member">NWNX_SQL_PreparedString</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga50f4a5ce37b584e884d69537338474ea" kindref="member">NWNX_SQL_PreparedFloat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga99d7c8b847ee2a8fb1103163a33f0f45" kindref="member">NWNX_SQL_PreparedObjectId</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga2e14ee8c124bb36c70e65314d5c1f298" kindref="member">NWNX_SQL_PreparedObjectFull</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>value);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gaf4eea3861e1332019eb602926a9ed497" kindref="member">NWNX_SQL_ReadFullObjectInActiveRow</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column<sp/>=<sp/>0,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>owner<sp/>=<sp/>OBJECT_INVALID,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z<sp/>=<sp/>0.0);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga8ef34d627cbf32714b82bbc11b201665" kindref="member">NWNX_SQL_GetAffectedRows</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga4fbbffe1e86ad0e677185395b52949f5" kindref="member">NWNX_SQL_GetDatabaseType</ref>();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga62eac22694f19682a18f6e01a5bc6e02" kindref="member">NWNX_SQL_DestroyPreparedQuery</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gae466d7b9d1eaa42f683115d6aa94f27b" kindref="member">NWNX_SQL_GetLastError</ref>();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga20bd6aab821d657863d4ae05758536d3" kindref="member">NWNX_SQL_GetPreparedQueryParamCount</ref>();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gae2e0e27014d82accfe4a0e510720515f" kindref="member">NWNX_SQL_PrepareQuery</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>query)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PREPARE_QUERY&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_SQL,<sp/>sFunc,<sp/>query);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gab7ec4280f37f01bafe8ce01f30cc7f13" kindref="member">NWNX_SQL_ExecutePreparedQuery</ref>()</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;EXECUTE_PREPARED_QUERY&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gad50edb1ed094961a96ef95f8099993ef" kindref="member">NWNX_SQL_ExecuteQuery</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>query)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Note:<sp/>the<sp/>implementation<sp/>might<sp/>change<sp/>as<sp/>support<sp/>for<sp/>more<sp/>SQL<sp/>targets<sp/>arrives.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__sql_1gae2e0e27014d82accfe4a0e510720515f" kindref="member">NWNX_SQL_PrepareQuery</ref>(query))</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/><ref refid="group__sql_1gab7ec4280f37f01bafe8ce01f30cc7f13" kindref="member">NWNX_SQL_ExecutePreparedQuery</ref>();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__sql_1ga62eac22694f19682a18f6e01a5bc6e02" kindref="member">NWNX_SQL_DestroyPreparedQuery</ref>();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>FALSE;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga38fdaf8c308512015849ac94ffede3bb" kindref="member">NWNX_SQL_ReadyToReadNextRow</ref>()</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;READY_TO_READ_NEXT_ROW&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gaefc1bce86231177b8f972a8c0dc91a0b" kindref="member">NWNX_SQL_ReadNextRow</ref>()</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;READ_NEXT_ROW&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga60dd9ffe0369ff795d4e375452edec51" kindref="member">NWNX_SQL_ReadDataInActiveRow</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column<sp/>=<sp/>0)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;READ_DATA_IN_ACTIVE_ROW&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SQL,<sp/>sFunc,<sp/>column);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueString(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga7c23e812ad23b10c0906c55941edf930" kindref="member">NWNX_SQL_PreparedInt</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PREPARED_INT&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SQL,<sp/>sFunc,<sp/>value);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SQL,<sp/>sFunc,<sp/>position);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga585546f0c7907cecde5a59508cbf4535" kindref="member">NWNX_SQL_PreparedString</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>value)</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PREPARED_STRING&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_SQL,<sp/>sFunc,<sp/>value);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SQL,<sp/>sFunc,<sp/>position);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga50f4a5ce37b584e884d69537338474ea" kindref="member">NWNX_SQL_PreparedFloat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value)</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PREPARED_FLOAT&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_SQL,<sp/>sFunc,<sp/>value);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SQL,<sp/>sFunc,<sp/>position);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga99d7c8b847ee2a8fb1103163a33f0f45" kindref="member">NWNX_SQL_PreparedObjectId</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>value)</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PREPARED_OBJECT_ID&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_SQL,<sp/>sFunc,<sp/>value);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SQL,<sp/>sFunc,<sp/>position);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga2e14ee8c124bb36c70e65314d5c1f298" kindref="member">NWNX_SQL_PreparedObjectFull</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>position,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>value)</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PREPARED_OBJECT_FULL&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_SQL,<sp/>sFunc,<sp/>value);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SQL,<sp/>sFunc,<sp/>position);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gaf4eea3861e1332019eb602926a9ed497" kindref="member">NWNX_SQL_ReadFullObjectInActiveRow</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column<sp/>=<sp/>0,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>owner<sp/>=<sp/>OBJECT_INVALID,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>0.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>0.0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z<sp/>=<sp/>0.0)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;READ_FULL_OBJECT_IN_ACTIVE_ROW&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_SQL,<sp/>sFunc,<sp/>z);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_SQL,<sp/>sFunc,<sp/>y);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_SQL,<sp/>sFunc,<sp/>x);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_SQL,<sp/>sFunc,<sp/>owner);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_SQL,<sp/>sFunc,<sp/>column);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueObject(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga8ef34d627cbf32714b82bbc11b201665" kindref="member">NWNX_SQL_GetAffectedRows</ref>()</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GET_AFFECTED_ROWS&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga4fbbffe1e86ad0e677185395b52949f5" kindref="member">NWNX_SQL_GetDatabaseType</ref>()</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GET_DATABASE_TYPE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueString(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga62eac22694f19682a18f6e01a5bc6e02" kindref="member">NWNX_SQL_DestroyPreparedQuery</ref>()</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;DESTROY_PREPARED_QUERY&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__sql_1gae466d7b9d1eaa42f683115d6aa94f27b" kindref="member">NWNX_SQL_GetLastError</ref>()</highlight></codeline>
+<codeline lineno="237"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GET_LAST_ERROR&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueString(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__sql_1ga20bd6aab821d657863d4ae05758536d3" kindref="member">NWNX_SQL_GetPreparedQueryParamCount</ref>()</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GET_PREPARED_QUERY_PARAM_COUNT&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_SQL,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/SQL/NWScript/nwnx_sql.nss"/>
+  </compounddef>
+</doxygen>

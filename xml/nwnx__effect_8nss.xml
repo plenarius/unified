@@ -1,0 +1,400 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__effect_8nss" kind="file" language="C++">
+    <compoundname>nwnx_effect.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Plugins/Effect/NWScript/nwnx_effect.nss</label>
+        <link refid="nwnx__effect_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structNWNX__EffectUnpacked" prot="public">NWNX_EffectUnpacked</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__effect_1ga92cd5f42fe610803f30f5383242cd6cc" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Effect</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Effect</name>
+        <initializer>= &quot;NWNX_Effect&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="7" column="14" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__effect_1ga10a9c2babd8ee53cf383342585b239e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref></type>
+        <definition>struct NWNX_EffectUnpacked NWNX_Effect_UnpackEffect</definition>
+        <argsstring>(effect e)</argsstring>
+        <name>NWNX_Effect_UnpackEffect</name>
+        <param>
+          <type>effect</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Convert native effect type to unpacked structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The effect to convert. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A constructed <ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="84" column="8" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="88" bodyend="142" declfile="Plugins/Effect/NWScript/nwnx_effect.nss" declline="7" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__effect_1ga8c7e4f71ab7b12105e5051ec90e9fd2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>effect</type>
+        <definition>effect NWNX_Effect_PackEffect</definition>
+        <argsstring>(struct NWNX_EffectUnpacked e)</argsstring>
+        <name>NWNX_Effect_PackEffect</name>
+        <param>
+          <type>struct <ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref></type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Convert unpacked effect structure to native type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref> structure to convert. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The effect. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="143" column="8" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="143" bodyend="194" declfile="Plugins/Effect/NWScript/nwnx_effect.nss" declline="66" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__effect_1ga3c6b1b67f4bd4332f8b2b4fdf8217aec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>effect</type>
+        <definition>effect NWNX_Effect_SetEffectExpiredScript</definition>
+        <argsstring>(effect e, string script, string data=&quot;&quot;)</argsstring>
+        <name>NWNX_Effect_SetEffectExpiredScript</name>
+        <param>
+          <type>effect</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>script</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>data</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Set a script with optional data that runs when an effect expires. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The effect. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>script</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The script to run when the effect expires. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Any other data you wish to send back to the script. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="remark"><para>OBJECT_SELF in the script is the object the effect is applied to. </para>
+</simplesect>
+<simplesect kind="note"><para>Only works for TEMPORARY and PERMANENT effects applied to an object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="196" column="8" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="196" bodyend="207" declfile="Plugins/Effect/NWScript/nwnx_effect.nss" declline="74" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__effect_1gabb4f9e4e4b8315cda42c1e7dc4d2dff3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Effect_GetEffectExpiredData</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Effect_GetEffectExpiredData</name>
+        <briefdescription>
+<para>Get the data set with <ref refid="group__effect_1ga3c6b1b67f4bd4332f8b2b4fdf8217aec" kindref="member">NWNX_Effect_SetEffectExpiredScript()</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Should only be called from a script set with <ref refid="group__effect_1ga3c6b1b67f4bd4332f8b2b4fdf8217aec" kindref="member">NWNX_Effect_SetEffectExpiredScript()</ref>. </para>
+</simplesect>
+<simplesect kind="return"><para>The data attached to the effect. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="209" column="8" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="209" bodyend="216" declfile="Plugins/Effect/NWScript/nwnx_effect.nss" declline="79" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__effect_1ga9dfcfd6d65f0e22b66dd9c6b51df5484" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>object</type>
+        <definition>object NWNX_Effect_GetEffectExpiredCreator</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Effect_GetEffectExpiredCreator</name>
+        <briefdescription>
+<para>Get the effect creator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Should only be called from a script set with <ref refid="group__effect_1ga3c6b1b67f4bd4332f8b2b4fdf8217aec" kindref="member">NWNX_Effect_SetEffectExpiredScript()</ref>. </para>
+</simplesect>
+<simplesect kind="return"><para>The object from which the effect originated. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Effect/NWScript/nwnx_effect.nss" line="218" column="8" bodyfile="Plugins/Effect/NWScript/nwnx_effect.nss" bodystart="218" bodyend="225" declfile="Plugins/Effect/NWScript/nwnx_effect.nss" declline="84" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_Effect<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_Effect&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="structNWNX__EffectUnpacked" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ae00c5b3c72a17aa8a7678027ec4befba" kindref="member">nEffectId</ref>;<sp/></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a50ac28a82740b466e44088470b411582" kindref="member">nType</ref>;<sp/></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ab31d1e6bf3a66d482598d900eea7f511" kindref="member">nSubType</ref>;<sp/></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ad75877f6bc06555539531b274ac5ad38" kindref="member">fDuration</ref>;<sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1acea15c7894ef079e0afd88bff1948687" kindref="member">nExpiryCalendarDay</ref>;<sp/></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ab8277e33f0c8eb20f2ddb2c4a0aab197" kindref="member">nExpiryTimeOfDay</ref>;<sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a93d6dc6ee232cd675bbde08e5e742f2d" kindref="member">oCreator</ref>;<sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ac51d17dd2a6eb3d1aef501e332b25070" kindref="member">nSpellId</ref>;<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ae72adce7ceb667a20c4baf86bfad47c8" kindref="member">bExpose</ref>;<sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a332fd2e3db2012dc15d2fff35b88332e" kindref="member">bShowIcon</ref>;<sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ab0050c5c672b6bb1f79e0e6860c9f50a" kindref="member">nCasterLevel</ref>;<sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>effect<sp/><ref refid="structNWNX__EffectUnpacked_1afda0d34cd6152afc231de7fd7f9fd374" kindref="member">eLinkLeft</ref>;<sp/></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a6616a557c8c9c73faa051ff023450212" kindref="member">bLinkLeftValid</ref>;<sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>effect<sp/><ref refid="structNWNX__EffectUnpacked_1ab8aea15f6489112deb7f74f45b26f9c7" kindref="member">eLinkRight</ref>;<sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a14f3744ff2467b6314841a0cd2e87350" kindref="member">bLinkRightValid</ref>;<sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1aeb27613b9c0d7c2fcc075338af57900e" kindref="member">nNumIntegers</ref>;<sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a56c93a414f686f430db204b2cc5d74c5" kindref="member">nParam0</ref>;<sp/></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a035886117265673ac6582080975be4e0" kindref="member">nParam1</ref>;<sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1aef415541690d780a441ef95f6ceedb92" kindref="member">nParam2</ref>;<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a5ed11b2fb51d8013abbf02a62fa3abef" kindref="member">nParam3</ref>;<sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a93c97b987314aa85431095de37e9be5e" kindref="member">nParam4</ref>;<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a85df1dde50a90a21f05b1733f14f9ce0" kindref="member">nParam5</ref>;<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ad8097645225ad296b43941659c604b35" kindref="member">nParam6</ref>;<sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a55622130bb142447946053ce2d26743c" kindref="member">nParam7</ref>;<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a35f34194735bf87011027e76349b7074" kindref="member">fParam0</ref>;<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1aa78592d4b82d8395fe3552333271a315" kindref="member">fParam1</ref>;<sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a7f21f59f525f1dc6ea93333c3358f858" kindref="member">fParam2</ref>;<sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ab38506290be8f1df06a216ee0c4756d0" kindref="member">fParam3</ref>;<sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a45dba0a5ad4b53d2f57c9b9231094829" kindref="member">sParam0</ref>;<sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a88077f7c3c07fc9e0dc34fe88a2de1b3" kindref="member">sParam1</ref>;<sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ab4cadce754ffff53bfd13edf07d7b7da" kindref="member">sParam2</ref>;<sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a6a53401666ca79d2cbe12e8e8f1183fa" kindref="member">sParam3</ref>;<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a9a5a594ffc65e33b8dc2a914668496b0" kindref="member">sParam4</ref>;<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1af8c0afa7dc0d93eb5597534aacbcbcb7" kindref="member">sParam5</ref>;<sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1adcab854593ccba2dc712abcd0fcbc4bd" kindref="member">oParam0</ref>;<sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ae212b9e53edeadb67a0d56cbaee86993" kindref="member">oParam1</ref>;<sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1aaa72768f0647c1057c9417f82cccfd23" kindref="member">oParam2</ref>;<sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1a099a70008ff66f2a79cd34902104d688" kindref="member">oParam3</ref>;<sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked_1ab019b2443ab59a615e79429ba68dd193" kindref="member">sTag</ref>;<sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref><sp/><ref refid="group__effect_1ga10a9c2babd8ee53cf383342585b239e7" kindref="member">NWNX_Effect_UnpackEffect</ref>(effect<sp/>e);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal">effect<sp/><ref refid="group__effect_1ga8c7e4f71ab7b12105e5051ec90e9fd2e" kindref="member">NWNX_Effect_PackEffect</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref><sp/>e);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal">effect<sp/><ref refid="group__effect_1ga3c6b1b67f4bd4332f8b2b4fdf8217aec" kindref="member">NWNX_Effect_SetEffectExpiredScript</ref>(effect<sp/>e,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>script,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>data<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__effect_1gabb4f9e4e4b8315cda42c1e7dc4d2dff3" kindref="member">NWNX_Effect_GetEffectExpiredData</ref>();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="group__effect_1ga9dfcfd6d65f0e22b66dd9c6b51df5484" kindref="member">NWNX_Effect_GetEffectExpiredCreator</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref><sp/><ref refid="group__effect_1ga10a9c2babd8ee53cf383342585b239e7" kindref="member">NWNX_Effect_UnpackEffect</ref>(effect<sp/>e)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;UnpackEffect&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentEffect(NWNX_Effect,<sp/>sFunc,<sp/>e);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref><sp/>n;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>n.<ref refid="structNWNX__EffectUnpacked_1ab019b2443ab59a615e79429ba68dd193" kindref="member">sTag</ref><sp/>=<sp/>NWNX_GetReturnValueString(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>n.oParam3<sp/>=<sp/>NWNX_GetReturnValueObject(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>n.oParam2<sp/>=<sp/>NWNX_GetReturnValueObject(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>n.oParam1<sp/>=<sp/>NWNX_GetReturnValueObject(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>n.oParam0<sp/>=<sp/>NWNX_GetReturnValueObject(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>n.sParam5<sp/>=<sp/>NWNX_GetReturnValueString(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>n.sParam4<sp/>=<sp/>NWNX_GetReturnValueString(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>n.sParam3<sp/>=<sp/>NWNX_GetReturnValueString(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>n.sParam2<sp/>=<sp/>NWNX_GetReturnValueString(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>n.sParam1<sp/>=<sp/>NWNX_GetReturnValueString(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>n.sParam0<sp/>=<sp/>NWNX_GetReturnValueString(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>n.fParam3<sp/>=<sp/>NWNX_GetReturnValueFloat(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>n.fParam2<sp/>=<sp/>NWNX_GetReturnValueFloat(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>n.fParam1<sp/>=<sp/>NWNX_GetReturnValueFloat(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>n.fParam0<sp/>=<sp/>NWNX_GetReturnValueFloat(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nParam7<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nParam6<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nParam5<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nParam4<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nParam3<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nParam2<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nParam1<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nParam0<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nNumIntegers<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>n.bLinkRightValid<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>n.eLinkRight<sp/>=<sp/>NWNX_GetReturnValueEffect(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>n.bLinkLeftValid<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>n.eLinkLeft<sp/>=<sp/>NWNX_GetReturnValueEffect(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nCasterLevel<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>n.bShowIcon<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>n.bExpose<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nSpellId<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>n.oCreator<sp/>=<sp/>NWNX_GetReturnValueObject(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nExpiryTimeOfDay<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nExpiryCalendarDay<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>n.fDuration<sp/>=<sp/>NWNX_GetReturnValueFloat(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nSubType<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nType<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nEffectId<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>n;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">effect<sp/><ref refid="group__effect_1ga8c7e4f71ab7b12105e5051ec90e9fd2e" kindref="member">NWNX_Effect_PackEffect</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__EffectUnpacked" kindref="compound">NWNX_EffectUnpacked</ref><sp/>e)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PackEffect&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ae00c5b3c72a17aa8a7678027ec4befba" kindref="member">nEffectId</ref>);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a50ac28a82740b466e44088470b411582" kindref="member">nType</ref>);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ab31d1e6bf3a66d482598d900eea7f511" kindref="member">nSubType</ref>);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ad75877f6bc06555539531b274ac5ad38" kindref="member">fDuration</ref>);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1acea15c7894ef079e0afd88bff1948687" kindref="member">nExpiryCalendarDay</ref>);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ab8277e33f0c8eb20f2ddb2c4a0aab197" kindref="member">nExpiryTimeOfDay</ref>);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a93d6dc6ee232cd675bbde08e5e742f2d" kindref="member">oCreator</ref>);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ac51d17dd2a6eb3d1aef501e332b25070" kindref="member">nSpellId</ref>);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ae72adce7ceb667a20c4baf86bfad47c8" kindref="member">bExpose</ref>);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a332fd2e3db2012dc15d2fff35b88332e" kindref="member">bShowIcon</ref>);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ab0050c5c672b6bb1f79e0e6860c9f50a" kindref="member">nCasterLevel</ref>);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentEffect(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1afda0d34cd6152afc231de7fd7f9fd374" kindref="member">eLinkLeft</ref>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a6616a557c8c9c73faa051ff023450212" kindref="member">bLinkLeftValid</ref>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentEffect(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ab8aea15f6489112deb7f74f45b26f9c7" kindref="member">eLinkRight</ref>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a14f3744ff2467b6314841a0cd2e87350" kindref="member">bLinkRightValid</ref>);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1aeb27613b9c0d7c2fcc075338af57900e" kindref="member">nNumIntegers</ref>);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a56c93a414f686f430db204b2cc5d74c5" kindref="member">nParam0</ref>);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a035886117265673ac6582080975be4e0" kindref="member">nParam1</ref>);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1aef415541690d780a441ef95f6ceedb92" kindref="member">nParam2</ref>);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a5ed11b2fb51d8013abbf02a62fa3abef" kindref="member">nParam3</ref>);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a93c97b987314aa85431095de37e9be5e" kindref="member">nParam4</ref>);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a85df1dde50a90a21f05b1733f14f9ce0" kindref="member">nParam5</ref>);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ad8097645225ad296b43941659c604b35" kindref="member">nParam6</ref>);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a55622130bb142447946053ce2d26743c" kindref="member">nParam7</ref>);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a35f34194735bf87011027e76349b7074" kindref="member">fParam0</ref>);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1aa78592d4b82d8395fe3552333271a315" kindref="member">fParam1</ref>);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a7f21f59f525f1dc6ea93333c3358f858" kindref="member">fParam2</ref>);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ab38506290be8f1df06a216ee0c4756d0" kindref="member">fParam3</ref>);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a45dba0a5ad4b53d2f57c9b9231094829" kindref="member">sParam0</ref>);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a88077f7c3c07fc9e0dc34fe88a2de1b3" kindref="member">sParam1</ref>);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ab4cadce754ffff53bfd13edf07d7b7da" kindref="member">sParam2</ref>);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a6a53401666ca79d2cbe12e8e8f1183fa" kindref="member">sParam3</ref>);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a9a5a594ffc65e33b8dc2a914668496b0" kindref="member">sParam4</ref>);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1af8c0afa7dc0d93eb5597534aacbcbcb7" kindref="member">sParam5</ref>);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1adcab854593ccba2dc712abcd0fcbc4bd" kindref="member">oParam0</ref>);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ae212b9e53edeadb67a0d56cbaee86993" kindref="member">oParam1</ref>);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1aaa72768f0647c1057c9417f82cccfd23" kindref="member">oParam2</ref>);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1a099a70008ff66f2a79cd34902104d688" kindref="member">oParam3</ref>);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Effect,<sp/>sFunc,<sp/>e.<ref refid="structNWNX__EffectUnpacked_1ab019b2443ab59a615e79429ba68dd193" kindref="member">sTag</ref>);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueEffect(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal">effect<sp/><ref refid="group__effect_1ga3c6b1b67f4bd4332f8b2b4fdf8217aec" kindref="member">NWNX_Effect_SetEffectExpiredScript</ref>(effect<sp/>e,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>script,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>data<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetEffectExpiredScript&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Effect,<sp/>sFunc,<sp/>data);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Effect,<sp/>sFunc,<sp/>script);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentEffect(NWNX_Effect,<sp/>sFunc,<sp/>e);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueEffect(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__effect_1gabb4f9e4e4b8315cda42c1e7dc4d2dff3" kindref="member">NWNX_Effect_GetEffectExpiredData</ref>()</highlight></codeline>
+<codeline lineno="210"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetEffectExpiredData&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueString(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="group__effect_1ga9dfcfd6d65f0e22b66dd9c6b51df5484" kindref="member">NWNX_Effect_GetEffectExpiredCreator</ref>()</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetEffectExpiredCreator&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueObject(NWNX_Effect,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Effect/NWScript/nwnx_effect.nss"/>
+  </compounddef>
+</doxygen>

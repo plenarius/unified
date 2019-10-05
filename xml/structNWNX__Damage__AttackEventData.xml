@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="structNWNX__Damage__AttackEventData" kind="struct" language="C++" prot="public">
+    <compoundname>NWNX_Damage_AttackEventData</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1afc184d97f1079b5dfeb7d2ff807ad18a" prot="public" static="no" mutable="no">
+        <type>object</type>
+        <definition>object NWNX_Damage_AttackEventData::oTarget</definition>
+        <argsstring></argsstring>
+        <name>oTarget</name>
+        <briefdescription>
+<para>The target who took the damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="33" column="12" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1aebba350a6ae68da04b1fdd3d98556d30" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iBludgeoning</definition>
+        <argsstring></argsstring>
+        <name>iBludgeoning</name>
+        <briefdescription>
+<para>Bludgeoning damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="34" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1a7b24cc68dd6f50db4069bc0e3e9facf7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iPierce</definition>
+        <argsstring></argsstring>
+        <name>iPierce</name>
+        <briefdescription>
+<para>Piercing damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="35" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1a4a442823998c0b06cb99d7ac45c0a3d3" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iSlash</definition>
+        <argsstring></argsstring>
+        <name>iSlash</name>
+        <briefdescription>
+<para>Slashing damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="36" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1a02fb96244bd01690723d23386250b2e9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iMagical</definition>
+        <argsstring></argsstring>
+        <name>iMagical</name>
+        <briefdescription>
+<para>Magical damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="37" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1a2414d16a8249c9b9d3e78a6bdd1d376b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iAcid</definition>
+        <argsstring></argsstring>
+        <name>iAcid</name>
+        <briefdescription>
+<para>Acid damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="38" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1a77439bb6727bb0e78ad1c145170ac3d5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iCold</definition>
+        <argsstring></argsstring>
+        <name>iCold</name>
+        <briefdescription>
+<para>Cold damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="39" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1ad76bfe56fadd9f06296452fe451345f7" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iDivine</definition>
+        <argsstring></argsstring>
+        <name>iDivine</name>
+        <briefdescription>
+<para>Divine damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="40" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1af83d60735d50ba0926015905279668b6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iElectrical</definition>
+        <argsstring></argsstring>
+        <name>iElectrical</name>
+        <briefdescription>
+<para>Electrical damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="41" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1a82dc8d56f564fca63e68fcc2ea8a6943" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iFire</definition>
+        <argsstring></argsstring>
+        <name>iFire</name>
+        <briefdescription>
+<para>Fire damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="42" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1ae7b76b4e3cb09563e67132a58fec572d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iNegative</definition>
+        <argsstring></argsstring>
+        <name>iNegative</name>
+        <briefdescription>
+<para>Negative damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="43" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1ada8bc3213c9e2e618ae1cd56ed650836" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iPositive</definition>
+        <argsstring></argsstring>
+        <name>iPositive</name>
+        <briefdescription>
+<para>Positive damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="44" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1a320fa9900bb825ce2f251fbf7a942f60" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iSonic</definition>
+        <argsstring></argsstring>
+        <name>iSonic</name>
+        <briefdescription>
+<para>Sonic damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="45" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1ae50e334035835e815d0e7ab0891afe1e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iBase</definition>
+        <argsstring></argsstring>
+        <name>iBase</name>
+        <briefdescription>
+<para>Base damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="46" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1abd9b45439358d4428a37e2a695e0eedc" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iAttackNumber</definition>
+        <argsstring></argsstring>
+        <name>iAttackNumber</name>
+        <briefdescription>
+<para>1-based index of the attack in current combat round </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="47" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1a2f860433eb2ee4d0af58701b077f226b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iAttackResult</definition>
+        <argsstring></argsstring>
+        <name>iAttackResult</name>
+        <briefdescription>
+<para>1=hit, 3=critical hit, 4=miss, 8=concealed </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="48" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1a086c6998c3f5de7813d81ac0e2eecb5f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iAttackType</definition>
+        <argsstring></argsstring>
+        <name>iAttackType</name>
+        <briefdescription>
+<para>1=main hand, 2=offhand, 3-5=creature, 6=haste </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="49" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Damage__AttackEventData_1a1d9294445235a4ee280cc4ff1d78cbd0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Damage_AttackEventData::iSneakAttack</definition>
+        <argsstring></argsstring>
+        <name>iSneakAttack</name>
+        <briefdescription>
+<para>0=neither, 1=sneak attack, 2=death attack, 3=both </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="50" column="9" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Attack Event Data. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Damage/NWScript/nwnx_damage.nss" line="32" column="1" bodyfile="Plugins/Damage/NWScript/nwnx_damage.nss" bodystart="31" bodyend="51"/>
+    <listofallmembers>
+      <member refid="structNWNX__Damage__AttackEventData_1a2414d16a8249c9b9d3e78a6bdd1d376b" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iAcid</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1abd9b45439358d4428a37e2a695e0eedc" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iAttackNumber</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1a2f860433eb2ee4d0af58701b077f226b" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iAttackResult</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1a086c6998c3f5de7813d81ac0e2eecb5f" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iAttackType</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1ae50e334035835e815d0e7ab0891afe1e" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iBase</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1aebba350a6ae68da04b1fdd3d98556d30" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iBludgeoning</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1a77439bb6727bb0e78ad1c145170ac3d5" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iCold</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1ad76bfe56fadd9f06296452fe451345f7" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iDivine</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1af83d60735d50ba0926015905279668b6" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iElectrical</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1a82dc8d56f564fca63e68fcc2ea8a6943" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iFire</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1a02fb96244bd01690723d23386250b2e9" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iMagical</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1ae7b76b4e3cb09563e67132a58fec572d" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iNegative</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1a7b24cc68dd6f50db4069bc0e3e9facf7" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iPierce</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1ada8bc3213c9e2e618ae1cd56ed650836" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iPositive</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1a4a442823998c0b06cb99d7ac45c0a3d3" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iSlash</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1a1d9294445235a4ee280cc4ff1d78cbd0" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iSneakAttack</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1a320fa9900bb825ce2f251fbf7a942f60" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>iSonic</name></member>
+      <member refid="structNWNX__Damage__AttackEventData_1afc184d97f1079b5dfeb7d2ff807ad18a" prot="public" virt="non-virtual"><scope>NWNX_Damage_AttackEventData</scope><name>oTarget</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

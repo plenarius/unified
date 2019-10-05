@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_423adc3517f1d20a5f719b24142510ea" kind="dir">
+    <compoundname>Plugins/Events</compoundname>
+    <innerdir refid="dir_2a39d7ec793c365d74399b1a3a7bfe4d">Plugins/Events/Documentation</innerdir>
+    <innerdir refid="dir_d438fff93ba50245bdf84b5bdfe210e0">Plugins/Events/NWScript</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Events/"/>
+  </compounddef>
+</doxygen>

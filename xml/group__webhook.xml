@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__webhook" kind="group">
+    <compoundname>webhook</compoundname>
+    <title>Webhook</title>
+    <innerfile refid="nwnx__webhook_8nss">nwnx_webhook.nss</innerfile>
+    <innerfile refid="nwnx__webhook__rch_8nss">nwnx_webhook_rch.nss</innerfile>
+    <innerclass refid="structNWNX__WebHook__Message" prot="public">NWNX_WebHook_Message</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__webhook_1ga93cfa8d03c5e936385aeb34f9983c254" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_WebHook</definition>
+        <argsstring></argsstring>
+        <name>NWNX_WebHook</name>
+        <initializer>= &quot;NWNX_WebHook&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook.nss" line="7" column="14" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__webhook_1ga619daabd1f5b9034e0b9326524a0562d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_WebHook_SendWebHookHTTPS</definition>
+        <argsstring>(string host, string path, string message, string username=&quot;&quot;, int mrkdwn=1)</argsstring>
+        <name>NWNX_WebHook_SendWebHookHTTPS</name>
+        <param>
+          <type>string</type>
+          <declname>host</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>username</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>mrkdwn</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Send a slack compatible webhook. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>host</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The web server to send the hook. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path to the hook. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message to dispatch. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>username</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The username to display as the originator of the hook. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mrkdwn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set to false if you do not wish your message&apos;s markdown be parsed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook.nss" line="29" column="6" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook.nss" bodystart="29" bodyend="38" declfile="Plugins/WebHook/NWScript/nwnx_webhook.nss" declline="15" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__webhook_1ga8030e0fe61e40060c60246dd1cc2f5cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_WebHook_ResendWebHookHTTPS</definition>
+        <argsstring>(string host, string path, string sMessage, float delay=0.0f)</argsstring>
+        <name>NWNX_WebHook_ResendWebHookHTTPS</name>
+        <param>
+          <type>string</type>
+          <declname>host</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>sMessage</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>delay</declname>
+          <defval>0.0f</defval>
+        </param>
+        <briefdescription>
+<para>Resends a webhook message after a defined delay. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Handy when a submission is rate limited, since the message that the event sends in NWNX_Events_GetEventData is already constructed. So it just resends the WebHook with an optional delay. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>host</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The web server to send the hook. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path to the hook. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message to dispatch. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delay in seconds to send the message again. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook.nss" line="40" column="6" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook.nss" bodystart="40" bodyend="43" declfile="Plugins/WebHook/NWScript/nwnx_webhook.nss" declline="25" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__webhook_1gaa00d5470aa2ba99e649e08770ac86bb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_WebHook_BuildMessageForWebHook</definition>
+        <argsstring>(string host, string path, struct NWNX_WebHook_Message stMessage, int mrkdwn=1)</argsstring>
+        <name>NWNX_WebHook_BuildMessageForWebHook</name>
+        <param>
+          <type>string</type>
+          <declname>host</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structNWNX__WebHook__Message" kindref="compound">NWNX_WebHook_Message</ref></type>
+          <declname>stMessage</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>mrkdwn</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Builds and sends a rich webhook message based on the constructed <ref refid="structNWNX__WebHook__Message" kindref="compound">NWNX_WebHook_Message</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>host</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The web server to send the hook. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path to the hook. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constructed NWNX_Webhook_Message. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mrkdwn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set to false if you do not wish your message&apos;s markdown be parsed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="warning"><para>Your path must end with /slack if using a Discord webhook. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" line="76" column="8" bodyfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" bodystart="76" bodyend="159" declfile="Plugins/WebHook/NWScript/nwnx_webhook_rch.nss" declline="69" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Send messages to external entities through web hooks. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__rename" kind="group">
+    <compoundname>rename</compoundname>
+    <title>Rename</title>
+    <innerfile refid="nwnx__rename_8nss">nwnx_rename.nss</innerfile>
+      <sectiondef kind="user-defined">
+      <header>Community Name Override Type</header>
+      <description><para><anchor id="group__rename_1rename_comm_name_override_type"/></para>
+</description>
+      <memberdef kind="variable" id="group__rename_1gafc3e340ecdad9db153e72054bbef9208" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RENAME_PLAYERNAME_DEFAULT</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RENAME_PLAYERNAME_DEFAULT</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Don&apos;t rename. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Rename/NWScript/nwnx_rename.nss" line="12" column="11" bodyfile="Plugins/Rename/NWScript/nwnx_rename.nss" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__rename_1ga36cef09d9765eaa9e08d3eb4f5b223df" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RENAME_PLAYERNAME_OBFUSCATE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RENAME_PLAYERNAME_OBFUSCATE</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Generate random string for Community Name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Rename/NWScript/nwnx_rename.nss" line="13" column="11" bodyfile="Plugins/Rename/NWScript/nwnx_rename.nss" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__rename_1ga1f09701e202d238a7d1b96b4c2e3cb2c" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RENAME_PLAYERNAME_OVERRIDE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RENAME_PLAYERNAME_OVERRIDE</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>Use character name specified. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Rename/NWScript/nwnx_rename.nss" line="14" column="11" bodyfile="Plugins/Rename/NWScript/nwnx_rename.nss" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__rename_1ga50f11a268a94cd196dab5ccf46609c51" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_RENAME_PLAYERNAME_ANONYMOUS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_RENAME_PLAYERNAME_ANONYMOUS</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>Use the value of the NWNX_RENAME_ANONYMOUS_NAME environment variable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Rename/NWScript/nwnx_rename.nss" line="15" column="11" bodyfile="Plugins/Rename/NWScript/nwnx_rename.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__rename_1gabff29d0a6c2bef827b41592e7368cefb" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Rename</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Rename</name>
+        <initializer>= &quot;NWNX_Rename&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Rename/NWScript/nwnx_rename.nss" line="7" column="14" bodyfile="Plugins/Rename/NWScript/nwnx_rename.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__rename_1gaf3b4ba16315cc38473c5285eb913737e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Rename_SetPCNameOverride</definition>
+        <argsstring>(object oTarget, string sNewName, string sPrefix=&quot;&quot;, string sSuffix=&quot;&quot;, int iPlayerNameState=NWNX_RENAME_PLAYERNAME_DEFAULT, object oObserver=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Rename_SetPCNameOverride</name>
+        <param>
+          <type>object</type>
+          <declname>oTarget</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>sNewName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>sPrefix</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>sSuffix</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iPlayerNameState</declname>
+          <defval><ref refid="group__rename_1gafc3e340ecdad9db153e72054bbef9208" kindref="member">NWNX_RENAME_PLAYERNAME_DEFAULT</ref></defval>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oObserver</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Set a PC&apos;s character name and community name on the player list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oTarget</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC whose name is being overridden. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sNewName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sPrefix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The prefix for their character name, sometimes used for a color code. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sSuffix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The suffix for their character name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iPlayerNameState</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>How to change the Community Name, use <ref refid="group__rename_1rename_comm_name_override_type" kindref="member">Community Name Override Type</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oObserver</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If specified, the character name will appear to that specific observer as set, this overrides a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="warning"><para>Will not persist through saving, resets or logout. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Rename/NWScript/nwnx_rename.nss" line="46" column="6" bodyfile="Plugins/Rename/NWScript/nwnx_rename.nss" bodystart="46" bodyend="59" declfile="Plugins/Rename/NWScript/nwnx_rename.nss" declline="26" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__rename_1ga66b5aa3317d00607131d11ef25e79f2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Rename_GetPCNameOverride</definition>
+        <argsstring>(object oTarget, object oObserver=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Rename_GetPCNameOverride</name>
+        <param>
+          <type>object</type>
+          <declname>oTarget</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oObserver</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Gets a PC&apos;s name as overridden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oTarget</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC whose name to query. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oObserver</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The specific observer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The PC&apos;s name as overridden either per observer or globally. </para>
+</simplesect>
+<simplesect kind="note"><para>If you wish to get a PC&apos;s true name use <computeroutput>GetName(oPC, TRUE)</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Rename/NWScript/nwnx_rename.nss" line="60" column="8" bodyfile="Plugins/Rename/NWScript/nwnx_rename.nss" bodystart="60" bodyend="69" declfile="Plugins/Rename/NWScript/nwnx_rename.nss" declline="34" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__rename_1ga575681e01d33e2f8307dd67372173d4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Rename_ClearPCNameOverride</definition>
+        <argsstring>(object oTarget, object oObserver=OBJECT_INVALID, int clearAll=FALSE)</argsstring>
+        <name>NWNX_Rename_ClearPCNameOverride</name>
+        <param>
+          <type>object</type>
+          <declname>oTarget</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oObserver</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>clearAll</declname>
+          <defval>FALSE</defval>
+        </param>
+        <briefdescription>
+<para>Clears an overridden PC Name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oTarget</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC whose overridden name to clear, use OBJECT_INVALID if you&apos;re clearing all overrides for an observer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oObserver</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The observer whose overriden name of oTarget is being cleared. If oTarget is OBJECT_INVALID then all overrides are cleared. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>clearAll</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, both the global and personal overrides will be cleared for that target PC. Requires oObserver be OBJECT_INVALID. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Rename/NWScript/nwnx_rename.nss" line="71" column="6" bodyfile="Plugins/Rename/NWScript/nwnx_rename.nss" bodystart="71" bodyend="80" declfile="Plugins/Rename/NWScript/nwnx_rename.nss" declline="42" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Facilitates renaming, overriding and customization of player names. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

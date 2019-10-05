@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_6f5208de735e135e3cbfc78b16c95f88" kind="dir">
+    <compoundname>Plugins/Reveal/NWScript</compoundname>
+    <innerfile refid="nwnx__reveal_8nss">nwnx_reveal.nss</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Reveal/NWScript/"/>
+  </compounddef>
+</doxygen>

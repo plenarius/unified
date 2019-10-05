@@ -1,0 +1,935 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__weapon_8nss" kind="file" language="C++">
+    <compoundname>nwnx_weapon.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Plugins/Weapon/NWScript/nwnx_weapon.nss</label>
+        <link refid="nwnx__weapon_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structNWNX__Weapon__DevastatingCriticalEvent__Data" prot="public">NWNX_Weapon_DevastatingCriticalEvent_Data</innerclass>
+      <sectiondef kind="user-defined">
+      <header>Weapons Options</header>
+      <description><para><anchor id="group__weapon_1wpn_opts"/> Options constants to be used with NWNX_Weapon_SetOption function. </para>
+</description>
+      <memberdef kind="variable" id="group__weapon_1ga8b44b89c281c98729d2afb1312dc8afe" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_WEAPON_OPT_GRTFOCUS_AB_BONUS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_WEAPON_OPT_GRTFOCUS_AB_BONUS</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Greater Focus Attack Bonus. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="14" column="11" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__weapon_1gac044782b4fc6b0035aa9b499c0d8aa66" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_WEAPON_OPT_GRTSPEC_DAM_BONUS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_WEAPON_OPT_GRTSPEC_DAM_BONUS</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Greater Specialization Damage Bonus. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="15" column="11" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__weapon_1ga9e7cb99d054449dc1ca00d8c6e8f2881" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Weapon</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Weapon</name>
+        <initializer>= &quot;NWNX_Weapon&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="7" column="14" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__weapon_1gafe32575ade4d17e4a9daa9017e439ad0" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_WEAPON_GETDATA_DC</definition>
+        <argsstring></argsstring>
+        <name>NWNX_WEAPON_GETDATA_DC</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Get Devastating Critical Data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="19" column="11" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__weapon_1gae42853a0c8a7721686bb406b3965d7ff" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_WEAPON_SETDATA_DC_BYPASS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_WEAPON_SETDATA_DC_BYPASS</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Set Devastating Critical Bypass. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="22" column="11" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__weapon_1gaa74f691d599e48f697719ea8731f11be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetWeaponFocusFeat</definition>
+        <argsstring>(int nBaseItem, int nFeat)</argsstring>
+        <name>NWNX_Weapon_SetWeaponFocusFeat</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nFeat</declname>
+        </param>
+        <briefdescription>
+<para>Set nFeat as weapon focus feat for a base item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feat to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="115" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="115" bodyend="123" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="35" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1gae8574965a3aae542e79e051bfad60217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetWeaponFinesseSize</definition>
+        <argsstring>(int nBaseItem, int nSize)</argsstring>
+        <name>NWNX_Weapon_SetWeaponFinesseSize</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nSize</declname>
+        </param>
+        <briefdescription>
+<para>Set required creature size for a weapon base item to be finessable. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The creature size minimum to consider this weapon finessable. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="145" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="145" bodyend="153" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="40" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1gad8f1eb5b7d131d39144ff34de3990d3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetWeaponUnarmed</definition>
+        <argsstring>(int nBaseItem)</argsstring>
+        <name>NWNX_Weapon_SetWeaponUnarmed</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <briefdescription>
+<para>Set weapon base item to be considered as unarmed for weapon finesse feat. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="155" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="155" bodyend="162" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="44" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1gad6bf3d2ce2abfeb00c289345ff92a92a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetWeaponImprovedCriticalFeat</definition>
+        <argsstring>(int nBaseItem, int nFeat)</argsstring>
+        <name>NWNX_Weapon_SetWeaponImprovedCriticalFeat</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nFeat</declname>
+        </param>
+        <briefdescription>
+<para>Set a feat as weapon improved critical for a base item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feat to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="173" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="173" bodyend="181" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="49" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1ga8deec30028f3ba99c22c775ed8edb973" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetWeaponSpecializationFeat</definition>
+        <argsstring>(int nBaseItem, int nFeat)</argsstring>
+        <name>NWNX_Weapon_SetWeaponSpecializationFeat</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nFeat</declname>
+        </param>
+        <briefdescription>
+<para>Set a feat as weapon specialization for a base item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feat to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="183" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="183" bodyend="191" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="54" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1gac1feedb8c13806da113a4a8d10c8990a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetEpicWeaponFocusFeat</definition>
+        <argsstring>(int nBaseItem, int nFeat)</argsstring>
+        <name>NWNX_Weapon_SetEpicWeaponFocusFeat</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nFeat</declname>
+        </param>
+        <briefdescription>
+<para>Set a feat as epic weapon focus for a base item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feat to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="125" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="125" bodyend="133" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="59" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1ga928cbbcbedeb6fcd313d5da26e4f547a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetEpicWeaponSpecializationFeat</definition>
+        <argsstring>(int nBaseItem, int nFeat)</argsstring>
+        <name>NWNX_Weapon_SetEpicWeaponSpecializationFeat</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nFeat</declname>
+        </param>
+        <briefdescription>
+<para>Set a feat as epic weapon specialization for a base item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feat to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="203" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="203" bodyend="211" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="64" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1ga28e07d7cdb7e021a82b47752cb67840d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetEpicWeaponOverwhelmingCriticalFeat</definition>
+        <argsstring>(int nBaseItem, int nFeat)</argsstring>
+        <name>NWNX_Weapon_SetEpicWeaponOverwhelmingCriticalFeat</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nFeat</declname>
+        </param>
+        <briefdescription>
+<para>Set a feat as epic weapon overwhelming critical for a base item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feat to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="213" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="213" bodyend="221" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="69" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1ga80e14c89a4e729d72f0cc6fb9c249675" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetEpicWeaponDevastatingCriticalFeat</definition>
+        <argsstring>(int nBaseItem, int nFeat)</argsstring>
+        <name>NWNX_Weapon_SetEpicWeaponDevastatingCriticalFeat</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nFeat</declname>
+        </param>
+        <briefdescription>
+<para>Set a feat as epic weapon devastating critical for a base item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feat to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="223" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="223" bodyend="231" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="74" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1ga9f7b80d39ddb553be2764ad399c98f2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetWeaponOfChoiceFeat</definition>
+        <argsstring>(int nBaseItem, int nFeat)</argsstring>
+        <name>NWNX_Weapon_SetWeaponOfChoiceFeat</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nFeat</declname>
+        </param>
+        <briefdescription>
+<para>Set a feat as weapon of choice for a base item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feat to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="233" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="233" bodyend="241" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="79" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1ga390c5fc0caf45d77be05324a8af3762c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetGreaterWeaponSpecializationFeat</definition>
+        <argsstring>(int nBaseItem, int nFeat)</argsstring>
+        <name>NWNX_Weapon_SetGreaterWeaponSpecializationFeat</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nFeat</declname>
+        </param>
+        <briefdescription>
+<para>Set a feat as greater weapon specialization for a base item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feat to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="193" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="193" bodyend="201" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="84" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1ga74ace8b29031865e3f08f01e5a660cb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetGreaterWeaponFocusFeat</definition>
+        <argsstring>(int nBaseItem, int nFeat)</argsstring>
+        <name>NWNX_Weapon_SetGreaterWeaponFocusFeat</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nFeat</declname>
+        </param>
+        <briefdescription>
+<para>Set a feat as greater weapon focus for a base item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nFeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feat to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="135" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="135" bodyend="143" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="89" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1ga16ec75cebc8186286084e58172f62e82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetWeaponIsMonkWeapon</definition>
+        <argsstring>(int nBaseItem)</argsstring>
+        <name>NWNX_Weapon_SetWeaponIsMonkWeapon</name>
+        <param>
+          <type>int</type>
+          <declname>nBaseItem</declname>
+        </param>
+        <briefdescription>
+<para>Set base item as monk weapon. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nBaseItem</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The base item id. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="164" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="164" bodyend="171" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="93" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1gab865cdef1423787f87307127c2d66c1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetOption</definition>
+        <argsstring>(int nOption, int nVal)</argsstring>
+        <name>NWNX_Weapon_SetOption</name>
+        <param>
+          <type>int</type>
+          <declname>nOption</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVal</declname>
+        </param>
+        <briefdescription>
+<para>Set plugin options. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nOption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The option to change from <ref refid="group__weapon_1wpn_opts" kindref="member">Weapon Options</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nVal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new value of the option. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="243" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="243" bodyend="251" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="98" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1ga4c1988ef71d5aecb896e18544ac71a08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_SetDevastatingCriticalEventScript</definition>
+        <argsstring>(string sScript)</argsstring>
+        <name>NWNX_Weapon_SetDevastatingCriticalEventScript</name>
+        <param>
+          <type>string</type>
+          <declname>sScript</declname>
+        </param>
+        <briefdescription>
+<para>Set Devastating Critical Event Script. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sScript</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The script to call when a Devastating Critical occurs. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="253" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="253" bodyend="260" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="102" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1ga197c4fe02b6ad0b905bae126f262d8b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__Weapon__DevastatingCriticalEvent__Data" kindref="compound">NWNX_Weapon_DevastatingCriticalEvent_Data</ref></type>
+        <definition>struct NWNX_Weapon_DevastatingCriticalEvent_Data NWNX_Weapon_GetDevastatingCriticalEventData</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Weapon_GetDevastatingCriticalEventData</name>
+        <briefdescription>
+<para>Get Devastating Critical Event Data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This is only for use with the Devastating Critical Event Script. </para>
+</simplesect>
+<simplesect kind="return"><para>An <ref refid="structNWNX__Weapon__DevastatingCriticalEvent__Data" kindref="compound">NWNX_Weapon_DevastatingCriticalEvent_Data</ref> struct. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="262" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="272" bodyend="285" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="102" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__weapon_1ga475625ae5cff73b4fe1361ea515cbd73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Weapon_BypassDevastatingCritical</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Weapon_BypassDevastatingCritical</name>
+        <briefdescription>
+<para>Bypass Devastating Critical. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This is only for use with the Devastating Critical Event Script. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss" line="262" column="6" bodyfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" bodystart="262" bodyend="270" declfile="Plugins/Weapon/NWScript/nwnx_weapon.nss" declline="111" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_Weapon<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_Weapon&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga8b44b89c281c98729d2afb1312dc8afe" kindref="member">NWNX_WEAPON_OPT_GRTFOCUS_AB_BONUS</ref><sp/>=<sp/>0;<sp/></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gac044782b4fc6b0035aa9b499c0d8aa66" kindref="member">NWNX_WEAPON_OPT_GRTSPEC_DAM_BONUS</ref><sp/>=<sp/>1;<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Get<sp/>Event<sp/>Data<sp/>Constants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gafe32575ade4d17e4a9daa9017e439ad0" kindref="member">NWNX_WEAPON_GETDATA_DC</ref><sp/>=<sp/>0;<sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Set<sp/>Event<sp/>Data<sp/>Constants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gae42853a0c8a7721686bb406b3965d7ff" kindref="member">NWNX_WEAPON_SETDATA_DC_BYPASS</ref><sp/>=<sp/>0;<sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="structNWNX__Weapon__DevastatingCriticalEvent__Data" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Weapon__DevastatingCriticalEvent__Data" kindref="compound">NWNX_Weapon_DevastatingCriticalEvent_Data</ref></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Weapon__DevastatingCriticalEvent__Data_1a0ab39f5f5fdd4c3c995f8b84a5193c6a" kindref="member">oWeapon</ref>;<sp/></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Weapon__DevastatingCriticalEvent__Data_1a05c644a763be5a9e7614b16137de7c23" kindref="member">oTarget</ref>;<sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__Weapon__DevastatingCriticalEvent__Data_1ad61f6ae678343f3781deacdb33efb27d" kindref="member">nDamage</ref>;<sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gaa74f691d599e48f697719ea8731f11be" kindref="member">NWNX_Weapon_SetWeaponFocusFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gae8574965a3aae542e79e051bfad60217" kindref="member">NWNX_Weapon_SetWeaponFinesseSize</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nSize);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gad8f1eb5b7d131d39144ff34de3990d3a" kindref="member">NWNX_Weapon_SetWeaponUnarmed</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gad6bf3d2ce2abfeb00c289345ff92a92a" kindref="member">NWNX_Weapon_SetWeaponImprovedCriticalFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga8deec30028f3ba99c22c775ed8edb973" kindref="member">NWNX_Weapon_SetWeaponSpecializationFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gac1feedb8c13806da113a4a8d10c8990a" kindref="member">NWNX_Weapon_SetEpicWeaponFocusFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga928cbbcbedeb6fcd313d5da26e4f547a" kindref="member">NWNX_Weapon_SetEpicWeaponSpecializationFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga28e07d7cdb7e021a82b47752cb67840d" kindref="member">NWNX_Weapon_SetEpicWeaponOverwhelmingCriticalFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga80e14c89a4e729d72f0cc6fb9c249675" kindref="member">NWNX_Weapon_SetEpicWeaponDevastatingCriticalFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga9f7b80d39ddb553be2764ad399c98f2d" kindref="member">NWNX_Weapon_SetWeaponOfChoiceFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga390c5fc0caf45d77be05324a8af3762c" kindref="member">NWNX_Weapon_SetGreaterWeaponSpecializationFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga74ace8b29031865e3f08f01e5a660cb1" kindref="member">NWNX_Weapon_SetGreaterWeaponFocusFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga16ec75cebc8186286084e58172f62e82" kindref="member">NWNX_Weapon_SetWeaponIsMonkWeapon</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gab865cdef1423787f87307127c2d66c1b" kindref="member">NWNX_Weapon_SetOption</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nOption,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nVal);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga4c1988ef71d5aecb896e18544ac71a08" kindref="member">NWNX_Weapon_SetDevastatingCriticalEventScript</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sScript);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Weapon__DevastatingCriticalEvent__Data" kindref="compound">NWNX_Weapon_DevastatingCriticalEvent_Data</ref><sp/><ref refid="group__weapon_1ga197c4fe02b6ad0b905bae126f262d8b7" kindref="member">NWNX_Weapon_GetDevastatingCriticalEventData</ref>();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga475625ae5cff73b4fe1361ea515cbd73" kindref="member">NWNX_Weapon_BypassDevastatingCritical</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gaa74f691d599e48f697719ea8731f11be" kindref="member">NWNX_Weapon_SetWeaponFocusFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetWeaponFocusFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nFeat);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gac1feedb8c13806da113a4a8d10c8990a" kindref="member">NWNX_Weapon_SetEpicWeaponFocusFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetEpicWeaponFocusFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nFeat);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga74ace8b29031865e3f08f01e5a660cb1" kindref="member">NWNX_Weapon_SetGreaterWeaponFocusFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat)</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetGreaterWeaponFocusFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nFeat);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gae8574965a3aae542e79e051bfad60217" kindref="member">NWNX_Weapon_SetWeaponFinesseSize</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nSize)</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetWeaponFinesseSize&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nSize);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gad8f1eb5b7d131d39144ff34de3990d3a" kindref="member">NWNX_Weapon_SetWeaponUnarmed</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem)</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetWeaponUnarmed&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga16ec75cebc8186286084e58172f62e82" kindref="member">NWNX_Weapon_SetWeaponIsMonkWeapon</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem)</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetWeaponIsMonkWeapon&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gad6bf3d2ce2abfeb00c289345ff92a92a" kindref="member">NWNX_Weapon_SetWeaponImprovedCriticalFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat)</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetWeaponImprovedCriticalFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nFeat);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga8deec30028f3ba99c22c775ed8edb973" kindref="member">NWNX_Weapon_SetWeaponSpecializationFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetWeaponSpecializationFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nFeat);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga390c5fc0caf45d77be05324a8af3762c" kindref="member">NWNX_Weapon_SetGreaterWeaponSpecializationFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat)</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetGreaterWeaponSpecializationFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nFeat);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga928cbbcbedeb6fcd313d5da26e4f547a" kindref="member">NWNX_Weapon_SetEpicWeaponSpecializationFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat)</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetEpicWeaponSpecializationFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nFeat);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga28e07d7cdb7e021a82b47752cb67840d" kindref="member">NWNX_Weapon_SetEpicWeaponOverwhelmingCriticalFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetEpicWeaponOverwhelmingCriticalFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nFeat);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga80e14c89a4e729d72f0cc6fb9c249675" kindref="member">NWNX_Weapon_SetEpicWeaponDevastatingCriticalFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat)</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetEpicWeaponDevastatingCriticalFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nFeat);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga9f7b80d39ddb553be2764ad399c98f2d" kindref="member">NWNX_Weapon_SetWeaponOfChoiceFeat</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBaseItem,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFeat)</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetWeaponOfChoiceFeat&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nFeat);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nBaseItem);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1gab865cdef1423787f87307127c2d66c1b" kindref="member">NWNX_Weapon_SetOption</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nOption,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nVal)</highlight></codeline>
+<codeline lineno="244"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetOption&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nVal);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>nOption);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga4c1988ef71d5aecb896e18544ac71a08" kindref="member">NWNX_Weapon_SetDevastatingCriticalEventScript</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sScript)</highlight></codeline>
+<codeline lineno="254"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetDevastatingCriticalEventScript&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Weapon,<sp/>sFunc,<sp/>sScript);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__weapon_1ga475625ae5cff73b4fe1361ea515cbd73" kindref="member">NWNX_Weapon_BypassDevastatingCritical</ref>()</highlight></codeline>
+<codeline lineno="263"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetEventData&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/>1);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/><ref refid="group__weapon_1gae42853a0c8a7721686bb406b3965d7ff" kindref="member">NWNX_WEAPON_SETDATA_DC_BYPASS</ref>);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Weapon__DevastatingCriticalEvent__Data" kindref="compound">NWNX_Weapon_DevastatingCriticalEvent_Data</ref><sp/><ref refid="group__weapon_1ga197c4fe02b6ad0b905bae126f262d8b7" kindref="member">NWNX_Weapon_GetDevastatingCriticalEventData</ref>()</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetEventData&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__Weapon__DevastatingCriticalEvent__Data" kindref="compound">NWNX_Weapon_DevastatingCriticalEvent_Data</ref><sp/>data;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Weapon,<sp/>sFunc,<sp/><ref refid="group__weapon_1gafe32575ade4d17e4a9daa9017e439ad0" kindref="member">NWNX_WEAPON_GETDATA_DC</ref>);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>data.oWeapon<sp/>=<sp/>NWNX_GetReturnValueObject(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>data.oTarget<sp/>=<sp/>NWNX_GetReturnValueObject(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>data.nDamage<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_Weapon,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Weapon/NWScript/nwnx_weapon.nss"/>
+  </compounddef>
+</doxygen>

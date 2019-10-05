@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_3439960d65add46cb0fddea027b42b21" kind="dir">
+    <compoundname>Plugins/SpellChecker/NWScript</compoundname>
+    <innerfile refid="nwnx__spellcheck_8nss">nwnx_spellcheck.nss</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/SpellChecker/NWScript/"/>
+  </compounddef>
+</doxygen>

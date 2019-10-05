@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__reveal" kind="group">
+    <compoundname>reveal</compoundname>
+    <title>Reveal</title>
+    <innerfile refid="nwnx__reveal_8nss">nwnx_reveal.nss</innerfile>
+      <sectiondef kind="user-defined">
+      <header>Reveal Detection Methods</header>
+      <memberdef kind="variable" id="group__reveal_1gae4bff87fefb21bef87fe4e021fb13ac7" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REVEAL_SEEN</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REVEAL_SEEN</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Seen. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Reveal/NWScript/nwnx_reveal.nss" line="11" column="11" bodyfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__reveal_1gacd928190408f6d69e9448c84141bee7e" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_REVEAL_HEARD</definition>
+        <argsstring></argsstring>
+        <name>NWNX_REVEAL_HEARD</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Heard. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Reveal/NWScript/nwnx_reveal.nss" line="12" column="11" bodyfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__reveal_1gab3dc4e695c5e5e69a6c7ce8b10e4a0fa" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Reveal</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Reveal</name>
+        <initializer>= &quot;NWNX_Reveal&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Reveal/NWScript/nwnx_reveal.nss" line="7" column="14" bodyfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__reveal_1ga71f55177ffc85cd14a6981166dffb60a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Reveal_RevealTo</definition>
+        <argsstring>(object oHiding, object oObserver, int iDetectionMethod=NWNX_REVEAL_HEARD)</argsstring>
+        <name>NWNX_Reveal_RevealTo</name>
+        <param>
+          <type>object</type>
+          <declname>oHiding</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oObserver</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iDetectionMethod</declname>
+          <defval><ref refid="group__reveal_1gacd928190408f6d69e9448c84141bee7e" kindref="member">NWNX_REVEAL_HEARD</ref></defval>
+        </param>
+        <briefdescription>
+<para>Selectively reveals the character to an observer until the next time they stealth out of sight. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oHiding</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The creature who is stealthed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oObserver</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The creature to whom the hider is revealed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iDetectionMethod</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Can be specified to determine whether the hidden creature is seen or heard. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Reveal/NWScript/nwnx_reveal.nss" line="29" column="6" bodyfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" bodystart="29" bodyend="38" declfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" declline="19" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__reveal_1ga88cfee3997f219dca4d75eb5c04e2df8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Reveal_SetRevealToParty</definition>
+        <argsstring>(object oHiding, int bReveal, int iDetectionMethod=NWNX_REVEAL_HEARD)</argsstring>
+        <name>NWNX_Reveal_SetRevealToParty</name>
+        <param>
+          <type>object</type>
+          <declname>oHiding</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bReveal</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iDetectionMethod</declname>
+          <defval><ref refid="group__reveal_1gacd928190408f6d69e9448c84141bee7e" kindref="member">NWNX_REVEAL_HEARD</ref></defval>
+        </param>
+        <briefdescription>
+<para>Sets whether a character remains visible to their party through stealth. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oHiding</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The creature who is stealthed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bReveal</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE for visible. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iDetectionMethod</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Can be specified to determine whether the hidden creature is seen or heard. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Reveal/NWScript/nwnx_reveal.nss" line="40" column="6" bodyfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" bodystart="40" bodyend="49" declfile="Plugins/Reveal/NWScript/nwnx_reveal.nss" declline="25" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Allows the selective revealing of a stealthing character to another character or their party. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

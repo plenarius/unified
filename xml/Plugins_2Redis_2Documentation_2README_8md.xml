@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2Redis_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Redis<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>plugin<sp/>allows<sp/>you<sp/>to<sp/>connect<sp/>to<sp/>a<sp/>redis<sp/>server.<sp/>If<sp/>you<sp/>don&apos;t<sp/>know<sp/>what<sp/>redis<sp/>is,<sp/>I&apos;d<sp/>suggest<sp/>reading<sp/>up<sp/>here<sp/>in<sp/>detail:<sp/>redis.io.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Key<sp/>features:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>This<sp/>plugin<sp/>supports<sp/>almost<sp/>all<sp/>commands</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Including<sp/>pubsub<sp/>with<sp/>script<sp/>callbacks.<sp/>You<sp/>can<sp/>use<sp/>this<sp/>to<sp/>connect<sp/>external<sp/>services,<sp/>even<sp/>websites,<sp/>to<sp/>your<sp/>nwserver<sp/>in<sp/>a<sp/>non-blocking<sp/>way.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Also<sp/>great<sp/>for<sp/>linking<sp/>servers.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Redis<sp/>makes<sp/>for<sp/>a<sp/>very<sp/>good<sp/>and<sp/>fast<sp/>key-value<sp/>store,<sp/>with<sp/>some<sp/>advanced<sp/>data<sp/>structures<sp/>available.<sp/>You<sp/>can<sp/>even<sp/>use<sp/>it<sp/>as<sp/>a<sp/>queue<sp/>if<sp/>so<sp/>desired.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">TODO:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>SCO/RCO,<sp/>so<sp/>resman<sp/>can<sp/>automatically<sp/>load<sp/>resources<sp/>from<sp/>redis<sp/>without<sp/>user<sp/>intervention.<sp/>This<sp/>requires<sp/>a<sp/>more<sp/>generic<sp/>interface/hook<sp/>in<sp/>core.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Hints</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>There<sp/>are<sp/>two<sp/>includes,<sp/>`nwnx_redis`<sp/>and<sp/>`nwnx_redis_short`.<sp/>They<sp/>do<sp/>the<sp/>same,<sp/>but<sp/>`_short`<sp/>is<sp/>not<sp/>prefixed<sp/>with<sp/>`NWNX_Redis`.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`nwnx_redis_ps.nss`<sp/>and<sp/>`on_pubsub.nss`<sp/>are<sp/>not<sp/>needed<sp/>if<sp/>PubSub<sp/>functionality<sp/>is<sp/>not<sp/>being<sp/>used.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Setup</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Set<sp/>up<sp/>redis-server.<sp/>Start<sp/>it.<sp/>This<sp/>should<sp/>be<sp/>as<sp/>simple<sp/>as<sp/>apt-get<sp/>install<sp/>redis.<sp/>There&apos;s<sp/>also<sp/>a<sp/>docker<sp/>image.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Configure<sp/>`NWNX_REDIS_HOST`<sp/>and<sp/>`NWNX_REDIS_PORT`<sp/>for<sp/>nwnx.<sp/>`NWNX_REDIS_PORT`<sp/>is<sp/>not<sp/>necessary<sp/>if<sp/>the<sp/>default<sp/>redis<sp/>port<sp/>is<sp/>used.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Include<sp/>the<sp/>.nss<sp/>files<sp/>in<sp/>NWScript/<sp/>into<sp/>your<sp/>module.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Accessing<sp/>Redis<sp/>from<sp/>nwscript</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>use<sp/>Redis<sp/>commands<sp/>in<sp/>nwscript<sp/>include<sp/>`nwnx_redis`<sp/>and<sp/>`nwnx_redis_lib`.<sp/>The<sp/>nwnx_redis<sp/>include<sp/>contains<sp/>the<sp/>redis<sp/>commands<sp/>like,<sp/>for<sp/>example,<sp/>`int<sp/>NWNX_Redis_GET(string<sp/>key)`.<sp/>All<sp/>of<sp/>the<sp/>nwnx<sp/>redis<sp/>comands<sp/>return<sp/>an<sp/>int<sp/>which<sp/>is<sp/>the<sp/>resultId.<sp/>The<sp/>nwnx_redis_lib<sp/>include<sp/>contains<sp/>functions<sp/>to<sp/>get<sp/>the<sp/>data<sp/>(and<sp/>type)<sp/>you<sp/>can<sp/>work<sp/>with<sp/>for<sp/>this<sp/>resultId.<sp/>Three<sp/>of<sp/>these<sp/>functions<sp/>are:</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>int<sp/>NWNX_Redis_GetResultAsInt(int<sp/>resultId)</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>string<sp/>NWNX_Redis_GetResultAsString(int<sp/>resultId)</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>float<sp/>NWNX_Redis_GetResultAsFloat(int<sp/>resultId)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">There<sp/>are<sp/>also<sp/>functions<sp/>to<sp/>work<sp/>with<sp/>result<sp/>arrays<sp/>and<sp/>one<sp/>to<sp/>get<sp/>the<sp/>type<sp/>of<sp/>a<sp/>result.<sp/>You<sp/>can<sp/>look<sp/>those<sp/>up<sp/>in<sp/>[nwnx_redis_lib.nss](../NWScript/nwnx_redis_lib.nss).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`NWNX_Redis_GetResultAs&lt;Type&gt;`<sp/>has<sp/>to<sp/>be<sp/>called<sp/>on<sp/>all<sp/>the<sp/>commands<sp/>that<sp/>return<sp/>a<sp/>resultId<sp/>even<sp/>if<sp/>the<sp/>actual<sp/>value<sp/>is<sp/>an<sp/>int<sp/>as<sp/>well.<sp/>The<sp/>following<sp/>is<sp/>an<sp/>example<sp/>to<sp/>set,<sp/>check<sp/>for<sp/>existance<sp/>of<sp/>and<sp/>get<sp/>a<sp/>key.</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;nwnx_redis&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;nwnx_redis_lib&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">NWNX_Redis_SET(&quot;examples:examplekey&quot;,<sp/>&quot;testvalue&quot;);</highlight></codeline>
+<codeline><highlight class="normal">if<sp/>(NWNX_Redis_GetResultAsInt(NWNX_Redis_EXISTS(&quot;examples:examplekey&quot;)))</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>string<sp/>sValue<sp/>=<sp/>NWNX_Redis_GetResultAsString(NWNX_Redis_GET(&quot;examples:examplekey&quot;));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>WriteTimestampedLogEntry(&quot;Value<sp/>of<sp/>redis<sp/>key<sp/>&apos;examples:examplekey&apos;:<sp/>&quot;<sp/>+<sp/>sValue);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Getting<sp/>started<sp/>with<sp/>PubSub</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Create<sp/>a<sp/>script<sp/>called<sp/>&quot;on_pubsub&quot;<sp/>(or<sp/>rename<sp/>it<sp/>through<sp/>`NWNX_REDIS_PUBSUB_SCRIPT`).<sp/>An<sp/>example<sp/>is<sp/>included<sp/>in<sp/>NWScript/.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Configure<sp/>`NWNX_REDIS_PUBSUB_CHANNELS`<sp/>to<sp/>be<sp/>&quot;test&quot;.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Hint:<sp/>Subscriptions<sp/>support<sp/>wildcards.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Start<sp/>your<sp/>module.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Use<sp/>`redis-cli`<sp/>to<sp/>connect<sp/>to<sp/>your<sp/>running<sp/>redis<sp/>server<sp/>and<sp/>type<sp/>`PUBLISH<sp/>test<sp/>hi<sp/>there`.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Hint:<sp/>`redis-cli<sp/>monitor`<sp/>in<sp/>a<sp/>separate<sp/>shell<sp/>is<sp/>a<sp/>great<sp/>way<sp/>to<sp/>figure<sp/>out<sp/>what&apos;s<sp/>going<sp/>on.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Your<sp/>script<sp/>should<sp/>trigger<sp/>with<sp/>the<sp/>payload<sp/>available<sp/>through<sp/>`NWNX_Redis_GetPubSubMessageData()`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Moving<sp/>on</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Now<sp/>think<sp/>of<sp/>a<sp/>good<sp/>naming<sp/>scheme<sp/>for<sp/>your<sp/>various<sp/>pubsub<sp/>channels.<sp/>Keep<sp/>traffic<sp/>as<sp/>low<sp/>as<sp/>feasible,<sp/>since<sp/>each<sp/>incoming<sp/>message<sp/>will<sp/>trigger<sp/>a<sp/>script<sp/>run.<sp/>There<sp/>is<sp/>no<sp/>batching<sp/>yet.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Hint:<sp/>By<sp/>convention,<sp/>a<sp/>good<sp/>namespace<sp/>separator<sp/>for<sp/>channels<sp/>is<sp/>&quot;.&quot;;<sp/>for<sp/>keys<sp/>&quot;:&quot;.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Example:<sp/>`NWNX_Redis_PUBLISH(&quot;nwserver.players.join&quot;,<sp/>GetPCPlayerName(..));`</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Hint:<sp/>A<sp/>good<sp/>pattern<sp/>is<sp/>to<sp/>store<sp/>data<sp/>in<sp/>a<sp/>redis<sp/>key<sp/>named<sp/>after<sp/>the<sp/>channel<sp/>and<sp/>object<sp/>identifier<sp/>(i.e.<sp/>`HSET<sp/>nwserver:players:PlayerName:.lastSeen<sp/>1234`)<sp/>and<sp/>then<sp/>trigger<sp/>a<sp/>PubSub<sp/>message<sp/>with<sp/>the<sp/>same<sp/>subject<sp/>(`PUBLISH<sp/>nwserver.players.joins<sp/>PlayerName`).<sp/>This<sp/>cuts<sp/>down<sp/>on<sp/>wire<sp/>overhead.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/>Name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/><sp/>Type<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>Default<sp/>Value<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>----------------------------<sp/>|<sp/>:---------------------:<sp/>|<sp/>----------------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_REDIS_HOST`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>string<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>(none)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_REDIS_PORT`<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>int16<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>6379<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_REDIS_PUBSUB_SCRIPT`<sp/><sp/><sp/>|<sp/>string<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|<sp/>on_pubsub<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_REDIS_PUBSUB_CHANNELS`<sp/>|<sp/>comma-separated<sp/>strings<sp/>|<sp/>&quot;&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Redis/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

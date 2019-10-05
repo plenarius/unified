@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Core_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Core<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>core<sp/>of<sp/>NWNXEE<sp/>that<sp/>does<sp/>all<sp/>the<sp/>things.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/>Name<sp/>|<sp/>Value<sp/>|<sp/>Default<sp/>|<sp/>Notes<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-------------<sp/>|<sp/>:---:<sp/>|<sp/>-------<sp/>|<sp/>-----<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_CORE_SKIP`<sp/>|<sp/>0-1<sp/>|<sp/>0<sp/>|<sp/>Set<sp/>whether<sp/>to<sp/>load<sp/>NWNX<sp/>or<sp/>not.</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_CORE_LOAD_PATH`<sp/>|<sp/>string<sp/>|<sp/>Unset<sp/>|<sp/>The<sp/>directory<sp/>from<sp/>where<sp/>plugins<sp/>are<sp/>loaded.<sp/>Defaults<sp/>to<sp/>where<sp/>NWNX_Core<sp/>is<sp/>located.</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_CORE_SKIP_ALL`<sp/>|<sp/>0-1<sp/>|<sp/>0<sp/>|<sp/>Changes<sp/>the<sp/>default<sp/>plugin<sp/>load<sp/>state<sp/>from<sp/>&apos;load<sp/>all&apos;<sp/>to<sp/>&apos;skip<sp/>all&apos;.<sp/>Use<sp/>`NWNX_{PLUGIN}_SKIP=n`<sp/>to<sp/>enable<sp/>specific<sp/>plugins<sp/>in<sp/>this<sp/>case.</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_CORE_LOG_LEVEL`<sp/>|<sp/>0-7<sp/>|<sp/>0|<sp/>Sets<sp/>the<sp/>default<sp/>log<sp/>level.<sp/>`6`<sp/>is<sp/>a<sp/>good<sp/>level<sp/>for<sp/>live<sp/>servers.<sp/>`7`<sp/><sp/>includes<sp/>debug<sp/>messages<sp/>which<sp/>can<sp/>be<sp/>helpful<sp/>if<sp/>you&apos;re<sp/>having<sp/>issues.</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_CORE_LOAD_EXPERIMENTAL_PLUGIN`<sp/>|<sp/>0-1<sp/>|<sp/>0<sp/>|<sp/>Allows<sp/>loading<sp/>of<sp/>NWNX_Experimental,<sp/>use<sp/>at<sp/>your<sp/>own<sp/>risk.</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_CORE_LOCALE`<sp/>|<sp/>ru<sp/>|<sp/>Unset<sp/>|<sp/>Set<sp/>the<sp/>locale<sp/>NWNX<sp/>will<sp/>use<sp/>when<sp/>encoding.<sp/>Currently<sp/>only<sp/>supports<sp/>Russian/Cyrillic<sp/>(`ru`)</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_CORE_CRASH_ON_ASSERT_FAILURE`<sp/>|<sp/>0-1<sp/>|<sp/>0<sp/>|<sp/>Sets<sp/>whether<sp/>an<sp/>ASSERT<sp/>failure<sp/>hard<sp/>crashes<sp/>the<sp/>server.</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_CORE_SHUTDOWN_SCRIPT`<sp/>|<sp/>string<sp/>|<sp/>Unset<sp/>|<sp/>Sets<sp/>which<sp/>NWScript<sp/>to<sp/>run<sp/>when<sp/>the<sp/>module<sp/>shuts<sp/>down.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Plugin<sp/>Management</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variable<sp/>Configuration</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Configuration<sp/>of<sp/>NWNX<sp/>plugins<sp/>are<sp/>controlled<sp/>by<sp/>environment<sp/>variables<sp/>exported<sp/>prior<sp/>to<sp/>starting<sp/>the<sp/>``nwserver``<sp/>binary.<sp/><sp/>Typical<sp/>usage<sp/>would<sp/></highlight></codeline>
+<codeline><highlight class="normal">be<sp/>in<sp/>the<sp/>script<sp/>used<sp/>to<sp/>start<sp/>the<sp/>server.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Basic<sp/>control<sp/>of<sp/>the<sp/>plugin<sp/>includes<sp/>enabling/disabling<sp/>the<sp/>plugin<sp/>and<sp/>setting<sp/>the<sp/>logging<sp/>level<sp/>of<sp/>the<sp/>plugin.<sp/><sp/>The<sp/>following<sp/>format<sp/>is<sp/>used<sp/>for</highlight></codeline>
+<codeline><highlight class="normal">all<sp/>plugins:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>NWNX_\&lt;x&gt;_LOG_LEVEL</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>NWNX_\&lt;x&gt;_SKIP</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Plugin<sp/>Loading</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Inclusion<sp/>or<sp/>exclusion<sp/>of<sp/>the<sp/>plugin<sp/>at<sp/>server<sp/>startup<sp/>time<sp/>is<sp/>contolled<sp/>by<sp/>the<sp/>environment<sp/>variable<sp/>``NWNX_&lt;x&gt;_SKIP``<sp/>where<sp/>\&lt;x&gt;<sp/>is<sp/>the<sp/>plugin<sp/>name<sp/>(all<sp/>caps).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Setting<sp/>this<sp/>to<sp/>``N``<sp/>will<sp/>load<sp/>the<sp/>plugin<sp/>(i.e.<sp/>it<sp/>will<sp/>not<sp/>be<sp/>skipped)<sp/>at<sp/>startup<sp/>(_default_).</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Setting<sp/>this<sp/>to<sp/>``Y``<sp/>will<sp/>cause<sp/>the<sp/>plugin<sp/>to<sp/>_BE<sp/>SKIPPED_<sp/>at<sp/>startup.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__Example__</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Load<sp/>the<sp/>sql<sp/>plugin<sp/>at<sp/>startup</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_SKIP=N</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Plugin<sp/>Log<sp/>Level</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>default<sp/>plugin<sp/>log<sp/>level<sp/>is<sp/>the<sp/>same<sp/>as<sp/>the<sp/>overall<sp/>Core<sp/>logging<sp/>level.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">It<sp/>can<sp/>be<sp/>changed,<sp/>however,<sp/>by<sp/>assinging<sp/>a<sp/>value<sp/>to<sp/>``NWNX_&lt;x&gt;_LOG_LEVEL``<sp/>(where<sp/>\&lt;x&gt;<sp/>is<sp/>the<sp/>plugin<sp/>name<sp/>in<sp/>all<sp/>caps)<sp/>in<sp/>the<sp/>same<sp/>manner<sp/>as<sp/>the<sp/>Core<sp/>logging<sp/>level.</highlight></codeline>
+<codeline><highlight class="normal">See<sp/>the<sp/>Core<sp/>documentation<sp/>for<sp/>a<sp/>description<sp/>of<sp/>available<sp/>logging<sp/>levels.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">__Example__</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Set<sp/>the<sp/>sql<sp/>plugin<sp/>to<sp/>warning<sp/>and<sp/>above<sp/>(warning,<sp/>error,<sp/>and<sp/>fatal<sp/>only)</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_LOG_LEVEL=4</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="Core/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

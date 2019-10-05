@@ -1,0 +1,360 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__nwnx" kind="group">
+    <compoundname>nwnx</compoundname>
+    <title>NWNX</title>
+    <innerfile refid="nwnx_8nss">nwnx.nss</innerfile>
+      <sectiondef kind="user-defined">
+      <memberdef kind="function" id="group__nwnx_1gac59ae51d3e8c4f775ab7d1a18eab3fc4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_CallFunction</definition>
+        <argsstring>(string pluginName, string functionName)</argsstring>
+        <name>NWNX_CallFunction</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="58" column="6" bodyfile="Core/NWScript/nwnx.nss" bodystart="58" bodyend="61" declfile="Core/NWScript/nwnx.nss" declline="38" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1gadc430d6df00ece8e9cd208ba19701698" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_PushArgumentInt</definition>
+        <argsstring>(string pluginName, string functionName, int value)</argsstring>
+        <name>NWNX_PushArgumentInt</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="63" column="6" bodyfile="Core/NWScript/nwnx.nss" bodystart="63" bodyend="66" declfile="Core/NWScript/nwnx.nss" declline="39" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1ga8d3c3b2724a4cdb2555455a4d6e1053b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_PushArgumentFloat</definition>
+        <argsstring>(string pluginName, string functionName, float value)</argsstring>
+        <name>NWNX_PushArgumentFloat</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="68" column="6" bodyfile="Core/NWScript/nwnx.nss" bodystart="68" bodyend="71" declfile="Core/NWScript/nwnx.nss" declline="40" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1ga9e802e758646d32b71f30f1578151938" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_PushArgumentObject</definition>
+        <argsstring>(string pluginName, string functionName, object value)</argsstring>
+        <name>NWNX_PushArgumentObject</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="73" column="6" bodyfile="Core/NWScript/nwnx.nss" bodystart="73" bodyend="76" declfile="Core/NWScript/nwnx.nss" declline="41" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1ga6e7ebe01f31c59279956f562609c964a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_PushArgumentString</definition>
+        <argsstring>(string pluginName, string functionName, string value)</argsstring>
+        <name>NWNX_PushArgumentString</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="78" column="6" bodyfile="Core/NWScript/nwnx.nss" bodystart="78" bodyend="81" declfile="Core/NWScript/nwnx.nss" declline="42" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1ga070e2e6319eed3c965c496a4505f1434" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_PushArgumentEffect</definition>
+        <argsstring>(string pluginName, string functionName, effect value)</argsstring>
+        <name>NWNX_PushArgumentEffect</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <param>
+          <type>effect</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="83" column="6" bodyfile="Core/NWScript/nwnx.nss" bodystart="83" bodyend="86" declfile="Core/NWScript/nwnx.nss" declline="43" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1ga2591d1676fb7308c13284b6640b9df68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_PushArgumentItemProperty</definition>
+        <argsstring>(string pluginName, string functionName, itemproperty value)</argsstring>
+        <name>NWNX_PushArgumentItemProperty</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <param>
+          <type>itemproperty</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="88" column="6" bodyfile="Core/NWScript/nwnx.nss" bodystart="88" bodyend="91" declfile="Core/NWScript/nwnx.nss" declline="44" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1gabc581e541c864a29a2ec698945996f23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_GetReturnValueInt</definition>
+        <argsstring>(string pluginName, string functionName)</argsstring>
+        <name>NWNX_GetReturnValueInt</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="93" column="5" bodyfile="Core/NWScript/nwnx.nss" bodystart="93" bodyend="96" declfile="Core/NWScript/nwnx.nss" declline="45" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1ga6af62159954fb31011088f52b82fce03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float NWNX_GetReturnValueFloat</definition>
+        <argsstring>(string pluginName, string functionName)</argsstring>
+        <name>NWNX_GetReturnValueFloat</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="98" column="7" bodyfile="Core/NWScript/nwnx.nss" bodystart="98" bodyend="101" declfile="Core/NWScript/nwnx.nss" declline="46" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1ga2314f3844fc63b5731fe41a678174790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>object</type>
+        <definition>object NWNX_GetReturnValueObject</definition>
+        <argsstring>(string pluginName, string functionName)</argsstring>
+        <name>NWNX_GetReturnValueObject</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="103" column="8" bodyfile="Core/NWScript/nwnx.nss" bodystart="103" bodyend="106" declfile="Core/NWScript/nwnx.nss" declline="47" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1ga5020d69354c6bead3824922b66282b6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_GetReturnValueString</definition>
+        <argsstring>(string pluginName, string functionName)</argsstring>
+        <name>NWNX_GetReturnValueString</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="108" column="8" bodyfile="Core/NWScript/nwnx.nss" bodystart="108" bodyend="111" declfile="Core/NWScript/nwnx.nss" declline="48" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1ga265e82b3283a4f1c7c18e34b83387d70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>effect</type>
+        <definition>effect NWNX_GetReturnValueEffect</definition>
+        <argsstring>(string pluginName, string functionName)</argsstring>
+        <name>NWNX_GetReturnValueEffect</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="113" column="8" bodyfile="Core/NWScript/nwnx.nss" bodystart="113" bodyend="117" declfile="Core/NWScript/nwnx.nss" declline="49" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1gaf0a53533256121ffee2e34abc349d1f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>itemproperty</type>
+        <definition>itemproperty NWNX_GetReturnValueItemProperty</definition>
+        <argsstring>(string pluginName, string functionName)</argsstring>
+        <name>NWNX_GetReturnValueItemProperty</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="119" column="14" bodyfile="Core/NWScript/nwnx.nss" bodystart="119" bodyend="123" declfile="Core/NWScript/nwnx.nss" declline="50" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__nwnx_1ga1606607679c2b2846133ff14c380e2a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_INTERNAL_BuildString</definition>
+        <argsstring>(string pluginName, string functionName, string operation)</argsstring>
+        <name>NWNX_INTERNAL_BuildString</name>
+        <param>
+          <type>string</type>
+          <declname>pluginName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>functionName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>operation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Core/NWScript/nwnx.nss" line="52" column="8" bodyfile="Core/NWScript/nwnx.nss" bodystart="52" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The core functions that should be called by NWNX plugin developers. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>These following functions should be called by NWNX plugin developers, who should expose their own, more friendly headers.</para>
+<para>For example, this following function would wrap a call which passes three parameters, receives three back, and constructs a vector from the result. <programlisting filename=".c"><codeline><highlight class="normal">vector<sp/>GetVectorFromCoords(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>pluginName<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_TestPlugin&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>funcName<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GiveMeBackTheSameValues&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Note<sp/>the<sp/>inverse<sp/>argument<sp/>push<sp/>order.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>C++-side,<sp/>arguments<sp/>will<sp/>be<sp/>consumed<sp/>from<sp/>right<sp/>to<sp/>left.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(pluginName,<sp/>funcName,<sp/>z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(pluginName,<sp/>funcName,<sp/>y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(pluginName,<sp/>funcName,<sp/>x);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>calls<sp/>the<sp/>function,<sp/>which<sp/>will<sp/>prepare<sp/>the<sp/>return<sp/>values.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(pluginName,<sp/>funcName);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>C++-side<sp/>pushes<sp/>the<sp/>return<sp/>values<sp/>in<sp/>reverse<sp/>order<sp/>so<sp/>we<sp/>can<sp/>consume<sp/>them<sp/>naturally<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_x<sp/>=<sp/>NWNX_GetReturnValueFloat(pluginName,<sp/>funcName);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_y<sp/>=<sp/>NWNX_GetReturnValueFloat(pluginName,<sp/>funcName);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_z<sp/>=<sp/>NWNX_GetReturnValueFloat(pluginName,<sp/>funcName);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vector(_x,<sp/>_y,<sp/>_z);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2Rename_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Rename<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>plugin<sp/>facilitates<sp/>renaming,<sp/>overriding<sp/>and<sp/>customization<sp/>of<sp/>player<sp/>names.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Script<sp/>function<sp/>|<sp/>Description<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">----------------|-------------</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Rename_SetPCNameOverride<sp/>|<sp/>Set<sp/>a<sp/>PCs<sp/>floaty/chat<sp/>name(sPrefix+sNewName+sSuffix)<sp/>and<sp/>name<sp/>(sNewName)<sp/>on<sp/>the<sp/>player<sp/>list.<sp/>If<sp/>(iPlayerNameState)<sp/>is<sp/>set<sp/>to<sp/>NWNX_RENAME_PLAYERNAME_OVERRIDE<sp/>the<sp/>player<sp/>name<sp/>will<sp/>change<sp/>to<sp/>(sNewName)<sp/>on<sp/>tells.<sp/>If<sp/>(iPlayerNameState)<sp/>is<sp/>set<sp/>to<sp/>NWNX_RENAME_PLAYERNAME_OBFUSCATE<sp/>the<sp/>player<sp/>name<sp/>will<sp/>be<sp/>set<sp/>to<sp/>a<sp/>random<sp/>string.</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Rename_GetPCNameOverride<sp/>|<sp/>Gets<sp/>the<sp/>PCs<sp/>name<sp/>as<sp/>seen<sp/>by<sp/>a<sp/>specified<sp/>target<sp/>or<sp/>all<sp/>clients.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>`iPlayerNameState`<sp/>is<sp/>set<sp/>to<sp/>`NWNX_RENAME_PLAYERNAME_DEFAULT`<sp/>the<sp/>player<sp/>name<sp/>will<sp/>be<sp/>untouched.<sp/>DMs<sp/>and<sp/>the<sp/>player<sp/>themselves<sp/>will<sp/>still<sp/>see<sp/>their<sp/>original<sp/>player<sp/>name<sp/>regardless<sp/>of<sp/>option<sp/>set.<sp/>Will<sp/>not<sp/>persist<sp/>through<sp/>saving,<sp/>resets<sp/>or<sp/>logout.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>a<sp/>target<sp/>object<sp/>is<sp/>specified,<sp/>only<sp/>that<sp/>target<sp/>will<sp/>see<sp/>the<sp/>PCs<sp/>name<sp/>as<sp/>defined.<sp/>This<sp/>overrides<sp/>a<sp/>global<sp/>rename.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Due<sp/>to<sp/>the<sp/>conflict<sp/>with<sp/>this<sp/>plugin<sp/>and<sp/>the<sp/>Tweaks<sp/>plugin<sp/>to<sp/>hide<sp/>classes<sp/>on<sp/>the<sp/>module<sp/>character<sp/>listing,<sp/>this<sp/>module<sp/>also<sp/>provides<sp/>that<sp/>functionality.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/>Name<sp/>|<sp/>Value<sp/>|<sp/>Default<sp/>|<sp/>Notes<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-------------<sp/><sp/><sp/>|<sp/>:----:<sp/>|<sp/>:----:<sp/>|-----------------------------<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_RENAME_ON_MODULE_CHAR_LIST`<sp/>|<sp/>0-3<sp/>|<sp/>0<sp/>|<sp/>This<sp/>is<sp/>the<sp/>listing<sp/>of<sp/>players<sp/>from<sp/>the<sp/>character<sp/>selection<sp/>screen<sp/>before<sp/>entering<sp/>the<sp/>server.<sp/>Setting<sp/>the<sp/>value<sp/>to<sp/>1<sp/>overrides<sp/>their<sp/>names<sp/>if<sp/>a<sp/>global<sp/>rename<sp/>has<sp/>been<sp/>set,<sp/>2<sp/>also<sp/>hides<sp/>class<sp/>information,<sp/>3<sp/>hides<sp/>class<sp/>information<sp/>but<sp/>keeps<sp/>names<sp/>as<sp/>their<sp/>original.</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_RENAME_ON_PLAYER_LIST`<sp/>|<sp/>true<sp/>or<sp/>false<sp/>|<sp/>true<sp/>|<sp/>Renames<sp/>the<sp/>player<sp/>name<sp/>on<sp/>the<sp/>player<sp/>list<sp/>as<sp/>well.</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_RENAME_ALLOW_DM`<sp/>|<sp/>true<sp/>or<sp/>false<sp/>|<sp/>false<sp/>|<sp/>DM<sp/>observers<sp/>will<sp/>see<sp/>global<sp/>or<sp/>personal<sp/>overrides<sp/>as<sp/>well<sp/>as<sp/>being<sp/>able<sp/>to<sp/>have<sp/>their<sp/>own<sp/>name<sp/>overridden<sp/>for<sp/>other<sp/>observers.</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>`NWNX_RENAME_ANONYMOUS_NAME`<sp/>|<sp/>string<sp/>|<sp/>Someone<sp/>|<sp/>When<sp/>using<sp/>`NWNX_Rename_SetPCNameOverride`<sp/>with<sp/>`NWNX_RENAME_PLAYERNAME_ANONYMOUS`<sp/>this<sp/>is<sp/>the<sp/>string<sp/>used<sp/>for<sp/>the<sp/>\&lt;PlayerName\&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Sample<sp/>Include</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;nwnx_rename&quot;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>For<sp/>GetPlayerID<sp/>function,<sp/>set<sp/>to<sp/>your<sp/>own<sp/>lib<sp/>that<sp/>returns<sp/>the<sp/>unique<sp/>player<sp/>ID<sp/>for<sp/>your<sp/>PW</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Then<sp/>replace<sp/>GetPlayerID<sp/>in<sp/>this<sp/>include<sp/>to<sp/>whatever<sp/>your<sp/>call<sp/>is.</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;inc_pc_db&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">const<sp/>string<sp/>UNKNOWN_PLAYER<sp/>=<sp/>&quot;Unknown&quot;;</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>string<sp/>UNKNOWN_PLAYER_PREFIX<sp/>=<sp/>&quot;&lt;c~~~&gt;&quot;;</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>string<sp/>UNKNOWN_PLAYER_SUFFIX<sp/>=<sp/>&quot;&lt;/c&gt;&quot;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">const<sp/>string<sp/>RENAMED_PLAYER_PREFIX<sp/>=<sp/>&quot;&quot;;</highlight></codeline>
+<codeline><highlight class="normal">const<sp/>string<sp/>RENAMED_PLAYER_SUFFIX<sp/>=<sp/>&quot;&quot;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>This<sp/>should<sp/>be<sp/>fired<sp/>on<sp/>client<sp/>enter<sp/>as<sp/>soon<sp/>as<sp/>possible,<sp/>it<sp/>loads<sp/>all</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>the<sp/>dynamic<sp/>names<sp/>for<sp/>the<sp/>PC<sp/>for<sp/>the<sp/>other<sp/>PCs<sp/>connected<sp/>and<sp/>the<sp/>dynamic</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>name<sp/>for<sp/>the<sp/>other<sp/>PCs<sp/>for<sp/>the<sp/>connecting<sp/>PC.</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>LoadNamesForPC(object<sp/>oPC);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Stores<sp/>the<sp/>info<sp/>on<sp/>the<sp/>database</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>SetDynamicNameDB(object<sp/>oPC,<sp/>object<sp/>oOtherPC,<sp/>string<sp/>sName,<sp/>int<sp/>iDub<sp/>=<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Returns<sp/>whether<sp/>the<sp/>PC<sp/>has<sp/>dubbed<sp/>the<sp/>target<sp/>PC<sp/>already</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>GetDynamicNameIsDubbed(object<sp/>oPC,<sp/>object<sp/>oTarget);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>We<sp/>use<sp/>three<sp/>custom<sp/>commands<sp/>=c<sp/>intro,<sp/>=c<sp/>introparty<sp/>and<sp/>=c<sp/>introarea<sp/>(20m<sp/>radius)</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>So<sp/>the<sp/>player<sp/>could<sp/>do<sp/>=c<sp/>intro<sp/>Joe<sp/>and<sp/>the<sp/>nearest<sp/>player<sp/>would<sp/>then<sp/>see<sp/>the<sp/>PCs</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>name<sp/>as<sp/>Joe</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>IntroducePlayers(object<sp/>oPC,<sp/>object<sp/>oTarget,<sp/>string<sp/>sName,<sp/>int<sp/>iType<sp/>=<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Dub<sp/>works<sp/>the<sp/>other<sp/>way,<sp/>a<sp/>PC<sp/>can<sp/>dub<sp/>someone<sp/>what<sp/>they<sp/>wish<sp/>to<sp/>see<sp/>as<sp/>their</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>name.<sp/>=c<sp/>dub<sp/>Joseph<sp/>(nearest<sp/>PC)<sp/>would<sp/>then<sp/>change<sp/>the<sp/>target&apos;s<sp/>name<sp/>for<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>caller<sp/>to<sp/>Joseph.</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>DubPlayer(object<sp/>oPC,<sp/>object<sp/>oTarget,<sp/>string<sp/>sName);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>LoadNamesForPC(object<sp/>oPC)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_Rename_SetPCNameOverride(oPC,<sp/>UNKNOWN_PLAYER,<sp/>UNKNOWN_PLAYER_PREFIX,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UNKNOWN_PLAYER_SUFFIX,<sp/>NWNX_RENAME_PLAYERNAME_OBFUSCATE);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>nPCID<sp/>=<sp/>GetPlayerID(oPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>object<sp/>oOtherPC<sp/>=<sp/>GetFirstPC();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(GetIsObjectValid(oOtherPC))</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(oOtherPC<sp/>!=<sp/>oPC)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>nOtherPCID<sp/>=<sp/>GetPlayerID(oOtherPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>string<sp/>sSQL<sp/>=<sp/>&quot;SELECT<sp/>name<sp/>FROM<sp/>dynamic_names<sp/>WHERE<sp/>pc1<sp/>=<sp/>?<sp/>AND<sp/>pc2<sp/>=<sp/>?&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PrepareQuery(sSQL);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedInt(0,<sp/>nPCID);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedInt(1,<sp/>nOtherPCID);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_ExecutePreparedQuery();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(NWNX_SQL_ReadyToReadNextRow())</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_ReadNextRow();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_Rename_SetPCNameOverride(oOtherPC,<sp/>NWNX_SQL_ReadDataInActiveRow(0),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RENAMED_PLAYER_PREFIX,<sp/>RENAMED_PLAYER_SUFFIX,<sp/>NWNX_RENAME_PLAYERNAME_OVERRIDE,<sp/>oPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PrepareQuery(sSQL);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedInt(0,<sp/>nOtherPCID);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedInt(1,<sp/>nPCID);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_ExecutePreparedQuery();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(NWNX_SQL_ReadyToReadNextRow())</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_ReadNextRow();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_Rename_SetPCNameOverride(oPC,<sp/>NWNX_SQL_ReadDataInActiveRow(0),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RENAMED_PLAYER_PREFIX,<sp/>RENAMED_PLAYER_SUFFIX,<sp/>NWNX_RENAME_PLAYERNAME_OVERRIDE,<sp/>oOtherPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>oOtherPC<sp/>=<sp/>GetNextPC();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>SetDynamicNameDB(object<sp/>oPC,<sp/>object<sp/>oOtherPC,<sp/>string<sp/>sName,<sp/>int<sp/>iDub<sp/>=<sp/>0)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>nPC1ID<sp/>=<sp/>GetPlayerID(oPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>nPC2ID<sp/>=<sp/>GetPlayerID(oOtherPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(nPC1ID<sp/>&amp;&amp;<sp/>nPC2ID)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>string<sp/>sSQL<sp/>=<sp/>&quot;INSERT<sp/>INTO<sp/>dynamic_names<sp/>(pc1,<sp/>pc2,<sp/>name,<sp/>dub)<sp/>&quot;+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;VALUES<sp/>(?,<sp/>?,<sp/>?,<sp/>?)<sp/>ON<sp/>DUPLICATE<sp/>KEY<sp/>UPDATE<sp/>name<sp/>=<sp/>?,<sp/>dub<sp/>=<sp/>?&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PrepareQuery(sSQL);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedInt(0,<sp/>nPC2ID);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedInt(1,<sp/>nPC1ID);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedString(2,<sp/>sName);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedInt(3,<sp/>iDub);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedString(4,<sp/>sName);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedInt(5,<sp/>iDub);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_ExecutePreparedQuery();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">int<sp/>GetDynamicNameIsDubbed(object<sp/>oPC,<sp/>object<sp/>oTarget)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>nPCID<sp/>=<sp/>GetPlayerID(oPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>nPCID2<sp/>=<sp/>GetPlayerID(oTarget);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>iDub<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>string<sp/>sSQL<sp/>=<sp/>&quot;SELECT<sp/>dub<sp/>FROM<sp/>dynamic_names<sp/>WHERE<sp/>pc1<sp/>=<sp/>?<sp/>AND<sp/>pc2<sp/>=<sp/>?&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_SQL_PrepareQuery(sSQL);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedInt(0,<sp/>nPCID);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_SQL_PreparedInt(1,<sp/>nPCID2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_SQL_ExecutePreparedQuery();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(NWNX_SQL_ReadyToReadNextRow())</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_SQL_ReadNextRow();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iDub<sp/>=<sp/>StringToInt(NWNX_SQL_ReadDataInActiveRow(0));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>iDub;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>IntroducePlayers(object<sp/>oPC,<sp/>object<sp/>oTarget,<sp/>string<sp/>sName,<sp/>int<sp/>iType<sp/>=<sp/>0)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>nPC1ID<sp/>=<sp/>GetPlayerID(oPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>nPC2ID<sp/>=<sp/>GetPlayerID(oTarget);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(nPC1ID<sp/>==<sp/>nPC2ID)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>iDub<sp/>=<sp/>GetDynamicNameIsDubbed(oTarget,<sp/>oPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>string<sp/>sMyName<sp/>=<sp/>NWNX_Rename_GetPCNameOverride(oPC,<sp/>oTarget);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(sMyName<sp/>==<sp/>&quot;&quot;)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sMyName<sp/>=<sp/>&quot;Someone&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>string<sp/>sTargetName<sp/>=<sp/>NWNX_Rename_GetPCNameOverride(oTarget,<sp/>oPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(sTargetName<sp/>==<sp/>&quot;&quot;)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sTargetName<sp/>=<sp/>&quot;Someone&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!iType)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SendMessageToPC(oPC,<sp/>&quot;Introducing<sp/>yourself<sp/>to<sp/>&quot;<sp/>+<sp/>sTargetName<sp/>+<sp/>&quot;<sp/>as<sp/>&quot;<sp/>+<sp/>sName<sp/>+<sp/>&quot;.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(iDub)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SendMessageToPC(oTarget,<sp/>&quot;Someone<sp/>wants<sp/>you<sp/>to<sp/>know<sp/>them<sp/>as<sp/>&quot;<sp/>+<sp/>sName<sp/>+<sp/>&quot;<sp/>but<sp/>you&apos;ve<sp/>&quot;+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;already<sp/>dubbed<sp/>them<sp/>&quot;<sp/>+<sp/>sMyName<sp/>+<sp/>&quot;<sp/>so<sp/>it&apos;s<sp/>ignored.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SendMessageToPC(oTarget,<sp/>sMyName<sp/>+<sp/>&quot;<sp/>wants<sp/>you<sp/>to<sp/>know<sp/>them<sp/>as<sp/>&quot;<sp/>+<sp/>sName<sp/>+<sp/>&quot;.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_Rename_SetPCNameOverride(oPC,<sp/>sName,<sp/>RENAMED_PLAYER_PREFIX,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RENAMED_PLAYER_SUFFIX,<sp/>NWNX_RENAME_PLAYERNAME_OVERRIDE,<sp/>oTarget);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetDynamicNameDB(oPC,<sp/>oTarget,<sp/>sName);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>DubPlayer(object<sp/>oPC,<sp/>object<sp/>oTarget,<sp/>string<sp/>sName)</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>string<sp/>sTargetName<sp/>=<sp/>NWNX_Rename_GetPCNameOverride(oTarget,<sp/>oPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(sTargetName<sp/>==<sp/>&quot;&quot;)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sTargetName<sp/>=<sp/>&quot;Someone&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SendMessageToPC(oPC,<sp/>sTargetName<sp/>+<sp/>&quot;<sp/>will<sp/>now<sp/>be<sp/>known<sp/>as<sp/>&quot;<sp/>+<sp/>sName<sp/>+<sp/>&quot;<sp/>to<sp/>you.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_Rename_SetPCNameOverride(oTarget,<sp/>sName,<sp/>RENAMED_PLAYER_PREFIX,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RENAMED_PLAYER_SUFFIX,<sp/>NWNX_RENAME_PLAYERNAME_OVERRIDE,<sp/>oPC);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SetDynamicNameDB(oTarget,<sp/>oPC,<sp/>sName,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">And<sp/>a<sp/>corresponding<sp/>MySQL<sp/>example<sp/>DB<sp/>structure:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```sql</highlight></codeline>
+<codeline><highlight class="normal">CREATE<sp/>TABLE<sp/>`dynamic_names`<sp/>(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`id`<sp/>int(11)<sp/>unsigned<sp/>NOT<sp/>NULL<sp/>AUTO_INCREMENT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`pc1`<sp/>mediumint(8)<sp/>unsigned<sp/>NOT<sp/>NULL,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`pc2`<sp/>mediumint(8)<sp/>unsigned<sp/>NOT<sp/>NULL,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`name`<sp/>varchar(40)<sp/>NOT<sp/>NULL,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>`dub`<sp/>tinyint(1)<sp/>DEFAULT<sp/>NULL,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>PRIMARY<sp/>KEY<sp/>(`id`),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>UNIQUE<sp/>KEY<sp/>`pair`<sp/>(`pc1`,`pc2`),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>KEY<sp/>`pc1`<sp/>(`pc1`),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>KEY<sp/>`pc2`<sp/>(`pc2`)</highlight></codeline>
+<codeline><highlight class="normal">)<sp/>ENGINE=InnoDB<sp/>DEFAULT<sp/>CHARSET=utf8</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Rename/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

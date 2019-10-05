@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_872591aa012bd12d901a16e34de85f03" kind="dir">
+    <compoundname>Plugins/Redis</compoundname>
+    <innerdir refid="dir_874a2c92d3e4bed56baf2765e37bb2a4">Plugins/Redis/Documentation</innerdir>
+    <innerdir refid="dir_2f44ecc40354c7f6d18296678c3fc3d1">Plugins/Redis/NWScript</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Redis/"/>
+  </compounddef>
+</doxygen>

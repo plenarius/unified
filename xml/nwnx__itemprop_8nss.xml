@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__itemprop_8nss" kind="file" language="C++">
+    <compoundname>nwnx_itemprop.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+      <node id="1">
+        <label>Plugins/ItemProperty/NWScript/nwnx_itemprop.nss</label>
+        <link refid="nwnx__itemprop_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structNWNX__IPUnpacked" prot="public">NWNX_IPUnpacked</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__itemproperty_1ga1baad507dd00057184d85d5280ad1abb" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_ItemProperty</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ItemProperty</name>
+        <initializer>= &quot;NWNX_ItemProperty&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" line="7" column="14" bodyfile="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__itemproperty_1ga343761a726e4bcf8a1dc3ab493ad7a91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref></type>
+        <definition>struct NWNX_IPUnpacked NWNX_ItemProperty_UnpackIP</definition>
+        <argsstring>(itemproperty ip)</argsstring>
+        <name>NWNX_ItemProperty_UnpackIP</name>
+        <param>
+          <type>itemproperty</type>
+          <declname>ip</declname>
+        </param>
+        <briefdescription>
+<para>Convert native itemproperty type to unpacked structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The itemproperty to convert. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A constructed <ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" line="35" column="14" bodyfile="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" bodystart="39" bodyend="63" declfile="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" declline="7" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__itemproperty_1ga2207133bdd8e10cb9b975c5929ce930d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>itemproperty</type>
+        <definition>itemproperty NWNX_ItemProperty_PackIP</definition>
+        <argsstring>(struct NWNX_IPUnpacked ip)</argsstring>
+        <name>NWNX_ItemProperty_PackIP</name>
+        <param>
+          <type>struct <ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref></type>
+          <declname>ip</declname>
+        </param>
+        <briefdescription>
+<para>Convert unpacked itemproperty structure to native type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref> structure to convert. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The itemproperty. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" line="64" column="14" bodyfile="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" bodystart="64" bodyend="84" declfile="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" declline="35" declcolumn="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_ItemProperty<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_ItemProperty&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="structNWNX__IPUnpacked" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1a5151aeb7e5c6f2610b819084df277435" kindref="member">nItemPropertyId</ref>;<sp/></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1a240e9078eb102d6be03ec5e517b083f9" kindref="member">nProperty</ref>;<sp/></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1a28d5dd1ff936a69a03304c96ee3f1f5a" kindref="member">nSubType</ref>;<sp/></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1ab280d7238552e633946cfc1cc1bf2571" kindref="member">nCostTable</ref>;<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1ad95e63782ed593741a81e19741a978dc" kindref="member">nCostTableValue</ref>;<sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1ad0a17e958cb47f9e3c5e182784bfe5a0" kindref="member">nParam1</ref>;<sp/></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1a40f155e0ea3624566d16be67a0647062" kindref="member">nParam1Value</ref>;<sp/></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1ae35c18ac2c0b8af028ee28e2f424b486" kindref="member">nUsesPerDay</ref>;<sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1adec6dfc16333f7643f4b2b3a948a461d" kindref="member">nChanceToAppear</ref>;<sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1aaa2c8bc13b51d3f6ceaf64e3b7fd5326" kindref="member">bUsable</ref>;<sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1a9bc37d8e686ed58efc4481fc6ced2619" kindref="member">nSpellId</ref>;<sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1ad8edb88bbe3a1b0195ff9fab79242c3a" kindref="member">oCreator</ref>;<sp/></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked_1a812ab3e4d434a6e636613446bc23d005" kindref="member">sTag</ref>;<sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref><sp/><ref refid="group__itemproperty_1ga343761a726e4bcf8a1dc3ab493ad7a91" kindref="member">NWNX_ItemProperty_UnpackIP</ref>(itemproperty<sp/>ip);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">itemproperty<sp/><ref refid="group__itemproperty_1ga2207133bdd8e10cb9b975c5929ce930d" kindref="member">NWNX_ItemProperty_PackIP</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref><sp/>ip);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref><sp/><ref refid="group__itemproperty_1ga343761a726e4bcf8a1dc3ab493ad7a91" kindref="member">NWNX_ItemProperty_UnpackIP</ref>(itemproperty<sp/>ip)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;UnpackIP&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentItemProperty(NWNX_ItemProperty,<sp/>sFunc,<sp/>ip);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref><sp/>n;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>n.<ref refid="structNWNX__IPUnpacked_1a5151aeb7e5c6f2610b819084df277435" kindref="member">nItemPropertyId</ref><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nProperty<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nSubType<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nCostTable<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nCostTableValue<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nParam1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nParam1Value<sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nUsesPerDay<sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nChanceToAppear<sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>n.bUsable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>n.nSpellId<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueInt(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>n.oCreator<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueObject(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>n.sTag<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>NWNX_GetReturnValueString(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>n;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">itemproperty<sp/><ref refid="group__itemproperty_1ga2207133bdd8e10cb9b975c5929ce930d" kindref="member">NWNX_ItemProperty_PackIP</ref>(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref><sp/>n)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PackIP&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1a812ab3e4d434a6e636613446bc23d005" kindref="member">sTag</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1ad8edb88bbe3a1b0195ff9fab79242c3a" kindref="member">oCreator</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1a9bc37d8e686ed58efc4481fc6ced2619" kindref="member">nSpellId</ref>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1aaa2c8bc13b51d3f6ceaf64e3b7fd5326" kindref="member">bUsable</ref>);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1adec6dfc16333f7643f4b2b3a948a461d" kindref="member">nChanceToAppear</ref>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1ae35c18ac2c0b8af028ee28e2f424b486" kindref="member">nUsesPerDay</ref>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1a40f155e0ea3624566d16be67a0647062" kindref="member">nParam1Value</ref>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1ad0a17e958cb47f9e3c5e182784bfe5a0" kindref="member">nParam1</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1ad95e63782ed593741a81e19741a978dc" kindref="member">nCostTableValue</ref>);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1ab280d7238552e633946cfc1cc1bf2571" kindref="member">nCostTable</ref>);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1a28d5dd1ff936a69a03304c96ee3f1f5a" kindref="member">nSubType</ref>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1a240e9078eb102d6be03ec5e517b083f9" kindref="member">nProperty</ref>);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_ItemProperty,<sp/>sFunc,<sp/>n.<ref refid="structNWNX__IPUnpacked_1a5151aeb7e5c6f2610b819084df277435" kindref="member">nItemPropertyId</ref>);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueItemProperty(NWNX_ItemProperty,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss"/>
+  </compounddef>
+</doxygen>

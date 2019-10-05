@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_Experimental_Documentation_README" kind="page">
+    <compoundname>md_Plugins_Experimental_Documentation_README</compoundname>
+    <title>Experimental Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_Experimental_Documentation_README_1autotoc_md56">
+<title>Description</title>
+<para>Experimental functionality. Use this stuff at your own risk.</para>
+<para>The following environmental variable is required to load the plugin:</para>
+<para><computeroutput>NWNX_CORE_LOAD_EXPERIMENTAL_PLUGIN=y</computeroutput></para>
+</sect1>
+<sect1 id="md_Plugins_Experimental_Documentation_README_1autotoc_md57">
+<title>Environment Variables</title>
+<para><table rows="3" cols="3"><row>
+<entry thead="yes"><para>Variable Name  </para>
+</entry><entry thead="yes"><para>Value  </para>
+</entry><entry thead="yes"><para>Notes   </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>NWNX_EXPERIMENTAL_SUPPRESS_PLAYER_LOGIN_INFO</computeroutput>  </para>
+</entry><entry thead="no"><para>true/false  </para>
+</entry><entry thead="no"><para>Suppresses the playerlist and player login/logout messages for all players except DMs. This functionality is not compatible with NWNX_Rename.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>NWNX_EXPERIMENTAL_REMOVE_ACAB_MODIFIERS_FROM_EXPERTISE</computeroutput>  </para>
+</entry><entry thead="no"><para>true/false  </para>
+</entry><entry thead="no"><para>Removes the AC and AB modifiers from Expertise.   </para>
+</entry></row>
+</table>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

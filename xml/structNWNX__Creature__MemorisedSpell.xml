@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="structNWNX__Creature__MemorisedSpell" kind="struct" language="C++" prot="public">
+    <compoundname>NWNX_Creature_MemorisedSpell</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structNWNX__Creature__MemorisedSpell_1aa08e4d7e4f0f2b8b8c639e152670329a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Creature_MemorisedSpell::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+<para>Spell ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Creature/NWScript/nwnx_creature.nss" line="89" column="9" bodyfile="Plugins/Creature/NWScript/nwnx_creature.nss" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Creature__MemorisedSpell_1adc7177afc73856b1ac6b2481c250418b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Creature_MemorisedSpell::ready</definition>
+        <argsstring></argsstring>
+        <name>ready</name>
+        <briefdescription>
+<para>Whether the spell can be cast. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Creature/NWScript/nwnx_creature.nss" line="90" column="9" bodyfile="Plugins/Creature/NWScript/nwnx_creature.nss" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Creature__MemorisedSpell_1a3d9cd596f9cd780ae69f4a497a90a335" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Creature_MemorisedSpell::meta</definition>
+        <argsstring></argsstring>
+        <name>meta</name>
+        <briefdescription>
+<para>Metamagic type, if any. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Creature/NWScript/nwnx_creature.nss" line="91" column="9" bodyfile="Plugins/Creature/NWScript/nwnx_creature.nss" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structNWNX__Creature__MemorisedSpell_1aa4c41f82a0cc4321ef229bf99d9e303b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NWNX_Creature_MemorisedSpell::domain</definition>
+        <argsstring></argsstring>
+        <name>domain</name>
+        <briefdescription>
+<para>Clerical domain, if any. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Creature/NWScript/nwnx_creature.nss" line="92" column="9" bodyfile="Plugins/Creature/NWScript/nwnx_creature.nss" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A memorised spell structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Creature/NWScript/nwnx_creature.nss" line="88" column="1" bodyfile="Plugins/Creature/NWScript/nwnx_creature.nss" bodystart="87" bodyend="93"/>
+    <listofallmembers>
+      <member refid="structNWNX__Creature__MemorisedSpell_1aa4c41f82a0cc4321ef229bf99d9e303b" prot="public" virt="non-virtual"><scope>NWNX_Creature_MemorisedSpell</scope><name>domain</name></member>
+      <member refid="structNWNX__Creature__MemorisedSpell_1aa08e4d7e4f0f2b8b8c639e152670329a" prot="public" virt="non-virtual"><scope>NWNX_Creature_MemorisedSpell</scope><name>id</name></member>
+      <member refid="structNWNX__Creature__MemorisedSpell_1a3d9cd596f9cd780ae69f4a497a90a335" prot="public" virt="non-virtual"><scope>NWNX_Creature_MemorisedSpell</scope><name>meta</name></member>
+      <member refid="structNWNX__Creature__MemorisedSpell_1adc7177afc73856b1ac6b2481c250418b" prot="public" virt="non-virtual"><scope>NWNX_Creature_MemorisedSpell</scope><name>ready</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

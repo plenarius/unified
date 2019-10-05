@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_4e8a3f802c1361b360f4695022d64b3a" kind="dir">
+    <compoundname>Plugins/Item/NWScript</compoundname>
+    <innerfile refid="nwnx__item_8nss">nwnx_item.nss</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Item/NWScript/"/>
+  </compounddef>
+</doxygen>

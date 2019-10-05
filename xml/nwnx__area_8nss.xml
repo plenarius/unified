@@ -1,0 +1,1669 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__area_8nss" kind="file" language="C++">
+    <compoundname>nwnx_area.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+      <node id="1">
+        <label>Plugins/Area/NWScript/nwnx_area.nss</label>
+        <link refid="nwnx__area_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="user-defined">
+      <header>Area PVP Settings</header>
+      <description><para><anchor id="group__area_1area_pvp"/></para>
+</description>
+      <memberdef kind="variable" id="group__area_1gaf2a48df36736c711a5e967f0ad3bd45e" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_PVP_SETTING_NO_PVP</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_PVP_SETTING_NO_PVP</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="12" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__area_1ga5197514db99c85e79fd5e6c7224aa84b" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_PVP_SETTING_PARTY_PVP</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_PVP_SETTING_PARTY_PVP</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="13" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__area_1ga8a6f21649b08da34ecc397f7fd621176" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_PVP_SETTING_FULL_PVP</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_PVP_SETTING_FULL_PVP</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="14" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__area_1ga5a68d1fd703f51fcb85b38915784902c" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_PVP_SETTING_SERVER_DEFAULT</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_PVP_SETTING_SERVER_DEFAULT</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="15" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Area Weather Settings</header>
+      <description><para><anchor id="group__area_1area_weather"/></para>
+</description>
+      <memberdef kind="variable" id="group__area_1ga4b0afb02efc2fb84072e146b07c21725" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_WEATHER_CHANCE_RAIN</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_WEATHER_CHANCE_RAIN</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="21" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__area_1gaff6d5d664b29aa9999a7c5de80a57d80" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_WEATHER_CHANCE_SNOW</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_WEATHER_CHANCE_SNOW</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="22" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__area_1ga90e1c5c66112049ec181b4ae82bdf704" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_WEATHER_CHANCE_LIGHTNING</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_WEATHER_CHANCE_LIGHTNING</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="23" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Area Day Night Cycle Settings</header>
+      <description><para><anchor id="group__area_1area_daynight"/></para>
+</description>
+      <memberdef kind="variable" id="group__area_1ga7dce428424e8ae3058dc9811f626358b" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_DAYNIGHTCYCLE_CYCLE_DAY_NIGHT</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_DAYNIGHTCYCLE_CYCLE_DAY_NIGHT</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="29" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__area_1gae8bed347af6f5ccab595bbe436867e8d" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_DAYNIGHTCYCLE_ALWAYS_BRIGHT</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_DAYNIGHTCYCLE_ALWAYS_BRIGHT</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="30" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__area_1ga9932f7ae3886ed89ece8868879f9214f" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_DAYNIGHTCYCLE_ALWAYS_DARK</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_DAYNIGHTCYCLE_ALWAYS_DARK</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="31" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Area Sun/Moon Color Settings</header>
+      <description><para><anchor id="group__area_1area_color"/></para>
+</description>
+      <memberdef kind="variable" id="group__area_1gab5dc36ec4d73bb7b7389c17e7b00e1fd" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_COLOR_TYPE_MOON_AMBIENT</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_COLOR_TYPE_MOON_AMBIENT</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="37" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__area_1ga74f324663644c65869ba6aa3d0d9642a" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_COLOR_TYPE_MOON_DIFFUSE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_COLOR_TYPE_MOON_DIFFUSE</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="38" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__area_1gaa7f9c7e05048637669ccbeca9c8f3453" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_COLOR_TYPE_SUN_AMBIENT</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_COLOR_TYPE_SUN_AMBIENT</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="39" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__area_1gab1c50d55eb9d0acd85cb327967baefbe" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_AREA_COLOR_TYPE_SUN_DIFFUSE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_AREA_COLOR_TYPE_SUN_DIFFUSE</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="40" column="11" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__area_1ga0b1c1bee8f3cf52b50393d35321987f7" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Area</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Area</name>
+        <initializer>= &quot;NWNX_Area&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="7" column="14" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__area_1gaa7e6831063235acdb013fdc5846d00a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Area_GetNumberOfPlayersInArea</definition>
+        <argsstring>(object area)</argsstring>
+        <name>NWNX_Area_GetNumberOfPlayersInArea</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Gets the number of players in area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The player count for the area. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="195" column="5" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="195" bodyend="203" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="46" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga90447d876b274d5bbab292416ee3a462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>object</type>
+        <definition>object NWNX_Area_GetLastEntered</definition>
+        <argsstring>(object area)</argsstring>
+        <name>NWNX_Area_GetLastEntered</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Gets the creature that last entered area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The most recent creature to enter the area. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="205" column="8" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="205" bodyend="213" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="51" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga60a89999247bd166627369396cb17dd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>object</type>
+        <definition>object NWNX_Area_GetLastLeft</definition>
+        <argsstring>(object area)</argsstring>
+        <name>NWNX_Area_GetLastLeft</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Gets the creature that last left area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="215" column="8" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="215" bodyend="223" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="55" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga6e8f652b477c44246d43b04f973c2a5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Area_GetPVPSetting</definition>
+        <argsstring>(object area)</argsstring>
+        <name>NWNX_Area_GetPVPSetting</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Get the PVP setting of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Returns the <ref refid="group__area_1area_pvp" kindref="member">PVP Setting</ref> for the area. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="225" column="5" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="225" bodyend="233" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="60" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1gac3d805e025520d1d026332d345f592ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Area_SetPVPSetting</definition>
+        <argsstring>(object area, int pvpSetting)</argsstring>
+        <name>NWNX_Area_SetPVPSetting</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pvpSetting</declname>
+        </param>
+        <briefdescription>
+<para>Set the PVP setting of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pvpSetting</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>One of <ref refid="group__area_1area_pvp" kindref="member">area_pvp</ref> the &quot;PVP Settings&quot;. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="235" column="6" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="235" bodyend="242" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="65" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga8b96838ad675dea964cefae1463795a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Area_GetAreaSpotModifier</definition>
+        <argsstring>(object area)</argsstring>
+        <name>NWNX_Area_GetAreaSpotModifier</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Get the spot modifier of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value of the Spot skill modifier for this area. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="244" column="5" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="244" bodyend="252" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="70" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1gaa4d87ed6410d4481a583d5a3d0a10cfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Area_SetAreaSpotModifier</definition>
+        <argsstring>(object area, int spotModifier)</argsstring>
+        <name>NWNX_Area_SetAreaSpotModifier</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>spotModifier</declname>
+        </param>
+        <briefdescription>
+<para>Set the spot modifier of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>spotModifier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The modifier to the Spot skill for this area. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="group__skillranks_1ga98a356da26953e1b850c981ea52714e8" kindref="member">NWNX_SkillRanks_SetAreaModifier()</ref> to change any skill modifier. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="254" column="6" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="254" bodyend="261" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="76" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga68990cdb91389da15d782bc76f4f723b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Area_GetAreaListenModifier</definition>
+        <argsstring>(object area)</argsstring>
+        <name>NWNX_Area_GetAreaListenModifier</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Get the listen modifer of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value of the Listen skill modifier for this area. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="263" column="5" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="263" bodyend="271" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="81" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga45f21807c481f40e89b1262e6a5a09e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Area_SetAreaListenModifier</definition>
+        <argsstring>(object area, int listenModifier)</argsstring>
+        <name>NWNX_Area_SetAreaListenModifier</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>listenModifier</declname>
+        </param>
+        <briefdescription>
+<para>Set the listen modifier of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>listenModifier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The modifier to the Listen skill for this area. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="group__skillranks_1ga98a356da26953e1b850c981ea52714e8" kindref="member">NWNX_SkillRanks_SetAreaModifier()</ref> to change any skill modifier. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="273" column="6" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="273" bodyend="280" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="87" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1gae29cb6e1a135419a3018b0425ad65d39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Area_GetNoRestingAllowed</definition>
+        <argsstring>(object area)</argsstring>
+        <name>NWNX_Area_GetNoRestingAllowed</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Checks the No Resting area flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if resting is not allowed in area. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="282" column="5" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="282" bodyend="290" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="92" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga5ee3226c5d8e58bb315fb845a58bb16e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Area_SetNoRestingAllowed</definition>
+        <argsstring>(object area, int bNoRestingAllowed)</argsstring>
+        <name>NWNX_Area_SetNoRestingAllowed</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bNoRestingAllowed</declname>
+        </param>
+        <briefdescription>
+<para>Set whether to disable resting in the area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bNoRestingAllowed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE to disable resting in the area. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="292" column="6" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="292" bodyend="299" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="97" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga37d17c10071066c05d4def5871727ebe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Area_GetWindPower</definition>
+        <argsstring>(object area)</argsstring>
+        <name>NWNX_Area_GetWindPower</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Get the wind power in area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The wind power for the area. (0-2) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="301" column="5" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="301" bodyend="309" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="102" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1gab273884d6d89fc8540d470805766d248" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Area_SetWindPower</definition>
+        <argsstring>(object area, int windPower)</argsstring>
+        <name>NWNX_Area_SetWindPower</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>windPower</declname>
+        </param>
+        <briefdescription>
+<para>Set the wind power in area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>windPower</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set to 0, 1 or 2. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="311" column="6" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="311" bodyend="318" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="107" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1gaa220a97dc5ef590274f26e98f403ae55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Area_GetWeatherChance</definition>
+        <argsstring>(object area, int type)</argsstring>
+        <name>NWNX_Area_GetWeatherChance</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Get the weather chance of type in area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="group__area_1area_weather" kindref="member">Weather Setting</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The percentage chance for the weather type. (0-100) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="320" column="5" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="320" bodyend="329" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="113" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga1baf18d567f46bd68b51cef75abf8c14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Area_SetWeatherChance</definition>
+        <argsstring>(object area, int type, int chance)</argsstring>
+        <name>NWNX_Area_SetWeatherChance</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>chance</declname>
+        </param>
+        <briefdescription>
+<para>Set the weather chance of type in area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A <ref refid="group__area_1area_weather" kindref="member">Weather Setting</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>chance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The chance this weather event occurs. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="331" column="6" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="331" bodyend="339" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="119" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1gabf793b13a09fc702d0d0c85047a46ede" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float NWNX_Area_GetFogClipDistance</definition>
+        <argsstring>(object area)</argsstring>
+        <name>NWNX_Area_GetFogClipDistance</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Get the fog clip distance in area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The fog clip distance. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="341" column="7" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="341" bodyend="349" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="124" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1gad229989bf33144757995858393b371db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Area_SetFogClipDistance</definition>
+        <argsstring>(object area, float distance)</argsstring>
+        <name>NWNX_Area_SetFogClipDistance</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+<para>Set the fog clip distance in area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>distance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new fog clip distance. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="351" column="6" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="351" bodyend="358" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="129" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga0db3f5073e78e212c929d964d6eb2d53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Area_GetShadowOpacity</definition>
+        <argsstring>(object area)</argsstring>
+        <name>NWNX_Area_GetShadowOpacity</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Get the shadow opacity of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The shadow opacity for the area. (0-100) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="360" column="5" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="360" bodyend="368" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="134" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga461babb3b7aa694baf8bc8a95161d65f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Area_SetShadowOpacity</definition>
+        <argsstring>(object area, int shadowOpacity)</argsstring>
+        <name>NWNX_Area_SetShadowOpacity</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>shadowOpacity</declname>
+        </param>
+        <briefdescription>
+<para>Set the shadow opacity of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>shadowOpacity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The shadow opacity to set for the area (0-100). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="370" column="6" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="370" bodyend="377" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="139" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga17b3d638229fd240a4563e1d3e2092cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Area_GetDayNightCycle</definition>
+        <argsstring>(object area)</argsstring>
+        <name>NWNX_Area_GetDayNightCycle</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <briefdescription>
+<para>Get the day/night cycle of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <ref refid="group__area_1area_daynight" kindref="member">Day Night Cycle Setting</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="380" column="5" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="380" bodyend="388" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="144" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga54cd733d8fba7b3c4a46032047bce0b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Area_SetDayNightCycle</definition>
+        <argsstring>(object area, int type)</argsstring>
+        <name>NWNX_Area_SetDayNightCycle</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Set the day/night cycle of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>= A <ref refid="group__area_1area_daynight" kindref="member">Day Night Cycle Setting</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="390" column="6" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="390" bodyend="397" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="149" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1gae5afc2a9aa6c4071741253704ed505cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Area_GetSunMoonColors</definition>
+        <argsstring>(object area, int type)</argsstring>
+        <name>NWNX_Area_GetSunMoonColors</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Get the Sun/Moon Ambient/Diffuse colors of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>= A <ref refid="group__area_1area_color" kindref="member">Sun/Moon Color Setting</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A FOG_COLOR_* or a custom value, -1 on error. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="399" column="5" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="399" bodyend="408" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="155" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga0d485de7372e2ed0ef896c8fbc43ff07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Area_SetSunMoonColors</definition>
+        <argsstring>(object area, int type, int color)</argsstring>
+        <name>NWNX_Area_SetSunMoonColors</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Set the Sun/Moon Ambient/Diffuse colors of area. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>= A <ref refid="group__area_1area_color" kindref="member">Sun/Moon Color Setting</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>= A FOG_COLOR_*. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>The color can also be represented as a hex RGB number if specific color shades are desired. The format of a hex specified color would be 0xFFEEDD where<itemizedlist>
+<listitem><para>FF would represent the amount of red in the color</para>
+</listitem><listitem><para>EE would represent the amount of green in the color</para>
+</listitem><listitem><para>DD would represent the amount of blue in the color. </para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="410" column="6" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="410" bodyend="418" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="167" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga375a5f37746e7d248292788987a7ccb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>object</type>
+        <definition>object NWNX_Area_CreateTransition</definition>
+        <argsstring>(object area, object target, float x, float y, float z, float size=2.0f, string tag=&quot;&quot;)</argsstring>
+        <name>NWNX_Area_CreateTransition</name>
+        <param>
+          <type>object</type>
+          <declname>area</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>size</declname>
+          <defval>2.0f</defval>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>tag</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Create and returns a transition (square shaped of specified size) at a location. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>area</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A door or waypoint object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+<parametername>y</parametername>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The position to create the transition. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the square. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If specified, the returning object will have this tag. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="group__object_1ga3ba2a01f7ba3088280c122708bb0ba84" kindref="member">NWNX_Object_SetTriggerGeometry()</ref> if you wish to draw the transition as something other than a square. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="420" column="8" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="420" bodyend="434" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="176" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga5bca6950ff8f896782ede7d59fc72d08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Area_GetTileAnimationLoop</definition>
+        <argsstring>(object oArea, float fTileX, float fTileY, int nAnimLoop)</argsstring>
+        <name>NWNX_Area_GetTileAnimationLoop</name>
+        <param>
+          <type>object</type>
+          <declname>oArea</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>fTileX</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>fTileY</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nAnimLoop</declname>
+        </param>
+        <briefdescription>
+<para>Get the state of a tile animation loop. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oArea</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fTileX</parametername>
+<parametername>fTileY</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The coordinates of the tile. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nAnimLoop</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The loop to check. (1-3) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the loop is enabled. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="436" column="5" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="436" bodyend="448" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="183" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__area_1ga28ba5d8f657c920be0ec69e2334fa74b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Area_SetTileAnimationLoop</definition>
+        <argsstring>(object oArea, float fTileX, float fTileY, int nAnimLoop, int bEnabled)</argsstring>
+        <name>NWNX_Area_SetTileAnimationLoop</name>
+        <param>
+          <type>object</type>
+          <declname>oArea</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>fTileX</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>fTileY</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nAnimLoop</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bEnabled</declname>
+        </param>
+        <briefdescription>
+<para>Set the state of a tile animation loop. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oArea</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The area object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fTileX</parametername>
+<parametername>fTileY</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The coordinates of the tile. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nAnimLoop</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The loop to set (1-3). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bEnabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE or FALSE. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Requires clients to re-enter the area for it to take effect </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Area/NWScript/nwnx_area.nss" line="450" column="6" bodyfile="Plugins/Area/NWScript/nwnx_area.nss" bodystart="450" bodyend="461" declfile="Plugins/Area/NWScript/nwnx_area.nss" declline="191" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_Area<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_Area&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_PVP_SETTING_NO_PVP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_PVP_SETTING_PARTY_PVP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_PVP_SETTING_FULL_PVP<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_PVP_SETTING_SERVER_DEFAULT<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="17"></codeline>
+<codeline lineno="21"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_WEATHER_CHANCE_RAIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_WEATHER_CHANCE_SNOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_WEATHER_CHANCE_LIGHTNING<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="25"></codeline>
+<codeline lineno="29"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_DAYNIGHTCYCLE_CYCLE_DAY_NIGHT<sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_DAYNIGHTCYCLE_ALWAYS_BRIGHT<sp/><sp/><sp/><sp/><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_DAYNIGHTCYCLE_ALWAYS_DARK<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="33"></codeline>
+<codeline lineno="37"><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_COLOR_TYPE_MOON_AMBIENT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_COLOR_TYPE_MOON_DIFFUSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_COLOR_TYPE_SUN_AMBIENT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NWNX_AREA_COLOR_TYPE_SUN_DIFFUSE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="42"></codeline>
+<codeline lineno="46"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1gaa7e6831063235acdb013fdc5846d00a7" kindref="member">NWNX_Area_GetNumberOfPlayersInArea</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga90447d876b274d5bbab292416ee3a462" kindref="member">NWNX_Area_GetLastEntered</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga60a89999247bd166627369396cb17dd6" kindref="member">NWNX_Area_GetLastLeft</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga6e8f652b477c44246d43b04f973c2a5e" kindref="member">NWNX_Area_GetPVPSetting</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1gac3d805e025520d1d026332d345f592ae" kindref="member">NWNX_Area_SetPVPSetting</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pvpSetting);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga8b96838ad675dea964cefae1463795a3" kindref="member">NWNX_Area_GetAreaSpotModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1gaa4d87ed6410d4481a583d5a3d0a10cfe" kindref="member">NWNX_Area_SetAreaSpotModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>spotModifier);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga68990cdb91389da15d782bc76f4f723b" kindref="member">NWNX_Area_GetAreaListenModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga45f21807c481f40e89b1262e6a5a09e5" kindref="member">NWNX_Area_SetAreaListenModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>listenModifier);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1gae29cb6e1a135419a3018b0425ad65d39" kindref="member">NWNX_Area_GetNoRestingAllowed</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga5ee3226c5d8e58bb315fb845a58bb16e" kindref="member">NWNX_Area_SetNoRestingAllowed</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bNoRestingAllowed);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga37d17c10071066c05d4def5871727ebe" kindref="member">NWNX_Area_GetWindPower</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1gab273884d6d89fc8540d470805766d248" kindref="member">NWNX_Area_SetWindPower</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>windPower);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1gaa220a97dc5ef590274f26e98f403ae55" kindref="member">NWNX_Area_GetWeatherChance</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga1baf18d567f46bd68b51cef75abf8c14" kindref="member">NWNX_Area_SetWeatherChance</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>chance);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="group__area_1gabf793b13a09fc702d0d0c85047a46ede" kindref="member">NWNX_Area_GetFogClipDistance</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1gad229989bf33144757995858393b371db" kindref="member">NWNX_Area_SetFogClipDistance</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>distance);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga0db3f5073e78e212c929d964d6eb2d53" kindref="member">NWNX_Area_GetShadowOpacity</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga461babb3b7aa694baf8bc8a95161d65f" kindref="member">NWNX_Area_SetShadowOpacity</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>shadowOpacity);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga17b3d638229fd240a4563e1d3e2092cb" kindref="member">NWNX_Area_GetDayNightCycle</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga54cd733d8fba7b3c4a46032047bce0b0" kindref="member">NWNX_Area_SetDayNightCycle</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1gae5afc2a9aa6c4071741253704ed505cc" kindref="member">NWNX_Area_GetSunMoonColors</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="comment">//<sp/>type<sp/>=<sp/>NWNX_AREA_COLOR_TYPE_*</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga0d485de7372e2ed0ef896c8fbc43ff07" kindref="member">NWNX_Area_SetSunMoonColors</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>color);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga375a5f37746e7d248292788987a7ccb9" kindref="member">NWNX_Area_CreateTransition</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>target,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>size<sp/>=<sp/>2.0f,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>tag=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga5bca6950ff8f896782ede7d59fc72d08" kindref="member">NWNX_Area_GetTileAnimationLoop</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oArea,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fTileX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fTileY,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nAnimLoop);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga28ba5d8f657c920be0ec69e2334fa74b" kindref="member">NWNX_Area_SetTileAnimationLoop</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oArea,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fTileX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fTileY,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nAnimLoop,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bEnabled);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1gaa7e6831063235acdb013fdc5846d00a7" kindref="member">NWNX_Area_GetNumberOfPlayersInArea</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetNumberOfPlayersInArea&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga90447d876b274d5bbab292416ee3a462" kindref="member">NWNX_Area_GetLastEntered</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area)</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetLastEntered&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueObject(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga60a89999247bd166627369396cb17dd6" kindref="member">NWNX_Area_GetLastLeft</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetLastLeft&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueObject(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga6e8f652b477c44246d43b04f973c2a5e" kindref="member">NWNX_Area_GetPVPSetting</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area)</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetPVPSetting&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1gac3d805e025520d1d026332d345f592ae" kindref="member">NWNX_Area_SetPVPSetting</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pvpSetting)</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetPVPSetting&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>pvpSetting);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga8b96838ad675dea964cefae1463795a3" kindref="member">NWNX_Area_GetAreaSpotModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area)</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetAreaSpotModifier&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1gaa4d87ed6410d4481a583d5a3d0a10cfe" kindref="member">NWNX_Area_SetAreaSpotModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>spotModifier)</highlight></codeline>
+<codeline lineno="255"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetAreaSpotModifier&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>spotModifier);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga68990cdb91389da15d782bc76f4f723b" kindref="member">NWNX_Area_GetAreaListenModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area)</highlight></codeline>
+<codeline lineno="264"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetAreaListenModifier&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga45f21807c481f40e89b1262e6a5a09e5" kindref="member">NWNX_Area_SetAreaListenModifier</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>listenModifier)</highlight></codeline>
+<codeline lineno="274"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetAreaListenModifier&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>listenModifier);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1gae29cb6e1a135419a3018b0425ad65d39" kindref="member">NWNX_Area_GetNoRestingAllowed</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area)</highlight></codeline>
+<codeline lineno="283"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetNoRestingAllowed&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga5ee3226c5d8e58bb315fb845a58bb16e" kindref="member">NWNX_Area_SetNoRestingAllowed</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bNoRestingAllowed)</highlight></codeline>
+<codeline lineno="293"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetNoRestingAllowed&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>bNoRestingAllowed);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga37d17c10071066c05d4def5871727ebe" kindref="member">NWNX_Area_GetWindPower</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area)</highlight></codeline>
+<codeline lineno="302"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetWindPower&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1gab273884d6d89fc8540d470805766d248" kindref="member">NWNX_Area_SetWindPower</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>windPower)</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetWindPower&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>windPower);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="318"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1gaa220a97dc5ef590274f26e98f403ae55" kindref="member">NWNX_Area_GetWeatherChance</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type)</highlight></codeline>
+<codeline lineno="321"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetWeatherChance&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>type);</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga1baf18d567f46bd68b51cef75abf8c14" kindref="member">NWNX_Area_SetWeatherChance</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>chance)</highlight></codeline>
+<codeline lineno="332"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetWeatherChance&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>chance);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>type);</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="339"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="group__area_1gabf793b13a09fc702d0d0c85047a46ede" kindref="member">NWNX_Area_GetFogClipDistance</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area)</highlight></codeline>
+<codeline lineno="342"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetFogClipDistance&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueFloat(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="349"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1gad229989bf33144757995858393b371db" kindref="member">NWNX_Area_SetFogClipDistance</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>distance)</highlight></codeline>
+<codeline lineno="352"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetFogClipDistance&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Area,<sp/>sFunc,<sp/>distance);</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga0db3f5073e78e212c929d964d6eb2d53" kindref="member">NWNX_Area_GetShadowOpacity</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area)</highlight></codeline>
+<codeline lineno="361"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetShadowOpacity&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga461babb3b7aa694baf8bc8a95161d65f" kindref="member">NWNX_Area_SetShadowOpacity</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>shadowOpacity)</highlight></codeline>
+<codeline lineno="371"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetShadowOpacity&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>shadowOpacity);</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="377"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga17b3d638229fd240a4563e1d3e2092cb" kindref="member">NWNX_Area_GetDayNightCycle</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area)</highlight></codeline>
+<codeline lineno="381"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetDayNightCycle&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="388"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"></highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga54cd733d8fba7b3c4a46032047bce0b0" kindref="member">NWNX_Area_SetDayNightCycle</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type)</highlight></codeline>
+<codeline lineno="391"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetDayNightCycle&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>type);</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="397"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1gae5afc2a9aa6c4071741253704ed505cc" kindref="member">NWNX_Area_GetSunMoonColors</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type)</highlight></codeline>
+<codeline lineno="400"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetSunMoonColors&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>type);</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="408"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"></highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga0d485de7372e2ed0ef896c8fbc43ff07" kindref="member">NWNX_Area_SetSunMoonColors</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>color)</highlight></codeline>
+<codeline lineno="411"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetSunMoonColors&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>color);</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>type);</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="418"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="420"><highlight class="normal"></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga375a5f37746e7d248292788987a7ccb9" kindref="member">NWNX_Area_CreateTransition</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>area,<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>target,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>size<sp/>=<sp/>2.0f,<sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>tag=</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="421"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;CreateTransition&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"></highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_Area,<sp/>sFunc,<sp/>tag);</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Area,<sp/>sFunc,<sp/>size);</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Area,<sp/>sFunc,<sp/>z);</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Area,<sp/>sFunc,<sp/>y);</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Area,<sp/>sFunc,<sp/>x);</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>target);</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>area);</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueObject(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="434"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga5bca6950ff8f896782ede7d59fc72d08" kindref="member">NWNX_Area_GetTileAnimationLoop</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oArea,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fTileX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fTileY,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nAnimLoop)</highlight></codeline>
+<codeline lineno="437"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetTileAnimationLoop&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>nAnimLoop);</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Area,<sp/>sFunc,<sp/>fTileY);</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Area,<sp/>sFunc,<sp/>fTileX);</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>oArea);</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"></highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"></highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueInt(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="448"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"></highlight></codeline>
+<codeline lineno="450"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__area_1ga28ba5d8f657c920be0ec69e2334fa74b" kindref="member">NWNX_Area_SetTileAnimationLoop</ref>(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>oArea,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fTileX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fTileY,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nAnimLoop,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bEnabled)</highlight></codeline>
+<codeline lineno="451"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SetTileAnimationLoop&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"></highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>bEnabled);</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentInt(NWNX_Area,<sp/>sFunc,<sp/>nAnimLoop);</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Area,<sp/>sFunc,<sp/>fTileY);</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentFloat(NWNX_Area,<sp/>sFunc,<sp/>fTileX);</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentObject(NWNX_Area,<sp/>sFunc,<sp/>oArea);</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"></highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_Area,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="461"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Area/NWScript/nwnx_area.nss"/>
+  </compounddef>
+</doxygen>

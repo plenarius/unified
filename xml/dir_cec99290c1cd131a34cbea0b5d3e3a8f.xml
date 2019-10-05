@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_cec99290c1cd131a34cbea0b5d3e3a8f" kind="dir">
+    <compoundname>Plugins/Feedback</compoundname>
+    <innerdir refid="dir_eb200576c64bce35eb9a451349feb8dc">Plugins/Feedback/Documentation</innerdir>
+    <innerdir refid="dir_27692ca3bc8aa0fe84b6637d6a27c20b">Plugins/Feedback/NWScript</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Feedback/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Core_Documentation_README" kind="page">
+    <compoundname>md_Core_Documentation_README</compoundname>
+    <title>Core Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Core_Documentation_README_1autotoc_md9">
+<title>Description</title>
+<para>The core of NWNXEE that does all the things.</para>
+</sect1>
+<sect1 id="md_Core_Documentation_README_1autotoc_md10">
+<title>Environment Variables</title>
+<para><table rows="9" cols="4"><row>
+<entry thead="yes"><para>Variable Name  </para>
+</entry><entry thead="yes"><para>Value  </para>
+</entry><entry thead="yes"><para>Default  </para>
+</entry><entry thead="yes"><para>Notes   </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>NWNX_CORE_SKIP</computeroutput>  </para>
+</entry><entry thead="no"><para>0-1  </para>
+</entry><entry thead="no"><para>0  </para>
+</entry><entry thead="no"><para>Set whether to load NWNX or not.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>NWNX_CORE_LOAD_PATH</computeroutput>  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para>Unset  </para>
+</entry><entry thead="no"><para>The directory from where plugins are loaded. Defaults to where NWNX_Core is located.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>NWNX_CORE_SKIP_ALL</computeroutput>  </para>
+</entry><entry thead="no"><para>0-1  </para>
+</entry><entry thead="no"><para>0  </para>
+</entry><entry thead="no"><para>Changes the default plugin load state from &apos;load all&apos; to &apos;skip all&apos;. Use <computeroutput>NWNX_{PLUGIN}_SKIP=n</computeroutput> to enable specific plugins in this case.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>NWNX_CORE_LOG_LEVEL</computeroutput>  </para>
+</entry><entry thead="no"><para>0-7  </para>
+</entry><entry thead="no"><para>0  </para>
+</entry><entry thead="no"><para>Sets the default log level. <computeroutput>6</computeroutput> is a good level for live servers. <computeroutput>7</computeroutput> includes debug messages which can be helpful if you&apos;re having issues.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>NWNX_CORE_LOAD_EXPERIMENTAL_PLUGIN</computeroutput>  </para>
+</entry><entry thead="no"><para>0-1  </para>
+</entry><entry thead="no"><para>0  </para>
+</entry><entry thead="no"><para>Allows loading of NWNX_Experimental, use at your own risk.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>NWNX_CORE_LOCALE</computeroutput>  </para>
+</entry><entry thead="no"><para>ru  </para>
+</entry><entry thead="no"><para>Unset  </para>
+</entry><entry thead="no"><para>Set the locale NWNX will use when encoding. Currently only supports Russian/Cyrillic (<computeroutput>ru</computeroutput>)   </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>NWNX_CORE_CRASH_ON_ASSERT_FAILURE</computeroutput>  </para>
+</entry><entry thead="no"><para>0-1  </para>
+</entry><entry thead="no"><para>0  </para>
+</entry><entry thead="no"><para>Sets whether an ASSERT failure hard crashes the server.   </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>NWNX_CORE_SHUTDOWN_SCRIPT</computeroutput>  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para>Unset  </para>
+</entry><entry thead="no"><para>Sets which NWScript to run when the module shuts down.   </para>
+</entry></row>
+</table>
+</para>
+</sect1>
+<sect1 id="md_Core_Documentation_README_1autotoc_md11">
+<title>Plugin Management</title>
+<sect2 id="md_Core_Documentation_README_1autotoc_md12">
+<title>Environment Variable Configuration</title>
+<para>Configuration of NWNX plugins are controlled by environment variables exported prior to starting the <computeroutput>nwserver</computeroutput> binary. Typical usage would be in the script used to start the server.</para>
+<para>Basic control of the plugin includes enabling/disabling the plugin and setting the logging level of the plugin. The following format is used for all plugins:</para>
+<para><itemizedlist>
+<listitem><para>NWNX_&lt;x&gt;_LOG_LEVEL</para>
+</listitem><listitem><para>NWNX_&lt;x&gt;_SKIP</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="md_Core_Documentation_README_1autotoc_md13">
+<title>Plugin Loading</title>
+<para>Inclusion or exclusion of the plugin at server startup time is contolled by the environment variable <computeroutput>NWNX_&lt;x&gt;_SKIP</computeroutput> where &lt;x&gt; is the plugin name (all caps).</para>
+<para><itemizedlist>
+<listitem><para>Setting this to <computeroutput>N</computeroutput> will load the plugin (i.e. it will not be skipped) at startup (<emphasis>default</emphasis>).</para>
+</listitem><listitem><para>Setting this to <computeroutput>Y</computeroutput> will cause the plugin to <emphasis>BE SKIPPED</emphasis> at startup.</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Example</bold> <programlisting><codeline><highlight class="normal">#<sp/>Load<sp/>the<sp/>sql<sp/>plugin<sp/>at<sp/>startup</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_SKIP=N</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_Core_Documentation_README_1autotoc_md14">
+<title>Plugin Log Level</title>
+<para>The default plugin log level is the same as the overall Core logging level.</para>
+<para>It can be changed, however, by assinging a value to <computeroutput>NWNX_&lt;x&gt;_LOG_LEVEL</computeroutput> (where &lt;x&gt; is the plugin name in all caps) in the same manner as the Core logging level. See the Core documentation for a description of available logging levels.</para>
+<para><bold>Example</bold> <programlisting><codeline><highlight class="normal">#<sp/>Set<sp/>the<sp/>sql<sp/>plugin<sp/>to<sp/>warning<sp/>and<sp/>above<sp/>(warning,<sp/>error,<sp/>and<sp/>fatal<sp/>only)</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_LOG_LEVEL=4</highlight></codeline>
+</programlisting> </para>
+</sect2>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

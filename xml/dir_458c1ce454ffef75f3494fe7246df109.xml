@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_458c1ce454ffef75f3494fe7246df109" kind="dir">
+    <compoundname>Plugins/ServerLogRedirector/Documentation</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/ServerLogRedirector/Documentation/"/>
+  </compounddef>
+</doxygen>

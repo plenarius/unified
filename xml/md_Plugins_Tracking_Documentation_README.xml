@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_Tracking_Documentation_README" kind="page">
+    <compoundname>md_Plugins_Tracking_Documentation_README</compoundname>
+    <title>Tracking Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_Tracking_Documentation_README_1autotoc_md240">
+<title>Description</title>
+<para>Exposes a number of metrics regarding tracking events in the game.</para>
+</sect1>
+<sect1 id="md_Plugins_Tracking_Documentation_README_1autotoc_md241">
+<title>Environment Variables</title>
+<para><table rows="2" cols="3"><row>
+<entry thead="yes"><para>Variable Name  </para>
+</entry><entry thead="yes"><para>Type  </para>
+</entry><entry thead="yes"><para>Default Value   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>ENABLE_ACTIVITY_TARGET  </para>
+</entry><entry thead="no"><para>bool  </para>
+</entry><entry thead="no"><para>true   </para>
+</entry></row>
+</table>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

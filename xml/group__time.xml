@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__time" kind="group">
+    <compoundname>time</compoundname>
+    <title>Time</title>
+    <innerfile refid="nwnx__time_8nss">nwnx_time.nss</innerfile>
+    <innerclass refid="structNWNX__Time__HighResTimestamp" prot="public">NWNX_Time_HighResTimestamp</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__time_1gaa8dfdece9764c22f65a8f5d6f045abca" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Time</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Time</name>
+        <initializer>= &quot;NWNX_Time&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Time/NWScript/nwnx_time.nss" line="7" column="14" bodyfile="Plugins/Time/NWScript/nwnx_time.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__time_1gafade0de56b682e6a86d14806904e81d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Time_GetSystemDate</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Time_GetSystemDate</name>
+        <briefdescription>
+<para>Returns the current date. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The date in the format (mm/dd/yyyy). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Time/NWScript/nwnx_time.nss" line="32" column="8" bodyfile="Plugins/Time/NWScript/nwnx_time.nss" bodystart="32" bodyend="37" declfile="Plugins/Time/NWScript/nwnx_time.nss" declline="11" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__time_1ga07d6966b50975faa8a400bc1815707a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Time_GetSystemTime</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Time_GetSystemTime</name>
+        <briefdescription>
+<para>Returns current time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The current time in the format (24:mm:ss). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Time/NWScript/nwnx_time.nss" line="39" column="8" bodyfile="Plugins/Time/NWScript/nwnx_time.nss" bodystart="39" bodyend="44" declfile="Plugins/Time/NWScript/nwnx_time.nss" declline="15" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__time_1gaed436a2343d1fe0c4cc0ad59f23164db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Time_GetTimeStamp</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Time_GetTimeStamp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Returns the number of seconds since midnight on January 1, 1970. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Time/NWScript/nwnx_time.nss" line="46" column="5" bodyfile="Plugins/Time/NWScript/nwnx_time.nss" bodystart="46" bodyend="52" declfile="Plugins/Time/NWScript/nwnx_time.nss" declline="18" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__time_1ga4b19867156ad113a9ecb35e9ee9b0887" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__Time__HighResTimestamp" kindref="compound">NWNX_Time_HighResTimestamp</ref></type>
+        <definition>struct NWNX_Time_HighResTimestamp NWNX_Time_GetHighResTimeStamp</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Time_GetHighResTimeStamp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Returns the number of microseconds since midnight on January 1, 1970. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Time/NWScript/nwnx_time.nss" line="46" column="5" bodyfile="Plugins/Time/NWScript/nwnx_time.nss" bodystart="54" bodyend="63" declfile="Plugins/Time/NWScript/nwnx_time.nss" declline="18" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides various time related functions. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

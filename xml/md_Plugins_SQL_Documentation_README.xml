@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_SQL_Documentation_README" kind="page">
+    <compoundname>md_Plugins_SQL_Documentation_README</compoundname>
+    <title>SQL Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_SQL_Documentation_README_1autotoc_md223">
+<title>Description</title>
+<para>General data access, storage and manipulation of persistent data in a database.</para>
+</sect1>
+<sect1 id="md_Plugins_SQL_Documentation_README_1autotoc_md224">
+<title>Environment Variables</title>
+<sect2 id="md_Plugins_SQL_Documentation_README_1autotoc_md225">
+<title>NWNX_SQL_TYPE</title>
+<para>Controls the target database type used at runtime.</para>
+<para>Possible values (case insensitive):</para>
+<para><itemizedlist>
+<listitem><para><computeroutput>MYSQL</computeroutput></para>
+</listitem><listitem><para><computeroutput>POSTGRESQL</computeroutput></para>
+</listitem><listitem><para><computeroutput>SQLITE</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Example</bold></para>
+<para><programlisting><codeline><highlight class="normal">export<sp/>NWNX_SQL_TYPE=POSTGRESQL</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_Plugins_SQL_Documentation_README_1autotoc_md226">
+<title>NWNX_SQL_HOST</title>
+<para>Host name where the database resides. Typically <computeroutput>localhost</computeroutput> but can be any valid host name or IP address.</para>
+<para>Not used if using SQLite.</para>
+<para><bold>Example</bold></para>
+<para><programlisting><codeline><highlight class="normal">export<sp/>NWNX_SQL_HOST=localhost</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_Plugins_SQL_Documentation_README_1autotoc_md227">
+<title>NWNX_SQL_USERNAME</title>
+<para>Database username used for the connection.</para>
+<para>Not used if using SQLite.</para>
+<para><bold>Example</bold></para>
+<para><programlisting><codeline><highlight class="normal">export<sp/>NWNX_SQL_USERNAME=nwn_db</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_Plugins_SQL_Documentation_README_1autotoc_md228">
+<title>NWNX_SQL_PASSWORD</title>
+<para>Password for the database connection.</para>
+<para>Not used if using SQLite.</para>
+<para><bold>Example</bold></para>
+<para><programlisting><codeline><highlight class="normal">export<sp/>NWNX_SQL_PASSWORD=lathander_rulez</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_Plugins_SQL_Documentation_README_1autotoc_md229">
+<title>NWNX_SQL_DATABASE</title>
+<para>The database to connect to.</para>
+<para>The filename of the database when using SQLite, it is stored in the UserDirectory/database folder.</para>
+<para><bold>Example</bold></para>
+<para><programlisting><codeline><highlight class="normal">export<sp/>NWNX_SQL_DATABASE=mymodulename</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_Plugins_SQL_Documentation_README_1autotoc_md230">
+<title>NWNX_SQL_QUERY_METRICS</title>
+<para>Export query execution metrics.</para>
+<para>The Metrics_InfluxDB plugin and a visualizer like Grafana are required to view these metrics.</para>
+<para><bold>Example</bold></para>
+<para><programlisting><codeline><highlight class="normal">export<sp/>NWNX_SQL_QUERY_METRICS=true</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_Plugins_SQL_Documentation_README_1autotoc_md231">
+<title>NWNX_SQL_USE_UTF8</title>
+<para>Convert all strings going between the database and game to/from UTF8</para>
+<para>This takes into account the core locale as well.</para>
+<para><bold>Example</bold></para>
+<para><programlisting><codeline><highlight class="normal">export<sp/>NWNX_SQL_USE_UTF8=true</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_Plugins_SQL_Documentation_README_1autotoc_md232">
+<title>NWNX_SQL_CHARACTER_SET</title>
+<para>Set the connection&apos;s character set to be used.</para>
+<para>Only supported on mysql. For pgsql and sqlite this can be achieved with a query.</para>
+<para><bold>Examples</bold></para>
+<para><programlisting><codeline><highlight class="normal">export<sp/>NWNX_SQL_CHARACTER_SET=utf8</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>NWNX_SQL_CHARACTER_SET=cp1251</highlight></codeline>
+</programlisting> </para>
+</sect2>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

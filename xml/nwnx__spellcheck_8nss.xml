@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="nwnx__spellcheck_8nss" kind="file" language="C++">
+    <compoundname>nwnx_spellcheck.nss</compoundname>
+    <includes local="yes">nwnx</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>Plugins/SpellChecker/NWScript/nwnx_spellcheck.nss</label>
+        <link refid="nwnx__spellcheck_8nss"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>nwnx</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__spellcheck_1gad6c02dbded09e74ae5570dc9c9823433" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_SpellChecker</definition>
+        <argsstring></argsstring>
+        <name>NWNX_SpellChecker</name>
+        <initializer>= &quot;NWNX_SpellChecker&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SpellChecker/NWScript/nwnx_spellcheck.nss" line="9" column="14" bodyfile="Plugins/SpellChecker/NWScript/nwnx_spellcheck.nss" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__spellcheck_1ga327dc28981e28b40ba9ca34447e4d639" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_SpellChecker_FindMisspell</definition>
+        <argsstring>(string sentence)</argsstring>
+        <name>NWNX_SpellChecker_FindMisspell</name>
+        <param>
+          <type>string</type>
+          <declname>sentence</declname>
+        </param>
+        <briefdescription>
+<para>Finds misspells in a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sentence</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sentence to check. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The spelling mistakes in the sentence, comma delimited. Returns blank if no errors or if .so file is improperly installed. </para>
+</simplesect>
+<simplesect kind="note"><para>If it returns an error in every word, even when spelled correctly, the dictionary is not set up correctly. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SpellChecker/NWScript/nwnx_spellcheck.nss" line="26" column="8" bodyfile="Plugins/SpellChecker/NWScript/nwnx_spellcheck.nss" bodystart="26" bodyend="33" declfile="Plugins/SpellChecker/NWScript/nwnx_spellcheck.nss" declline="16" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spellcheck_1gacf06740191d7fc00fa355929b1904667" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_SpellChecker_GetSuggestSpell</definition>
+        <argsstring>(string word)</argsstring>
+        <name>NWNX_SpellChecker_GetSuggestSpell</name>
+        <param>
+          <type>string</type>
+          <declname>word</declname>
+        </param>
+        <briefdescription>
+<para>Get suggestions on a single word, comma delimited. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>word</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The string to check for suggestions. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A comma delimited lists of suggestions for a word. Returns blank if no errors or if .so file is improperly installed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/SpellChecker/NWScript/nwnx_spellcheck.nss" line="35" column="8" bodyfile="Plugins/SpellChecker/NWScript/nwnx_spellcheck.nss" bodystart="35" bodyend="41" declfile="Plugins/SpellChecker/NWScript/nwnx_spellcheck.nss" declline="22" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;nwnx&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>NWNX_SpellChecker<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;NWNX_SpellChecker&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__spellcheck_1ga327dc28981e28b40ba9ca34447e4d639" kindref="member">NWNX_SpellChecker_FindMisspell</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sentence);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__spellcheck_1gacf06740191d7fc00fa355929b1904667" kindref="member">NWNX_SpellChecker_GetSuggestSpell</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>word);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__spellcheck_1ga327dc28981e28b40ba9ca34447e4d639" kindref="member">NWNX_SpellChecker_FindMisspell</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sentence)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;FindMisspell&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_SpellChecker,<sp/>sFunc,<sp/>sentence);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SpellChecker,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueString(NWNX_SpellChecker,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="group__spellcheck_1gacf06740191d7fc00fa355929b1904667" kindref="member">NWNX_SpellChecker_GetSuggestSpell</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>word)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>sFunc<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;GetSuggestSpell&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_PushArgumentString(NWNX_SpellChecker,<sp/>sFunc,<sp/>word);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>NWNX_CallFunction(NWNX_SpellChecker,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NWNX_GetReturnValueString(NWNX_SpellChecker,<sp/>sFunc);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/SpellChecker/NWScript/nwnx_spellcheck.nss"/>
+  </compounddef>
+</doxygen>

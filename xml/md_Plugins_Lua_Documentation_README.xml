@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_Lua_Documentation_README" kind="page">
+    <compoundname>md_Plugins_Lua_Documentation_README</compoundname>
+    <title>Lua Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_Lua_Documentation_README_1autotoc_md71">
+<title>Description</title>
+<para>Allows users to call Lua code with NWScript binding.</para>
+</sect1>
+<sect1 id="md_Plugins_Lua_Documentation_README_1autotoc_md72">
+<title>Environment Variables</title>
+<para><table rows="6" cols="3"><row>
+<entry thead="yes"><para>Variable Name  </para>
+</entry><entry thead="yes"><para>Type  </para>
+</entry><entry thead="yes"><para>Default Value   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>PRELOAD_SCRIPT  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para>USERDIR/lua/preload.lua   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>TOKEN_FUNCTION  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para>CallToken   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>EVENT_FUNCTION  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para>RunEvent   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>OBJSELF_FUNCTION  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><emphasis>none</emphasis>   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>RUNSCRIPT_TABLE  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><emphasis>none</emphasis>   </para>
+</entry></row>
+</table>
+</para>
+</sect1>
+<sect1 id="md_Plugins_Lua_Documentation_README_1autotoc_md73">
+<title>Quick start</title>
+<sect2 id="md_Plugins_Lua_Documentation_README_1autotoc_md74">
+<title>Docker</title>
+<para><orderedlist>
+<listitem><para>Include <computeroutput><ref refid="nwnx__lua_8nss" kindref="compound">nwnx_lua.nss</ref></computeroutput> in your module</para>
+</listitem><listitem><para>Enable the plugin and mount a complete copy of <computeroutput>unified/Plugins/Lua/lua</computeroutput> to your container. This is where all your scripts will go. Compose example: <programlisting filename=".yaml"><codeline><highlight class="normal">volumes:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>./server/:/nwn/home</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>./lua:/nwn/run/lua/</highlight></codeline>
+<codeline><highlight class="normal">environment:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>NWNX_LUA_SKIP=n</highlight></codeline>
+</programlisting></para>
+</listitem><listitem><para>Continue from step 6 in the list below.</para>
+</listitem></orderedlist>
+</para>
+</sect2>
+<sect2 id="md_Plugins_Lua_Documentation_README_1autotoc_md75">
+<title>Native</title>
+<para><orderedlist>
+<listitem><para>Install <bold>LuaJIT</bold>, i.e <computeroutput>sudo apt-get install luajit libluajit-5.1-dev</computeroutput></para>
+</listitem><listitem><para>Compile your plugin and install as any other nwnxee plugin</para>
+</listitem><listitem><para>Don&apos;t set any configuration env variable</para>
+</listitem><listitem><para>Import the <computeroutput><ref refid="nwnx__lua_8nss" kindref="compound">nwnx_lua.nss</ref></computeroutput> script in the <bold>NWScript</bold> directory in your module</para>
+</listitem><listitem><para>Copy the Lua directory inside your <bold>USERDIR</bold> (usually <computeroutput>.local/Neverwinter Nights/</computeroutput>), so you will have a <bold>USERDIR/lua/preload.lua</bold> file.</para>
+</listitem><listitem><para>In your *&quot;on module load script&quot;* include *&quot;nwnx_lua&quot;* and add this line <computeroutput>NWNX_Lua_RunEvent(&quot;mod_load&quot;, OBJECT_SELF);</computeroutput></para>
+</listitem><listitem><para>In your *&quot;on module chat script&quot;* include *&quot;nwnx_lua&quot;* and add this line <computeroutput>NWNX_Lua_RunEvent(&quot;mod_chat&quot;, GetPCChatSpeaker());</computeroutput></para>
+</listitem><listitem><para>Enter your module and put this line in your talk chat: <computeroutput>/c =GetName(oPC)</computeroutput> dont forget the &apos;=&apos;</para>
+</listitem><listitem><para>Press enter and you will get your name as server message</para>
+</listitem><listitem><para>try the same with <computeroutput>/c ApplyEffectToObject(2, EffectHeal(10), oPC)</computeroutput> or <computeroutput>/c return GetName(GetArea(oPC))</computeroutput> or <computeroutput>/c =3+5</computeroutput> or <lsquo/>/c DelayCommand(oPC, 1.5, SpeakString, &apos;Foo<rsquo/>)<computeroutput></computeroutput></para>
+</listitem><listitem><para><computeroutput>Have some fun with your chat command interpreter, every command you want evaled by Lua must start with</computeroutput>/c <computeroutput>, if you want a return value start with</computeroutput>/c =<computeroutput>or</computeroutput>/c return <computeroutput></computeroutput></para>
+</listitem><listitem><para><computeroutput>Look at the Lua scripts provided for some examples. The different ways to use this plugin are a lot, now you have NWScript binding in a interpred language, Lua, so you can do things like change a Lua script and hot reload it without even restart the module; for an example look at the</computeroutput>loadscript()` function in the preload script.</para>
+</listitem></orderedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md_Plugins_Lua_Documentation_README_1autotoc_md76">
+<title>Documentation</title>
+<para>This plugin let you execute Lua code inside <emphasis>NWscript</emphasis> via two functions <computeroutput><ref refid="group__lua_1ga1df329114c0aa0ee95ee8fb43c3de63b" kindref="member">NWNX_Lua_EvalVoid()</ref></computeroutput> and <computeroutput><ref refid="group__lua_1ga18d5da03291e7b263d9e4c40f4093995" kindref="member">NWNX_Lua_Eval()</ref></computeroutput>, the second one returning (as string) the result of the Lua code execution. With the <computeroutput><ref refid="group__lua_1ga5a16247c28d75f20ccdefbd517cf557b" kindref="member">NWNX_Lua_RunEvent()</ref></computeroutput> function you can generate events in NWScript, receive them on the Lua side and executing all the Lua functions registered to listen to that event in order of priority. For details on events just look at the three <computeroutput>*Event()</computeroutput> functions in <computeroutput>preload.lua</computeroutput>. Lastly the <emphasis>run script hook</emphasis> permit to run a Lua function before a script is executed in the module, with returning values from the function having special effects: from skipping the script execution to being treated as a StartingConditional() result (for details see the configuration section).</para>
+<para>In the Lua space all the basics NWScript functions are already defined, that by simply requiring the file <computeroutput>nwn.lua</computeroutput>.</para>
+<para>All functions returning a NWScript boolean (1 or 0) in Lua now returns a <bold>boolean</bold> (<computeroutput>true</computeroutput> or <computeroutput>false</computeroutput>), the same for functions accepting booleans, so in Lua you can write: <computeroutput>ClearAllActions(true)</computeroutput> or <computeroutput>if GetIsObjectValid(oObject) then .... end</computeroutput></para>
+<para><computeroutput>OBJECT_SELF</computeroutput> and <computeroutput>OBJECT_INVALID</computeroutput> are defined too, the first changing and following the script context.</para>
+<para>Only these functions are different from NWScript: <computeroutput>DelayCommand</computeroutput>, <computeroutput>AssignCommand</computeroutput> and <computeroutput>ActionDoCommand</computeroutput></para>
+<para>The signatures of the functions are: <programlisting filename=".ruby"><codeline><highlight class="normal">DelayCommand(oObject,<sp/>fDelay,<sp/>Function,<sp/>1stFunctionArg,<sp/>2ndFunctionArg<sp/>.....)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">AssignCommand(oObject,<sp/>Function,<sp/>1stFunctionArg,<sp/>2ndFunctionArg<sp/>.....)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ActionDoCommand(Function,<sp/>1stFunctionArg,<sp/>2ndFunctionArg<sp/>.....)</highlight></codeline>
+</programlisting> For Example: <programlisting filename=".ruby"><codeline><highlight class="normal">DelayCommand(oPC,<sp/>2.5,<sp/>SetLocalInt,<sp/>oPC,<sp/>&quot;LOCAL_INT&quot;,<sp/>42)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">AssignCommand(OBJECT_SELF,<sp/>SpeakString,<sp/>&quot;Bar&quot;)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ActionDoCommand(SpeakString,<sp/>&quot;Here&apos;s<sp/>my<sp/>seat!&quot;);</highlight></codeline>
+</programlisting> Beware that for <computeroutput>DelayCommand</computeroutput> there is an additional argument (oObject) respect to the NWScript counterpart, so you can avoid to write <computeroutput>AssignCommand(oObject, DelayCommand, ...</computeroutput>. Just write <computeroutput>DelayCommand(oObject, 2.0 ....</computeroutput>. If you dont know how to set oObject just use <computeroutput>OBJECT_SELF</computeroutput>.</para>
+<para>In the Lua namespace are defined, by the plugin, some additional utility functions. You can find them in the file <computeroutput>lua/additions.lua</computeroutput>, among these there are <computeroutput>SerializeObject()</computeroutput> and <computeroutput>DeserializeObject()</computeroutput>, useful if you want to use Lua to connect to database and saving/retrieving objects in it.</para>
+<para>They are also implemented <computeroutput>tostring(vVector)</computeroutput> or <computeroutput>vVector:tostring()</computeroutput>, <computeroutput>tostring(lLocation)</computeroutput> or <computeroutput>lLocation:tostring()</computeroutput> and the inverse <computeroutput>string.tovector()</computeroutput> or <computeroutput>sVector:vector()</computeroutput> and <computeroutput>string.tolocation()</computeroutput> or <computeroutput>sLocation:tolocation()</computeroutput>, the same as above useful if you want to save/retrieve vectors and locations in a database via lua.</para>
+<para>Last but not least the function <computeroutput>GetTimeOfDay()</computeroutput> returns the time since Epoch in microseconds, useful for tracing execution speed.</para>
+<para><bold>Important</bold>: dont call <emphasis>directly</emphasis> <bold>any</bold> NWScript function in the preload script or any other directly required script, so avoid writing lines like SetLocalString(...), GetModule() etc, you can write them inside function definitions but, again, dont call these functions directly during preload. The preload script is loaded during the start of nwserver and before the module is even loaded. So any direct call to NWScript functions during preload time will crash the server.</para>
+<para>The trick is to load/require the others scripts in the module_load event, you can see how in the preload script.</para>
+<para>The entire system is configurable ad hoc, if you have time you can even change the name of any NWScript function, use OOP programming, i.e using Lua classes instead of numbers for objects; with LuaJIT and FFi you can even directly access C structures.</para>
+</sect1>
+<sect1 id="md_Plugins_Lua_Documentation_README_1autotoc_md77">
+<title>Installation and configuration</title>
+<para>1) Just import in your module the two scripts in the NWScript directory. 2) Copy the <emphasis>lua</emphasis> directory inside your NWN user directory (usually <computeroutput>.local/share/Neverwinter Nights/</computeroutput>)</para>
+<para>Here is the complete list of the configuration environment variables:</para>
+<para><bold>NWNX_LUA_PRELOAD_SCRIPT</bold> mandatory, the default value is <computeroutput>your_default_NWN_user_directory/lua/preload.lua</computeroutput>.</para>
+<para><bold>NWNX_LUA_TOKEN_FUNCTION</bold> mandatory, it&apos;s the name of the function used internally to emulate <computeroutput>DelayCommand</computeroutput>, <computeroutput>AssignCommand</computeroutput> and <computeroutput>ActionDoCommand</computeroutput>. The function is already defined in the preload script provided, default: <computeroutput>CallToken()</computeroutput>.</para>
+<para><bold>NWNX_LUA_EVENT_FUNCTION</bold> mandatory: you can use the event system for generate events inside NWScript, via the function <computeroutput>NWNX_Lua_RunEvent</computeroutput> provided in <ref refid="nwnx__lua_8nss" kindref="compound">nwnx_lua.nss</ref>. These events can be consumend by a Lua function registered to observe the events, the default is <computeroutput>RunEvent()</computeroutput>, and it&apos;s already defined in the preload script. If you dont want to use the event system just dont call <computeroutput><ref refid="group__lua_1ga5a16247c28d75f20ccdefbd517cf557b" kindref="member">NWNX_Lua_RunEvent()</ref></computeroutput> on the NWScript side.</para>
+<para><bold>NWNX_LUA_OBJSELF_FUNCTION</bold> optional and advanced: in the Lua global namespace there is already a OBJECT_SELF global variable synced by the plugin at the right integer value following the context change. If you need to be more OOP and don&apos;t want to use integers for objects you have to change first the <computeroutput>RunEvent</computeroutput> function, because is accepting integers as objects. So you have to transform them in real objects inside the <computeroutput>RunEvent</computeroutput> function, just before the function call the observers callbacks. Second you have to set this configuration variable to the name of the function responsible for setting OBJECT_SELF to an object. The function will be called by the plugin with an integer value (the value of OBJECT_SELF) as argument when needed, i.e. when the context change. There is an example of <computeroutput>SetObjectSelf()</computeroutput> commented out in the preload script, note: it does not work by itself, you have to write oop code (i.e. a class for objects) before setting the configuration and uncommenting/modifying it. If this configuration is defined the function <bold>must</bold> be present in the preload script. Default: none.</para>
+<para><bold>NWNX_LUA_RUNSCRIPT_TABLE</bold> optional: this is the name of the <emphasis>global</emphasis> Lua <bold>table</bold> containing the functions called in the <emphasis>run script hook</emphasis>. A function with the same name of the script executed in the module will be run before the script itself. If the function returns something different from <computeroutput>nil</computeroutput> (i.e.: string, numbers or booleans) the script execution will be skipped, if the function returns a Lua boolean (<computeroutput>true</computeroutput> or <computeroutput>false</computeroutput>) it&apos;s treated like a return value from a StartingConditional(). For example if you have the script &apos;mod_on_chat.nss&apos; in your module <emphasis>onchat</emphasis> event, if this configuration parameter is set to <computeroutput>Scripts</computeroutput>, when the <computeroutput>mod_on_chat</computeroutput> script is called the plugin search for a Lua function <computeroutput>Scripts.mod_on_chat()</computeroutput>. If the function is found it will be called before the &apos;mod_on_chat&apos; script and the returned value determine if the original script is to be skipped. No argument is passed to the function, the context object is already represented by OBJECT_SELF. If this parameter is not defined no <emphasis>run script hook</emphasis> is set up. If this parameter is defined the basic table definition <bold>must</bold> be present in the preload script, a line like this one is enough: <computeroutput>Scripts = {}</computeroutput> all the other functions of the run script table could be defined after the preloading phase, obviously apart from the mod_load function if you want one. Default: none. <bold>WARNING</bold> dont set this config with any other <emphasis>RunScript</emphasis> hook in place, i.e. if you have the ENABLE_SCRIPTS of the Profiler plugin enabled dont set this config or you will have a server crash at startup. For the same reason enabling this setting makes this plugin not compatible with the Mono Plugin.</para>
+</sect1>
+<sect1 id="md_Plugins_Lua_Documentation_README_1autotoc_md78">
+<title>Notes on Compilation</title>
+<para>NWNX_Lua is configured to compile first against <emphasis>LuaJIT</emphasis>, and only if LuaJIT (and its library) cannot be find search for a regular Lua library. So if you want to compile against LuaJIT just install it, otherwise install a regular Lua with liblua-dev provided by your distro; something like <computeroutput>sudo apt-get install luajit libluajit-5.1-dev</computeroutput> for luajit or <computeroutput>sudo apt-get install lua5.3 liblua5.3-dev</computeroutput> for regular Lua.</para>
+<para>I highly reccomend to use or try LuaJIT, it is really fast and has the FFI library for C bindings. There is a script provided (&apos;compat.lua&apos;) that try to mantain compatibility with differents Lua versions, it&apos;s tested with LuaJIT and Lua 5.3 but should work with Lua 5.2 and Lua 5.1.</para>
+</sect1>
+<sect1 id="md_Plugins_Lua_Documentation_README_1autotoc_md79">
+<title>Note on LuaJIT and extensions</title>
+<para>If you want to use extensions in <emphasis>LuaJIT</emphasis> I highly reccomend to use <emphasis>luarocks</emphasis> to install them. To install and compile <emphasis>luarocks</emphasis> for <emphasis>LuaJIT</emphasis> downlowd it and compile/install with this two commands: 1) <computeroutput>./configure --lua-suffix=jit --with-lua-include=/usr/include/luajit-2.0</computeroutput> 2) <computeroutput>make build &amp;&amp; sudo make install</computeroutput> </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

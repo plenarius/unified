@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2Lua_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Lua<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Allows<sp/>users<sp/>to<sp/>call<sp/>Lua<sp/>code<sp/>with<sp/>NWScript<sp/>binding.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>Variable<sp/>Name<sp/><sp/><sp/><sp/><sp/>|<sp/><sp/>Type<sp/><sp/>|<sp/>Default<sp/>Value<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>-------------<sp/><sp/><sp/><sp/><sp/>|<sp/>:----:<sp/>|<sp/>-------------<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>PRELOAD_SCRIPT<sp/><sp/><sp/><sp/>|<sp/>string<sp/>|<sp/><sp/>USERDIR/lua/preload.lua<sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>TOKEN_FUNCTION<sp/><sp/><sp/><sp/>|<sp/>string<sp/>|<sp/><sp/>CallToken<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>EVENT_FUNCTION<sp/><sp/><sp/><sp/>|<sp/>string<sp/>|<sp/><sp/>RunEvent<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>OBJSELF_FUNCTION<sp/><sp/>|<sp/>string<sp/>|<sp/><sp/>_none_<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>RUNSCRIPT_TABLE<sp/><sp/><sp/>|<sp/>string<sp/>|<sp/><sp/>_none_<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Quick<sp/>start</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Docker</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Include<sp/>`nwnx_lua.nss`<sp/>in<sp/>your<sp/>module</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Enable<sp/>the<sp/>plugin<sp/>and<sp/>mount<sp/>a<sp/>complete<sp/>copy<sp/>of<sp/>`unified/Plugins/Lua/lua`<sp/>to<sp/>your<sp/>container.<sp/>This<sp/>is<sp/>where<sp/>all<sp/>your<sp/>scripts<sp/>will<sp/>go.<sp/>Compose<sp/>example:<sp/></highlight></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>volumes:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>./server/:/nwn/home</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>./lua:/nwn/run/lua/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>environment:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>NWNX_LUA_SKIP=n</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Continue<sp/>from<sp/>step<sp/>6<sp/>in<sp/>the<sp/>list<sp/>below.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Native</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Install<sp/>**LuaJIT**,<sp/>i.e<sp/>`sudo<sp/>apt-get<sp/>install<sp/>luajit<sp/>libluajit-5.1-dev`</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Compile<sp/>your<sp/>plugin<sp/>and<sp/>install<sp/>as<sp/>any<sp/>other<sp/>nwnxee<sp/>plugin</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Don&apos;t<sp/>set<sp/>any<sp/>configuration<sp/>env<sp/>variable</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>Import<sp/>the<sp/>`nwnx_lua.nss`<sp/>script<sp/>in<sp/>the<sp/>**NWScript**<sp/>directory<sp/>in<sp/>your<sp/>module</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>Copy<sp/>the<sp/>Lua<sp/>directory<sp/>inside<sp/>your<sp/>**USERDIR**<sp/>(usually<sp/>`.local/Neverwinter<sp/>Nights/`),<sp/>so<sp/>you<sp/>will<sp/>have<sp/>a<sp/>**USERDIR/lua/preload.lua**<sp/>file.</highlight></codeline>
+<codeline><highlight class="normal">6.<sp/>In<sp/>your<sp/>*&quot;on<sp/>module<sp/>load<sp/>script&quot;*<sp/>include<sp/>*&quot;nwnx_lua&quot;*<sp/>and<sp/>add<sp/>this<sp/>line<sp/>`NWNX_Lua_RunEvent(&quot;mod_load&quot;,<sp/>OBJECT_SELF);`</highlight></codeline>
+<codeline><highlight class="normal">7.<sp/>In<sp/>your<sp/>*&quot;on<sp/>module<sp/>chat<sp/>script&quot;*<sp/>include<sp/>*&quot;nwnx_lua&quot;*<sp/>and<sp/>add<sp/>this<sp/>line<sp/>`NWNX_Lua_RunEvent(&quot;mod_chat&quot;,<sp/><sp/>GetPCChatSpeaker());`</highlight></codeline>
+<codeline><highlight class="normal">8.<sp/>Enter<sp/>your<sp/>module<sp/>and<sp/>put<sp/>this<sp/>line<sp/>in<sp/>your<sp/>talk<sp/>chat:<sp/>`/c<sp/>=GetName(oPC)`<sp/>dont<sp/>forget<sp/>the<sp/>&apos;=&apos;</highlight></codeline>
+<codeline><highlight class="normal">9.<sp/>Press<sp/>enter<sp/>and<sp/>you<sp/>will<sp/>get<sp/>your<sp/>name<sp/>as<sp/>server<sp/>message</highlight></codeline>
+<codeline><highlight class="normal">10.<sp/>try<sp/>the<sp/>same<sp/>with<sp/>`/c<sp/>ApplyEffectToObject(2,<sp/>EffectHeal(10),<sp/>oPC)`<sp/>or<sp/>`/c<sp/>return<sp/>GetName(GetArea(oPC))`<sp/>or<sp/>`/c<sp/>=3+5`<sp/>or<sp/>`/c<sp/>DelayCommand(oPC,<sp/>1.5,<sp/>SpeakString,<sp/>&apos;Foo&apos;)`</highlight></codeline>
+<codeline><highlight class="normal">11.<sp/>Have<sp/>some<sp/>fun<sp/>with<sp/>your<sp/>chat<sp/>command<sp/>interpreter,<sp/>every<sp/>command<sp/>you<sp/>want<sp/>evaled<sp/>by<sp/>Lua<sp/>must<sp/>start<sp/>with<sp/>`/c<sp/>`,<sp/>if<sp/>you<sp/>want<sp/>a<sp/>return<sp/>value<sp/>start<sp/>with<sp/>`/c<sp/>=`<sp/>or<sp/>`/c<sp/>return<sp/>`</highlight></codeline>
+<codeline><highlight class="normal">12.<sp/>Look<sp/>at<sp/>the<sp/>Lua<sp/>scripts<sp/>provided<sp/>for<sp/>some<sp/>examples.<sp/>The<sp/>different<sp/>ways<sp/>to<sp/>use<sp/>this<sp/>plugin<sp/>are<sp/>a<sp/>lot,<sp/>now<sp/>you<sp/>have<sp/>NWScript<sp/>binding<sp/>in<sp/>a<sp/>interpred<sp/>language,<sp/>Lua,<sp/>so<sp/>you<sp/>can<sp/>do<sp/>things<sp/>like<sp/>change<sp/>a<sp/>Lua<sp/>script<sp/>and<sp/>hot<sp/>reload<sp/>it<sp/>without<sp/>even<sp/>restart<sp/>the<sp/>module;<sp/>for<sp/>an<sp/>example<sp/>look<sp/>at<sp/>the<sp/>`loadscript()`<sp/>function<sp/>in<sp/>the<sp/>preload<sp/>script.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Documentation</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>plugin<sp/>let<sp/>you<sp/>execute<sp/>Lua<sp/>code<sp/>inside<sp/>*NWscript*<sp/>via<sp/>two<sp/>functions<sp/>`NWNX_Lua_EvalVoid()`<sp/>and<sp/>`NWNX_Lua_Eval()`,<sp/>the<sp/>second<sp/>one<sp/>returning<sp/>(as<sp/>string)<sp/>the<sp/>result<sp/>of<sp/>the<sp/>Lua<sp/>code<sp/>execution.<sp/>With<sp/>the<sp/>`NWNX_Lua_RunEvent()`<sp/>function<sp/>you<sp/>can<sp/>generate<sp/>events<sp/>in<sp/>NWScript,<sp/>receive<sp/>them<sp/>on<sp/>the<sp/>Lua<sp/>side<sp/>and<sp/>executing<sp/>all<sp/>the<sp/>Lua<sp/>functions<sp/>registered<sp/>to<sp/>listen<sp/>to<sp/>that<sp/>event<sp/>in<sp/>order<sp/>of<sp/>priority.<sp/>For<sp/>details<sp/>on<sp/>events<sp/>just<sp/>look<sp/>at<sp/>the<sp/>three<sp/>`*Event()`<sp/>functions<sp/>in<sp/>`preload.lua`.<sp/></highlight></codeline>
+<codeline><highlight class="normal">Lastly<sp/>the<sp/>*run<sp/>script<sp/>hook*<sp/>permit<sp/>to<sp/>run<sp/>a<sp/>Lua<sp/>function<sp/>before<sp/>a<sp/>script<sp/>is<sp/>executed<sp/>in<sp/>the<sp/>module,<sp/>with<sp/>returning<sp/>values<sp/>from<sp/>the<sp/>function<sp/>having<sp/>special<sp/>effects:<sp/>from<sp/>skipping<sp/>the<sp/>script<sp/>execution<sp/>to<sp/>being<sp/>treated<sp/>as<sp/>a<sp/>StartingConditional()<sp/>result<sp/>(for<sp/>details<sp/>see<sp/>the<sp/>configuration<sp/>section).<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>the<sp/>Lua<sp/>space<sp/>all<sp/>the<sp/>basics<sp/>NWScript<sp/>functions<sp/>are<sp/>already<sp/>defined,<sp/>that<sp/>by<sp/>simply<sp/>requiring<sp/>the<sp/>file<sp/>`nwn.lua`.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">All<sp/>functions<sp/>returning<sp/>a<sp/>NWScript<sp/>boolean<sp/>(1<sp/>or<sp/>0)<sp/>in<sp/>Lua<sp/>now<sp/>returns<sp/>a<sp/>**boolean**<sp/>(`true`<sp/>or<sp/>`false`),<sp/>the<sp/>same<sp/>for<sp/>functions<sp/>accepting<sp/>booleans,<sp/>so<sp/>in<sp/>Lua<sp/>you<sp/>can<sp/>write:<sp/>`ClearAllActions(true)`<sp/>or<sp/>`if<sp/>GetIsObjectValid(oObject)<sp/>then<sp/>....<sp/>end`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">`OBJECT_SELF`<sp/>and<sp/>`OBJECT_INVALID`<sp/>are<sp/>defined<sp/>too,<sp/>the<sp/>first<sp/>changing<sp/>and<sp/>following<sp/>the<sp/>script<sp/>context.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Only<sp/>these<sp/>functions<sp/>are<sp/>different<sp/>from<sp/>NWScript:<sp/>`DelayCommand`,<sp/>`AssignCommand`<sp/>and<sp/>`ActionDoCommand`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>signatures<sp/>of<sp/>the<sp/>functions<sp/>are:</highlight></codeline>
+<codeline><highlight class="normal">```ruby</highlight></codeline>
+<codeline><highlight class="normal">DelayCommand(oObject,<sp/>fDelay,<sp/>Function,<sp/>1stFunctionArg,<sp/>2ndFunctionArg<sp/>.....)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">AssignCommand(oObject,<sp/>Function,<sp/>1stFunctionArg,<sp/>2ndFunctionArg<sp/>.....)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ActionDoCommand(Function,<sp/>1stFunctionArg,<sp/>2ndFunctionArg<sp/>.....)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>Example:</highlight></codeline>
+<codeline><highlight class="normal">```ruby</highlight></codeline>
+<codeline><highlight class="normal">DelayCommand(oPC,<sp/>2.5,<sp/>SetLocalInt,<sp/>oPC,<sp/>&quot;LOCAL_INT&quot;,<sp/>42)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">AssignCommand(OBJECT_SELF,<sp/>SpeakString,<sp/>&quot;Bar&quot;)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ActionDoCommand(SpeakString,<sp/>&quot;Here&apos;s<sp/>my<sp/>seat!&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Beware<sp/>that<sp/>for<sp/>`DelayCommand`<sp/>there<sp/>is<sp/>an<sp/>additional<sp/>argument<sp/>(oObject)<sp/>respect<sp/>to<sp/>the<sp/>NWScript<sp/>counterpart,<sp/>so<sp/>you<sp/>can<sp/>avoid<sp/>to<sp/>write<sp/>`AssignCommand(oObject,<sp/>DelayCommand,<sp/>...`.<sp/>Just<sp/>write<sp/>`DelayCommand(oObject,<sp/>2.0<sp/><sp/>....`.<sp/>If<sp/>you<sp/>dont<sp/>know<sp/>how<sp/>to<sp/>set<sp/>oObject<sp/>just<sp/>use<sp/>`OBJECT_SELF`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>the<sp/>Lua<sp/>namespace<sp/>are<sp/>defined,<sp/>by<sp/>the<sp/>plugin,<sp/>some<sp/>additional<sp/>utility<sp/>functions.<sp/>You<sp/>can<sp/>find<sp/>them<sp/>in<sp/>the<sp/>file<sp/>`lua/additions.lua`,<sp/>among<sp/>these<sp/>there<sp/>are<sp/>`SerializeObject()`<sp/>and<sp/>`DeserializeObject()`,<sp/>useful<sp/>if<sp/>you<sp/>want<sp/>to<sp/>use<sp/>Lua<sp/>to<sp/>connect<sp/>to<sp/>database<sp/>and<sp/>saving/retrieving<sp/>objects<sp/>in<sp/>it.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">They<sp/>are<sp/>also<sp/>implemented<sp/>`tostring(vVector)`<sp/>or<sp/>`vVector:tostring()`,<sp/>`tostring(lLocation)`<sp/>or<sp/>`lLocation:tostring()`<sp/>and<sp/>the<sp/>inverse<sp/>`string.tovector()`<sp/>or<sp/>`sVector:vector()`<sp/>and<sp/>`string.tolocation()`<sp/>or<sp/>`sLocation:tolocation()`,<sp/>the<sp/>same<sp/>as<sp/>above<sp/>useful<sp/>if<sp/>you<sp/>want<sp/>to<sp/>save/retrieve<sp/>vectors<sp/>and<sp/>locations<sp/>in<sp/>a<sp/>database<sp/>via<sp/>lua.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Last<sp/>but<sp/>not<sp/>least<sp/>the<sp/>function<sp/>`GetTimeOfDay()`<sp/>returns<sp/>the<sp/>time<sp/>since<sp/>Epoch<sp/>in<sp/>microseconds,<sp/>useful<sp/>for<sp/>tracing<sp/>execution<sp/>speed.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Important**:<sp/>dont<sp/>call<sp/>*directly*<sp/>**any**<sp/>NWScript<sp/>function<sp/>in<sp/>the<sp/>preload<sp/>script<sp/>or<sp/>any<sp/>other<sp/>directly<sp/>required<sp/>script,<sp/>so<sp/>avoid<sp/>writing<sp/>lines<sp/>like<sp/>SetLocalString(...),<sp/>GetModule()<sp/>etc,<sp/>you<sp/>can<sp/>write<sp/>them<sp/>inside<sp/>function<sp/>definitions<sp/>but,<sp/>again,<sp/>dont<sp/>call<sp/>these<sp/>functions<sp/>directly<sp/>during<sp/>preload.<sp/>The<sp/>preload<sp/>script<sp/>is<sp/>loaded<sp/>during<sp/>the<sp/>start<sp/>of<sp/>nwserver<sp/>and<sp/>before<sp/>the<sp/>module<sp/>is<sp/>even<sp/>loaded.<sp/>So<sp/>any<sp/>direct<sp/>call<sp/>to<sp/>NWScript<sp/>functions<sp/>during<sp/>preload<sp/>time<sp/>will<sp/>crash<sp/>the<sp/>server.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>trick<sp/>is<sp/>to<sp/>load/require<sp/>the<sp/>others<sp/>scripts<sp/>in<sp/>the<sp/>module_load<sp/>event,<sp/>you<sp/>can<sp/>see<sp/>how<sp/>in<sp/>the<sp/>preload<sp/>script.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>entire<sp/>system<sp/>is<sp/>configurable<sp/>ad<sp/>hoc,<sp/>if<sp/>you<sp/>have<sp/>time<sp/>you<sp/>can<sp/>even<sp/>change<sp/>the<sp/>name<sp/>of<sp/>any<sp/>NWScript<sp/>function,<sp/>use<sp/>OOP<sp/>programming,<sp/>i.e<sp/>using<sp/>Lua<sp/>classes<sp/>instead<sp/>of<sp/>numbers<sp/>for<sp/>objects;<sp/>with<sp/>LuaJIT<sp/>and<sp/>FFi<sp/>you<sp/>can<sp/>even<sp/>directly<sp/>access<sp/>C<sp/>structures.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Installation<sp/>and<sp/>configuration</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1)<sp/>Just<sp/>import<sp/>in<sp/>your<sp/>module<sp/>the<sp/>two<sp/>scripts<sp/>in<sp/>the<sp/>NWScript<sp/>directory.</highlight></codeline>
+<codeline><highlight class="normal">2)<sp/>Copy<sp/>the<sp/>*lua*<sp/>directory<sp/>inside<sp/>your<sp/>NWN<sp/>user<sp/>directory<sp/>(usually<sp/>`.local/share/Neverwinter<sp/>Nights/`)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Here<sp/>is<sp/>the<sp/>complete<sp/>list<sp/>of<sp/>the<sp/>configuration<sp/>environment<sp/>variables:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**NWNX_LUA_PRELOAD_SCRIPT**<sp/>mandatory,<sp/>the<sp/>default<sp/>value<sp/>is<sp/>`your_default_NWN_user_directory/lua/preload.lua`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**NWNX_LUA_TOKEN_FUNCTION**<sp/>mandatory,<sp/>it&apos;s<sp/>the<sp/>name<sp/>of<sp/>the<sp/>function<sp/>used<sp/>internally<sp/>to<sp/>emulate<sp/>`DelayCommand`,<sp/>`AssignCommand`<sp/>and<sp/>`ActionDoCommand`.<sp/>The<sp/>function<sp/>is<sp/>already<sp/>defined<sp/>in<sp/>the<sp/>preload<sp/>script<sp/>provided,<sp/>default:<sp/>`CallToken()`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**NWNX_LUA_EVENT_FUNCTION**<sp/>mandatory:<sp/>you<sp/>can<sp/>use<sp/>the<sp/>event<sp/>system<sp/>for<sp/>generate<sp/>events<sp/>inside<sp/>NWScript,<sp/>via<sp/>the<sp/>function<sp/>`NWNX_Lua_RunEvent`<sp/>provided<sp/>in<sp/>nwnx_lua.nss.<sp/>These<sp/>events<sp/>can<sp/>be<sp/>consumend<sp/>by<sp/>a<sp/>Lua<sp/>function<sp/>registered<sp/>to<sp/>observe<sp/>the<sp/>events,<sp/>the<sp/>default<sp/>is<sp/>`RunEvent()`,<sp/>and<sp/>it&apos;s<sp/>already<sp/>defined<sp/>in<sp/>the<sp/>preload<sp/>script.<sp/>If<sp/>you<sp/>dont<sp/>want<sp/>to<sp/>use<sp/>the<sp/>event<sp/>system<sp/>just<sp/>dont<sp/>call<sp/>`NWNX_Lua_RunEvent()`<sp/>on<sp/>the<sp/>NWScript<sp/>side.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**NWNX_LUA_OBJSELF_FUNCTION**<sp/>optional<sp/>and<sp/>advanced:<sp/>in<sp/>the<sp/>Lua<sp/>global<sp/>namespace<sp/>there<sp/>is<sp/>already<sp/>a<sp/>OBJECT_SELF<sp/>global<sp/>variable<sp/>synced<sp/>by<sp/>the<sp/>plugin<sp/>at<sp/>the<sp/>right<sp/>integer<sp/>value<sp/>following<sp/>the<sp/>context<sp/>change.<sp/>If<sp/>you<sp/>need<sp/>to<sp/>be<sp/>more<sp/>OOP<sp/>and<sp/>don&apos;t<sp/>want<sp/>to<sp/>use<sp/>integers<sp/>for<sp/>objects<sp/>you<sp/>have<sp/>to<sp/>change<sp/>first<sp/>the<sp/>`RunEvent`<sp/>function,<sp/>because<sp/>is<sp/>accepting<sp/>integers<sp/>as<sp/>objects.<sp/>So<sp/>you<sp/>have<sp/>to<sp/>transform<sp/>them<sp/>in<sp/>real<sp/>objects<sp/>inside<sp/>the<sp/>`RunEvent`<sp/>function,<sp/>just<sp/>before<sp/>the<sp/>function<sp/>call<sp/>the<sp/>observers<sp/>callbacks.<sp/>Second<sp/>you<sp/>have<sp/>to<sp/>set<sp/>this<sp/>configuration<sp/>variable<sp/>to<sp/>the<sp/>name<sp/>of<sp/>the<sp/>function<sp/>responsible<sp/>for<sp/>setting<sp/>OBJECT_SELF<sp/>to<sp/>an<sp/>object.<sp/>The<sp/>function<sp/>will<sp/>be<sp/>called<sp/>by<sp/>the<sp/>plugin<sp/>with<sp/>an<sp/>integer<sp/>value<sp/>(the<sp/>value<sp/>of<sp/>OBJECT_SELF)<sp/>as<sp/>argument<sp/>when<sp/>needed,<sp/>i.e.<sp/>when<sp/>the<sp/>context<sp/>change.<sp/>There<sp/>is<sp/>an<sp/>example<sp/>of<sp/>`SetObjectSelf()`<sp/>commented<sp/>out<sp/>in<sp/>the<sp/>preload<sp/>script,<sp/>note:<sp/>it<sp/>does<sp/>not<sp/>work<sp/>by<sp/>itself,<sp/>you<sp/>have<sp/>to<sp/>write<sp/>oop<sp/>code<sp/>(i.e.<sp/>a<sp/>class<sp/>for<sp/>objects)<sp/>before<sp/>setting<sp/>the<sp/>configuration<sp/>and<sp/>uncommenting/modifying<sp/>it.<sp/>If<sp/>this<sp/>configuration<sp/>is<sp/>defined<sp/>the<sp/>function<sp/>**must**<sp/>be<sp/>present<sp/>in<sp/>the<sp/>preload<sp/>script.<sp/>Default:<sp/>none.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**NWNX_LUA_RUNSCRIPT_TABLE**<sp/>optional:<sp/>this<sp/>is<sp/>the<sp/>name<sp/>of<sp/>the<sp/>*global*<sp/>Lua<sp/>**table**<sp/>containing<sp/>the<sp/>functions<sp/>called<sp/>in<sp/>the<sp/>*run<sp/>script<sp/>hook*.<sp/>A<sp/>function<sp/>with<sp/>the<sp/>same<sp/>name<sp/>of<sp/>the<sp/>script<sp/>executed<sp/>in<sp/>the<sp/>module<sp/>will<sp/>be<sp/>run<sp/>before<sp/>the<sp/>script<sp/>itself.<sp/>If<sp/>the<sp/>function<sp/>returns<sp/>something<sp/>different<sp/>from<sp/>`nil`<sp/>(i.e.:<sp/>string,<sp/>numbers<sp/>or<sp/>booleans)<sp/>the<sp/>script<sp/>execution<sp/>will<sp/>be<sp/>skipped,<sp/>if<sp/>the<sp/>function<sp/>returns<sp/>a<sp/>Lua<sp/>boolean<sp/>(`true`<sp/>or<sp/>`false`)<sp/>it&apos;s<sp/>treated<sp/>like<sp/>a<sp/>return<sp/>value<sp/>from<sp/>a<sp/>StartingConditional().<sp/></highlight></codeline>
+<codeline><highlight class="normal">For<sp/>example<sp/>if<sp/>you<sp/>have<sp/>the<sp/>script<sp/>&apos;mod_on_chat.nss&apos;<sp/>in<sp/>your<sp/>module<sp/>*onchat*<sp/>event,<sp/>if<sp/>this<sp/>configuration<sp/>parameter<sp/>is<sp/>set<sp/>to<sp/>`Scripts`,<sp/>when<sp/>the<sp/>`mod_on_chat`<sp/>script<sp/>is<sp/>called<sp/>the<sp/>plugin<sp/>search<sp/>for<sp/>a<sp/>Lua<sp/>function<sp/>`Scripts.mod_on_chat()`.<sp/>If<sp/>the<sp/>function<sp/>is<sp/>found<sp/>it<sp/>will<sp/>be<sp/>called<sp/>before<sp/>the<sp/>&apos;mod_on_chat&apos;<sp/>script<sp/>and<sp/>the<sp/>returned<sp/>value<sp/>determine<sp/>if<sp/>the<sp/>original<sp/>script<sp/>is<sp/>to<sp/>be<sp/>skipped.<sp/>No<sp/>argument<sp/>is<sp/>passed<sp/>to<sp/>the<sp/>function,<sp/>the<sp/>context<sp/>object<sp/>is<sp/>already<sp/>represented<sp/>by<sp/>OBJECT_SELF.<sp/></highlight></codeline>
+<codeline><highlight class="normal">If<sp/>this<sp/>parameter<sp/>is<sp/>not<sp/>defined<sp/>no<sp/>*run<sp/>script<sp/>hook*<sp/>is<sp/>set<sp/>up.<sp/>If<sp/>this<sp/>parameter<sp/>is<sp/>defined<sp/>the<sp/>basic<sp/>table<sp/>definition<sp/>**must**<sp/>be<sp/>present<sp/>in<sp/>the<sp/>preload<sp/>script,<sp/>a<sp/>line<sp/>like<sp/>this<sp/>one<sp/>is<sp/>enough:<sp/><sp/>`Scripts<sp/>=<sp/>{}`<sp/>all<sp/>the<sp/>other<sp/>functions<sp/>of<sp/>the<sp/>run<sp/>script<sp/>table<sp/>could<sp/>be<sp/>defined<sp/>after<sp/>the<sp/>preloading<sp/>phase,<sp/>obviously<sp/>apart<sp/>from<sp/>the<sp/>mod_load<sp/>function<sp/>if<sp/>you<sp/>want<sp/>one.<sp/>Default:<sp/>none.</highlight></codeline>
+<codeline><highlight class="normal">**WARNING**<sp/>dont<sp/>set<sp/>this<sp/>config<sp/>with<sp/>any<sp/>other<sp/>*RunScript*<sp/>hook<sp/>in<sp/>place,<sp/>i.e.<sp/>if<sp/>you<sp/>have<sp/>the<sp/>ENABLE_SCRIPTS<sp/>of<sp/>the<sp/>Profiler<sp/>plugin<sp/>enabled<sp/>dont<sp/>set<sp/>this<sp/>config<sp/>or<sp/>you<sp/>will<sp/>have<sp/>a<sp/>server<sp/>crash<sp/>at<sp/>startup.<sp/>For<sp/>the<sp/>same<sp/>reason<sp/>enabling<sp/>this<sp/>setting<sp/>makes<sp/>this<sp/>plugin<sp/>not<sp/>compatible<sp/>with<sp/>the<sp/>Mono<sp/>Plugin.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Notes<sp/>on<sp/>Compilation</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Lua<sp/>is<sp/>configured<sp/>to<sp/>compile<sp/>first<sp/>against<sp/>*LuaJIT*,<sp/>and<sp/>only<sp/>if<sp/>LuaJIT<sp/>(and<sp/>its<sp/>library)<sp/>cannot<sp/>be<sp/>find<sp/>search<sp/>for<sp/>a<sp/>regular<sp/>Lua<sp/>library.</highlight></codeline>
+<codeline><highlight class="normal">So<sp/>if<sp/>you<sp/>want<sp/>to<sp/>compile<sp/>against<sp/>LuaJIT<sp/>just<sp/>install<sp/>it,<sp/>otherwise<sp/>install<sp/>a<sp/>regular<sp/>Lua<sp/>with<sp/>liblua-dev<sp/>provided<sp/>by<sp/>your<sp/>distro;<sp/>something<sp/>like<sp/>`sudo<sp/>apt-get<sp/>install<sp/>luajit<sp/>libluajit-5.1-dev`<sp/>for<sp/>luajit<sp/>or<sp/>`sudo<sp/>apt-get<sp/>install<sp/>lua5.3<sp/>liblua5.3-dev`<sp/>for<sp/>regular<sp/>Lua.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">I<sp/>highly<sp/>reccomend<sp/>to<sp/>use<sp/>or<sp/>try<sp/>LuaJIT,<sp/>it<sp/>is<sp/>really<sp/>fast<sp/>and<sp/>has<sp/>the<sp/>FFI<sp/>library<sp/>for<sp/>C<sp/>bindings.<sp/>There<sp/>is<sp/>a<sp/>script<sp/>provided<sp/>(&apos;compat.lua&apos;)<sp/>that<sp/>try<sp/>to<sp/>mantain<sp/>compatibility<sp/>with<sp/>differents<sp/>Lua<sp/>versions,<sp/>it&apos;s<sp/>tested<sp/>with<sp/>LuaJIT<sp/>and<sp/>Lua<sp/>5.3<sp/>but<sp/>should<sp/>work<sp/>with<sp/>Lua<sp/>5.2<sp/>and<sp/>Lua<sp/>5.1.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Note<sp/>on<sp/>LuaJIT<sp/>and<sp/>extensions</highlight></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>want<sp/>to<sp/>use<sp/>extensions<sp/>in<sp/>*LuaJIT*<sp/>I<sp/>highly<sp/>reccomend<sp/>to<sp/>use<sp/>*luarocks*<sp/>to<sp/>install<sp/>them.<sp/>To<sp/>install<sp/>and<sp/>compile<sp/>*luarocks*<sp/>for<sp/>*LuaJIT*<sp/>downlowd<sp/>it<sp/>and<sp/>compile/install<sp/>with<sp/>this<sp/>two<sp/>commands:</highlight></codeline>
+<codeline><highlight class="normal">1)<sp/>`./configure<sp/>--lua-suffix=jit<sp/>--with-lua-include=/usr/include/luajit-2.0`</highlight></codeline>
+<codeline><highlight class="normal">2)<sp/>`make<sp/>build<sp/>&amp;&amp;<sp/>sudo<sp/>make<sp/>install`</highlight></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="Plugins/Lua/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

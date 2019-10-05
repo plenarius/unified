@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2Tweaks_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Tweaks<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Tweaks<sp/>stuff.<sp/>See<sp/>below.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_HIDE_CLASSES_ON_CHAR_LIST`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_PLAYER_DYING_HP_LIMIT`:<sp/>Between<sp/>0<sp/>and<sp/>-127</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_DISABLE_PAUSE`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_DISABLE_QUICKSAVE`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_COMPARE_VARIABLES_WHEN_MERGING`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_PARRY_ALL_ATTACKS`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_SNEAK_ATTACK_IGNORE_CRIT_IMMUNITY`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_PRESERVE_DEPLETED_ITEMS`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_DISABLE_SHADOWS`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_HIDE_DMS_ON_CHAR_LIST`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_DISABLE_MONK_ABILITIES_WHEN_POLYMORPHED`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_STRINGTOINT_BASE_TO_AUTO`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_DEAD_CREATURES_TRIGGER_ON_AREA_EXIT`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_PRESERVE_ACTIONS_ON_DM_POSSESS`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>`NWNX_TWEAKS_FIX_GREATER_SANCTUARY_BUG`:<sp/>true<sp/>or<sp/>false</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Tweaks/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

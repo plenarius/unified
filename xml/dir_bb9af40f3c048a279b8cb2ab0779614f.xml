@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_bb9af40f3c048a279b8cb2ab0779614f" kind="dir">
+    <compoundname>Plugins/Rename/NWScript</compoundname>
+    <innerfile refid="nwnx__rename_8nss">nwnx_rename.nss</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Rename/NWScript/"/>
+  </compounddef>
+</doxygen>

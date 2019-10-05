@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__itemproperty" kind="group">
+    <compoundname>itemproperty</compoundname>
+    <title>ItemProperty</title>
+    <innerfile refid="nwnx__itemprop_8nss">nwnx_itemprop.nss</innerfile>
+    <innerclass refid="structNWNX__IPUnpacked" prot="public">NWNX_IPUnpacked</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__itemproperty_1ga1baad507dd00057184d85d5280ad1abb" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_ItemProperty</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ItemProperty</name>
+        <initializer>= &quot;NWNX_ItemProperty&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" line="7" column="14" bodyfile="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__itemproperty_1ga343761a726e4bcf8a1dc3ab493ad7a91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct <ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref></type>
+        <definition>struct NWNX_IPUnpacked NWNX_ItemProperty_UnpackIP</definition>
+        <argsstring>(itemproperty ip)</argsstring>
+        <name>NWNX_ItemProperty_UnpackIP</name>
+        <param>
+          <type>itemproperty</type>
+          <declname>ip</declname>
+        </param>
+        <briefdescription>
+<para>Convert native itemproperty type to unpacked structure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The itemproperty to convert. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A constructed <ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" line="35" column="14" bodyfile="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" bodystart="39" bodyend="63" declfile="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" declline="7" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__itemproperty_1ga2207133bdd8e10cb9b975c5929ce930d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>itemproperty</type>
+        <definition>itemproperty NWNX_ItemProperty_PackIP</definition>
+        <argsstring>(struct NWNX_IPUnpacked ip)</argsstring>
+        <name>NWNX_ItemProperty_PackIP</name>
+        <param>
+          <type>struct <ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref></type>
+          <declname>ip</declname>
+        </param>
+        <briefdescription>
+<para>Convert unpacked itemproperty structure to native type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="structNWNX__IPUnpacked" kindref="compound">NWNX_IPUnpacked</ref> structure to convert. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The itemproperty. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" line="64" column="14" bodyfile="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" bodystart="64" bodyend="84" declfile="Plugins/ItemProperty/NWScript/nwnx_itemprop.nss" declline="35" declcolumn="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Utility functions to manipulate the builtin itemproperty type. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

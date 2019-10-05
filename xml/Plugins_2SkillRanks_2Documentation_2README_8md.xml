@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2SkillRanks_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>SkillRanks<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Enhances<sp/>and<sp/>allows<sp/>for<sp/>manipulation<sp/>of<sp/>skill<sp/>rank<sp/>calculations<sp/>including<sp/>the<sp/>ability<sp/>to<sp/>build<sp/>custom<sp/>skill<sp/>related<sp/>feats<sp/>as<sp/>well<sp/>as<sp/>modifying<sp/>stock<sp/>feats.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Plugin<sp/>Sample<sp/>Usage</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">To<sp/>create<sp/>a<sp/>new<sp/>skill<sp/>feat,<sp/>builders<sp/>create<sp/>a<sp/>`SkillFeat`<sp/>structure<sp/>and<sp/>run<sp/>functions<sp/>on<sp/>the<sp/>`OnModuleLoad`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Example<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>builder<sp/>wants<sp/>to<sp/>create<sp/>a<sp/>new<sp/>skill<sp/>called<sp/>**Travel**<sp/>and<sp/>wants<sp/>to<sp/>add<sp/>Skill<sp/>Focus<sp/>and<sp/>Epic<sp/>Skill<sp/>Focus<sp/>feats.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Add<sp/>the<sp/>**Travel**<sp/>skill<sp/>definition<sp/>to<sp/>skills.2da</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Add<sp/>the<sp/>**Skill<sp/>Focus<sp/>Travel**<sp/>and<sp/>**Epic<sp/>Skill<sp/>Focus<sp/>Travel**<sp/>to<sp/>feat.2da</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>In<sp/>the<sp/>`OnModuleLoad`<sp/>script<sp/>enter<sp/>the<sp/>following:</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">struct<sp/>NWNX_SkillRanks_SkillFeat<sp/>skillFeat;</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iSkill<sp/>=<sp/>27;<sp/>//<sp/>The<sp/>row<sp/>number<sp/>for<sp/>the<sp/>new<sp/>Travel<sp/>skill</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iFeat<sp/>=<sp/>1801;<sp/>//<sp/>The<sp/>row<sp/>number<sp/>for<sp/>the<sp/>Skill<sp/>Focus<sp/>Travel<sp/>feat</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iModifier<sp/>=<sp/>3;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Defining<sp/>feats<sp/>with<sp/>the<sp/>focusFeat<sp/>setting<sp/>helps<sp/>with<sp/>mass<sp/>changing<sp/>modifiers</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.focusFeat<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SkillRanks_SetSkillFeat(skillFeat,<sp/>TRUE);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">skillFeat.iFeat<sp/>=<sp/>1802;<sp/>//<sp/>The<sp/>row<sp/>number<sp/>for<sp/>the<sp/>Epic<sp/>Skill<sp/>Focus<sp/>Travel<sp/>feat</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iModifier<sp/>=<sp/>10;</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.focusFeat<sp/>=<sp/>2;<sp/>//<sp/>2<sp/>for<sp/>Epic<sp/>Focus</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SkillRanks_SetSkillFeat(skillFeat,<sp/>TRUE);</highlight></codeline>
+<codeline><highlight class="normal">```<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Example<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>builder<sp/>doesn&apos;t<sp/>like<sp/>the<sp/>restriction<sp/>on<sp/>the<sp/>**Trackless<sp/>Step**<sp/>feat<sp/>which<sp/>inhibits<sp/>the<sp/>skill<sp/>bonus<sp/>while<sp/>Underground<sp/>even<sp/>if<sp/>the<sp/>Natural<sp/>flag<sp/>is<sp/>set.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>In<sp/>the<sp/>`OnModuleLoad`<sp/>script<sp/>enter<sp/>the<sp/>following:</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">struct<sp/>NWNX_SkillRanks_SkillFeat<sp/>skillFeat<sp/>=<sp/>NWNX_SkillRanks_GetSkillFeat(SKILL_HIDE,<sp/>FEAT_TRACKLESS_STEP);</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iAreaFlagsForbidden<sp/>&amp;=<sp/>~(0x2);</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SkillRanks_SetSkillFeat(skillFeat);</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iSkill<sp/>=<sp/>SKILL_MOVE_SILENTLY;</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SkillRanks_SetSkillFeat(skillFeat);</highlight></codeline>
+<codeline><highlight class="normal">```<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Example<sp/>3</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>builder<sp/>has<sp/>created<sp/>a<sp/>new<sp/>feat<sp/>called<sp/>**Doctor**<sp/>which<sp/>counts<sp/>the<sp/>creature&apos;s<sp/>**Intelligence**<sp/>instead<sp/>of<sp/>**Wisdom**<sp/>if<sp/>higher<sp/>when<sp/>calculating<sp/>their<sp/>**Heal**<sp/>skill.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Add<sp/>the<sp/>Doctor<sp/>feat<sp/>to<sp/>feat.2da.<sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>In<sp/>the<sp/>`OnModuleLoad`<sp/>script<sp/>enter<sp/>the<sp/>following:</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">struct<sp/>NWNX_SkillRanks_SkillFeat<sp/>skillFeat;</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iSkill<sp/>=<sp/>SKILL_HEAL;</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iFeat<sp/>=<sp/>1803;<sp/>//<sp/>New<sp/>feat<sp/>row<sp/>id</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iKeyAbilityMask<sp/>=<sp/>NWNX_SKILLRANKS_KEY_ABILITY_INTELLIGENCE<sp/>|<sp/>NWNX_SKILLRANKS_KEY_ABILITY_WISDOM<sp/>|<sp/>NWNX_SKILLRANKS_KEY_ABILITY_CALC_MAX;</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SkillRanks_SetSkillFeat(skillFeat,<sp/>TRUE);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Example<sp/>4</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>builder<sp/>has<sp/>created<sp/>a<sp/>new<sp/>feat<sp/>called<sp/>**Moonlight<sp/>Spy**<sp/>which<sp/>gives<sp/>a<sp/>**Listen**,<sp/>**Search**<sp/>and<sp/>**Spot**<sp/>bonus<sp/>of<sp/>3<sp/>plus<sp/>1<sp/>for<sp/>every<sp/>2<sp/>levels<sp/>of<sp/>**Assassin**<sp/>or<sp/>**Rogue**<sp/>when<sp/>the<sp/>player<sp/>is<sp/>outdoors<sp/>at<sp/>night<sp/>time.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Add<sp/>the<sp/>**Moonlight<sp/>Spy**<sp/>feat<sp/>to<sp/>feat.2da<sp/></highlight></codeline>
+<codeline><highlight class="normal">*<sp/>In<sp/>the<sp/>`OnModuleLoad`<sp/>script<sp/>enter<sp/>the<sp/>following:</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">struct<sp/>NWNX_SkillRanks_SkillFeat<sp/>skillFeat;</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iSkill<sp/>=<sp/>SKILL_LISTEN;</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iFeat<sp/>=<sp/>1804;</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iModifier<sp/>=<sp/>3;</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.fClassLevelMod<sp/>=<sp/>0.5f;</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iAreaFlagsRequired<sp/>=<sp/>0x4;<sp/>//<sp/>Natural</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iAreaFlagsForbidden<sp/>=<sp/>0x1<sp/>|<sp/>0x2;<sp/>//<sp/>Not<sp/>indoors<sp/>or<sp/>underground</highlight></codeline>
+<codeline><highlight class="normal">skillFeat.iDayOrNight<sp/>=<sp/>2;</highlight></codeline>
+<codeline><highlight class="normal">skillFeat<sp/>=<sp/>NWNX_SkillRanks_AddSkillFeatClass(skillFeat,<sp/>CLASS_TYPE_ASSASSIN);</highlight></codeline>
+<codeline><highlight class="normal">skillFeat<sp/>=<sp/>NWNX_SkillRanks_AddSkillFeatClass(skillFeat,<sp/>CLASS_TYPE_ROGUE);</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SkillRanks_SetSkillFeat(skillFeat,<sp/>TRUE);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">skillFeat.iSkill<sp/>=<sp/>SKILL_SEARCH;</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SkillRanks_SetSkillFeat(skillFeat,<sp/>TRUE);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">skillFeat.iSkill<sp/>=<sp/>SKILL_SPOT;</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SkillRanks_SetSkillFeat(skillFeat,<sp/>TRUE);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Example<sp/>5</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>builder<sp/>wants<sp/>all<sp/>Skill<sp/>Focus<sp/>feats<sp/>to<sp/>increase<sp/>the<sp/>modifier<sp/>by<sp/>5<sp/>and<sp/>all<sp/>Epic<sp/>Skill<sp/>Focus<sp/>feats<sp/>to<sp/>increase<sp/>the<sp/>modifier<sp/>by<sp/>12.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Change<sp/>the<sp/>TLK<sp/>reference<sp/>in<sp/>the<sp/>feat.2da<sp/>for<sp/>all<sp/>Skill<sp/>Focus<sp/>feats<sp/>from<sp/>424<sp/>to<sp/>a<sp/>new<sp/>custom<sp/>TLK<sp/>entry<sp/>that<sp/>states:</highlight></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">Type<sp/>of<sp/>Feat:<sp/>General</highlight></codeline>
+<codeline><highlight class="normal">Prerequisite:<sp/>Able<sp/>to<sp/>use<sp/>the<sp/>skill.</highlight></codeline>
+<codeline><highlight class="normal">Specifics:<sp/>A<sp/>character<sp/>with<sp/>this<sp/>feat<sp/>is<sp/>adept<sp/>at<sp/>a<sp/>certain<sp/>skill,<sp/>gaining<sp/>a<sp/>+5<sp/>bonus<sp/>on<sp/>all<sp/>checks<sp/>with<sp/>it.</highlight></codeline>
+<codeline><highlight class="normal">Use:<sp/>Automatic.<sp/>This<sp/>feat<sp/>may<sp/>be<sp/>selected<sp/>multiple<sp/>times,<sp/>but<sp/>the<sp/>effects<sp/>do<sp/>not<sp/>stack.<sp/>It<sp/>applies<sp/>to<sp/>a<sp/>different<sp/>skill<sp/>in<sp/>each<sp/>case.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Change<sp/>the<sp/>TLK<sp/>reference<sp/>in<sp/>the<sp/>feat.2da<sp/>for<sp/>all<sp/>Skill<sp/>Focus<sp/>feats<sp/>from<sp/>4063<sp/>to<sp/>a<sp/>new<sp/>custom<sp/>TLK<sp/>entry<sp/>that<sp/>states:</highlight></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">Type<sp/>of<sp/>Feat:<sp/>General</highlight></codeline>
+<codeline><highlight class="normal">Prerequisite:<sp/>21st<sp/>level,<sp/>20<sp/>ranks<sp/>in<sp/>the<sp/>chosen<sp/>skill.</highlight></codeline>
+<codeline><highlight class="normal">Specifics:<sp/>The<sp/>character<sp/>gains<sp/>a<sp/>+12<sp/>bonus<sp/>on<sp/>all<sp/>skill<sp/>checks<sp/>with<sp/>the<sp/>chosen<sp/>skill.</highlight></codeline>
+<codeline><highlight class="normal">Use:<sp/>Automatic.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>In<sp/>the<sp/>`OnModuleLoad`<sp/>script<sp/>enter<sp/>the<sp/>following:</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SkillRanks_SetSkillFeatFocusMod(5);</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SkillRanks_SetSkillFeatFocusMod(12,<sp/>TRUE);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Example<sp/>6</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>builder<sp/>has<sp/>an<sp/>area<sp/>in<sp/>her<sp/>module<sp/>called<sp/>*The<sp/>Great<sp/>Library*<sp/>where<sp/>she<sp/>wants<sp/>all<sp/>creatures<sp/>to<sp/>receive<sp/>a<sp/>bonus<sp/>of<sp/>10<sp/>**Lore**<sp/>whenever<sp/>inside.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>In<sp/>the<sp/>`OnModuleLoad`<sp/>script<sp/>enter<sp/>the<sp/>following:</highlight></codeline>
+<codeline><highlight class="normal">```c</highlight></codeline>
+<codeline><highlight class="normal">object<sp/>oArea<sp/>=<sp/>GetObjectByTag(&quot;greatlibrary&quot;);</highlight></codeline>
+<codeline><highlight class="normal">NWNX_SkillRanks_SetAreaModifier(oArea,<sp/>SKILL_LORE,<sp/>10);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/SkillRanks/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

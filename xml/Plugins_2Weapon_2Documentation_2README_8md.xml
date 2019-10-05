@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="Plugins_2Weapon_2Documentation_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Weapon<sp/>Plugin<sp/>Reference</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>Variables</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">None.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Functions<sp/>exposing<sp/>additional<sp/>weapon<sp/>properties.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Allows<sp/>modifying<sp/>which<sp/>feats<sp/>count<sp/>as<sp/>which<sp/>for<sp/>the<sp/>weapon<sp/>feats.<sp/>Can<sp/>be<sp/>used<sp/>to<sp/>add<sp/>feats<sp/>like<sp/>WEAPON_FOCUS_*<sp/>to<sp/>custom<sp/>weapons.<sp/>All<sp/>you<sp/>have<sp/>to<sp/>do<sp/>is:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Create<sp/>a<sp/>custom<sp/>feat<sp/>and<sp/>add<sp/>it<sp/>to<sp/>your<sp/>hak.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Create<sp/>the<sp/>new<sp/>base<sp/>item<sp/>ID<sp/>for<sp/>your<sp/>new<sp/>weapon<sp/>or<sp/>use<sp/>one<sp/>that<sp/>already<sp/>exists.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>On<sp/>the<sp/>OnModuleLoad<sp/>event<sp/>script<sp/>of<sp/>your<sp/>module<sp/>define<sp/>the<sp/>association<sp/>between<sp/>the<sp/>weapon<sp/>and<sp/>the<sp/>feat<sp/>using<sp/>the<sp/>functions<sp/>defined<sp/>in<sp/>the<sp/>_nwnx_weapon_<sp/>script</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>example,<sp/>if<sp/>you<sp/>added<sp/>the<sp/>FEAT_WEAPON_FOCUS_KATAR<sp/>on<sp/>line<sp/>3000<sp/>of<sp/>your<sp/>_feat.2da_<sp/>and<sp/>you<sp/>added<sp/>the<sp/>new<sp/>BASE_ITEM_KATAR<sp/>on<sp/>line<sp/>310<sp/>of<sp/>your<sp/>_baseitems.2da_,<sp/>in<sp/>the<sp/>OnModuleLoad<sp/>script<sp/>just<sp/>add<sp/>(don&apos;t<sp/>forget<sp/>to<sp/>include<sp/>the<sp/>_nwnx_weapon_<sp/>script)<sp/>:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```C</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>FEAT_WEAPON_FOCUS_KATAR<sp/>=<sp/>3000;<sp/></highlight></codeline>
+<codeline><highlight class="normal">int<sp/>BASE_ITEM_KATAR<sp/>=<sp/>310;</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetWeaponFocusFeat(BASE_ITEM_KATAR,<sp/>FEAT_WEAPON_FOCUS_KATAR);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>Available<sp/>functions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Script<sp/>function<sp/>|<sp/>Description<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">----------------|-------------</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetWeaponFocusFeat<sp/>|<sp/>Associate<sp/>a<sp/>weapon<sp/>focus<sp/>feat<sp/>to<sp/>a<sp/>weapon<sp/></highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetWeaponFinesseSize<sp/>|<sp/>Define<sp/>the<sp/>required<sp/>creature<sp/>size<sp/>for<sp/>a<sp/>weapon<sp/>in<sp/>order<sp/>to<sp/>be<sp/>finessable</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetWeaponUnarmed<sp/>|<sp/>Set<sp/>the<sp/>weapon<sp/>to<sp/>be<sp/>considered<sp/>unarmed<sp/>regarding<sp/>the<sp/>finesse<sp/>feat</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetWeaponImprovedCriticalFeat<sp/>|<sp/>Associate<sp/>a<sp/>weapon<sp/>improved<sp/>critical<sp/>feat<sp/>to<sp/>a<sp/>weapon<sp/></highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetWeaponSpecializationFeat<sp/>|<sp/>Associate<sp/>a<sp/>weapon<sp/>specialization<sp/>feat<sp/>to<sp/>a<sp/>weapon<sp/></highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetEpicWeaponFocusFeat<sp/>|<sp/>Associate<sp/>an<sp/>epic<sp/>weapon<sp/>focus<sp/>feat<sp/>to<sp/>a<sp/>weapon<sp/></highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetEpicWeaponSpecializationFeat<sp/>|<sp/>Associate<sp/>an<sp/>epic<sp/>weapon<sp/>specialization<sp/>feat<sp/>to<sp/>a<sp/>weapon<sp/></highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetEpicWeaponOverwhelmingCriticalFeat<sp/>|<sp/>Associate<sp/>an<sp/>epic<sp/>weapon<sp/>overwhelming<sp/>critical<sp/>feat<sp/>to<sp/>a<sp/>weapon<sp/></highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetEpicWeaponDevastatingCriticalFeat<sp/>|<sp/>Associate<sp/>an<sp/>epic<sp/>weapon<sp/>devastating<sp/>critical<sp/>feat<sp/>to<sp/>a<sp/>weapon<sp/></highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetWeaponOfChoiceFeat<sp/>|<sp/>Associate<sp/>a<sp/>weapon<sp/>of<sp/>choice<sp/>feat<sp/>to<sp/>a<sp/>weapon<sp/></highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetGreaterWeaponFocusFeat<sp/>|<sp/>Associate<sp/>a<sp/>greater<sp/>weapon<sp/>focus<sp/>feat<sp/>(default:<sp/>+1<sp/>attack<sp/>bonus)<sp/>to<sp/>a<sp/>weapon</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetGreaterWeaponSpecializationFeat<sp/>|<sp/>Associate<sp/>a<sp/>greater<sp/>weapon<sp/>specialization<sp/>feat<sp/>(default:<sp/>+2<sp/>damage<sp/>bonus)<sp/>to<sp/>a<sp/>weapon</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetWeaponIsMonkWeapon<sp/>|<sp/>Set<sp/>the<sp/>weapon<sp/>to<sp/>be<sp/>considered<sp/>a<sp/>monk<sp/>weapon</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetOption<sp/>|<sp/>Set<sp/>different<sp/>options<sp/>of<sp/>the<sp/>plugin</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_SetDevastatingCriticalEventScript<sp/>|<sp/>Set<sp/>a<sp/>script<sp/>to<sp/>be<sp/>called<sp/>when<sp/>a<sp/>devastating<sp/>critical<sp/>event<sp/>occurs</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_GetDevastatingCriticalEventData<sp/>|<sp/>Must<sp/>be<sp/>called<sp/>inside<sp/>the<sp/>devastating<sp/>critical<sp/>event<sp/>script.<sp/>Returns<sp/>a<sp/>structure<sp/>with<sp/>the<sp/>data<sp/>of<sp/>the<sp/>devastating<sp/>critical<sp/>event<sp/>(weapon,<sp/>target<sp/>and<sp/>damage)</highlight></codeline>
+<codeline><highlight class="normal">NWNX_Weapon_BypassDevastatingCritical<sp/>|<sp/>Must<sp/>be<sp/>called<sp/>inside<sp/>the<sp/>devastating<sp/>critical<sp/>event<sp/>script.<sp/>If<sp/>called,<sp/>no<sp/>devastating<sp/>critical<sp/>will<sp/>occur.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>NWNX_Weapon_SetOption<sp/>function<sp/>can<sp/>be<sp/>used<sp/>to<sp/>define<sp/>the<sp/>attack<sp/>and<sp/>damage<sp/>bonusses<sp/>of<sp/>the<sp/>Greater<sp/>Weapon<sp/>Focus<sp/>Feats<sp/>and<sp/>Greater<sp/>Weapon<sp/>Specialization<sp/>Feats<sp/>respectively.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Example<sp/>for<sp/>Critical<sp/>Event<sp/>Script</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>script<sp/>just<sp/>print<sp/>some<sp/>info<sp/>to<sp/>the<sp/>log<sp/>and<sp/>then<sp/>bypass<sp/>the<sp/>devastating<sp/>critcial<sp/>50%<sp/>of<sp/>the<sp/>time.<sp/>You<sp/>have<sp/>to<sp/>set<sp/>your<sp/>script<sp/>with<sp/>NWNX_Weapon_SetDevastatingCriticalEventScript(&quot;name_of_your_script&quot;)<sp/>(in<sp/>the<sp/>OnModuleLoad<sp/>script<sp/>for<sp/>example)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;nwnx_weapon&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>main()</highlight></codeline>
+<codeline><highlight class="normal">{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>struct<sp/>NWNX_Weapon_DevastatingCriticalEvent_Data<sp/>data<sp/>=<sp/>NWNX_Weapon_GetDevastatingCriticalEventData();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>object<sp/>oAttacker<sp/>=<sp/>OBJECT_SELF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>object<sp/>oWeapon<sp/>=<sp/>data.oWeapon;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>object<sp/>oTarget<sp/>=<sp/>data.oTarget;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>int<sp/>nDamage<sp/>=<sp/>data.nDamage;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>WriteTimestampedLogEntry(&quot;Devastating<sp/>Critical<sp/>Event:<sp/>Attaker:<sp/>&quot;<sp/>+<sp/>GetName(oAttacker)<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;,<sp/>Weapon:<sp/>&quot;+<sp/>GetName(oWeapon)<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;,<sp/>Target:<sp/>&quot;+<sp/>GetName(oTarget)<sp/>+</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&quot;,<sp/>Damage:<sp/>&quot;<sp/>+<sp/>IntToString(nDamage));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>if(d100()&gt;50)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>NWNX_Weapon_BypassDevastatingCritical();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>WriteTimestampedLogEntry(&quot;Devastating<sp/>Critical<sp/>Bypassed&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}```</highlight></codeline>
+    </programlisting>
+    <location file="Plugins/Weapon/Documentation/README.md"/>
+  </compounddef>
+</doxygen>

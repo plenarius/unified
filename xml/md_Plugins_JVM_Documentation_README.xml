@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_JVM_Documentation_README" kind="page">
+    <compoundname>md_Plugins_JVM_Documentation_README</compoundname>
+    <title>JVM Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_JVM_Documentation_README_1autotoc_md68">
+<title>Description</title>
+<para>Java Virtual Machine support for NWNXEE</para>
+</sect1>
+<sect1 id="md_Plugins_JVM_Documentation_README_1autotoc_md69">
+<title>Environment Variables</title>
+<para><table rows="9" cols="3"><row>
+<entry thead="yes"><para>Variable Name  </para>
+</entry><entry thead="yes"><para>Type  </para>
+</entry><entry thead="yes"><para>Default Value   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>CLASSPATH  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><computeroutput>$NWN_USER_DIR/org.nwnx.nwnx2.jvm.jar</computeroutput>   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>JVM_ARGUMENTS  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><emphasis>none</emphasis>   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>INIT_LISTENER  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><computeroutput>org/nwnx/nwnx2/jvm/TestRunner</computeroutput>   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>EVENT_LISTENER  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><computeroutput>org/nwnx/nwnx2/jvm/Scheduler</computeroutput>   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>TOKEN_LISTENER  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><computeroutput>org/nwnx/nwnx2/jvm/Scheduler</computeroutput>   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>SCORCO_LISTENER  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><computeroutput>org/nwnx/nwnx2/jvm/SCORCO</computeroutput>   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>RESMAN_LISTENER  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><computeroutput>org/nwnx/nwnx2/jvm/ResMan</computeroutput>   </para>
+</entry></row>
+<row>
+<entry thead="no"><para>CONV_CLASS  </para>
+</entry><entry thead="no"><para>string  </para>
+</entry><entry thead="no"><para><computeroutput>org/nwnx/nwnx2/jvm/Conv</computeroutput>   </para>
+</entry></row>
+</table>
+</para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,960 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__admin" kind="group">
+    <compoundname>admin</compoundname>
+    <title>Administration</title>
+    <innerfile refid="nwnx__admin_8nss">nwnx_admin.nss</innerfile>
+      <sectiondef kind="user-defined">
+      <header>Administration Options</header>
+      <description><para><anchor id="group__admin_1admin_opts"/></para>
+</description>
+      <memberdef kind="variable" id="group__admin_1ga16e9040f025d25e8b2618da19ebf8224" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_ALL_KILLABLE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_ALL_KILLABLE</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="13" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga4cc68cb2745ea97afd38f8faaa101511" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_NON_PARTY_KILLABLE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_NON_PARTY_KILLABLE</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="14" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1gaa56ff043d20aae8044c88779cfa19403" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_REQUIRE_RESURRECTION</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_REQUIRE_RESURRECTION</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="15" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga9ccf91e9a99a52d72decfe132978e66a" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_LOSE_STOLEN_ITEMS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_LOSE_STOLEN_ITEMS</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="16" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1gaed8db470b39d64e88ca75217ac4d9b0e" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_LOSE_ITEMS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_LOSE_ITEMS</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="17" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga97835b9637566ea4914284a1c8d80cc7" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_LOSE_EXP</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_LOSE_EXP</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="18" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga2eb0b1963473f04a3d838010cf1ce68b" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_LOSE_GOLD</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_LOSE_GOLD</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="19" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga0d3eb202e3b2263cb93eb111eb91bb53" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_LOSE_GOLD_NUM</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_LOSE_GOLD_NUM</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="20" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga2873a2754a911e05f4505bc6274f9b33" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_LOSE_EXP_NUM</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_LOSE_EXP_NUM</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="21" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga79501ab06ec37d90f3da24cae44cfe6e" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_LOSE_ITEMS_NUM</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_LOSE_ITEMS_NUM</name>
+        <initializer>= 9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="22" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1gacadd6fdbf4f9b65057974a79aee45a60" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_PVP_SETTING</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_PVP_SETTING</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="23" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1gaf31b06bdc72d1cb1566caafc94cc9fd2" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_PAUSE_AND_PLAY</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_PAUSE_AND_PLAY</name>
+        <initializer>= 11</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="24" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga50e9f4642ac0b40a9e1d97d87f031973" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_ONE_PARTY_ONLY</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_ONE_PARTY_ONLY</name>
+        <initializer>= 12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="25" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1gac8fb215c2a1fe1f9752241087e800c00" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_ENFORCE_LEGAL_CHARACTERS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_ENFORCE_LEGAL_CHARACTERS</name>
+        <initializer>= 13</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="26" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1gab7ccc76514594e1afa3cc35ffb53a5e9" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_ITEM_LEVEL_RESTRICTIONS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_ITEM_LEVEL_RESTRICTIONS</name>
+        <initializer>= 14</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="27" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga7f72e12935319e926ebd74cd969fe916" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_CDKEY_BANLIST_ALLOWLIST</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_CDKEY_BANLIST_ALLOWLIST</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="28" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga0fc3beff7305318410a33682b670b508" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_DISALLOW_SHOUTING</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_DISALLOW_SHOUTING</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="29" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1gac20c773f4c643363fba1a850675ccc76" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_SHOW_DM_JOIN_MESSAGE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_SHOW_DM_JOIN_MESSAGE</name>
+        <initializer>= 17</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="30" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga3fefd2abceff06772e1b044ae024d19f" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_BACKUP_SAVED_CHARACTERS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_BACKUP_SAVED_CHARACTERS</name>
+        <initializer>= 18</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="31" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga82894d3ca26aeb8c115338001e1b5b59" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_AUTO_FAIL_SAVE_ON_1</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_AUTO_FAIL_SAVE_ON_1</name>
+        <initializer>= 19</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="32" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga5f11b8d066c7cf58d08d43fbe0a8592b" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_VALIDATE_SPELLS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_VALIDATE_SPELLS</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="33" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga16cfca1fd0623361a00c7dedc5d19690" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_EXAMINE_EFFECTS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_EXAMINE_EFFECTS</name>
+        <initializer>= 21</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="34" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga0d3b498ae1665ef947e4423dbf0875c6" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_EXAMINE_CHALLENGE_RATING</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_EXAMINE_CHALLENGE_RATING</name>
+        <initializer>= 22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="35" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga4aac84a0e0d1b8eb8cf53ae2df9e4a32" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_USE_MAX_HITPOINTS</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_USE_MAX_HITPOINTS</name>
+        <initializer>= 23</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="36" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1gad56bd806fc09e6395b7a1ce7bde3058b" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_RESTORE_SPELLS_USES</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_RESTORE_SPELLS_USES</name>
+        <initializer>= 24</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="37" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1ga47e9cb52c719592063eeea164d92b5a1" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_RESET_ENCOUNTER_SPAWN_POOL</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_RESET_ENCOUNTER_SPAWN_POOL</name>
+        <initializer>= 25</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="38" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__admin_1gabfe310b49ceb74689e5a70b0bf5d3d35" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_ADMINISTRATION_OPTION_HIDE_HITPOINTS_GAINED</definition>
+        <argsstring></argsstring>
+        <name>NWNX_ADMINISTRATION_OPTION_HIDE_HITPOINTS_GAINED</name>
+        <initializer>= 26</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="39" column="11" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__admin_1gae817fefae47710202468983d4b4aca27" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Administration</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Administration</name>
+        <initializer>= &quot;NWNX_Administration&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="7" column="14" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__admin_1ga350b7e2b7d00e0a1373bcd16980f9426" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Administration_GetPlayerPassword</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Administration_GetPlayerPassword</name>
+        <briefdescription>
+<para>Gets the current player password. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The current player password. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="137" column="8" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="137" bodyend="143" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="44" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1ga0957c093933e4743abefaf14795c0a64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_SetPlayerPassword</definition>
+        <argsstring>(string password)</argsstring>
+        <name>NWNX_Administration_SetPlayerPassword</name>
+        <param>
+          <type>string</type>
+          <declname>password</declname>
+        </param>
+        <briefdescription>
+<para>Sets the password for players to login. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>password</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The password to use. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="145" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="145" bodyend="151" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="48" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1ga27ba06328cf679ae064c186ff7776bd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_ClearPlayerPassword</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Administration_ClearPlayerPassword</name>
+        <briefdescription>
+<para>Clears the player password required to login. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="153" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="153" bodyend="158" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="51" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1ga15438a0d3b9cddad5b0fa2eedaeaabbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Administration_GetDMPassword</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Administration_GetDMPassword</name>
+        <briefdescription>
+<para>Gets the current DM password. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The current DM password. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="160" column="8" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="160" bodyend="166" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="55" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1ga082d709b97251d246e7b32ede3102c1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_SetDMPassword</definition>
+        <argsstring>(string password)</argsstring>
+        <name>NWNX_Administration_SetDMPassword</name>
+        <param>
+          <type>string</type>
+          <declname>password</declname>
+        </param>
+        <briefdescription>
+<para>Sets the password for DMs to login. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>password</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The password to use. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="168" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="168" bodyend="174" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="59" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1ga637a42678c8d730015dba00efddef6aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_ShutdownServer</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Administration_ShutdownServer</name>
+        <briefdescription>
+<para>Signals the server to immediately shut down. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="176" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="176" bodyend="181" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="62" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1gaae51b26c3d6572f1854e7f3fd62f41f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_BootPCWithMessage</definition>
+        <argsstring>(object oPC, int strref)</argsstring>
+        <name>NWNX_Administration_BootPCWithMessage</name>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>strref</declname>
+        </param>
+        <briefdescription>
+<para>Boots the a player from the server with the provided strref as message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player to boot. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>strref</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The string reference of the message to send the PC being booted. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<xrefsect id="deprecated_1_deprecated000001"><xreftitle>Deprecated</xreftitle><xrefdescription><para>Will be removed in NWNX:EE 64 bit, use native BootPC now. </para>
+</xrefdescription></xrefsect></para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="183" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="183" bodyend="187" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="68" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1gaf93d0e820feb0342c21f3b3d1143d3c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_DeletePlayerCharacter</definition>
+        <argsstring>(object oPC, int bPreserveBackup=TRUE)</argsstring>
+        <name>NWNX_Administration_DeletePlayerCharacter</name>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bPreserveBackup</declname>
+          <defval>TRUE</defval>
+        </param>
+        <briefdescription>
+<para>Deletes the player character from the servervault. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The PC will be immediately booted from the game with a &quot;Delete Character&quot; message</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player to delete. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bPreserveBackup</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, it will leave the file on server, only appending &quot;.deleted0&quot; to the bic filename. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="189" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="189" bodyend="196" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="76" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1ga801c086adfe1201ad4ef8b2b3621d76f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_AddBannedIP</definition>
+        <argsstring>(string ip)</argsstring>
+        <name>NWNX_Administration_AddBannedIP</name>
+        <param>
+          <type>string</type>
+          <declname>ip</declname>
+        </param>
+        <briefdescription>
+<para>Bans the provided IP. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The IP Address to ban. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="198" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="198" bodyend="204" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="80" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1gad6a1972c912d744a163b7ea2cfd9a8c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_RemoveBannedIP</definition>
+        <argsstring>(string ip)</argsstring>
+        <name>NWNX_Administration_RemoveBannedIP</name>
+        <param>
+          <type>string</type>
+          <declname>ip</declname>
+        </param>
+        <briefdescription>
+<para>Removes the ban on the provided IP. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The IP Address to unban. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="205" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="205" bodyend="211" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="84" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1ga3558cdfcea187863ceecb711089492fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_AddBannedCDKey</definition>
+        <argsstring>(string key)</argsstring>
+        <name>NWNX_Administration_AddBannedCDKey</name>
+        <param>
+          <type>string</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Bans the provided Public CD Key. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Public CD Key to ban. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="212" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="212" bodyend="218" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="88" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1gaafa5500c8d53c6c84d06861cd084f297" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_RemoveBannedCDKey</definition>
+        <argsstring>(string key)</argsstring>
+        <name>NWNX_Administration_RemoveBannedCDKey</name>
+        <param>
+          <type>string</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Removes the ban on the provided Public CD Key. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Public CD Key to unban. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="219" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="219" bodyend="225" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="92" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1gae43f9d70412c4dc0f67353998dec7ecb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_AddBannedPlayerName</definition>
+        <argsstring>(string playerName)</argsstring>
+        <name>NWNX_Administration_AddBannedPlayerName</name>
+        <param>
+          <type>string</type>
+          <declname>playerName</declname>
+        </param>
+        <briefdescription>
+<para>Bans the provided playername. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>playerName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player name (community name) to ban. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="warning"><para>A user can change their playername at will. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="226" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="226" bodyend="232" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="97" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1gad11aabe3f589709d1616c39cad7b14fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_RemoveBannedPlayerName</definition>
+        <argsstring>(string playerName)</argsstring>
+        <name>NWNX_Administration_RemoveBannedPlayerName</name>
+        <param>
+          <type>string</type>
+          <declname>playerName</declname>
+        </param>
+        <briefdescription>
+<para>Removes the ban on the provided playername. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>playerName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player name (community name) to unban. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="233" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="233" bodyend="239" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="101" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1gaaa6a636ac14964feacd44111766b7802" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Administration_GetBannedList</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Administration_GetBannedList</name>
+        <briefdescription>
+<para>Get a list of all banned IPs/Keys/names as a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A string with a listing of the banned IPs/Keys/names. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="240" column="8" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="240" bodyend="246" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="105" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1ga30afeceaca4db8237fd034475d36c0e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_SetModuleName</definition>
+        <argsstring>(string name)</argsstring>
+        <name>NWNX_Administration_SetModuleName</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Set the module&apos;s name as shown to the serverlist. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name to give the module. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="248" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="248" bodyend="254" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="109" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1gacc48b5662c7918ffd418f58126575ec3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_SetServerName</definition>
+        <argsstring>(string name)</argsstring>
+        <name>NWNX_Administration_SetServerName</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Set the server&apos;s name as shown to the serverlist. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name to give the server. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="256" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="256" bodyend="262" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="113" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1ga3a1b04f6d6e0dfbb82905351f52f7cab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Administration_GetPlayOption</definition>
+        <argsstring>(int option)</argsstring>
+        <name>NWNX_Administration_GetPlayOption</name>
+        <param>
+          <type>int</type>
+          <declname>option</declname>
+        </param>
+        <briefdescription>
+<para>Get an <ref refid="group__admin_1admin_opts" kindref="member">Administration Options</ref> value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The current setting for the supplied option from <ref refid="group__admin_1admin_opts" kindref="member">Administration Options</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="264" column="5" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="264" bodyend="272" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="117" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1ga01ff71c99811d58888fe1cf6108e7a5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_SetPlayOption</definition>
+        <argsstring>(int option, int value)</argsstring>
+        <name>NWNX_Administration_SetPlayOption</name>
+        <param>
+          <type>int</type>
+          <declname>option</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Set an <ref refid="group__admin_1admin_opts" kindref="member">Administration Options</ref> to a value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>option</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The option to adjust from <ref refid="group__admin_1admin_opts" kindref="member">Administration Options</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new value for the option. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="274" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="274" bodyend="281" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="122" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__admin_1ga6235ab90dbac9b6eb652ff6766e72075" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Administration_DeleteTURD</definition>
+        <argsstring>(string playerName, string characterName)</argsstring>
+        <name>NWNX_Administration_DeleteTURD</name>
+        <param>
+          <type>string</type>
+          <declname>playerName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>characterName</declname>
+        </param>
+        <briefdescription>
+<para>Delete the TURD of playerName + characterName. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>At times a PC may get stuck in a permanent crash loop when attempting to log in. This function allows administrators to delete their Temporary User Resource Data where the PC&apos;s current location is stored allowing them to log into the starting area.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>playerName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The community (login name). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>characterName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The character name. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Administration/NWScript/nwnx_admin.nss" line="283" column="6" bodyfile="Plugins/Administration/NWScript/nwnx_admin.nss" bodystart="283" bodyend="290" declfile="Plugins/Administration/NWScript/nwnx_admin.nss" declline="133" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Various admin related functions. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__feedback" kind="group">
+    <compoundname>feedback</compoundname>
+    <title>Feedback</title>
+    <innerfile refid="nwnx__feedback_8nss">nwnx_feedback.nss</innerfile>
+      <sectiondef kind="user-defined">
+      <header>Combat Log Message Types</header>
+      <description><para><anchor id="group__feedback_1combat_log_msgs"/></para>
+</description>
+      <memberdef kind="variable" id="group__feedback_1ga21220ae3bf760c377d8be60dfb141801" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_FEEDBACK_COMBATLOG_SIMPLE_ADJECTIVE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_FEEDBACK_COMBATLOG_SIMPLE_ADJECTIVE</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="20" column="11" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Feedback Message Types</header>
+      <description><para><anchor id="group__feedback_1feedback_msgs"/></para>
+</description>
+      <memberdef kind="variable" id="group__feedback_1ga291f1b8003190dce13ff3472ee847d27" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_FEEDBACK_SKILL_CANT_USE</definition>
+        <argsstring></argsstring>
+        <name>NWNX_FEEDBACK_SKILL_CANT_USE</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="68" column="11" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__feedback_1gaccb3d639cd0664595b56d3ec5d79f938" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Feedback</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Feedback</name>
+        <initializer>= &quot;NWNX_Feedback&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="15" column="14" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__feedback_1gad0f1933e1f2957b798a75fca3c5b98d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Feedback_GetFeedbackMessageHidden</definition>
+        <argsstring>(int nMessage, object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_GetFeedbackMessageHidden</name>
+        <param>
+          <type>int</type>
+          <declname>nMessage</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Gets if feedback message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message identifier from <ref refid="group__feedback_1feedback_msgs" kindref="member">Feedback Messages</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the message is hidden. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="426" column="5" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="426" bodyend="437" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="378" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1ga68dcbf8f5a115248b35907225ceec53a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Feedback_SetFeedbackMessageHidden</definition>
+        <argsstring>(int nMessage, int isHidden, object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_SetFeedbackMessageHidden</name>
+        <param>
+          <type>int</type>
+          <declname>nMessage</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>isHidden</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Sets if feedback message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>isHidden</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE/FALSE </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Personal state overrides the global state which means if a global state is set to TRUE but the personal state is set to FALSE, the message will be shown to the PC. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="439" column="6" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="439" bodyend="449" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="386" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1gae874731db0eb23fa1db4e44629f9261b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Feedback_GetCombatLogMessageHidden</definition>
+        <argsstring>(int nMessage, object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_GetCombatLogMessageHidden</name>
+        <param>
+          <type>int</type>
+          <declname>nMessage</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Gets if combat log message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message identifier from <ref refid="group__feedback_1combat_log_msgs" kindref="member">Combat Log Messages</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the message is hidden. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="451" column="5" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="451" bodyend="462" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="392" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1ga46a034a921ef6011120762dfc1b55a06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Feedback_SetCombatLogMessageHidden</definition>
+        <argsstring>(int nMessage, int isHidden, object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_SetCombatLogMessageHidden</name>
+        <param>
+          <type>int</type>
+          <declname>nMessage</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>isHidden</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Sets if combat log message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message identifier. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>isHidden</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE/FALSE </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Personal state overrides the global state which means if a global state is set to TRUE but the personal state is set to FALSE, the message will be shown to the PC. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="464" column="6" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="464" bodyend="474" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="400" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1gad723108876dccf1552d517aaf8b3e06b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Feedback_GetJournalUpdatedMessageHidden</definition>
+        <argsstring>(object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_GetJournalUpdatedMessageHidden</name>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Gets if the journal update message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if the message is hidden. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="476" column="5" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="476" bodyend="487" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="405" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1ga54a0e9e14e11882ae4408b24fb3bdd5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Feedback_SetJournalUpdatedMessageHidden</definition>
+        <argsstring>(int isHidden, object oPC=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Feedback_SetJournalUpdatedMessageHidden</name>
+        <param>
+          <type>int</type>
+          <declname>isHidden</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>oPC</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Sets if journal update message is hidden. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>isHidden</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE/FALSE </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>oPC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The PC or OBJECT_INVALID for a global setting. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Personal state overrides the global state which means if a global state is set to TRUE but the personal state is set to FALSE, the message will be shown to the PC. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="489" column="6" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="489" bodyend="499" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="412" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1gab4f0518108b6ab44095d1d32f7a777ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Feedback_SetFeedbackMessageMode</definition>
+        <argsstring>(int bWhitelist)</argsstring>
+        <name>NWNX_Feedback_SetFeedbackMessageMode</name>
+        <param>
+          <type>int</type>
+          <declname>bWhitelist</declname>
+        </param>
+        <briefdescription>
+<para>Set whether to use a blacklist or whitelist mode for feedback messages. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bWhitelist</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE for all messages to be hidden by default, default FALSE. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="501" column="6" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="501" bodyend="509" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="416" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__feedback_1ga1e5a9e78de5d4d9d50f527dc245060b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Feedback_SetCombatLogMessageMode</definition>
+        <argsstring>(int bWhitelist)</argsstring>
+        <name>NWNX_Feedback_SetCombatLogMessageMode</name>
+        <param>
+          <type>int</type>
+          <declname>bWhitelist</declname>
+        </param>
+        <briefdescription>
+<para>Set whether to use a blacklist or whitelist mode for combat log messages. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bWhitelist</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TRUE for all messages to be hidden by default, default FALSE. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>If using Whitelist, be sure to whitelist NWNX_FEEDBACK_COMBATLOG_FEEDBACK for feedback messages to work. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Feedback/NWScript/nwnx_feedback.nss" line="511" column="6" bodyfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" bodystart="511" bodyend="519" declfile="Plugins/Feedback/NWScript/nwnx_feedback.nss" declline="422" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Allows combatlog, feedback and journal updated messages to be hidden globally or per player. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para><itemizedlist>
+<listitem><para>If oPC == OBJECT_INVALID it will get/set the global state:<itemizedlist>
+<listitem><para>TRUE = Message is globally hidden</para>
+</listitem><listitem><para>FALSE = Message is not globally hidden</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>If oPC is a valid player it will get/set the personal state:<itemizedlist>
+<listitem><para>TRUE = Message is hidden for oPC</para>
+</listitem><listitem><para>FALSE = Message is not hidden for oPC</para>
+</listitem><listitem><para>-1 = Personal state is not set for Message </para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

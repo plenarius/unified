@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_ae5d6ac362edcee64c7fbd49e8710ae7" kind="dir">
+    <compoundname>Plugins/Data</compoundname>
+    <innerdir refid="dir_bf889aeba77eddc1682190d0ffd4f071">Plugins/Data/Documentation</innerdir>
+    <innerdir refid="dir_b9999ca99d978f65ac457d411698f84e">Plugins/Data/NWScript</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Data/"/>
+  </compounddef>
+</doxygen>

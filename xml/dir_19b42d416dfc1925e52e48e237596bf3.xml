@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_19b42d416dfc1925e52e48e237596bf3" kind="dir">
+    <compoundname>Plugins/SkillRanks/NWScript</compoundname>
+    <innerfile refid="nwnx__skillranks_8nss">nwnx_skillranks.nss</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/SkillRanks/NWScript/"/>
+  </compounddef>
+</doxygen>

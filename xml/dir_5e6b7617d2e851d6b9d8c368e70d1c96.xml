@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="dir_5e6b7617d2e851d6b9d8c368e70d1c96" kind="dir">
+    <compoundname>Plugins/Tracking</compoundname>
+    <innerdir refid="dir_aaf7e95b6f2e59dbe649ace857f6bb9c">Plugins/Tracking/Documentation</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Plugins/Tracking/"/>
+  </compounddef>
+</doxygen>

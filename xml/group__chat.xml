@@ -1,0 +1,509 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="group__chat" kind="group">
+    <compoundname>chat</compoundname>
+    <title>Chat</title>
+    <innerfile refid="nwnx__chat_8nss">nwnx_chat.nss</innerfile>
+      <sectiondef kind="user-defined">
+      <header>Chat Channels</header>
+      <description><para><anchor id="group__chat_1chat_channels"/> Constants defining the various chat channels. </para>
+</description>
+      <memberdef kind="variable" id="group__chat_1ga5a426e375b1a4086410fa68540ccc5df" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_PLAYER_TALK</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_PLAYER_TALK</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="14" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1gaa86f5284764e4bdbfa497def002d7779" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_PLAYER_SHOUT</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_PLAYER_SHOUT</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="15" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1gab1ef141d5d50d45dead5dac918f1b7bd" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_PLAYER_WHISPER</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_PLAYER_WHISPER</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="16" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1gae86a7e7cb68f8d6bdaf4e4bedd34d189" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_PLAYER_TELL</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_PLAYER_TELL</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="17" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1ga22ca905e6091ee72ba11489571af4c90" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_SERVER_MSG</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_SERVER_MSG</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="18" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1ga7d5b4cfe353e30821c0818e5e39193a2" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_PLAYER_PARTY</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_PLAYER_PARTY</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="19" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1ga63678395c7088907d5d5431afc95ebaf" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_PLAYER_DM</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_PLAYER_DM</name>
+        <initializer>= 14</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="20" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1gacff930ad85a52a0496e0ccdfe94e2ee3" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_DM_TALK</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_DM_TALK</name>
+        <initializer>= 17</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="21" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1ga1179172acc694c0b43d8dd9d8570716b" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_DM_SHOUT</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_DM_SHOUT</name>
+        <initializer>= 18</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="22" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1gad3d752e8cf68af744ef301aa68a317a9" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_DM_WHISPER</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_DM_WHISPER</name>
+        <initializer>= 19</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="23" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1ga4da1ed59c06b1b620006a00e2d849ef7" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_DM_TELL</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_DM_TELL</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="24" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1gaf89ebd57d9c7d66a3ae0e030cfe3d1c2" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_DM_PARTY</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_DM_PARTY</name>
+        <initializer>= 22</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="25" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__chat_1ga293b444cb6fd729d453b1a4d3d6e5f06" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int NWNX_CHAT_CHANNEL_DM_DM</definition>
+        <argsstring></argsstring>
+        <name>NWNX_CHAT_CHANNEL_DM_DM</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="26" column="11" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__chat_1gab963fc085bf11e56dea52f95a0c8fb7e" prot="private" static="no" mutable="no">
+        <type>const string</type>
+        <definition>const string NWNX_Chat</definition>
+        <argsstring></argsstring>
+        <name>NWNX_Chat</name>
+        <initializer>= &quot;NWNX_Chat&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="7" column="14" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__chat_1ga9e1b1e6237ddac7f84fa183cf08126ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Chat_SendMessage</definition>
+        <argsstring>(int channel, string message, object sender=OBJECT_SELF, object target=OBJECT_INVALID)</argsstring>
+        <name>NWNX_Chat_SendMessage</name>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>sender</declname>
+          <defval>OBJECT_SELF</defval>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>target</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <briefdescription>
+<para>Sends a chat message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>If no target is provided, then it broadcasts to all eligible targets. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="group__chat_1chat_channels" kindref="member">channel</ref> to send the message. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message to send. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sender of the message. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The receiver of the message. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>TRUE if successful, FALSE otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="81" column="5" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="81" bodyend="91" declfile="Plugins/Chat/NWScript/nwnx_chat.nss" declline="36" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__chat_1ga46736cec1065353724348b35cc85aece" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Chat_RegisterChatScript</definition>
+        <argsstring>(string script)</argsstring>
+        <name>NWNX_Chat_RegisterChatScript</name>
+        <param>
+          <type>string</type>
+          <declname>script</declname>
+        </param>
+        <briefdescription>
+<para>Registers the script which receives all chat messages. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>If a script was previously registered, this one will take over. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>script</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The script name to handle the chat events. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="93" column="6" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="93" bodyend="99" declfile="Plugins/Chat/NWScript/nwnx_chat.nss" declline="41" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__chat_1gab8ea39914a0ac0df6ece2c27dcffe11a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Chat_SkipMessage</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Chat_SkipMessage</name>
+        <briefdescription>
+<para>Skips a chat message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Must be called from a chat or system script handler. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="101" column="6" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="101" bodyend="106" declfile="Plugins/Chat/NWScript/nwnx_chat.nss" declline="45" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__chat_1ga4625e8e2a54540c0c66d25ea8d81aaa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int NWNX_Chat_GetChannel</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Chat_GetChannel</name>
+        <briefdescription>
+<para>Gets the chat <ref refid="group__chat_1chat_channels" kindref="member">channel</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Must be called from a chat or system script handler. </para>
+</simplesect>
+<simplesect kind="return"><para>The <ref refid="group__chat_1chat_channels" kindref="member">channel</ref> the message is sent. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="108" column="5" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="108" bodyend="114" declfile="Plugins/Chat/NWScript/nwnx_chat.nss" declline="50" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__chat_1ga60765184fbf4cd54eee8ca339c04e1e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>string NWNX_Chat_GetMessage</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Chat_GetMessage</name>
+        <briefdescription>
+<para>Gets the message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Must be called from a chat or system script handler. </para>
+</simplesect>
+<simplesect kind="return"><para>The message sent. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="116" column="8" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="116" bodyend="122" declfile="Plugins/Chat/NWScript/nwnx_chat.nss" declline="55" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__chat_1gae4927fd1888e43d8e67bfdfdf804ca86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>object</type>
+        <definition>object NWNX_Chat_GetSender</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Chat_GetSender</name>
+        <briefdescription>
+<para>Gets the sender of the message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Must be called from a chat or system script handler. </para>
+</simplesect>
+<simplesect kind="return"><para>The object sending the message. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="124" column="8" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="124" bodyend="130" declfile="Plugins/Chat/NWScript/nwnx_chat.nss" declline="60" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__chat_1gaca25d73bc1545aad13ff55fa5bd41f58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>object</type>
+        <definition>object NWNX_Chat_GetTarget</definition>
+        <argsstring>()</argsstring>
+        <name>NWNX_Chat_GetTarget</name>
+        <briefdescription>
+<para>Gets the target of the message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Must be called from an chat or system script handler. </para>
+</simplesect>
+<simplesect kind="return"><para>The target of the message or OBJECT_INVALID if no target. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="132" column="8" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="132" bodyend="138" declfile="Plugins/Chat/NWScript/nwnx_chat.nss" declline="65" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__chat_1ga8a5cc439da4c24b8b5a3c8bcdff3b9ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NWNX_Chat_SetChatHearingDistance</definition>
+        <argsstring>(float distance, object listener=OBJECT_INVALID, int channel=NWNX_CHAT_CHANNEL_PLAYER_TALK)</argsstring>
+        <name>NWNX_Chat_SetChatHearingDistance</name>
+        <param>
+          <type>float</type>
+          <declname>distance</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>listener</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+          <defval>NWNX_CHAT_CHANNEL_PLAYER_TALK</defval>
+        </param>
+        <briefdescription>
+<para>Sets the distance with which the player hears talks or whispers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>Per player settings override server wide. </para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>distance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The distance in meters. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>listener</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The listener, if OBJECT_INVALID then it will be set server wide. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="group__chat_1chat_channels" kindref="member">channel</ref> to modify the distance heard. Only applicable for talk and whisper. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="140" column="6" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="140" bodyend="148" declfile="Plugins/Chat/NWScript/nwnx_chat.nss" declline="72" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__chat_1ga7c337b8768878b05b12bd8f880b56d42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float NWNX_Chat_GetChatHearingDistance</definition>
+        <argsstring>(object listener=OBJECT_INVALID, int channel=NWNX_CHAT_CHANNEL_PLAYER_TALK)</argsstring>
+        <name>NWNX_Chat_GetChatHearingDistance</name>
+        <param>
+          <type>object</type>
+          <declname>listener</declname>
+          <defval>OBJECT_INVALID</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>channel</declname>
+          <defval>NWNX_CHAT_CHANNEL_PLAYER_TALK</defval>
+        </param>
+        <briefdescription>
+<para>Gets the distance with which the player hears talks or whisper. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>listener</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The listener, if OBJECT_INVALUD then will return server wide setting. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="group__chat_1chat_channels" kindref="member">channel</ref>. Only applicable for talk and whisper. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Plugins/Chat/NWScript/nwnx_chat.nss" line="150" column="7" bodyfile="Plugins/Chat/NWScript/nwnx_chat.nss" bodystart="150" bodyend="158" declfile="Plugins/Chat/NWScript/nwnx_chat.nss" declline="77" declcolumn="7"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Functions related to chat. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

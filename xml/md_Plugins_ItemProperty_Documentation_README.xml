@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.16">
+  <compounddef id="md_Plugins_ItemProperty_Documentation_README" kind="page">
+    <compoundname>md_Plugins_ItemProperty_Documentation_README</compoundname>
+    <title>ItemProperty Plugin Reference</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_Plugins_ItemProperty_Documentation_README_1autotoc_md65">
+<title>Description</title>
+<para>Provide various utility functions to manipulate builtin itemproperty type</para>
+</sect1>
+<sect1 id="md_Plugins_ItemProperty_Documentation_README_1autotoc_md66">
+<title>Environment Variables</title>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>
