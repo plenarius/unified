@@ -1,6 +1,8 @@
 var NAVTREE =
 [
   [ "NWNX-Unified", "index.html", [
+    [ "NWNX:EE (build 8186)", "index.html", null ],
+    [ "Changelog", "md_CHANGELOG.html", null ],
     [ "Core Reference", "md_Core_Documentation_README.html", null ],
     [ "Administration Plugin Reference", "md_Plugins_Administration_Documentation_README.html", null ],
     [ "Appearance Plugin Reference", "md_Plugins_Appearance_Documentation_README.html", null ],
@@ -74,8 +76,8 @@ var NAVTREEINDEX =
 "group__damage.html#gaa93a1196b5b273c79c8e34972ccdd7cb",
 "group__object.html#gaab35d944fe5992280c2c6186149cd544",
 "group__rename.html#gafc3e340ecdad9db153e72054bbef9208",
-"md_Plugins_Player_Documentation_README.html",
-"nwnx__redis_8nss.html#aec15375343a042771baa20c940d7a85a"
+"md_Plugins_Mono_Documentation_README.html",
+"nwnx__redis_8nss.html#ae9d8fa446cf880969d99d6970c469401"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
