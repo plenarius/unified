@@ -160,7 +160,7 @@ Example 2</h3>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md262"></a>
 Example 3</h3>
 <p>The builder wishes to resend a WebHook when one is disallowed due to rate limitations.</p><ul>
-<li>In module <code>OnModuleLoad</code> add: <div class="fragment"><div class="line">NWNX_Events_SubscribeEvent(<span class="stringliteral">&quot;NWNX_ON_WEBHOOK_FAILED&quot;</span>, <span class="stringliteral">&quot;event_webhook&quot;</span>);</div>
+<li>In module <code>OnModuleLoad</code> add: <div class="fragment"><div class="line"><a class="code" href="group__events.html#ga1f7aeeb1c0a8f4166b8d1dbefa521294">NWNX_Events_SubscribeEvent</a>(<span class="stringliteral">&quot;NWNX_ON_WEBHOOK_FAILED&quot;</span>, <span class="stringliteral">&quot;event_webhook&quot;</span>);</div>
 </div><!-- fragment --></li>
 <li>Create new <code>event_webhook</code> script and enter the following: <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;nwnx_events&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;nwnx_webhook&quot;</span></div>
@@ -168,19 +168,19 @@ Example 3</h3>
 <div class="line"><span class="keywordtype">void</span> main()</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">object</span> oModule = OBJECT_SELF;</div>
-<div class="line">    <span class="keywordtype">string</span> sCurrentEvent = NWNX_Events_GetCurrentEvent();</div>
+<div class="line">    <span class="keywordtype">string</span> sCurrentEvent = <a class="code" href="group__events.html#ga3dd3ccd8df389359c21d5ca3f681718b">NWNX_Events_GetCurrentEvent</a>();</div>
 <div class="line">    <span class="keywordflow">if</span> (sCurrentEvent == <span class="stringliteral">&quot;NWNX_ON_WEBHOOK_FAILED&quot;</span>)</div>
 <div class="line">    {</div>
-<div class="line">        <span class="keywordtype">int</span> iStatus = StringToInt(NWNX_Events_GetEventData(<span class="stringliteral">&quot;STATUS&quot;</span>));</div>
+<div class="line">        <span class="keywordtype">int</span> iStatus = StringToInt(<a class="code" href="group__events.html#gad74d90c308e190da8d49b1db0aa2f1b6">NWNX_Events_GetEventData</a>(<span class="stringliteral">&quot;STATUS&quot;</span>));</div>
 <div class="line">        <span class="comment">// Status 429 means it was Rate Limited</span></div>
 <div class="line">        <span class="keywordflow">if</span> (iStatus == 429)</div>
 <div class="line">        {</div>
 <div class="line">            <span class="comment">// Reset is sent in milliseconds</span></div>
-<div class="line">            <span class="keywordtype">float</span> delayToSend = StringToFloat(NWNX_Events_GetEventData(<span class="stringliteral">&quot;RETRY_AFTER&quot;</span>)) / 1000.0f;</div>
+<div class="line">            <span class="keywordtype">float</span> delayToSend = StringToFloat(<a class="code" href="group__events.html#gad74d90c308e190da8d49b1db0aa2f1b6">NWNX_Events_GetEventData</a>(<span class="stringliteral">&quot;RETRY_AFTER&quot;</span>)) / 1000.0f;</div>
 <div class="line">            PrintString(<span class="stringliteral">&quot;WebHook rate limited, resending in &quot;</span>+FloatToString(delayToSend)+<span class="stringliteral">&quot; seconds.&quot;</span>);</div>
-<div class="line">            <span class="keywordtype">string</span> sMessage = NWNX_Events_GetEventData(<span class="stringliteral">&quot;MESSAGE&quot;</span>);</div>
-<div class="line">            <span class="keywordtype">string</span> sHost = NWNX_Events_GetEventData(<span class="stringliteral">&quot;HOST&quot;</span>);</div>
-<div class="line">            <span class="keywordtype">string</span> sPath = NWNX_Events_GetEventData(<span class="stringliteral">&quot;PATH&quot;</span>);</div>
+<div class="line">            <span class="keywordtype">string</span> sMessage = <a class="code" href="group__events.html#gad74d90c308e190da8d49b1db0aa2f1b6">NWNX_Events_GetEventData</a>(<span class="stringliteral">&quot;MESSAGE&quot;</span>);</div>
+<div class="line">            <span class="keywordtype">string</span> sHost = <a class="code" href="group__events.html#gad74d90c308e190da8d49b1db0aa2f1b6">NWNX_Events_GetEventData</a>(<span class="stringliteral">&quot;HOST&quot;</span>);</div>
+<div class="line">            <span class="keywordtype">string</span> sPath = <a class="code" href="group__events.html#gad74d90c308e190da8d49b1db0aa2f1b6">NWNX_Events_GetEventData</a>(<span class="stringliteral">&quot;PATH&quot;</span>);</div>
 <div class="line">            <a class="code" href="group__webhook.html#ga8030e0fe61e40060c60246dd1cc2f5cc">NWNX_WebHook_ResendWebHookHTTPS</a>(sHost, sPath, sMessage, delayToSend);</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
@@ -190,7 +190,7 @@ Example 3</h3>
 <h3><a class="anchor" id="autotoc_md263"></a>
 Example 4</h3>
 <p>The builder wishes to notify the general discord channel when a PC reaches a new level.</p><ul>
-<li>In module <code>OnModuleLoad</code> add: <div class="fragment"><div class="line">NWNX_Events_SubscribeEvent(<span class="stringliteral">&quot;NWNX_ON_LEVEL_UP_AFTER&quot;</span>, <span class="stringliteral">&quot;event_level&quot;</span>);</div>
+<li>In module <code>OnModuleLoad</code> add: <div class="fragment"><div class="line"><a class="code" href="group__events.html#ga1f7aeeb1c0a8f4166b8d1dbefa521294">NWNX_Events_SubscribeEvent</a>(<span class="stringliteral">&quot;NWNX_ON_LEVEL_UP_AFTER&quot;</span>, <span class="stringliteral">&quot;event_level&quot;</span>);</div>
 </div><!-- fragment --></li>
 <li>Create new <code>event_level</code> script and enter the following: <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;nwnx_events&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;nwnx_time&quot;</span></div>
@@ -200,7 +200,7 @@ Example 4</h3>
 <div class="line"><span class="keywordtype">void</span> main()</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">object</span> oPC = OBJECT_SELF;</div>
-<div class="line">    <span class="keywordtype">string</span> sCurrentEvent = NWNX_Events_GetCurrentEvent();</div>
+<div class="line">    <span class="keywordtype">string</span> sCurrentEvent = <a class="code" href="group__events.html#ga3dd3ccd8df389359c21d5ca3f681718b">NWNX_Events_GetCurrentEvent</a>();</div>
 <div class="line">    <span class="keywordflow">if</span> (sCurrentEvent == <span class="stringliteral">&quot;NWNX_ON_LEVEL_UP_AFTER&quot;</span>)</div>
 <div class="line">    {</div>
 <div class="line">        <span class="keyword">struct </span><a class="code" href="structNWNX__WebHook__Message.html">NWNX_WebHook_Message</a> stMessage;</div>
@@ -240,6 +240,9 @@ Note on Portraits as Images</h4>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div class="ttc" id="agroup__events_html_ga3dd3ccd8df389359c21d5ca3f681718b"><div class="ttname"><a href="group__events.html#ga3dd3ccd8df389359c21d5ca3f681718b">NWNX_Events_GetCurrentEvent</a></div><div class="ttdeci">string NWNX_Events_GetCurrentEvent()</div><div class="ttdef"><b>Definition:</b> nwnx_events.nss:991</div></div>
+<div class="ttc" id="agroup__events_html_gad74d90c308e190da8d49b1db0aa2f1b6"><div class="ttname"><a href="group__events.html#gad74d90c308e190da8d49b1db0aa2f1b6">NWNX_Events_GetEventData</a></div><div class="ttdeci">string NWNX_Events_GetEventData(string tag)</div><div class="ttdef"><b>Definition:</b> nwnx_events.nss:967</div></div>
+<div class="ttc" id="agroup__events_html_ga1f7aeeb1c0a8f4166b8d1dbefa521294"><div class="ttname"><a href="group__events.html#ga1f7aeeb1c0a8f4166b8d1dbefa521294">NWNX_Events_SubscribeEvent</a></div><div class="ttdeci">void NWNX_Events_SubscribeEvent(string evt, string script)</div><div class="ttdoc">Scripts can subscribe to events.</div><div class="ttdef"><b>Definition:</b> nwnx_events.nss:939</div></div>
 <div class="ttc" id="astructNWNX__WebHook__Message_html_a8ac91259adbe62020d5da36142876618"><div class="ttname"><a href="structNWNX__WebHook__Message.html#a8ac91259adbe62020d5da36142876618">NWNX_WebHook_Message::sUsername</a></div><div class="ttdeci">string sUsername</div><div class="ttdoc">https://birdie0.github.io/discord-webhooks-guide/structure/username.html</div><div class="ttdef"><b>Definition:</b> nwnx_webhook_rch.nss:10</div></div>
 <div class="ttc" id="astructNWNX__WebHook__Message_html"><div class="ttname"><a href="structNWNX__WebHook__Message.html">NWNX_WebHook_Message</a></div><div class="ttdoc">For more information on these fields see https://birdie0.github.io/discord-webhooks-guide/.</div><div class="ttdef"><b>Definition:</b> nwnx_webhook_rch.nss:9</div></div>
 <div class="ttc" id="agroup__webhook_html_ga8030e0fe61e40060c60246dd1cc2f5cc"><div class="ttname"><a href="group__webhook.html#ga8030e0fe61e40060c60246dd1cc2f5cc">NWNX_WebHook_ResendWebHookHTTPS</a></div><div class="ttdeci">void NWNX_WebHook_ResendWebHookHTTPS(string host, string path, string sMessage, float delay=0.0f)</div><div class="ttdoc">Resends a webhook message after a defined delay.</div><div class="ttdef"><b>Definition:</b> nwnx_webhook.nss:40</div></div>
@@ -252,7 +255,7 @@ Note on Portraits as Images</h4>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sun Oct 6 2019 03:09:11 for NWNX-Unified by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Oct 6 2019 03:17:42 for NWNX-Unified by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16.
 					<a href="../">Light version</a>
 				</li>
