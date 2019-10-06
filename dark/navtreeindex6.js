@@ -1,8 +1,8 @@
 var NAVTREEINDEX6 =
 {
-"md_Plugins_WebHook_Documentation_README.html#autotoc_md262":[8],
-"md_Plugins_WebHook_Documentation_README.html#autotoc_md263":[9],
-"md_Plugins_WebHook_Documentation_README.html#autotoc_md264":[9,42],
+"md_Plugins_WebHook_README.html#autotoc_md262":[8],
+"md_Plugins_WebHook_README.html#autotoc_md263":[9],
+"md_Plugins_WebHook_README.html#autotoc_md264":[9,42],
 "modules.html":[2],
 "nwnx_8nss.html":[4,0,0,0,10],
 "nwnx__admin_8nss.html":[4,0,1,0,0,0],

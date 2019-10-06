@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['serverlogredirector_20plugin_20reference_855',['ServerLogRedirector Plugin Reference',['../md_Plugins_ServerLogRedirector_Documentation_README.html',1,'']]],
-  ['skillranks_20plugin_20reference_856',['SkillRanks Plugin Reference',['../md_Plugins_SkillRanks_Documentation_README.html',1,'']]],
-  ['spellchecker_20plugin_20reference_857',['SpellChecker Plugin Reference',['../md_Plugins_SpellChecker_Documentation_README.html',1,'']]],
-  ['sql_20plugin_20reference_858',['SQL Plugin Reference',['../md_Plugins_SQL_Documentation_README.html',1,'']]],
+  ['serverlogredirector_20plugin_20reference_855',['ServerLogRedirector Plugin Reference',['../md_Plugins_ServerLogRedirector_README.html',1,'']]],
+  ['skillranks_20plugin_20reference_856',['SkillRanks Plugin Reference',['../md_Plugins_SkillRanks_README.html',1,'']]],
+  ['spellchecker_20plugin_20reference_857',['SpellChecker Plugin Reference',['../md_Plugins_SpellChecker_README.html',1,'']]],
+  ['sql_20plugin_20reference_858',['SQL Plugin Reference',['../md_Plugins_SQL_README.html',1,'']]],
   ['sauthoriconurl_859',['sAuthorIconURL',['../structNWNX__WebHook__Message.html#a9761f89d8969406957e196240b676a67',1,'NWNX_WebHook_Message']]],
   ['sauthorname_860',['sAuthorName',['../structNWNX__WebHook__Message.html#a2752ebbb220b5a26142e8f63c2da5e60',1,'NWNX_WebHook_Message']]],
   ['sauthorurl_861',['sAuthorURL',['../structNWNX__WebHook__Message.html#acda4237df462e2d4503a529154ea5b8b',1,'NWNX_WebHook_Message']]],

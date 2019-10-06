@@ -2,7 +2,7 @@ var searchData=
 [
   ['nwnx_20constants_100',['NWNX Constants',['../group__consts.html',1,'']]],
   ['nwnx_3aee_20_28build_208186_29_101',['NWNX:EE (build 8186)',['../index.html',1,'']]],
-  ['nwnx_3aee_20sql_20migration_20guide_102',['NWNX:EE SQL Migration Guide',['../md_Plugins_SQL_Documentation_Migration_Guide.html',1,'']]],
+  ['nwnx_3aee_20sql_20migration_20guide_102',['NWNX:EE SQL Migration Guide',['../md_Plugins_SQL_Migration_Guide.html',1,'']]],
   ['nassociatetype_103',['nAssociateType',['../structNWNX__Player__QuickBarSlot.html#ac9251f3b6703b0113937c30477ea0d56',1,'NWNX_Player_QuickBarSlot']]],
   ['ncasterlevel_104',['nCasterLevel',['../structNWNX__EffectUnpacked.html#ab0050c5c672b6bb1f79e0e6860c9f50a',1,'NWNX_EffectUnpacked']]],
   ['nchancetoappear_105',['nChanceToAppear',['../structNWNX__IPUnpacked.html#adec6dfc16333f7643f4b2b3a948a461d',1,'NWNX_IPUnpacked']]],

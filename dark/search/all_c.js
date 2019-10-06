@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['object_20plugin_20reference_823',['Object Plugin Reference',['../md_Plugins_Object_Documentation_README.html',1,'']]],
+  ['object_20plugin_20reference_823',['Object Plugin Reference',['../md_Plugins_Object_README.html',1,'']]],
   ['oassociate_824',['oAssociate',['../structNWNX__Player__QuickBarSlot.html#a6a017ab874ff47027808370fbc0b571e',1,'NWNX_Player_QuickBarSlot']]],
   ['object_825',['Object',['../group__object.html',1,'']]],
   ['ocreator_826',['oCreator',['../structNWNX__EffectUnpacked.html#a93d6dc6ee232cd675bbde08e5e742f2d',1,'NWNX_EffectUnpacked::oCreator()'],['../structNWNX__IPUnpacked.html#ad8edb88bbe3a1b0195ff9fab79242c3a',1,'NWNX_IPUnpacked::oCreator()']]],

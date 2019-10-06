@@ -7,5 +7,5 @@ var searchData=
   ['fparam1_42',['fParam1',['../structNWNX__EffectUnpacked.html#aa78592d4b82d8395fe3552333271a315',1,'NWNX_EffectUnpacked']]],
   ['fparam2_43',['fParam2',['../structNWNX__EffectUnpacked.html#a7f21f59f525f1dc6ea93333c3358f858',1,'NWNX_EffectUnpacked']]],
   ['fparam3_44',['fParam3',['../structNWNX__EffectUnpacked.html#ab38506290be8f1df06a216ee0c4756d0',1,'NWNX_EffectUnpacked']]],
-  ['feedback_20plugin_20reference_45',['Feedback Plugin Reference',['../md_Plugins_Feedback_Documentation_README.html',1,'']]]
+  ['feedback_20plugin_20reference_45',['Feedback Plugin Reference',['../md_Plugins_Feedback_README.html',1,'']]]
 ];

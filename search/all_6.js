@@ -41,6 +41,6 @@ var searchData=
   ['item_84',['Item',['../group__item.html',1,'']]],
   ['itemproperty_85',['ItemProperty',['../group__itemproperty.html',1,'']]],
   ['itimestamp_86',['iTimestamp',['../structNWNX__WebHook__Message.html#acc31ee95b8eeebba9f5d970bcc796c90',1,'NWNX_WebHook_Message']]],
-  ['item_20plugin_20reference_87',['Item Plugin Reference',['../md_Plugins_Item_Documentation_README.html',1,'']]],
-  ['itemproperty_20plugin_20reference_88',['ItemProperty Plugin Reference',['../md_Plugins_ItemProperty_Documentation_README.html',1,'']]]
+  ['item_20plugin_20reference_87',['Item Plugin Reference',['../md_Plugins_Item_README.html',1,'']]],
+  ['itemproperty_20plugin_20reference_88',['ItemProperty Plugin Reference',['../md_Plugins_ItemProperty_README.html',1,'']]]
 ];
