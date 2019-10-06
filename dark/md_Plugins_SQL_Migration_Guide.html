@@ -102,27 +102,21 @@ $(document).ready(function(){initNavTree('md_Plugins_SQL_Migration_Guide.html','
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Included below are some examples and guidance in migrating legacy NWNX ODBC style SQL code to the new NWNX:EE SQL Plugin.</p>
-<h2><a class="anchor" id="autotoc_md219"></a>
+<h2><a class="anchor" id="autotoc_md201"></a>
 General Information</h2>
 <p>The previous plugin only had one execution style: the SQL_ExecDirect() function that took a SQL string that had been constructed to execute.</p>
 <p>The new SQL Plugin has two methods of operation:</p>
 <ol type="1">
-<li>The same ExecDirect type functionality (via <code>NWNX_SQL_ExecuteQuery("...")</code>)</li>
-</ol>
-<ol type="1">
-<li>Prepared Statements simiar to that of Java and C# where a SQL string is prepared (via <code>NWNX_SQL_PrepareQuery(...)</code>) with place holders, then script variables are bound to the variables, then the executed (via <code><a class="el" href="group__sql.html#gab7ec4280f37f01bafe8ce01f30cc7f13" title="Executes a query which has been prepared.">NWNX_SQL_ExecutePreparedQuery()</a></code>).</li>
+<li>The same ExecDirect type functionality via <a class="el" href="group__sql.html#gad50edb1ed094961a96ef95f8099993ef" title="Directly execute an SQL query.">NWNX_SQL_ExecuteQuery()</a></li>
+<li>Prepared Statements similar to that of Java and C# where a SQL string is prepared via <a class="el" href="group__sql.html#gae2e0e27014d82accfe4a0e510720515f" title="Prepares the provided query for execution.">NWNX_SQL_PrepareQuery()</a> with placeholders, then script variables are bound to the variables, then executed via <a class="el" href="group__sql.html#gab7ec4280f37f01bafe8ce01f30cc7f13" title="Executes a query which has been prepared.">NWNX_SQL_ExecutePreparedQuery()</a>.</li>
 </ol>
 <p>Advantages of using the prepared version are numerous</p>
 <ol type="1">
 <li>No need to escape/un-escape values for things that cause string SQL statements problems (like single quotes or SQL injection issues). Bound data is taken as is and treated as data that won't affect the validity of the SQL statement.</li>
-</ol>
-<ol type="1">
 <li>The ability to serialize/un-serialize ObjectIDs and Objects to and from the database.</li>
-</ol>
-<ol type="1">
 <li>Probably some others, too!</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md220"></a>
+<h2><a class="anchor" id="autotoc_md202"></a>
 Examples</h2>
 <p>A legacy (albeit contrived) example might look like this:</p>
 <div class="fragment"><div class="line"><span class="comment">//This is a silly, non-sensical function.</span></div>
@@ -149,7 +143,7 @@ Examples</h2>
 <div class="line">     </div>
 <div class="line">    AssignCommand(oBoard, ActionSpeakString(sFeedback));</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>The simple, straight forward converted version using exising code as much as possible and with copious comments:</p>
+</div><!-- fragment --><p>The simple, straight forward converted version using existing code as much as possible and with copious comments:</p>
 <div class="fragment"><div class="line"><span class="comment">//This is a silly, non-sensical function.</span></div>
 <div class="line"><span class="keywordtype">int</span> SomeUsefulFunction(<span class="keywordtype">object</span> oPC, <span class="keywordtype">object</span> oBoard)</div>
 <div class="line">{</div>
@@ -187,7 +181,7 @@ Examples</h2>
 <div class="line"> </div>
 <div class="line">    AssignCommand(oBoard, ActionSpeakString(sFeedback));</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>A more optimal approach that utilizies the parameterized query to avoid having to escape the input data:</p>
+</div><!-- fragment --><p>A more optimal approach that utilizes the parameterized query to avoid having to escape the input data:</p>
 <div class="fragment"><div class="line"><span class="comment">//This is a silly, non-sensical function.</span></div>
 <div class="line"><span class="keywordtype">int</span> SomeUsefulFunction(<span class="keywordtype">object</span> oPC, <span class="keywordtype">object</span> oBoard)</div>
 <div class="line">{</div>
@@ -233,9 +227,9 @@ Examples</h2>
 <div class="line"> </div>
 <div class="line">    AssignCommand(oBoard, ActionSpeakString(sFeedback));</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md221"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md203"></a>
 Multi-Platform Support</h2>
-<p>There is a function to retrieve the specfic database type to enable multi-platform support through conditional logic.</p>
+<p>There is a function to retrieve the specific database type to enable multi-platform support through conditional logic.</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> main()</div>
 <div class="line">{</div>
 <div class="line">    WriteTimestampedLogEntry(<span class="stringliteral">&quot;Multi-Platform example..&quot;</span>);</div>
@@ -297,7 +291,7 @@ Multi-Platform Support</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sun Oct 6 2019 03:17:42 for NWNX-Unified by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Oct 6 2019 05:33:43 for NWNX-Unified by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16.
 					<a href="../">Light version</a>
 				</li>
