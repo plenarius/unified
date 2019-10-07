@@ -23,21 +23,19 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "NWNX-Unified", "index.html", [
-    [ "NWNX:EE (build 8186)", "index.html", [
-      [ "What is NWNX:EE?", "index.html#autotoc_md245", null ],
-      [ "What versions of the server are supported?", "index.html#autotoc_md246", null ],
-      [ "What platforms are supported?", "index.html#autotoc_md247", null ],
-      [ "How do I use it?", "index.html#autotoc_md248", null ],
-      [ "Integrating NWNX:EE into your module", "index.html#autotoc_md249", null ],
-      [ "Running the server (native)", "index.html#autotoc_md250", null ],
-      [ "Running the server (Docker)", "index.html#autotoc_md251", null ],
-      [ "Compiling NWNX:EE (native)", "index.html#autotoc_md252", null ],
-      [ "Compiling NWNX:EE (docker)", "index.html#autotoc_md253", null ],
-      [ "Contributing code", "index.html#autotoc_md254", null ],
-      [ "Who makes NWNX:EE?", "index.html#autotoc_md255", null ],
-      [ "You're awesome, let me pay you", "index.html#autotoc_md256", null ],
-      [ "Contact", "index.html#autotoc_md257", null ]
-    ] ],
+    [ "What is NWNX:EE?", "index.html#autotoc_md246", null ],
+    [ "What versions of the server are supported?", "index.html#autotoc_md247", null ],
+    [ "What platforms are supported?", "index.html#autotoc_md248", null ],
+    [ "How do I use it?", "index.html#autotoc_md249", null ],
+    [ "Integrating NWNX:EE into your module", "index.html#autotoc_md250", null ],
+    [ "Running the server (native)", "index.html#autotoc_md251", null ],
+    [ "Running the server (Docker)", "index.html#autotoc_md252", null ],
+    [ "Compiling NWNX:EE (native)", "index.html#autotoc_md253", null ],
+    [ "Compiling NWNX:EE (docker)", "index.html#autotoc_md254", null ],
+    [ "Contributing code", "index.html#autotoc_md255", null ],
+    [ "Who makes NWNX:EE?", "index.html#autotoc_md256", null ],
+    [ "You're awesome, let me pay you", "index.html#autotoc_md257", null ],
+    [ "Contact", "index.html#autotoc_md258", null ],
     [ "Documentation", null, [
       [ "Changelog", "changelog.html", [
         [ "Unreleased", "changelog.html#autotoc_md0", [
@@ -311,8 +309,8 @@ var NAVTREEINDEX =
 "group__object.html#ga4c821803b004e98e407baec34757872c",
 "group__redis.html#ga89968b106abd0520c9439291e34fefd2",
 "group__webhook.html#ga8030e0fe61e40060c60246dd1cc2f5cc",
-"md_Plugins_WebHook_README.html#autotoc_md238",
-"nwnx__redis_8nss.html#afbddebbcf6d3934ed197f72cf651f565"
+"md_Plugins_WebHook_README.html#autotoc_md239",
+"nwnx__redis_8nss.html#afc640f1f6e675ab5372174be68836957"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
