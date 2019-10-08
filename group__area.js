@@ -26,5 +26,6 @@ var group__area =
     [ "NWNX_Area_SetSunMoonColors", "group__area.html#ga0d485de7372e2ed0ef896c8fbc43ff07", null ],
     [ "NWNX_Area_CreateTransition", "group__area.html#ga375a5f37746e7d248292788987a7ccb9", null ],
     [ "NWNX_Area_GetTileAnimationLoop", "group__area.html#ga5bca6950ff8f896782ede7d59fc72d08", null ],
-    [ "NWNX_Area_SetTileAnimationLoop", "group__area.html#ga28ba5d8f657c920be0ec69e2334fa74b", null ]
+    [ "NWNX_Area_SetTileAnimationLoop", "group__area.html#ga28ba5d8f657c920be0ec69e2334fa74b", null ],
+    [ "NWNX_Area_TestDirectLine", "group__area.html#gaadd7e8c0aa2f77536fa499d38aca568d", null ]
 ];

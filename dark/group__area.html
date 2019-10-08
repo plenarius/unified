@@ -193,6 +193,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga28ba5d8f657c920be0ec69e2334fa74b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__area.html#ga28ba5d8f657c920be0ec69e2334fa74b">NWNX_Area_SetTileAnimationLoop</a> (object oArea, float fTileX, float fTileY, int nAnimLoop, int bEnabled)</td></tr>
 <tr class="memdesc:ga28ba5d8f657c920be0ec69e2334fa74b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the state of a tile animation loop.  <a href="group__area.html#ga28ba5d8f657c920be0ec69e2334fa74b">More...</a><br /></td></tr>
 <tr class="separator:ga28ba5d8f657c920be0ec69e2334fa74b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaadd7e8c0aa2f77536fa499d38aca568d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__area.html#gaadd7e8c0aa2f77536fa499d38aca568d">NWNX_Area_TestDirectLine</a> (object oArea, float fStartX, float fStartY, float fEndX, float fEndY, float fPerSpace, float fHeight, int bIgnoreDoors=FALSE)</td></tr>
+<tr class="memdesc:gaadd7e8c0aa2f77536fa499d38aca568d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test to see if there's a direct, walkable line between two points in the area.  <a href="group__area.html#gaadd7e8c0aa2f77536fa499d38aca568d">More...</a><br /></td></tr>
+<tr class="separator:gaadd7e8c0aa2f77536fa499d38aca568d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Area PVP Settings</h2></td></tr>
@@ -1203,13 +1206,97 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>NWNX_AREA_COLOR_
 
 </div>
 </div>
+<a id="gaadd7e8c0aa2f77536fa499d38aca568d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaadd7e8c0aa2f77536fa499d38aca568d">&#9670;&nbsp;</a></span>NWNX_Area_TestDirectLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Area_TestDirectLine </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oArea</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fStartX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fStartY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fEndX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fEndY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fPerSpace</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fHeight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bIgnoreDoors</em> = <code>FALSE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Test to see if there's a direct, walkable line between two points in the area. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oArea</td><td>The area object. </td></tr>
+    <tr><td class="paramname">fStartX,fStartY</td><td>The starting points. </td></tr>
+    <tr><td class="paramname">fEndX,fEndY</td><td>The ending points. </td></tr>
+    <tr><td class="paramname">fPerSpace</td><td>The personal space of a creature. Found in appearance.2da. </td></tr>
+    <tr><td class="paramname">fHeight</td><td>The height of a creature. Found in appearance.2da. </td></tr>
+    <tr><td class="paramname">bIgnoreDoors</td><td>Whether to ignore doors in the check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><ul>
+<li>1 if there is a direct walkable line.</li>
+<li>-1 if the line is blocked by terrain.</li>
+<li>-2 if the line is blocked by a placeable.</li>
+<li>-3 if the line is blocked by a creature. </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Mon Oct 7 2019 01:24:06 for NWNX-Unified by <a href="http://www.doxygen.org/index.html">
+					Generated on Tue Oct 8 2019 14:19:53 for NWNX-Unified by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16.
 					<a href="../">Light version</a>
 				</li>
