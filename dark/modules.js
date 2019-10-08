@@ -16,6 +16,7 @@ var modules =
     [ "Feedback", "group__feedback.html", "group__feedback" ],
     [ "Item", "group__item.html", "group__item" ],
     [ "ItemProperty", "group__itemproperty.html", "group__itemproperty" ],
+    [ "Layonara", "group__layonara.html", "group__layonara" ],
     [ "LUA", "group__lua.html", "group__lua" ],
     [ "Object", "group__object.html", "group__object" ],
     [ "Player", "group__player.html", "group__player" ],

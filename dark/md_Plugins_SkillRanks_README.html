@@ -101,13 +101,13 @@ $(document).ready(function(){initNavTree('md_Plugins_SkillRanks_README.html','')
 <div class="title">SkillRanks Plugin Reference </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md188"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md194"></a>
 Description</h1>
 <p>Enhances and allows for manipulation of skill rank calculations including the ability to build custom skill related feats as well as modifying stock feats.</p>
-<h1><a class="anchor" id="autotoc_md189"></a>
+<h1><a class="anchor" id="autotoc_md195"></a>
 Plugin Sample Usage</h1>
 <p>To create a new skill feat, builders create a <code>SkillFeat</code> structure and run functions on the <code>OnModuleLoad</code>.</p>
-<h3><a class="anchor" id="autotoc_md190"></a>
+<h3><a class="anchor" id="autotoc_md196"></a>
 Example 1</h3>
 <p>The builder wants to create a new skill called <b>Travel</b> and wants to add Skill Focus and Epic Skill Focus feats.</p>
 <ul>
@@ -127,7 +127,7 @@ Example 1</h3>
 <div class="line"><a class="code" href="group__skillranks.html#gac34e2d7aa9cfa7330914732fa6392e10">NWNX_SkillRanks_SetSkillFeat</a>(skillFeat, TRUE);</div>
 </div><!-- fragment --></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md191"></a>
+<h3><a class="anchor" id="autotoc_md197"></a>
 Example 2</h3>
 <p>The builder doesn't like the restriction on the <b>Trackless Step</b> feat which inhibits the skill bonus while Underground even if the Natural flag is set.</p>
 <ul>
@@ -138,7 +138,7 @@ Example 2</h3>
 <div class="line"><a class="code" href="group__skillranks.html#gac34e2d7aa9cfa7330914732fa6392e10">NWNX_SkillRanks_SetSkillFeat</a>(skillFeat);</div>
 </div><!-- fragment --></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md192"></a>
+<h3><a class="anchor" id="autotoc_md198"></a>
 Example 3</h3>
 <p>The builder has created a new feat called <b>Doctor</b> which counts the creature's <b>Intelligence</b> instead of <b>Wisdom</b> if higher when calculating their <b>Heal</b> skill.</p><ul>
 <li>Add the Doctor feat to feat.2da.</li>
@@ -149,7 +149,7 @@ Example 3</h3>
 <div class="line"><a class="code" href="group__skillranks.html#gac34e2d7aa9cfa7330914732fa6392e10">NWNX_SkillRanks_SetSkillFeat</a>(skillFeat, TRUE);</div>
 </div><!-- fragment --></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md193"></a>
+<h3><a class="anchor" id="autotoc_md199"></a>
 Example 4</h3>
 <p>The builder has created a new feat called <b>Moonlight Spy</b> which gives a <b>Listen</b>, <b>Search</b> and <b>Spot</b> bonus of 3 plus 1 for every 2 levels of <b>Assassin</b> or <b>Rogue</b> when the player is outdoors at night time.</p><ul>
 <li>Add the <b>Moonlight Spy</b> feat to feat.2da</li>
@@ -172,7 +172,7 @@ Example 4</h3>
 <div class="line"><a class="code" href="group__skillranks.html#gac34e2d7aa9cfa7330914732fa6392e10">NWNX_SkillRanks_SetSkillFeat</a>(skillFeat, TRUE);</div>
 </div><!-- fragment --></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md194"></a>
+<h3><a class="anchor" id="autotoc_md200"></a>
 Example 5</h3>
 <p>The builder wants all Skill Focus feats to increase the modifier by 5 and all Epic Skill Focus feats to increase the modifier by 12.</p><ul>
 <li>Change the TLK reference in the feat.2da for all Skill Focus feats from 424 to a new custom TLK entry that states: <div class="fragment"><div class="line">Type of Feat: General</div>
@@ -189,7 +189,7 @@ Example 5</h3>
 <div class="line">NWNX_SkillRanks_SetSkillFeatFocusMod(12, TRUE);</div>
 </div><!-- fragment --></li>
 </ul>
-<h3><a class="anchor" id="autotoc_md195"></a>
+<h3><a class="anchor" id="autotoc_md201"></a>
 Example 6</h3>
 <p>The builder has an area in her module called <em>The Great Library</em> where she wants all creatures to receive a bonus of 10 <b>Lore</b> whenever inside.</p><ul>
 <li>In the <code>OnModuleLoad</code> script enter the following: <div class="fragment"><div class="line"><span class="keywordtype">object</span> oArea = GetObjectByTag(<span class="stringliteral">&quot;greatlibrary&quot;</span>);</div>
@@ -219,7 +219,7 @@ Example 6</h3>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Tue Oct 8 2019 14:19:53 for NWNX-Unified by <a href="http://www.doxygen.org/index.html">
+					Generated on Tue Oct 8 2019 22:13:37 for NWNX-Unified by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16.
 					<a href="../">Light version</a>
 				</li>
