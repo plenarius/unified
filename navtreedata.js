@@ -22,7 +22,7 @@ for the JavaScript code in this file
 */
 var NAVTREE =
 [
-  [ "NWNX-Unified", "index.html", [
+  [ "NWNX:EE", "index.html", [
     [ "What is NWNX:EE?", "index.html#autotoc_md252", null ],
     [ "What versions of the server are supported?", "index.html#autotoc_md253", null ],
     [ "What platforms are supported?", "index.html#autotoc_md254", null ],
@@ -312,14 +312,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group__area.html#gae29cb6e1a135419a3018b0425ad65d39",
-"group__creature.html#gaff45e8b400ebbbfeeccba81785fc5c17",
-"group__object.html#ga0ed4762c38e89497b6cdf03cfd7fca28",
-"group__race.html#ga591c32b5b9d309a8b897d16658e6bcc7",
-"group__weapon.html#ga4c1988ef71d5aecb896e18544ac71a08",
-"md_Plugins_SQL_README.html#autotoc_md219",
-"nwnx__redis_8nss.html#aced6735f9ef853fcb3d242c53c41b9ac",
-"structNWNX__WebHook__Message.html#aaca0432ebd98dce6e50d5d992146e94d"
+"group__area.html#gac3d805e025520d1d026332d345f592ae",
+"group__creature.html#gafdcf540c2ebaea7ac27563d74461b57d",
+"group__object.html#ga037ae0502bb24d81f64b0f053ca00028",
+"group__race.html#ga2764ca25d58580933fe71c0643636eb4",
+"group__weapon.html#ga390c5fc0caf45d77be05324a8af3762c",
+"md_Plugins_SQL_README.html#autotoc_md215",
+"nwnx__redis_8nss.html#aaa16922f699947466fcb4c045cab5921",
+"structNWNX__Redis__PubSubMessageData.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
