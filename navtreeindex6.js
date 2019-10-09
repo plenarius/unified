@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"md_Plugins_SQL_README.html#autotoc_md219":[13,39,1,9],
 "md_Plugins_SQL_README.html#autotoc_md220":[13,39,1,10],
 "md_Plugins_ServerLogRedirector_README.html":[13,35],
 "md_Plugins_ServerLogRedirector_README.html#autotoc_md192":[13,35,0],
@@ -64,8 +65,7 @@ var NAVTREEINDEX6 =
 "nwnx__item_8nss.html":[16,0,1,12,0,0],
 "nwnx__itemprop_8nss.html":[16,0,1,13,0,0],
 "nwnx__layo_8nss.html":[16,0,1,14,0,0],
-"nwnx__layo_8nss.html#a2da0493bfd3a51a51a2e7dcc0ca291a4":[16,0,1,14,0,0,14],
-"nwnx__layo_8nss.html#abad24846d29c51a9853c5eb6a514e325":[16,0,1,14,0,0,15],
+"nwnx__layo_8nss.html#a5e9e76e5835a1bcf7608b4d211ce2a82":[16,0,1,14,0,0,14],
 "nwnx__lua_8nss.html":[16,0,1,15,0,0],
 "nwnx__object_8nss.html":[16,0,1,16,0,0],
 "nwnx__player_8nss.html":[16,0,1,17,0,0],
