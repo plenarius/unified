@@ -23,19 +23,19 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "NWNX:EE", "index.html", [
-    [ "What is NWNX:EE?", "index.html#autotoc_md252", null ],
-    [ "What versions of the server are supported?", "index.html#autotoc_md253", null ],
-    [ "What platforms are supported?", "index.html#autotoc_md254", null ],
-    [ "How do I use it?", "index.html#autotoc_md255", null ],
-    [ "Integrating NWNX:EE into your module", "index.html#autotoc_md256", null ],
-    [ "Running the server (native)", "index.html#autotoc_md257", null ],
-    [ "Running the server (Docker)", "index.html#autotoc_md258", null ],
-    [ "Compiling NWNX:EE (native)", "index.html#autotoc_md259", null ],
-    [ "Compiling NWNX:EE (docker)", "index.html#autotoc_md260", null ],
-    [ "Contributing code", "index.html#autotoc_md261", null ],
-    [ "Who makes NWNX:EE?", "index.html#autotoc_md262", null ],
-    [ "You're awesome, let me pay you", "index.html#autotoc_md263", null ],
-    [ "Contact", "index.html#autotoc_md264", null ],
+    [ "What is NWNX:EE?", "index.html#autotoc_md246", null ],
+    [ "What versions of the server are supported?", "index.html#autotoc_md247", null ],
+    [ "What platforms are supported?", "index.html#autotoc_md248", null ],
+    [ "How do I use it?", "index.html#autotoc_md249", null ],
+    [ "Integrating NWNX:EE into your module", "index.html#autotoc_md250", null ],
+    [ "Running the server (native)", "index.html#autotoc_md251", null ],
+    [ "Running the server (Docker)", "index.html#autotoc_md252", null ],
+    [ "Compiling NWNX:EE (native)", "index.html#autotoc_md253", null ],
+    [ "Compiling NWNX:EE (docker)", "index.html#autotoc_md254", null ],
+    [ "Contributing code", "index.html#autotoc_md255", null ],
+    [ "Who makes NWNX:EE?", "index.html#autotoc_md256", null ],
+    [ "You're awesome, let me pay you", "index.html#autotoc_md257", null ],
+    [ "Contact", "index.html#autotoc_md258", null ],
     [ "Documentation", null, [
       [ "Changelog", "changelog.html", [
         [ "Unreleased", "changelog.html#autotoc_md0", [
@@ -108,189 +108,181 @@ var NAVTREE =
       [ "Item Plugin Reference", "md_Plugins_Item_README.html", [
         [ "Description", "md_Plugins_Item_README.html#autotoc_md51", null ]
       ] ],
-      [ "ItemAppearance Plugin Reference", "md_Plugins_ItemAppearance_Documentation_README.html", [
-        [ "Environment Variables", "md_Plugins_ItemAppearance_Documentation_README.html#autotoc_md53", null ],
-        [ "Description", "md_Plugins_ItemAppearance_Documentation_README.html#autotoc_md54", null ]
-      ] ],
       [ "ItemProperty Plugin Reference", "md_Plugins_ItemProperty_README.html", [
-        [ "Description", "md_Plugins_ItemProperty_README.html#autotoc_md56", null ]
+        [ "Description", "md_Plugins_ItemProperty_README.html#autotoc_md53", null ]
       ] ],
       [ "JVM Plugin Reference", "md_Plugins_JVM_README.html", [
-        [ "Description", "md_Plugins_JVM_README.html#autotoc_md58", null ],
-        [ "Environment Variables", "md_Plugins_JVM_README.html#autotoc_md59", null ]
-      ] ],
-      [ "Layonara Plugin Reference", "md_Plugins_Layonara_Documentation_README.html", [
-        [ "Environment Variables", "md_Plugins_Layonara_Documentation_README.html#autotoc_md61", null ],
-        [ "Description", "md_Plugins_Layonara_Documentation_README.html#autotoc_md62", null ]
+        [ "Description", "md_Plugins_JVM_README.html#autotoc_md55", null ],
+        [ "Environment Variables", "md_Plugins_JVM_README.html#autotoc_md56", null ]
       ] ],
       [ "Lua Plugin Reference", "md_Plugins_Lua_README.html", [
-        [ "Description", "md_Plugins_Lua_README.html#autotoc_md64", null ],
-        [ "Environment Variables", "md_Plugins_Lua_README.html#autotoc_md65", null ],
-        [ "Quick start", "md_Plugins_Lua_README.html#autotoc_md66", [
-          [ "Docker", "md_Plugins_Lua_README.html#autotoc_md67", null ],
-          [ "Native", "md_Plugins_Lua_README.html#autotoc_md68", null ]
+        [ "Description", "md_Plugins_Lua_README.html#autotoc_md58", null ],
+        [ "Environment Variables", "md_Plugins_Lua_README.html#autotoc_md59", null ],
+        [ "Quick start", "md_Plugins_Lua_README.html#autotoc_md60", [
+          [ "Docker", "md_Plugins_Lua_README.html#autotoc_md61", null ],
+          [ "Native", "md_Plugins_Lua_README.html#autotoc_md62", null ]
         ] ],
-        [ "Documentation", "md_Plugins_Lua_README.html#autotoc_md69", null ],
-        [ "Installation and configuration", "md_Plugins_Lua_README.html#autotoc_md70", null ],
-        [ "Notes on Compilation", "md_Plugins_Lua_README.html#autotoc_md71", null ],
-        [ "Note on LuaJIT and extensions", "md_Plugins_Lua_README.html#autotoc_md72", null ]
+        [ "Documentation", "md_Plugins_Lua_README.html#autotoc_md63", null ],
+        [ "Installation and configuration", "md_Plugins_Lua_README.html#autotoc_md64", null ],
+        [ "Notes on Compilation", "md_Plugins_Lua_README.html#autotoc_md65", null ],
+        [ "Note on LuaJIT and extensions", "md_Plugins_Lua_README.html#autotoc_md66", null ]
       ] ],
       [ "MaxLevel Plugin Reference", "md_Plugins_MaxLevel_README.html", [
-        [ "Description", "md_Plugins_MaxLevel_README.html#autotoc_md74", null ],
-        [ "Environment Variables", "md_Plugins_MaxLevel_README.html#autotoc_md75", null ],
-        [ "Required Plugins", "md_Plugins_MaxLevel_README.html#autotoc_md76", null ],
-        [ "Issues", "md_Plugins_MaxLevel_README.html#autotoc_md77", null ],
-        [ "Setup", "md_Plugins_MaxLevel_README.html#autotoc_md78", null ]
+        [ "Description", "md_Plugins_MaxLevel_README.html#autotoc_md68", null ],
+        [ "Environment Variables", "md_Plugins_MaxLevel_README.html#autotoc_md69", null ],
+        [ "Required Plugins", "md_Plugins_MaxLevel_README.html#autotoc_md70", null ],
+        [ "Issues", "md_Plugins_MaxLevel_README.html#autotoc_md71", null ],
+        [ "Setup", "md_Plugins_MaxLevel_README.html#autotoc_md72", null ]
       ] ],
       [ "Metrics_InfluxDB Plugin Reference", "md_Plugins_Metrics_InfluxDB_README.html", [
-        [ "Description", "md_Plugins_Metrics_InfluxDB_README.html#autotoc_md80", null ],
-        [ "InfluxDB setup", "md_Plugins_Metrics_InfluxDB_README.html#autotoc_md81", null ],
-        [ "Environment Variables", "md_Plugins_Metrics_InfluxDB_README.html#autotoc_md82", null ]
+        [ "Description", "md_Plugins_Metrics_InfluxDB_README.html#autotoc_md74", null ],
+        [ "InfluxDB setup", "md_Plugins_Metrics_InfluxDB_README.html#autotoc_md75", null ],
+        [ "Environment Variables", "md_Plugins_Metrics_InfluxDB_README.html#autotoc_md76", null ]
       ] ],
       [ "Mono Plugin Reference", "md_Plugins_Mono_README.html", [
-        [ "Description", "md_Plugins_Mono_README.html#autotoc_md84", null ],
-        [ "How to see sharp?", "md_Plugins_Mono_README.html#autotoc_md85", null ],
-        [ "Remote Debugging", "md_Plugins_Mono_README.html#autotoc_md86", null ],
-        [ "Limitations", "md_Plugins_Mono_README.html#autotoc_md87", null ],
-        [ "Environment Variables", "md_Plugins_Mono_README.html#autotoc_md88", null ]
+        [ "Description", "md_Plugins_Mono_README.html#autotoc_md78", null ],
+        [ "How to see sharp?", "md_Plugins_Mono_README.html#autotoc_md79", null ],
+        [ "Remote Debugging", "md_Plugins_Mono_README.html#autotoc_md80", null ],
+        [ "Limitations", "md_Plugins_Mono_README.html#autotoc_md81", null ],
+        [ "Environment Variables", "md_Plugins_Mono_README.html#autotoc_md82", null ]
       ] ],
       [ "Object Plugin Reference", "md_Plugins_Object_README.html", [
-        [ "Description", "md_Plugins_Object_README.html#autotoc_md90", null ]
+        [ "Description", "md_Plugins_Object_README.html#autotoc_md84", null ]
       ] ],
       [ "Player Plugin Reference", "md_Plugins_Player_README.html", [
-        [ "Description", "md_Plugins_Player_README.html#autotoc_md92", null ],
-        [ "Function Documentation and Examples", "md_Plugins_Player_README.html#autotoc_md93", null ]
+        [ "Description", "md_Plugins_Player_README.html#autotoc_md86", null ],
+        [ "Function Documentation and Examples", "md_Plugins_Player_README.html#autotoc_md87", null ]
       ] ],
       [ "Profiler Plugin Reference", "md_Plugins_Profiler_README.html", [
-        [ "Description", "md_Plugins_Profiler_README.html#autotoc_md96", null ],
-        [ "Environment Variables", "md_Plugins_Profiler_README.html#autotoc_md97", null ]
+        [ "Description", "md_Plugins_Profiler_README.html#autotoc_md90", null ],
+        [ "Environment Variables", "md_Plugins_Profiler_README.html#autotoc_md91", null ]
       ] ],
       [ "Race Plugin Reference", "md_Plugins_Race_README.html", [
-        [ "Description", "md_Plugins_Race_README.html#autotoc_md99", null ],
-        [ "Environmental Variables", "md_Plugins_Race_README.html#autotoc_md100", null ],
-        [ "Required NWNX Plugins", "md_Plugins_Race_README.html#autotoc_md101", null ],
-        [ "Setup", "md_Plugins_Race_README.html#autotoc_md102", [
-          [ "The 2da Method", "md_Plugins_Race_README.html#autotoc_md103", null ],
-          [ "The Scripting Method", "md_Plugins_Race_README.html#autotoc_md104", null ]
+        [ "Description", "md_Plugins_Race_README.html#autotoc_md93", null ],
+        [ "Environmental Variables", "md_Plugins_Race_README.html#autotoc_md94", null ],
+        [ "Required NWNX Plugins", "md_Plugins_Race_README.html#autotoc_md95", null ],
+        [ "Setup", "md_Plugins_Race_README.html#autotoc_md96", [
+          [ "The 2da Method", "md_Plugins_Race_README.html#autotoc_md97", null ],
+          [ "The Scripting Method", "md_Plugins_Race_README.html#autotoc_md98", null ]
         ] ],
-        [ "Racial Modifiers", "md_Plugins_Race_README.html#autotoc_md105", [
-          [ "AB", "md_Plugins_Race_README.html#autotoc_md106", [
-            [ "SetPersistentLocation()", "md_Plugins_Player_README.html#autotoc_md94", [
+        [ "Racial Modifiers", "md_Plugins_Race_README.html#autotoc_md99", [
+          [ "AB", "md_Plugins_Race_README.html#autotoc_md100", [
+            [ "SetPersistentLocation()", "md_Plugins_Player_README.html#autotoc_md88", [
               [ "New Plugins", "changelog.html#autotoc_md2", null ],
               [ "New NWScript Functions", "changelog.html#autotoc_md3", null ],
-              [ "Example 2da entry", "md_Plugins_Race_README.html#autotoc_md107", null ],
-              [ "Example script on_module_load", "md_Plugins_Race_README.html#autotoc_md108", null ]
+              [ "Example 2da entry", "md_Plugins_Race_README.html#autotoc_md101", null ],
+              [ "Example script on_module_load", "md_Plugins_Race_README.html#autotoc_md102", null ]
             ] ]
           ] ],
-          [ "ABVSRACE", "md_Plugins_Race_README.html#autotoc_md109", null ],
-          [ "AC", "md_Plugins_Race_README.html#autotoc_md112", null ],
-          [ "ACVSRACE", "md_Plugins_Race_README.html#autotoc_md115", null ],
-          [ "CONCEALMENT", "md_Plugins_Race_README.html#autotoc_md118", null ],
-          [ "DMGREDUCTION", "md_Plugins_Race_README.html#autotoc_md121", null ],
-          [ "DMGRESIST", "md_Plugins_Race_README.html#autotoc_md124", null ],
-          [ "DMGIMMUNITY", "md_Plugins_Race_README.html#autotoc_md127", null ],
-          [ "FEAT", "md_Plugins_Race_README.html#autotoc_md130", null ],
-          [ "FEATUSAGE", "md_Plugins_Race_README.html#autotoc_md133", null ],
-          [ "IMMUNITY", "md_Plugins_Race_README.html#autotoc_md136", null ],
-          [ "INITIATIVE", "md_Plugins_Race_README.html#autotoc_md139", null ],
-          [ "MOVEMENTSPEED", "md_Plugins_Race_README.html#autotoc_md142", null ],
-          [ "RACE", "md_Plugins_Race_README.html#autotoc_md145", null ],
-          [ "REGENERATION", "md_Plugins_Race_README.html#autotoc_md148", null ],
-          [ "SAVE", "md_Plugins_Race_README.html#autotoc_md151", null ],
-          [ "SAVEVSRACE", "md_Plugins_Race_README.html#autotoc_md154", null ],
-          [ "SAVEVSTYPE", "md_Plugins_Race_README.html#autotoc_md157", null ],
-          [ "SKILL", "md_Plugins_Race_README.html#autotoc_md160", null ],
-          [ "SPELLIMMUNITY", "md_Plugins_Race_README.html#autotoc_md163", null ],
-          [ "SRCHARGEN", "md_Plugins_Race_README.html#autotoc_md166", null ],
-          [ "SRINCLEVEL", "md_Plugins_Race_README.html#autotoc_md169", null ]
+          [ "ABVSRACE", "md_Plugins_Race_README.html#autotoc_md103", null ],
+          [ "AC", "md_Plugins_Race_README.html#autotoc_md106", null ],
+          [ "ACVSRACE", "md_Plugins_Race_README.html#autotoc_md109", null ],
+          [ "CONCEALMENT", "md_Plugins_Race_README.html#autotoc_md112", null ],
+          [ "DMGREDUCTION", "md_Plugins_Race_README.html#autotoc_md115", null ],
+          [ "DMGRESIST", "md_Plugins_Race_README.html#autotoc_md118", null ],
+          [ "DMGIMMUNITY", "md_Plugins_Race_README.html#autotoc_md121", null ],
+          [ "FEAT", "md_Plugins_Race_README.html#autotoc_md124", null ],
+          [ "FEATUSAGE", "md_Plugins_Race_README.html#autotoc_md127", null ],
+          [ "IMMUNITY", "md_Plugins_Race_README.html#autotoc_md130", null ],
+          [ "INITIATIVE", "md_Plugins_Race_README.html#autotoc_md133", null ],
+          [ "MOVEMENTSPEED", "md_Plugins_Race_README.html#autotoc_md136", null ],
+          [ "RACE", "md_Plugins_Race_README.html#autotoc_md139", null ],
+          [ "REGENERATION", "md_Plugins_Race_README.html#autotoc_md142", null ],
+          [ "SAVE", "md_Plugins_Race_README.html#autotoc_md145", null ],
+          [ "SAVEVSRACE", "md_Plugins_Race_README.html#autotoc_md148", null ],
+          [ "SAVEVSTYPE", "md_Plugins_Race_README.html#autotoc_md151", null ],
+          [ "SKILL", "md_Plugins_Race_README.html#autotoc_md154", null ],
+          [ "SPELLIMMUNITY", "md_Plugins_Race_README.html#autotoc_md157", null ],
+          [ "SRCHARGEN", "md_Plugins_Race_README.html#autotoc_md160", null ],
+          [ "SRINCLEVEL", "md_Plugins_Race_README.html#autotoc_md163", null ]
         ] ]
       ] ],
       [ "Redis Plugin Reference", "md_Plugins_Redis_README.html", [
-        [ "Description", "md_Plugins_Redis_README.html#autotoc_md173", null ],
-        [ "Hints", "md_Plugins_Redis_README.html#autotoc_md174", null ],
-        [ "Setup", "md_Plugins_Redis_README.html#autotoc_md175", null ],
-        [ "Accessing Redis from nwscript", "md_Plugins_Redis_README.html#autotoc_md176", null ],
-        [ "Getting started with PubSub", "md_Plugins_Redis_README.html#autotoc_md177", [
-          [ "Moving on", "md_Plugins_Redis_README.html#autotoc_md178", null ]
+        [ "Description", "md_Plugins_Redis_README.html#autotoc_md167", null ],
+        [ "Hints", "md_Plugins_Redis_README.html#autotoc_md168", null ],
+        [ "Setup", "md_Plugins_Redis_README.html#autotoc_md169", null ],
+        [ "Accessing Redis from nwscript", "md_Plugins_Redis_README.html#autotoc_md170", null ],
+        [ "Getting started with PubSub", "md_Plugins_Redis_README.html#autotoc_md171", [
+          [ "Moving on", "md_Plugins_Redis_README.html#autotoc_md172", null ]
         ] ],
-        [ "Environment Variables", "md_Plugins_Redis_README.html#autotoc_md179", null ]
+        [ "Environment Variables", "md_Plugins_Redis_README.html#autotoc_md173", null ]
       ] ],
       [ "Regex Plugin Reference", "md_Plugins_Regex_README.html", [
-        [ "Description", "md_Plugins_Regex_README.html#autotoc_md181", null ]
+        [ "Description", "md_Plugins_Regex_README.html#autotoc_md175", null ]
       ] ],
       [ "Rename Plugin Reference", "md_Plugins_Rename_README.html", [
-        [ "Description", "md_Plugins_Rename_README.html#autotoc_md183", null ],
-        [ "Environment Variables", "md_Plugins_Rename_README.html#autotoc_md184", null ],
-        [ "Sample Include", "md_Plugins_Rename_README.html#autotoc_md185", null ]
+        [ "Description", "md_Plugins_Rename_README.html#autotoc_md177", null ],
+        [ "Environment Variables", "md_Plugins_Rename_README.html#autotoc_md178", null ],
+        [ "Sample Include", "md_Plugins_Rename_README.html#autotoc_md179", null ]
       ] ],
       [ "Reveal Plugin Reference", "md_Plugins_Reveal_README.html", [
-        [ "Description", "md_Plugins_Reveal_README.html#autotoc_md187", null ]
+        [ "Description", "md_Plugins_Reveal_README.html#autotoc_md181", null ]
       ] ],
       [ "Ruby Plugin Reference", "md_Plugins_Ruby_README.html", [
-        [ "Description", "md_Plugins_Ruby_README.html#autotoc_md189", null ],
-        [ "Environment Variables", "md_Plugins_Ruby_README.html#autotoc_md190", null ]
+        [ "Description", "md_Plugins_Ruby_README.html#autotoc_md183", null ],
+        [ "Environment Variables", "md_Plugins_Ruby_README.html#autotoc_md184", null ]
       ] ],
       [ "ServerLogRedirector Plugin Reference", "md_Plugins_ServerLogRedirector_README.html", [
-        [ "Description", "md_Plugins_ServerLogRedirector_README.html#autotoc_md192", null ]
+        [ "Description", "md_Plugins_ServerLogRedirector_README.html#autotoc_md186", null ]
       ] ],
       [ "SkillRanks Plugin Reference", "md_Plugins_SkillRanks_README.html", [
-        [ "Description", "md_Plugins_SkillRanks_README.html#autotoc_md194", null ],
-        [ "Plugin Sample Usage", "md_Plugins_SkillRanks_README.html#autotoc_md195", null ]
+        [ "Description", "md_Plugins_SkillRanks_README.html#autotoc_md188", null ],
+        [ "Plugin Sample Usage", "md_Plugins_SkillRanks_README.html#autotoc_md189", null ]
       ] ],
       [ "SpellChecker Plugin Reference", "md_Plugins_SpellChecker_README.html", [
-        [ "Description", "md_Plugins_SpellChecker_README.html#autotoc_md203", null ],
-        [ "How to install?", "md_Plugins_SpellChecker_README.html#autotoc_md204", null ],
-        [ "Environment Variables", "md_Plugins_SpellChecker_README.html#autotoc_md205", null ]
+        [ "Description", "md_Plugins_SpellChecker_README.html#autotoc_md197", null ],
+        [ "How to install?", "md_Plugins_SpellChecker_README.html#autotoc_md198", null ],
+        [ "Environment Variables", "md_Plugins_SpellChecker_README.html#autotoc_md199", null ]
       ] ],
       [ "NWNX:EE SQL Migration Guide", "md_Plugins_SQL_Migration_Guide.html", null ],
       [ "SQL Plugin Reference", "md_Plugins_SQL_README.html", [
-        [ "Description", "md_Plugins_SQL_README.html#autotoc_md211", null ],
-        [ "Environment Variables", "md_Plugins_SQL_README.html#autotoc_md212", [
-          [ "General Information", "md_Plugins_SQL_Migration_Guide.html#autotoc_md207", null ],
-          [ "Examples", "md_Plugins_SQL_Migration_Guide.html#autotoc_md208", null ],
-          [ "Multi-Platform Support", "md_Plugins_SQL_Migration_Guide.html#autotoc_md209", null ],
-          [ "NWNX_SQL_TYPE", "md_Plugins_SQL_README.html#autotoc_md213", null ],
-          [ "NWNX_SQL_HOST", "md_Plugins_SQL_README.html#autotoc_md214", null ],
-          [ "NWNX_SQL_USERNAME", "md_Plugins_SQL_README.html#autotoc_md215", null ],
-          [ "NWNX_SQL_PASSWORD", "md_Plugins_SQL_README.html#autotoc_md216", null ],
-          [ "NWNX_SQL_DATABASE", "md_Plugins_SQL_README.html#autotoc_md217", null ],
-          [ "NWNX_SQL_QUERY_METRICS", "md_Plugins_SQL_README.html#autotoc_md218", null ],
-          [ "NWNX_SQL_USE_UTF8", "md_Plugins_SQL_README.html#autotoc_md219", null ],
-          [ "NWNX_SQL_CHARACTER_SET", "md_Plugins_SQL_README.html#autotoc_md220", null ]
+        [ "Description", "md_Plugins_SQL_README.html#autotoc_md205", null ],
+        [ "Environment Variables", "md_Plugins_SQL_README.html#autotoc_md206", [
+          [ "General Information", "md_Plugins_SQL_Migration_Guide.html#autotoc_md201", null ],
+          [ "Examples", "md_Plugins_SQL_Migration_Guide.html#autotoc_md202", null ],
+          [ "Multi-Platform Support", "md_Plugins_SQL_Migration_Guide.html#autotoc_md203", null ],
+          [ "NWNX_SQL_TYPE", "md_Plugins_SQL_README.html#autotoc_md207", null ],
+          [ "NWNX_SQL_HOST", "md_Plugins_SQL_README.html#autotoc_md208", null ],
+          [ "NWNX_SQL_USERNAME", "md_Plugins_SQL_README.html#autotoc_md209", null ],
+          [ "NWNX_SQL_PASSWORD", "md_Plugins_SQL_README.html#autotoc_md210", null ],
+          [ "NWNX_SQL_DATABASE", "md_Plugins_SQL_README.html#autotoc_md211", null ],
+          [ "NWNX_SQL_QUERY_METRICS", "md_Plugins_SQL_README.html#autotoc_md212", null ],
+          [ "NWNX_SQL_USE_UTF8", "md_Plugins_SQL_README.html#autotoc_md213", null ],
+          [ "NWNX_SQL_CHARACTER_SET", "md_Plugins_SQL_README.html#autotoc_md214", null ]
         ] ]
       ] ],
       [ "ThreadWatchdog Plugin Reference", "md_Plugins_ThreadWatchdog_README.html", [
-        [ "Description", "md_Plugins_ThreadWatchdog_README.html#autotoc_md222", null ],
-        [ "Environment Variables", "md_Plugins_ThreadWatchdog_README.html#autotoc_md223", null ]
+        [ "Description", "md_Plugins_ThreadWatchdog_README.html#autotoc_md216", null ],
+        [ "Environment Variables", "md_Plugins_ThreadWatchdog_README.html#autotoc_md217", null ]
       ] ],
       [ "Time Plugin Reference", "md_Plugins_Time_README.html", [
-        [ "Description", "md_Plugins_Time_README.html#autotoc_md225", null ]
+        [ "Description", "md_Plugins_Time_README.html#autotoc_md219", null ]
       ] ],
       [ "Tracking Plugin Reference", "md_Plugins_Tracking_README.html", [
-        [ "Description", "md_Plugins_Tracking_README.html#autotoc_md227", null ],
-        [ "Environment Variables", "md_Plugins_Tracking_README.html#autotoc_md228", null ]
+        [ "Description", "md_Plugins_Tracking_README.html#autotoc_md221", null ],
+        [ "Environment Variables", "md_Plugins_Tracking_README.html#autotoc_md222", null ]
       ] ],
       [ "Tweaks Plugin Reference", "md_Plugins_Tweaks_README.html", [
-        [ "Description", "md_Plugins_Tweaks_README.html#autotoc_md230", null ],
-        [ "Environment Variables", "md_Plugins_Tweaks_README.html#autotoc_md231", null ]
+        [ "Description", "md_Plugins_Tweaks_README.html#autotoc_md224", null ],
+        [ "Environment Variables", "md_Plugins_Tweaks_README.html#autotoc_md225", null ]
       ] ],
       [ "Util Plugin Reference", "md_Plugins_Util_README.html", [
-        [ "Description", "md_Plugins_Util_README.html#autotoc_md233", null ],
-        [ "Environment Variables", "md_Plugins_Util_README.html#autotoc_md234", null ]
+        [ "Description", "md_Plugins_Util_README.html#autotoc_md227", null ],
+        [ "Environment Variables", "md_Plugins_Util_README.html#autotoc_md228", null ]
       ] ],
       [ "Visibility Plugin Reference", "md_Plugins_Visibility_README.html", [
-        [ "Description", "md_Plugins_Visibility_README.html#autotoc_md236", null ]
+        [ "Description", "md_Plugins_Visibility_README.html#autotoc_md230", null ]
       ] ],
       [ "Weapon Plugin Reference", "md_Plugins_Weapon_README.html", [
-        [ "Environment Variables", "md_Plugins_Weapon_README.html#autotoc_md238", null ],
-        [ "Description", "md_Plugins_Weapon_README.html#autotoc_md239", null ],
-        [ "Available functions", "md_Plugins_Weapon_README.html#autotoc_md240", null ],
-        [ "Example for Critical Event Script", "md_Plugins_Weapon_README.html#autotoc_md241", null ]
+        [ "Environment Variables", "md_Plugins_Weapon_README.html#autotoc_md232", null ],
+        [ "Description", "md_Plugins_Weapon_README.html#autotoc_md233", null ],
+        [ "Available functions", "md_Plugins_Weapon_README.html#autotoc_md234", null ],
+        [ "Example for Critical Event Script", "md_Plugins_Weapon_README.html#autotoc_md235", null ]
       ] ],
       [ "WebHook Plugin Reference", "md_Plugins_WebHook_README.html", [
-        [ "Description", "md_Plugins_WebHook_README.html#autotoc_md243", null ],
-        [ "Limitations", "md_Plugins_WebHook_README.html#autotoc_md244", null ],
-        [ "Example usage", "md_Plugins_WebHook_README.html#autotoc_md245", null ]
+        [ "Description", "md_Plugins_WebHook_README.html#autotoc_md237", null ],
+        [ "Limitations", "md_Plugins_WebHook_README.html#autotoc_md238", null ],
+        [ "Example usage", "md_Plugins_WebHook_README.html#autotoc_md239", null ]
       ] ],
       [ "Todo List", "todo.html", null ],
       [ "Deprecated List", "deprecated.html", null ]
@@ -317,9 +309,9 @@ var NAVTREEINDEX =
 "group__object.html#ga037ae0502bb24d81f64b0f053ca00028",
 "group__race.html#ga2764ca25d58580933fe71c0643636eb4",
 "group__weapon.html#ga390c5fc0caf45d77be05324a8af3762c",
-"md_Plugins_SQL_README.html#autotoc_md215",
-"nwnx__redis_8nss.html#aaa16922f699947466fcb4c045cab5921",
-"structNWNX__Redis__PubSubMessageData.html"
+"md_Plugins_ServerLogRedirector_README.html",
+"nwnx__redis_8nss.html#aaff6dd79108b4f11ea211271d3bef7ac",
+"structNWNX__SkillRanks__SkillFeat.html#a22471ab7b2b7e7d3ea8b9b3a2c14fd07"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

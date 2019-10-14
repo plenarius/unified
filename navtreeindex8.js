@@ -1,11 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"structNWNX__Redis__PubSubMessageData.html":[15,10],
-"structNWNX__Redis__PubSubMessageData.html#a0a7db5807f63c88cd2386c1518c42d79":[15,10,1],
-"structNWNX__Redis__PubSubMessageData.html#a778deff645dba834b490c9ef2b99fcfa":[15,10,0],
-"structNWNX__SkillRanks__SkillFeat.html":[14,27,1],
-"structNWNX__SkillRanks__SkillFeat.html#a0e294b3acd481896cc1c7ae349aa397a":[14,27,1,1],
-"structNWNX__SkillRanks__SkillFeat.html#a1c26d25c176cfd36ce4a9007cddd7f0d":[14,27,1,10],
 "structNWNX__SkillRanks__SkillFeat.html#a22471ab7b2b7e7d3ea8b9b3a2c14fd07":[14,27,1,3],
 "structNWNX__SkillRanks__SkillFeat.html#a349f2205b03ebd3c5ed0635dff56d2d2":[14,27,1,5],
 "structNWNX__SkillRanks__SkillFeat.html#a534688bf4035fb5b6040e3c798605369":[14,27,1,7],
@@ -68,5 +62,5 @@ var NAVTREEINDEX8 =
 "structNWNX__WebHook__Message.html#afba59b7a86a2f2956dde237c882bb4a8":[14,34,2,38],
 "structNWNX__WebHook__Message.html#afd77404e0c5eca11bf383c50896d276e":[14,34,2,30],
 "structNWNX__WebHook__Message.html#afd8b5c47c7de32c4c3b29e4111340736":[14,34,2,41],
-"todo.html":[13,48]
+"todo.html":[13,46]
 };

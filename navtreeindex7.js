@@ -1,11 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"nwnx__redis_8nss.html#aaa16922f699947466fcb4c045cab5921":[16,0,1,23,0,0,220],
-"nwnx__redis_8nss.html#aaa29cf84478946c968b47a99a218a913":[16,0,1,23,0,0,59],
-"nwnx__redis_8nss.html#aaaf81243b61442ea5695ea95111d377a":[16,0,1,23,0,0,4],
-"nwnx__redis_8nss.html#aae52be2bcb6da56bcf1adce9c33d630a":[16,0,1,23,0,0,194],
-"nwnx__redis_8nss.html#aaf1520455248555e39957043903bde24":[16,0,1,23,0,0,136],
-"nwnx__redis_8nss.html#aaf883a427fb9161e7026af40dacf047a":[16,0,1,23,0,0,189],
 "nwnx__redis_8nss.html#aaff6dd79108b4f11ea211271d3bef7ac":[16,0,1,23,0,0,18],
 "nwnx__redis_8nss.html#ab00e971eb58521b6635f02e47513b5bb":[16,0,1,23,0,0,58],
 "nwnx__redis_8nss.html#ab2ddfd9e4b1ccf429f46a17e46f55f0f":[16,0,1,23,0,0,205],
@@ -249,5 +243,11 @@ var NAVTREEINDEX7 =
 "structNWNX__Player__QuickBarSlot.html#ac2d3d25a10df51071e634dbe68aa3cfe":[14,19,2,3],
 "structNWNX__Player__QuickBarSlot.html#ac9251f3b6703b0113937c30477ea0d56":[14,19,2,11],
 "structNWNX__Player__QuickBarSlot.html#ad973e77c76a8bff61f210e4c88c3847a":[14,19,2,10],
-"structNWNX__Player__QuickBarSlot.html#afcf6328e5234a277b0ba49172cdc8bb9":[14,19,2,0]
+"structNWNX__Player__QuickBarSlot.html#afcf6328e5234a277b0ba49172cdc8bb9":[14,19,2,0],
+"structNWNX__Redis__PubSubMessageData.html":[15,10],
+"structNWNX__Redis__PubSubMessageData.html#a0a7db5807f63c88cd2386c1518c42d79":[15,10,1],
+"structNWNX__Redis__PubSubMessageData.html#a778deff645dba834b490c9ef2b99fcfa":[15,10,0],
+"structNWNX__SkillRanks__SkillFeat.html":[14,27,1],
+"structNWNX__SkillRanks__SkillFeat.html#a0e294b3acd481896cc1c7ae349aa397a":[14,27,1,1],
+"structNWNX__SkillRanks__SkillFeat.html#a1c26d25c176cfd36ce4a9007cddd7f0d":[14,27,1,10]
 };
