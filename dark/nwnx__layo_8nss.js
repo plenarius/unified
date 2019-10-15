@@ -4,7 +4,8 @@ var nwnx__layo_8nss =
     [ "NWNX_Layonara_SetHostileFeat", "group__layonara.html#gaf69e113aa0944992497737603d8fa1fd", null ],
     [ "NWNX_Layonara_SetDuelistCannyDefense", "group__layonara.html#ga2da0493bfd3a51a51a2e7dcc0ca291a4", null ],
     [ "NWNX_Layonara_SetDuelistGrace", "group__layonara.html#ga183ce7089170ad8c2a087cd1e6e51e6f", null ],
-    [ "NWNX_Layonara_SetDuelistElaborateParry", "group__layonara.html#ga5a1177d5b2c89c52fac90e842e73f4d0", null ],
+    [ "NWNX_Layonara_SetDuelistElaborateParry", "group__layonara.html#gabad24846d29c51a9853c5eb6a514e325", null ],
+    [ "NWNX_Layonara_SetSpellswordIgnoreSpellFailure", "group__layonara.html#ga5e9e76e5835a1bcf7608b4d211ce2a82", null ],
     [ "NWNX_Layonara_SetUndeadSlayerImmunity", "group__layonara.html#ga68aa55e0db745737720a5fc8a203f133", null ],
     [ "NWNX_Layonara_SetSubraceDayEffects", "group__layonara.html#ga9f5ba2b54d0f419879889177480fc22e", null ],
     [ "NWNX_Layonara_ApplyRune", "group__layonara.html#ga5d1d5c67b08b1b9b86c2714230e82edc", null ],
@@ -14,7 +15,5 @@ var nwnx__layo_8nss =
     [ "NWNX_Layonara_SetQuiverArrows", "group__layonara.html#ga80b2d5f6f60a83182c0686b7d69bfa8d", null ],
     [ "NWNX_Layonara_CreateVFXAtTransitionCentroid", "group__layonara.html#gab881751b108034d6b1887e2cad96fca1", null ],
     [ "NWNX_Layonara_ClearSurfaceMaterial", "group__layonara.html#ga5e2197d80e96609c885b02b91895187a", null ],
-    [ "NWNX_Layonara_SetSpellswordIgnoreSpellFailure", "nwnx__layo_8nss.html#a5e9e76e5835a1bcf7608b4d211ce2a82", null ],
-    [ "NWNX_Layonara", "group__layonara.html#gab014b2af3ef2816a0851f14c288cc6a2", null ],
-    [ "nBonus", "group__layonara.html#gaf334cc54302d274fe4aecfaa2ac547d2", null ]
+    [ "NWNX_Layonara", "group__layonara.html#gab014b2af3ef2816a0851f14c288cc6a2", null ]
 ];

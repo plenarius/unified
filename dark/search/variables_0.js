@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['bbypassarmorcheckpenalty_1632',['bBypassArmorCheckPenalty',['../structNWNX__SkillRanks__SkillFeat.html#a7dd800dcb05d188252a50c070ae71f2b',1,'NWNX_SkillRanks_SkillFeat']]],
-  ['bexpose_1633',['bExpose',['../structNWNX__EffectUnpacked.html#ae72adce7ceb667a20c4baf86bfad47c8',1,'NWNX_EffectUnpacked']]],
-  ['blinkleftvalid_1634',['bLinkLeftValid',['../structNWNX__EffectUnpacked.html#a6616a557c8c9c73faa051ff023450212',1,'NWNX_EffectUnpacked']]],
-  ['blinkrightvalid_1635',['bLinkRightValid',['../structNWNX__EffectUnpacked.html#a14f3744ff2467b6314841a0cd2e87350',1,'NWNX_EffectUnpacked']]],
-  ['bshowicon_1636',['bShowIcon',['../structNWNX__EffectUnpacked.html#a332fd2e3db2012dc15d2fff35b88332e',1,'NWNX_EffectUnpacked']]],
-  ['busable_1637',['bUsable',['../structNWNX__IPUnpacked.html#aaa2c8bc13b51d3f6ceaf64e3b7fd5326',1,'NWNX_IPUnpacked']]]
+  ['bbypassarmorcheckpenalty_1634',['bBypassArmorCheckPenalty',['../structNWNX__SkillRanks__SkillFeat.html#a7dd800dcb05d188252a50c070ae71f2b',1,'NWNX_SkillRanks_SkillFeat']]],
+  ['bexpose_1635',['bExpose',['../structNWNX__EffectUnpacked.html#ae72adce7ceb667a20c4baf86bfad47c8',1,'NWNX_EffectUnpacked']]],
+  ['blinkleftvalid_1636',['bLinkLeftValid',['../structNWNX__EffectUnpacked.html#a6616a557c8c9c73faa051ff023450212',1,'NWNX_EffectUnpacked']]],
+  ['blinkrightvalid_1637',['bLinkRightValid',['../structNWNX__EffectUnpacked.html#a14f3744ff2467b6314841a0cd2e87350',1,'NWNX_EffectUnpacked']]],
+  ['bshowicon_1638',['bShowIcon',['../structNWNX__EffectUnpacked.html#a332fd2e3db2012dc15d2fff35b88332e',1,'NWNX_EffectUnpacked']]],
+  ['busable_1639',['bUsable',['../structNWNX__IPUnpacked.html#aaa2c8bc13b51d3f6ceaf64e3b7fd5326',1,'NWNX_IPUnpacked']]]
 ];

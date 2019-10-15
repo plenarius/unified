@@ -307,9 +307,9 @@ var NAVTREEINDEX =
 "group__area.html#gac3d805e025520d1d026332d345f592ae",
 "group__creature.html#gafdcf540c2ebaea7ac27563d74461b57d",
 "group__object.html#ga037ae0502bb24d81f64b0f053ca00028",
-"group__race.html#ga2764ca25d58580933fe71c0643636eb4",
+"group__race.html#ga2718944b0d93d529f781397ce0b8dd4f",
 "group__weapon.html#ga390c5fc0caf45d77be05324a8af3762c",
-"md_Plugins_ServerLogRedirector_README.html",
+"md_Plugins_SQL_README.html#autotoc_md214",
 "nwnx__redis_8nss.html#aaff6dd79108b4f11ea211271d3bef7ac",
 "structNWNX__SkillRanks__SkillFeat.html#a22471ab7b2b7e7d3ea8b9b3a2c14fd07"
 ];

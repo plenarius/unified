@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"md_Plugins_SQL_README.html#autotoc_md214":[13,37,1,10],
 "md_Plugins_ServerLogRedirector_README.html":[13,33],
 "md_Plugins_ServerLogRedirector_README.html#autotoc_md186":[13,33,0],
 "md_Plugins_SkillRanks_README.html":[13,34],
@@ -83,7 +84,6 @@ var NAVTREEINDEX6 =
 "nwnx__jvm_8nss_source.html":[16,0,1,16,0,0],
 "nwnx__jvm__token_8nss_source.html":[16,0,1,16,0,1],
 "nwnx__layo_8nss.html":[16,0,1,17,0,0],
-"nwnx__layo_8nss.html#a5e9e76e5835a1bcf7608b4d211ce2a82":[16,0,1,17,0,0,14],
 "nwnx__layo_8nss_source.html":[16,0,1,17,0,0],
 "nwnx__lua_8nss.html":[16,0,1,18,0,0],
 "nwnx__lua_8nss_source.html":[16,0,1,18,0,0],
