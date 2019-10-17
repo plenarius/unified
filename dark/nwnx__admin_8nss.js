@@ -1,5 +1,16 @@
 var nwnx__admin_8nss =
 [
+    [ "SetPersistentLocation()", "group__player.html#autotoc_md42", null ],
+    [ "Example 1", "group__skillranks.html#autotoc_md126", null ],
+    [ "Example 2", "group__skillranks.html#autotoc_md127", null ],
+    [ "Example 3", "group__skillranks.html#autotoc_md128", null ],
+    [ "Example 4", "group__skillranks.html#autotoc_md129", null ],
+    [ "Example 5", "group__skillranks.html#autotoc_md130", null ],
+    [ "Example 6", "group__skillranks.html#autotoc_md131", null ],
+    [ "Example 1", "group__webhook.html#autotoc_md158", null ],
+    [ "Example 2", "group__webhook.html#autotoc_md159", null ],
+    [ "Example 3", "group__webhook.html#autotoc_md160", null ],
+    [ "Example 4", "group__webhook.html#autotoc_md161", null ],
     [ "NWNX_Administration_GetPlayerPassword", "group__admin.html#ga350b7e2b7d00e0a1373bcd16980f9426", null ],
     [ "NWNX_Administration_SetPlayerPassword", "group__admin.html#ga0957c093933e4743abefaf14795c0a64", null ],
     [ "NWNX_Administration_ClearPlayerPassword", "group__admin.html#ga27ba06328cf679ae064c186ff7776bd9", null ],

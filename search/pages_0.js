@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['administration_20plugin_20reference_1858',['Administration Plugin Reference',['../md_Plugins_Administration_README.html',1,'']]],
-  ['appearance_20plugin_20reference_1859',['Appearance Plugin Reference',['../md_Plugins_Appearance_README.html',1,'']]],
-  ['area_20plugin_20reference_1860',['Area Plugin Reference',['../md_Plugins_Area_README.html',1,'']]]
+  ['changelog_2949',['Changelog',['../changelog.html',1,'']]],
+  ['core_20reference_2950',['Core Reference',['../md_Core_Documentation_README.html',1,'']]]
 ];

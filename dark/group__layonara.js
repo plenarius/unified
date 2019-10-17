@@ -15,5 +15,6 @@ var group__layonara =
     [ "NWNX_Layonara_SetQuiver", "group__layonara.html#ga5d882ade73a86fc4ce2eb4c1d4fec467", null ],
     [ "NWNX_Layonara_SetQuiverArrows", "group__layonara.html#ga80b2d5f6f60a83182c0686b7d69bfa8d", null ],
     [ "NWNX_Layonara_CreateVFXAtTransitionCentroid", "group__layonara.html#gab881751b108034d6b1887e2cad96fca1", null ],
-    [ "NWNX_Layonara_ClearSurfaceMaterial", "group__layonara.html#ga5e2197d80e96609c885b02b91895187a", null ]
+    [ "NWNX_Layonara_ClearSurfaceMaterial", "group__layonara.html#ga5e2197d80e96609c885b02b91895187a", null ],
+    [ "NWNX_Layonara", "group__layonara.html#gab014b2af3ef2816a0851f14c288cc6a2", null ]
 ];

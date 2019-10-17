@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['item_20plugin_20reference_1876',['Item Plugin Reference',['../md_Plugins_Item_README.html',1,'']]],
-  ['itemproperty_20plugin_20reference_1877',['ItemProperty Plugin Reference',['../md_Plugins_ItemProperty_README.html',1,'']]]
+  ['weapon_20plugin_20reference_3001',['Weapon Plugin Reference',['../md_Plugins_Weapon_README.html',1,'']]]
 ];

@@ -1,17 +1,16 @@
 var searchData=
 [
-  ['race_20plugin_20reference_869',['Race Plugin Reference',['../md_Plugins_Race_README.html',1,'']]],
-  ['redis_20plugin_20reference_870',['Redis Plugin Reference',['../md_Plugins_Redis_README.html',1,'']]],
-  ['regex_20plugin_20reference_871',['Regex Plugin Reference',['../md_Plugins_Regex_README.html',1,'']]],
-  ['rename_20plugin_20reference_872',['Rename Plugin Reference',['../md_Plugins_Rename_README.html',1,'']]],
-  ['reveal_20plugin_20reference_873',['Reveal Plugin Reference',['../md_Plugins_Reveal_README.html',1,'']]],
-  ['ruby_20plugin_20reference_874',['Ruby Plugin Reference',['../md_Plugins_Ruby_README.html',1,'']]],
-  ['race_875',['Race',['../group__race.html',1,'']]],
-  ['ready_876',['ready',['../structNWNX__Creature__SpecialAbility.html#a29feef7d645de43a1d4c9e7b923b0d58',1,'NWNX_Creature_SpecialAbility::ready()'],['../structNWNX__Creature__MemorisedSpell.html#adc7177afc73856b1ac6b2481c250418b',1,'NWNX_Creature_MemorisedSpell::ready()']]],
-  ['redis_877',['Redis',['../group__redis.html',1,'']]],
-  ['regex_878',['Regex',['../group__regex.html',1,'']]],
-  ['rename_879',['Rename',['../group__rename.html',1,'']]],
-  ['resref_880',['resref',['../structNWNX__Encounter__CreatureListEntry.html#afd224e140c4b64e6ad8e9c20c7e265c6',1,'NWNX_Encounter_CreatureListEntry']]],
-  ['reveal_881',['Reveal',['../group__reveal.html',1,'']]],
-  ['ruby_882',['Ruby',['../group__ruby.html',1,'']]]
+  ['oassociate_1272',['oAssociate',['../structNWNX__Player__QuickBarSlot.html#a6a017ab874ff47027808370fbc0b571e',1,'NWNX_Player_QuickBarSlot']]],
+  ['object_1273',['OBJECT',['../nwnx__redis__short_8nss.html#ae323f5fb1cdf6851b0bbf5488b93348d',1,'OBJECT(string subcommand, string arguments=&quot;&quot;):&#160;nwnx_redis_short.nss'],['../group__object.html',1,'(Global Namespace)']]],
+  ['ocreator_1274',['oCreator',['../structNWNX__EffectUnpacked.html#a93d6dc6ee232cd675bbde08e5e742f2d',1,'NWNX_EffectUnpacked::oCreator()'],['../structNWNX__IPUnpacked.html#ad8edb88bbe3a1b0195ff9fab79242c3a',1,'NWNX_IPUnpacked::oCreator()']]],
+  ['odamager_1275',['oDamager',['../structNWNX__Damage__DamageEventData.html#adcd2db4021271fd0cba8dfd90e096892',1,'NWNX_Damage_DamageEventData']]],
+  ['oitem_1276',['oItem',['../structNWNX__Player__QuickBarSlot.html#afcf6328e5234a277b0ba49172cdc8bb9',1,'NWNX_Player_QuickBarSlot']]],
+  ['on_5fpubsub_2enss_1277',['on_pubsub.nss',['../on__pubsub_8nss.html',1,'']]],
+  ['oparam0_1278',['oParam0',['../structNWNX__EffectUnpacked.html#adcab854593ccba2dc712abcd0fcbc4bd',1,'NWNX_EffectUnpacked']]],
+  ['oparam1_1279',['oParam1',['../structNWNX__EffectUnpacked.html#ae212b9e53edeadb67a0d56cbaee86993',1,'NWNX_EffectUnpacked']]],
+  ['oparam2_1280',['oParam2',['../structNWNX__EffectUnpacked.html#aaa72768f0647c1057c9417f82cccfd23',1,'NWNX_EffectUnpacked']]],
+  ['oparam3_1281',['oParam3',['../structNWNX__EffectUnpacked.html#a099a70008ff66f2a79cd34902104d688',1,'NWNX_EffectUnpacked']]],
+  ['osecondaryitem_1282',['oSecondaryItem',['../structNWNX__Player__QuickBarSlot.html#a3d5171dd8c13dae789950a3e988619a5',1,'NWNX_Player_QuickBarSlot']]],
+  ['otarget_1283',['oTarget',['../structNWNX__Damage__AttackEventData.html#afc184d97f1079b5dfeb7d2ff807ad18a',1,'NWNX_Damage_AttackEventData::oTarget()'],['../structNWNX__Weapon__DevastatingCriticalEvent__Data.html#a05c644a763be5a9e7614b16137de7c23',1,'NWNX_Weapon_DevastatingCriticalEvent_Data::oTarget()']]],
+  ['oweapon_1284',['oWeapon',['../structNWNX__Weapon__DevastatingCriticalEvent__Data.html#a0ab39f5f5fdd4c3c995f8b84a5193c6a',1,'NWNX_Weapon_DevastatingCriticalEvent_Data']]]
 ];
