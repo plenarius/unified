@@ -43,5 +43,6 @@ var searchData=
   ['config_5frewrite_67',['CONFIG_REWRITE',['../nwnx__redis__short_8nss.html#aeecb99ea593e92fd539d68343df04240',1,'nwnx_redis_short.nss']]],
   ['config_5fset_68',['CONFIG_SET',['../nwnx__redis__short_8nss.html#a1af006c9794f2b37aedafc9143635fca',1,'nwnx_redis_short.nss']]],
   ['creature_69',['Creature',['../group__creature.html',1,'']]],
-  ['core_20reference_70',['Core Reference',['../md_Core_Documentation_README.html',1,'']]]
+  ['core_20reference_70',['Core Reference',['../md_Core_Documentation_README.html',1,'']]],
+  ['core_20functions_71',['Core Functions',['../group__nwnx.html',1,'']]]
 ];

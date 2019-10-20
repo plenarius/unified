@@ -1,8 +1,7 @@
 var modules =
 [
-    [ "NWNX", "group__nwnx.html", "group__nwnx" ],
-    [ "NWNX Constants", "group__consts.html", "group__consts" ],
     [ "Layonara", "group__layonara.html", "group__layonara" ],
+    [ "NWNX", "group__nwnx.html", "group__nwnx" ],
     [ "Administration", "group__admin.html", "group__admin" ],
     [ "Appearance", "group__appearance.html", "group__appearance" ],
     [ "Area", "group__area.html", "group__area" ],
