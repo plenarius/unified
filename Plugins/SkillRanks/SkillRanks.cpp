@@ -77,8 +77,8 @@ SkillRanks::SkillRanks(const Plugin::CreateParams& params)
 
 #undef REGISTER
 
-    GetServices()->m_hooks->RequestSharedHook<Functions::CNWRules__LoadSkillInfo, void, CNWRules*>(&LoadSkillInfoHook);
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetSkillRank,
+    GetServices()->m_hooks->RequestSharedHook<Functions::_ZN8CNWRules13LoadSkillInfoEv, void, CNWRules*>(&LoadSkillInfoHook);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats12GetSkillRankEhP10CNWSObjecti,
         int32_t, CNWSCreatureStats*, uint8_t, CNWSObject*, int32_t>(&GetSkillRankHook);
 
     m_blindnessMod = 4;
@@ -88,7 +88,7 @@ SkillRanks::~SkillRanks()
 {
 }
 
-void SkillRanks::LoadSkillInfoHook(Services::Hooks::CallType type, API::CNWRules* pRules)
+void SkillRanks::LoadSkillInfoHook(Services::Hooks::CallType type, CNWRules* pRules)
 {
     // We only want to do this in the AFTER
     const bool before = type == Services::Hooks::CallType::BEFORE_ORIGINAL;

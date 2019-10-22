@@ -15,7 +15,6 @@
 #include "Services/Config/Config.hpp"
 #include "Services/Events/Events.hpp"
 #include "Services/Metrics/Metrics.hpp"
-#include "Services/Patching/Patching.hpp"
 #include "Services/Tasks/Tasks.hpp"
 #include "Services/Messaging/Messaging.hpp"
 #include "Services/PerObjectStorage/PerObjectStorage.hpp"
@@ -78,19 +77,20 @@ namespace Core {
 NWNXCore* g_core = nullptr; // Used to access the core class in hook or event handlers.
 
 NWNXCore::NWNXCore()
-    : m_pluginProxyServiceMap([](const auto& first, const auto& second) { return first.m_id < second.m_id; })
+    : m_pluginProxyServiceMap([](const auto& first, const auto& second) { return first.m_id < second.m_id; }),
+      m_ScriptChunkRecursion(0)
 {
     g_core = this;
 
     // NOTE: We should do the version check here, but the global in the binary hasn't been initialised yet at this point.
     // This will be fixed in a future release of NWNX:EE. For now, the version check will happen *too late* - we may
     // crash before the version check happens.
-
+    std::printf("Starting NWNX...\n");
     // This sets up the base address for every hook and patch to follow.
     Platform::ASLR::CalculateBaseAddress();
 
-    m_createServerHook = std::make_unique<FunctionHook>("CreateServer",
-        Platform::ASLR::GetRelocatedAddress(API::Functions::CAppManager__CreateServer),
+    m_createServerHook = std::make_unique<FunctionHook>(
+        Platform::ASLR::GetRelocatedAddress(API::Functions::_ZN11CAppManager12CreateServerEv),
         reinterpret_cast<uintptr_t>(&CreateServerHandler));
 }
 
@@ -109,7 +109,6 @@ std::unique_ptr<Services::ServiceList> NWNXCore::ConstructCoreServices()
     services->m_plugins = std::make_unique<Plugins>();
     services->m_tasks = std::make_unique<Tasks>();
     services->m_metrics = std::make_unique<Metrics>();
-    services->m_patching = std::make_unique<Patching>();
     services->m_config = std::make_unique<Config>();
     services->m_messaging = std::make_unique<Messaging>();
     services->m_perObjectStorage = std::make_unique<PerObjectStorage>();
@@ -127,7 +126,6 @@ std::unique_ptr<Services::ProxyServiceList> NWNXCore::ConstructProxyServices(con
     proxyServices->m_plugins = std::make_unique<Services::PluginsProxy>(*m_services->m_plugins);
     proxyServices->m_tasks = std::make_unique<Services::TasksProxy>(*m_services->m_tasks);
     proxyServices->m_metrics = std::make_unique<Services::MetricsProxy>(*m_services->m_metrics, plugin);
-    proxyServices->m_patching = std::make_unique<Services::PatchingProxy>(*m_services->m_patching);
     proxyServices->m_config = std::make_unique<Services::ConfigProxy>(*m_services->m_config, plugin);
     proxyServices->m_messaging = std::make_unique<Services::MessagingProxy>(*m_services->m_messaging);
     proxyServices->m_perObjectStorage = std::make_unique<Services::PerObjectStorageProxy>(*m_services->m_perObjectStorage, plugin);
@@ -157,22 +155,22 @@ void NWNXCore::ConfigureLogLevel(const std::string& plugin, const NWNXLib::Servi
 
 void NWNXCore::InitialSetupHooks()
 {
-    m_services->m_hooks->RequestExclusiveHook<API::Functions::CNWVirtualMachineCommands__ExecuteCommandSetVar>(&SetVarHandler);
-    m_services->m_hooks->RequestExclusiveHook<API::Functions::CNWVirtualMachineCommands__ExecuteCommandGetVar>(&GetVarHandler);
-    m_services->m_hooks->RequestExclusiveHook<API::Functions::CNWVirtualMachineCommands__ExecuteCommandTagEffect>(&TagEffectHandler);
-    m_services->m_hooks->RequestExclusiveHook<API::Functions::CNWVirtualMachineCommands__ExecuteCommandTagItemProperty>(&TagItemPropertyHandler);
-    m_services->m_hooks->RequestExclusiveHook<API::Functions::CNWVirtualMachineCommands__ExecuteCommandPlaySound>(&PlaySoundHandler);
+    m_services->m_hooks->RequestExclusiveHook<API::Functions::_ZN25CNWVirtualMachineCommands20ExecuteCommandSetVarEii>(&SetVarHandler);
+    m_services->m_hooks->RequestExclusiveHook<API::Functions::_ZN25CNWVirtualMachineCommands20ExecuteCommandGetVarEii>(&GetVarHandler);
+    m_services->m_hooks->RequestExclusiveHook<API::Functions::_ZN25CNWVirtualMachineCommands23ExecuteCommandTagEffectEii>(&TagEffectHandler);
+    m_services->m_hooks->RequestExclusiveHook<API::Functions::_ZN25CNWVirtualMachineCommands29ExecuteCommandTagItemPropertyEii>(&TagItemPropertyHandler);
+    m_services->m_hooks->RequestExclusiveHook<API::Functions::_ZN25CNWVirtualMachineCommands23ExecuteCommandPlaySoundEii>(&PlaySoundHandler);
 
-    m_services->m_hooks->RequestExclusiveHook<API::Functions::CAppManager__DestroyServer>(&DestroyServerHandler);
-    m_services->m_hooks->RequestSharedHook<API::Functions::CServerExoAppInternal__MainLoop, int32_t>(&MainLoopInternalHandler);
+    m_services->m_hooks->RequestExclusiveHook<API::Functions::_ZN11CAppManager13DestroyServerEv>(&DestroyServerHandler);
+    m_services->m_hooks->RequestSharedHook<API::Functions::_ZN21CServerExoAppInternal8MainLoopEv, int32_t>(&MainLoopInternalHandler);
 
-    m_services->m_hooks->RequestSharedHook<API::Functions::CNWSObject__CNWSObjectDtor__0, void>(&Services::PerObjectStorage::CNWSObject__CNWSObjectDtor__0_hook);
-    m_services->m_hooks->RequestSharedHook<API::Functions::CNWSArea__CNWSAreaDtor__0, void>(&Services::PerObjectStorage::CNWSArea__CNWSAreaDtor__0_hook);
-    m_services->m_hooks->RequestSharedHook<API::Functions::CNWSPlayer__EatTURD, void>(&Services::PerObjectStorage::CNWSPlayer__EatTURD_hook);
-    m_services->m_hooks->RequestSharedHook<API::Functions::CNWSPlayer__DropTURD, void>(&Services::PerObjectStorage::CNWSPlayer__DropTURD_hook);
+    m_services->m_hooks->RequestSharedHook<API::Functions::_ZN10CNWSObjectD0Ev, void>(&Services::PerObjectStorage::CNWSObject__CNWSObjectDtor__0_hook);
+    m_services->m_hooks->RequestSharedHook<API::Functions::_ZN8CNWSAreaD0Ev, void>(&Services::PerObjectStorage::CNWSArea__CNWSAreaDtor__0_hook);
+    m_services->m_hooks->RequestSharedHook<API::Functions::_ZN10CNWSPlayer7EatTURDEP14CNWSPlayerTURD, void>(&Services::PerObjectStorage::CNWSPlayer__EatTURD_hook);
+    m_services->m_hooks->RequestSharedHook<API::Functions::_ZN10CNWSPlayer8DropTURDEv, void>(&Services::PerObjectStorage::CNWSPlayer__DropTURD_hook);
 
-    m_services->m_hooks->RequestSharedHook<API::Functions::CNWSModule__LoadModuleInProgress, uint32_t>(
-            +[](Services::Hooks::CallType type, API::CNWSModule *pModule, int32_t nAreasLoaded, int32_t nAreasToLoad)
+    m_services->m_hooks->RequestSharedHook<API::Functions::_ZN10CNWSModule20LoadModuleInProgressEii, uint32_t>(
+            +[](Services::Hooks::CallType type, CNWSModule *pModule, int32_t nAreasLoaded, int32_t nAreasToLoad)
             {
                 if (type == Services::Hooks::CallType::BEFORE_ORIGINAL)
                 {
@@ -186,11 +184,21 @@ void NWNXCore::InitialSetupHooks()
 
                     if (node)
                     {
-                        auto *resref = (API::CResRef*)node->pObject;
-                        LOG_DEBUG("(%i/%i) Trying to load area with resref: %s", nAreasLoaded + 1,  nAreasToLoad, *resref);
+                        auto *resref = (CResRef*)node->pObject;
+                        LOG_DEBUG("(%i/%i) Trying to load area with resref: %s", nAreasLoaded + 1,  nAreasToLoad, resref->GetResRefStr());
                     }
                 }
             });
+
+
+    if (!m_coreServices->m_config->Get<bool>("ALLOW_NWNX_FUNCTIONS_IN_EXECUTE_SCRIPT_CHUNK", false))
+    {
+        m_services->m_hooks->RequestSharedHook<API::Functions::_ZN25CNWVirtualMachineCommands32ExecuteCommandExecuteScriptChunkEii, int32_t>(
+                +[](Services::Hooks::CallType type, CNWVirtualMachineCommands*, int32_t, int32_t)
+                {
+                    g_core->m_ScriptChunkRecursion += (type == Services::Hooks::CallType::BEFORE_ORIGINAL) ? +1 : -1;
+                });
+    }
 }
 
 void NWNXCore::InitialVersionCheck()
@@ -198,7 +206,7 @@ void NWNXCore::InitialVersionCheck()
     const uintptr_t buildNumberAddr = Platform::DynamicLibraries::GetLoadedFuncAddr("GetBuildNumber");
     if (buildNumberAddr)
     {
-        API::CExoString* versionAsStr = reinterpret_cast<API::CExoString*(*)()>(buildNumberAddr)();
+        CExoString* versionAsStr = reinterpret_cast<CExoString*(*)()>(buildNumberAddr)();
         const uint32_t version = std::stoul(versionAsStr->m_sString);
 
         if (version != NWNX_TARGET_NWN_BUILD)
@@ -212,7 +220,7 @@ void NWNXCore::InitialVersionCheck()
     {
         std::fprintf(stderr, "NWNX: Could not determine build version.");
         std::fflush(stderr);
-        std::abort();
+        //std::abort();
     }
 }
 
@@ -329,7 +337,7 @@ void NWNXCore::Shutdown()
     g_core = nullptr;
 }
 
-void NWNXCore::CreateServerHandler(API::CAppManager* app)
+void NWNXCore::CreateServerHandler(CAppManager* app)
 {
     g_core->InitialVersionCheck();
 
@@ -374,7 +382,7 @@ void NWNXCore::CreateServerHandler(API::CAppManager* app)
     app->CreateServer();
 }
 
-void NWNXCore::DestroyServerHandler(API::CAppManager* app)
+void NWNXCore::DestroyServerHandler(CAppManager* app)
 {
     if (auto shutdownScript = g_core->m_coreServices->m_config->Get<std::string>("SHUTDOWN_SCRIPT"))
     {
@@ -393,7 +401,7 @@ void NWNXCore::DestroyServerHandler(API::CAppManager* app)
     RestoreCrashHandlers();
 }
 
-void NWNXCore::MainLoopInternalHandler(Services::Hooks::CallType type, API::CServerExoAppInternal*)
+void NWNXCore::MainLoopInternalHandler(Services::Hooks::CallType type, CServerExoAppInternal*)
 {
     if (type != Services::Hooks::CallType::BEFORE_ORIGINAL)
     {

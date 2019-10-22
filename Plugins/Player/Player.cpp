@@ -11,7 +11,7 @@
 #include "API/CNWSScriptVar.hpp"
 #include "API/CNWSScriptVarTable.hpp"
 #include "API/CServerExoAppInternal.hpp"
-#include "API/CExoArrayListTemplatedCNWSScriptVar.hpp"
+#include "API/CExoArrayList.hpp"
 #include "API/CNWSCreature.hpp"
 #include "API/CNWSQuickbarButton.hpp"
 #include "API/CGameEffect.hpp"
@@ -28,7 +28,7 @@
 #include "API/CNWSWaypoint.hpp"
 #include "API/CNetLayer.hpp"
 #include "API/CNetLayerPlayerInfo.hpp"
-#include "API/CExoArrayListTemplatedSJournalEntry.hpp"
+#include "API/CExoArrayList.hpp"
 #include "API/C2DA.hpp"
 #include "API/ObjectVisualTransformData.hpp"
 #include "API/Constants.hpp"
@@ -172,7 +172,7 @@ ArgumentStack Player::StartGuiTimingBar(ArgumentStack&& args)
 
     if (!bHandlePlayerToServerInputCancelGuiTimingEventHook)
     {
-        GetServices()->m_hooks->RequestSharedHook<Functions::CNWSMessage__HandlePlayerToServerInputCancelGuiTimingEvent, int32_t>(
+        GetServices()->m_hooks->RequestSharedHook<Functions::_ZN11CNWSMessage45HandlePlayerToServerInputCancelGuiTimingEventEP10CNWSPlayer, int32_t>(
                 +[](Services::Hooks::CallType type, CNWSMessage* pMessage, CNWSPlayer* pPlayer) -> void
                 {
                     // Before or after doesn't matter, just pick one so it happens only once
@@ -202,21 +202,9 @@ ArgumentStack Player::StartGuiTimingBar(ArgumentStack&& args)
     {
         const auto seconds = Services::Events::ExtractArgument<float>(args);
         const auto milliseconds = static_cast<uint32_t>(seconds * 1000.0f); // NWN expects milliseconds.
-
-        int32_t type;
-
-        //TODO-64Bit: Remove this try/catch block
-        try
-        {
-            type = Services::Events::ExtractArgument<int32_t>(args);
-        }
-        catch(...)
-        {
-            type = 10;
-        }
-
-        ASSERT_OR_THROW(type > 0);
-        ASSERT_OR_THROW(type <= 10);
+        const auto type = Services::Events::ExtractArgument<int32_t>(args);
+          ASSERT_OR_THROW(type > 0);
+          ASSERT_OR_THROW(type <= 10);
 
         auto *pMessage = static_cast<CNWSMessage*>(Globals::AppManager()->m_pServerExoApp->GetNWSMessage());
         if (pMessage)
@@ -258,7 +246,7 @@ ArgumentStack Player::SetAlwaysWalk(ArgumentStack&& args)
 
     if (!pOnRemoveLimitMovementSpeed_hook)
     {
-        GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSEffectListHandler__OnRemoveLimitMovementSpeed>(
+        GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN21CNWSEffectListHandler26OnRemoveLimitMovementSpeedEP10CNWSObjectP11CGameEffect>(
             +[](CNWSEffectListHandler *pThis, CNWSObject *pObject, CGameEffect *pEffect) -> int32_t
             {
                 // Don't remove the forced walk flag when various slowdown effects expire
@@ -268,7 +256,7 @@ ArgumentStack Player::SetAlwaysWalk(ArgumentStack&& args)
 
                 return pOnRemoveLimitMovementSpeed_hook->CallOriginal<int32_t>(pThis, pObject, pEffect);
             });
-        pOnRemoveLimitMovementSpeed_hook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSEffectListHandler__OnRemoveLimitMovementSpeed);
+        pOnRemoveLimitMovementSpeed_hook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN21CNWSEffectListHandler26OnRemoveLimitMovementSpeedEP10CNWSObjectP11CGameEffect);
     }
 
     ArgumentStack stack;
@@ -548,7 +536,7 @@ ArgumentStack Player::SetRestDuration(ArgumentStack&& args)
 
     if (!bAIActionRestHook)
     {
-        GetServices()->m_hooks->RequestSharedHook<Functions::CNWSCreature__AIActionRest, int32_t>(
+        GetServices()->m_hooks->RequestSharedHook<Functions::_ZN12CNWSCreature12AIActionRestEP20CNWSObjectActionNode, int32_t>(
             +[](Services::Hooks::CallType type, CNWSCreature* pCreature, CNWSObjectActionNode*) -> void
             {
                 static int32_t creatureLevel;
@@ -746,7 +734,7 @@ ArgumentStack Player::SetRestAnimation(ArgumentStack&& args)
 
     if (!bAIActionRestHook)
     {
-        GetServices()->m_hooks->RequestSharedHook<Functions::CNWSCreature__AIActionRest, int32_t>(
+        GetServices()->m_hooks->RequestSharedHook<Functions::_ZN12CNWSCreature12AIActionRestEP20CNWSObjectActionNode, int32_t>(
                 +[](Services::Hooks::CallType type, CNWSCreature* pCreature, CNWSObjectActionNode*) -> void
                 {
                     if (type == Services::Hooks::CallType::AFTER_ORIGINAL)
@@ -786,7 +774,7 @@ ArgumentStack Player::SetObjectVisualTransformOverride(ArgumentStack&& args)
 
     if (!bSetObjectVisualTransformOverrideHook)
     {
-        GetServices()->m_hooks->RequestSharedHook<Functions::CNWSMessage__ComputeGameObjectUpdateForObject, int32_t>(
+        GetServices()->m_hooks->RequestSharedHook<Functions::_ZN11CNWSMessage32ComputeGameObjectUpdateForObjectEP10CNWSPlayerP10CNWSObjectP16CGameObjectArrayj, int32_t>(
                 +[](Services::Hooks::CallType type, CNWSMessage*, CNWSPlayer *pPlayer, CNWSObject*,
                     CGameObjectArray*, Types::ObjectID oidObjectToUpdate) -> void
                 {
@@ -916,7 +904,7 @@ ArgumentStack Player::ApplyLoopingVisualEffectToObject(ArgumentStack&& args)
 
     if (!bApplyLoopingVisualEffectToObjectHook)
     {
-        GetServices()->m_hooks->RequestSharedHook<Functions::CNWSMessage__ComputeGameObjectUpdateForObject, int32_t>(
+        GetServices()->m_hooks->RequestSharedHook<Functions::_ZN11CNWSMessage32ComputeGameObjectUpdateForObjectEP10CNWSPlayerP10CNWSObjectP16CGameObjectArrayj, int32_t>(
                 +[](Services::Hooks::CallType type, CNWSMessage*, CNWSPlayer *pPlayer, CNWSObject*,
                     CGameObjectArray*, Types::ObjectID oidObjectToUpdate) -> void
                 {
@@ -1016,7 +1004,7 @@ ArgumentStack Player::SetPlaceableNameOverride(ArgumentStack&& args)
 
     if (!bSetPlaceableNameOverrideHook)
     {
-        GetServices()->m_hooks->RequestSharedHook<Functions::CNWSMessage__ComputeGameObjectUpdateForObject, int32_t>(
+        GetServices()->m_hooks->RequestSharedHook<Functions::_ZN11CNWSMessage32ComputeGameObjectUpdateForObjectEP10CNWSPlayerP10CNWSObjectP16CGameObjectArrayj, int32_t>(
                 +[](Services::Hooks::CallType type, CNWSMessage*, CNWSPlayer *pPlayer, CNWSObject*,
                     CGameObjectArray*, Types::ObjectID oidObjectToUpdate) -> void
                 {
@@ -1036,9 +1024,6 @@ ArgumentStack Player::SetPlaceableNameOverride(ArgumentStack&& args)
                                 swapName = newName.c_str();
 
                                 std::swap(swapName, pPlaceable->m_sDisplayName);
-
-                                // TODO: This might get removed next patch?
-                                pPlaceable->m_bUpdateDisplayName = true;
                             }
                         }
                         else
@@ -1046,9 +1031,6 @@ ArgumentStack Player::SetPlaceableNameOverride(ArgumentStack&& args)
                             if (name)
                             {
                                 std::swap(swapName, pPlaceable->m_sDisplayName);
-
-                                // TODO: This might get removed next patch?
-                                pPlaceable->m_bUpdateDisplayName = true;
                             }
                         }
                     }
@@ -1115,7 +1097,7 @@ ArgumentStack Player::SetPersistentLocation(ArgumentStack&& args)
     static bool bSetPersistentLocationHook;
     if (!bSetPersistentLocationHook)
     {
-        GetServices()->m_hooks->RequestSharedHook<API::Functions::CServerExoAppInternal__LoadCharacterFinish, void>(
+        GetServices()->m_hooks->RequestSharedHook<API::Functions::_ZN21CServerExoAppInternal19LoadCharacterFinishEP10CNWSPlayerii, void>(
                 +[](Services::Hooks::CallType cType, CServerExoAppInternal*, CNWSPlayer *pPlayer, int32_t, int32_t) -> void
                 {
                     if (cType == Services::Hooks::CallType::AFTER_ORIGINAL)
@@ -1131,7 +1113,7 @@ ArgumentStack Player::SetPersistentLocation(ArgumentStack&& args)
                         {
                             auto *pNetLayer = Globals::AppManager()->m_pServerExoApp->GetNetLayer();
                             auto *pPlayerInfo = pNetLayer->GetPlayerInfo(pPlayer->m_nPlayerID);
-                            std::string sCDKey = pPlayerInfo->GetPublicCDKey(0).CStr();
+                            std::string sCDKey = pPlayerInfo->m_lstKeys[0].sPublic.CStr();
                             sKey = sCDKey + "!" + sBicFileName;
                         }
                         auto wpOID = g_plugin->m_PersistentLocationWP[sKey].first;

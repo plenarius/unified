@@ -8,11 +8,9 @@
 #include "API/CServerExoAppInternal.hpp"
 #include "API/CExoBase.hpp"
 #include "API/CExoAliasList.hpp"
-#include "API/CResRef.hpp"
 #include "API/CServerInfo.hpp"
 #include "API/Globals.hpp"
 #include "API/Types.hpp"
-#include "API/Version.hpp"
 #include "API/CExoLinkedListInternal.hpp"
 #include "API/CExoLinkedListNode.hpp"
 #include "API/CNWSModule.hpp"
@@ -20,10 +18,9 @@
 #include "ViewPtr.hpp"
 #include "Platform/FileSystem.hpp"
 #include "Services/Tasks/Tasks.hpp"
-#include "Services/Patching/Patching.hpp"
-#include <cstdlib>
+
 #include <unistd.h>
-#include <signal.h>
+#include <csignal>
 
 using namespace NWNXLib;
 
@@ -163,7 +160,7 @@ Events::ArgumentStack Administration::OnDeletePlayerCharacter(Events::ArgumentSt
     }
     else
     {
-        playerdir = exoApp->GetNetLayer()->GetPlayerInfo(playerId)->GetPublicCDKey(0).CStr();
+        playerdir = exoApp->GetNetLayer()->GetPlayerInfo(playerId)->m_lstKeys.element[0].sPublic.CStr();
     }
 
     std::string filename = servervault + playerdir + "/" + bicname + ".bic";
@@ -532,6 +529,9 @@ Events::ArgumentStack Administration::OnSetPlayOption(Events::ArgumentStack&& ar
 
 Events::ArgumentStack Administration::OnDeleteTURD(Events::ArgumentStack&& args)
 {
+    Events::ArgumentStack stack;
+
+    int32_t retVal = false;
     const auto playerName = Events::ExtractArgument<std::string>(args);
     const auto characterName = Events::ExtractArgument<std::string>(args);
 
@@ -568,9 +568,12 @@ Events::ArgumentStack Administration::OnDeleteTURD(Events::ArgumentStack&& args)
     {
         LOG_NOTICE("Deleted TURD of %s (%s)", characterName, playerName);
         Utils::GetModule()->m_lstTURDList.m_pcExoLinkedListInternal->Remove(foundNode);
+        retVal = true;
     }
 
-    return Events::ArgumentStack();
+    Events::InsertArgument(stack, retVal);
+
+    return stack;
 }
 
 }

@@ -72,51 +72,51 @@ Weapon::Weapon(const Plugin::CreateParams& params)
 
 #undef REGISTER
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetWeaponFocus>(&Weapon::GetWeaponFocus);
-    m_GetWeaponFocusHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetWeaponFocus);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats14GetWeaponFocusEP8CNWSItem>(&Weapon::GetWeaponFocus);
+    m_GetWeaponFocusHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats14GetWeaponFocusEP8CNWSItem);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetEpicWeaponFocus>(&Weapon::GetEpicWeaponFocus);
-    m_GetEpicWeaponFocusHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetEpicWeaponFocus);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats18GetEpicWeaponFocusEP8CNWSItem>(&Weapon::GetEpicWeaponFocus);
+    m_GetEpicWeaponFocusHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats18GetEpicWeaponFocusEP8CNWSItem);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetWeaponFinesse>(&Weapon::GetWeaponFinesse);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats16GetWeaponFinesseEP8CNWSItem>(&Weapon::GetWeaponFinesse);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetWeaponImprovedCritical>(&Weapon::GetWeaponImprovedCritical);
-    m_GetWeaponImprovedCriticalHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetWeaponImprovedCritical);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats25GetWeaponImprovedCriticalEP8CNWSItem>(&Weapon::GetWeaponImprovedCritical);
+    m_GetWeaponImprovedCriticalHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats25GetWeaponImprovedCriticalEP8CNWSItem);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetWeaponSpecialization>(&Weapon::GetWeaponSpecialization);
-    m_GetWeaponSpecializationHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetWeaponSpecialization);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats23GetWeaponSpecializationEP8CNWSItem>(&Weapon::GetWeaponSpecialization);
+    m_GetWeaponSpecializationHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats23GetWeaponSpecializationEP8CNWSItem);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetEpicWeaponSpecialization>(&Weapon::GetEpicWeaponSpecialization);
-    m_GetEpicWeaponSpecializationHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetEpicWeaponSpecialization);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats23GetWeaponSpecializationEP8CNWSItem>(&Weapon::GetEpicWeaponSpecialization);
+    m_GetEpicWeaponSpecializationHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats23GetWeaponSpecializationEP8CNWSItem);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetEpicWeaponOverwhelmingCritical>(&Weapon::GetEpicWeaponOverwhelmingCritical);
-    m_GetEpicWeaponOverwhelmingCriticalHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetEpicWeaponOverwhelmingCritical);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats33GetEpicWeaponOverwhelmingCriticalEP8CNWSItem>(&Weapon::GetEpicWeaponOverwhelmingCritical);
+    m_GetEpicWeaponOverwhelmingCriticalHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats33GetEpicWeaponOverwhelmingCriticalEP8CNWSItem);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetEpicWeaponDevastatingCritical>(&Weapon::GetEpicWeaponDevastatingCritical);
-    m_GetEpicWeaponDevastatingCriticalHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetEpicWeaponDevastatingCritical);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats32GetEpicWeaponDevastatingCriticalEP8CNWSItem>(&Weapon::GetEpicWeaponDevastatingCritical);
+    m_GetEpicWeaponDevastatingCriticalHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats32GetEpicWeaponDevastatingCriticalEP8CNWSItem);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetIsWeaponOfChoice>(&Weapon::GetIsWeaponOfChoice);
-    m_GetIsWeaponOfChoiceHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetIsWeaponOfChoice);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats19GetIsWeaponOfChoiceEj>(&Weapon::GetIsWeaponOfChoice);
+    m_GetIsWeaponOfChoiceHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats19GetIsWeaponOfChoiceEj);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetMeleeDamageBonus>(&Weapon::GetMeleeDamageBonus);
-    m_GetMeleeDamageBonusHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetMeleeDamageBonus);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats19GetMeleeDamageBonusEih>(&Weapon::GetMeleeDamageBonus);
+    m_GetMeleeDamageBonusHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats19GetMeleeDamageBonusEih);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetDamageBonus>(&Weapon::GetDamageBonus);
-    m_GetDamageBonusHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetDamageBonus);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats14GetDamageBonusEP12CNWSCreaturei>(&Weapon::GetDamageBonus);
+    m_GetDamageBonusHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats14GetDamageBonusEP12CNWSCreaturei);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetRangedDamageBonus>(&Weapon::GetRangedDamageBonus);
-    m_GetRangedDamageBonusHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetRangedDamageBonus);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats20GetRangedDamageBonusEv>(&Weapon::GetRangedDamageBonus);
+    m_GetRangedDamageBonusHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats20GetRangedDamageBonusEv);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetAttackModifierVersus>(&Weapon::GetAttackModifierVersus);
-    m_GetAttackModifierVersusHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetAttackModifierVersus);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats23GetAttackModifierVersusEP12CNWSCreature>(&Weapon::GetAttackModifierVersus);
+    m_GetAttackModifierVersusHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats23GetAttackModifierVersusEP12CNWSCreature);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetMeleeAttackBonus>(&Weapon::GetMeleeAttackBonus);
-    m_GetMeleeAttackBonusHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetMeleeAttackBonus);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats19GetMeleeAttackBonusEiii>(&Weapon::GetMeleeAttackBonus);
+    m_GetMeleeAttackBonusHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats19GetMeleeAttackBonusEiii);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetRangedAttackBonus>(&Weapon::GetRangedAttackBonus);
-    m_GetRangedAttackBonusHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreatureStats__GetRangedAttackBonus);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats20GetRangedAttackBonusEii>(&Weapon::GetRangedAttackBonus);
+    m_GetRangedAttackBonusHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN17CNWSCreatureStats20GetRangedAttackBonusEii);
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreatureStats__GetUseMonkAttackTables>(&Weapon::GetUseMonkAttackTables);
+    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN17CNWSCreatureStats22GetUseMonkAttackTablesEi>(&Weapon::GetUseMonkAttackTables);
 
     m_WeaponFinesseSizeMap.insert({Constants::BaseItem::Rapier, (uint8_t) Constants::CreatureSize::Medium});
 
@@ -234,8 +234,8 @@ ArgumentStack Weapon::SetWeaponIsMonkWeapon(ArgumentStack&& args)
     {
         bFirstTime = false;
         // Hooks for flurry of blows
-        GetServices()->m_hooks->RequestExclusiveHook<Functions::CNWSCreature__ToggleMode>(&ToggleMode);
-        m_ToggleModeHook = GetServices()->m_hooks->FindHookByAddress(Functions::CNWSCreature__ToggleMode);
+        GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN12CNWSCreature10ToggleModeEh>(&ToggleMode);
+        m_ToggleModeHook = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN12CNWSCreature10ToggleModeEh);
         g_plugin->GetServices()->m_messaging->BroadcastMessage("NWNX_WEAPON_SIGNAL", {"FLURRY_OF_BLOWS_REQUIRED"});
         LOG_NOTICE("Flurry of blows requires activation of CombatModes plugin");
     }
@@ -442,7 +442,7 @@ ArgumentStack Weapon::SetEventData(ArgumentStack&& args)
 }
 
 
-int32_t Weapon::GetWeaponFocus(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::API::CNWSItem* pWeapon)
+int32_t Weapon::GetWeaponFocus(CNWSCreatureStats* pStats, CNWSItem* pWeapon)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
@@ -466,7 +466,7 @@ int32_t Weapon::GetWeaponFocus(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib:
     return (feat > -1 ? pStats->HasFeat(feat) : plugin.m_GetWeaponFocusHook->CallOriginal<int32_t>(pStats, pWeapon));
 }
 
-int32_t Weapon::GetEpicWeaponFocus(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::API::CNWSItem* pWeapon)
+int32_t Weapon::GetEpicWeaponFocus(CNWSCreatureStats* pStats, CNWSItem* pWeapon)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
@@ -490,7 +490,7 @@ int32_t Weapon::GetEpicWeaponFocus(NWNXLib::API::CNWSCreatureStats* pStats, NWNX
     return (feat > -1 ? pStats->HasFeat(feat) : plugin.m_GetEpicWeaponFocusHook->CallOriginal<int32_t>(pStats, pWeapon));
 }
 
-int32_t Weapon::GetWeaponFinesse(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::API::CNWSItem* pWeapon)
+int32_t Weapon::GetWeaponFinesse(CNWSCreatureStats* pStats, CNWSItem* pWeapon)
 {
     Weapon& plugin = *g_plugin;
 
@@ -500,7 +500,7 @@ int32_t Weapon::GetWeaponFinesse(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLi
     return plugin.GetIsWeaponLight(pStats, pWeapon, true) ? 1 : 0;
 }
 
-int32_t Weapon::GetWeaponImprovedCritical(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::API::CNWSItem* pWeapon)
+int32_t Weapon::GetWeaponImprovedCritical(CNWSCreatureStats* pStats, CNWSItem* pWeapon)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
@@ -519,7 +519,7 @@ int32_t Weapon::GetWeaponImprovedCritical(NWNXLib::API::CNWSCreatureStats* pStat
     return (feat > -1 ? pStats->HasFeat(feat) : plugin.m_GetWeaponImprovedCriticalHook->CallOriginal<int32_t>(pStats, pWeapon));
 }
 
-int32_t Weapon::GetWeaponSpecialization(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::API::CNWSItem* pWeapon)
+int32_t Weapon::GetWeaponSpecialization(CNWSCreatureStats* pStats, CNWSItem* pWeapon)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
@@ -538,7 +538,7 @@ int32_t Weapon::GetWeaponSpecialization(NWNXLib::API::CNWSCreatureStats* pStats,
     return (feat > -1 ? pStats->HasFeat(feat) : plugin.m_GetWeaponSpecializationHook->CallOriginal<int32_t>(pStats, pWeapon));
 }
 
-int32_t Weapon::GetEpicWeaponSpecialization(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::API::CNWSItem* pWeapon)
+int32_t Weapon::GetEpicWeaponSpecialization(CNWSCreatureStats* pStats, CNWSItem* pWeapon)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
@@ -557,7 +557,7 @@ int32_t Weapon::GetEpicWeaponSpecialization(NWNXLib::API::CNWSCreatureStats* pSt
     return (feat > -1 ? pStats->HasFeat(feat) : plugin.m_GetEpicWeaponSpecializationHook->CallOriginal<int32_t>(pStats, pWeapon));
 }
 
-int32_t Weapon::GetEpicWeaponOverwhelmingCritical(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::API::CNWSItem* pWeapon)
+int32_t Weapon::GetEpicWeaponOverwhelmingCritical(CNWSCreatureStats* pStats, CNWSItem* pWeapon)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
@@ -576,7 +576,7 @@ int32_t Weapon::GetEpicWeaponOverwhelmingCritical(NWNXLib::API::CNWSCreatureStat
     return (feat > -1 ? pStats->HasFeat(feat) : plugin.m_GetEpicWeaponOverwhelmingCriticalHook->CallOriginal<int32_t>(pStats, pWeapon));
 }
 
-int32_t Weapon::GetEpicWeaponDevastatingCritical(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::API::CNWSItem* pWeapon)
+int32_t Weapon::GetEpicWeaponDevastatingCritical(CNWSCreatureStats* pStats, CNWSItem* pWeapon)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
@@ -596,9 +596,9 @@ int32_t Weapon::GetEpicWeaponDevastatingCritical(NWNXLib::API::CNWSCreatureStats
 
     if (bFlag && !plugin.m_DCScript.empty())
     {
-        NWNXLib::API::CNWSCreature         *pCreature    = pStats->m_pBaseCreature;
-        NWNXLib::API::CNWSCombatRound      *pCombatRound = pCreature->m_pcCombatRound;
-        NWNXLib::API::CNWSCombatAttackData *pAttackData  = pCombatRound->GetAttack(pCombatRound->m_nCurrentAttack);
+        CNWSCreature         *pCreature    = pStats->m_pBaseCreature;
+        CNWSCombatRound      *pCombatRound = pCreature->m_pcCombatRound;
+        CNWSCombatAttackData *pAttackData  = pCombatRound->GetAttack(pCombatRound->m_nCurrentAttack);
 
         plugin.m_DCData.oidWeapon = pWeapon->m_idSelf;
         plugin.m_DCData.oidTarget = pCreature->m_oidAttackTarget;
@@ -617,7 +617,7 @@ int32_t Weapon::GetEpicWeaponDevastatingCritical(NWNXLib::API::CNWSCreatureStats
     return bFlag;
 }
 
-int32_t Weapon::GetIsWeaponOfChoice(NWNXLib::API::CNWSCreatureStats* pStats, uint32_t nBaseItem)
+int32_t Weapon::GetIsWeaponOfChoice(CNWSCreatureStats* pStats, uint32_t nBaseItem)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
@@ -629,11 +629,11 @@ int32_t Weapon::GetIsWeaponOfChoice(NWNXLib::API::CNWSCreatureStats* pStats, uin
 }
 
 //This one is required for correctly update PC sheet
-int32_t Weapon::GetMeleeDamageBonus(NWNXLib::API::CNWSCreatureStats* pStats, int32_t bOffHand, uint8_t nCreatureWeaponIndex)
+int32_t Weapon::GetMeleeDamageBonus(CNWSCreatureStats* pStats, int32_t bOffHand, uint8_t nCreatureWeaponIndex)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
-    NWNXLib::API::CNWSItem* pWeapon = nullptr;
+    CNWSItem* pWeapon = nullptr;
     uint32_t nBaseItem;
 
     int nBonus = plugin.m_GetMeleeDamageBonusHook->CallOriginal<int32_t>(pStats, bOffHand, nCreatureWeaponIndex);
@@ -670,11 +670,11 @@ int32_t Weapon::GetMeleeDamageBonus(NWNXLib::API::CNWSCreatureStats* pStats, int
     return nBonus;
 }
 
-int32_t Weapon::GetDamageBonus(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::API::CNWSCreature *pCreature, int32_t bOffHand)
+int32_t Weapon::GetDamageBonus(CNWSCreatureStats* pStats, CNWSCreature *pCreature, int32_t bOffHand)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
-    NWNXLib::API::CNWSItem* pWeapon = nullptr;
+    CNWSItem* pWeapon = nullptr;
     uint32_t nBaseItem;
 
     int nBonus = plugin.m_GetDamageBonusHook->CallOriginal<int32_t>(pStats, pCreature, bOffHand);
@@ -709,11 +709,11 @@ int32_t Weapon::GetDamageBonus(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib:
 }
 
 //This one is required for correctly update PC sheet
-int32_t Weapon::GetRangedDamageBonus(NWNXLib::API::CNWSCreatureStats* pStats)
+int32_t Weapon::GetRangedDamageBonus(CNWSCreatureStats* pStats)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
-    NWNXLib::API::CNWSItem* pWeapon = nullptr;
+    CNWSItem* pWeapon = nullptr;
     uint32_t nBaseItem;
 
     int nBonus = plugin.m_GetRangedDamageBonusHook->CallOriginal<int32_t>(pStats);
@@ -741,11 +741,11 @@ int32_t Weapon::GetRangedDamageBonus(NWNXLib::API::CNWSCreatureStats* pStats)
 }
 
 
-int32_t Weapon::GetAttackModifierVersus(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::API::CNWSCreature* pCreature)
+int32_t Weapon::GetAttackModifierVersus(CNWSCreatureStats* pStats, CNWSCreature* pCreature)
 {
     Weapon& plugin = *g_plugin;
     CNWSCombatRound* pCombatRound;
-    NWNXLib::API::CNWSItem* pWeapon = nullptr;
+    CNWSItem* pWeapon = nullptr;
     uint32_t nBaseItem;
     int32_t feat = -1;
 
@@ -779,11 +779,11 @@ int32_t Weapon::GetAttackModifierVersus(NWNXLib::API::CNWSCreatureStats* pStats,
 }
 
 //This one is required for correctly update PC sheet
-int32_t Weapon::GetMeleeAttackBonus(NWNXLib::API::CNWSCreatureStats* pStats, bool bOffHand, bool bIncludeBase, bool bTouchAttack)
+int32_t Weapon::GetMeleeAttackBonus(CNWSCreatureStats* pStats, bool bOffHand, bool bIncludeBase, bool bTouchAttack)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
-    NWNXLib::API::CNWSItem* pWeapon = nullptr;
+    CNWSItem* pWeapon = nullptr;
     uint32_t nBaseItem;
 
     int nBonus = plugin.m_GetMeleeAttackBonusHook->CallOriginal<int32_t>(pStats, bOffHand, bIncludeBase, bTouchAttack);
@@ -823,11 +823,11 @@ int32_t Weapon::GetMeleeAttackBonus(NWNXLib::API::CNWSCreatureStats* pStats, boo
 }
 
 //This one is required for correctly update PC sheet
-int32_t Weapon::GetRangedAttackBonus(NWNXLib::API::CNWSCreatureStats* pStats, bool bIncludeBase, bool bTouchAttack)
+int32_t Weapon::GetRangedAttackBonus(CNWSCreatureStats* pStats, bool bIncludeBase, bool bTouchAttack)
 {
     int32_t feat = -1;
     Weapon& plugin = *g_plugin;
-    NWNXLib::API::CNWSItem* pWeapon = nullptr;
+    CNWSItem* pWeapon = nullptr;
     uint32_t nBaseItem;
 
     int nBonus = plugin.m_GetRangedAttackBonusHook->CallOriginal<int32_t>(pStats, bIncludeBase, bTouchAttack);
@@ -869,10 +869,10 @@ int32_t Weapon::ToggleMode(CNWSCreature *pCreature, unsigned char nMode)
     return plugin.m_ToggleModeHook->CallOriginal<int32_t>(pCreature, nMode);
 }
 
-int32_t Weapon::GetUseMonkAttackTables(NWNXLib::API::CNWSCreatureStats* pStats, bool bForceUnarmed)
+int32_t Weapon::GetUseMonkAttackTables(CNWSCreatureStats* pStats, bool bForceUnarmed)
 {
     Weapon& plugin = *g_plugin;
-    NWNXLib::API::CNWSItem* pWeapon;
+    CNWSItem* pWeapon;
     int nMonk = plugin.GetLevelByClass(pStats, Constants::ClassType::Monk);
 
     if (nMonk < 1 || !pStats->m_pBaseCreature->GetUseMonkAbilities())
@@ -917,7 +917,7 @@ int32_t Weapon::GetUseMonkAttackTables(NWNXLib::API::CNWSCreatureStats* pStats, 
 }
 
 
-bool Weapon::GetIsWeaponLight(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::API::CNWSItem* pWeapon, bool bFinesse)
+bool Weapon::GetIsWeaponLight(CNWSCreatureStats* pStats, CNWSItem* pWeapon, bool bFinesse)
 {
     Weapon& plugin = *g_plugin;
 
@@ -956,7 +956,7 @@ bool Weapon::GetIsWeaponLight(NWNXLib::API::CNWSCreatureStats* pStats, NWNXLib::
     return (rel < 0);
 }
 
-bool Weapon::GetIsUnarmedWeapon(NWNXLib::API::CNWSItem* pWeapon)
+bool Weapon::GetIsUnarmedWeapon(CNWSItem* pWeapon)
 {
     Weapon& plugin = *g_plugin;
 
@@ -979,7 +979,7 @@ bool Weapon::GetIsUnarmedWeapon(NWNXLib::API::CNWSItem* pWeapon)
     return (w == plugin.m_WeaponUnarmedSet.end()) ? false : true;
 }
 
-int Weapon::GetLevelByClass(NWNXLib::API::CNWSCreatureStats *pStats, uint32_t nClassType)
+int Weapon::GetLevelByClass(CNWSCreatureStats *pStats, uint32_t nClassType)
 {
     for (int i = 0; i < pStats->m_nNumMultiClasses; i++)
     {

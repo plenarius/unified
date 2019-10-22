@@ -5,7 +5,7 @@
 #include "API/CNWSObject.hpp"
 #include "API/CNWSScriptVar.hpp"
 #include "API/CNWSScriptVarTable.hpp"
-#include "API/CExoArrayListTemplatedCNWSScriptVar.hpp"
+#include "API/CExoArrayList.hpp"
 #include "API/CNWSCreature.hpp"
 #include "API/CNWSCreatureStats.hpp"
 #include "API/CNWSPlaceable.hpp"
@@ -641,7 +641,7 @@ ArgumentStack Object::AddIconEffect(ArgumentStack&& args)
             }
         }
 
-        auto *effIcon = new API::CGameEffect(true);
+        auto *effIcon = new CGameEffect(true);
         effIcon->m_oidCreator = 0;
         effIcon->m_nType      = Constants::EffectTrueType::Icon;
         effIcon->m_nSubType   = Constants::EffectSubType::Supernatural;
