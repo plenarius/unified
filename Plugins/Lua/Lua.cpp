@@ -174,7 +174,8 @@ namespace Lua {
                     if (token)
                     {
                         g_plugin->OnToken(oid, token + 1);
-                        CVirtualMachineScript__CVirtualMachineScriptDtor(script);
+                        // TODO 64 Bit Fix me
+                        // CVirtualMachineScript__CVirtualMachineScriptDtor(script);
                         free(script);
                     }
                     return 1;
