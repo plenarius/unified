@@ -6,12 +6,12 @@ jobs:
   build:
     <<: *defaults
     docker:
-      - image: nwnxee/builder
+      - image: plenarius/nwnxee-builder
     steps:
       - attach_workspace:
           at: ~/nwnxee
       - checkout
-      - run: CC="gcc -m32" CXX="g++ -m32" cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .
+      - run: CC="gcc-7" CXX="g++-7" cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .
       - run: make all -j2
       - run: Scripts/packageNWScript.sh
       - run: Scripts/packageJarFile.sh
@@ -26,12 +26,12 @@ jobs:
   docs-build:
     <<: *defaults
     docker:
-      - image: plenarius/nwnxee-doc-builder:0.0.3
+      - image: plenarius/nwnxee-builder
     steps:
       - attach_workspace:
           at: ~/nwnxee
       - checkout
-      - run: CC="gcc -m32" CXX="g++ -m32" cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .
+      - run: CC="gcc-7" CXX="g++-7" cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .
       - run: make docs
       - run: make dark-docs
       - persist_to_workspace:
