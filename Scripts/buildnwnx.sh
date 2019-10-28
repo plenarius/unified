@@ -58,4 +58,3 @@ make ${JOBS} all
 popd
 
 ./Scripts/packageNWScript.sh
-./Scripts/packageJarFile.sh
