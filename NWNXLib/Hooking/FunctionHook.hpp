@@ -28,7 +28,7 @@ public:
 private:
     subhook_t m_subhook;
     void *    m_trampoline;
-    subhook_disasm_handler_t m_zydisDisasm;
+    static int ZydisDisassemble(void *src, int *reloc_op_offset);
 };
 
 #include "FunctionHook.inl"
