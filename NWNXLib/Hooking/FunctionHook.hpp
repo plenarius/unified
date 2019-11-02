@@ -12,7 +12,6 @@ namespace Hooking {
 class FunctionHook final
 {
 public:
-    static subhook_disasm_handler_t ZydisDisassemble(void *src, int *reloc_op_offset);
     FunctionHook(uintptr_t originalFunction, uintptr_t newFunction);
 
     ~FunctionHook();
@@ -28,7 +27,7 @@ public:
 private:
     subhook_t m_subhook;
     void *    m_trampoline;
-    subhook_disasm_handler_t m_zydisDisasm;
+    static int ZydisDisassemble(void *src, int *reloc_op_offset);
 };
 
 #include "FunctionHook.inl"
