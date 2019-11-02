@@ -1,6 +1,6 @@
 #include "Hooking/FunctionHook.hpp"
 #include "Assert.hpp"
-#include "External/subhook/subhook.h"
+#include "External/subhook/subhook.h
 #include <Zycore/Types.h>
 #include <Zydis/Zydis.h>
 #include <Zycore/Status.h>
@@ -29,7 +29,6 @@ int FunctionHook::ZydisDisassemble(void *src, int *reloc_op_offset)
     }
     return 0;
 }
-
 
 FunctionHook::FunctionHook(uintptr_t originalFunction, uintptr_t newFunction)
 {

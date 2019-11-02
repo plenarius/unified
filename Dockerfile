@@ -1,4 +1,4 @@
-FROM nwnxee/builder as builder
+FROM plenarius/nwnxee-builder as builder
 WORKDIR /nwnx/home
 COPY ./ .
 # Compile nwnx
