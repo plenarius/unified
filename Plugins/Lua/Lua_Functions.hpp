@@ -1,6 +1,7 @@
 #pragma once
 
-#include "API/NWNXLibApi.hpp"
+#include <API/API/CVirtualMachine.hpp>
+#include <API/API/CNWVirtualMachineCommands.hpp>
 
 extern "C" {
 #include "lua.h"
