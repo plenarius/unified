@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['maxlevel_2928',['MaxLevel',['../group__maxlevel.html',1,'']]],
-  ['metrics_20influxdb_2929',['Metrics InfluxDB',['../group__metrics__influxdb.html',1,'']]],
-  ['mono_2930',['Mono',['../group__mono.html',1,'']]]
+  ['nwnx_20constants_2820',['NWNX Constants',['../group__consts.html',1,'']]],
+  ['nwnx_2821',['NWNX',['../group__nwnx.html',1,'']]]
 ];
