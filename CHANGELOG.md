@@ -22,12 +22,14 @@ NOTE: There may be more breaking changes added here until the next official rele
   - `loglevel <plugin> <loglevel>`: Sets the log level of the given plugin. Example: `loglevel Events 7`
 
 ##### New Plugins
-N/A
+- **Tools**: Provides functionality to perform tasks outside regular server usage such as minimap creation
 
 ##### New NWScript Functions
 - Administration: {Get|Set}DebugValue()
 - Data: Array_Set()
 - Object: Export()
+- Tools: GenerateMiniMaps()
+- Tools: GenerateAreaGraph()
 - Util: AddScript()
 
 ### Changed

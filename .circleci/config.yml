@@ -11,6 +11,8 @@ jobs:
       - attach_workspace:
           at: ~/nwnxee
       - checkout
+      - run: apt-get update
+      - run: apt-get install -y --no-recommends libmagick++-6.q16-dev
       - run: CC="gcc-7 -m64" CXX="g++-7 -m64" cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .
       - run: make all -j2
       - run: Scripts/packageNWScript.sh
