@@ -1,5 +1,15 @@
 var NAVTREEINDEX9 =
 {
+"nwnx__spellcheck_8nss.html":[2,0,2,33,0,0],
+"nwnx__spellcheck_8nss_source.html":[2,0,2,33,0,0],
+"nwnx__sql_8nss.html":[2,0,2,34,0,0],
+"nwnx__sql_8nss_source.html":[2,0,2,34,0,0],
+"nwnx__tests_8nss.html":[2,0,0,0,47],
+"nwnx__tests_8nss_source.html":[2,0,0,0,47],
+"nwnx__time_8nss.html":[2,0,2,36,0,0],
+"nwnx__time_8nss_source.html":[2,0,2,36,0,0],
+"nwnx__util_8nss.html":[2,0,2,39,0,0],
+"nwnx__util_8nss_source.html":[2,0,2,39,0,0],
 "nwnx__visibility_8nss.html":[2,0,2,40,0,0],
 "nwnx__visibility_8nss_source.html":[2,0,2,40,0,0],
 "nwnx__weapon_8nss.html":[2,0,2,41,0,0],

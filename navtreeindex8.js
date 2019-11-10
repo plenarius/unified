@@ -1,5 +1,13 @@
 var NAVTREEINDEX8 =
 {
+"nwnx__redis_8nss.html#af9fa5489a9cd89605b60d48a63944779":[2,0,2,26,0,0,181],
+"nwnx__redis_8nss.html#afb12836448527843893cea9aa66a718b":[2,0,2,26,0,0,191],
+"nwnx__redis_8nss.html#afb9f4c4230ffd293a803cdcb93c24432":[2,0,2,26,0,0,124],
+"nwnx__redis_8nss.html#afbddebbcf6d3934ed197f72cf651f565":[2,0,2,26,0,0,37],
+"nwnx__redis_8nss.html#afc640f1f6e675ab5372174be68836957":[2,0,2,26,0,0,101],
+"nwnx__redis_8nss.html#afcccc0cb0c9c94931ee3dc291cd38f89":[2,0,2,26,0,0,152],
+"nwnx__redis_8nss.html#afd098f298bdd45109ae41a5f6df86c9b":[2,0,2,26,0,0,162],
+"nwnx__redis_8nss.html#afdfb18360848f63680a64863cd321af3":[2,0,2,26,0,0,68],
 "nwnx__redis_8nss.html#affd51a6b56cb4f6e53dec42d524d1d74":[2,0,2,26,0,0,120],
 "nwnx__redis_8nss_source.html":[2,0,2,26,0,0],
 "nwnx__redis__lib_8nss.html":[2,0,2,26,0,1],
@@ -241,13 +249,5 @@ var NAVTREEINDEX8 =
 "nwnx__ruby_8nss.html":[2,0,2,30,0,0],
 "nwnx__ruby_8nss_source.html":[2,0,2,30,0,0],
 "nwnx__skillranks_8nss.html":[2,0,2,32,0,0],
-"nwnx__skillranks_8nss_source.html":[2,0,2,32,0,0],
-"nwnx__spellcheck_8nss.html":[2,0,2,33,0,0],
-"nwnx__spellcheck_8nss_source.html":[2,0,2,33,0,0],
-"nwnx__sql_8nss.html":[2,0,2,34,0,0],
-"nwnx__sql_8nss_source.html":[2,0,2,34,0,0],
-"nwnx__time_8nss.html":[2,0,2,36,0,0],
-"nwnx__time_8nss_source.html":[2,0,2,36,0,0],
-"nwnx__util_8nss.html":[2,0,2,39,0,0],
-"nwnx__util_8nss_source.html":[2,0,2,39,0,0]
+"nwnx__skillranks_8nss_source.html":[2,0,2,32,0,0]
 };

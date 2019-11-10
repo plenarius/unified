@@ -40,15 +40,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group__appearance.html#ga2fcd956e0a0f733dc438c78f16502c36",
-"group__creature.html#ga4fbd561eaf7af28bdacd9c58075b3a9a",
-"group__data__array__pushback.html#gac105713959287a9f8ae318983e4f6676",
+"group__appearance.html#ga4db3e3265de8c297a3ac75cf9c17af29",
+"group__creature.html#ga5144ab295c043bd4b1bea5d6244d8499",
+"group__data__array__pushback.html#gae5eb11ea922bc67853fb84212fd909f7",
 "group__layonara.html#gab881751b108034d6b1887e2cad96fca1",
-"group__player.html#gac5ea091db58633d8352c95822ff8e7a9",
-"group__spellchecker.html",
-"nwnx__itemapp_8nss.html#a555df9a9f64b26e3dedb7567a639d6cb",
-"nwnx__redis_8nss.html#affd51a6b56cb4f6e53dec42d524d1d74",
-"nwnx__visibility_8nss.html"
+"group__player.html#gabe2b46878c91200619eb7186a7b3c6f0",
+"group__skillranks.html#gade61f23332c91cd4c5b15b63472d4041",
+"nwnx__events_8nss_source.html",
+"nwnx__redis_8nss.html#af9fa5489a9cd89605b60d48a63944779",
+"nwnx__spellcheck_8nss.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
