@@ -39,7 +39,7 @@
 						<td id="projectlogo"><img width="80" height="74" alt="Logo" src="logo-transparent.png"/></td>
 						<td id="projectalign" style="padding-left: 0.5em;">
 							<div id="projectname">NWNX:EE
-								&#160;<span id="projectnumber">8186</span>
+								&#160;<span id="projectnumber">8193</span>
 							</div>
 						</td>
 						<td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -109,13 +109,15 @@ $(document).ready(function(){initNavTree('group__util.html','');});
 <div class="contents">
 
 
-<h3><a id="util"></a>Readme</h3><div class="textblock">Provide various utility functions that don't have a better home<h2><a class="anchor" id="autotoc_md220"></a>
+<h3><a id="util"></a>Readme</h3><div class="textblock">Provide various utility functions that don't have a better home<h2><a class="anchor" id="autotoc_md248"></a>
 Environment Variables</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Variable Name  </th><th class="markdownTableHeadCenter">Value  </th><th class="markdownTableHeadNone">Default  </th><th class="markdownTableHeadNone">Notes   </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>NWNX_UTIL_PRE_MODULE_START_SCRIPT</code>  </td><td class="markdownTableBodyCenter">string  </td><td class="markdownTableBodyNone">Unset  </td><td class="markdownTableBodyNone">Allows you to set a NWScript that runs before the OnModuleLoad event   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_UTIL_PRE_MODULE_START_SCRIPT_CHUNK</code>  </td><td class="markdownTableBodyCenter">string  </td><td class="markdownTableBodyNone">Unset  </td><td class="markdownTableBodyNone">Allows you to set a NWScript Chunk that runs before the OnModuleLoad event   </td></tr>
 </table>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
@@ -176,9 +178,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga4dc71b0421a9bf57e18aa42b177d9b4b"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__util.html#ga4dc71b0421a9bf57e18aa42b177d9b4b">NWNX_Util_GetLastCreatedObject</a> (int nObjectType, int nNthLast=1)</td></tr>
 <tr class="memdesc:ga4dc71b0421a9bf57e18aa42b177d9b4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the last created object.  <a href="group__util.html#ga4dc71b0421a9bf57e18aa42b177d9b4b">More...</a><br /></td></tr>
 <tr class="separator:ga4dc71b0421a9bf57e18aa42b177d9b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab1af1db0c6538b394ffd81b2b349ee2c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__util.html#gab1af1db0c6538b394ffd81b2b349ee2c">NWNX_Util_AddScript</a> (string sFileName, string sScriptData, int bWrapIntoMain=FALSE)</td></tr>
-<tr class="memdesc:gab1af1db0c6538b394ffd81b2b349ee2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles and adds a script to the UserDirectory/nwnx folder.  <a href="group__util.html#gab1af1db0c6538b394ffd81b2b349ee2c">More...</a><br /></td></tr>
-<tr class="separator:gab1af1db0c6538b394ffd81b2b349ee2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacdadf3dcc484a8cd093e18920579c5a1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__util.html#gacdadf3dcc484a8cd093e18920579c5a1">NWNX_Util_AddScript</a> (string sFileName, string sScriptData, int bWrapIntoMain=FALSE)</td></tr>
+<tr class="memdesc:gacdadf3dcc484a8cd093e18920579c5a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles and adds a script to the UserDirectory/nwnx folder.  <a href="group__util.html#gacdadf3dcc484a8cd093e18920579c5a1">More...</a><br /></td></tr>
+<tr class="separator:gacdadf3dcc484a8cd093e18920579c5a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5aafca352ae4d2058fee5502070b9e88"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__util.html#ga5aafca352ae4d2058fee5502070b9e88">NWNX_Util_GetNSSContents</a> (string sScriptName, int nMaxLength=-1)</td></tr>
 <tr class="memdesc:ga5aafca352ae4d2058fee5502070b9e88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the contents of a .nss script file as a string.  <a href="group__util.html#ga5aafca352ae4d2058fee5502070b9e88">More...</a><br /></td></tr>
 <tr class="separator:ga5aafca352ae4d2058fee5502070b9e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -691,14 +693,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gab1af1db0c6538b394ffd81b2b349ee2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab1af1db0c6538b394ffd81b2b349ee2c">&#9670;&nbsp;</a></span>NWNX_Util_AddScript()</h2>
+<a id="gacdadf3dcc484a8cd093e18920579c5a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacdadf3dcc484a8cd093e18920579c5a1">&#9670;&nbsp;</a></span>NWNX_Util_AddScript()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int NWNX_Util_AddScript </td>
+          <td class="memname">string NWNX_Util_AddScript </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>sFileName</em>, </td>
@@ -733,7 +735,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE on success. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>"" on success, or the compilation error. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="nwnx__util_8nss_source.html#l00285">285</a> of file <a class="el" href="nwnx__util_8nss_source.html">nwnx_util.nss</a>.</p>
 
@@ -1026,7 +1028,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Nov 16 2019 03:00:59 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Wed Dec 4 2019 23:15:44 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16.
 					<a href="dark/">Dark version</a>
 				</li>
