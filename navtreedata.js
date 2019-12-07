@@ -45,7 +45,7 @@ var NAVTREEINDEX =
 "group__data__array__insert.html#ga6a86a4ae014a7e3a751a0ec3f3a39ab4",
 "group__layonara.html#ga80b2d5f6f60a83182c0686b7d69bfa8d",
 "group__player.html#ga7c31b1a2759034e5b4518c7c5b3cc704",
-"group__skillranks.html#autotoc_md224",
+"group__skillranks.html#autotoc_md235",
 "group__weapon.html#gafe32575ade4d17e4a9daa9017e439ad0",
 "nwnx__redis_8nss.html#ac2b566852f2d83e42f04f47d367b51cd",
 "nwnx__redis__short_8nss.html#ae074f94aa4e0caa434041a0edaf5eb3c",
