@@ -24,6 +24,8 @@ var NAVTREE =
 [
   [ "NWNX:EE", "index.html", [
     [ "Plugins and Core Lib Functions", "modules.html", "modules" ],
+    [ "Contributing", "md_CONTRIBUTING.html", null ],
+    [ "Changelog", "md_CHANGELOG.html", null ],
     [ "Structs", "annotated.html", "annotated" ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
@@ -44,12 +46,12 @@ var NAVTREEINDEX =
 "group__creature.html#ga4dc701e0795a6b232fcecf3cfe7a10a7",
 "group__data__array__insert.html#ga6a86a4ae014a7e3a751a0ec3f3a39ab4",
 "group__layonara.html#ga80b2d5f6f60a83182c0686b7d69bfa8d",
-"group__player.html#ga7c31b1a2759034e5b4518c7c5b3cc704",
-"group__skillranks.html#autotoc_md235",
-"group__weapon.html#gafe32575ade4d17e4a9daa9017e439ad0",
-"nwnx__redis_8nss.html#ac2b566852f2d83e42f04f47d367b51cd",
-"nwnx__redis__short_8nss.html#ae074f94aa4e0caa434041a0edaf5eb3c",
-"structNWNX__WebHook__Message.html#ab5bcc4879744c32a1c3f798e45c34de9"
+"group__player.html#ga7c1e644f454316be6c87cb2f3bca7ac6",
+"group__skillranks.html",
+"group__weapon.html#gae8574965a3aae542e79e051bfad60217",
+"nwnx__redis_8nss.html#abd2417d10bb3475e74a6bdd15873a2a9",
+"nwnx__redis__short_8nss.html#adeb2f9a3935768c1e1f3b5d346d02b38",
+"structNWNX__WebHook__Message.html#aa1df21fae063b94b82e2f3429410d243"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
