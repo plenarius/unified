@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"group__creature.html#ga4aeb53c89ee532c17bd3574484a4593c":[0,7,20],
+"group__creature.html#ga4dc701e0795a6b232fcecf3cfe7a10a7":[0,7,98],
 "group__creature.html#ga4dc701e0795a6b232fcecf3cfe7a10a7":[4,0,2,5,0,0,95],
 "group__creature.html#ga4fbd561eaf7af28bdacd9c58075b3a9a":[4,0,2,5,0,0,19],
 "group__creature.html#ga4fbd561eaf7af28bdacd9c58075b3a9a":[0,7,23],
@@ -7,8 +9,8 @@ var NAVTREEINDEX2 =
 "group__creature.html#ga5144ab295c043bd4b1bea5d6244d8499":[4,0,2,5,0,0,74],
 "group__creature.html#ga5349277c58e434dbb8be910d7c864ab6":[0,7,105],
 "group__creature.html#ga5349277c58e434dbb8be910d7c864ab6":[4,0,2,5,0,0,102],
-"group__creature.html#ga56cd9112ddd13c2758c5753c195595f1":[0,7,122],
 "group__creature.html#ga56cd9112ddd13c2758c5753c195595f1":[4,0,2,5,0,0,119],
+"group__creature.html#ga56cd9112ddd13c2758c5753c195595f1":[0,7,122],
 "group__creature.html#ga5aae58ed38b1cf6486826dd861a2345e":[4,0,2,5,0,0,4],
 "group__creature.html#ga5aae58ed38b1cf6486826dd861a2345e":[0,7,8],
 "group__creature.html#ga5c7dba1b263cc40e93ac0e3a6b46d686":[4,0,2,5,0,0,41],
@@ -170,7 +172,7 @@ var NAVTREEINDEX2 =
 "group__creature.html#gaff45e8b400ebbbfeeccba81785fc5c17":[4,0,2,5,0,0,36],
 "group__creature.html#gaff45e8b400ebbbfeeccba81785fc5c17":[0,7,40],
 "group__damage.html":[0,8],
-"group__damage.html#autotoc_md56":[5],
+"group__damage.html#autotoc_md60":[5],
 "group__damage.html#damage":[0,8,0],
 "group__damage.html#ga2be3550a90599b0cff53f9eaccb09f59":[4,0,2,6,0,0,2],
 "group__damage.html#ga2be3550a90599b0cff53f9eaccb09f59":[0,8,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "group__data__array__insert.html#ga1f4d0fa72a63be736482dbd66228f2fa":[4,0,2,7,0,0,17],
 "group__data__array__insert.html#ga1f4d0fa72a63be736482dbd66228f2fa":[0,9,4,2],
 "group__data__array__insert.html#ga3d805a4de6c868e8646f35ec50b85435":[4,0,2,7,0,0,15],
-"group__data__array__insert.html#ga3d805a4de6c868e8646f35ec50b85435":[0,9,4,0],
-"group__data__array__insert.html#ga5513e20c9c5e1aa732ed04dee0859a75":[4,0,2,7,0,0,18],
-"group__data__array__insert.html#ga5513e20c9c5e1aa732ed04dee0859a75":[0,9,4,3]
+"group__data__array__insert.html#ga3d805a4de6c868e8646f35ec50b85435":[0,9,4,0]
 };
