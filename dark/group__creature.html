@@ -39,7 +39,7 @@
 						<td id="projectlogo"><img width="80" height="74" alt="Logo" src="logo-transparent.png"/></td>
 						<td id="projectalign" style="padding-left: 0.5em;">
 							<div id="projectname">NWNX:EE
-								&#160;<span id="projectnumber">8193.5</span>
+								&#160;<span id="projectnumber">8193.14</span>
 							</div>
 						</td>
 						<td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -145,6 +145,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga4875b0673d87478c3edbb608fb77cee4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga4875b0673d87478c3edbb608fb77cee4">NWNX_Creature_GetFeatByLevel</a> (object creature, int level, int index)</td></tr>
 <tr class="memdesc:ga4875b0673d87478c3edbb608fb77cee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the feat learned at the level and index.  <a href="group__creature.html#ga4875b0673d87478c3edbb608fb77cee4">More...</a><br /></td></tr>
 <tr class="separator:ga4875b0673d87478c3edbb608fb77cee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef3946aa6d3561be04d8b37f554b35b5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gaef3946aa6d3561be04d8b37f554b35b5">NWNX_Creature_GetFeatGrantLevel</a> (object creature, int feat)</td></tr>
+<tr class="memdesc:gaef3946aa6d3561be04d8b37f554b35b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the creature level where the specified feat was learned.  <a href="group__creature.html#gaef3946aa6d3561be04d8b37f554b35b5">More...</a><br /></td></tr>
+<tr class="separator:gaef3946aa6d3561be04d8b37f554b35b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga93c6684ed4cb787a6c515160fd0d11e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga93c6684ed4cb787a6c515160fd0d11e5">NWNX_Creature_GetFeatCount</a> (object creature)</td></tr>
 <tr class="memdesc:ga93c6684ed4cb787a6c515160fd0d11e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total number of feats known by creature.  <a href="group__creature.html#ga93c6684ed4cb787a6c515160fd0d11e5">More...</a><br /></td></tr>
 <tr class="separator:ga93c6684ed4cb787a6c515160fd0d11e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,9 +181,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga4aeb53c89ee532c17bd3574484a4593c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga4aeb53c89ee532c17bd3574484a4593c">NWNX_Creature_GetBaseAC</a> (object creature)</td></tr>
 <tr class="memdesc:ga4aeb53c89ee532c17bd3574484a4593c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the base AC for the creature.  <a href="group__creature.html#ga4aeb53c89ee532c17bd3574484a4593c">More...</a><br /></td></tr>
 <tr class="separator:ga4aeb53c89ee532c17bd3574484a4593c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8669db45c63d3afb38589d966d11abe5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga8669db45c63d3afb38589d966d11abe5">NWNX_Creature_SetAbilityScore</a> (object creature, int ability, int value)</td></tr>
-<tr class="memdesc:ga8669db45c63d3afb38589d966d11abe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ability score of the creature to the value.  <a href="group__creature.html#ga8669db45c63d3afb38589d966d11abe5">More...</a><br /></td></tr>
-<tr class="separator:ga8669db45c63d3afb38589d966d11abe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7e0289bb93f298bce44527f53611f1b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga7e0289bb93f298bce44527f53611f1b4">NWNX_Creature_SetRawAbilityScore</a> (object creature, int ability, int value)</td></tr>
 <tr class="memdesc:ga7e0289bb93f298bce44527f53611f1b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ability score of the creature to the provided value.  <a href="group__creature.html#ga7e0289bb93f298bce44527f53611f1b4">More...</a><br /></td></tr>
 <tr class="separator:ga7e0289bb93f298bce44527f53611f1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,7 +218,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga76e505b39335e8a42cca75b982d3556b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the known spell at a class level's index.  <a href="group__creature.html#ga76e505b39335e8a42cca75b982d3556b">More...</a><br /></td></tr>
 <tr class="separator:ga76e505b39335e8a42cca75b982d3556b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae7e96e14504d66c72653b5d74955624e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gae7e96e14504d66c72653b5d74955624e">NWNX_Creature_AddKnownSpell</a> (object creature, int class, int level, int spellId)</td></tr>
-<tr class="memdesc:gae7e96e14504d66c72653b5d74955624e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a spell from creature's spellbook for class.  <a href="group__creature.html#gae7e96e14504d66c72653b5d74955624e">More...</a><br /></td></tr>
+<tr class="memdesc:gae7e96e14504d66c72653b5d74955624e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a spell to a creature's spellbook for class.  <a href="group__creature.html#gae7e96e14504d66c72653b5d74955624e">More...</a><br /></td></tr>
 <tr class="separator:gae7e96e14504d66c72653b5d74955624e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab4338193b84f354007440a28c0ae6a7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gab4338193b84f354007440a28c0ae6a7a">NWNX_Creature_RemoveKnownSpell</a> (object creature, int class, int level, int spellId)</td></tr>
 <tr class="memdesc:gab4338193b84f354007440a28c0ae6a7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a spell from creature's spellbook for class.  <a href="group__creature.html#gab4338193b84f354007440a28c0ae6a7a">More...</a><br /></td></tr>
@@ -229,12 +229,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3d51d003d179b7495eedea006f4ea5b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga3d51d003d179b7495eedea006f4ea5b4">NWNX_Creature_ClearMemorisedSpell</a> (object creature, int class, int level, int index)</td></tr>
 <tr class="memdesc:ga3d51d003d179b7495eedea006f4ea5b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the memorised spell of the creature for the class, level and index.  <a href="group__creature.html#ga3d51d003d179b7495eedea006f4ea5b4">More...</a><br /></td></tr>
 <tr class="separator:ga3d51d003d179b7495eedea006f4ea5b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga02ff5227069b1ca3285825aae2e23284"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga02ff5227069b1ca3285825aae2e23284">NWNX_Creature_GetWizardSpecialization</a> (object creature)</td></tr>
-<tr class="memdesc:ga02ff5227069b1ca3285825aae2e23284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets whether or not creature has a specialist school of wizardry.  <a href="group__creature.html#ga02ff5227069b1ca3285825aae2e23284">More...</a><br /></td></tr>
-<tr class="separator:ga02ff5227069b1ca3285825aae2e23284"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga25b5b06744b1d145a7e64866360603ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga25b5b06744b1d145a7e64866360603ee">NWNX_Creature_SetWizardSpecialization</a> (object creature, int school)</td></tr>
-<tr class="memdesc:ga25b5b06744b1d145a7e64866360603ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets creature's wizard specialist school.  <a href="group__creature.html#ga25b5b06744b1d145a7e64866360603ee">More...</a><br /></td></tr>
-<tr class="separator:ga25b5b06744b1d145a7e64866360603ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaff45e8b400ebbbfeeccba81785fc5c17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gaff45e8b400ebbbfeeccba81785fc5c17">NWNX_Creature_GetMaxHitPointsByLevel</a> (object creature, int level)</td></tr>
 <tr class="memdesc:gaff45e8b400ebbbfeeccba81785fc5c17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the maximum hit points for creature for level.  <a href="group__creature.html#gaff45e8b400ebbbfeeccba81785fc5c17">More...</a><br /></td></tr>
 <tr class="separator:gaff45e8b400ebbbfeeccba81785fc5c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -250,6 +244,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaf5efc0931a71bcc67178986f87109bed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gaf5efc0931a71bcc67178986f87109bed">NWNX_Creature_SetMovementRateFactor</a> (object creature, float rate)</td></tr>
 <tr class="memdesc:gaf5efc0931a71bcc67178986f87109bed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the creature's current movement rate factor.  <a href="group__creature.html#gaf5efc0931a71bcc67178986f87109bed">More...</a><br /></td></tr>
 <tr class="separator:gaf5efc0931a71bcc67178986f87109bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga86ea47f9480ce99791bb8660a1940bb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga86ea47f9480ce99791bb8660a1940bb7">NWNX_Creature_SetMovementRateFactorCap</a> (object creature, float cap)</td></tr>
+<tr class="memdesc:ga86ea47f9480ce99791bb8660a1940bb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the creature's maximum movement rate cap.  <a href="group__creature.html#ga86ea47f9480ce99791bb8660a1940bb7">More...</a><br /></td></tr>
+<tr class="separator:ga86ea47f9480ce99791bb8660a1940bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5c7dba1b263cc40e93ac0e3a6b46d686"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga5c7dba1b263cc40e93ac0e3a6b46d686">NWNX_Creature_GetMovementType</a> (object creature)</td></tr>
 <tr class="memdesc:ga5c7dba1b263cc40e93ac0e3a6b46d686"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the creature's current movement type.  <a href="group__creature.html#ga5c7dba1b263cc40e93ac0e3a6b46d686">More...</a><br /></td></tr>
 <tr class="separator:ga5c7dba1b263cc40e93ac0e3a6b46d686"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -262,12 +259,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga9d801e1f46afa155f85ccf6600fe5343"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga9d801e1f46afa155f85ccf6600fe5343">NWNX_Creature_SetAlignmentLawChaos</a> (object creature, int value)</td></tr>
 <tr class="memdesc:ga9d801e1f46afa155f85ccf6600fe5343"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set creature's raw law/chaos alignment value.  <a href="group__creature.html#ga9d801e1f46afa155f85ccf6600fe5343">More...</a><br /></td></tr>
 <tr class="separator:ga9d801e1f46afa155f85ccf6600fe5343"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga39b4cfb649a4882cfcf3efbaa520f7a8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga39b4cfb649a4882cfcf3efbaa520f7a8">NWNX_Creature_GetClericDomain</a> (object creature, int index)</td></tr>
-<tr class="memdesc:ga39b4cfb649a4882cfcf3efbaa520f7a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets one of creature's cleric domains.  <a href="group__creature.html#ga39b4cfb649a4882cfcf3efbaa520f7a8">More...</a><br /></td></tr>
-<tr class="separator:ga39b4cfb649a4882cfcf3efbaa520f7a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacc1cb4fa1de5e77dd8aa4a1ed189df74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gacc1cb4fa1de5e77dd8aa4a1ed189df74">NWNX_Creature_SetClericDomain</a> (object creature, int index, int domain)</td></tr>
-<tr class="memdesc:gacc1cb4fa1de5e77dd8aa4a1ed189df74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets one of creature's cleric domains.  <a href="group__creature.html#gacc1cb4fa1de5e77dd8aa4a1ed189df74">More...</a><br /></td></tr>
-<tr class="separator:gacc1cb4fa1de5e77dd8aa4a1ed189df74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa167eb31727eea68d075f538033c2817"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gaa167eb31727eea68d075f538033c2817">NWNX_Creature_GetSoundset</a> (object creature)</td></tr>
 <tr class="memdesc:gaa167eb31727eea68d075f538033c2817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the soundset index for creature.  <a href="group__creature.html#gaa167eb31727eea68d075f538033c2817">More...</a><br /></td></tr>
 <tr class="separator:gaa167eb31727eea68d075f538033c2817"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -382,6 +373,90 @@ Functions</h2></td></tr>
 <tr class="memitem:gae737b5e9c3eb8fb6523a1f0ad68d16b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gae737b5e9c3eb8fb6523a1f0ad68d16b1">NWNX_Creature_SetDisarmable</a> (object creature, int disarmable)</td></tr>
 <tr class="memdesc:gae737b5e9c3eb8fb6523a1f0ad68d16b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set whether a creature can be disarmed.  <a href="group__creature.html#gae737b5e9c3eb8fb6523a1f0ad68d16b1">More...</a><br /></td></tr>
 <tr class="separator:gae737b5e9c3eb8fb6523a1f0ad68d16b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae1e40c17b9c6ccd5650c2344b9b9ff30"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gae1e40c17b9c6ccd5650c2344b9b9ff30">NWNX_Creature_GetDomain</a> (object creature, int class, int index)</td></tr>
+<tr class="memdesc:gae1e40c17b9c6ccd5650c2344b9b9ff30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets one of creature's domains.  <a href="group__creature.html#gae1e40c17b9c6ccd5650c2344b9b9ff30">More...</a><br /></td></tr>
+<tr class="separator:gae1e40c17b9c6ccd5650c2344b9b9ff30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga962c102eec8e590fd97426911e2ecad2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga962c102eec8e590fd97426911e2ecad2">NWNX_Creature_SetDomain</a> (object creature, int class, int index, int domain)</td></tr>
+<tr class="memdesc:ga962c102eec8e590fd97426911e2ecad2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets one of creature's domains.  <a href="group__creature.html#ga962c102eec8e590fd97426911e2ecad2">More...</a><br /></td></tr>
+<tr class="separator:ga962c102eec8e590fd97426911e2ecad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0bdc0eedeefea972e246036481446485"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga0bdc0eedeefea972e246036481446485">NWNX_Creature_GetSpecialization</a> (object creature, int class)</td></tr>
+<tr class="memdesc:ga0bdc0eedeefea972e246036481446485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the creature's specialist school.  <a href="group__creature.html#ga0bdc0eedeefea972e246036481446485">More...</a><br /></td></tr>
+<tr class="separator:ga0bdc0eedeefea972e246036481446485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab7511205cd5bb49971a55381624eb98b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gab7511205cd5bb49971a55381624eb98b">NWNX_Creature_SetSpecialization</a> (object creature, int class, int school)</td></tr>
+<tr class="memdesc:gab7511205cd5bb49971a55381624eb98b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets creature's specialist school.  <a href="group__creature.html#gab7511205cd5bb49971a55381624eb98b">More...</a><br /></td></tr>
+<tr class="separator:gab7511205cd5bb49971a55381624eb98b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaadaf23cf6ae1c20254f13d01e61a0a0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gaadaf23cf6ae1c20254f13d01e61a0a0b">NWNX_Creature_SetFaction</a> (object oCreature, int nFactionId)</td></tr>
+<tr class="memdesc:gaadaf23cf6ae1c20254f13d01e61a0a0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets oCreatures faction to be the faction with id nFactionId.  <a href="group__creature.html#gaadaf23cf6ae1c20254f13d01e61a0a0b">More...</a><br /></td></tr>
+<tr class="separator:gaadaf23cf6ae1c20254f13d01e61a0a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a2c379a352686d151ecea19fe768844"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga6a2c379a352686d151ecea19fe768844">NWNX_Creature_GetFaction</a> (object oCreature)</td></tr>
+<tr class="memdesc:ga6a2c379a352686d151ecea19fe768844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the faction id from oCreature.  <a href="group__creature.html#ga6a2c379a352686d151ecea19fe768844">More...</a><br /></td></tr>
+<tr class="separator:ga6a2c379a352686d151ecea19fe768844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga43289d7f208dbe759b856d1f4757dc2e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga43289d7f208dbe759b856d1f4757dc2e">NWNX_Creature_GetFlatFooted</a> (object oCreature)</td></tr>
+<tr class="memdesc:ga43289d7f208dbe759b856d1f4757dc2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get whether a creature is flat-footed.  <a href="group__creature.html#ga43289d7f208dbe759b856d1f4757dc2e">More...</a><br /></td></tr>
+<tr class="separator:ga43289d7f208dbe759b856d1f4757dc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69a3585f503e30907380f440f95860ec"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga69a3585f503e30907380f440f95860ec">NWNX_Creature_SerializeQuickbar</a> (object oCreature)</td></tr>
+<tr class="memdesc:ga69a3585f503e30907380f440f95860ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize oCreature's quickbar to a base64 string.  <a href="group__creature.html#ga69a3585f503e30907380f440f95860ec">More...</a><br /></td></tr>
+<tr class="separator:ga69a3585f503e30907380f440f95860ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab71f0c54c88e6c54bfdb025c67a5aa44"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gab71f0c54c88e6c54bfdb025c67a5aa44">NWNX_Creature_DeserializeQuickbar</a> (object oCreature, string sSerializedQuickbar)</td></tr>
+<tr class="memdesc:gab71f0c54c88e6c54bfdb025c67a5aa44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize sSerializedQuickbar for oCreature.  <a href="group__creature.html#gab71f0c54c88e6c54bfdb025c67a5aa44">More...</a><br /></td></tr>
+<tr class="separator:gab71f0c54c88e6c54bfdb025c67a5aa44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga007d581a39d037dce04fdfa034427efd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga007d581a39d037dce04fdfa034427efd">NWNX_Creature_SetCasterLevelModifier</a> (object oCreature, int nClass, int nModifier, int bPersist=FALSE)</td></tr>
+<tr class="memdesc:ga007d581a39d037dce04fdfa034427efd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a caster level modifier for oCreature.  <a href="group__creature.html#ga007d581a39d037dce04fdfa034427efd">More...</a><br /></td></tr>
+<tr class="separator:ga007d581a39d037dce04fdfa034427efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab29a65c34e82a3f565551a6d706179db"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gab29a65c34e82a3f565551a6d706179db">NWNX_Creature_GetCasterLevelModifier</a> (object oCreature, int nClass)</td></tr>
+<tr class="memdesc:gab29a65c34e82a3f565551a6d706179db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current caster level modifier for oCreature.  <a href="group__creature.html#gab29a65c34e82a3f565551a6d706179db">More...</a><br /></td></tr>
+<tr class="separator:gab29a65c34e82a3f565551a6d706179db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab4b96e16f98d1b88fe6a3484716537e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gab4b96e16f98d1b88fe6a3484716537e1">NWNX_Creature_SetCasterLevelOverride</a> (object oCreature, int nClass, int nCasterLevel, int bPersist=FALSE)</td></tr>
+<tr class="memdesc:gab4b96e16f98d1b88fe6a3484716537e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a caster level override for oCreature.  <a href="group__creature.html#gab4b96e16f98d1b88fe6a3484716537e1">More...</a><br /></td></tr>
+<tr class="separator:gab4b96e16f98d1b88fe6a3484716537e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9afdcbf720d4299a3ecb85c15675c170"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga9afdcbf720d4299a3ecb85c15675c170">NWNX_Creature_GetCasterLevelOverride</a> (object oCreature, int nClass)</td></tr>
+<tr class="memdesc:ga9afdcbf720d4299a3ecb85c15675c170"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current caster level override for oCreature.  <a href="group__creature.html#ga9afdcbf720d4299a3ecb85c15675c170">More...</a><br /></td></tr>
+<tr class="separator:ga9afdcbf720d4299a3ecb85c15675c170"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1050f97a636758c1a4c74c058c688aa5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga1050f97a636758c1a4c74c058c688aa5">NWNX_Creature_JumpToLimbo</a> (object oCreature)</td></tr>
+<tr class="memdesc:ga1050f97a636758c1a4c74c058c688aa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move a creature to limbo.  <a href="group__creature.html#ga1050f97a636758c1a4c74c058c688aa5">More...</a><br /></td></tr>
+<tr class="separator:ga1050f97a636758c1a4c74c058c688aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ddf72fb0099eeac9e33141ea911deb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga3ddf72fb0099eeac9e33141ea911deb0">NWNX_Creature_SetCriticalMultiplierModifier</a> (object oCreature, int nModifier, int nHand=0, int bPersist=FALSE)</td></tr>
+<tr class="memdesc:ga3ddf72fb0099eeac9e33141ea911deb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the critical hit multiplier modifier for the creature.  <a href="group__creature.html#ga3ddf72fb0099eeac9e33141ea911deb0">More...</a><br /></td></tr>
+<tr class="separator:ga3ddf72fb0099eeac9e33141ea911deb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga75516a1c64d50a6192f21031400f87c0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga75516a1c64d50a6192f21031400f87c0">NWNX_Creature_GetCriticalMultiplierModifier</a> (object oCreature, int nHand=0)</td></tr>
+<tr class="memdesc:ga75516a1c64d50a6192f21031400f87c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the critical hit multiplier modifier for the Creature.  <a href="group__creature.html#ga75516a1c64d50a6192f21031400f87c0">More...</a><br /></td></tr>
+<tr class="separator:ga75516a1c64d50a6192f21031400f87c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadf59e261ec68cdb725951456e5ea8936"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gadf59e261ec68cdb725951456e5ea8936">NWNX_Creature_SetCriticalMultiplierOverride</a> (object oCreature, int nOverride, int nHand=0, int bPersist=FALSE)</td></tr>
+<tr class="memdesc:gadf59e261ec68cdb725951456e5ea8936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the critical hit multiplier override for the creature.  <a href="group__creature.html#gadf59e261ec68cdb725951456e5ea8936">More...</a><br /></td></tr>
+<tr class="separator:gadf59e261ec68cdb725951456e5ea8936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0885ae77421d7f3290578f4a32a5f9f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga0885ae77421d7f3290578f4a32a5f9f1">NWNX_Creature_GetCriticalMultiplierOverride</a> (object oCreature, int nHand=0)</td></tr>
+<tr class="memdesc:ga0885ae77421d7f3290578f4a32a5f9f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the critical hit multiplier override for the Creature.  <a href="group__creature.html#ga0885ae77421d7f3290578f4a32a5f9f1">More...</a><br /></td></tr>
+<tr class="separator:ga0885ae77421d7f3290578f4a32a5f9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae29537af98f07a44b68aaefe70023494"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gae29537af98f07a44b68aaefe70023494">NWNX_Creature_SetCriticalRangeModifier</a> (object oCreature, int nModifier, int nHand=0, int bPersist=FALSE)</td></tr>
+<tr class="memdesc:gae29537af98f07a44b68aaefe70023494"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the critical hit range modifier for the creature.  <a href="group__creature.html#gae29537af98f07a44b68aaefe70023494">More...</a><br /></td></tr>
+<tr class="separator:gae29537af98f07a44b68aaefe70023494"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae3e5766823787c9e848bf6925e9cf313"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gae3e5766823787c9e848bf6925e9cf313">NWNX_Creature_GetCriticalRangeModifier</a> (object oCreature, int nHand=0)</td></tr>
+<tr class="memdesc:gae3e5766823787c9e848bf6925e9cf313"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the critical hit range modifier for the creature.  <a href="group__creature.html#gae3e5766823787c9e848bf6925e9cf313">More...</a><br /></td></tr>
+<tr class="separator:gae3e5766823787c9e848bf6925e9cf313"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad408cb931491c5cf15de7f584d3b5d70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gad408cb931491c5cf15de7f584d3b5d70">NWNX_Creature_SetCriticalRangeOverride</a> (object oCreature, int nOverride, int nHand=0, int bPersist=FALSE)</td></tr>
+<tr class="memdesc:gad408cb931491c5cf15de7f584d3b5d70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the critical hit range Override for the creature.  <a href="group__creature.html#gad408cb931491c5cf15de7f584d3b5d70">More...</a><br /></td></tr>
+<tr class="separator:gad408cb931491c5cf15de7f584d3b5d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf3a3048abd469980487c640d2c9d1877"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gaf3a3048abd469980487c640d2c9d1877">NWNX_Creature_GetCriticalRangeOverride</a> (object oCreature, int nHand=0)</td></tr>
+<tr class="memdesc:gaf3a3048abd469980487c640d2c9d1877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the critical hit range Override for the creature.  <a href="group__creature.html#gaf3a3048abd469980487c640d2c9d1877">More...</a><br /></td></tr>
+<tr class="separator:gaf3a3048abd469980487c640d2c9d1877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d409d9021d548809df96419085ae480"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga2d409d9021d548809df96419085ae480">NWNX_Creature_AddAssociate</a> (object oCreature, object oAssociate, int nAssociateType)</td></tr>
+<tr class="memdesc:ga2d409d9021d548809df96419085ae480"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add oAssociate as nAssociateType to oCreature.  <a href="group__creature.html#ga2d409d9021d548809df96419085ae480">More...</a><br /></td></tr>
+<tr class="separator:ga2d409d9021d548809df96419085ae480"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga21360c24d3e29125d4691571f72a9f6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga21360c24d3e29125d4691571f72a9f6d">NWNX_Creature_SetEffectIconFlashing</a> (object oCreature, int nIconId, int bFlashing)</td></tr>
+<tr class="memdesc:ga21360c24d3e29125d4691571f72a9f6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set whether an effect icon is flashing or not.  <a href="group__creature.html#ga21360c24d3e29125d4691571f72a9f6d">More...</a><br /></td></tr>
+<tr class="separator:ga21360c24d3e29125d4691571f72a9f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga445a30a2f40834a69ab0771d084097de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga445a30a2f40834a69ab0771d084097de">NWNX_Creature_OverrideDamageLevel</a> (object oCreature, int nDamageLevel)</td></tr>
+<tr class="memdesc:ga445a30a2f40834a69ab0771d084097de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override the damage level of oCreature.  <a href="group__creature.html#ga445a30a2f40834a69ab0771d084097de">More...</a><br /></td></tr>
+<tr class="separator:ga445a30a2f40834a69ab0771d084097de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0e15e53492fb6b92b72a56887688ada2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga0e15e53492fb6b92b72a56887688ada2">NWNX_Creature_SetEncounter</a> (object oCreature, object oEncounter)</td></tr>
+<tr class="memdesc:ga0e15e53492fb6b92b72a56887688ada2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the encounter source of oCreature.  <a href="group__creature.html#ga0e15e53492fb6b92b72a56887688ada2">More...</a><br /></td></tr>
+<tr class="separator:ga0e15e53492fb6b92b72a56887688ada2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9afd7b8b548d719351fb63ce1eb99293"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga9afd7b8b548d719351fb63ce1eb99293">NWNX_Creature_GetEncounter</a> (object oCreature)</td></tr>
+<tr class="memdesc:ga9afd7b8b548d719351fb63ce1eb99293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the encounter source of oCreature.  <a href="group__creature.html#ga9afd7b8b548d719351fb63ce1eb99293">More...</a><br /></td></tr>
+<tr class="separator:ga9afd7b8b548d719351fb63ce1eb99293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3dbffac4654be2a32707775255e39c15"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga3dbffac4654be2a32707775255e39c15">NWNX_Creature_GetIsBartering</a> (object oCreature)</td></tr>
+<tr class="memdesc:ga3dbffac4654be2a32707775255e39c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get if oCreature is currently bartering.  <a href="group__creature.html#ga3dbffac4654be2a32707775255e39c15">More...</a><br /></td></tr>
+<tr class="separator:ga3dbffac4654be2a32707775255e39c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gade3f03b0efb8d99a5797cf683dd3e9d0"></a>
@@ -420,7 +495,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Consider also using <a class="el" href="group__creature.html#ga436b7ffee6a792a307f2d0a3489e4dd1" title="Gives the creature a feat assigned at a level.">NWNX_Creature_AddFeatByLevel()</a> to properly allocate the feat to a level </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00626">626</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00780">780</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -467,7 +542,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Adds the feat to the stat list at the provided level. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00635">635</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00789">789</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -506,7 +581,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00646">646</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00800">800</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -547,7 +622,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if the creature has the feat, regardless if they have any usages left or not. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00655">655</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00809">809</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -587,7 +662,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The count of feats. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00666">666</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00820">820</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -634,7 +709,47 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The feat id at the index. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00677">677</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00831">831</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gaef3946aa6d3561be04d8b37f554b35b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaef3946aa6d3561be04d8b37f554b35b5">&#9670;&nbsp;</a></span>NWNX_Creature_GetFeatGrantLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetFeatGrantLevel </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>creature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>feat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the creature level where the specified feat was learned. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
+    <tr><td class="paramname">feat</td><td>The feat id. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The character level that the specified feat was granted, otherwise 0 if the creature does not have this feat. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00853">853</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -663,7 +778,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The total feat count for the creature. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00689">689</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00843">843</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -703,7 +818,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The feat id at the index. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00699">699</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00863">863</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -743,7 +858,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if creature meets all requirements to take given feat </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00710">710</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00874">874</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -772,7 +887,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The total special ability count. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00739">739</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00903">903</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -812,7 +927,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="structNWNX__Creature__SpecialAbility.html" title="A creature special ability.">NWNX_Creature_SpecialAbility</a> struct. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00721">721</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00885">885</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -851,7 +966,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00749">749</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00913">913</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -890,7 +1005,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00761">761</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00925">925</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -936,7 +1051,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00771">771</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00935">935</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -976,7 +1091,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The class id. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00784">784</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00948">948</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1015,7 +1130,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00795">795</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00959">959</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1044,54 +1159,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The base AC. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00805">805</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
-
-</div>
-</div>
-<a id="ga8669db45c63d3afb38589d966d11abe5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8669db45c63d3afb38589d966d11abe5">&#9670;&nbsp;</a></span>NWNX_Creature_SetAbilityScore()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void NWNX_Creature_SetAbilityScore </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>creature</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ability</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the ability score of the creature to the value. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
-    <tr><td class="paramname">ability</td><td>The ability constant. </td></tr>
-    <tr><td class="paramname">value</td><td>The value to set. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>Use <a class="el" href="group__creature.html#ga7e0289bb93f298bce44527f53611f1b4" title="Sets the ability score of the creature to the provided value.">NWNX_Creature_SetRawAbilityScore()</a>. This will be removed in future NWNX releases. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00815">815</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00969">969</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1138,7 +1206,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00821">821</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00979">979</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1179,7 +1247,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The ability score. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00832">832</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00990">990</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1226,7 +1294,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00843">843</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01001">1001</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1267,7 +1335,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The raw ability score. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00854">854</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01012">1012</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1314,7 +1382,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The memorised spell count. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00884">884</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01042">1042</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1368,7 +1436,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An <a class="el" href="structNWNX__Creature__MemorisedSpell.html" title="A memorised spell structure.">NWNX_Creature_MemorisedSpell()</a> struct. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00865">865</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01023">1023</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1428,7 +1496,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00896">896</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01054">1054</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1475,7 +1543,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The remaining spell slot count. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00913">913</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01071">1071</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1528,7 +1596,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00925">925</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01083">1083</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1575,7 +1643,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The maximum spell slot count. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01009">1009</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01167">1167</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1622,7 +1690,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The known spell count. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00950">950</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01108">1108</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1676,7 +1744,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The spell id. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00937">937</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01095">1095</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1718,7 +1786,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Remove a spell from creature's spellbook for class. </p>
+<p>Add a spell to a creature's spellbook for class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
@@ -1729,7 +1797,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00974">974</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01132">1132</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1782,7 +1850,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00962">962</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01120">1120</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1828,7 +1896,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00986">986</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01144">1144</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1881,75 +1949,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l00997">997</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
-
-</div>
-</div>
-<a id="ga02ff5227069b1ca3285825aae2e23284"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga02ff5227069b1ca3285825aae2e23284">&#9670;&nbsp;</a></span>NWNX_Creature_GetWizardSpecialization()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int NWNX_Creature_GetWizardSpecialization </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>creature</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets whether or not creature has a specialist school of wizardry. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if the wizard specializes. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01115">1115</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
-
-</div>
-</div>
-<a id="ga25b5b06744b1d145a7e64866360603ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga25b5b06744b1d145a7e64866360603ee">&#9670;&nbsp;</a></span>NWNX_Creature_SetWizardSpecialization()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void NWNX_Creature_SetWizardSpecialization </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>creature</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>school</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets creature's wizard specialist school. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
-    <tr><td class="paramname">school</td><td>The wizard school constant. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01125">1125</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01155">1155</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -1989,7 +1989,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The maximum hit points a creature can have for the class at the provided level. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01022">1022</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01180">1180</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2035,7 +2035,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01033">1033</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01191">1191</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2074,7 +2074,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01044">1044</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01202">1202</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2104,7 +2104,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The current movement rate factor. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01054">1054</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01212">1212</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2144,7 +2144,47 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01063">1063</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01221">1221</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga86ea47f9480ce99791bb8660a1940bb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga86ea47f9480ce99791bb8660a1940bb7">&#9670;&nbsp;</a></span>NWNX_Creature_SetMovementRateFactorCap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetMovementRateFactorCap </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>creature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>cap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the creature's maximum movement rate cap. </p>
+<dl class="section note"><dt>Note</dt><dd>Default movement rate cap is 1.5. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
+    <tr><td class="paramname">cap</td><td>The cap to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01231">1231</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2173,7 +2213,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An NWNX_CREATURE_MOVEMENT_TYPE_* constant. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01283">1283</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01409">1409</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2213,7 +2253,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01292">1292</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01418">1418</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2252,7 +2292,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01073">1073</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01241">1241</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2291,92 +2331,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01083">1083</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
-
-</div>
-</div>
-<a id="ga39b4cfb649a4882cfcf3efbaa520f7a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga39b4cfb649a4882cfcf3efbaa520f7a8">&#9670;&nbsp;</a></span>NWNX_Creature_GetClericDomain()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int NWNX_Creature_GetClericDomain </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>creature</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets one of creature's cleric domains. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
-    <tr><td class="paramname">index</td><td>The first or second domain. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01093">1093</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
-
-</div>
-</div>
-<a id="gacc1cb4fa1de5e77dd8aa4a1ed189df74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gacc1cb4fa1de5e77dd8aa4a1ed189df74">&#9670;&nbsp;</a></span>NWNX_Creature_SetClericDomain()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void NWNX_Creature_SetClericDomain </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>creature</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>domain</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets one of creature's cleric domains. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
-    <tr><td class="paramname">index</td><td>The first or second domain. </td></tr>
-    <tr><td class="paramname">domain</td><td>The domain constant to set. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01104">1104</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01251">1251</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2405,7 +2360,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The soundset used by the creature. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01135">1135</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01261">1261</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2444,7 +2399,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01145">1145</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01271">1271</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2490,7 +2445,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01155">1155</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01281">1281</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2536,7 +2491,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01165">1165</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01291">1291</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2583,7 +2538,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01175">1175</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01301">1301</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2624,7 +2579,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section remark"><dt>Remarks</dt><dd>The base game has a function <a href="https://nwnlexicon.com/index.php?title=SetBaseAttackBonus" target="_blank">SetBaseAttackBonus</a>, which actually sets the bonus attacks per round for a creature, not the BAB. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01185">1185</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01311">1311</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2664,7 +2619,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The attacks per round. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01194">1194</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01320">1320</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2703,7 +2658,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01204">1204</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01330">1330</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2731,7 +2686,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01213">1213</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01339">1339</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2759,7 +2714,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01221">1221</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01347">1347</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2798,7 +2753,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01229">1229</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01355">1355</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2826,7 +2781,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01238">1238</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01364">1364</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2865,7 +2820,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01246">1246</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01372">1372</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2894,7 +2849,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The remaining unspent skill points. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01255">1255</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01381">1381</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2933,7 +2888,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01265">1265</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01391">1391</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -2972,7 +2927,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01274">1274</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01400">1400</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3011,7 +2966,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01301">1301</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01427">1427</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3050,7 +3005,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01310">1310</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01436">1436</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3091,7 +3046,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The base save value. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This will include any modifiers set in the toolset. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01320">1320</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01446">1446</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3137,7 +3092,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01330">1330</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01456">1456</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3184,7 +3139,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This will not work on player characters. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01340">1340</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01466">1466</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3224,7 +3179,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This will not work on player characters. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01350">1350</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01476">1476</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3263,7 +3218,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01359">1359</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01485">1485</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3330,7 +3285,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The highest attack bonus. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01368">1368</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01494">1494</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3371,7 +3326,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The highest level version of the feat. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01396">1396</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01522">1522</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3411,7 +3366,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The amount of remaining uses. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01407">1407</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01533">1533</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3451,7 +3406,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The total uses. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01418">1418</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01544">1544</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3497,7 +3452,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01429">1429</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01555">1555</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3594,7 +3549,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The bonus value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01440">1440</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01566">1566</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3641,7 +3596,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>For PCs this will persist to the .bic file if saved. Requires a relog to update. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01460">1460</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01585">1585</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3681,7 +3636,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The original first or last name of the creature. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01471">1471</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01596">1596</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3721,7 +3676,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>This setting will be overwritten by effects and once those effects fade the old setting (typically 0) will be set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01482">1482</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01607">1607</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3760,7 +3715,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01492">1492</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01617">1617</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3799,7 +3754,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01502">1502</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01627">1627</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3838,7 +3793,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01512">1512</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01637">1637</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3877,7 +3832,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01522">1522</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01647">1647</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3906,7 +3861,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if the creature can be disarmed. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01532">1532</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01657">1657</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -3945,7 +3900,1179 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01542">1542</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01667">1667</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gae1e40c17b9c6ccd5650c2344b9b9ff30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae1e40c17b9c6ccd5650c2344b9b9ff30">&#9670;&nbsp;</a></span>NWNX_Creature_GetDomain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetDomain </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>creature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>class</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets one of creature's domains. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
+    <tr><td class="paramname">class</td><td>The class id from classes.2da. (Not class index 0-2) </td></tr>
+    <tr><td class="paramname">index</td><td>The first or second domain. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>Use GetDomain(). This will be removed in future NWNX releases. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01677">1677</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga962c102eec8e590fd97426911e2ecad2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga962c102eec8e590fd97426911e2ecad2">&#9670;&nbsp;</a></span>NWNX_Creature_SetDomain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetDomain </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>creature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>class</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>domain</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets one of creature's domains. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
+    <tr><td class="paramname">class</td><td>The class id from classes.2da. (Not class index 0-2) </td></tr>
+    <tr><td class="paramname">index</td><td>The first or second domain. </td></tr>
+    <tr><td class="paramname">domain</td><td>The domain constant to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01684">1684</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga0bdc0eedeefea972e246036481446485"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0bdc0eedeefea972e246036481446485">&#9670;&nbsp;</a></span>NWNX_Creature_GetSpecialization()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetSpecialization </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>creature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>class</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the creature's specialist school. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
+    <tr><td class="paramname">class</td><td>The class id from classes.2da. (Not class index 0-2) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>Use GetSpecialization(). This will be removed in future NWNX releases. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01696">1696</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gab7511205cd5bb49971a55381624eb98b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab7511205cd5bb49971a55381624eb98b">&#9670;&nbsp;</a></span>NWNX_Creature_SetSpecialization()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetSpecialization </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>creature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>class</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>school</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets creature's specialist school. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
+    <tr><td class="paramname">class</td><td>The class id from classes.2da. (Not class index 0-2) </td></tr>
+    <tr><td class="paramname">school</td><td>The school constant. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01703">1703</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gaadaf23cf6ae1c20254f13d01e61a0a0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaadaf23cf6ae1c20254f13d01e61a0a0b">&#9670;&nbsp;</a></span>NWNX_Creature_SetFaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetFaction </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nFactionId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets oCreatures faction to be the faction with id nFactionId. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The creature. </td></tr>
+    <tr><td class="paramname">nFactionId</td><td>The faction id we want the creature to join. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01714">1714</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga6a2c379a352686d151ecea19fe768844"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6a2c379a352686d151ecea19fe768844">&#9670;&nbsp;</a></span>NWNX_Creature_GetFaction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetFaction </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the faction id from oCreature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>the creature we wish to query against </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>faction id as an integer, -1 when used against invalid creature or invalid object. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01722">1722</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga43289d7f208dbe759b856d1f4757dc2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga43289d7f208dbe759b856d1f4757dc2e">&#9670;&nbsp;</a></span>NWNX_Creature_GetFlatFooted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetFlatFooted </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get whether a creature is flat-footed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The creature object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if the creature is flat-footed. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01730">1730</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga69a3585f503e30907380f440f95860ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga69a3585f503e30907380f440f95860ec">&#9670;&nbsp;</a></span>NWNX_Creature_SerializeQuickbar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string NWNX_Creature_SerializeQuickbar </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Serialize oCreature's quickbar to a base64 string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The creature. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A base64 string representation of oCreature's quickbar. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01738">1738</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gab71f0c54c88e6c54bfdb025c67a5aa44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab71f0c54c88e6c54bfdb025c67a5aa44">&#9670;&nbsp;</a></span>NWNX_Creature_DeserializeQuickbar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_DeserializeQuickbar </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>sSerializedQuickbar</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deserialize sSerializedQuickbar for oCreature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The creature. </td></tr>
+    <tr><td class="paramname">sSerializedQuickbar</td><td>A base64 string of a quickbar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE on success </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01748">1748</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga007d581a39d037dce04fdfa034427efd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga007d581a39d037dce04fdfa034427efd">&#9670;&nbsp;</a></span>NWNX_Creature_SetCasterLevelModifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetCasterLevelModifier </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nClass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nModifier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bPersist</em> = <code>FALSE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets a caster level modifier for oCreature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>the target creature </td></tr>
+    <tr><td class="paramname">nClass</td><td>the class that this modifier will apply to </td></tr>
+    <tr><td class="paramname">nModifier</td><td>the modifier to apply </td></tr>
+    <tr><td class="paramname">bPersist</td><td>whether the modifier should be persisted to the .bic file if applicable </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01759">1759</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gab29a65c34e82a3f565551a6d706179db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab29a65c34e82a3f565551a6d706179db">&#9670;&nbsp;</a></span>NWNX_Creature_GetCasterLevelModifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetCasterLevelModifier </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nClass</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current caster level modifier for oCreature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>the target creature </td></tr>
+    <tr><td class="paramname">nClass</td><td>the creature caster class </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current caster level modifier for the creature </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01771">1771</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gab4b96e16f98d1b88fe6a3484716537e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab4b96e16f98d1b88fe6a3484716537e1">&#9670;&nbsp;</a></span>NWNX_Creature_SetCasterLevelOverride()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetCasterLevelOverride </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nClass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nCasterLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bPersist</em> = <code>FALSE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets a caster level override for oCreature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>the target creature </td></tr>
+    <tr><td class="paramname">nClass</td><td>the class that this modifier will apply to </td></tr>
+    <tr><td class="paramname">nCasterLevel</td><td>the caster level override to apply </td></tr>
+    <tr><td class="paramname">bPersist</td><td>whether the override should be persisted to the .bic file if applicable </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01782">1782</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga9afdcbf720d4299a3ecb85c15675c170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9afdcbf720d4299a3ecb85c15675c170">&#9670;&nbsp;</a></span>NWNX_Creature_GetCasterLevelOverride()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetCasterLevelOverride </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nClass</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current caster level override for oCreature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>the target creature </td></tr>
+    <tr><td class="paramname">nClass</td><td>the creature caster class </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current caster level override for the creature or -1 if not set </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01794">1794</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga1050f97a636758c1a4c74c058c688aa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1050f97a636758c1a4c74c058c688aa5">&#9670;&nbsp;</a></span>NWNX_Creature_JumpToLimbo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_JumpToLimbo </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Move a creature to limbo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The creature object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01805">1805</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga3ddf72fb0099eeac9e33141ea911deb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3ddf72fb0099eeac9e33141ea911deb0">&#9670;&nbsp;</a></span>NWNX_Creature_SetCriticalMultiplierModifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetCriticalMultiplierModifier </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nModifier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nHand</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bPersist</em> = <code>FALSE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the critical hit multiplier modifier for the creature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature </td></tr>
+    <tr><td class="paramname">nModifier</td><td>The modifier to apply </td></tr>
+    <tr><td class="paramname">nHand</td><td>0 for all attacks, 1 for Mainhand, 2 for Offhand </td></tr>
+    <tr><td class="paramname">bPersist</td><td>Whether the modifier should persist to .bic file if applicable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Persistence is activated each server reset by first use of either 'SetCriticalMultiplier*' functions. Recommended to trigger on a dummy target OnModuleLoad to enable persistence. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01812">1812</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga75516a1c64d50a6192f21031400f87c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga75516a1c64d50a6192f21031400f87c0">&#9670;&nbsp;</a></span>NWNX_Creature_GetCriticalMultiplierModifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetCriticalMultiplierModifier </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nHand</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the critical hit multiplier modifier for the Creature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature </td></tr>
+    <tr><td class="paramname">nHand</td><td>0 for all attacks, 1 for Mainhand, 2 for Offhand </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current critical hit multiplier modifier for the creature </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01824">1824</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gadf59e261ec68cdb725951456e5ea8936"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadf59e261ec68cdb725951456e5ea8936">&#9670;&nbsp;</a></span>NWNX_Creature_SetCriticalMultiplierOverride()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetCriticalMultiplierOverride </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nOverride</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nHand</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bPersist</em> = <code>FALSE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the critical hit multiplier override for the creature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature </td></tr>
+    <tr><td class="paramname">nOverride</td><td>The override value to apply. -1 to clear override. </td></tr>
+    <tr><td class="paramname">nHand</td><td>0 for all attacks, 1 for Mainhand, 2 for Offhand </td></tr>
+    <tr><td class="paramname">bPersist</td><td>whether the modifier should be persisted to the .bic file if applicable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Persistence is activated each server reset by first use of either 'SetCriticalMultiplier*' functions. Recommended to trigger on a dummy target OnModuleLoad to enable persistence. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01835">1835</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga0885ae77421d7f3290578f4a32a5f9f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0885ae77421d7f3290578f4a32a5f9f1">&#9670;&nbsp;</a></span>NWNX_Creature_GetCriticalMultiplierOverride()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetCriticalMultiplierOverride </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nHand</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the critical hit multiplier override for the Creature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature </td></tr>
+    <tr><td class="paramname">nHand</td><td>0 for all attacks, 1 for Mainhand, 2 for Offhand </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current critical hit multiplier override for the creature. No override == -1 </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01847">1847</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gae29537af98f07a44b68aaefe70023494"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae29537af98f07a44b68aaefe70023494">&#9670;&nbsp;</a></span>NWNX_Creature_SetCriticalRangeModifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetCriticalRangeModifier </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nModifier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nHand</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bPersist</em> = <code>FALSE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the critical hit range modifier for the creature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature </td></tr>
+    <tr><td class="paramname">nModifier</td><td>The modifier to apply. Positive modifiers reduce critical chance. (I.e. From 18-20, a +1 results in crit range of 19-20) </td></tr>
+    <tr><td class="paramname">nHand</td><td>0 for all attacks, 1 for Mainhand, 2 for Offhand </td></tr>
+    <tr><td class="paramname">bPersist</td><td>whether the modifier should be persisted to the .bic file if applicable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Persistence is activated each server reset by first use of either 'SetCriticalRange*' functions. Recommended to trigger on a dummy target OnModuleLoad to enable persistence. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01858">1858</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gae3e5766823787c9e848bf6925e9cf313"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae3e5766823787c9e848bf6925e9cf313">&#9670;&nbsp;</a></span>NWNX_Creature_GetCriticalRangeModifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetCriticalRangeModifier </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nHand</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the critical hit range modifier for the creature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature </td></tr>
+    <tr><td class="paramname">nHand</td><td>0 for all attacks, 1 for Mainhand, 2 for Offhand </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current critical hit range modifier for the creature </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01870">1870</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gad408cb931491c5cf15de7f584d3b5d70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad408cb931491c5cf15de7f584d3b5d70">&#9670;&nbsp;</a></span>NWNX_Creature_SetCriticalRangeOverride()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetCriticalRangeOverride </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nOverride</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nHand</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bPersist</em> = <code>FALSE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the critical hit range Override for the creature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature </td></tr>
+    <tr><td class="paramname">nOverride</td><td>The new minimum roll to crit. i.e nOverride of 15 results in crit range of 15-20. -1 to clear override. </td></tr>
+    <tr><td class="paramname">nHand</td><td>0 for all attacks, 1 for Mainhand, 2 for Offhand </td></tr>
+    <tr><td class="paramname">bPersist</td><td>whether the modifier should be persisted to the .bic file if applicable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Persistence is activated each server reset by first use of either 'SetCriticalRange*' functions. Recommended to trigger on a dummy target OnModuleLoad to enable persistence. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01881">1881</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="gaf3a3048abd469980487c640d2c9d1877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf3a3048abd469980487c640d2c9d1877">&#9670;&nbsp;</a></span>NWNX_Creature_GetCriticalRangeOverride()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetCriticalRangeOverride </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nHand</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the critical hit range Override for the creature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature </td></tr>
+    <tr><td class="paramname">nHand</td><td>0 for all attacks, 1 for Mainhand, 2 for Offhand </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current critical hit range override for the creature. No override == -1. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01893">1893</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga2d409d9021d548809df96419085ae480"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2d409d9021d548809df96419085ae480">&#9670;&nbsp;</a></span>NWNX_Creature_AddAssociate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_AddAssociate </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oAssociate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nAssociateType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add oAssociate as nAssociateType to oCreature. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Only basic checks are done so care must be taken when using this function </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The creature to add oAssociate to </td></tr>
+    <tr><td class="paramname">oAssociate</td><td>The associate, must be a NPC </td></tr>
+    <tr><td class="paramname">nAssociateType</td><td>The associate type, one of ASSOCIATE_TYPE_*, except _NONE </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01904">1904</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga21360c24d3e29125d4691571f72a9f6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga21360c24d3e29125d4691571f72a9f6d">&#9670;&nbsp;</a></span>NWNX_Creature_SetEffectIconFlashing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetEffectIconFlashing </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nIconId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bFlashing</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set whether an effect icon is flashing or not. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature. </td></tr>
+    <tr><td class="paramname">nIconId</td><td>The icon id, see effecticons.2da. </td></tr>
+    <tr><td class="paramname">bFlashing</td><td>TRUE for flashing, FALSE for not flashing. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01915">1915</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga445a30a2f40834a69ab0771d084097de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga445a30a2f40834a69ab0771d084097de">&#9670;&nbsp;</a></span>NWNX_Creature_OverrideDamageLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_OverrideDamageLevel </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nDamageLevel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Override the damage level of oCreature. </p>
+<dl class="section note"><dt>Note</dt><dd>Damage levels are the damage state under a creature's name, for example: 'Near Death' </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature. </td></tr>
+    <tr><td class="paramname">nDamageLevel</td><td>A damage level, see damagelevels.2da. Allowed values: 0-255 or -1 to remove the override. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01925">1925</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga0e15e53492fb6b92b72a56887688ada2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0e15e53492fb6b92b72a56887688ada2">&#9670;&nbsp;</a></span>NWNX_Creature_SetEncounter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void NWNX_Creature_SetEncounter </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oEncounter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the encounter source of oCreature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature. </td></tr>
+    <tr><td class="paramname">oEncounter</td><td>The source encounter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01934">1934</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga9afd7b8b548d719351fb63ce1eb99293"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9afd7b8b548d719351fb63ce1eb99293">&#9670;&nbsp;</a></span>NWNX_Creature_GetEncounter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">object NWNX_Creature_GetEncounter </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the encounter source of oCreature. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The encounter, OBJECT_INVALID if not part of an encounter or on error </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01943">1943</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga3dbffac4654be2a32707775255e39c15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3dbffac4654be2a32707775255e39c15">&#9670;&nbsp;</a></span>NWNX_Creature_GetIsBartering()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_Creature_GetIsBartering </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get if oCreature is currently bartering. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The target creature. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if oCreature is bartering, FALSE if not or on error. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__creature_8nss_source.html#l01953">1953</a> of file <a class="el" href="nwnx__creature_8nss_source.html">nwnx_creature.nss</a>.</p>
 
 </div>
 </div>
@@ -4580,7 +5707,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Tue Dec 31 2019 02:31:04 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Fri Aug 28 2020 03:18:03 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16.
 					<a href="../">Light version</a>
 				</li>

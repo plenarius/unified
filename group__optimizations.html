@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=9"/>
 		<meta name="generator" content="Doxygen 1.8.16"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>NWNX:EE: readme</title>
+		<title>NWNX:EE: Optimizations</title>
                 <link href="logo-transparent.png" rel="shortcut icon" type="image/x-icon">
                 <link href="logo-transparent.png" rel="apple-touch-icon-precomposed">
 		<link href="tabs.css" rel="stylesheet" type="text/css"/>
@@ -39,7 +39,7 @@
 						<td id="projectlogo"><img width="80" height="74" alt="Logo" src="logo-transparent.png"/></td>
 						<td id="projectalign" style="padding-left: 0.5em;">
 							<div id="projectname">NWNX:EE
-								&#160;<span id="projectnumber">8193.5</span>
+								&#160;<span id="projectnumber">8193.14</span>
 							</div>
 						</td>
 						<td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('tweaks.html','');});
+$(document).ready(function(){initNavTree('group__optimizations.html','');});
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -99,39 +99,32 @@ $(document).ready(function(){initNavTree('tweaks.html','');});
 </iframe>
 </div>
 
-<div class="PageDoc"><div class="header">
+<div class="header">
   <div class="headertitle">
-<div class="title">readme </div>  </div>
+<div class="title">Optimizations</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Tweaks stuff. See below.</p>
-<h2><a class="anchor" id="autotoc_md271"></a>
+
+
+<h3><a id="optimizations"></a>Readme</h3><div class="textblock">Game optimizations. Improves performance of various game elements.<h2><a class="anchor" id="autotoc_md228"></a>
 Environment Variables</h2>
-<ul>
-<li><code>NWNX_TWEAKS_HIDE_CLASSES_ON_CHAR_LIST</code>: true or false</li>
-<li><code>NWNX_TWEAKS_PLAYER_DYING_HP_LIMIT</code>: Between 0 and -127</li>
-<li><code>NWNX_TWEAKS_DISABLE_PAUSE</code>: true or false</li>
-<li><code>NWNX_TWEAKS_DISABLE_QUICKSAVE</code>: true or false</li>
-<li><code>NWNX_TWEAKS_COMPARE_VARIABLES_WHEN_MERGING</code>: true or false</li>
-<li><code>NWNX_TWEAKS_PARRY_ALL_ATTACKS</code>: true or false</li>
-<li><code>NWNX_TWEAKS_SNEAK_ATTACK_IGNORE_CRIT_IMMUNITY</code>: true or false</li>
-<li><code>NWNX_TWEAKS_PRESERVE_DEPLETED_ITEMS</code>: true or false</li>
-<li><code>NWNX_TWEAKS_DISABLE_SHADOWS</code>: true or false</li>
-<li><code>NWNX_TWEAKS_HIDE_DMS_ON_CHAR_LIST</code>: true or false</li>
-<li><code>NWNX_TWEAKS_DISABLE_MONK_ABILITIES_WHEN_POLYMORPHED</code>: true or false</li>
-<li><code>NWNX_TWEAKS_STRINGTOINT_BASE_TO_AUTO</code>: true or false</li>
-<li><code>NWNX_TWEAKS_DEAD_CREATURES_TRIGGER_ON_AREA_EXIT</code>: true or false</li>
-<li><code>NWNX_TWEAKS_PRESERVE_ACTIONS_ON_DM_POSSESS</code>: true or false</li>
-<li><code>NWNX_TWEAKS_FIX_GREATER_SANCTUARY_BUG</code>: true or false </li>
-</ul>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Variable Name  </th><th class="markdownTableHeadCenter">Value  </th><th class="markdownTableHeadNone">Notes   </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_OPTIMIZATIONS_ASYNC_LOG_FLUSH</code>  </td><td class="markdownTableBodyCenter">true/false  </td><td class="markdownTableBodyNone">Flushes the game log on an async thread, potentially improving performance   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_OPTIMIZATIONS_GAME_OBJECT_LOOKUP</code>  </td><td class="markdownTableBodyCenter">true/false  </td><td class="markdownTableBodyNone">Optimizes object lookup code, improving performance   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_OPTIMIZATIONS_OBJECT_TAG_LOOKUP</code>  </td><td class="markdownTableBodyCenter">true/false  </td><td class="markdownTableBodyNone">Optimizes GetObjectByTag() lookup code, improving performance   </td></tr>
+</table>
 </div></div><!-- contents -->
-</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Tue Dec 31 2019 02:31:03 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Fri Aug 28 2020 03:18:02 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16.
 					<a href="dark/">Dark version</a>
 				</li>

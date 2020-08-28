@@ -39,7 +39,7 @@
 						<td id="projectlogo"><img width="80" height="74" alt="Logo" src="logo-transparent.png"/></td>
 						<td id="projectalign" style="padding-left: 0.5em;">
 							<div id="projectname">NWNX:EE
-								&#160;<span id="projectnumber">8193.5</span>
+								&#160;<span id="projectnumber">8193.14</span>
 							</div>
 						</td>
 						<td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -195,12 +195,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ga28ba5d8f657c920be0ec69e2334fa74b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__area.html#ga28ba5d8f657c920be0ec69e2334fa74b">NWNX_Area_SetTileAnimationLoop</a> (object oArea, float fTileX, float fTileY, int nAnimLoop, int bEnabled)</td></tr>
 <tr class="memdesc:ga28ba5d8f657c920be0ec69e2334fa74b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the state of a tile animation loop.  <a href="group__area.html#ga28ba5d8f657c920be0ec69e2334fa74b">More...</a><br /></td></tr>
 <tr class="separator:ga28ba5d8f657c920be0ec69e2334fa74b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2db1fbde0d327c68f70f09081078c338"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__area.html#ga2db1fbde0d327c68f70f09081078c338">NWNX_Area_GetTileModelResRef</a> (object oArea, float fTileX, float fTileY)</td></tr>
+<tr class="memdesc:ga2db1fbde0d327c68f70f09081078c338"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of the tile model from any location.  <a href="group__area.html#ga2db1fbde0d327c68f70f09081078c338">More...</a><br /></td></tr>
+<tr class="separator:ga2db1fbde0d327c68f70f09081078c338"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaadd7e8c0aa2f77536fa499d38aca568d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__area.html#gaadd7e8c0aa2f77536fa499d38aca568d">NWNX_Area_TestDirectLine</a> (object oArea, float fStartX, float fStartY, float fEndX, float fEndY, float fPerSpace, float fHeight, int bIgnoreDoors=FALSE)</td></tr>
 <tr class="memdesc:gaadd7e8c0aa2f77536fa499d38aca568d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test to see if there's a direct, walkable line between two points in the area.  <a href="group__area.html#gaadd7e8c0aa2f77536fa499d38aca568d">More...</a><br /></td></tr>
 <tr class="separator:gaadd7e8c0aa2f77536fa499d38aca568d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga80b56688f11005ff2518228cf20d84bf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__area.html#ga80b56688f11005ff2518228cf20d84bf">NWNX_Area_GetMusicIsPlaying</a> (object oArea, int bBattleMusic=FALSE)</td></tr>
 <tr class="memdesc:ga80b56688f11005ff2518228cf20d84bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get if the area music is playing.  <a href="group__area.html#ga80b56688f11005ff2518228cf20d84bf">More...</a><br /></td></tr>
 <tr class="separator:ga80b56688f11005ff2518228cf20d84bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga70470c5fd872dd9204c486c04ed8f037"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__area.html#ga70470c5fd872dd9204c486c04ed8f037">NWNX_Area_CreateGenericTrigger</a> (object oArea, float fX, float fY, float fZ, string sTag=&quot;&quot;, float fSize=1.0f)</td></tr>
+<tr class="memdesc:ga70470c5fd872dd9204c486c04ed8f037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create and return a generic trigger (square shaped of specified size) at a location.  <a href="group__area.html#ga70470c5fd872dd9204c486c04ed8f037">More...</a><br /></td></tr>
+<tr class="separator:ga70470c5fd872dd9204c486c04ed8f037"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="gaa7e6831063235acdb013fdc5846d00a7"></a>
@@ -228,7 +234,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The player count for the area. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00215">215</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00228">228</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -257,7 +263,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The most recent creature to enter the area. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00225">225</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00238">238</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -285,7 +291,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00235">235</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00248">248</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -314,7 +320,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns the <a class="el" href="group__area.html#area_pvp">PVP Setting</a> for the area. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00245">245</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00258">258</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -353,7 +359,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00255">255</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00268">268</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -382,7 +388,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the Spot skill modifier for this area. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00264">264</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00277">277</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -422,7 +428,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__skillranks.html#ga98a356da26953e1b850c981ea52714e8" title="Sets a skill modifier for the area.">NWNX_SkillRanks_SetAreaModifier()</a> to change any skill modifier. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00274">274</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00287">287</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -451,7 +457,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value of the Listen skill modifier for this area. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00283">283</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00296">296</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -491,7 +497,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__skillranks.html#ga98a356da26953e1b850c981ea52714e8" title="Sets a skill modifier for the area.">NWNX_SkillRanks_SetAreaModifier()</a> to change any skill modifier. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00293">293</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00306">306</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -520,7 +526,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if resting is not allowed in area. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00302">302</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00315">315</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -559,7 +565,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00312">312</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00325">325</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -588,7 +594,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The wind power for the area. (0-2) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00321">321</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00334">334</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -627,7 +633,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00331">331</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00344">344</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -667,7 +673,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The percentage chance for the weather type. (0-100) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00340">340</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00353">353</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -713,7 +719,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00351">351</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00364">364</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -742,7 +748,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The fog clip distance. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00361">361</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00374">374</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -781,7 +787,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00371">371</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00384">384</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -810,7 +816,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The shadow opacity for the area. (0-100) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00380">380</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00393">393</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -849,7 +855,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00390">390</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00403">403</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -878,7 +884,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="group__area.html#area_daynight">Day Night Cycle Setting</a>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00400">400</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00413">413</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -917,7 +923,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00410">410</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00423">423</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -957,7 +963,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A FOG_COLOR_* or a custom value, -1 on error. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00419">419</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00432">432</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -1009,7 +1015,7 @@ Functions</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00430">430</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00443">443</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -1082,7 +1088,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group__object.html#ga3ba2a01f7ba3088280c122708bb0ba84" title="Set the geometry of a trigger with a list of vertex positions.">NWNX_Object_SetTriggerGeometry()</a> if you wish to draw the transition as something other than a square. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00440">440</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00453">453</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -1135,7 +1141,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if the loop is enabled. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00456">456</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00469">469</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -1195,7 +1201,52 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>Requires clients to re-enter the area for it to take effect </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00470">470</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00483">483</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga2db1fbde0d327c68f70f09081078c338"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2db1fbde0d327c68f70f09081078c338">&#9670;&nbsp;</a></span>NWNX_Area_GetTileModelResRef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string NWNX_Area_GetTileModelResRef </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oArea</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fTileX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fTileY</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the name of the tile model from any location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oArea</td><td>The area name. </td></tr>
+    <tr><td class="paramname">fTileX,fTileY</td><td>The coordinates of the tile. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00496">496</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -1281,7 +1332,7 @@ Functions</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00484">484</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00508">508</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -1321,7 +1372,73 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if music is playing </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00502">502</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00526">526</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga70470c5fd872dd9204c486c04ed8f037"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga70470c5fd872dd9204c486c04ed8f037">&#9670;&nbsp;</a></span>NWNX_Area_CreateGenericTrigger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">object NWNX_Area_CreateGenericTrigger </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oArea</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fZ</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>sTag</em> = <code>&quot;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fSize</em> = <code>1.0f</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create and return a generic trigger (square shaped of specified size) at a location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oArea</td><td>The area object. </td></tr>
+    <tr><td class="paramname">fX,fY,fZ</td><td>The position to create the trigger. </td></tr>
+    <tr><td class="paramname">sTag</td><td>If specified, the returned trigger will have this tag. </td></tr>
+    <tr><td class="paramname">fSize</td><td>The size of the square. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__object.html#ga3ba2a01f7ba3088280c122708bb0ba84" title="Set the geometry of a trigger with a list of vertex positions.">NWNX_Object_SetTriggerGeometry()</a> if you wish to draw the trigger as something other than a square. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__area_8nss_source.html#l00537">537</a> of file <a class="el" href="nwnx__area_8nss_source.html">nwnx_area.nss</a>.</p>
 
 </div>
 </div>
@@ -1556,7 +1673,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Tue Dec 31 2019 02:31:04 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Fri Aug 28 2020 03:18:03 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16.
 					<a href="../">Light version</a>
 				</li>

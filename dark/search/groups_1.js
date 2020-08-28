@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['chat_2888',['Chat',['../group__chat.html',1,'']]],
-  ['combat_20modes_2889',['Combat Modes',['../group__combatmodes.html',1,'']]],
-  ['creature_2890',['Creature',['../group__creature.html',1,'']]]
+  ['chat_3070',['Chat',['../group__chat.html',1,'']]],
+  ['combat_20modes_3071',['Combat Modes',['../group__combatmodes.html',1,'']]],
+  ['creature_3072',['Creature',['../group__creature.html',1,'']]]
 ];
