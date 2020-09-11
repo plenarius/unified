@@ -1,5 +1,17 @@
 var NAVTREEINDEX3 =
 {
+"group__damage.html#gaa93a1196b5b273c79c8e34972ccdd7cb":[0,8,8],
+"group__damage.html#gac2fbf4ab0070f31b5fde15a4afc29a99":[4,0,2,6,0,0,6],
+"group__damage.html#gac2fbf4ab0070f31b5fde15a4afc29a99":[0,8,11],
+"group__damage.html#gac9d174eaf11af9aa77da1e8b94db2224":[4,0,2,6,0,0,5],
+"group__damage.html#gac9d174eaf11af9aa77da1e8b94db2224":[0,8,10],
+"group__damage.html#gacc6c89fef62eceff37e865d7833a335c":[4,0,2,6,0,0,0],
+"group__damage.html#gacc6c89fef62eceff37e865d7833a335c":[0,8,5],
+"group__damage.html#gacccc7b28ff4fb40b556c26b28c46882b":[4,0,2,6,0,0,7],
+"group__data.html":[0,9],
+"group__data.html#data":[0,9,0],
+"group__data.html#ga1877305b2d71c97f2c34dbbed3815fdc":[4,0,2,7,0,0,32],
+"group__data.html#ga2c1be4315743deef32a6e15900ce1398":[4,0,2,7,0,0,37],
 "group__data.html#ga2c1be4315743deef32a6e15900ce1398":[0,9,20],
 "group__data.html#ga2ca35d8e218de2b91e8c67aae53a3d23":[4,0,2,7,0,0,36],
 "group__data.html#ga2ca35d8e218de2b91e8c67aae53a3d23":[0,9,19],
@@ -237,17 +249,5 @@ var NAVTREEINDEX3 =
 "group__encounter.html#gab4fb5b83a7852007af7714b3e6e33fd8":[4,0,2,12,0,0,6],
 "group__encounter.html#gac5518f02ee12132540934acfcd58c780":[0,14,10],
 "group__encounter.html#gac5518f02ee12132540934acfcd58c780":[4,0,2,12,0,0,7],
-"group__encounter.html#gac6953a870158522005e6638d872a6f6a":[0,14,5],
-"group__encounter.html#gac6953a870158522005e6638d872a6f6a":[4,0,2,12,0,0,2],
-"group__encounter.html#gac7f78fea14b6484c7e2700a6b1e3054d":[0,14,13],
-"group__encounter.html#gac7f78fea14b6484c7e2700a6b1e3054d":[4,0,2,12,0,0,10],
-"group__encounter.html#gad85333d88eb73973046fb706f02f6319":[0,14,7],
-"group__encounter.html#gad85333d88eb73973046fb706f02f6319":[4,0,2,12,0,0,4],
-"group__encounter.html#gae8357f2f4fc6a232aa95e351061b3d97":[0,14,15],
-"group__encounter.html#gae8357f2f4fc6a232aa95e351061b3d97":[4,0,2,12,0,0,12],
-"group__events.html":[0,15],
-"group__events.html#events":[0,15,0],
-"group__events.html#ga1f7aeeb1c0a8f4166b8d1dbefa521294":[0,15,2],
-"group__events.html#ga1f7aeeb1c0a8f4166b8d1dbefa521294":[4,0,2,13,0,0,0],
-"group__events.html#ga3dd3ccd8df389359c21d5ca3f681718b":[0,15,9]
+"group__encounter.html#gac6953a870158522005e6638d872a6f6a":[0,14,5]
 };

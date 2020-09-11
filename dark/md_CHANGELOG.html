@@ -116,6 +116,9 @@ Added</h2>
 <li>Events: added skippable PlayerDM Login/Logout events to DMActionEvents</li>
 <li>Events: added skippable RunScript and RunScriptChunk events to DebugEvents</li>
 <li>Events: added skippable RequestBuy/Sell events to StoreEvents</li>
+<li>Events: added skippable Heal events to new HealingEvents</li>
+<li>Tweaks: added <code>NWNX_TWEAKS_BLOCK_DM_SPAWNITEM</code> to block the usage of dm_spawnitem</li>
+<li>Weapon: added 'NWNX_WEAPON_GOOD_AIM_SLING' non-halfling sling users with the feat Good Aim gain an additional +1 AB as a halfling currently does. Note: Throwing weapons are already included in the base game</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md10"></a>
 New Plugins</h4>
@@ -123,21 +126,35 @@ New Plugins</h4>
 <h4><a class="anchor" id="autotoc_md11"></a>
 New NWScript Functions</h4>
 <ul>
+<li>Area: AddObjectToExclusionList()</li>
+<li>Area: RemoveObjectFromExclusionList()</li>
+<li>Area: ExportGIT()</li>
 <li>Creature: {Get|Set}Encounter()</li>
 <li>Creature: SetEffectIconFlashing()</li>
 <li>Creature: OverrideDamageLevel()</li>
 <li>Creature: GetIsBartering()</li>
+<li>Creature: {Get|Set}LastItemCasterLeve()</li>
+<li>Creature: GetArmorClassVersus()</li>
 <li>Effect: ReplaceEffect()</li>
 <li>Player: ToggleDM()</li>
+<li>ItemProperty: GetActiveProperty()</li>
+<li>Object: DoSpellImmunity()</li>
+<li>Object: DoSpellLevelAbsorption()</li>
 <li>Player: SetObjectMouseCursorOverride()</li>
 <li>Player: SetObjectHiliteColorOverride()</li>
+<li>Player: RemoveEffectFromTURD()</li>
+<li>Player: SetSpawnLocation()</li>
 <li>Util: GetWorldTime()</li>
+<li>Util: {Get|Set}ResourceOverride()</li>
+<li>Weapon: {Get|Set}OneHalfStrength()</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Changed</h2>
 <ul>
 <li>Effect: (Un)PackEffect now supports vector params</li>
 <li>Events: added a <code>RESULT</code> event data tag to LearnScroll in ItemEvents</li>
+<li>Weapon: SetWeapon****Feat functions may be called multiple times for the same weapon, associating a new feat each time</li>
+<li>Weapon: weapon feats defined in the 2da are no longer overridden by SetWeapon***Feat and will be used in addition to any set feats</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md13"></a>
 Deprecated</h2>
@@ -817,7 +834,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Mon Aug 31 2020 08:32:39 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Fri Sep 11 2020 18:30:55 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16.
 					<a href="../">Light version</a>
 				</li>
