@@ -140,6 +140,7 @@ New NWScript Functions</h4>
 <li>ItemProperty: GetActiveProperty()</li>
 <li>Object: DoSpellImmunity()</li>
 <li>Object: DoSpellLevelAbsorption()</li>
+<li>Object: SetHasInventory()</li>
 <li>Player: SetObjectMouseCursorOverride()</li>
 <li>Player: SetObjectHiliteColorOverride()</li>
 <li>Player: RemoveEffectFromTURD()</li>
@@ -151,6 +152,7 @@ New NWScript Functions</h4>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Changed</h2>
 <ul>
+<li>Damage: damage event script now also triggered by damage to placeables</li>
 <li>Effect: (Un)PackEffect now supports vector params</li>
 <li>Events: added a <code>RESULT</code> event data tag to LearnScroll in ItemEvents</li>
 <li>Weapon: SetWeapon****Feat functions may be called multiple times for the same weapon, associating a new feat each time</li>
@@ -171,6 +173,7 @@ Removed</h2>
 <h2><a class="anchor" id="autotoc_md15"></a>
 Fixed</h2>
 <ul>
+<li>Administration: DeletePlayerCharacter() now deletes the TURD as well</li>
 <li>Creature: SetMovementRate() now properly reattaches the creature's legs when switching from NWNX_CREATURE_MOVEMENT_RATE_IMMOBILE to the other constants</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md16"></a>
@@ -834,7 +837,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Fri Sep 11 2020 18:30:53 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Sep 13 2020 16:27:19 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16.
 					<a href="dark/">Dark version</a>
 				</li>
