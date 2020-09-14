@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"group__weapon.html#gad6bf3d2ce2abfeb00c289345ff92a92a":[0,43,6],
+"group__weapon.html#gad6bf3d2ce2abfeb00c289345ff92a92a":[4,0,2,43,0,0,4],
 "group__weapon.html#gad8f1eb5b7d131d39144ff34de3990d3a":[0,43,5],
 "group__weapon.html#gad8f1eb5b7d131d39144ff34de3990d3a":[4,0,2,43,0,0,3],
 "group__weapon.html#gae42853a0c8a7721686bb406b3965d7ff":[0,43,25],
@@ -11,14 +13,14 @@ var NAVTREEINDEX8 =
 "group__weapon.html#gafe32575ade4d17e4a9daa9017e439ad0":[0,43,24],
 "group__weapon.html#gafe32575ade4d17e4a9daa9017e439ad0":[4,0,2,43,0,0,23],
 "group__webhook.html":[0,44],
-"group__webhook.html#autotoc_md349":[55],
-"group__webhook.html#autotoc_md350":[56],
-"group__webhook.html#autotoc_md351":[7],
-"group__webhook.html#autotoc_md352":[8],
-"group__webhook.html#autotoc_md353":[9],
-"group__webhook.html#autotoc_md354":[10],
-"group__webhook.html#ga619daabd1f5b9034e0b9326524a0562d":[0,44,4],
+"group__webhook.html#autotoc_md350":[55],
+"group__webhook.html#autotoc_md351":[56],
+"group__webhook.html#autotoc_md352":[7],
+"group__webhook.html#autotoc_md353":[8],
+"group__webhook.html#autotoc_md354":[9],
+"group__webhook.html#autotoc_md355":[10],
 "group__webhook.html#ga619daabd1f5b9034e0b9326524a0562d":[4,0,2,44,0,0,0],
+"group__webhook.html#ga619daabd1f5b9034e0b9326524a0562d":[0,44,4],
 "group__webhook.html#ga8030e0fe61e40060c60246dd1cc2f5cc":[0,44,5],
 "group__webhook.html#ga8030e0fe61e40060c60246dd1cc2f5cc":[4,0,2,44,0,0,1],
 "group__webhook.html#ga93cfa8d03c5e936385aeb34f9983c254":[4,0,2,44,0,0,2],
@@ -81,7 +83,7 @@ var NAVTREEINDEX8 =
 "nwnx__object_8nss.html":[4,0,2,23,0,0],
 "nwnx__object_8nss_source.html":[4,0,2,23,0,0],
 "nwnx__player_8nss.html":[4,0,2,25,0,0],
-"nwnx__player_8nss.html#a298b9ee34689c819b0b7a374319dccf4":[4,0,2,25,0,0,43],
+"nwnx__player_8nss.html#a298b9ee34689c819b0b7a374319dccf4":[4,0,2,25,0,0,44],
 "nwnx__player_8nss_source.html":[4,0,2,25,0,0],
 "nwnx__player__qbs_8nss.html":[4,0,2,25,0,1],
 "nwnx__player__qbs_8nss_source.html":[4,0,2,25,0,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "nwnx__redis_8nss.html#ab465dea5758088fc71a98ff67131879a":[4,0,2,28,0,0,199],
 "nwnx__redis_8nss.html#ab4ae8b43bb87cbaef77a812ed3724b93":[4,0,2,28,0,0,163],
 "nwnx__redis_8nss.html#ab4f168456f285b5b657bb8f10939d33a":[4,0,2,28,0,0,30],
-"nwnx__redis_8nss.html#ab63a468b58ee33f92c376b811175dacd":[4,0,2,28,0,0,133],
-"nwnx__redis_8nss.html#ab75df05bcc332083ca4990e838c04b8a":[4,0,2,28,0,0,56],
-"nwnx__redis_8nss.html#ab7a83f074cd09b283f166f56750c138e":[4,0,2,28,0,0,185]
+"nwnx__redis_8nss.html#ab63a468b58ee33f92c376b811175dacd":[4,0,2,28,0,0,133]
 };

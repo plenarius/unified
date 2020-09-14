@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['randomkey_2571',['RANDOMKEY',['../nwnx__redis__short_8nss.html#ae5c145cbc18888cb1ca84f3e56d9e930',1,'nwnx_redis_short.nss']]],
-  ['readonly_2572',['READONLY',['../nwnx__redis__short_8nss.html#a1cd5be519900d2093a0ade3c72c65755',1,'nwnx_redis_short.nss']]],
-  ['readwrite_2573',['READWRITE',['../nwnx__redis__short_8nss.html#aadfecc2fa5ec610fc4b48eb71b40c447',1,'nwnx_redis_short.nss']]],
-  ['rename_2574',['RENAME',['../nwnx__redis__short_8nss.html#aeb7b0168798b40a181627f3c73faf968',1,'nwnx_redis_short.nss']]],
-  ['renamenx_2575',['RENAMENX',['../nwnx__redis__short_8nss.html#a48bc3dd0cf53183a19c95819ea66c711',1,'nwnx_redis_short.nss']]],
-  ['replicaof_2576',['REPLICAOF',['../nwnx__redis__short_8nss.html#aa1010aae13313986e467fd73fd7752e8',1,'nwnx_redis_short.nss']]],
-  ['restore_2577',['RESTORE',['../nwnx__redis__short_8nss.html#a88ccc5f862e19922a06b30d6044e585b',1,'nwnx_redis_short.nss']]],
-  ['role_2578',['ROLE',['../nwnx__redis__short_8nss.html#ac0ef22868eecadf2745bf78e064d6369',1,'nwnx_redis_short.nss']]],
-  ['rpop_2579',['RPOP',['../nwnx__redis__short_8nss.html#ad8c863bcf0dbf8b63fd995ccd88fcd50',1,'nwnx_redis_short.nss']]],
-  ['rpoplpush_2580',['RPOPLPUSH',['../nwnx__redis__short_8nss.html#ace59944b441332acf8f17224d6062438',1,'nwnx_redis_short.nss']]],
-  ['rpush_2581',['RPUSH',['../nwnx__redis__short_8nss.html#af89de605c6eecc1614b0b0d699a88092',1,'nwnx_redis_short.nss']]],
-  ['rpushx_2582',['RPUSHX',['../nwnx__redis__short_8nss.html#a7550a241db2886f7e122a77a41f4739c',1,'nwnx_redis_short.nss']]]
+  ['randomkey_2573',['RANDOMKEY',['../nwnx__redis__short_8nss.html#ae5c145cbc18888cb1ca84f3e56d9e930',1,'nwnx_redis_short.nss']]],
+  ['readonly_2574',['READONLY',['../nwnx__redis__short_8nss.html#a1cd5be519900d2093a0ade3c72c65755',1,'nwnx_redis_short.nss']]],
+  ['readwrite_2575',['READWRITE',['../nwnx__redis__short_8nss.html#aadfecc2fa5ec610fc4b48eb71b40c447',1,'nwnx_redis_short.nss']]],
+  ['rename_2576',['RENAME',['../nwnx__redis__short_8nss.html#aeb7b0168798b40a181627f3c73faf968',1,'nwnx_redis_short.nss']]],
+  ['renamenx_2577',['RENAMENX',['../nwnx__redis__short_8nss.html#a48bc3dd0cf53183a19c95819ea66c711',1,'nwnx_redis_short.nss']]],
+  ['replicaof_2578',['REPLICAOF',['../nwnx__redis__short_8nss.html#aa1010aae13313986e467fd73fd7752e8',1,'nwnx_redis_short.nss']]],
+  ['restore_2579',['RESTORE',['../nwnx__redis__short_8nss.html#a88ccc5f862e19922a06b30d6044e585b',1,'nwnx_redis_short.nss']]],
+  ['role_2580',['ROLE',['../nwnx__redis__short_8nss.html#ac0ef22868eecadf2745bf78e064d6369',1,'nwnx_redis_short.nss']]],
+  ['rpop_2581',['RPOP',['../nwnx__redis__short_8nss.html#ad8c863bcf0dbf8b63fd995ccd88fcd50',1,'nwnx_redis_short.nss']]],
+  ['rpoplpush_2582',['RPOPLPUSH',['../nwnx__redis__short_8nss.html#ace59944b441332acf8f17224d6062438',1,'nwnx_redis_short.nss']]],
+  ['rpush_2583',['RPUSH',['../nwnx__redis__short_8nss.html#af89de605c6eecc1614b0b0d699a88092',1,'nwnx_redis_short.nss']]],
+  ['rpushx_2584',['RPUSHX',['../nwnx__redis__short_8nss.html#a7550a241db2886f7e122a77a41f4739c',1,'nwnx_redis_short.nss']]]
 ];
