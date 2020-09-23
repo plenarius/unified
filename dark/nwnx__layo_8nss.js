@@ -5,8 +5,6 @@ var nwnx__layo_8nss =
     [ "NWNX_Layonara_SetDuelistCannyDefense", "group__layonara.html#ga2da0493bfd3a51a51a2e7dcc0ca291a4", null ],
     [ "NWNX_Layonara_SetDuelistGrace", "group__layonara.html#ga183ce7089170ad8c2a087cd1e6e51e6f", null ],
     [ "NWNX_Layonara_SetDuelistElaborateParry", "group__layonara.html#gabad24846d29c51a9853c5eb6a514e325", null ],
-    [ "NWNX_Layonara_SetSpellswordIgnoreSpellFailure", "group__layonara.html#ga5e9e76e5835a1bcf7608b4d211ce2a82", null ],
-    [ "NWNX_Layonara_SetUndeadSlayerImmunity", "group__layonara.html#ga68aa55e0db745737720a5fc8a203f133", null ],
     [ "NWNX_Layonara_SetSubraceDayEffects", "group__layonara.html#ga9f5ba2b54d0f419879889177480fc22e", null ],
     [ "NWNX_Layonara_ApplyRune", "group__layonara.html#ga5d1d5c67b08b1b9b86c2714230e82edc", null ],
     [ "NWNX_Layonara_CombineRunes", "group__layonara.html#ga6d227af00d8065931ebb5e047569f90f", null ],
