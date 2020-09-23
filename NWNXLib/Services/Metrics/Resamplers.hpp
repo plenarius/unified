@@ -4,9 +4,7 @@
 #include <functional>
 #include <vector>
 
-namespace NWNXLib {
-
-namespace Services {
+namespace NWNXLib::Services {
 
 struct Resamplers
 {
@@ -28,7 +26,6 @@ public:
     template <typename T>
     static std::vector<MetricData> Max(std::vector<MetricData>&& data);
 
-    template <typename T>
     static std::vector<MetricData> Discard(std::vector<MetricData>&& data);
 
     template <typename T>
@@ -70,7 +67,5 @@ public:
 };
 
 #include "Services/Metrics/Resamplers.inl"
-
-}
 
 }

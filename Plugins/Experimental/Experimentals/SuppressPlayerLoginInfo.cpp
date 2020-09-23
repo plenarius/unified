@@ -13,43 +13,46 @@ namespace Experimental {
 using namespace NWNXLib;
 using namespace NWNXLib::API;
 
-NWNXLib::Hooking::FunctionHook* m_SendServerToPlayerPlayerList_AddHook;
-NWNXLib::Hooking::FunctionHook* m_SendServerToPlayerPlayerList_AllHook;
-NWNXLib::Hooking::FunctionHook* m_SendServerToPlayerPlayerList_DeleteHook;
+static NWNXLib::Hooking::FunctionHook* s_SendServerToPlayerPlayerList_AddHook;
+static NWNXLib::Hooking::FunctionHook* s_SendServerToPlayerPlayerList_AllHook;
+static NWNXLib::Hooking::FunctionHook* s_SendServerToPlayerPlayerList_DeleteHook;
 
-SuppressPlayerLoginInfo::SuppressPlayerLoginInfo(ViewPtr<Services::HooksProxy> hooker)
+SuppressPlayerLoginInfo::SuppressPlayerLoginInfo(Services::HooksProxy* hooker)
 {
-    hooker->RequestExclusiveHook<API::Functions::CNWSMessage__SendServerToPlayerPlayerList_Add, int32_t>(&SendServerToPlayerPlayerList_AddHook);
-    m_SendServerToPlayerPlayerList_AddHook = hooker->FindHookByAddress(API::Functions::CNWSMessage__SendServerToPlayerPlayerList_Add);
+    s_SendServerToPlayerPlayerList_AddHook = hooker->RequestExclusiveHook
+        <API::Functions::_ZN11CNWSMessage32SendServerToPlayerPlayerList_AddEjP10CNWSPlayer, int32_t>
+        (&SendServerToPlayerPlayerList_AddHook);
 
-    hooker->RequestExclusiveHook<API::Functions::CNWSMessage__SendServerToPlayerPlayerList_All, int32_t>(&SendServerToPlayerPlayerList_AllHook);
-    m_SendServerToPlayerPlayerList_AllHook = hooker->FindHookByAddress(API::Functions::CNWSMessage__SendServerToPlayerPlayerList_All);
+    s_SendServerToPlayerPlayerList_AllHook = hooker->RequestExclusiveHook
+        <API::Functions::_ZN11CNWSMessage32SendServerToPlayerPlayerList_AllEP10CNWSPlayer, int32_t>
+        (&SendServerToPlayerPlayerList_AllHook);
 
-    hooker->RequestExclusiveHook<API::Functions::CNWSMessage__SendServerToPlayerPlayerList_Delete, int32_t>(&SendServerToPlayerPlayerList_DeleteHook);
-    m_SendServerToPlayerPlayerList_DeleteHook = hooker->FindHookByAddress(API::Functions::CNWSMessage__SendServerToPlayerPlayerList_Delete);
+    s_SendServerToPlayerPlayerList_DeleteHook = hooker->RequestExclusiveHook
+        <API::Functions::_ZN11CNWSMessage35SendServerToPlayerPlayerList_DeleteEjP10CNWSPlayer, int32_t>
+        (&SendServerToPlayerPlayerList_DeleteHook);
 
-    hooker->RequestExclusiveHook<API::Functions::CNWSMessage__HandlePlayerToServerPlayModuleCharacterList_Start>
+    hooker->RequestExclusiveHook<API::Functions::_ZN11CNWSMessage49HandlePlayerToServerPlayModuleCharacterList_StartEP10CNWSPlayer>
         (&HandlePlayerToServerPlayModuleCharacterList_StartHook);
 }
 
 int32_t SuppressPlayerLoginInfo::SendServerToPlayerPlayerList_AddHook(CNWSMessage *pThis, uint32_t nPlayerId, CNWSPlayer *pNewPlayer)
 {
     return nPlayerId == Constants::PLAYERID_ALL_GAMEMASTERS ?
-        m_SendServerToPlayerPlayerList_AddHook->CallOriginal<int32_t>(pThis, nPlayerId, pNewPlayer) :
+        s_SendServerToPlayerPlayerList_AddHook->CallOriginal<int32_t>(pThis, nPlayerId, pNewPlayer) :
         false;
 }
 
 int32_t SuppressPlayerLoginInfo::SendServerToPlayerPlayerList_AllHook(CNWSMessage *pThis, CNWSPlayer *pPlayer)
 {
     return pPlayer->m_nPlayerID == Constants::PLAYERID_ALL_GAMEMASTERS ?
-        m_SendServerToPlayerPlayerList_AllHook->CallOriginal<int32_t>(pThis, pPlayer) :
+        s_SendServerToPlayerPlayerList_AllHook->CallOriginal<int32_t>(pThis, pPlayer) :
         false;
 }
 
 int32_t SuppressPlayerLoginInfo::SendServerToPlayerPlayerList_DeleteHook(CNWSMessage *pThis, uint32_t nPlayerId, CNWSPlayer *pNewPlayer)
 {
     return nPlayerId == Constants::PLAYERID_ALL_GAMEMASTERS ?
-           m_SendServerToPlayerPlayerList_DeleteHook->CallOriginal<int32_t>(pThis, nPlayerId, pNewPlayer) :
+           s_SendServerToPlayerPlayerList_DeleteHook->CallOriginal<int32_t>(pThis, nPlayerId, pNewPlayer) :
            false;
 }
 int32_t SuppressPlayerLoginInfo::HandlePlayerToServerPlayModuleCharacterList_StartHook(

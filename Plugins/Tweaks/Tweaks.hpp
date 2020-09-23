@@ -16,11 +16,20 @@ class PreserveDepletedItems;
 class HideDMsOnCharList;
 class DisableMonkAbilitiesWhenPolymorphed;
 class StringToIntBaseToAuto;
+class DeadCreatureFiresOnAreaExit;
+class PreserveActionsOnDMPossess;
+class FixGreaterSanctuaryBug;
+class ItemChargesCost;
+class FixDispelEffectLevels;
+class AddPrestigeclassCasterLevels;
+class FixUnlimitedPotionsBug;
+class UnhardcodeShields;
+class BlockDMSpawnItem;
 
 class Tweaks : public NWNXLib::Plugin
 {
 public:
-    Tweaks(const Plugin::CreateParams& params);
+    Tweaks(NWNXLib::Services::ProxyServiceList* services);
     virtual ~Tweaks();
 
 private:
@@ -35,6 +44,15 @@ private:
     std::unique_ptr<HideDMsOnCharList> m_HideDMsOnCharList;
     std::unique_ptr<DisableMonkAbilitiesWhenPolymorphed> m_DisableMonkAbilitiesWhenPolymorphed;
     std::unique_ptr<StringToIntBaseToAuto> m_StringToIntBaseToAuto;
+    std::unique_ptr<DeadCreatureFiresOnAreaExit> m_DeadCreatureFiresOnAreaExit;
+    std::unique_ptr<PreserveActionsOnDMPossess> m_PreserveActionsOnDMPossess;
+    std::unique_ptr<FixGreaterSanctuaryBug> m_FixGreaterSanctuaryBug;
+    std::unique_ptr<ItemChargesCost> m_ItemChargesCost;
+    std::unique_ptr<FixDispelEffectLevels> m_FixDispelEffectLevels;
+    std::unique_ptr<AddPrestigeclassCasterLevels> m_AddPrestigeclassCasterLevels;
+    std::unique_ptr<FixUnlimitedPotionsBug> m_FixUnlimitedPotionsBug;
+    std::unique_ptr<UnhardcodeShields> m_UnhardcodeShields;
+    std::unique_ptr<BlockDMSpawnItem> m_BlockDMSpawnItem;
 };
 
 }

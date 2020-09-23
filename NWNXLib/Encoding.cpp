@@ -33,7 +33,7 @@ void SetDefaultLocale(const std::string& locale)
         SetDefaultLocale(Russian);
     else
     {
-        LOG_WARNING("Unknown locale %s", locale.c_str());
+        LOG_WARNING("Unknown locale %s", locale);
         SetDefaultLocale(Default);
     }
 }
@@ -83,7 +83,7 @@ std::string ToUTF8(const char *str, Locale locale)
             }
         }
     }
-    LOG_DEBUG("ToUTF: \"%s\" -> \"%s\"", tmp, utf8.c_str());
+    LOG_DEBUG("ToUTF: \"%s\" -> \"%s\"", tmp, utf8);
     return utf8;
 }
 
@@ -149,7 +149,7 @@ std::string FromUTF8(const char *str, Locale locale)
             }
         }
     }
-    LOG_DEBUG("FromUTF: \"%s\" -> \"%s\"", tmp, iso8859.c_str());
+    LOG_DEBUG("FromUTF: \"%s\" -> \"%s\"", tmp, iso8859);
     return iso8859;
 }
 
@@ -180,7 +180,7 @@ std::string ToBase64(const std::vector<uint8_t>& in)
     {
         out.push_back('=');
     }
-    return std::move(out);
+    return out;
 }
 
 std::vector<uint8_t> FromBase64(const std::string &in)
@@ -209,7 +209,7 @@ std::vector<uint8_t> FromBase64(const std::string &in)
             valb -= 8;
         }
     }
-    return std::move(out);
+    return out;
 }
 
 }

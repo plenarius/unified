@@ -10,11 +10,11 @@ namespace ThreadWatchdog {
 class ThreadWatchdog : public NWNXLib::Plugin
 {
 public:
-    ThreadWatchdog(const Plugin::CreateParams& params);
+    ThreadWatchdog(NWNXLib::Services::ProxyServiceList* services);
     virtual ~ThreadWatchdog();
 
 private:
-    static void MainLoopUpdate(NWNXLib::Services::Hooks::CallType type, NWNXLib::API::CServerExoAppInternal*);
+    static void MainLoopUpdate(bool, CServerExoAppInternal*);
     std::unique_ptr<std::thread> m_watchdog;
 };
 

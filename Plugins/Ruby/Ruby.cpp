@@ -1,5 +1,4 @@
 #include "Ruby.hpp"
-#include "API/Version.hpp"
 #include "Services/Config/Config.hpp"
 #include "Services/Metrics/Metrics.hpp"
 
@@ -7,24 +6,10 @@
 
 using namespace NWNXLib;
 
-static ViewPtr<Ruby::Ruby> g_plugin;
-
-NWNX_PLUGIN_ENTRY Plugin::Info* PluginInfo()
+static Ruby::Ruby* g_plugin;
+NWNX_PLUGIN_ENTRY Plugin* PluginLoad(Services::ProxyServiceList* services)
 {
-    return new Plugin::Info
-    {
-        "Ruby",
-        "Allows users to execute arbitrary Ruby from the game.",
-        "Liareth",
-        "liarethnwn@gmail.com",
-        1,
-        false // Not hotswappable -- we don't want to tear down the VM ... bad stuff happens.
-    };
-}
-
-NWNX_PLUGIN_ENTRY Plugin* PluginLoad(Plugin::CreateParams params)
-{
-    g_plugin = new Ruby::Ruby(params);
+    g_plugin = new Ruby::Ruby(services);
     return g_plugin;
 }
 
@@ -32,8 +17,8 @@ using namespace NWNXLib::Services;
 
 namespace Ruby {
 
-Ruby::Ruby(const Plugin::CreateParams& params)
-    : Plugin(params), m_nextEvaluationId(0)
+Ruby::Ruby(Services::ProxyServiceList* services)
+    : Plugin(services), m_nextEvaluationId(0)
 {
     m_evaluateMetrics = GetServices()->m_config->Get<bool>("EVALUATE_METRICS", false);
 
@@ -49,13 +34,13 @@ Ruby::Ruby(const Plugin::CreateParams& params)
     SafeRequire("enc/trans/transdb");
     SafeRequire("rubygems");
 
-    Maybe<std::string> preloadScript = GetServices()->m_config->Get<std::string>("PRELOAD_SCRIPT");
+    auto preloadScript = GetServices()->m_config->Get<std::string>("PRELOAD_SCRIPT");
     if (preloadScript)
     {
         SafeRequire(*preloadScript);
     }
 
-    GetServices()->m_events->RegisterEvent("EVALUATE", std::bind(&Ruby::OnEvaluate, this, std::placeholders::_1));
+    GetServices()->m_events->RegisterEvent("Evaluate", std::bind(&Ruby::Evaluate, this, std::placeholders::_1));
 }
 
 Ruby::~Ruby()
@@ -63,7 +48,7 @@ Ruby::~Ruby()
 
 }
 
-NWNXLib::Services::Events::ArgumentStack Ruby::OnEvaluate(NWNXLib::Services::Events::ArgumentStack&& args)
+NWNXLib::Services::Events::ArgumentStack Ruby::Evaluate(NWNXLib::Services::Events::ArgumentStack&& args)
 {
     const auto code = Events::ExtractArgument<std::string>(args);
 
@@ -119,12 +104,9 @@ NWNXLib::Services::Events::ArgumentStack Ruby::OnEvaluate(NWNXLib::Services::Eve
         retString = evaluate(code);
     }
 
-    Events::ArgumentStack stack;
-    Events::InsertArgument(stack, std::string(retString));
+    LOG_INFO("Evaluated Ruby. Ruby ID: '%i', code: '%s', got return value '%s'.", evaluationId, code, retString);
 
-    LOG_INFO("Evaluated Ruby. Ruby ID: '%i', code: '%s', got return value '%s'.", evaluationId, code.c_str(), retString);
-
-    return stack;
+    return Events::Arguments(std::string(retString));
 }
 
 void Ruby::SafeRequire(const std::string& script)
@@ -147,7 +129,7 @@ void Ruby::HandleError(const int errCode)
     const std::string errClassAsStr = StringValueCStr(errClass);
     const std::string errMsgAsStr = StringValueCStr(errMsg);
 
-    LOG_ERROR("Encountered error code: '%i', class: '%s', msg: '%s'.", errCode, errClassAsStr.c_str(), errMsgAsStr.c_str());
+    LOG_ERROR("Encountered error code: '%i', class: '%s', msg: '%s'.", errCode, errClassAsStr, errMsgAsStr);
 }
 
 }

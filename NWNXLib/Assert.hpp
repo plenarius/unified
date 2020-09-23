@@ -3,11 +3,8 @@
 #include "Utils.hpp"
 #include <cstdio>
 
-namespace NWNXLib {
+namespace NWNXLib::Assert {
 
-namespace Assert {
-
-#if TAR_DEBUG
     #define ASSERT(condition) \
         do \
         { \
@@ -25,28 +22,28 @@ namespace Assert {
 
     #define ASSERT_FAIL_MSG(format, ...) \
         ::NWNXLib::Assert::Fail(nullptr, __FILE__, __LINE__, (format), ##__VA_ARGS__)
-#else
-    #define ASSERT(condition) (void)0
-    #define ASSERT_MSG(condition, format, ...) (void)0
-    #define ASSERT_FAIL() (void)0
-    #define ASSERT_FAIL_MSG(format, ...) (void)0
-#endif
 
     #define ASSERT_OR_THROW(condition) \
         do \
         { \
             if(!(condition)) throw std::runtime_error("ASSERTION FAILURE: (" + std::string(#condition) + ") in NWScript: " + NWNXLib::Utils::GetCurrentScript()); \
         } while (0)
+    #define ASSERT_OR_RETURN(condition, retval) \
+        do \
+        { \
+            if (!(condition)) { ASSERT_FAIL_MSG("ASSERTION FAILURE: %s", #condition); return retval; } \
+        } while (0)
 
 void Fail(const char* condition, const char* file, int line, const char* message);
 
-template <typename ... Args>
-void Fail(const char* condition, const char* file, int line, const char* format, Args ... args);
-
 void SetCrashOnFailure(bool crash);
 
-#include "Assert.inl"
-
+template <typename ... Args>
+void Fail(const char* condition, const char* file, int line, const char* format, Args ... args)
+{
+    char buffer[1536];
+    std::sprintf(buffer, format, args ...);
+    Fail(condition, file, line, buffer);
 }
 
 }

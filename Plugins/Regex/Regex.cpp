@@ -1,7 +1,6 @@
 #include "Regex.hpp"
 
 #include "Services/Config/Config.hpp"
-#include "ViewPtr.hpp"
 
 #include <string>
 #include <stdio.h>
@@ -10,35 +9,23 @@
 using namespace NWNXLib;
 using namespace NWNXLib::Services;
 
-static ViewPtr<Regex::Regex> g_plugin;
+static Regex::Regex* g_plugin;
 
-NWNX_PLUGIN_ENTRY Plugin::Info* PluginInfo()
+NWNX_PLUGIN_ENTRY Plugin* PluginLoad(Services::ProxyServiceList* services)
 {
-    return new Plugin::Info
-    {
-        "Regex",
-        "Regular expression functions",
-        "orth",
-        "plenarius@gmail.com",
-        1,
-        true
-    };
-}
-
-NWNX_PLUGIN_ENTRY Plugin* PluginLoad(Plugin::CreateParams params)
-{
-    g_plugin = new Regex::Regex(params);
+    g_plugin = new Regex::Regex(services);
     return g_plugin;
 }
 
 namespace Regex {
 
-Regex::Regex(const Plugin::CreateParams& params)
-    : Plugin(params)
+Regex::Regex(Services::ProxyServiceList* services)
+    : Plugin(services)
 {
 
 #define REGISTER(func) \
-    GetServices()->m_events->RegisterEvent(#func, std::bind(&Regex::func, this, std::placeholders::_1))
+    GetServices()->m_events->RegisterEvent(#func, \
+        [this](ArgumentStack&& args){ return func(std::move(args)); })
 
     REGISTER(Search);
     REGISTER(Replace);
@@ -53,20 +40,17 @@ Regex::~Regex()
 
 ArgumentStack Regex::Search(ArgumentStack&& args)
 {
-    ArgumentStack stack;
     const auto str = Services::Events::ExtractArgument<std::string>(args);
     const auto regex = Services::Events::ExtractArgument<std::string>(args);
 
     std::regex rgx(regex);
     const auto retVal = std::regex_search(str, rgx);
 
-    Services::Events::InsertArgument(stack, retVal);
-    return stack;
+    return Services::Events::Arguments(retVal);
 }
 
 ArgumentStack Regex::Replace(ArgumentStack&& args)
 {
-    ArgumentStack stack;
     const auto str = Services::Events::ExtractArgument<std::string>(args);
     const auto regex = Services::Events::ExtractArgument<std::string>(args);
     const auto rpl = Services::Events::ExtractArgument<std::string>(args);
@@ -79,8 +63,7 @@ ArgumentStack Regex::Replace(ArgumentStack&& args)
     else
         retVal = std::regex_replace(str, rgx, rpl);
 
-    Services::Events::InsertArgument(stack, retVal);
-    return stack;
+    return Services::Events::Arguments(retVal);
 }
 
 }

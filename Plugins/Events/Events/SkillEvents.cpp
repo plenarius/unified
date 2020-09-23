@@ -8,31 +8,31 @@ namespace Events {
 
 using namespace NWNXLib;
 
-static Hooking::FunctionHook* m_UseSkillHook = nullptr;
+static Hooking::FunctionHook* s_UseSkillHook;
 
-SkillEvents::SkillEvents(ViewPtr<Services::HooksProxy> hooker)
+SkillEvents::SkillEvents(Services::HooksProxy* hooker)
 {
     Events::InitOnFirstSubscribe("NWNX_ON_USE_SKILL_.*", [hooker]() {
-        hooker->RequestExclusiveHook<API::Functions::CNWSCreature__UseSkill, int32_t, API::CNWSCreature*, uint8_t, uint8_t, NWNXLib::API::Types::ObjectID,
-            NWNXLib::API::Vector, NWNXLib::API::Types::ObjectID, NWNXLib::API::Types::ObjectID, int32_t>(&UseSkillHook);
-
-        m_UseSkillHook = hooker->FindHookByAddress(API::Functions::CNWSCreature__UseSkill);
+        s_UseSkillHook = hooker->RequestExclusiveHook
+            <API::Functions::_ZN12CNWSCreature8UseSkillEhhj6Vectorjji, int32_t, CNWSCreature*, uint8_t, uint8_t,
+            ObjectID, Vector, ObjectID, ObjectID, int32_t>
+            (&UseSkillHook);
     });
 }
 
 int32_t SkillEvents::UseSkillHook(
-    API::CNWSCreature* thisPtr,
+    CNWSCreature* thisPtr,
     uint8_t skill,
     uint8_t subSkill,
-    API::Types::ObjectID target,
-    NWNXLib::API::Vector targetPosition,
-    API::Types::ObjectID area,
-    API::Types::ObjectID usedItem,
+    ObjectID target,
+    Vector targetPosition,
+    ObjectID area,
+    ObjectID usedItem,
     int32_t activePropertyIndex)
 {
     int32_t retVal;
 
-    auto PushAndSignal = [&](std::string ev) -> bool {
+    auto PushAndSignal = [&](const std::string& ev) -> bool {
         Events::PushEventData("SKILL_ID", std::to_string(skill));
         Events::PushEventData("SUB_SKILL_ID", std::to_string(subSkill));
         Events::PushEventData("USED_ITEM_OBJECT_ID", Utils::ObjectIDToString(usedItem));
@@ -45,7 +45,7 @@ int32_t SkillEvents::UseSkillHook(
 
     if (PushAndSignal("NWNX_ON_USE_SKILL_BEFORE"))
     {
-        retVal = m_UseSkillHook->CallOriginal<int32_t>(thisPtr, skill, subSkill, target, targetPosition, area, usedItem, activePropertyIndex);
+        retVal = s_UseSkillHook->CallOriginal<int32_t>(thisPtr, skill, subSkill, target, targetPosition, area, usedItem, activePropertyIndex);
     }
     else
     {

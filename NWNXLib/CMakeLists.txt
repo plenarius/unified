@@ -16,28 +16,24 @@ macro(nwnxlib_add)
     endif()
 endmacro()
 
-nwnxlib_add("Assert.cpp" "Log.cpp" "Plugin.cpp" "Serialize.cpp" "Utils.cpp" "Encoding.cpp")
+nwnxlib_add("Assert.cpp" "Log.cpp" "Serialize.cpp" "Utils.cpp" "Encoding.cpp")
 
 add_subdirectory(API)
 add_subdirectory(External)
 add_subdirectory(Hooking)
 add_subdirectory(Platform)
 add_subdirectory(Services)
+add_subdirectory(Utils)
 
 add_library(NWNXLib STATIC "${NWNXLIB_SOURCE}")
 add_sanitizers(NWNXLib)
 
 target_compile_definitions(NWNXLib PRIVATE "-DPLUGIN_NAME=\"NWNXLib\"")
 
-message(${APIDIR})
+target_include_directories(NWNXLib PUBLIC "." "API")
 
-# APIDIR is defined inside the API subdirectory..
-target_include_directories(NWNXLib PUBLIC "." "${APIDIR}")
-
-if(UNIX)
-    # We need this for dlopen/dlclose/dlsym.
-    target_link_libraries(NWNXLib ${CMAKE_DL_LIBS})
-endif()
+# We need this for dlopen/dlclose/dlsym.
+target_link_libraries(NWNXLib ${CMAKE_DL_LIBS})
 
 # For hooks -- pulled in from External.
-target_link_libraries(NWNXLib BeaEngine)
+target_link_libraries(NWNXLib funchook)

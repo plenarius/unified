@@ -1,8 +1,9 @@
 #include "Services/Plugins/Plugins.hpp"
+#include "Utils/String.hpp"
 
-namespace NWNXLib {
+#include <dlfcn.h>
 
-namespace Services {
+namespace NWNXLib::Services {
 
 Plugins::Plugins()
 {
@@ -12,68 +13,43 @@ Plugins::~Plugins()
 {
     while (!m_plugins.empty())
     {
-        UnloadPluginInternal(std::begin(m_plugins), Plugin::UnloadReason::SHUTTING_DOWN);
+        UnloadPluginInternal(std::begin(m_plugins));
     }
 }
 
-Plugins::RegistrationToken Plugins::LoadPlugin(const std::string& path, Plugin::CreateParams&& params)
+Plugins::RegistrationToken Plugins::LoadPlugin(const std::string& path, ProxyServiceList* services)
 {
-    Maybe<PluginData> existingPlugin = FindPluginByPath(path);
+    auto existingPlugin = FindPluginByPath(path);
 
     if (existingPlugin)
     {
         throw std::runtime_error("Plugin is already loaded.");
     }
 
-    using namespace Platform::DynamicLibraries;
-    HandleType handle = OpenDll(path);
+    void* handle = dlopen(path.c_str(), RTLD_NOW | RTLD_NODELETE);
 
-    if (!IsHandleValid(handle))
+    if (!handle)
     {
-        throw std::runtime_error("Plugin failed to load: " + GetErrorFromHandle(handle));
+        throw std::runtime_error(std::string{"Plugin failed to load: "} + dlerror());
     }
 
-    const uintptr_t pluginInfoFuncAddr = GetFuncAddrInDll("PluginInfo", handle);
-    const uintptr_t pluginLoadFuncAddr = GetFuncAddrInDll("PluginLoad", handle);
-    const uintptr_t pluginUnloadFuncAddr = GetFuncAddrInDll("PluginUnload", handle);
-
-    // Don't check pluginUnloadFuncAddr -- it's optional.
-    const bool mandatoryPluginsPresent = IsFuncAddrFromDllValid(pluginInfoFuncAddr) && IsFuncAddrFromDllValid(pluginLoadFuncAddr);
-
-    if (!mandatoryPluginsPresent)
+    const uintptr_t pluginLoadFuncAddr = (uintptr_t)dlsym(handle, "PluginLoad");
+    if (pluginLoadFuncAddr == 0)
     {
-        throw std::runtime_error("Plugin does not export the required functions.");
+        throw std::runtime_error("Plugin does not export PluginLoad()");
     }
-
-    const PluginDataInternal::PluginInfoFuncPtr pluginInfoFuncPtr =
-        reinterpret_cast<PluginDataInternal::PluginInfoFuncPtr>(pluginInfoFuncAddr);
 
     const PluginDataInternal::PluginLoadFuncPtr pluginLoadFuncPtr =
         reinterpret_cast<PluginDataInternal::PluginLoadFuncPtr>(pluginLoadFuncAddr);
 
-    const PluginDataInternal::PluginUnloadFuncPtr pluginUnloadFuncPtr =
-        reinterpret_cast<PluginDataInternal::PluginUnloadFuncPtr>(pluginUnloadFuncAddr);
-
-    // We capture a unique_ptr right away to avoid leak if the exception occurs.
-    auto info = std::unique_ptr<Plugin::Info>(pluginInfoFuncPtr());
-
-    if (info->m_targetVersion != NWNX_TARGET_NWN_BUILD)
-    {
-        throw std::runtime_error("Plugin version mismatch -- has the server updated?");
-    }
-
     PluginID pluginId = GetNextAvailableId();
-
     PluginDataInternal data =
     {
         pluginId,
         path,
-        std::move(info),
         nullptr,
         handle,
-        pluginInfoFuncPtr,
-        pluginLoadFuncPtr,
-        pluginUnloadFuncPtr
+        pluginLoadFuncPtr
     };
 
     // We insert before creating because plugins may expect to be able to query themselves in the plugin manager.
@@ -81,13 +57,13 @@ Plugins::RegistrationToken Plugins::LoadPlugin(const std::string& path, Plugin::
 
     try
     {
-        iter.first->second.m_plugin = std::unique_ptr<Plugin>(pluginLoadFuncPtr(std::forward<Plugin::CreateParams>(params)));
+        iter.first->second.m_plugin = std::unique_ptr<Plugin>(pluginLoadFuncPtr(services));
     }
     catch (const std::runtime_error&)
     {
         try
         {
-            UnloadPluginInternal(iter.first, Plugin::UnloadReason::CREATION_FAILED);
+            UnloadPluginInternal(iter.first);
         }
         catch (const std::runtime_error&)
         {
@@ -100,7 +76,7 @@ Plugins::RegistrationToken Plugins::LoadPlugin(const std::string& path, Plugin::
     return { pluginId };
 }
 
-void Plugins::UnloadPlugin(RegistrationToken&& token, const Plugin::UnloadReason reason)
+void Plugins::UnloadPlugin(RegistrationToken&& token)
 {
     auto plugin = m_plugins.find(token.m_id);
 
@@ -109,39 +85,37 @@ void Plugins::UnloadPlugin(RegistrationToken&& token, const Plugin::UnloadReason
         throw std::runtime_error("Invalid or duplicated plugin registration token.");
     }
 
-    UnloadPluginInternal(plugin, reason);
+    UnloadPluginInternal(plugin);
 }
 
-Maybe<Plugins::PluginData> Plugins::FindPluginById(const Plugins::PluginID id) const
+std::optional<Plugins::PluginData> Plugins::FindPluginById(const Plugins::PluginID id) const
 {
     auto plugin = m_plugins.find(id);
 
     if (plugin != m_plugins.end())
     {
         const PluginDataInternal& data = plugin->second;
-        return Maybe<Plugins::PluginData>({ data.m_id, data.m_path, data.m_info, data.m_plugin });
+        return std::make_optional<Plugins::PluginData>({ data.m_id, data.m_path, data.m_plugin.get() });
     }
 
-    return Maybe<Plugins::PluginData>();
+    return std::optional<Plugins::PluginData>();
 }
 
-Maybe<Plugins::PluginData> Plugins::FindPluginByName(const std::string& name) const
+std::optional<Plugins::PluginData> Plugins::FindPluginByName(const std::string& name) const
 {
     for (auto& plugin : m_plugins)
     {
-        const std::string& pluginName = plugin.second.m_info->m_name;
-
-        if (pluginName == name)
+        if (name == Utils::basename(plugin.second.m_path))
         {
             const PluginDataInternal& data = plugin.second;
-            return Maybe<Plugins::PluginData>({ data.m_id, data.m_path, data.m_info, data.m_plugin });
+            return std::make_optional<Plugins::PluginData>({ data.m_id, data.m_path, data.m_plugin.get() });
         }
     }
 
-    return Maybe<Plugins::PluginData>();
+    return std::optional<Plugins::PluginData>();
 }
 
-Maybe<Plugins::PluginData> Plugins::FindPluginByPath(const std::string& path) const
+std::optional<Plugins::PluginData> Plugins::FindPluginByPath(const std::string& path) const
 {
     for (auto& plugin : m_plugins)
     {
@@ -149,11 +123,11 @@ Maybe<Plugins::PluginData> Plugins::FindPluginByPath(const std::string& path) co
 
         if (data.m_path == path)
         {
-            return Maybe<Plugins::PluginData>({ data.m_id, data.m_path, data.m_info, data.m_plugin });
+            return std::make_optional<Plugins::PluginData>({ data.m_id, data.m_path, data.m_plugin.get() });
         }
     }
 
-    return Maybe<Plugins::PluginData>();
+    return std::optional<Plugins::PluginData>();
 }
 
 std::vector<Plugins::PluginData> Plugins::GetPlugins() const
@@ -164,30 +138,27 @@ std::vector<Plugins::PluginData> Plugins::GetPlugins() const
     for (auto& plugin : m_plugins)
     {
         const PluginDataInternal& data = plugin.second;
-        plugins.push_back({ data.m_id, data.m_path, data.m_info, data.m_plugin });
+        plugins.push_back({ data.m_id, data.m_path, data.m_plugin.get() });
     }
 
     return plugins;
 }
 
-void Plugins::UnloadPluginInternal(PluginMap::iterator plugin, const Plugin::UnloadReason reason)
+std::string Plugins::GetCanonicalPluginName(const std::string& name) const
+{
+    for (auto pluginData : GetPlugins())
+    {
+        std::string str = Utils::basename(pluginData.m_path);
+        if (!strcasecmp(name.c_str(), str.c_str()))
+            return str;
+    }
+    return "";
+}
+
+void Plugins::UnloadPluginInternal(PluginMap::iterator plugin)
 {
     ASSERT(plugin != m_plugins.end());
-    PluginDataInternal::PluginUnloadFuncPtr unloadFunc = plugin->second.m_pluginUnloadFunc;
-
-    if (unloadFunc)
-    {
-        try
-        {
-            unloadFunc(reason);
-        }
-        catch (const std::runtime_error& err)
-        {
-            LOG_ERROR("Encountered error when unloading plugin: '%s'", err.what());
-        }
-    }
-
-    Platform::DynamicLibraries::CloseDll(plugin->second.m_handle);
+    dlclose(plugin->second.m_handle);
     m_plugins.erase(plugin);
 }
 
@@ -213,19 +184,19 @@ PluginsProxy::~PluginsProxy()
 {
 }
 
-Maybe<Plugins::PluginData> PluginsProxy::FindPluginById(const Plugins::PluginID id) const
+std::optional<Plugins::PluginData> PluginsProxy::FindPluginById(const Plugins::PluginID id) const
 {
     return m_proxyBase.FindPluginById(id);
 }
 
-Maybe<Plugins::PluginData> PluginsProxy::FindPluginByName(const std::string& name) const
+std::optional<Plugins::PluginData> PluginsProxy::FindPluginByName(const std::string& name) const
 {
     return m_proxyBase.FindPluginByName(name);
 }
 
-Maybe<Plugins::PluginData> PluginsProxy::FindPluginByPath(const std::string& path) const
+std::optional<Plugins::PluginData> PluginsProxy::FindPluginByPath(const std::string& path) const
 {
-    return m_proxyBase.FindPluginByName(path);
+    return m_proxyBase.FindPluginByPath(path);
 }
 
 std::vector<Plugins::PluginData> PluginsProxy::GetPlugins() const
@@ -233,6 +204,9 @@ std::vector<Plugins::PluginData> PluginsProxy::GetPlugins() const
     return m_proxyBase.GetPlugins();
 }
 
+std::string PluginsProxy::GetCanonicalPluginName(const std::string& name) const
+{
+    return m_proxyBase.GetCanonicalPluginName(name);
 }
 
 }

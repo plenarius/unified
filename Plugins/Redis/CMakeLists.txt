@@ -1,5 +1,4 @@
 add_subdirectory(cpp_redis)
-include_directories(cpp_redis/includes)
 
 add_plugin(Redis
   Redis.cpp
@@ -7,7 +6,7 @@ add_plugin(Redis
   Config.cpp
   Connection.cpp
   PubSub.cpp
-  Util.cpp
 )
 
+target_include_directories(Redis PRIVATE cpp_redis/includes)
 target_link_libraries(Redis cpp_redis)

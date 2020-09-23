@@ -3,16 +3,12 @@
 #include <cstdint>
 #include <string>
 
-namespace NWNXLib {
-
-namespace Platform {
-
-namespace Debug {
+namespace NWNXLib::Platform::Debug {
 
 bool IsDebuggerPresent();
-void OutputDebugString(const char *str);
 std::string GetStackTrace(uint8_t levels);
 
-}
-}
+std::string ResolveAddress(uintptr_t address);
+uintptr_t GetFunctionAddress(const std::string& mangledname);
+
 }

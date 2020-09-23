@@ -1,32 +1,31 @@
 #pragma once
 
-#include "API/Types.hpp"
 #include "API/Vector.hpp"
 #include "Common.hpp"
 #include "Services/Hooks/Hooks.hpp"
-#include "ViewPtr.hpp"
 
 namespace Events {
 
 class ItemEvents
 {
 public:
-    ItemEvents(NWNXLib::ViewPtr<NWNXLib::Services::HooksProxy> hooker);
+    ItemEvents(NWNXLib::Services::HooksProxy* hooker);
 
 private:
-    static int32_t UseItemHook(NWNXLib::API::CNWSCreature*, NWNXLib::API::Types::ObjectID, uint8_t,
-        uint8_t, NWNXLib::API::Types::ObjectID, NWNXLib::API::Vector, NWNXLib::API::Types::ObjectID);
-    static void OpenInventoryHook(NWNXLib::API::CNWSItem*, NWNXLib::API::Types::ObjectID);
-    static void CloseInventoryHook(NWNXLib::API::CNWSItem*, NWNXLib::API::Types::ObjectID, int32_t);
-    static int32_t AddItemHook(NWNXLib::API::CItemRepository*, NWNXLib::API::CNWSItem**, uint8_t, uint8_t, int32_t, int32_t);
-    static void RemoveItemHook(NWNXLib::Services::Hooks::CallType, NWNXLib::API::CItemRepository*, NWNXLib::API::CNWSItem*);
-    static uint32_t FindItemWithBaseItemIdHook(NWNXLib::API::CItemRepository*, uint32_t, int32_t);
-    static int32_t LearnScrollHook(NWNXLib::API::CNWSCreature*, NWNXLib::API::Types::ObjectID);
-    static int32_t RunEquipHook(NWNXLib::API::CNWSCreature*, NWNXLib::API::Types::ObjectID, uint32_t, uint32_t);
-    static int32_t RunUnequipHook(NWNXLib::API::CNWSCreature*, NWNXLib::API::Types::ObjectID, NWNXLib::API::Types::ObjectID, uint8_t, uint8_t, int32_t, uint32_t);
-    static void ItemEventHandlerHook(NWNXLib::API::CNWSItem*, uint32_t, NWNXLib::API::Types::ObjectID, void*, uint32_t, uint32_t);
-    static int32_t UseLoreOnItemHook(NWNXLib::API::CNWSCreature*, NWNXLib::API::Types::ObjectID);
-    static void PayToIdentifyItemHook(NWNXLib::API::CNWSCreature*, NWNXLib::API::Types::ObjectID, NWNXLib::API::Types::ObjectID);
+    static int32_t CanUseItemHook(CNWSCreature*, CNWSItem*, int32_t);
+    static int32_t UseItemHook(CNWSCreature*, ObjectID, uint8_t,
+        uint8_t, ObjectID, Vector, ObjectID, int32_t);
+    static void OpenInventoryHook(CNWSItem*, ObjectID);
+    static void CloseInventoryHook(CNWSItem*, ObjectID, int32_t);
+    static uint32_t FindItemWithBaseItemIdHook(CItemRepository*, uint32_t, int32_t);
+    static int32_t LearnScrollHook(CNWSCreature*, ObjectID);
+    static int32_t CanEquipItemHook(CNWSCreature*, CNWSItem*, uint32_t*, int32_t, int32_t, int32_t, CNWSPlayer*);
+    static int32_t RunEquipHook(CNWSCreature*, ObjectID, uint32_t, uint32_t);
+    static int32_t RunUnequipHook(CNWSCreature*, ObjectID, ObjectID, uint8_t, uint8_t, int32_t, uint32_t);
+    static void ItemEventHandlerHook(CNWSItem*, uint32_t, ObjectID, void*, uint32_t, uint32_t);
+    static int32_t UseLoreOnItemHook(CNWSCreature*, ObjectID);
+    static void PayToIdentifyItemHook(CNWSCreature*, ObjectID, ObjectID);
+    static void SplitItemHook(CNWSCreature*, CNWSItem*, int32_t);
 };
 
 }

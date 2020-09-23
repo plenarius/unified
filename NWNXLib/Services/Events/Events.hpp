@@ -1,44 +1,27 @@
 #pragma once
 
-#include "API/Types.hpp"
 #include "API/CGameEffect.hpp"
-#include "Maybe.hpp"
+#include "ScriptVariant.hpp"
 #include "Services/Services.hpp"
 
 #include <cstdint>
 #include <functional>
+#include <ostream>
 #include <tuple>
 #include <stack>
 #include <unordered_map>
 #include <vector>
+#include <optional>
 
-namespace NWNXLib {
+namespace NWNXLib::Services {
 
-namespace Services {
-
-class Events : public ServiceBase
+class Events
 {
 public: // Structures
-    struct Argument
-    {
-        Maybe<int32_t>              m_int;
-        Maybe<float>                m_float;
-        Maybe<API::Types::ObjectID> m_object;
-        Maybe<std::string>          m_string;
-        Maybe<API::CGameEffect*>    m_effect;
+    // Defined in ScriptVariant.hpp
+    using Argument = ScriptVariant;
+    using ArgumentStack = ScriptVariantStack;
 
-        // Constructors
-        Argument(const int32_t& v)                : m_int(v)    { }
-        Argument(const float& v)                  : m_float(v)  { }
-        Argument(const API::Types::ObjectID& v)   : m_object(v) { }
-        Argument(const std::string& v)            : m_string(std::move(v)) { }
-        Argument(API::CGameEffect* v)             : m_effect(v) { }
-
-        template <typename T> Maybe<T>& Get();
-        std::string toString();
-    };
-
-    using ArgumentStack = std::stack<Argument>;
     using FunctionCallback = std::function<ArgumentStack(ArgumentStack&& in)>;
 
     struct EventData
@@ -53,14 +36,11 @@ public: // Structures
     };
 
 public:
-    Events();
-    ~Events();
+    template <typename T>
+    void Push(const std::string& pluginName, const std::string& eventName, T&& value);
 
     template <typename T>
-    void Push(const std::string& pluginName, const std::string& eventName, const T& value);
-
-    template <typename T>
-    Maybe<T> Pop(const std::string& pluginName, const std::string& eventName);
+    std::optional<T> Pop(const std::string& pluginName, const std::string& eventName);
 
     void Call(const std::string& pluginName, const std::string& eventName);
 
@@ -68,7 +48,13 @@ public:
     void ClearEvent(RegistrationToken&& token);
 
     template <typename T>
-    static void InsertArgument(ArgumentStack& stack, T arg);
+    static void InsertArgument(ArgumentStack& stack, T&& arg);
+
+    template <typename... Args>
+    static void InsertArguments(ArgumentStack& stack, Args&&... args);
+
+    template <typename... Args>
+    static ArgumentStack Arguments(Args&&... args);
 
     template <typename T>
     static T ExtractArgument(ArgumentStack& arguments);
@@ -103,8 +89,78 @@ private:
     std::vector<Events::RegistrationToken> m_registrationTokens;
 };
 
-#include "Services/Events/Events.inl"
 
+
+template <typename T>
+void Events::Push(const std::string& pluginName, const std::string& eventName, T&& value)
+{
+    if (auto* event = GetEventData(pluginName, eventName))
+    {
+        event->m_arguments.push(Events::Argument(std::forward<T>(value)));
+        LOG_DEBUG("Pushing argument '%s'. Event '%s', Plugin: '%s'.",
+            event->m_arguments.top(), eventName, pluginName);
+    }
+    else
+    {
+        LOG_ERROR("Plugin '%s' does not have an event '%s' registered", pluginName, eventName);
+    }
+}
+
+template <typename T>
+std::optional<T> Events::Pop(const std::string& pluginName, const std::string& eventName)
+{
+    if (auto* event = GetEventData(pluginName, eventName))
+    {
+        if (event->m_returns.empty())
+        {
+            LOG_ERROR("Plugin '%s', event '%s': Tried to get a return value when one did not exist.",
+                pluginName, eventName);
+            return std::optional<T>();
+        }
+
+        if (!event->m_returns.top().Holds<T>())
+        {
+            LOG_ERROR("Plugin '%s', event '%s': Type mismatch in return values",
+                pluginName, eventName);
+        }
+        else
+        {
+            LOG_DEBUG("Returning value '%s'. Event '%s', Plugin: '%s'.",
+                event->m_returns.top(), eventName, pluginName);
+
+            // I'm probably using all these moves wrong..
+            return event->m_returns.extract<T>();
+        }
+    }
+    else
+    {
+        LOG_ERROR("Plugin '%s' does not have an event '%s' registered", pluginName, eventName);
+    }
+    return std::optional<T>();
+}
+
+template <typename T>
+void Events::InsertArgument(ArgumentStack& stack, T&& arg)
+{
+    stack.push(std::forward<T>(arg));
+}
+
+template <typename... Args>
+void Events::InsertArguments(ArgumentStack& stack, Args&&... args)
+{
+    stack.push(std::forward<Args>(args)...);
+}
+
+template <typename... Args>
+Events::ArgumentStack Events::Arguments(Args&&... args)
+{
+    return {std::forward<Args>(args)...};
+}
+
+template <typename T>
+T Events::ExtractArgument(ArgumentStack& arguments)
+{
+    return arguments.extract<T>();
 }
 
 }

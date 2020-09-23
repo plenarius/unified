@@ -2,9 +2,7 @@
 #include <algorithm>
 #include <unordered_map>
 
-namespace NWNXLib {
-
-namespace Services {
+namespace NWNXLib::Services {
 
 template <>
 std::vector<MetricData> Resamplers::Sum<std::chrono::nanoseconds>(std::vector<MetricData>&& data)
@@ -228,44 +226,7 @@ std::vector<MetricData> Resamplers::Max<float>(std::vector<MetricData>&& data)
         [](const float& val) -> std::string { return std::to_string(val); });
 }
 
-template <>
-std::vector<MetricData> Resamplers::Discard<std::chrono::nanoseconds>(std::vector<MetricData>&&)
-{
-    return std::vector<MetricData>();
-}
-
-template <>
-std::vector<MetricData> Resamplers::Discard<int64_t>(std::vector<MetricData>&&)
-{
-    return std::vector<MetricData>();
-}
-
-template <>
-std::vector<MetricData> Resamplers::Discard<uint64_t>(std::vector<MetricData>&&)
-{
-    return std::vector<MetricData>();
-}
-
-template<>
-std::vector<MetricData> Resamplers::Discard<double>(std::vector<MetricData>&&)
-{
-    return std::vector<MetricData>();
-}
-
-template<>
-std::vector<MetricData> Resamplers::Discard<int32_t>(std::vector<MetricData>&&)
-{
-    return std::vector<MetricData>();
-}
-
-template<>
-std::vector<MetricData> Resamplers::Discard<uint32_t>(std::vector<MetricData>&&)
-{
-    return std::vector<MetricData>();
-}
-
-template<>
-std::vector<MetricData> Resamplers::Discard<float>(std::vector<MetricData>&&)
+std::vector<MetricData> Resamplers::Discard(std::vector<MetricData>&&)
 {
     return std::vector<MetricData>();
 }
@@ -373,8 +334,6 @@ bool Resamplers::TestLogicalEquality(const MetricData& first, const MetricData& 
 
     // At this point, we're a match.
     return true;
-}
-
 }
 
 }

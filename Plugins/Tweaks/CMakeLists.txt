@@ -11,4 +11,13 @@ add_plugin(Tweaks
     "Tweaks/HideDMsOnCharList.cpp"
     "Tweaks/DisableMonkAbilitiesWhenPolymorphed.cpp"
     "Tweaks/StringToIntBaseToAuto.cpp"
+    "Tweaks/DeadCreatureFiresOnAreaExit.cpp"
+    "Tweaks/PreserveActionsOnDMPossess.cpp"
+    "Tweaks/FixGreaterSanctuaryBug.cpp"
+    "Tweaks/ItemChargesCost.cpp"
+    "Tweaks/FixDispelEffectLevels.cpp"
+    "Tweaks/AddPrestigeclassCasterLevels.cpp"
+    "Tweaks/FixUnlimitedPotionsBug.cpp"
+    "Tweaks/UnhardcodeShields.cpp"
+    "Tweaks/BlockDMSpawnItem.cpp"
 )

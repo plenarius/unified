@@ -14,14 +14,14 @@ namespace Tweaks {
 using namespace NWNXLib;
 using namespace NWNXLib::API;
 
-HideClassesOnCharList::HideClassesOnCharList(ViewPtr<Services::HooksProxy> hooker)
+HideClassesOnCharList::HideClassesOnCharList(Services::HooksProxy* hooker)
 {
-    hooker->RequestExclusiveHook<API::Functions::CNWSMessage__SendServerToPlayerPlayModuleCharacterListResponse>
+    hooker->RequestExclusiveHook<API::Functions::_ZN11CNWSMessage49SendServerToPlayerPlayModuleCharacterListResponseEjji>
         (&SendServerToPlayerPlayModuleCharacterListResponseHook);
 }
 
 int32_t HideClassesOnCharList::SendServerToPlayerPlayModuleCharacterListResponseHook(
-    CNWSMessage* thisPtr, Types::PlayerID playerId, Types::ObjectID charId, int32_t add)
+    CNWSMessage* thisPtr, PlayerID playerId, ObjectID charId, int32_t add)
 {
     thisPtr->CreateWriteMessage(sizeof(playerId), playerId, true);
 

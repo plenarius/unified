@@ -10,40 +10,33 @@
 #include "Tweaks/HideDMsOnCharList.hpp"
 #include "Tweaks/DisableMonkAbilitiesWhenPolymorphed.hpp"
 #include "Tweaks/StringToIntBaseToAuto.hpp"
+#include "Tweaks/DeadCreatureFiresOnAreaExit.hpp"
+#include "Tweaks/PreserveActionsOnDMPossess.hpp"
+#include "Tweaks/FixGreaterSanctuaryBug.hpp"
+#include "Tweaks/ItemChargesCost.hpp"
+#include "Tweaks/FixDispelEffectLevels.hpp"
+#include "Tweaks/AddPrestigeclassCasterLevels.hpp"
+#include "Tweaks/FixUnlimitedPotionsBug.hpp"
+#include "Tweaks/UnhardcodeShields.hpp"
+#include "Tweaks/BlockDMSpawnItem.hpp"
 
 #include "Services/Config/Config.hpp"
 
-#include "API/Version.hpp"
-#include "Platform/Assembly.hpp"
-#include "Services/Patching/Patching.hpp"
 
 using namespace NWNXLib;
 
-static ViewPtr<Tweaks::Tweaks> g_plugin;
+static Tweaks::Tweaks* g_plugin;
 
-NWNX_PLUGIN_ENTRY Plugin::Info* PluginInfo()
+NWNX_PLUGIN_ENTRY Plugin* PluginLoad(Services::ProxyServiceList* services)
 {
-    return new Plugin::Info
-    {
-        "Tweaks",
-        "Tweaks the behaviour of NWN.",
-        "Liareth",
-        "liarethnwn@gmail.com",
-        1,
-        true
-    };
-}
-
-NWNX_PLUGIN_ENTRY Plugin* PluginLoad(Plugin::CreateParams params)
-{
-    g_plugin = new Tweaks::Tweaks(params);
+    g_plugin = new Tweaks::Tweaks(services);
     return g_plugin;
 }
 
 namespace Tweaks {
 
-Tweaks::Tweaks(const Plugin::CreateParams& params)
-    : Plugin(params)
+Tweaks::Tweaks(Services::ProxyServiceList* services)
+    : Plugin(services)
 {
     if (GetServices()->m_config->Get<bool>("HIDE_CLASSES_ON_CHAR_LIST", false))
     {
@@ -94,29 +87,6 @@ Tweaks::Tweaks(const Plugin::CreateParams& params)
         m_PreserveDepletedItems = std::make_unique<PreserveDepletedItems>(GetServices()->m_hooks.get());
     }
 
-    if (GetServices()->m_config->Get<bool>("DISABLE_SHADOWS", false))
-    {
-        LOG_INFO("Sun and moon shadows will be disabled");
-
-        // Temporary workaround for Intel crash in complex areas - disable when a proper fix is implemented.
-        // PackAreaIntoMessage
-
-        // m_bMoonShadows
-        GetServices()->m_patching->PatchWithInstructions(0x0012EB0C,
-            Platform::Assembly::PushImmInstruction(0),
-            Platform::Assembly::NoopInstruction(),
-            Platform::Assembly::NoopInstruction(),
-            Platform::Assembly::NoopInstruction(),
-            Platform::Assembly::NoopInstruction()
-        ); NWNX_EXPECT_VERSION(8186);
-
-        // m_bSunShadows
-        GetServices()->m_patching->PatchWithInstructions(0x0012EB94,
-            Platform::Assembly::PushImmInstruction(0),
-            Platform::Assembly::NoopInstruction()
-        ); NWNX_EXPECT_VERSION(8186);
-    }
-
     if (GetServices()->m_config->Get<bool>("HIDE_DMS_ON_CHAR_LIST", false))
     {
         LOG_INFO("DMs will not be visible on character list");
@@ -128,10 +98,66 @@ Tweaks::Tweaks(const Plugin::CreateParams& params)
         LOG_INFO("Monk abilities (ac, speed, attacks) will be disabled during polymorph");
         m_DisableMonkAbilitiesWhenPolymorphed = std::make_unique<DisableMonkAbilitiesWhenPolymorphed>(GetServices()->m_hooks.get());
     }
+
     if (GetServices()->m_config->Get<bool>("STRINGTOINT_BASE_TO_AUTO", false))
     {
         LOG_INFO("Setting StringToInt() base to auto to allow for conversion of hex strings to proper values.");
         m_StringToIntBaseToAuto = std::make_unique<StringToIntBaseToAuto>(GetServices()->m_hooks.get());
+    }
+
+    if (GetServices()->m_config->Get<bool>("DEAD_CREATURES_TRIGGER_ON_AREA_EXIT", false))
+    {
+        LOG_INFO("Dead creatures will fire on area exit.");
+        m_DeadCreatureFiresOnAreaExit = std::make_unique<DeadCreatureFiresOnAreaExit>(GetServices()->m_hooks.get());
+    }
+
+    if (GetServices()->m_config->Get<bool>("PRESERVE_ACTIONS_ON_DM_POSSESS", false))
+    {
+        LOG_INFO("DMs possessing a creature will no longer clear their actions");
+        m_PreserveActionsOnDMPossess = std::make_unique<PreserveActionsOnDMPossess>(GetServices()->m_hooks.get());
+    }
+
+    if (GetServices()->m_config->Get<bool>("FIX_GREATER_SANCTUARY_BUG", false))
+    {
+        LOG_INFO("Greater sanctuary bug fixed.");
+        m_FixGreaterSanctuaryBug = std::make_unique<FixGreaterSanctuaryBug>(GetServices()->m_hooks.get());
+    }
+
+    if (auto mode = GetServices()->m_config->Get<int>("ITEM_CHARGES_COST_MODE", 0))
+    {
+        LOG_INFO("Changing cost for items with charges.");
+        m_ItemChargesCost = std::make_unique<ItemChargesCost>(GetServices()->m_hooks.get(),
+            mode);
+    }
+
+    if (GetServices()->m_config->Get<bool>("FIX_DISPEL_EFFECT_LEVELS", false))
+    {
+        LOG_INFO("Fixing dispel checks vs. effects created by deleted objects.");
+        m_FixDispelEffectLevels = std::make_unique<FixDispelEffectLevels>(GetServices()->m_hooks.get());
+    }
+
+    if (GetServices()->m_config->Get<bool>("ADD_PRESTIGECLASS_CASTER_LEVELS", false))
+    {
+        LOG_INFO("Automatically adding prestige class caster levels using (Div|Arc)SpellLvlMod colums in classes.2da");
+        m_AddPrestigeclassCasterLevels = std::make_unique<AddPrestigeclassCasterLevels>(GetServices()->m_hooks.get());
+    }
+
+    if (GetServices()->m_config->Get<bool>("FIX_UNLIMITED_POTIONS_BUG", false))
+    {
+        LOG_INFO("Fixing unlimited potion/scroll uses bug");
+        m_FixUnlimitedPotionsBug = std::make_unique<FixUnlimitedPotionsBug>(GetServices()->m_hooks.get());
+    }
+
+    if (GetServices()->m_config->Get<bool>("UNHARDCODE_SHIELDS", false))
+    {
+        LOG_INFO("Using baseitems.2da to define shield AC and create shield-like items");
+        m_UnhardcodeShields = std::make_unique<UnhardcodeShields>(GetServices()->m_hooks.get());
+    }
+
+    if (GetServices()->m_config->Get<bool>("BLOCK_DM_SPAWNITEM", false))
+    {
+        LOG_INFO("Blocking the dm_spawnitem console command");
+        m_BlockDMSpawnItem = std::make_unique<BlockDMSpawnItem>(GetServices()->m_hooks.get());
     }
 }
 

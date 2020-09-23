@@ -46,9 +46,7 @@ CNWVirtualMachineCommands* GetVmCommands()
 CVirtualMachineScript* CreateScriptForClosure(const char* token)
 {
     CVirtualMachineScript* script = new CVirtualMachineScript();
-    script->m_nCodeSize = 0;
     script->m_pCode = NULL;
-    script->m_nLoadedFromSave = 0;
     script->m_nSecondaryInstructPtr = 0;
     script->m_nInstructPtr = 0;
     script->m_nStackSize = 0;
@@ -428,7 +426,7 @@ extern "C" {
     static int NWScript_SerializeObject(lua_State *L)
     {
         uint32_t value = (uint32_t)luaL_checkinteger(L, 1);
-        API::CGameObject *pObject = API::Globals::AppManager()->m_pServerExoApp->GetGameObject(value);
+        CGameObject *pObject = API::Globals::AppManager()->m_pServerExoApp->GetGameObject(value);
         std::string serialized = SerializeGameObjectB64(pObject);
         lua_pushstring(L, serialized.c_str());
         return 1;
@@ -442,12 +440,12 @@ extern "C" {
 
         std::string serialized(s);
         uint32_t retval = API::Constants::OBJECT_INVALID;
-        if (API::CGameObject *pObject = DeserializeGameObjectB64(serialized))
+        if (CGameObject *pObject = DeserializeGameObjectB64(serialized))
         {
             retval = static_cast<uint32_t>(pObject->m_idSelf);
             ASSERT(API::Globals::AppManager()->m_pServerExoApp->GetGameObject(retval));
 
-            API::CGameObject *pOwner = API::Globals::AppManager()->m_pServerExoApp->GetGameObject(owner);
+            CGameObject *pOwner = API::Globals::AppManager()->m_pServerExoApp->GetGameObject(owner);
             if (auto *pArea = Utils::AsNWSArea(pOwner))
             {
                 if (!Utils::AddToArea(pObject, pArea, v->x, v->y, v->z))

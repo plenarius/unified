@@ -8,10 +8,10 @@ namespace Ruby {
 class Ruby : public NWNXLib::Plugin
 {
 public:
-    Ruby(const Plugin::CreateParams& params);
+    Ruby(NWNXLib::Services::ProxyServiceList* services);
     virtual ~Ruby();
 
-    NWNXLib::Services::Events::ArgumentStack OnEvaluate(NWNXLib::Services::Events::ArgumentStack&& args);
+    NWNXLib::Services::Events::ArgumentStack Evaluate(NWNXLib::Services::Events::ArgumentStack&& args);
 
 private:
     bool m_evaluateMetrics;

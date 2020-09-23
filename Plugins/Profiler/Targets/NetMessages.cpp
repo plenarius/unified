@@ -1,7 +1,6 @@
 #include "Targets/NetMessages.hpp"
 #include "API/CNWSPlayer.hpp"
 #include "API/Functions.hpp"
-#include "Maybe.hpp"
 #include "Services/Metrics/Metrics.hpp"
 #include "Services/Metrics/Resamplers.hpp"
 
@@ -10,43 +9,31 @@ namespace Profiler {
 using namespace NWNXLib;
 using namespace API;
 
-static ViewPtr<Services::MetricsProxy> g_metrics;
+static Services::MetricsProxy* g_metrics;
 
-NetMessages::NetMessages(ViewPtr<Services::HooksProxy> hooker,
-    ViewPtr<Services::MetricsProxy> metrics)
+NetMessages::NetMessages(Services::HooksProxy* hooker,
+    Services::MetricsProxy* metrics)
 {
     g_metrics = metrics;
 
-    hooker->RequestSharedHook<Functions::CNWSMessage__ComputeGameObjectUpdateForCategory, int32_t,
-        CNWSMessage*,
-        uint32_t,
-        uint32_t,
-        CNWSPlayer*,
-        CNWSObject*,
-        CGameObjectArray*,
-        CNWSPlayerLUOSortedObjectList*,
-        int32_t>(&ComputeGameObjectUpdateForCategory);
+    hooker->RequestSharedHook<Functions::_ZN11CNWSMessage34ComputeGameObjectUpdateForCategoryEjjP10CNWSPlayerP10CNWSObjectP16CGameObjectArrayP29CNWSPlayerLUOSortedObjectListi, int32_t,
+        CNWSMessage*, uint32_t, uint32_t, CNWSPlayer*, CNWSObject*, CGameObjectArray*, CNWSPlayerLUOSortedObjectList*, int32_t>
+        (&ComputeGameObjectUpdateForCategory);
 
-    hooker->RequestSharedHook<Functions::CNWSMessage__SendServerToPlayerMessage, int32_t,
-        CNWSMessage*,
-        Types::PlayerID,
-        uint8_t,
-        uint8_t,
-        uint8_t*,
-        uint32_t>(&SendServerToPlayerMessageHook);
+    hooker->RequestSharedHook<Functions::_ZN11CNWSMessage25SendServerToPlayerMessageEjhhPhj, int32_t,
+        CNWSMessage*, PlayerID, uint8_t, uint8_t, uint8_t*, uint32_t>
+        (&SendServerToPlayerMessageHook);
 
-    hooker->RequestSharedHook<Functions::CNWSMessage__HandlePlayerToServerMessage, int32_t,
-        CNWSMessage*,
-        Types::PlayerID,
-        uint8_t*,
-        uint32_t>(&HandlePlayerToServerMessageHook);
+    hooker->RequestSharedHook<Functions::_ZN11CNWSMessage27HandlePlayerToServerMessageEjPhj, int32_t,
+        CNWSMessage*, PlayerID, uint8_t*, uint32_t>
+        (&HandlePlayerToServerMessageHook);
 
     Services::Resamplers::ResamplerFuncPtr sumResampler = &Services::Resamplers::template Sum<uint32_t>;
     metrics->SetResampler("GameObjectUpdate", sumResampler, std::chrono::seconds(1));
     metrics->SetResampler("NetworkMessage", sumResampler, std::chrono::seconds(1));
 }
 
-void NetMessages::ComputeGameObjectUpdateForCategory(Services::Hooks::CallType type,
+void NetMessages::ComputeGameObjectUpdateForCategory(bool before,
     CNWSMessage*,
     uint32_t category,
     uint32_t,
@@ -56,7 +43,7 @@ void NetMessages::ComputeGameObjectUpdateForCategory(Services::Hooks::CallType t
     CNWSPlayerLUOSortedObjectList*,
     int32_t)
 {
-    if (type != Services::Hooks::CallType::BEFORE_ORIGINAL)
+    if (!before)
     {
         return;
     }
@@ -72,15 +59,15 @@ void NetMessages::ComputeGameObjectUpdateForCategory(Services::Hooks::CallType t
         });
 }
 
-void NetMessages::SendServerToPlayerMessageHook(Services::Hooks::CallType type,
+void NetMessages::SendServerToPlayerMessageHook(bool before,
     CNWSMessage*,
-    Types::PlayerID pid,
+    PlayerID pid,
     uint8_t major,
     uint8_t minor,
     uint8_t*,
     uint32_t bufferLen)
 {
-    if (type != Services::Hooks::CallType::BEFORE_ORIGINAL)
+    if (!before)
     {
         return;
     }
@@ -99,13 +86,13 @@ void NetMessages::SendServerToPlayerMessageHook(Services::Hooks::CallType type,
         });
 }
 
-void NetMessages::HandlePlayerToServerMessageHook(Services::Hooks::CallType type,
+void NetMessages::HandlePlayerToServerMessageHook(bool before,
     CNWSMessage*,
-    Types::PlayerID pid,
+    PlayerID pid,
     uint8_t* buffer,
     uint32_t bufferLen)
 {
-    if (type != Services::Hooks::CallType::BEFORE_ORIGINAL)
+    if (!before)
     {
         return;
     }

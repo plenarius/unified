@@ -11,19 +11,19 @@ namespace Visibility {
 class Visibility : public NWNXLib::Plugin
 {
 public:
-    Visibility(const Plugin::CreateParams& params);
+    Visibility(NWNXLib::Services::ProxyServiceList* services);
     virtual ~Visibility();
 
 private:
 
-    static int32_t TestObjectVisibleHook(NWNXLib::API::CNWSMessage *pThis, NWNXLib::API::CNWSObject *pAreaObject, NWNXLib::API::CNWSObject *pPlayerGameObject);
+    static int32_t TestObjectVisibleHook(CNWSMessage *pThis, CNWSObject *pAreaObject, CNWSObject *pPlayerGameObject);
     NWNXLib::Hooking::FunctionHook* m_TestObjectVisibilityHook;
 
-    static int32_t GetGlobalOverride(NWNXLib::API::Types::ObjectID targetId);
-    static int32_t GetPersonalOverride(NWNXLib::API::Types::ObjectID playerId, NWNXLib::API::Types::ObjectID targetId); 
+    static int32_t GetGlobalOverride(ObjectID targetId);
+    static int32_t GetPersonalOverride(ObjectID playerId, ObjectID targetId);
 
     ArgumentStack GetVisibilityOverride (ArgumentStack&& args);
-    ArgumentStack SetVisibilityOverride (ArgumentStack&& args); 
+    ArgumentStack SetVisibilityOverride (ArgumentStack&& args);
 };
 
 }
