@@ -10,6 +10,7 @@ var group__feat =
     [ "NWNX_FEAT_MODIFIER_AC", "group__feat.html#ga74662062e826877cd9a1973e030d98ad", null ],
     [ "NWNX_FEAT_MODIFIER_ACVSRACE", "group__feat.html#ga4ce6d77a7747c0324247d96cdef95b88", null ],
     [ "NWNX_FEAT_MODIFIER_ARCANESPELLFAILURE", "group__feat.html#ga64ba3e21fe509a96305d5a5c077e1db7", null ],
+    [ "NWNX_FEAT_MODIFIER_CONCEALMENT", "group__feat.html#ga142085a49f08ec20a435d6d1afac7bb8", null ],
     [ "NWNX_FEAT_MODIFIER_DMGIMMUNITY", "group__feat.html#gabed05be976f7ae0d94d54ccb8ef0cb64", null ],
     [ "NWNX_FEAT_MODIFIER_DMGREDUCTION", "group__feat.html#ga6c74ed4ba3c8d382da00591cb5c3b6bf", null ],
     [ "NWNX_FEAT_MODIFIER_DMGRESIST", "group__feat.html#ga97621406c4b6ef5ef134d80898dfb3ac", null ],
