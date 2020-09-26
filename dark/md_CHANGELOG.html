@@ -112,6 +112,7 @@ Unreleased</h1>
 <h2><a class="anchor" id="autotoc_md9"></a>
 Added</h2>
 <ul>
+<li>Events: added skippable Acquire events to ItemEvents</li>
 <li>Tweaks: <code>NWNX_TWEAKS_HIDE_PLAYERS_ON_CHAR_LIST</code></li>
 </ul>
 <h4><a class="anchor" id="autotoc_md10"></a>
@@ -123,10 +124,13 @@ New Plugins</h4>
 New NWScript Functions</h4>
 <ul>
 <li>Creature: {Get|Set}WalkAnimation()</li>
+<li>Object: GetCurrentAnimation()</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Changed</h2>
-<p>N/A</p>
+<ul>
+<li>Events: <code>NWNX_ON_DM_SPAWN_OBJECT_*</code> now provides the resref as event data.</li>
+</ul>
 <h2><a class="anchor" id="autotoc_md13"></a>
 Deprecated</h2>
 <ul>
@@ -140,6 +144,7 @@ Fixed</h2>
 <ul>
 <li>Administration: fix crash in DeletePlayerCharacter()</li>
 <li>Race: fixed effect clean up after level up</li>
+<li>Rename: community name only obfuscates once a server reset</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md16"></a>
 8193.16</h1>
@@ -871,7 +876,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Sep 26 2020 06:14:45 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Sep 26 2020 18:07:16 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16.
 					<a href="../">Light version</a>
 				</li>
