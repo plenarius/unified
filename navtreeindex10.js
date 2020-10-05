@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"nwnx__redis__short_8nss.html#a71f5308ce35c90b21c13642778d1936a":[4,0,2,29,0,3,72],
+"nwnx__redis__short_8nss.html#a726694815b02a09a96f974d19547860f":[4,0,2,29,0,3,44],
 "nwnx__redis__short_8nss.html#a7387cefff8e3a0d7c76bcb57eda0f2d0":[4,0,2,29,0,3,22],
 "nwnx__redis__short_8nss.html#a753f9182d791897b9f08f44af4072698":[4,0,2,29,0,3,36],
 "nwnx__redis__short_8nss.html#a75471cc30c7a700b5145f4824b77f053":[4,0,2,29,0,3,50],
@@ -164,6 +166,12 @@ var NAVTREEINDEX10 =
 "on__pubsub_8nss.html#acdef7a1fd863a6d3770c1268cb06add3":[4,0,2,29,0,4,0],
 "on__pubsub_8nss_source.html":[4,0,2,29,0,4],
 "pages.html":[],
+"structNWNX__Area__TileInfo.html":[0,4,2],
+"structNWNX__Area__TileInfo.html#a2272f4e3492d04d21fd90b15fe1db78d":[0,4,2,0],
+"structNWNX__Area__TileInfo.html#a3d62c52ed6d20acdfd5468396e6d62a1":[0,4,2,2],
+"structNWNX__Area__TileInfo.html#a8f251dcba2c20218ca755ad14ac30bf6":[0,4,2,3],
+"structNWNX__Area__TileInfo.html#a9401d512230306a66f9896d24847f2f2":[0,4,2,4],
+"structNWNX__Area__TileInfo.html#af58eb65e41d9b1cec04ba3af9ff11025":[0,4,2,1],
 "structNWNX__Creature__MemorisedSpell.html":[0,7,3],
 "structNWNX__Creature__MemorisedSpell.html#a3d9cd596f9cd780ae69f4a497a90a335":[0,7,3,2],
 "structNWNX__Creature__MemorisedSpell.html#aa08e4d7e4f0f2b8b8c639e152670329a":[0,7,3,0],
@@ -241,13 +249,5 @@ var NAVTREEINDEX10 =
 "structNWNX__EffectUnpacked.html#a88077f7c3c07fc9e0dc34fe88a2de1b3":[0,12,2,28],
 "structNWNX__EffectUnpacked.html#a93c97b987314aa85431095de37e9be5e":[0,12,2,19],
 "structNWNX__EffectUnpacked.html#a93d6dc6ee232cd675bbde08e5e742f2d":[0,12,2,5],
-"structNWNX__EffectUnpacked.html#a9a5a594ffc65e33b8dc2a914668496b0":[0,12,2,31],
-"structNWNX__EffectUnpacked.html#aa78592d4b82d8395fe3552333271a315":[0,12,2,24],
-"structNWNX__EffectUnpacked.html#aaa72768f0647c1057c9417f82cccfd23":[0,12,2,35],
-"structNWNX__EffectUnpacked.html#ab0050c5c672b6bb1f79e0e6860c9f50a":[0,12,2,9],
-"structNWNX__EffectUnpacked.html#ab019b2443ab59a615e79429ba68dd193":[0,12,2,39],
-"structNWNX__EffectUnpacked.html#ab31d1e6bf3a66d482598d900eea7f511":[0,12,2,1],
-"structNWNX__EffectUnpacked.html#ab38506290be8f1df06a216ee0c4756d0":[0,12,2,26],
-"structNWNX__EffectUnpacked.html#ab4cadce754ffff53bfd13edf07d7b7da":[0,12,2,29],
-"structNWNX__EffectUnpacked.html#ab8277e33f0c8eb20f2ddb2c4a0aab197":[0,12,2,4]
+"structNWNX__EffectUnpacked.html#a9a5a594ffc65e33b8dc2a914668496b0":[0,12,2,31]
 };
