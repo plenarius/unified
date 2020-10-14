@@ -141,15 +141,17 @@ var dir_ce92b3ebeae221968cfbe8aae0d60ffe =
       [ "NWNX_SQL_CHARACTER_SET", "group__sql.html#autotoc_md389", null ]
     ] ],
     [ "Environment Variables", "group__threadwatchdog.html#autotoc_md390", null ],
-    [ "Environment Variables", "group__tracking.html#autotoc_md391", null ],
-    [ "Environment Variables", "group__tweaks.html#autotoc_md392", null ],
-    [ "Environment variable values", "group__tweaks.html#autotoc_md393", [
-      [ "NWNX_TWEAKS_HIDE_PLAYERS_ON_CHAR_LIST", "group__tweaks.html#autotoc_md394", null ],
-      [ "NWNX_TWEAKS_ITEM_CHARGES_COST_MODE", "group__tweaks.html#autotoc_md395", null ]
+    [ "Notes", "group__tileset.html#autotoc_md391", null ],
+    [ "Simple Example", "group__tileset.html#autotoc_md392", null ],
+    [ "Environment Variables", "group__tracking.html#autotoc_md393", null ],
+    [ "Environment Variables", "group__tweaks.html#autotoc_md394", null ],
+    [ "Environment variable values", "group__tweaks.html#autotoc_md395", [
+      [ "NWNX_TWEAKS_HIDE_PLAYERS_ON_CHAR_LIST", "group__tweaks.html#autotoc_md396", null ],
+      [ "NWNX_TWEAKS_ITEM_CHARGES_COST_MODE", "group__tweaks.html#autotoc_md397", null ]
     ] ],
-    [ "Environment Variables", "group__util.html#autotoc_md396", null ],
-    [ "Limitations", "group__webhook.html#autotoc_md402", null ],
-    [ "Example usage", "group__webhook.html#autotoc_md403", null ],
+    [ "Environment Variables", "group__util.html#autotoc_md398", null ],
+    [ "Limitations", "group__webhook.html#autotoc_md404", null ],
+    [ "Example usage", "group__webhook.html#autotoc_md405", null ],
     [ "nwnx.nss", "nwnx_8nss.html", "nwnx_8nss" ],
     [ "nwnx_consts.nss", "nwnx__consts_8nss.html", "nwnx__consts_8nss" ],
     [ "nwnx_tests.nss", "nwnx__tests_8nss.html", "nwnx__tests_8nss" ]
