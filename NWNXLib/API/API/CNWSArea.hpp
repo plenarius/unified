@@ -1,40 +1,41 @@
 #pragma once
 #include "nwn_api.hpp"
 
-#include "CResHelper.hpp"
-#include "CNWSScriptVarTable.hpp"
 #include "CExoArrayList.hpp"
-#include "CResRef.hpp"
-#include "CNWArea.hpp"
-#include "NWAREAEXPANSION.hpp"
-#include "CExoString.hpp"
 #include "CExoLinkedList.hpp"
-#include "Vector.hpp"
-#include "CGameObject.hpp"
 #include "CExoLocString.hpp"
-#include "CResARE.hpp"
+#include "CExoString.hpp"
+#include "CGameObject.hpp"
+#include "CNWArea.hpp"
+#include "CNWSScriptVarTable.hpp"
 #include "CNWSUUID.hpp"
+#include "CResARE.hpp"
+#include "CResHelper.hpp"
+#include "CResRef.hpp"
+#include "NWAREAEXPANSION.hpp"
+#include "Vector.hpp"
 
 
 #ifdef NWN_API_PROLOGUE
 NWN_API_PROLOGUE(CNWSArea)
 #endif
 
-struct CNWSAreaGridSuccessors;
-struct CNWSPlayer;
-struct CNWSAreaInterTileSuccessors;
-struct CResGFF;
-struct CGameObject;
-struct CPathfindInformation;
 struct CERFFile;
-struct CNWTileSet;
-struct CNWSCreature;
-struct NWAREAHEADER;
-struct CNWSTile;
-struct CNWSAmbientSound;
 struct CGameEffect;
+struct CGameObject;
+struct CNWSAmbientSound;
+struct CNWSAreaGridPoint;
+struct CNWSAreaGridSuccessors;
 struct CNWSAreaGridTransTableEntry;
+struct CNWSAreaInterTileSuccessors;
+struct CNWSCreature;
+struct CNWSPlayer;
+struct CNWSTile;
+struct CNWTileSet;
+struct CPathfindInformation;
+struct CResGFF;
 struct CResStruct;
+struct NWAREAHEADER;
 
 
 typedef int BOOL;
@@ -137,8 +138,11 @@ struct CNWSArea : CNWArea, CResHelper<CResARE, 2012>, CGameObject
     int32_t InterTileDFSSoundPath(uint8_t * pTransTable, int32_t nDepth, int32_t x, int32_t y, int32_t nRegion);
     BOOL LoadArea(BOOL bLoadStateInfo = false, CResGFF * cOverrideGitGFF = nullptr, CResStruct * cOverrideGitTopLevelStruct = nullptr);
     virtual BOOL NoCreaturesOnLine(float fSourceX, float fSourceY, float fTargetX, float fTargetY, CPathfindInformation * pPathfindInfo, BOOL bCheckSourceOccluded = true, BOOL bIgnoreAssociates = false, OBJECT_ID * poidBlockingCreature = nullptr, BOOL bEvaluateOverlappingTarget = false);
-    BOOL EvaluateOverlappingTargets(CPathfindInformation * pPathfindInfo, Vector vPosition, OBJECT_ID oidAreaCreature, float fSourceX, float fSourceY, float fBothCreaturesPersonalSpace, BOOL bCheckSourceOccluded, BOOL bEvaluateOverlappingTarget, OBJECT_ID * poidBlockingCreature);
+    BOOL EvaluateOverlappingTargets(CPathfindInformation * pPathfindInfo, Vector vPosition, OBJECT_ID oidAreaCreature, float fSourceX, float fSourceY, float fBothCreaturesPersonalSpace, BOOL bEvaluateOverlappingTarget);
     BOOL PackAreaIntoMessage(int32_t nX, int32_t nY, int32_t nZ, CNWSPlayer * pPlayer);
+    uint32_t PlotGridPathEnhanced(CPathfindInformation * pcPathfindInformation, uint64_t nTimeSlice, bool bMoveToNearest);
+    void GridSearchPath(int32_t nPathID);
+    bool GridSearchPathInDirection(int32_t nStepNumber, int32_t nX, int32_t nY, int nDirectionX, int nDirectionY, bool bTestDirectLine, CNWSAreaGridPoint * pcSearch);
     uint32_t PlotGridPath(CPathfindInformation * pcPathfindInformation, uint64_t nTimeSlice);
     BOOL GridDFSearch(int32_t nStepNumber, int32_t nPathLength, int32_t nStepsToExplore, int32_t nX, int32_t nY, int32_t nZ);
     int32_t GridDFSGenerateSuccessors(int32_t nPathLength, int32_t nStepsToExplore, int32_t nX, int32_t nY, int32_t nZ, CNWSAreaGridSuccessors * * pcSuccessors);
@@ -161,7 +165,7 @@ struct CNWSArea : CNWArea, CResHelper<CResARE, 2012>, CGameObject
     int32_t TestDirectLine(float fStartX, float fStartY, float fEndX, float fEndY, float fPersonalSpace, float fCreatureHeight, BOOL bIgnoreClosedDoors = true);
     int32_t TestLineWalkable(float fStartX, float fStartY, float fEndX, float fEndY, float fPersonalSpace);
     void UnloadArea();
-    void PlayVisualEffect(uint16_t nEffectId, Vector vPosition);
+    void PlayVisualEffect(CGameEffect * pEffect, Vector vPosition);
     BOOL PlotSoundPath(CPathfindInformation * pcPathfindInformation);
     BOOL GetFirstObjectIndiceByX(int32_t * nIndice, float fMinX);
     BOOL UpdatePositionInObjectsArray(CGameObject * pUpdateObject);

@@ -40,6 +40,27 @@ const int NWNX_PLAYER_TIMING_BAR_LOCK          = 8;
 const int NWNX_PLAYER_TIMING_BAR_CUSTOM        = 10;
 /// @}
 
+/// @name Platform IDs
+/// @anchor platform_ids
+/// @{
+const int NWNX_PLAYER_PLATFORM_INVALID           = 0;
+const int NWNX_PLAYER_PLATFORM_WINDOWS_X86       = 1;
+const int NWNX_PLAYER_PLATFORM_WINDOWS_X64       = 2;
+const int NWNX_PLAYER_PLATFORM_LINUX_X86         = 10;
+const int NWNX_PLAYER_PLATFORM_LINUX_X64         = 11;
+const int NWNX_PLAYER_PLATFORM_LINUX_ARM32       = 12;
+const int NWNX_PLAYER_PLATFORM_LINUX_ARM64       = 13;
+const int NWNX_PLAYER_PLATFORM_MAC_X86           = 20;
+const int NWNX_PLAYER_PLATFORM_MAC_X64           = 21;
+const int NWNX_PLAYER_PLATFORM_IOS               = 30;
+const int NWNX_PLAYER_PLATFORM_ANDROID_ARM32     = 40;
+const int NWNX_PLAYER_PLATFORM_ANDROID_ARM64     = 41;
+const int NWNX_PLAYER_PLATFORM_ANDROID_X64       = 42;
+const int NWNX_PLAYER_PLATFORM_NINTENDO_SWITCH   = 50;
+const int NWNX_PLAYER_PLATFORM_MICROSOFT_XBOXONE = 60;
+const int NWNX_PLAYER_PLATFORM_SONY_PS4          = 70;
+/// @}
+
 /// @brief Force display placeable examine window for player
 /// @note If used on a placeable in a different area than the player, the portait will not be shown.
 /// @param player The player object.
@@ -233,6 +254,94 @@ void NWNX_Player_SetPersistentLocation(string sCDKeyOrCommunityName, string sBic
 /// @param oPlayer The player object.
 /// @param oItem The item object.
 void NWNX_Player_UpdateItemName(object oPlayer, object oItem);
+
+/// @brief Possesses a creature by temporarily making them a familiar
+/// @details This command allows a PC to possess an NPC by temporarily adding them as a familiar. It will work
+/// if the player already has an existing familiar. The creatures must be in the same area. Unpossession can be
+/// done with the regular @nwn{UnpossessFamiliar} commands.
+/// @note The possessed creature will send automap data back to the possessor.
+/// If you wish to prevent this you may wish to use NWNX_Player_GetAreaExplorationState() and
+/// NWNX_Player_SetAreaExplorationState() before and after the possession.
+/// @note The possessing creature will be left wherever they were when beginning the possession. You may wish
+/// to use @nwn{EffectCutsceneImmobilize} and @nwn{EffectCutsceneGhost} to hide them.
+/// @param oPossessor The possessor player object.
+/// @param oPossessed The possessed creature object. Only works on NPCs.
+/// @param bMindImmune If FALSE will remove the mind immunity effect on the possessor.
+/// @param bCreateDefaultQB If TRUE will populate the quick bar with default buttons.
+/// @return TRUE if possession succeeded.
+int NWNX_Player_PossessCreature(object oPossessor, object oPossessed, int bMindImmune = TRUE, int bCreateDefaultQB = FALSE);
+
+/// @brief Returns the platform ID of the given player (NWNX_PLAYER_PLATFORM_*)
+/// @param oPlayer The player object.
+int NWNX_Player_GetPlatformId(object oPlayer);
+
+/// @brief Returns the game language of the given player (uses NWNX_DIALOG_LANGUAGE_*)
+/// @details This function returns the ID of the game language displayed to the player.
+/// Uses the same constants as nwnx_dialog.
+/// @param oPlayer The player object.
+int NWNX_Player_GetLanguage(object oPlayer);
+
+/// @brief Override sOldResName with sNewResName of nResType for oPlayer.
+/// @warning If sNewResName does not exist on oPlayer's client it will crash their game.
+/// @param oPlayer The player object.
+/// @param nResType The res type, see nwnx_util.nss for constants.
+/// @param sOldResName The old res name, 16 characters or less.
+/// @param sNewResName The new res name or "" to clear a previous override, 16 characters or less.
+void NWNX_Player_SetResManOverride(object oPlayer, int nResType, string sOldResName, string sNewResName);
+
+/// @brief Set nCustomTokenNumber to sTokenValue for oPlayer only.
+/// @note The basegame SetCustomToken() will override any personal tokens.
+/// @param oPlayer The player object.
+/// @param nCustomTokenNumber The token number.
+/// @param sTokenValue The token text.
+void NWNX_Player_SetCustomToken(object oPlayer, int nCustomTokenNumber, string sTokenValue);
+
+/// @brief Override the name of creature for player only
+/// @param oPlayer The player object.
+/// @param oCreature The creature object.
+/// @param sName The name for the creature for this player, "" to clear the override.
+void NWNX_Player_SetCreatureNameOverride(object oPlayer, object oCreature, string sName);
+
+/// @brief Display floaty text above oCreature for oPlayer only.
+/// @note This will also display the floaty text above creatures that are not part of oPlayer's faction.
+/// @param oPlayer The player to display the text to.
+/// @param oCreature The creature to display the text above.
+/// @param sText The text to display.
+void NWNX_Player_FloatingTextStringOnCreature(object oPlayer, object oCreature, string sText);
+
+/// @brief Toggle oPlayer's PlayerDM status.
+/// @note This function does nothing for actual DMClient DMs or players with a client version < 8193.14
+/// @param oPlayer The player.
+/// @param bIsDM TRUE to toggle dm mode on, FALSE for off.
+void NWNX_Player_ToggleDM(object oPlayer, int bIsDM);
+
+/// @brief Override the mouse cursor of oObject for oPlayer only
+/// @param oPlayer The player object.
+/// @param oObject The object.
+/// @param nCursor The cursor, one of MOUSECURSOR_*. -1 to clear the override.
+void NWNX_Player_SetObjectMouseCursorOverride(object oPlayer, object oObject, int nCursor);
+
+/// @brief Override the hilite color of oObject for oPlayer only
+/// @param oPlayer The player object.
+/// @param oObject The object.
+/// @param nColor The color in 0xRRGGBB format, -1 to clear the override.
+void NWNX_Player_SetObjectHiliteColorOverride(object oPlayer, object oObject, int nColor);
+
+/// @brief Remove effects with sEffectTag from oPlayer's TURD
+/// @note This function should be called in the NWNX_ON_CLIENT_DISCONNECT_AFTER event, OnClientLeave is too early for the TURD to exist.
+/// @param oPlayer The player object.
+/// @param sEffectTag The effect tag.
+void NWNX_Player_RemoveEffectFromTURD(object oPlayer, string sEffectTag);
+
+/// @brief Set the location oPlayer will spawn when logging in to the server.
+/// @note This function is best called in the NWNX_ON_ELC_VALIDATE_CHARACTER_BEFORE event, OnClientEnter will be too late.
+/// @param oPlayer The player object.
+/// @param locSpawn The location.
+void NWNX_Player_SetSpawnLocation(object oPlayer, location locSpawn);
+
+/// @brief Resends palettes to a DM.
+/// @param oPlayer - the DM to send them to.
+void NWNX_Player_SendDMAllCreatorLists(object oPlayer);
 
 /// @}
 
@@ -593,7 +702,7 @@ int NWNX_Player_GetQuestCompleted(object player, string sQuestName)
     NWNX_PushArgumentObject(NWNX_Player, sFunc, player);
 
     NWNX_CallFunction(NWNX_Player, sFunc);
-    return  NWNX_GetReturnValueInt(NWNX_Player, sFunc);
+    return NWNX_GetReturnValueInt(NWNX_Player, sFunc);
 }
 
 void NWNX_Player_SetPersistentLocation(string sCDKeyOrCommunityName, string sBicFileName, object oWP, int bFirstConnectOnly = TRUE)
@@ -615,5 +724,148 @@ void NWNX_Player_UpdateItemName(object oPlayer, object oItem)
     NWNX_PushArgumentObject(NWNX_Player, sFunc, oItem);
     NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
 
+    NWNX_CallFunction(NWNX_Player, sFunc);
+}
+
+int NWNX_Player_PossessCreature(object oPossessor, object oPossessed, int bMindImmune = TRUE, int bCreateDefaultQB = FALSE)
+{
+    string sFunc = "PossessCreature";
+
+    NWNX_PushArgumentInt(NWNX_Player, sFunc, bCreateDefaultQB);
+    NWNX_PushArgumentInt(NWNX_Player, sFunc, bMindImmune);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPossessed);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPossessor);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+    return NWNX_GetReturnValueInt(NWNX_Player, sFunc);
+}
+
+int NWNX_Player_GetPlatformId(object oPlayer)
+{
+    string sFunc = "GetPlatformId";
+
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+    return NWNX_GetReturnValueInt(NWNX_Player, sFunc);
+}
+
+int NWNX_Player_GetLanguage(object oPlayer)
+{
+    string sFunc = "GetLanguage";
+
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+    return NWNX_GetReturnValueInt(NWNX_Player, sFunc);
+}
+
+void NWNX_Player_SetResManOverride(object oPlayer, int nResType, string sOldResName, string sNewResName)
+{
+    string sFunc = "SetResManOverride";
+
+    NWNX_PushArgumentString(NWNX_Player, sFunc, sNewResName);
+    NWNX_PushArgumentString(NWNX_Player, sFunc, sOldResName);
+    NWNX_PushArgumentInt(NWNX_Player, sFunc, nResType);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+}
+
+void NWNX_Player_SetCustomToken(object oPlayer, int nCustomTokenNumber, string sTokenValue)
+{
+    string sFunc = "SetCustomToken";
+
+    NWNX_PushArgumentString(NWNX_Player, sFunc, sTokenValue);
+    NWNX_PushArgumentInt(NWNX_Player, sFunc, nCustomTokenNumber);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+}
+
+void NWNX_Player_SetCreatureNameOverride(object oPlayer, object oCreature, string sName)
+{
+    string sFunc = "SetCreatureNameOverride";
+
+    NWNX_PushArgumentString(NWNX_Player, sFunc, sName);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oCreature);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+}
+
+void NWNX_Player_FloatingTextStringOnCreature(object oPlayer, object oCreature, string sText)
+{
+    string sFunc = "FloatingTextStringOnCreature";
+
+    NWNX_PushArgumentString(NWNX_Player, sFunc, sText);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oCreature);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+}
+
+void NWNX_Player_ToggleDM(object oPlayer, int bIsDM)
+{
+    string sFunc = "ToggleDM";
+
+    NWNX_PushArgumentInt(NWNX_Player, sFunc, bIsDM);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+}
+
+void NWNX_Player_SetObjectMouseCursorOverride(object oPlayer, object oObject, int nCursor)
+{
+    string sFunc = "SetObjectMouseCursorOverride";
+
+    NWNX_PushArgumentInt(NWNX_Player, sFunc, nCursor);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oObject);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+}
+
+void NWNX_Player_SetObjectHiliteColorOverride(object oPlayer, object oObject, int nColor)
+{
+    string sFunc = "SetObjectHiliteColorOverride";
+
+    NWNX_PushArgumentInt(NWNX_Player, sFunc, nColor);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oObject);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+}
+
+void NWNX_Player_RemoveEffectFromTURD(object oPlayer, string sEffectTag)
+{
+    string sFunc = "RemoveEffectFromTURD";
+
+    NWNX_PushArgumentString(NWNX_Player, sFunc, sEffectTag);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+}
+
+void NWNX_Player_SetSpawnLocation(object oPlayer, location locSpawn)
+{
+    string sFunc = "SetSpawnLocation";
+
+    vector vPosition = GetPositionFromLocation(locSpawn);
+
+    NWNX_PushArgumentFloat(NWNX_Player, sFunc, GetFacingFromLocation(locSpawn));
+    NWNX_PushArgumentFloat(NWNX_Player, sFunc, vPosition.z);
+    NWNX_PushArgumentFloat(NWNX_Player, sFunc, vPosition.y);
+    NWNX_PushArgumentFloat(NWNX_Player, sFunc, vPosition.x);
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, GetAreaFromLocation(locSpawn));
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
+
+    NWNX_CallFunction(NWNX_Player, sFunc);
+}
+
+void NWNX_Player_SendDMAllCreatorLists(object oPlayer)
+{
+    string sFunc = "SendDMAllCreatorLists";
+    NWNX_PushArgumentObject(NWNX_Player, sFunc, oPlayer);
     NWNX_CallFunction(NWNX_Player, sFunc);
 }

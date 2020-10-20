@@ -2,7 +2,6 @@
 #include "Encoding.hpp"
 
 #include "Assert.hpp"
-#include "API/Types.hpp"
 #include "API/CNWSCreature.hpp"
 #include "API/CNWSCreatureStats.hpp"
 #include "API/CNWSItem.hpp"
@@ -61,11 +60,11 @@ std::vector<uint8_t> SerializeGameObject(CGameObject *pObject, bool bStripPCFlag
 // These all use a common implementation, but unfortunately can't be called polymorphically.
 #define SERIALIZE(_type, _gff_header, ...)                                       \
         do {                                                                     \
-            CNWS##_type *p = static_cast<CNWS##_type*>(pObject);                 \
+            CNWS##_type *p = static_cast<CNWS##_type*>(pObject);       \
             if (resGff.CreateGFFFile(&resStruct, _gff_header, "V2.0"))           \
             {                                                                    \
                 /* CNWSItem already makes this call in SaveItem */               \
-                if (!p->AsNWSItem())                                             \
+                if (!Utils::AsNWSItem(p))                                        \
                     p->SaveObjectState(&resGff, &resStruct);                     \
                 if (p->Save##_type(&resGff, &resStruct, ##__VA_ARGS__))          \
                     resGff.WriteGFFToPointer((void**)&pData, /*ref*/dataLength); \
@@ -85,7 +84,10 @@ std::vector<uint8_t> SerializeGameObject(CGameObject *pObject, bool bStripPCFlag
             break;
     }
 
-    return std::vector<uint8_t>(pData, pData+dataLength);
+    std::vector<uint8_t> serialized(pData, pData+dataLength);
+    delete[] pData;
+
+    return serialized;
 }
 
 CGameObject *DeserializeGameObject(const std::vector<uint8_t>& serialized)
@@ -128,14 +130,14 @@ CGameObject *DeserializeGameObject(const std::vector<uint8_t>& serialized)
 
 #define DESERIALIZE(_type, ...)                                                             \
     do {                                                                                    \
-        CNWS##_type *p = new CNWS##_type(API::Constants::OBJECT_INVALID);                   \
+        CNWS##_type *p = new CNWS##_type(API::Constants::OBJECT_INVALID);         \
         if (!p->Load##_type(&resGff, &resStruct, ##__VA_ARGS__))                            \
         {                                                                                   \
             delete p;                                                                       \
             return nullptr;                                                                 \
         }                                                                                   \
         /* CNWSItem already makes this call in LoadItem */                                  \
-        if (!p->AsNWSItem())                                                                \
+        if (!Utils::AsNWSItem(p))                                                           \
             p->LoadObjectState(&resGff, &resStruct);                                        \
         return static_cast<CGameObject*>(p);                                                \
     } while(0)

@@ -1,25 +1,16 @@
 #include "Platform/Debug.hpp"
+#include "Platform/ASLR.hpp"
 #include <cstring>
 #include <cstdio>
 
-#ifdef _WIN32
-    #include "Windows.h"
-#else
-    #include <execinfo.h>
-    #include <signal.h>
-#endif
+#include <execinfo.h>
+#include <signal.h>
+#include <map>
 
-namespace NWNXLib {
-
-namespace Platform {
-
-namespace Debug {
+namespace NWNXLib::Platform::Debug {
 
 bool IsDebuggerPresent()
 {
-#ifdef _WIN32
-    return ::IsDebuggerPresent();
-#else
     bool present = false;
     char buf[1024] = {};
 
@@ -35,16 +26,6 @@ bool IsDebuggerPresent()
     }
     fclose(f);
     return present;
-#endif
-}
-
-void OutputDebugString(const char *str)
-{
-#ifdef _WIN32
-    OutputDebugStringA(str);
-#else
-    (void)str;
-#endif
 }
 
 std::string GetStackTrace(uint8_t levels)
@@ -53,20 +34,6 @@ std::string GetStackTrace(uint8_t levels)
     void* stackTrace[256];
 
     buffer[0] = 0;
-#ifdef _WIN32
-    int numCapturedFrames = CaptureStackBackTrace(0, levels, stackTrace, NULL);
-
-    if (numCapturedFrames)
-    {
-        std::strncat(buffer, "\n  Backtrace:\n", sizeof(buffer)-1);
-        for (int i = 0; i < numCapturedFrames; ++i)
-        {
-            char backtraceBuffer[32];
-            std::snprintf(backtraceBuffer, sizeof(backtraceBuffer), "    [0x%p]\n", stackTrace[i]);
-            std::strncat(buffer, backtraceBuffer, sizeof(buffer)-1);
-        }
-    }
-#else
     int numCapturedFrames = backtrace(stackTrace, levels);
 
     if (numCapturedFrames)
@@ -75,17 +42,60 @@ std::string GetStackTrace(uint8_t levels)
         std::strncat(buffer, "\n  Backtrace:\n", sizeof(buffer)-1);
         for (int i = 0; i < numCapturedFrames; ++i)
         {
+            uintptr_t addr, addr2;
             char backtraceBuffer[2048];
             std::snprintf(backtraceBuffer, sizeof(backtraceBuffer), "    %s\n", resolvedFrames[i]);
+            if (std::sscanf(backtraceBuffer, "    ./nwserver-linux(+%lx) [%lx]", &addr, &addr2) == 2)
+            {
+                std::snprintf(backtraceBuffer, sizeof(backtraceBuffer),
+                    "    ./nwserver-linux(%s) [0x%lx]\n", ResolveAddress(addr).c_str(), addr2);
+            }
             std::strncat(buffer, backtraceBuffer, sizeof(buffer)-1);
         }
     }
-#endif // _WIN32
     return std::string(buffer);
 }
 
+static std::map<uintptr_t, std::string> s_FunctionMap;
+using namespace NWNXLib::Platform::Debug;
+
+static void InitFunctionMap()
+{
+    if (s_FunctionMap.size()) return;
+
+#define NWNXLIB_FUNCTION_NO_VERSION_CHECK
+#define NWNXLIB_FUNCTION(name, address) s_FunctionMap[address] = #name;
+#include "API/FunctionsLinux.hpp"
 }
 
+std::string ResolveAddress(uintptr_t address)
+{
+    InitFunctionMap();
+
+    if (address > ASLR::GetRelocatedAddress(0))
+        address -= ASLR::GetRelocatedAddress(0);
+
+    auto it = s_FunctionMap.upper_bound(address);
+    if (it != s_FunctionMap.begin())
+    {
+        --it;
+        char offset[64];
+        std::snprintf(offset, sizeof(offset), "+0x%lx", address - it->first);
+        return it->second + offset;
+    }
+    return "<UNKNOWN>";
 }
+
+uintptr_t GetFunctionAddress(const std::string& mangledname)
+{
+    InitFunctionMap();
+    for (auto it: s_FunctionMap)
+    {
+        if (it.second == mangledname)
+            return it.first;
+    }
+    return 0;
+}
+
 
 }

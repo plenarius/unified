@@ -4,23 +4,13 @@
 #include <cstdlib>
 #include <cstring>
 
-#ifdef _WIN32
-    #include "Windows.h"
-#else
-    #include <execinfo.h>
-    #include <signal.h>
-#endif
 
-namespace NWNXLib {
+#include <execinfo.h>
+#include <signal.h>
 
-namespace Assert {
+namespace NWNXLib::Assert {
 
-#if TAR_DEBUG && !TAR_RELEASE
-static bool crashOnFailure = true;
-#else
 static bool crashOnFailure = false;
-#endif
-
 void SetCrashOnFailure(bool crash)
 {
     crashOnFailure = crash;
@@ -52,41 +42,15 @@ void Fail(const char* condition, const char* file, int line, const char* message
     bool skipCrash = !crashOnFailure;
     bool skipBreak = !Platform::Debug::IsDebuggerPresent();
 
-#ifdef _WIN32
-    int response = MessageBox(GetActiveWindow(), buffer, "ASSERTION FAILURE", MB_ABORTRETRYIGNORE);
-
-    switch (response)
-    {
-    case IDRETRY: // No crash, but break.
-        skipCrash = true;
-        break;
-
-    case IDIGNORE: // No crash or break.
-        skipCrash = true;
-        skipBreak = true;
-        break;
-
-    case IDABORT:
-    default: // Crash and break
-        break;
-    }
-#endif // _WIN32
-
     if (!skipBreak)
     {
-#ifdef _WIN32
-        __debugbreak();
-#else
         raise(SIGTRAP);
-#endif
     }
 
     if (!skipCrash)
     {
         std::abort();
     }
-}
-
 }
 
 }

@@ -17,7 +17,7 @@ namespace Profiler {
 
 using namespace NWNXLib;
 
-static ViewPtr<Services::MetricsProxy> g_metrics;
+static Services::MetricsProxy* g_metrics;
 static bool g_areaTimings;
 static bool g_typeTimings;
 
@@ -59,8 +59,8 @@ DECLARE_PROFILE_TARGET_FAST(*g_metrics, RunScript,
                         if (objectType >= ObjectType::Area)
                         {
                             CNWSArea* area = objectType == ObjectType::Area
-                                ? obj->AsNWSArea()
-                                : server->GetAreaByGameObjectID(obj->AsNWSObject()->m_oidArea);
+                                ? static_cast<CNWSArea*>(obj)
+                                : server->GetAreaByGameObjectID(static_cast<CNWSObject*>(obj)->m_oidArea);
 
                             if (area)
                             {
@@ -84,8 +84,8 @@ DECLARE_PROFILE_TARGET_FAST(*g_metrics, RunScript,
     int32_t, CVirtualMachine*, CExoString*, uint32_t, int32_t);
 
 Scripts::Scripts(const bool areaTimings, const bool typeTimings,
-    ViewPtr<NWNXLib::Services::HooksProxy> hooker,
-    ViewPtr<NWNXLib::Services::MetricsProxy> metrics)
+    NWNXLib::Services::HooksProxy* hooker,
+    NWNXLib::Services::MetricsProxy* metrics)
 {
     g_metrics = metrics;
     g_areaTimings = areaTimings;

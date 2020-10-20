@@ -58,7 +58,8 @@ void NWNX_SQL_PreparedObjectId(int position, object value);
 /// @brief Set the full serialized object value of a prepared statement at given position.
 /// @param position The nth ? in a prepared statement.
 /// @param value The value to set.
-void NWNX_SQL_PreparedObjectFull(int position, object value);
+/// @param base64 Use base64-encoded string format if TRUE (default), otherwise use binary format.
+void NWNX_SQL_PreparedObjectFull(int position, object value, int base64 = TRUE);
 
 /// @brief Like NWNX_SQL_ReadDataInActiveRow, but for full serialized objects.
 ///
@@ -72,8 +73,9 @@ void NWNX_SQL_PreparedObjectFull(int position, object value);
 /// @param column The column to read in the active row.
 /// @param owner The owner of the object.
 /// @param x, y, z The vector for objects to be placed in areas.
+/// @param base64 Use base64-encoded string format if TRUE (default), otherwise use binary format.
 /// @return The deserialized object.
-object NWNX_SQL_ReadFullObjectInActiveRow(int column = 0, object owner = OBJECT_INVALID, float x = 0.0, float y = 0.0, float z = 0.0);
+object NWNX_SQL_ReadFullObjectInActiveRow(int column = 0, object owner = OBJECT_INVALID, float x = 0.0, float y = 0.0, float z = 0.0, int base64 = TRUE);
 
 /// @brief Gets the rows affected by a query.
 /// @remark This command is for non-row-based statements like INSERT, UPDATE, DELETE, etc.
@@ -100,7 +102,7 @@ int NWNX_SQL_GetPreparedQueryParamCount();
 
 int NWNX_SQL_PrepareQuery(string query)
 {
-    string sFunc = "PREPARE_QUERY";
+    string sFunc = "PrepareQuery";
 
     NWNX_PushArgumentString(NWNX_SQL, sFunc, query);
     NWNX_CallFunction(NWNX_SQL, sFunc);
@@ -109,7 +111,7 @@ int NWNX_SQL_PrepareQuery(string query)
 
 int NWNX_SQL_ExecutePreparedQuery()
 {
-    string sFunc = "EXECUTE_PREPARED_QUERY";
+    string sFunc = "ExecutePreparedQuery";
 
     NWNX_CallFunction(NWNX_SQL, sFunc);
     return NWNX_GetReturnValueInt(NWNX_SQL, sFunc);
@@ -130,7 +132,7 @@ int NWNX_SQL_ExecuteQuery(string query)
 
 int NWNX_SQL_ReadyToReadNextRow()
 {
-    string sFunc = "READY_TO_READ_NEXT_ROW";
+    string sFunc = "ReadyToReadNextRow";
 
     NWNX_CallFunction(NWNX_SQL, sFunc);
     return NWNX_GetReturnValueInt(NWNX_SQL, sFunc);
@@ -138,14 +140,14 @@ int NWNX_SQL_ReadyToReadNextRow()
 
 void NWNX_SQL_ReadNextRow()
 {
-    string sFunc = "READ_NEXT_ROW";
+    string sFunc = "ReadNextRow";
 
     NWNX_CallFunction(NWNX_SQL, sFunc);
 }
 
 string NWNX_SQL_ReadDataInActiveRow(int column = 0)
 {
-    string sFunc = "READ_DATA_IN_ACTIVE_ROW";
+    string sFunc = "ReadDataInActiveRow";
 
     NWNX_PushArgumentInt(NWNX_SQL, sFunc, column);
     NWNX_CallFunction(NWNX_SQL, sFunc);
@@ -155,7 +157,7 @@ string NWNX_SQL_ReadDataInActiveRow(int column = 0)
 
 void NWNX_SQL_PreparedInt(int position, int value)
 {
-    string sFunc = "PREPARED_INT";
+    string sFunc = "PreparedInt";
 
     NWNX_PushArgumentInt(NWNX_SQL, sFunc, value);
     NWNX_PushArgumentInt(NWNX_SQL, sFunc, position);
@@ -163,7 +165,7 @@ void NWNX_SQL_PreparedInt(int position, int value)
 }
 void NWNX_SQL_PreparedString(int position, string value)
 {
-    string sFunc = "PREPARED_STRING";
+    string sFunc = "PreparedString";
 
     NWNX_PushArgumentString(NWNX_SQL, sFunc, value);
     NWNX_PushArgumentInt(NWNX_SQL, sFunc, position);
@@ -172,7 +174,7 @@ void NWNX_SQL_PreparedString(int position, string value)
 }
 void NWNX_SQL_PreparedFloat(int position, float value)
 {
-    string sFunc = "PREPARED_FLOAT";
+    string sFunc = "PreparedFloat";
 
     NWNX_PushArgumentFloat(NWNX_SQL, sFunc, value);
     NWNX_PushArgumentInt(NWNX_SQL, sFunc, position);
@@ -181,26 +183,28 @@ void NWNX_SQL_PreparedFloat(int position, float value)
 }
 void NWNX_SQL_PreparedObjectId(int position, object value)
 {
-    string sFunc = "PREPARED_OBJECT_ID";
+    string sFunc = "PreparedObjectId";
 
     NWNX_PushArgumentObject(NWNX_SQL, sFunc, value);
     NWNX_PushArgumentInt(NWNX_SQL, sFunc, position);
     NWNX_CallFunction(NWNX_SQL, sFunc);
 
 }
-void NWNX_SQL_PreparedObjectFull(int position, object value)
+void NWNX_SQL_PreparedObjectFull(int position, object value, int base64 = TRUE)
 {
-    string sFunc = "PREPARED_OBJECT_FULL";
+    string sFunc = "PreparedObjectFull";
 
+    NWNX_PushArgumentInt(NWNX_SQL, sFunc, base64);
     NWNX_PushArgumentObject(NWNX_SQL, sFunc, value);
     NWNX_PushArgumentInt(NWNX_SQL, sFunc, position);
     NWNX_CallFunction(NWNX_SQL, sFunc);
 }
 
-object NWNX_SQL_ReadFullObjectInActiveRow(int column = 0, object owner = OBJECT_INVALID, float x = 0.0, float y = 0.0, float z = 0.0)
+object NWNX_SQL_ReadFullObjectInActiveRow(int column = 0, object owner = OBJECT_INVALID, float x = 0.0, float y = 0.0, float z = 0.0, int base64 = TRUE)
 {
-    string sFunc = "READ_FULL_OBJECT_IN_ACTIVE_ROW";
+    string sFunc = "ReadFullObjectInActiveRow";
 
+    NWNX_PushArgumentInt(NWNX_SQL, sFunc, base64);
     NWNX_PushArgumentFloat(NWNX_SQL, sFunc, z);
     NWNX_PushArgumentFloat(NWNX_SQL, sFunc, y);
     NWNX_PushArgumentFloat(NWNX_SQL, sFunc, x);
@@ -212,7 +216,7 @@ object NWNX_SQL_ReadFullObjectInActiveRow(int column = 0, object owner = OBJECT_
 
 int NWNX_SQL_GetAffectedRows()
 {
-    string sFunc = "GET_AFFECTED_ROWS";
+    string sFunc = "GetAffectedRows";
 
     NWNX_CallFunction(NWNX_SQL, sFunc);
     return NWNX_GetReturnValueInt(NWNX_SQL, sFunc);
@@ -220,7 +224,7 @@ int NWNX_SQL_GetAffectedRows()
 
 string NWNX_SQL_GetDatabaseType()
 {
-    string sFunc = "GET_DATABASE_TYPE";
+    string sFunc = "GetDatabaseType";
 
     NWNX_CallFunction(NWNX_SQL, sFunc);
     return NWNX_GetReturnValueString(NWNX_SQL, sFunc);
@@ -228,14 +232,14 @@ string NWNX_SQL_GetDatabaseType()
 
 void NWNX_SQL_DestroyPreparedQuery()
 {
-    string sFunc = "DESTROY_PREPARED_QUERY";
+    string sFunc = "DestroyPreparedQuery";
 
     NWNX_CallFunction(NWNX_SQL, sFunc);
 }
 
 string NWNX_SQL_GetLastError()
 {
-    string sFunc = "GET_LAST_ERROR";
+    string sFunc = "GetLastError";
 
     NWNX_CallFunction(NWNX_SQL, sFunc);
     return NWNX_GetReturnValueString(NWNX_SQL, sFunc);
@@ -243,7 +247,7 @@ string NWNX_SQL_GetLastError()
 
 int NWNX_SQL_GetPreparedQueryParamCount()
 {
-    string sFunc = "GET_PREPARED_QUERY_PARAM_COUNT";
+    string sFunc = "GetPreparedQueryParamCount";
 
     NWNX_CallFunction(NWNX_SQL, sFunc);
     return NWNX_GetReturnValueInt(NWNX_SQL, sFunc);

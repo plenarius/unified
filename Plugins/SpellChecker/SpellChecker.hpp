@@ -2,13 +2,11 @@
 
 #include "Plugin.hpp"
 #include "Services/Events/Events.hpp"
-#include "API/Types.hpp"
 #include <iostream>
-#include "Platform/DynamicLibraries.hpp"
 
 
 using ArgumentStack = NWNXLib::Services::Events::ArgumentStack;
-using HandleType = NWNXLib::Platform::DynamicLibraries::HandleType;
+using HandleType = void*;
 
 namespace SpellChecker {
 
@@ -22,7 +20,7 @@ class SpellChecker : public NWNXLib::Plugin
     typedef void (*Free_Exp)(SplHandle* e, char***, int);
 
 public:
-    SpellChecker(const Plugin::CreateParams& params);
+    SpellChecker(NWNXLib::Services::ProxyServiceList* services);
     virtual ~SpellChecker();
 
 
@@ -31,7 +29,7 @@ private:
     ArgumentStack GetSuggestSpell                   (ArgumentStack&& args);
     std::string dic;
     std::string aff;
-    void Init(NWNXLib::ViewPtr<NWNXLib::Services::ConfigProxy> config);
+    void Init(NWNXLib::Services::ConfigProxy* config);
     uintptr_t EstbSymFunction(const std::string& symbol);
     Create_Exp setcreate;
     SplHandle* created;

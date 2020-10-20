@@ -46,9 +46,7 @@ CNWVirtualMachineCommands* GetVmCommands()
 CVirtualMachineScript* CreateScriptForClosure(const char* token)
 {
     CVirtualMachineScript* script = new CVirtualMachineScript();
-    script->m_nCodeSize = 0;
     script->m_pCode = NULL;
-    script->m_nLoadedFromSave = 0;
     script->m_nSecondaryInstructPtr = 0;
     script->m_nInstructPtr = 0;
     script->m_nStackSize = 0;
@@ -447,13 +445,13 @@ extern "C" {
             retval = static_cast<uint32_t>(pObject->m_idSelf);
             ASSERT(API::Globals::AppManager()->m_pServerExoApp->GetGameObject(retval));
 
-            CGameObject *pOwner = Utils::GetGameObject(owner);
-            if (auto *pArea = pOwner->AsNWSArea())
+            CGameObject *pOwner = API::Globals::AppManager()->m_pServerExoApp->GetGameObject(owner);
+            if (auto *pArea = Utils::AsNWSArea(pOwner))
             {
                 if (!Utils::AddToArea(pObject, pArea, v->x, v->y, v->z))
                     LOG_WARNING("Failed to add object %x to area %x (%f,%f,%f)", retval, owner, v->x, v->y, v->z);
             }
-            else if (auto *pItem = pObject->AsNWSItem())
+            else if (auto *pItem = Utils::AsNWSItem(pObject))
             {
                 if (!Utils::AcquireItem(pItem, pOwner))
                     LOG_WARNING("Failed to 'acquire' deserialized item %x by owner %x", retval, owner);

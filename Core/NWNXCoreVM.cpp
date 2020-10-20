@@ -17,10 +17,10 @@
 #include "Utils.hpp"
 
 #include <cstring>
+#include <optional>
 
 using namespace NWNXLib;
 using namespace NWNXLib::API;
-using namespace NWNXLib::API::Types;
 using namespace NWNXLib::API::Constants;
 
 namespace {
@@ -35,7 +35,7 @@ struct Command
 
 static const int  NWNX_ABI_VERSION = 2;
 
-Maybe<Command> ProcessNWNX(const CExoString& str)
+std::optional<Command> ProcessNWNX(const CExoString& str)
 {
     auto startsWith = [](const CExoString& str, const char *prefix) -> bool
     {
@@ -65,7 +65,7 @@ Maybe<Command> ProcessNWNX(const CExoString& str)
             cmd.plugin    = plugin;
             cmd.event     = event;
             cmd.operation = operation;
-            return Maybe<Command>(cmd);
+            return std::make_optional<>(cmd);
         }
     }
     else if (startsWith(str, "NWNX!"))
@@ -84,7 +84,7 @@ Maybe<Command> ProcessNWNX(const CExoString& str)
         }
     }
 
-    return Maybe<Command>();
+    return std::optional<Command>();
 }
 
 }
@@ -98,7 +98,7 @@ int32_t NWNXCore::GetVarHandler(CNWVirtualMachineCommands* thisPtr, int32_t nCom
     ASSERT(thisPtr); ASSERT(nParameters == 2);
     auto *vm = Globals::VirtualMachine();
 
-    Types::ObjectID oid;
+    ObjectID oid;
     if (!vm->StackPopObject(&oid))
         return VMError::StackUnderflow;
 
@@ -161,11 +161,11 @@ int32_t NWNXCore::GetVarHandler(CNWVirtualMachineCommands* thisPtr, int32_t nCom
         }
         case VMCommand::GetLocalObject:
         {
-            Types::ObjectID oid = Constants::OBJECT_INVALID;
+            ObjectID oid = Constants::OBJECT_INVALID;
 
             if (nwnx)
             {
-                if (auto res = g_core->m_services->m_events->Pop<Types::ObjectID>(nwnx->plugin, nwnx->event))
+                if (auto res = g_core->m_services->m_events->Pop<ObjectID>(nwnx->plugin, nwnx->event))
                     oid = *res;
             }
             else if (vartable)
@@ -196,7 +196,7 @@ int32_t NWNXCore::SetVarHandler(CNWVirtualMachineCommands* thisPtr, int32_t nCom
     ASSERT(thisPtr); ASSERT(nParameters == 3);
     auto *vm = Globals::VirtualMachine();
 
-    Types::ObjectID oid;
+    ObjectID oid;
     if (!vm->StackPopObject(&oid))
         return VMError::StackUnderflow;
 
@@ -261,7 +261,7 @@ int32_t NWNXCore::SetVarHandler(CNWVirtualMachineCommands* thisPtr, int32_t nCom
         }
         case VMCommand::SetLocalObject:
         {
-            Types::ObjectID value;
+            ObjectID value;
             if (!vm->StackPopObject(&value))
                 return VMError::StackUnderflow;
 
@@ -417,12 +417,11 @@ int32_t NWNXCore::PlaySoundHandler(CNWVirtualMachineCommands* thisPtr, int32_t n
     {
         if (thisPtr->m_bValidObjectRunScript)
         {
-            if (auto *obj = Utils::GetGameObject(thisPtr->m_oidObjectRunScript)->AsNWSObject())
+            if (auto *obj = Utils::AsNWSObject(Utils::GetGameObject(thisPtr->m_oidObjectRunScript)))
             {
                 if (obj->m_bAbleToModifyActionQueue)
                 {
-                    obj->AddAction(23, -1, 4, (CExoString*)&sound,
-                              0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+                    obj->AddAction(23, -1, 4, (CExoString*)&sound);
                 }
 
             }

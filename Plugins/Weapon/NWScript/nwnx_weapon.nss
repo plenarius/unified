@@ -39,6 +39,10 @@ void NWNX_Weapon_SetWeaponFocusFeat(int nBaseItem, int nFeat);
 /// @param nSize The creature size minimum to consider this weapon finessable.
 void NWNX_Weapon_SetWeaponFinesseSize(int nBaseItem, int nSize);
 
+/// @brief Get required creature size for a weapon base item to be finessable.
+/// @param nBaseItem The base item id.
+int NWNX_Weapon_GetWeaponFinesseSize(int nBaseItem);
+
 /// @brief Set weapon base item to be considered as unarmed for weapon finesse feat.
 /// @param nBaseItem The base item id.
 void NWNX_Weapon_SetWeaponUnarmed(int nBaseItem);
@@ -89,6 +93,7 @@ void NWNX_Weapon_SetGreaterWeaponSpecializationFeat(int nBaseItem, int nFeat);
 void NWNX_Weapon_SetGreaterWeaponFocusFeat(int nBaseItem, int nFeat);
 
 /// @brief Set base item as monk weapon.
+/// @note Requires activation of CombatModes plugin for Flurry of Blows.
 /// @param nBaseItem The base item id.
 void NWNX_Weapon_SetWeaponIsMonkWeapon(int nBaseItem);
 
@@ -109,6 +114,17 @@ struct NWNX_Weapon_DevastatingCriticalEvent_Data NWNX_Weapon_GetDevastatingCriti
 /// @brief Bypass Devastating Critical.
 /// @note This is only for use with the Devastating Critical Event Script.
 void NWNX_Weapon_BypassDevastatingCritical();
+
+/// @brief Sets weapon to gain .5 strength bonus.
+/// @param oWeapon Should be a melee weapon.
+/// @param nEnable TRUE for bonus. FALSE to turn off bonus.
+/// @param bPersist whether the two hand state should persist to the gff file.
+void NWNX_Weapon_SetOneHalfStrength(object oWeapon, int nEnable, int bPersist = FALSE);
+
+/// @brief Gets if the weapon is set to gain addition .5 strength bonus
+/// @param oWeapon the weapon
+/// @return FALSE/0 if weapon is not receiving the bonus. TRUE/1 if it does.
+int NWNX_Weapon_GetOneHalfStrength(object oWeapon);
 
 /// @}
 
@@ -150,6 +166,17 @@ void NWNX_Weapon_SetWeaponFinesseSize(int nBaseItem, int nSize)
     NWNX_PushArgumentInt(NWNX_Weapon, sFunc, nBaseItem);
 
     NWNX_CallFunction(NWNX_Weapon, sFunc);
+}
+
+int NWNX_Weapon_GetWeaponFinesseSize(int nBaseItem)
+{
+    string sFunc = "GetWeaponFinesseSize";
+
+    NWNX_PushArgumentInt(NWNX_Weapon, sFunc, nBaseItem);
+
+    NWNX_CallFunction(NWNX_Weapon, sFunc);
+
+    return NWNX_GetReturnValueInt(NWNX_Weapon, sFunc);
 }
 
 void NWNX_Weapon_SetWeaponUnarmed(int nBaseItem)
@@ -276,10 +303,28 @@ struct NWNX_Weapon_DevastatingCriticalEvent_Data NWNX_Weapon_GetDevastatingCriti
 
     NWNX_PushArgumentInt(NWNX_Weapon, sFunc, NWNX_WEAPON_GETDATA_DC);
     NWNX_CallFunction(NWNX_Weapon, sFunc);
-    
+
     data.oWeapon = NWNX_GetReturnValueObject(NWNX_Weapon, sFunc);
     data.oTarget = NWNX_GetReturnValueObject(NWNX_Weapon, sFunc);
     data.nDamage = NWNX_GetReturnValueInt(NWNX_Weapon, sFunc);
 
     return data;
+}
+
+void NWNX_Weapon_SetOneHalfStrength(object oWeapon, int nEnable, int bPersist = FALSE)
+{
+    string sFunc = "SetOneHalfStrength";
+    NWNX_PushArgumentInt(NWNX_Weapon, sFunc, bPersist);
+    NWNX_PushArgumentInt(NWNX_Weapon, sFunc, nEnable);
+    NWNX_PushArgumentObject(NWNX_Weapon, sFunc, oWeapon);
+    NWNX_CallFunction(NWNX_Weapon, sFunc);
+}
+
+int NWNX_Weapon_GetOneHalfStrength(object oWeapon)
+{
+    string sFunc = "GetOneHalfStrength";
+    NWNX_PushArgumentObject(NWNX_Weapon, sFunc, oWeapon);
+    NWNX_CallFunction(NWNX_Weapon, sFunc);
+
+    return NWNX_GetReturnValueInt(NWNX_Weapon, sFunc);
 }

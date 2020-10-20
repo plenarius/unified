@@ -1,11 +1,9 @@
 #pragma once
 
-#include "API/Types.hpp"
 #include "API/CServerExoAppInternal.hpp"
 #include "API/CNWVirtualMachineCommands.hpp"
 #include "Common.hpp"
 #include "Plugin.hpp"
-#include "Platform/Hooking.hpp"
 #include "Services/Services.hpp"
 #include "Services/Hooks/Hooks.hpp"
 #include "Services/Plugins/Plugins.hpp"
@@ -29,6 +27,8 @@ public:
     static int32_t TagItemPropertyHandler(CNWVirtualMachineCommands*, int32_t, int32_t);
     static int32_t PlaySoundHandler(CNWVirtualMachineCommands*, int32_t, int32_t);
 
+    std::unique_ptr<NWNXLib::Services::ServiceList> m_services;
+
 private: // Structures
     using PluginProxyServiceMap = std::map<
         NWNXLib::Services::Plugins::RegistrationToken,
@@ -39,7 +39,6 @@ private: // Structures
 
 private:
     std::unique_ptr<NWNXLib::Hooking::FunctionHook> m_createServerHook;
-    std::unique_ptr<NWNXLib::Services::ServiceList> m_services;
     std::unique_ptr<NWNXLib::Services::ProxyServiceList> m_coreServices;
     PluginProxyServiceMap m_pluginProxyServiceMap;
 
@@ -51,7 +50,7 @@ private:
     void InitialSetupHooks();
     void InitialVersionCheck();
     void InitialSetupPlugins();
-    void InitialSetupResourceDirectory();
+    void InitialSetupResourceDirectories();
     void InitialSetupCommands();
 
     void UnloadPlugins();
@@ -63,7 +62,7 @@ private:
 
     static void CreateServerHandler(CAppManager*);
     static void DestroyServerHandler(CAppManager*);
-    static void MainLoopInternalHandler(NWNXLib::Services::Hooks::CallType type, CServerExoAppInternal*);
+    static void MainLoopInternalHandler(bool, CServerExoAppInternal*);
 
     int m_ScriptChunkRecursion;
 };

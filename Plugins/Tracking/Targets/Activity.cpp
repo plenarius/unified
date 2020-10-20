@@ -10,7 +10,6 @@
 #include "API/Constants.hpp"
 #include "API/CServerExoAppInternal.hpp"
 #include "API/Functions.hpp"
-#include "API/Version.hpp"
 #include "Services/Metrics/Metrics.hpp"
 #include "Services/Metrics/Resamplers.hpp"
 
@@ -19,9 +18,9 @@ using namespace NWNXLib::API;
 
 namespace Tracking {
 
-static ViewPtr<Services::MetricsProxy> g_metrics;
+static Services::MetricsProxy* g_metrics;
 
-Activity::Activity(ViewPtr<Services::MetricsProxy> metrics, ViewPtr<Services::HooksProxy> hooks)
+Activity::Activity(Services::MetricsProxy* metrics, Services::HooksProxy* hooks)
 {
     g_metrics = metrics;
     hooks->RequestSharedHook<Functions::_ZN21CServerExoAppInternal8MainLoopEv, int32_t>(&MainLoopUpdate);
@@ -29,9 +28,9 @@ Activity::Activity(ViewPtr<Services::MetricsProxy> metrics, ViewPtr<Services::Ho
     metrics->SetResampler("Activity", resampler, std::chrono::seconds(1));
 }
 
-void Activity::MainLoopUpdate(Services::Hooks::CallType type, CServerExoAppInternal* thisPtr)
+void Activity::MainLoopUpdate(bool before, CServerExoAppInternal* thisPtr)
 {
-    if (type != Services::Hooks::CallType::BEFORE_ORIGINAL)
+    if (!before)
     {
         return;
     }
@@ -62,7 +61,7 @@ void Activity::MainLoopUpdate(Services::Hooks::CallType type, CServerExoAppInter
                     areaName = std::string(area->m_cResRef.GetResRef(), area->m_cResRef.GetLength());
                 }
 
-                if (creature->m_pStats->m_bIsDM || creature->m_nAssociateType == 7 || creature->m_nAssociateType == 8)
+                if (creature->m_pStats->m_bIsDMCharacterFile || creature->m_nAssociateType == 7 || creature->m_nAssociateType == 8)
                 {
                     clientType = "DM";
                 }

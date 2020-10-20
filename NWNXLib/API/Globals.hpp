@@ -1,7 +1,6 @@
 #pragma once
 
 #include <cstdint>
-#include "API/Version.hpp"
 
 
 struct CExoBase;
@@ -21,6 +20,7 @@ namespace NWNXLib::API::Globals {
 struct NWNXExportedGlobals
 {
     CExoString            *psBuildNumber;
+    CExoString            *psBuildRevision;
     CExoBase              **ppExoBase;
     CExoResMan            **ppExoResMan;
     CVirtualMachine       **ppVirtualMachine;
@@ -38,6 +38,7 @@ struct NWNXExportedGlobals
 extern NWNXExportedGlobals ExportedGlobals;
 
 inline CExoString*            BuildNumber()     { return ExportedGlobals.psBuildNumber; }
+inline CExoString*            BuildRevision()   { return ExportedGlobals.psBuildRevision; }
 inline CExoBase*              ExoBase()         { return *ExportedGlobals.ppExoBase; }
 inline CExoResMan*            ExoResMan()       { return *ExportedGlobals.ppExoResMan; }
 inline CVirtualMachine*       VirtualMachine()  { return *ExportedGlobals.ppVirtualMachine; }

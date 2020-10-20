@@ -4,7 +4,6 @@
 #include "Plugin.hpp"
 #include "Services/Hooks/Hooks.hpp"
 
-#include "API/Types.hpp"
 #include "API/Functions.hpp"
 #include "API/CVirtualMachine.hpp"
 #include "API/CExoString.hpp"
@@ -45,7 +44,7 @@ public:
         std::vector<std::string> m_pubsub_channels;
     };
 
-    Redis(const Plugin::CreateParams& params);
+    Redis(NWNXLib::Services::ProxyServiceList* services);
     virtual ~Redis();
 
     // Retrieve a free connection to do stuff with. This could be a single
@@ -93,8 +92,7 @@ private:
                   const uint64_t ns);
     std::unique_ptr<cpp_redis::redis_client> PoolMakeFunc();
 
-    static void CleanState(NWNXLib::Services::Hooks::CallType,
-            CVirtualMachine*);
+    static void CleanState(bool, CVirtualMachine*);
 };
 
 }

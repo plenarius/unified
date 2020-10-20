@@ -16,7 +16,7 @@ macro(nwnxlib_add)
     endif()
 endmacro()
 
-nwnxlib_add("Assert.cpp" "Log.cpp" "Plugin.cpp" "Serialize.cpp" "Utils.cpp" "Encoding.cpp")
+nwnxlib_add("Assert.cpp" "Log.cpp" "Serialize.cpp" "Utils.cpp" "Encoding.cpp")
 
 add_subdirectory(API)
 add_subdirectory(External)
@@ -32,10 +32,8 @@ target_compile_definitions(NWNXLib PRIVATE "-DPLUGIN_NAME=\"NWNXLib\"")
 
 target_include_directories(NWNXLib PUBLIC "." "API")
 
-if(UNIX)
-    # We need this for dlopen/dlclose/dlsym.
-    target_link_libraries(NWNXLib ${CMAKE_DL_LIBS})
-endif()
+# We need this for dlopen/dlclose/dlsym.
+target_link_libraries(NWNXLib ${CMAKE_DL_LIBS})
 
 # For hooks -- pulled in from External.
 target_link_libraries(NWNXLib funchook)

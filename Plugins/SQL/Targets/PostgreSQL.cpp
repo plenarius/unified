@@ -19,7 +19,7 @@ PostgreSQL::~PostgreSQL()
     PQfinish(m_conn);
 }
 
-void PostgreSQL::Connect(NWNXLib::ViewPtr<NWNXLib::Services::ConfigProxy> config)
+void PostgreSQL::Connect(NWNXLib::Services::ConfigProxy* config)
 {
     const std::string host = "host=" + config->Get<std::string>("HOST", "localhost");
     const std::string user = "user=" + config->Require<std::string>("USERNAME");
@@ -27,7 +27,7 @@ void PostgreSQL::Connect(NWNXLib::ViewPtr<NWNXLib::Services::ConfigProxy> config
 
     // Database technically is optional.  If not given, it will connect to the default
     // database of the given USERNAME.
-    const NWNXLib::Maybe<std::string> DB = config->Get<std::string>("DATABASE");
+    const auto DB = config->Get<std::string>("DATABASE");
     if (DB)
     {
         LOG_DEBUG("DB set to %s", (*DB));
@@ -98,6 +98,8 @@ bool PostgreSQL::PrepareQuery(const Query& query)
     LOG_DEBUG("Detected %d parameters.", m_paramCount);
 
     m_params.resize(m_paramCount);
+    m_formats.resize(m_paramCount);
+    m_lengths.resize(m_paramCount);
 
     PGresult *res = PQprepare(m_conn,      // connection
                         "",                // statement name, blank in this case.
@@ -123,7 +125,7 @@ bool PostgreSQL::PrepareQuery(const Query& query)
     return true;
 }
 
-NWNXLib::Maybe<ResultSet> PostgreSQL::ExecuteQuery()
+std::optional<ResultSet> PostgreSQL::ExecuteQuery()
 {
 
     m_affectedRows = -1;
@@ -149,8 +151,8 @@ NWNXLib::Maybe<ResultSet> PostgreSQL::ExecuteQuery()
         "",                                     // statement name (same as in the prepare above)
         m_paramCount,                           // m_paramCount from previous
         paramValues,                            // param data (can be null)
-        NULL,                                   // param lengths - only for binary data
-        NULL,                                   // param formats - server will infer text
+        m_lengths.data(),                                   // param lengths - only for binary data
+        m_formats.data(),                                   // param formats - server will infer text
         0);                                     // result format, 0=text, 1=binary
 
     // done with parameters.
@@ -183,7 +185,7 @@ NWNXLib::Maybe<ResultSet> PostgreSQL::ExecuteQuery()
         }
 
         PQclear(res);
-        return NWNXLib::Maybe<ResultSet>(std::move(results)); // Succeeded query, succeeded results.
+        return std::make_optional<ResultSet>(std::move(results)); // Succeeded query, succeeded results.
     }
 
     // DML that doesn't return rows (inserts, updates, etc.)
@@ -197,7 +199,7 @@ NWNXLib::Maybe<ResultSet> PostgreSQL::ExecuteQuery()
             m_affectedRows = atoi(cnt);
         }
         PQclear(res);
-        return NWNXLib::Maybe<ResultSet>(ResultSet()); // Succeeded query, no results.
+        return std::make_optional<ResultSet>(ResultSet()); // Succeeded query, no results.
     }
 
     // Else.. something unexpected happened.
@@ -215,7 +217,7 @@ NWNXLib::Maybe<ResultSet> PostgreSQL::ExecuteQuery()
     m_lastError.assign(error);
 
     PQclear(res);
-    return NWNXLib::Maybe<ResultSet>();
+    return std::optional<ResultSet>();
 }
 
 // Parameters are just passed as strings.  PgSQL figures out what it's supposed to be and casts if necessary.
@@ -223,16 +225,27 @@ void PostgreSQL::PrepareInt(int32_t position, int32_t value)
 {
     LOG_DEBUG("Assigning position %d to value '%d'", position, value);
     m_params[position] = std::to_string(value);
+    m_formats[position] = 0;
 }
 void PostgreSQL::PrepareFloat(int32_t position, float value)
 {
     LOG_DEBUG("Assigning position %d to value '%f'", position, value);
     m_params[position] = std::to_string(value);
+    m_formats[position] = 0;
 }
 void PostgreSQL::PrepareString(int32_t position, const std::string& value)
 {
     LOG_DEBUG("Assigning position %d to value '%s'", position, value);
     m_params[position] = value;
+    m_formats[position] = 0;
+}
+
+void PostgreSQL::PrepareBinary(int32_t position, const std::vector<uint8_t> &value)
+{
+    LOG_DEBUG("Assigning position %d to value '%s'", position, value.data());
+    m_params[position] = std::string(value.begin(), value.end());
+    m_lengths[position] = value.size();
+    m_formats[position] = 1;
 }
 
 int PostgreSQL::GetAffectedRows()

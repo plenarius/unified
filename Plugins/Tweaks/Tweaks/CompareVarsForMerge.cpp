@@ -2,7 +2,6 @@
 #include "API/CNWSItem.hpp"
 #include "API/Functions.hpp"
 #include "API/Globals.hpp"
-#include "API/Version.hpp"
 
 #include "Services/Hooks/Hooks.hpp"
 #include "Utils.hpp"
@@ -14,12 +13,10 @@ using namespace NWNXLib;
 using namespace NWNXLib::API;
 
 NWNXLib::Hooking::FunctionHook* CompareVarsForMerge::pCompareItem_hook;
-CompareVarsForMerge::CompareVarsForMerge(ViewPtr<Services::HooksProxy> hooker)
+CompareVarsForMerge::CompareVarsForMerge(Services::HooksProxy* hooker)
 {
-    hooker->RequestExclusiveHook<Functions::_ZN8CNWSItem11CompareItemEPS_>
-                                    (&CNWSItem__CompareItem_hook);
-
-    pCompareItem_hook = hooker->FindHookByAddress(Functions::_ZN8CNWSItem11CompareItemEPS_);
+    pCompareItem_hook = hooker->RequestExclusiveHook
+        <Functions::_ZN8CNWSItem11CompareItemEPS_>(&CNWSItem__CompareItem_hook);
 }
 
 int32_t CompareVarsForMerge::CNWSItem__CompareItem_hook(CNWSItem* thisPtr, CNWSItem* pOtherItem)

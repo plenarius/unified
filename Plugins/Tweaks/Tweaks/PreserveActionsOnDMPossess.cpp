@@ -16,14 +16,14 @@ using namespace NWNXLib;
 using namespace NWNXLib::API;
 using namespace NWNXLib::API::Constants;
 
-PreserveActionsOnDMPossess::PreserveActionsOnDMPossess(ViewPtr<Services::HooksProxy> hooker)
+PreserveActionsOnDMPossess::PreserveActionsOnDMPossess(Services::HooksProxy* hooker)
 {
     hooker->RequestExclusiveHook<Functions::_ZN12CNWSCreature17PossessCreatureDMEjh>
                                     (&CNWSCreature__PossessCreatureDM_hook);
 }
 
 void PreserveActionsOnDMPossess::CNWSCreature__PossessCreatureDM_hook(
-        CNWSCreature* thisPtr, Types::ObjectID nObjectId, uint8_t nMode)
+        CNWSCreature* thisPtr, ObjectID nObjectId, uint8_t nMode)
 {
     if (nObjectId != Constants::OBJECT_INVALID)
     {

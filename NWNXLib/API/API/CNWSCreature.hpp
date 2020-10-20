@@ -1,16 +1,16 @@
 #pragma once
 #include "nwn_api.hpp"
 
-#include "CNWSPersonalReputation.hpp"
-#include "CNWSCreatureAppearanceInfo.hpp"
 #include "CExoArrayList.hpp"
-#include "CResRef.hpp"
-#include "CNWSObject.hpp"
-#include "CNWActionNode.hpp"
-#include "CNWSInvitationDetails.hpp"
 #include "CExoString.hpp"
-#include "Vector.hpp"
+#include "CNWActionNode.hpp"
+#include "CNWSCreatureAppearanceInfo.hpp"
+#include "CNWSInvitationDetails.hpp"
+#include "CNWSObject.hpp"
 #include "CNWSPVPEntry.hpp"
+#include "CNWSPersonalReputation.hpp"
+#include "CResRef.hpp"
+#include "Vector.hpp"
 
 
 #ifdef NWN_API_PROLOGUE
@@ -18,35 +18,35 @@ NWN_API_PROLOGUE(CNWSCreature)
 #endif
 
 struct CEffectIconObject;
-struct CNWSQuickbarButton;
-struct CNWSForcedAction;
-struct CNWSPlayer;
-struct CNWSJournal;
-struct CNWSInventory;
-struct CNWSArea;
-struct CNWSItem;
-struct CNWSCombatRound;
-struct CNWItemProperty;
-struct CResGFF;
-struct CPathfindInformation;
 struct CGameEffect;
-struct CNWSBarter;
-struct CNWSCreatureStats;
-struct CNWVisibilityNode;
-struct CNWSObjectActionNode;
+struct CGameEffect;
 struct CItemRepository;
-struct CNWSFaction;
 struct CNWCCMessageData;
+struct CNWItemProperty;
+struct CNWSArea;
+struct CNWSBarter;
 struct CNWSCombatAttackData;
-struct CGameEffect;
+struct CNWSCombatRound;
 struct CNWSCreRestorePolymorphData;
+struct CNWSCreatureStats;
+struct CNWSFaction;
+struct CNWSForcedAction;
+struct CNWSInventory;
+struct CNWSItem;
+struct CNWSJournal;
+struct CNWSObjectActionNode;
+struct CNWSPlayer;
+struct CNWSQuickbarButton;
 struct CNWVisibilityNode;
+struct CNWVisibilityNode;
+struct CPathfindInformation;
+struct CResGFF;
 struct CResStruct;
 
 
-typedef uint32_t STRREF;
 typedef int BOOL;
 typedef uint32_t OBJECT_ID;
+typedef uint32_t STRREF;
 
 
 struct CNWSCreature : CNWSObject
@@ -282,7 +282,7 @@ struct CNWSCreature : CNWSObject
     BOOL AddCastSpellActions(uint32_t nSpellId, int32_t nMultiClass, int32_t nDomainLevel, int32_t nMetaType, BOOL bSpontaneousCast, Vector vTargetLocation, OBJECT_ID oidTarget, BOOL bAreaTarget = false, BOOL bAddToFront = false, BOOL bFake = false, uint8_t nProjectilePathType = 0, BOOL bInstant = false, BOOL bAllowPolymorphedCast = false, int32_t nFeat = - 1, uint8_t nCasterLevel = 0xff);
     BOOL AddHealActions(OBJECT_ID oidTarget, OBJECT_ID oidItemUsed, int32_t nActivePropertyIndex = 0);
     BOOL AddSitActions(OBJECT_ID oidTarget);
-    BOOL AddItemCastSpellActions(OBJECT_ID oidItemUsed, int32_t nActivePropertyIndex, int32_t nSubPropertyIndex, Vector vTargetLocation, OBJECT_ID oidTarget, BOOL bAreaTarget = false);
+    BOOL AddItemCastSpellActions(OBJECT_ID oidItemUsed, int32_t nActivePropertyIndex, int32_t nSubPropertyIndex, Vector vTargetLocation, OBJECT_ID oidTarget, BOOL bAreaTarget = false, BOOL bDecrementCharges = true);
     BOOL AddTrapActions(OBJECT_ID oidTrap, uint8_t nAction, OBJECT_ID oidTargetObject, Vector vPosition, OBJECT_ID oidTargetArea);
     BOOL AddTauntActions(OBJECT_ID oidTarget);
     BOOL AddDoorActions(OBJECT_ID oidDoor, uint8_t nAction, BOOL bAddToFront = false);
@@ -331,7 +331,7 @@ struct CNWSCreature : CNWSObject
     BOOL GetUseMonkAbilities();
     BOOL UseSkill(uint8_t nSkill, uint8_t nSubSkill, OBJECT_ID oidTarget, Vector vTargetPosition, OBJECT_ID oidArea, OBJECT_ID oidUsedItem = 0x7f000000, int32_t nActivePropertyIndex = 0);
     BOOL UseFeat(uint16_t nFeat, uint16_t nSubFeat, OBJECT_ID oidTarget, OBJECT_ID oidArea, Vector * pvTarget = nullptr);
-    BOOL UseItem(OBJECT_ID oidItem, uint8_t nActivePropertyIndex, uint8_t nSubPropertyIndex, OBJECT_ID oidTarget, Vector vTargetPosition, OBJECT_ID oidArea);
+    BOOL UseItem(OBJECT_ID oidItem, uint8_t nActivePropertyIndex, uint8_t nSubPropertyIndex, OBJECT_ID oidTarget, Vector vTargetPosition, OBJECT_ID oidArea, BOOL bUseCharges = true);
     BOOL ToggleMode(uint8_t nMode);
     BOOL GetMode(uint8_t nMode);
     void SetMode(uint8_t nMode, BOOL bSet);

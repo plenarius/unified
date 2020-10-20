@@ -20,21 +20,23 @@ MySQL::~MySQL()
     mysql_close(&m_mysql);
 }
 
-void MySQL::Connect(NWNXLib::ViewPtr<NWNXLib::Services::ConfigProxy> config)
+void MySQL::Connect(NWNXLib::Services::ConfigProxy* config)
 {
-    const std::string host = config->Get<std::string>("HOST", "localhost");
-    const std::string username = config->Require<std::string>("USERNAME");
-    const std::string password = config->Require<std::string>("PASSWORD");
-    const NWNXLib::Maybe<std::string> database = config->Get<std::string>("DATABASE");
+    const auto host     = config->Get<std::string>("HOST", "localhost");
+    const auto port     = config->Get<int32_t>("PORT", 0);
+    const auto username = config->Require<std::string>("USERNAME");
+    const auto password = config->Require<std::string>("PASSWORD");
+    const auto database = config->Get<std::string>("DATABASE");
     if (database)
     {
         LOG_DEBUG("DB set to %s", (*database));
     }
 
-    LOG_INFO("Connection info:  host=%s username=%s", host, username);
+    LOG_INFO("Connection info:  host=%s port=%i username=%s", host, port == 0 ? 3306 : port, username);
     LOG_DEBUG("               :  password=%s", password);
 
-    if (!mysql_real_connect(&m_mysql, host.c_str(), username.c_str(), password.c_str(), database ? (*database).c_str() : nullptr, 0, nullptr, 0))
+    if (!mysql_real_connect(&m_mysql, host.c_str(), username.c_str(), password.c_str(),
+            database ? (*database).c_str() : nullptr, port >= 0 ? port : 0, nullptr, 0))
     {
         throw std::runtime_error(std::string(mysql_error(&m_mysql)));
     }
@@ -94,7 +96,7 @@ bool MySQL::PrepareQuery(const Query& query)
     return success;
 }
 
-NWNXLib::Maybe<ResultSet> MySQL::ExecuteQuery()
+std::optional<ResultSet> MySQL::ExecuteQuery()
 {
     affectedRows = -1;
 
@@ -103,7 +105,7 @@ NWNXLib::Maybe<ResultSet> MySQL::ExecuteQuery()
     {
         LOG_WARNING("Failed to bind params");
         m_lastError.assign(mysql_error(&m_mysql));
-        return NWNXLib::Maybe<ResultSet>(); // Failed query.
+        return std::optional<ResultSet>(); // Failed query.
     }
 
     success = !mysql_stmt_execute(m_stmt);
@@ -154,11 +156,11 @@ NWNXLib::Maybe<ResultSet> MySQL::ExecuteQuery()
             }
             mysql_free_result(mysqlResult);
             mysql_stmt_free_result(m_stmt);
-            return NWNXLib::Maybe<ResultSet>(std::move(results)); // Succeeded query, succeeded results.
+            return std::make_optional<ResultSet>(std::move(results)); // Succeeded query, succeeded results.
         }
         // Statement returned no rows (INSERT, UPDATE, DELETE, etc.)
         affectedRows = static_cast<int>(mysql_affected_rows(&m_mysql));
-        return NWNXLib::Maybe<ResultSet>(ResultSet()); // Succeeded query, no results.
+        return std::make_optional<ResultSet>(ResultSet()); // Succeeded query, no results.
     }
 
     if (!success)
@@ -176,7 +178,7 @@ NWNXLib::Maybe<ResultSet> MySQL::ExecuteQuery()
 
     }
 
-    return NWNXLib::Maybe<ResultSet>(); // Failed query.
+    return std::optional<ResultSet>(); // Failed query.
 }
 
 void MySQL::PrepareInt(int32_t position, int32_t value)
@@ -224,6 +226,23 @@ void MySQL::PrepareString(int32_t position, const std::string& value)
     pBind->buffer_type = MYSQL_TYPE_STRING;
     pBind->buffer = (void*)m_paramValues[pos].s.c_str();
     pBind->buffer_length = m_paramValues[pos].s.size();
+}
+
+void MySQL::PrepareBinary(int32_t position, const std::vector<uint8_t>& value)
+{
+    LOG_DEBUG("Assigning position %d to value '%s'", position, value.data());
+
+    ASSERT_OR_THROW(position >= 0);
+    size_t pos = static_cast<size_t>(position);
+
+    MYSQL_BIND *pBind = &m_params[pos];
+    memset(pBind, 0, sizeof(*pBind));
+
+    m_paramValues[pos].b = value;
+
+    pBind->buffer_type = MYSQL_TYPE_BLOB;
+    pBind->buffer = (void*)m_paramValues[pos].b.data();
+    pBind->buffer_length = m_paramValues[pos].b.size();
 }
 
 int MySQL::GetAffectedRows()

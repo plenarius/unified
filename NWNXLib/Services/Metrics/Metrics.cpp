@@ -3,9 +3,7 @@
 
 #include <algorithm>
 
-namespace NWNXLib {
-
-namespace Services {
+namespace NWNXLib::Services {
 
 Metrics::Metrics()
 {
@@ -116,7 +114,7 @@ void Metrics::ClearResampler(const std::string& measurementName)
     m_resamplers.erase(existingResampler);
 }
 
-void Metrics::Update(ViewPtr<Tasks> tasks)
+void Metrics::Update(Tasks* tasks)
 {
     for (auto& resampler : m_resamplers)
     {
@@ -261,8 +259,6 @@ void MetricsProxy::ClearResampler(const std::string& measurementName)
 std::string MetricsProxy::ConstructName(const std::string& name)
 {
     return name[0] == '.' ? m_pluginName + name : m_pluginName + "." + name;
-}
-
 }
 
 }

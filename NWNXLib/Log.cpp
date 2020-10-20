@@ -1,6 +1,5 @@
 #include "Log.hpp"
 #include "Assert.hpp"
-#include "Platform/FileSystem.hpp"
 #include "Platform/Debug.hpp"
 #include "API/Globals.hpp"
 #include "API/CExoBase.hpp"
@@ -8,9 +7,72 @@
 #include <cstring>
 #include <unordered_map>
 
-namespace NWNXLib {
+#include "External/rang/rang.hpp"
+#include "Services/Tasks/Tasks.hpp"
 
-namespace Log {
+namespace NWNXLib::Log {
+
+static bool s_PrintTimestamp;
+static bool s_PrintDate;
+static bool s_PrintPlugin;
+static bool s_PrintSource;
+static bool s_ColorOutput;
+static bool s_ForceColor;
+static NWNXLib::Services::Tasks* s_Tasks;
+void SetPrintTimestamp(bool value)
+{
+    s_PrintTimestamp = value;
+}
+bool GetPrintTimestamp()
+{
+    return s_PrintTimestamp;
+}
+void SetPrintDate(bool value)
+{
+    s_PrintDate = value;
+}
+bool GetPrintDate()
+{
+    return s_PrintDate;
+}
+void SetPrintPlugin(bool value)
+{
+    s_PrintPlugin = value;
+}
+bool GetPrintPlugin()
+{
+    return s_PrintPlugin;
+}
+void SetPrintSource(bool value)
+{
+    s_PrintSource = value;
+}
+bool GetPrintSource()
+{
+    return s_PrintSource;
+}
+void SetColorOutput(bool value)
+{
+    s_ColorOutput = value;
+    rang::setControlMode(s_ColorOutput ? s_ForceColor ? rang::control::Force : rang::control::Auto : rang::control::Off);
+}
+bool GetColorOutput()
+{
+    return s_ColorOutput;
+}
+void SetForceColor(bool value)
+{
+    s_ForceColor = value;
+    rang::setControlMode(s_ColorOutput ? s_ForceColor ? rang::control::Force : rang::control::Auto : rang::control::Off);
+}
+bool GetForceColor()
+{
+    return s_ForceColor;
+}
+void SetAsync(NWNXLib::Services::Tasks* tasks)
+{
+    s_Tasks = tasks;
+}
 
 void InternalTrace(Channel::Enum channel, Channel::Enum allowedChannel, const char* message)
 {
@@ -20,23 +82,35 @@ void InternalTrace(Channel::Enum channel, Channel::Enum allowedChannel, const ch
         return;
     }
 
-    std::printf("%s\n", message);
+    switch (channel)
+    {
+        case Channel::SEV_DEBUG:   std::cout << rang::fg::cyan << rang::style::dim;  break;
+        case Channel::SEV_INFO:    std::cout << rang::fg::gray;                      break;
+        case Channel::SEV_NOTICE:  /*default*/                                       break;
+        case Channel::SEV_WARNING: std::cout << rang::fg::yellow;                    break;
+        case Channel::SEV_ERROR:   std::cout << rang::fg::red << rang::style::dim;   break;
+        case Channel::SEV_FATAL:   std::cout << rang::fg::red << rang::style::bold;  break;
+    }
+    std::cout << message << rang::style::reset << rang::fg::reset  << std::endl;
 
     // Also write to a file - this could be done in a much nicer way but I just want to retain the old functionality
     // for now. We can change this later if we want or need to.
-    using namespace Platform::FileSystem;
 
-    static std::string logPath = CombinePaths(CombinePaths(std::string(API::Globals::ExoBase()->m_sUserDirectory.CStr()), std::string("logs.0")), "nwnx.txt");
+    static std::string logPath = API::Globals::ExoBase()->m_sUserDirectory.CStr() + std::string("/logs.0/nwnx.txt");
     static FILE* logFile = std::fopen(logPath.c_str(), "a+");
 
     if (logFile)
     {
         std::fprintf(logFile, "%s\n", message);
-        std::fflush(logFile);
+        if (s_Tasks)
+        {
+            s_Tasks->QueueOnAsyncThread([&]() { std::fflush(logFile); });
+        }
+        else
+        {
+            std::fflush(logFile);
+        }
     }
-
-    Platform::Debug::OutputDebugString(message);
-    Platform::Debug::OutputDebugString("\n");
 
     if (channel == Channel::SEV_FATAL)
     {
@@ -60,8 +134,6 @@ Channel::Enum GetLogLevel(const char* plugin)
 void SetLogLevel(const char* plugin, Channel::Enum logLevel)
 {
     s_LogLevelMap[plugin] = logLevel;
-}
-
 }
 
 }

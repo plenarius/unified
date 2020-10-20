@@ -2,6 +2,7 @@ add_plugin(Events
     "Events.cpp"
     "Events/AssociateEvents.cpp"
     "Events/BarterEvents.cpp"
+    "Events/CalendarEvents.cpp"
     "Events/ClientEvents.cpp"
     "Events/CombatEvents.cpp"
     "Events/DMActionEvents.cpp"
@@ -12,7 +13,7 @@ add_plugin(Events
     "Events/StealthEvents.cpp"
     "Events/SpellEvents.cpp"
     "Events/PartyEvents.cpp"
-    "Events/HealerKitEvents.cpp"
+    "Events/HealingEvents.cpp"
     "Events/SkillEvents.cpp"
     "Events/PolymorphEvents.cpp"
     "Events/EffectEvents.cpp"
@@ -23,4 +24,10 @@ add_plugin(Events
     "Events/LevelEvents.cpp"
     "Events/PVPEvents.cpp"
     "Events/InputEvents.cpp"
-    "Events/MaterialChangeEvents.cpp")
+    "Events/MaterialChangeEvents.cpp"
+    "Events/ObjectEvents.cpp"
+    "Events/UUIDEvents.cpp"
+    "Events/ResourceEvents.cpp"
+    "Events/QuickbarEvents.cpp"
+    "Events/DebugEvents.cpp"
+    "Events/StoreEvents.cpp")

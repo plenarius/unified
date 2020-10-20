@@ -1,32 +1,32 @@
 #pragma once
 #include "nwn_api.hpp"
 
-#include "CLastUpdatePartyObject.hpp"
-#include "CResRef.hpp"
-#include "CExoString.hpp"
 #include "CExoLinkedList.hpp"
-#include "CNWSClient.hpp"
+#include "CExoString.hpp"
 #include "CLastUpdateObject.hpp"
+#include "CLastUpdatePartyObject.hpp"
+#include "CNWSClient.hpp"
+#include "CResRef.hpp"
 
 
 #ifdef NWN_API_PROLOGUE
 NWN_API_PROLOGUE(CNWSPlayer)
 #endif
 
-struct CNWSPlayerInventoryGUI;
 struct CNWSCreature;
-struct CNWSPlayerTURD;
-struct CNWSObject;
-struct CNWSPlayerJournalQuest;
-struct CNWSPlayerStoreGUI;
-struct CNWSPlayerCharSheetGUI;
 struct CNWSItem;
+struct CNWSObject;
+struct CNWSPlayerCharSheetGUI;
+struct CNWSPlayerInventoryGUI;
+struct CNWSPlayerJournalQuest;
 struct CNWSPlayerLastUpdateObject;
+struct CNWSPlayerStoreGUI;
+struct CNWSPlayerTURD;
 
 
-typedef uint32_t STRREF;
 typedef int BOOL;
 typedef uint32_t OBJECT_ID;
+typedef uint32_t STRREF;
 
 
 struct CNWSPlayer : CNWSClient
@@ -61,11 +61,16 @@ struct CNWSPlayer : CNWSClient
     BOOL m_bModuleInfoSucceeded;
     uint32_t m_nIFOCharacterIndex;
     BOOL m_bCutsceneState;
+    BOOL m_bTargetMode;
+    OBJECT_ID m_oidDungeonMasterAvatar;
+    uint8_t m_nPossessState;
+    BOOL m_bWasSentITP;
 
     CNWSPlayer(uint32_t nPlayerID);
     virtual ~CNWSPlayer();
     void ClearPlayerOnDestroyGame();
     virtual CNWSPlayer * AsNWSPlayer();
+    virtual CNWSPlayer * AsNWSDungeonMaster();
     STRREF LoadLocalCharacter();
     STRREF LoadDMCharacter();
     STRREF LoadServerCharacter(CResRef cResRef, BOOL bSubDirChar = false);
@@ -98,6 +103,10 @@ struct CNWSPlayer : CNWSClient
     BOOL HasExpansionPack(uint8_t nPack, BOOL bOrBetter = true);
     void StoreCameraSettings();
     void RestoreCameraSettings();
+    BOOL SatisfiesBuild(int32_t nBuild, int32_t nRevision);
+    BOOL GetIsDM();
+    BOOL GetIsPlayerDM();
+    void PossessCreature(OBJECT_ID oidTarget, uint8_t possessType);
 
 
 #ifdef NWN_CLASS_EXTENSION_CNWSPlayer

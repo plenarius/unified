@@ -4,14 +4,13 @@
 #include "API/CNWSFaction.hpp"
 #include "API/Functions.hpp"
 #include "Services/PerObjectStorage/PerObjectStorage.hpp"
-#include "ViewPtr.hpp"
 
 
 
 using namespace NWNXLib;
 using namespace NWNXLib::API;
 
-static ViewPtr<Reveal::Reveal> g_plugin;
+static Reveal::Reveal* g_plugin;
 
 //key names for Per Object Storage
 const std::string revealKey = "REVEAL";
@@ -22,29 +21,16 @@ const std::string detectionKey = "DETECTION VECTOR";
 const int NWNX_REVEAL_SEEN = 1;
 const int NWNX_REVEAL_HEARD = 0;
 
-NWNX_PLUGIN_ENTRY Plugin::Info* PluginInfo()
+NWNX_PLUGIN_ENTRY Plugin* PluginLoad(Services::ProxyServiceList* services)
 {
-    return new Plugin::Info
-    {
-        "Reveal",
-        "Functions to allow the selective revealing of a stealthed character to another character or their party.",
-        "Silvard",
-        "jusenkyo at gmail.com",
-        1,
-        true
-    };
-}
-
-NWNX_PLUGIN_ENTRY Plugin* PluginLoad(Plugin::CreateParams params)
-{
-    g_plugin = new Reveal::Reveal(params);
+    g_plugin = new Reveal::Reveal(services);
     return g_plugin;
 }
 
 namespace Reveal {
 
-Reveal::Reveal(const Plugin::CreateParams& params)
-  : Plugin(params)
+Reveal::Reveal(Services::ProxyServiceList* services)
+  : Plugin(services)
 {
 #define REGISTER(func)              \
     GetServices()->m_events->RegisterEvent(#func, \
@@ -55,8 +41,7 @@ Reveal::Reveal(const Plugin::CreateParams& params)
 
 #undef REGISTER
 
-    GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN12CNWSCreature18DoStealthDetectionEPS_iPiS1_i, int32_t,CNWSCreature*,CNWSCreature*, int32_t, int32_t*, int32_t*, int32_t>(&HookStealthDetection);
-    m_DoStealthDetection = GetServices()->m_hooks->FindHookByAddress(Functions::_ZN12CNWSCreature18DoStealthDetectionEPS_iPiS1_i);
+    m_DoStealthDetection = GetServices()->m_hooks->RequestExclusiveHook<Functions::_ZN12CNWSCreature18DoStealthDetectionEPS_iPiS1_i, int32_t,CNWSCreature*,CNWSCreature*, int32_t, int32_t*, int32_t*, int32_t>(&HookStealthDetection);
 }
 
 Reveal::~Reveal()
@@ -100,30 +85,28 @@ int32_t Reveal::HookStealthDetection(CNWSCreature* pObserverCreature, CNWSCreatu
 
 ArgumentStack Reveal::RevealTo(ArgumentStack&& args)
 {
-    ArgumentStack stack;
-    auto stealtherID = Services::Events::ExtractArgument<Types::ObjectID>(args);
-    auto observerID = Services::Events::ExtractArgument<Types::ObjectID>(args);
+    auto stealtherID = Services::Events::ExtractArgument<ObjectID>(args);
+    auto observerID = Services::Events::ExtractArgument<ObjectID>(args);
     auto detectionVector = Services::Events::ExtractArgument<int>(args);
 
     Services::PerObjectStorageProxy* pPOS = g_plugin->GetServices()->m_perObjectStorage.get();
 
     pPOS->Set(stealtherID, revealKey + Utils::ObjectIDToString(observerID), true); //store stealth to observer reveal map
     pPOS->Set(stealtherID, detectionKey + Utils::ObjectIDToString(observerID), detectionVector); //store the means through which detection happens
-    return stack;
+    return Services::Events::Arguments();
 }
 
 ArgumentStack Reveal::SetRevealToParty(ArgumentStack&& args)
 {
-    ArgumentStack stack;
-    auto stealtherID = Services::Events::ExtractArgument<Types::ObjectID>(args);
+    auto stealtherID = Services::Events::ExtractArgument<ObjectID>(args);
     auto revealToPartyState = Services::Events::ExtractArgument<int>(args);
     auto detectionVector = Services::Events::ExtractArgument<int>(args);
 
     Services::PerObjectStorageProxy* pPOS = g_plugin->GetServices()->m_perObjectStorage.get();
 
-    pPOS->Set(stealtherID, revealKey + "PARTY", revealToPartyState); //store party reveal state
-    pPOS->Set(stealtherID, detectionKey + "PARTY", detectionVector); //store the means through which detection happens
-    return stack;
+    pPOS->Set(stealtherID, revealKey + "PARTY", revealToPartyState, true); //store party reveal state
+    pPOS->Set(stealtherID, detectionKey + "PARTY", detectionVector, true); //store the means through which detection happens
+    return Services::Events::Arguments();
 }
 
 }

@@ -1,14 +1,11 @@
 #pragma once
 
 #include "Common.hpp"
-#include "ViewPtr.hpp"
 
 #include <memory>
 #include <string>
 
-namespace NWNXLib {
-
-namespace Services {
+namespace NWNXLib::Services {
 
 // Contains the raw services. Owned by the Core.
 struct ServiceList
@@ -38,12 +35,6 @@ struct ProxyServiceList
     std::unique_ptr<CommandsProxy> m_commands;
 };
 
-struct ServiceBase
-{
-public:
-    ServiceBase() { }
-};
-
 template <typename T>
 struct ServiceProxy
 {
@@ -54,7 +45,5 @@ public:
 protected:
     T& m_proxyBase;
 };
-
-}
 
 }
