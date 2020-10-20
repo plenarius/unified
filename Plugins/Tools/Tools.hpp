@@ -11,8 +11,8 @@ namespace Tools {
 class Tools : public NWNXLib::Plugin
 {
 public:
-    Tools(const Plugin::CreateParams& params);
-    virtual ~Tools();
+    Tools(NWNXLib::Services::ProxyServiceList* services);
+    virtual ~Tools() {}
 
 private:
     ArgumentStack GenerateMiniMaps (ArgumentStack&& args);

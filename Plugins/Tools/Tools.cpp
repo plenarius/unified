@@ -13,7 +13,6 @@
 #include "API/CNWTileData.hpp"
 #include "API/Constants.hpp"
 #include "API/Globals.hpp"
-#include "ViewPtr.hpp"
 #include <Magick++.h>
 #include <fstream>
 #include <experimental/filesystem>
@@ -22,32 +21,20 @@
 using namespace NWNXLib;
 using namespace NWNXLib::API;
 namespace fs = std::experimental::filesystem;
-static ViewPtr<Tools::Tools> g_plugin;
+static Tools::Tools* g_plugin;
 
-NWNX_PLUGIN_ENTRY Plugin::Info* PluginInfo()
-{
-    return new Plugin::Info
-    {
-        "Tools",
-        "NWN tools that are outside the regular scope of running the server.",
-        "orth",
-        "plenarius@gmail.com",
-        1,
-        true
-    };
-}
 
-NWNX_PLUGIN_ENTRY Plugin* PluginLoad(Plugin::CreateParams params)
+NWNX_PLUGIN_ENTRY Plugin* PluginLoad(Services::ProxyServiceList* services)
 {
-    g_plugin = new Tools::Tools(params);
+    g_plugin = new Tools::Tools(services);
     return g_plugin;
 }
 
 
 namespace Tools {
 
-Tools::Tools(const Plugin::CreateParams& params)
-    : Plugin(params)
+Tools::Tools(Services::ProxyServiceList* services)
+    : Plugin(services)
 {
 #define REGISTER(func) \
     GetServices()->m_events->RegisterEvent(#func, \
@@ -57,10 +44,6 @@ Tools::Tools(const Plugin::CreateParams& params)
     REGISTER(GenerateAreaGraph);
 
 #undef REGISTER
-}
-
-Tools::~Tools()
-{
 }
 
 ArgumentStack Tools::GenerateMiniMaps(ArgumentStack && args)
@@ -274,11 +257,12 @@ ArgumentStack Tools::GenerateAreaGraph(ArgumentStack && args)
                     {
                         // Search for any variables on this object that are waypoints
                         auto *pVarTable = Utils::GetScriptVarTable(pGameObject);
-                        for (int32_t index = 0; index < pVarTable->m_lVarList.num; index++)
+                        for (auto& it : pVarTable->m_vars)
                         {
-                            if (pVarTable->m_lVarList.element[index].m_nType == 3) // String Var
+                            if (it.second.HasString()) // String Var
                             {
-                                auto sValue = pVarTable->GetString(pVarTable->m_lVarList.element[index].m_sName);
+                                auto name = it.first;
+                                auto sValue = pVarTable->GetString(name);
                                 auto pPortalWPOid = pModule->FindObjectByTagTypeOrdinal(sValue, Constants::ObjectType::Waypoint, 0);
                                 int32_t j = 0;
                                 while (pPortalWPOid != Constants::OBJECT_INVALID)
