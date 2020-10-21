@@ -49,7 +49,7 @@ var NAVTREEINDEX =
 "group__nwnx.html#ga265e82b3283a4f1c7c18e34b83387d70",
 "group__player.html#ga465a1baa7a0b1a36fd6ef8c3be6bd5b6",
 "group__redis.html#gaf61bd6787078f168bf56d3bda3bc81e1",
-"group__util.html#ga4ea0cf79071aa794e483b1bc3d53c08b",
+"group__util.html#ga564949f840217db246ad1e3750eb124a",
 "nwnx__redis_8nss.html#a1c843f8c6278084353441f6a4ba0d867",
 "nwnx__redis__short_8nss.html#a3a728ec56f956f7c8dc04740fb06ea53",
 "structNWNX__Damage__DamageData.html#a1326f1ace343df63fa43b95a57c2c367"
