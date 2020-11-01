@@ -121,6 +121,7 @@ New Plugins</h4>
 <p>The following plugins were added:</p><ul>
 <li>Feat: Allows to define a variety of effects that are granted to feat holders.</li>
 <li>Tileset: An advanced plugin that exposes additional tileset and tile properties and allows builders to override the tiles of an area created with CreateArea().</li>
+<li>Diagnostics: Plugin exposing diagnostic facilities to help server debugging.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md11"></a>
 New NWScript Functions</h4>
@@ -147,6 +148,7 @@ Changed</h2>
 <li>Util: AddScript(), AddNSSFile() and RemoveNWNXResourceFile() now support valid custom resource directory aliases.</li>
 <li>Visibility: added two new visibility types to always show an object regardless of range.</li>
 <li>Weapon: Good Aim Feat now takes value from ruleset.2da</li>
+<li>We now only allow builds with the <code>CMAKE_BUILD_TYPE=RelWithDebInfo</code> configuration. <code>Debug</code> builds produce unexpected behaviour and <code>Release</code> builds are generally unnecessary and mess with Assert functionality.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md13"></a>
 Deprecated</h2>
@@ -160,6 +162,7 @@ Removed</h2>
 Fixed</h2>
 <ul>
 <li>Administration: fix crash in DeletePlayerCharacter()</li>
+<li>Creature: removed an unnecessary free() in GetMeetsFeatRequirements() that may have led to crashes</li>
 <li>Events: fixed a nullptr deref crash in BarterEvents</li>
 <li>Feedback: fixed a bug where global combatlog and journal feedback message overrides couldn't be removed</li>
 <li>MaxLevel: fixed bug interfering with leveling down NPCs</li>
@@ -900,7 +903,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sun Nov 1 2020 03:12:09 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Nov 1 2020 17:27:13 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17.
 					<a href="../">Light version</a>
 				</li>
