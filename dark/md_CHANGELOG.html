@@ -118,6 +118,7 @@ Added</h2>
 <li>Events: added Detect Mode event to StealthEvents</li>
 <li>Events: added Combat Enter/Exit events to CombatEvents</li>
 <li>Events: Stealth Mode can now bypass or perform Hide in Plain Sight with return values of "0" or "1" respectively</li>
+<li>Events: Added Skippable/Result Changeable Faction Reputation event to FactionEvents</li>
 <li>Tweaks: <code>NWNX_TWEAKS_HIDE_PLAYERS_ON_CHAR_LIST</code></li>
 <li>Tweaks: <code>NWNX_TWEAKS_FIX_ARMOR_DEX_BONUS_UNDER_ONE</code></li>
 <li>Tweaks: <code>NWNX_TWEAKS_FIX_ITEM_NULLPTR_IN_CITEMREPOSITORY</code></li>
@@ -137,12 +138,14 @@ New NWScript Functions</h4>
 <li>Creature: {Get|Set}WalkAnimation()</li>
 <li>Creature: SetAttackRollOverride()</li>
 <li>Creature: SetParryAllAttacks()</li>
+<li>Creature: {Get|Set}NoPermanentDeath()</li>
 <li>Events: ToggleIDWhitelist()</li>
 <li>Events: AddIDToWhitelist()</li>
 <li>Events: RemoveIDFromWhitelist()</li>
 <li>Feat: SetFeatModifier()</li>
 <li>Object: GetCurrentAnimation()</li>
 <li>Player: AddCustomJournalEntry() and GetJournalEntry()</li>
+<li>Player: CloseStore()</li>
 <li>Race: SetFavoredEnemyFeat()</li>
 <li>Util: GetScriptParamIsSet()</li>
 </ul>
@@ -180,6 +183,7 @@ Fixed</h2>
 <li>Events: fixed a nullptr deref crash in BarterEvents</li>
 <li>Feedback: fixed a bug where global combatlog and journal feedback message overrides couldn't be removed</li>
 <li>MaxLevel: fixed bug interfering with leveling down NPCs</li>
+<li>MaxLevel: fixed an issue with the plugin failing after a restart when reload-when-empty was set to true</li>
 <li>Object: fixed a possible crash in CheckFit()</li>
 <li>Player: fixed bic getting overwritten when using PossessCreature() and crashing in between areas</li>
 <li>Race: fixed effect clean up after level up</li>
@@ -917,7 +921,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Wed Nov 11 2020 05:51:39 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Nov 15 2020 20:18:49 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17.
 					<a href="../">Light version</a>
 				</li>

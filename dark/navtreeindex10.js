@@ -1,5 +1,11 @@
 var NAVTREEINDEX10 =
 {
+"nwnx__redis__short_8nss.html#a1a338ff0373d858aafa3ef2e44fc9457":[4,0,2,30,0,3,221],
+"nwnx__redis__short_8nss.html#a1aaf78e5d191a48bed74f7394ef2bca2":[4,0,2,30,0,3,57],
+"nwnx__redis__short_8nss.html#a1af006c9794f2b37aedafc9143635fca":[4,0,2,30,0,3,46],
+"nwnx__redis__short_8nss.html#a1b0dbeebc1457524f2dc71277b469c86":[4,0,2,30,0,3,39],
+"nwnx__redis__short_8nss.html#a1cd5be519900d2093a0ade3c72c65755":[4,0,2,30,0,3,132],
+"nwnx__redis__short_8nss.html#a1d162b7dd324dca3c21d57371101abae":[4,0,2,30,0,3,173],
 "nwnx__redis__short_8nss.html#a1d4664d3ea2e8f8bec2f95044fea1259":[4,0,2,30,0,3,161],
 "nwnx__redis__short_8nss.html#a1e432e478644b80a2c800e37d151bf43":[4,0,2,30,0,3,26],
 "nwnx__redis__short_8nss.html#a1e5b60c3f73cf5ad6682455329028646":[4,0,2,30,0,3,27],
@@ -243,11 +249,5 @@ var NAVTREEINDEX10 =
 "structNWNX__Creature__MemorisedSpell.html":[0,7,3],
 "structNWNX__Creature__MemorisedSpell.html#a3d9cd596f9cd780ae69f4a497a90a335":[0,7,3,2],
 "structNWNX__Creature__MemorisedSpell.html#aa08e4d7e4f0f2b8b8c639e152670329a":[0,7,3,0],
-"structNWNX__Creature__MemorisedSpell.html#aa4c41f82a0cc4321ef229bf99d9e303b":[0,7,3,3],
-"structNWNX__Creature__MemorisedSpell.html#adc7177afc73856b1ac6b2481c250418b":[0,7,3,1],
-"structNWNX__Creature__SpecialAbility.html":[0,7,2],
-"structNWNX__Creature__SpecialAbility.html#a12855dd394f582dfae061237afa14172":[0,7,2,0],
-"structNWNX__Creature__SpecialAbility.html#a15cf0191817ec4432918e349d765f094":[0,7,2,2],
-"structNWNX__Creature__SpecialAbility.html#a29feef7d645de43a1d4c9e7b923b0d58":[0,7,2,1],
-"structNWNX__Damage__AttackEventData.html":[0,8,3]
+"structNWNX__Creature__MemorisedSpell.html#aa4c41f82a0cc4321ef229bf99d9e303b":[0,7,3,3]
 };
