@@ -1,5 +1,7 @@
 var NAVTREEINDEX11 =
 {
+"nwnx__redis__short_8nss.html#aaa601d03e6111fa67670be0e14aa9bc6":[4,0,2,30,0,3,59],
+"nwnx__redis__short_8nss.html#aadfecc2fa5ec610fc4b48eb71b40c447":[4,0,2,30,0,3,133],
 "nwnx__redis__short_8nss.html#ab0e5ac6a7bd9b43d84d4968a2c73a8e9":[4,0,2,30,0,3,105],
 "nwnx__redis__short_8nss.html#ab3a28d39fa8cbe0ed44d2c802ff2797b":[4,0,2,30,0,3,125],
 "nwnx__redis__short_8nss.html#ab64b40849418004caad0d9800375dec6":[4,0,2,30,0,3,16],
@@ -247,7 +249,5 @@ var NAVTREEINDEX11 =
 "structNWNX__Player__JournalEntry.html#a726f979fe2fb1b4421837e7b03ca50e2":[0,27,4,2],
 "structNWNX__Player__JournalEntry.html#a8025516fc1028c7636de3d13ac825378":[0,27,4,4],
 "structNWNX__Player__JournalEntry.html#af3e36f4de033d6498448b90746774144":[0,27,4,5],
-"structNWNX__Player__JournalEntry.html#af5d0d937f35c5cd9b5e869aad9f241db":[0,27,4,7],
-"structNWNX__Player__QuickBarSlot.html":[0,27,3],
-"structNWNX__Player__QuickBarSlot.html#a0600666ebc53dcf8978fdc705307a4b1":[0,27,3,2]
+"structNWNX__Player__JournalEntry.html#af5d0d937f35c5cd9b5e869aad9f241db":[0,27,4,7]
 };

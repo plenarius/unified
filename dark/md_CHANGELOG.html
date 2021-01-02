@@ -109,6 +109,8 @@ $(document).ready(function(){initNavTree('md_CHANGELOG.html',''); initResizable(
 Added</h2>
 <ul>
 <li>Experimental: Added <code>NWNX_EXPERIMENTAL_DISABLE_LEVELUP_VALIDATION</code> to disable levelup validation.</li>
+<li>Experimental: Added <code>NWNX_EXPERIMENTAL_UNHARDCODE_RANGER_DUALWIELD</code> to remove the hardcoded effects of the Ranger's Dual-wield feat. This functionality is not compatible with the NWNX_ON_HAS_FEAT_* event.</li>
+<li>Tweaks: Added <code>NWNX_TWEAKS_ALWAYS_RETURN_FULL_DEX_STAT</code> to have GetDEXStat() always return a creature's full dexterity stat.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md10"></a>
 New Plugins</h4>
@@ -118,6 +120,7 @@ New Plugins</h4>
 <h4><a class="anchor" id="autotoc_md11"></a>
 New NWScript Functions</h4>
 <ul>
+<li>Creature: ComputeSafeLocation()</li>
 <li>Util: GetInstructionLimit()</li>
 <li>Util: {Get|Set}InstructionsExecuted();</li>
 </ul>
@@ -969,7 +972,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Fri Dec 25 2020 01:23:29 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Jan 2 2021 21:08:00 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17.
 					<a href="../">Light version</a>
 				</li>
