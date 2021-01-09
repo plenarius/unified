@@ -23,6 +23,7 @@
 #include "API/CNWSBarter.hpp"
 #include "API/CNWSCombatRound.hpp"
 #include "API/CEffectIconObject.hpp"
+#include "API/CNWSArea.hpp"
 #include "API/Constants.hpp"
 #include "API/Globals.hpp"
 #include "API/Functions.hpp"
@@ -176,6 +177,9 @@ Creature::Creature(Services::ProxyServiceList* services)
     REGISTER(SetWalkAnimation);
     REGISTER(SetAttackRollOverride);
     REGISTER(SetParryAllAttacks);
+    REGISTER(GetNoPermanentDeath);
+    REGISTER(SetNoPermanentDeath);
+    REGISTER(ComputeSafeLocation);
 
 #undef REGISTER
 }
@@ -366,7 +370,6 @@ ArgumentStack Creature::GetMeetsFeatRequirements(ArgumentStack&& args)
         CExoArrayList<uint16_t> unused = {};
 
         retVal = pCreature->m_pStats->FeatRequirementsMet(static_cast<uint16_t>(feat), &unused);
-        free(unused.element);
     }
     return Services::Events::Arguments(retVal);
 }
@@ -2748,7 +2751,7 @@ void Creature::DoResolveAttackHook(CNWSCreature* thisPtr, CNWSObject* pTarget)
         return;
     }
 
-    if (Globals::EnableCombatDebugging())
+    if (*Globals::EnableCombatDebugging())
     {
         auto sInfo = pThisStats->GetFullName() + CExoString(" Attack Roll: ") +
                      CExoString(std::to_string(nDiceRoll));
@@ -2957,6 +2960,57 @@ ArgumentStack Creature::SetParryAllAttacks(ArgumentStack&& args)
     }
 
     return Services::Events::Arguments();
+}
+
+ArgumentStack Creature::GetNoPermanentDeath(ArgumentStack&& args)
+{
+    int32_t retVal = -1;
+
+    if (auto *pCreature = creature(args))
+    {
+        retVal = pCreature->m_bNoPermDeath;
+    }
+
+    return Services::Events::Arguments(retVal);
+}
+
+ArgumentStack Creature::SetNoPermanentDeath(ArgumentStack&& args)
+{
+    if (auto *pCreature = creature(args))
+    {
+        const auto noPermanentDeath = !!Services::Events::ExtractArgument<int32_t>(args);
+
+        pCreature->m_bNoPermDeath = noPermanentDeath;
+    }
+
+    return Services::Events::Arguments();
+}
+
+ArgumentStack Creature::ComputeSafeLocation(ArgumentStack&& args)
+{
+    Vector vNewPosition = {0.0, 0.0, 0.0};
+
+    if (auto *pCreature = creature(args))
+    {
+        Vector vCurrentPosition{};
+        vCurrentPosition.z = Services::Events::ExtractArgument<float>(args);
+        vCurrentPosition.y = Services::Events::ExtractArgument<float>(args);
+        vCurrentPosition.x = Services::Events::ExtractArgument<float>(args);
+        const auto fSearchRadius = Services::Events::ExtractArgument<float>(args);
+        const auto bWalkStraightLineRequired = !!Services::Events::ExtractArgument<int32_t>(args);
+
+        int32_t bPositionFound = false;
+
+        if (auto *pArea = Utils::AsNWSArea(Utils::GetGameObject(pCreature->m_oidArea)))
+        {
+            bPositionFound = pArea->ComputeSafeLocation(vCurrentPosition, fSearchRadius, pCreature->m_pcPathfindInformation, bWalkStraightLineRequired, &vNewPosition);
+        }
+
+        if (!bPositionFound)
+            vNewPosition = vCurrentPosition;
+    }
+
+    return Services::Events::Arguments(vNewPosition.x, vNewPosition.y, vNewPosition.z);
 }
 
 }

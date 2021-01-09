@@ -20,6 +20,10 @@
 #include "Tweaks/UnhardcodeShields.hpp"
 #include "Tweaks/BlockDMSpawnItem.hpp"
 #include "Tweaks/FixArmorDexBonusUnderOne.hpp"
+#include "Tweaks/FixItemNullptrInCItemRepository.hpp"
+#include "Tweaks/ClearSpellEffectsOnTURDs.hpp"
+#include "Tweaks/AlwaysReturnFullDEXStat.hpp"
+#include "Tweaks/DisplayNumAttacksOverrideInCharacterSheet.hpp"
 
 #include "Services/Config/Config.hpp"
 
@@ -170,10 +174,35 @@ Tweaks::Tweaks(Services::ProxyServiceList* services)
         LOG_INFO("Blocking the dm_spawnitem console command");
         m_BlockDMSpawnItem = std::make_unique<BlockDMSpawnItem>(GetServices()->m_hooks.get());
     }
+
     if (GetServices()->m_config->Get<bool>("FIX_ARMOR_DEX_BONUS_UNDER_ONE", false))
     {
         LOG_INFO("Allowing armors with max DEX bonus under 1.");
         m_FixArmorDexBonusUnderOne = std::make_unique<FixArmorDexBonusUnderOne>(GetServices()->m_hooks.get());
+    }
+
+    if (GetServices()->m_config->Get<bool>("FIX_ITEM_NULLPTR_IN_CITEMREPOSITORY", false))
+    {
+        LOG_INFO("Will check for invalid items in the CItemRepository List.");
+        m_FixItemNullptrInCItemRepository = std::make_unique<FixItemNullptrInCItemRepository>(GetServices()->m_hooks.get());
+    }
+
+    if (GetServices()->m_config->Get<bool>("CLEAR_SPELL_EFFECTS_ON_TURDS", false))
+    {
+        LOG_INFO("Effects on logged out users will be removed when a caster rests.");
+        m_ClearSpellEffectsOnTURDs = std::make_unique<ClearSpellEffectsOnTURDs>(GetServices()->m_hooks.get());
+    }
+
+    if (GetServices()->m_config->Get<bool>("ALWAYS_RETURN_FULL_DEX_STAT", false))
+    {
+        LOG_INFO("GetDEXStat() is always returning a creature's full Dexterity Stat.");
+        m_AlwaysReturnFullDEXStat = std::make_unique<AlwaysReturnFullDEXStat>(GetServices()->m_hooks.get());
+    }
+
+    if (GetServices()->m_config->Get<bool>("DISPLAY_NUM_ATTACKS_OVERRIDE_IN_CHARACTER_SHEET", false))
+    {
+        LOG_INFO("Number of attacks per round overridden by SetBaseAttackBonus() will show on the character sheet.");
+        m_DisplayNumAttacksOverrideInCharacterSheet = std::make_unique<DisplayNumAttacksOverrideInCharacterSheet>(GetServices()->m_hooks.get());
     }
 }
 

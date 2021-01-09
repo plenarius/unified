@@ -21,4 +21,8 @@ add_plugin(Tweaks
     "Tweaks/UnhardcodeShields.cpp"
     "Tweaks/BlockDMSpawnItem.cpp"
     "Tweaks/FixArmorDexBonusUnderOne.cpp"
+    "Tweaks/FixItemNullptrInCItemRepository.cpp"
+    "Tweaks/ClearSpellEffectsOnTURDs.cpp"
+    "Tweaks/AlwaysReturnFullDEXStat.cpp"
+    "Tweaks/DisplayNumAttacksOverrideInCharacterSheet.cpp"
 )

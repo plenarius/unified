@@ -26,6 +26,10 @@ class FixUnlimitedPotionsBug;
 class UnhardcodeShields;
 class BlockDMSpawnItem;
 class FixArmorDexBonusUnderOne;
+class FixItemNullptrInCItemRepository;
+class ClearSpellEffectsOnTURDs;
+class AlwaysReturnFullDEXStat;
+class DisplayNumAttacksOverrideInCharacterSheet;
 
 class Tweaks : public NWNXLib::Plugin
 {
@@ -55,6 +59,10 @@ private:
     std::unique_ptr<UnhardcodeShields> m_UnhardcodeShields;
     std::unique_ptr<BlockDMSpawnItem> m_BlockDMSpawnItem;
     std::unique_ptr<FixArmorDexBonusUnderOne> m_FixArmorDexBonusUnderOne;
+    std::unique_ptr<FixItemNullptrInCItemRepository> m_FixItemNullptrInCItemRepository;
+    std::unique_ptr<ClearSpellEffectsOnTURDs> m_ClearSpellEffectsOnTURDs;
+    std::unique_ptr<AlwaysReturnFullDEXStat> m_AlwaysReturnFullDEXStat;
+    std::unique_ptr<DisplayNumAttacksOverrideInCharacterSheet> m_DisplayNumAttacksOverrideInCharacterSheet;
 };
 
 }
