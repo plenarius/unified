@@ -13,7 +13,6 @@ https://github.com/nwnxee/unified/compare/build8193.20...HEAD
 - Tweaks: Added `NWNX_TWEAKS_ALWAYS_RETURN_FULL_DEX_STAT` to have GetDEXStat() always return a creature's full dexterity stat.
 
 ##### New Plugins
-- HTTP: Server and client functionality.
 - SWIG: Native Interop support added for DotNET.
 
 ##### New NWScript Functions
