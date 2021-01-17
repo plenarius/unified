@@ -108,26 +108,31 @@ $(document).ready(function(){initNavTree('md_CHANGELOG.html',''); initResizable(
 <h2><a class="anchor" id="autotoc_md9"></a>
 Added</h2>
 <ul>
+<li>Events: added <code>NWNX_ON_INPUT_EMOTE_*</code> events to InputEvents, this event fires when a player uses a radial menu emote.</li>
 <li>Experimental: Added <code>NWNX_EXPERIMENTAL_DISABLE_LEVELUP_VALIDATION</code> to disable levelup validation.</li>
 <li>Experimental: Added <code>NWNX_EXPERIMENTAL_UNHARDCODE_RANGER_DUALWIELD</code> to remove the hardcoded effects of the Ranger's Dual-wield feat. This functionality is not compatible with the NWNX_ON_HAS_FEAT_* event.</li>
 <li>Tweaks: Added <code>NWNX_TWEAKS_ALWAYS_RETURN_FULL_DEX_STAT</code> to have GetDEXStat() always return a creature's full dexterity stat.</li>
+<li>Tweaks: added <code>NWNX_TWEAKS_DISPLAY_NUM_ATTACKS_OVERRIDE_IN_CHARACTER_SHEET</code> to display the correct amount of attacks per round on the character sheet when overridden with SetBaseAttackBonus()</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md10"></a>
 New Plugins</h4>
 <ul>
-<li>N/A</li>
+<li>SWIG: Native Interop support added for DotNET.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md11"></a>
 New NWScript Functions</h4>
 <ul>
 <li>Creature: ComputeSafeLocation()</li>
+<li>Creature: DoPerceptionUpdateOnCreature()</li>
+<li>Encounter: GetGeometry()</li>
+<li>Encounter: SetGeometry()</li>
 <li>Util: GetInstructionLimit()</li>
-<li>Util: {Get|Set}InstructionsExecuted();</li>
+<li>Util: {Get|Set}InstructionsExecuted()</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md12"></a>
 Changed</h2>
 <ul>
-<li>N/A</li>
+<li>Creature: Functions for CriticalMultipler and CriticalRange extended to allow declaration of nBaseItem. Order of Overrides is Specified Baseitem &gt; Specified Hand &gt; non-Specified. Modifiers now apply in addition to overrides (rather than only in the absence of overrides). <em><b>ABI breaking:</b> You will need to update <a class="el" href="nwnx__creature_8nss.html">nwnx_creature.nss</a> if you are using these functions</em>.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md13"></a>
 Deprecated</h2>
@@ -972,7 +977,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Jan 2 2021 21:07:58 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Jan 17 2021 08:31:29 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17.
 					<a href="dark/">Dark version</a>
 				</li>
