@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['nwnx_20constants_3489',['NWNX Constants',['../group__consts.html',1,'']]],
-  ['nwnx_3490',['NWNX',['../group__nwnx.html',1,'']]],
-  ['nwnx_20tests_3491',['NWNX Tests',['../group__tests.html',1,'']]]
+  ['maxlevel_3592',['MaxLevel',['../group__maxlevel.html',1,'']]],
+  ['metrics_20influxdb_3593',['Metrics InfluxDB',['../group__metrics__influxdb.html',1,'']]]
 ];

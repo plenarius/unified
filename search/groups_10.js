@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['weapon_3513',['Weapon',['../group__weapon.html',1,'']]],
-  ['webhook_3514',['Webhook',['../group__webhook.html',1,'']]]
+  ['visibility_3617',['Visibility',['../group__visibility.html',1,'']]]
 ];
