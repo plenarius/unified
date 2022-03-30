@@ -18,3 +18,6 @@ Build/
 
 # SWIG
 Plugins/SWIG/SWIG_*/NWNXLib.i
+Plugins/SWIG/SWIG_DotNET/*.cs
+Plugins/SWIG/NWNXLib.i
+Plugins/SWIG/SWIG_DotNETInterop.cpp
