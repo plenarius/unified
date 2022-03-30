@@ -35,7 +35,7 @@
 						<td id="projectlogo"><img width="80" height="74" alt="Logo" src="logo-transparent.png"/></td>
 						<td id="projectalign" style="padding-left: 0.5em;">
 							<div id="projectname">NWNX:EE
-								&#160;<span id="projectnumber">8193.23</span>
+								&#160;<span id="projectnumber">8193.34</span>
 							</div>
 						</td>
 						<td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -127,6 +127,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6defa8e922e74d58cc4bc79b02f4cd9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga6defa8e922e74d58cc4bc79b02f4cd9f">NWNX_Creature_RemoveFeat</a> (object creature, int feat)</td></tr>
 <tr class="memdesc:ga6defa8e922e74d58cc4bc79b02f4cd9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a feat from a creature.  <a href="group__creature.html#ga6defa8e922e74d58cc4bc79b02f4cd9f">More...</a><br /></td></tr>
 <tr class="separator:ga6defa8e922e74d58cc4bc79b02f4cd9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga20b49f577fabaf49d5a7d4e18f2522db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga20b49f577fabaf49d5a7d4e18f2522db">NWNX_Creature_RemoveFeatByLevel</a> (object creature, int feat, int level)</td></tr>
+<tr class="memdesc:ga20b49f577fabaf49d5a7d4e18f2522db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the creature a feat assigned at a level.  <a href="group__creature.html#ga20b49f577fabaf49d5a7d4e18f2522db">More...</a><br /></td></tr>
+<tr class="separator:ga20b49f577fabaf49d5a7d4e18f2522db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gace9cb72350769f27e4373301e70d89b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gace9cb72350769f27e4373301e70d89b1">NWNX_Creature_GetKnowsFeat</a> (object creature, int feat)</td></tr>
 <tr class="memdesc:gace9cb72350769f27e4373301e70d89b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the creature knows a feat.  <a href="group__creature.html#gace9cb72350769f27e4373301e70d89b1">More...</a><br /></td></tr>
 <tr class="separator:gace9cb72350769f27e4373301e70d89b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -259,9 +262,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ga4a8f1767b03c99943c09fefd60333c70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga4a8f1767b03c99943c09fefd60333c70">NWNX_Creature_SetSkillRank</a> (object creature, int skill, int rank)</td></tr>
 <tr class="memdesc:ga4a8f1767b03c99943c09fefd60333c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the base ranks in a skill for creature.  <a href="group__creature.html#ga4a8f1767b03c99943c09fefd60333c70">More...</a><br /></td></tr>
 <tr class="separator:ga4a8f1767b03c99943c09fefd60333c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga38d29252f531846224e89b861fa3765c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga38d29252f531846224e89b861fa3765c">NWNX_Creature_SetClassByPosition</a> (object creature, int position, int classID)</td></tr>
-<tr class="memdesc:ga38d29252f531846224e89b861fa3765c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the class ID in a particular position for a creature.  <a href="group__creature.html#ga38d29252f531846224e89b861fa3765c">More...</a><br /></td></tr>
-<tr class="separator:ga38d29252f531846224e89b861fa3765c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab001d230daa910a4dd7deef8a60aa9dc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gab001d230daa910a4dd7deef8a60aa9dc">NWNX_Creature_GetSkillRankByLevel</a> (object creature, int skill, int level)</td></tr>
+<tr class="memdesc:gab001d230daa910a4dd7deef8a60aa9dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ranks in a skill for creature assigned at a level.  <a href="group__creature.html#gab001d230daa910a4dd7deef8a60aa9dc">More...</a><br /></td></tr>
+<tr class="separator:gab001d230daa910a4dd7deef8a60aa9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga863e019031899379a9359157264fa1cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga863e019031899379a9359157264fa1cc">NWNX_Creature_SetSkillRankByLevel</a> (object creature, int skill, int rank, int level)</td></tr>
+<tr class="memdesc:ga863e019031899379a9359157264fa1cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the ranks in a skill for creature assigned at a level.  <a href="group__creature.html#ga863e019031899379a9359157264fa1cc">More...</a><br /></td></tr>
+<tr class="separator:ga863e019031899379a9359157264fa1cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga54903d46fd1cd4a9d30d4d870c36e01b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga54903d46fd1cd4a9d30d4d870c36e01b">NWNX_Creature_SetClassByPosition</a> (object creature, int position, int classID, int bUpdateLevels=TRUE)</td></tr>
+<tr class="memdesc:ga54903d46fd1cd4a9d30d4d870c36e01b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the class ID in a particular position for a creature.  <a href="group__creature.html#ga54903d46fd1cd4a9d30d4d870c36e01b">More...</a><br /></td></tr>
+<tr class="separator:ga54903d46fd1cd4a9d30d4d870c36e01b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga69f0f037d2b2ccc1185da9588fe5901c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga69f0f037d2b2ccc1185da9588fe5901c">NWNX_Creature_SetLevelByPosition</a> (object creature, int position, int level)</td></tr>
 <tr class="memdesc:ga69f0f037d2b2ccc1185da9588fe5901c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the level at the given position for a creature.  <a href="group__creature.html#ga69f0f037d2b2ccc1185da9588fe5901c">More...</a><br /></td></tr>
 <tr class="separator:ga69f0f037d2b2ccc1185da9588fe5901c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -295,6 +304,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga73a0718b8d21a8f04201b94c6ac35aef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga73a0718b8d21a8f04201b94c6ac35aef">NWNX_Creature_SetSkillPointsRemaining</a> (object creature, int skillpoints)</td></tr>
 <tr class="memdesc:ga73a0718b8d21a8f04201b94c6ac35aef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the creature's remaining unspent skill points.  <a href="group__creature.html#ga73a0718b8d21a8f04201b94c6ac35aef">More...</a><br /></td></tr>
 <tr class="separator:ga73a0718b8d21a8f04201b94c6ac35aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga59aaa15d92bcadc5200576058c000c87"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga59aaa15d92bcadc5200576058c000c87">NWNX_Creature_GetSkillPointsRemainingByLevel</a> (object creature, int level)</td></tr>
+<tr class="memdesc:ga59aaa15d92bcadc5200576058c000c87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the creature's remaining unspent skill points for level.  <a href="group__creature.html#ga59aaa15d92bcadc5200576058c000c87">More...</a><br /></td></tr>
+<tr class="separator:ga59aaa15d92bcadc5200576058c000c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf9f6484fb5953e6de432cd16cb7e316a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gaf9f6484fb5953e6de432cd16cb7e316a">NWNX_Creature_SetSkillPointsRemainingByLevel</a> (object creature, int level, int value)</td></tr>
+<tr class="memdesc:gaf9f6484fb5953e6de432cd16cb7e316a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the creature's remaining unspent skill points for level.  <a href="group__creature.html#gaf9f6484fb5953e6de432cd16cb7e316a">More...</a><br /></td></tr>
+<tr class="separator:gaf9f6484fb5953e6de432cd16cb7e316a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga318adbef08926e9c47d9d4840cef6e0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga318adbef08926e9c47d9d4840cef6e0f">NWNX_Creature_SetRacialType</a> (object creature, int racialtype)</td></tr>
 <tr class="memdesc:ga318adbef08926e9c47d9d4840cef6e0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the creature's racial type.  <a href="group__creature.html#ga318adbef08926e9c47d9d4840cef6e0f">More...</a><br /></td></tr>
 <tr class="separator:ga318adbef08926e9c47d9d4840cef6e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -535,6 +550,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa2141d9dfe8ec4ee03b228b4ca6274f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gaa2141d9dfe8ec4ee03b228b4ca6274f1">NWNX_Creature_RunUnequip</a> (object oCreature, object oItem)</td></tr>
 <tr class="memdesc:gaa2141d9dfe8ec4ee03b228b4ca6274f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Have oCreature instantly unequip oItem.  <a href="group__creature.html#gaa2141d9dfe8ec4ee03b228b4ca6274f1">More...</a><br /></td></tr>
 <tr class="separator:gaa2141d9dfe8ec4ee03b228b4ca6274f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6063cad6d05f1a72409a618d284e45cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga6063cad6d05f1a72409a618d284e45cc">NWNX_Creature_OverrideRangedProjectileVFX</a> (object oCreature, int nProjectileVFX, int bPersist=FALSE)</td></tr>
+<tr class="memdesc:ga6063cad6d05f1a72409a618d284e45cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override the elemental projectile visual effect of ranged/throwing weapons.  <a href="group__creature.html#ga6063cad6d05f1a72409a618d284e45cc">More...</a><br /></td></tr>
+<tr class="separator:ga6063cad6d05f1a72409a618d284e45cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -628,6 +646,25 @@ Variables</h2></td></tr>
 <tr class="separator:ga6620ba952b09a01e86892f6dc1b2015a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa1e7668abb0a7b20830dbadc2ee1dc01"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gaa1e7668abb0a7b20830dbadc2ee1dc01">NWNX_CREATURE_BONUS_TYPE_TOUCH_ATTACK</a> = 6</td></tr>
 <tr class="separator:gaa1e7668abb0a7b20830dbadc2ee1dc01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Ranged Projectile VFX</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="ranged_projectile_vfx"></a> Used with <a class="el" href="group__creature.html#ga6063cad6d05f1a72409a618d284e45cc" title="Override the elemental projectile visual effect of ranged/throwing weapons.">NWNX_Creature_OverrideRangedProjectileVFX()</a> these are the projectile vfx types. </p>
+</div></td></tr>
+<tr class="memitem:gad947f1595859b13cbca0ff86cc5840b5"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gad947f1595859b13cbca0ff86cc5840b5">NWNX_CREATURE_PROJECTILE_VFX_NONE</a> = 0</td></tr>
+<tr class="memdesc:gad947f1595859b13cbca0ff86cc5840b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">No VFX.  <a href="group__creature.html#gad947f1595859b13cbca0ff86cc5840b5">More...</a><br /></td></tr>
+<tr class="separator:gad947f1595859b13cbca0ff86cc5840b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac0b1ad57e9a0cd12ec2602bb050d09b1"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gac0b1ad57e9a0cd12ec2602bb050d09b1">NWNX_CREATURE_PROJECTILE_VFX_ACID</a> = 1</td></tr>
+<tr class="separator:gac0b1ad57e9a0cd12ec2602bb050d09b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga38c17a62fc4a2df82b4d08481a0a4c2a"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga38c17a62fc4a2df82b4d08481a0a4c2a">NWNX_CREATURE_PROJECTILE_VFX_COLD</a> = 2</td></tr>
+<tr class="separator:ga38c17a62fc4a2df82b4d08481a0a4c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9a77d6aceb1470cfc40427f3cedb608c"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga9a77d6aceb1470cfc40427f3cedb608c">NWNX_CREATURE_PROJECTILE_VFX_ELECTRICAL</a> = 3</td></tr>
+<tr class="separator:ga9a77d6aceb1470cfc40427f3cedb608c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef302436809eebedcba2b0a682b8e71a"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#gaef302436809eebedcba2b0a682b8e71a">NWNX_CREATURE_PROJECTILE_VFX_FIRE</a> = 4</td></tr>
+<tr class="separator:gaef302436809eebedcba2b0a682b8e71a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga023cb65acd8f802b1157068187054f26"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga023cb65acd8f802b1157068187054f26">NWNX_CREATURE_PROJECTILE_VFX_SONIC</a> = 5</td></tr>
+<tr class="separator:ga023cb65acd8f802b1157068187054f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2059460faa68d5eff02713348851845f"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__creature.html#ga2059460faa68d5eff02713348851845f">NWNX_CREATURE_PROJECTILE_VFX_RANDOM</a> = 6</td></tr>
+<tr class="memdesc:ga2059460faa68d5eff02713348851845f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Random Elemental VFX.  <a href="group__creature.html#ga2059460faa68d5eff02713348851845f">More...</a><br /></td></tr>
+<tr class="separator:ga2059460faa68d5eff02713348851845f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -636,7 +673,7 @@ Variables</h2></td></tr>
 			<ul>
 				<li class="navelem"><a class="el" href="dir_0b4eaef40a1fe20bedafe9e8e719ce66.html">Plugins</a></li><li class="navelem"><a class="el" href="dir_efcc7e8cb6d48fa5ae53e4b1e4942f85.html">Creature</a></li><li class="navelem"><a class="el" href="dir_df2c9402d4c835b594b2af66d6709907.html">NWScript</a></li><li class="navelem"><a class="el" href="nwnx__creature_8nss.html">nwnx_creature.nss</a></li>
 				<li class="footer">
-					Generated on Mon Jun 7 2021 02:32:35 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Wed Mar 30 2022 03:35:13 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17.
 					<a href="dark/">Dark version</a>
 				</li>

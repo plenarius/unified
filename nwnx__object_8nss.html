@@ -35,7 +35,7 @@
 						<td id="projectlogo"><img width="80" height="74" alt="Logo" src="logo-transparent.png"/></td>
 						<td id="projectalign" style="padding-left: 0.5em;">
 							<div id="projectname">NWNX:EE
-								&#160;<span id="projectnumber">8193.23</span>
+								&#160;<span id="projectnumber">8193.34</span>
 							</div>
 						</td>
 						<td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -190,9 +190,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga9fb809f301e75d9fcdc64ed0fd8bb4ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__object.html#ga9fb809f301e75d9fcdc64ed0fd8bb4ce">NWNX_Object_RemoveIconEffect</a> (object obj, int nIcon)</td></tr>
 <tr class="memdesc:ga9fb809f301e75d9fcdc64ed0fd8bb4ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an icon effect from an object that was added by the <a class="el" href="group__object.html#ga6536ea0753ecd950170841649053e566" title="Add an effect to an object that displays an icon and has no other effect.">NWNX_Object_AddIconEffect()</a> function.  <a href="group__object.html#ga9fb809f301e75d9fcdc64ed0fd8bb4ce">More...</a><br /></td></tr>
 <tr class="separator:ga9fb809f301e75d9fcdc64ed0fd8bb4ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga248baa30ff85960bf6b559554125fff4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__object.html#ga248baa30ff85960bf6b559554125fff4">NWNX_Object_Export</a> (object oObject, string sFileName)</td></tr>
-<tr class="memdesc:ga248baa30ff85960bf6b559554125fff4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export an object to the UserDirectory/nwnx folder.  <a href="group__object.html#ga248baa30ff85960bf6b559554125fff4">More...</a><br /></td></tr>
-<tr class="separator:ga248baa30ff85960bf6b559554125fff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2642eb53f0c96976239265ae8aae0448"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__object.html#ga2642eb53f0c96976239265ae8aae0448">NWNX_Object_Export</a> (object oObject, string sFileName, string sAlias=&quot;NWNX&quot;)</td></tr>
+<tr class="memdesc:ga2642eb53f0c96976239265ae8aae0448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export an object to the UserDirectory/nwnx folder.  <a href="group__object.html#ga2642eb53f0c96976239265ae8aae0448">More...</a><br /></td></tr>
+<tr class="separator:ga2642eb53f0c96976239265ae8aae0448"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafed465042375a88ec4194f1da7819813"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__object.html#gafed465042375a88ec4194f1da7819813">NWNX_Object_GetInt</a> (object oObject, string sVarName)</td></tr>
 <tr class="memdesc:gafed465042375a88ec4194f1da7819813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get oObject's integer variable sVarName.  <a href="group__object.html#gafed465042375a88ec4194f1da7819813">More...</a><br /></td></tr>
 <tr class="separator:gafed465042375a88ec4194f1da7819813"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -274,6 +274,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga7e6bd03c53974433edb5581fa92dd2b5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__object.html#ga7e6bd03c53974433edb5581fa92dd2b5">NWNX_Object_GetLastSpellCastFeat</a> (object oObject)</td></tr>
 <tr class="memdesc:ga7e6bd03c53974433edb5581fa92dd2b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last spell cast feat of oObject.  <a href="group__object.html#ga7e6bd03c53974433edb5581fa92dd2b5">More...</a><br /></td></tr>
 <tr class="separator:ga7e6bd03c53974433edb5581fa92dd2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac11d2ff17fd0fc98d184fdef3a464040"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__object.html#gac11d2ff17fd0fc98d184fdef3a464040">NWNX_Object_SetLastTriggered</a> (object oObject, object oLast)</td></tr>
+<tr class="memdesc:gac11d2ff17fd0fc98d184fdef3a464040"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the last object that triggered door or placeable trap.  <a href="group__object.html#gac11d2ff17fd0fc98d184fdef3a464040">More...</a><br /></td></tr>
+<tr class="separator:gac11d2ff17fd0fc98d184fdef3a464040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2009bb51273e2aba083895b9293c1d6b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__object.html#ga2009bb51273e2aba083895b9293c1d6b">NWNX_Object_GetAoEObjectDurationRemaining</a> (object oAoE)</td></tr>
+<tr class="memdesc:ga2009bb51273e2aba083895b9293c1d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the remaining duration of the AoE object.  <a href="group__object.html#ga2009bb51273e2aba083895b9293c1d6b">More...</a><br /></td></tr>
+<tr class="separator:ga2009bb51273e2aba083895b9293c1d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -292,6 +298,8 @@ Variables</h2></td></tr>
 <tr class="separator:ga1fd70b82158630ba51168aaaa9964064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8a8f56702f7212d7f2de699e50ed2232"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__object.html#ga8a8f56702f7212d7f2de699e50ed2232">NWNX_OBJECT_LOCALVAR_TYPE_LOCATION</a> = 5</td></tr>
 <tr class="separator:ga8a8f56702f7212d7f2de699e50ed2232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga72f7b91d398fe93e1d87f16ab5974ab8"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__object.html#ga72f7b91d398fe93e1d87f16ab5974ab8">NWNX_OBJECT_LOCALVAR_TYPE_JSON</a> = 6</td></tr>
+<tr class="separator:ga72f7b91d398fe93e1d87f16ab5974ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Internal Object Types</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="object_internal_types"></a></p>
 </div></td></tr>
@@ -337,7 +345,7 @@ Variables</h2></td></tr>
 			<ul>
 				<li class="navelem"><a class="el" href="dir_0b4eaef40a1fe20bedafe9e8e719ce66.html">Plugins</a></li><li class="navelem"><a class="el" href="dir_2584d5990ceee72a96d4fc6f0e6569ed.html">Object</a></li><li class="navelem"><a class="el" href="dir_08af5f1cba7ec2492768fbd3a681eb73.html">NWScript</a></li><li class="navelem"><a class="el" href="nwnx__object_8nss.html">nwnx_object.nss</a></li>
 				<li class="footer">
-					Generated on Mon Jun 7 2021 02:32:35 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Wed Mar 30 2022 03:35:13 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17.
 					<a href="dark/">Dark version</a>
 				</li>
