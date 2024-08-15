@@ -35,7 +35,7 @@
 						<td id="projectlogo"><img width="80" height="74" alt="Logo" src="logo-transparent.png"/></td>
 						<td id="projectalign" style="padding-left: 0.5em;">
 							<div id="projectname">NWNX:EE
-								&#160;<span id="projectnumber">8193.34</span>
+								&#160;<span id="projectnumber">8193.36.12</span>
 							</div>
 						</td>
 						<td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -106,10 +106,10 @@ $(document).ready(function(){initNavTree('group__http.html',''); initResizable()
 <div class="contents">
 
 
-<h3><a id="http"></a>Readme</h3><div class="textblock"><h2><a class="anchor" id="autotoc_md413"></a>
+<h3><a id="http"></a>Readme</h3><div class="textblock"><h2><a class="anchor" id="autotoc_md496"></a>
 Introduction</h2>
 <p>The HTTP Plugin provides access to both a Server and Client to accept and perform requests and return responses.</p>
-<h2><a class="anchor" id="autotoc_md414"></a>
+<h2><a class="anchor" id="autotoc_md497"></a>
 Environment Variables</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -141,24 +141,24 @@ Environment Variables</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">NWNX_HTTP_SERVER_RPC_AUTH_TOKEN </td><td class="markdownTableBodyCenter">string </td><td class="markdownTableBodyNone"></td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md415"></a>
+<h2><a class="anchor" id="autotoc_md498"></a>
 Setup</h2>
-<h3><a class="anchor" id="autotoc_md416"></a>
+<h3><a class="anchor" id="autotoc_md499"></a>
 Client</h3>
 <p>The Client commands are functional by simply loading the plugin. </p>
-<h3><a class="anchor" id="autotoc_md417"></a>
+<h3><a class="anchor" id="autotoc_md500"></a>
 Server</h3>
 <p>The server will run when <code>NWNX_HTTP_SERVER</code> is set to <code>true</code>. It will be accessible by default on port 8686 (configured with <code>NWNX_HTTP_SERVER_PORT</code>) but further configuration is necessary as by default visiting <a href="http://your.host:8686">http://your.host:8686</a> will return a <code>403 Forbidden</code> error.</p>
 <p>If you wish your server to return information when visiting the root level then you must set the <code>NWNX_HTTP_SERVER_ROOT_STATUS</code> to <code>200</code>. By default this returns a simple "Welcome to nwnx http" web page, but this content can be controlled with the <code>NWNX_HTTP_SERVER_ROOT_HTML</code> environment variable.</p>
 <p>The server can also be configured to run on https by setting <code>NWNX_HTTP_USE_SSL</code> to <code>true</code> and placing a <code>cert.pem</code> and <code>key.pem</code> in the same folder as your <code>NWNX_HTTP.so</code>. Alternatively, you can configure the name and path to the certificate and private key with the <code>NWNX_HTTP_SERVER_SSL_CERT_FILE</code> and <code>NWNX_HTTP_SERVER_SSL_KEY_FILE</code> environment variables. <b>Remember that the user that runs the nwn-server must be able to read both these files.</b></p>
-<h3><a class="anchor" id="autotoc_md418"></a>
+<h3><a class="anchor" id="autotoc_md501"></a>
 RPC</h3>
 <p>In addition to the regular GET protocol that the Server handles, the plugin includes a more robust RPC Server that handles a POST request event which can accept form-urlencoded or json data. To enable this RPC server set <code>NWNX_HTTP_RPC</code> to <code>true</code>.</p>
 <p>The RPC server supports an authentication token by setting the <code>NWNX_HTTP_SERVER_RPC_AUTH_TOKEN</code> environment variable to a value of your choosing. Optionally you can simply set the <code>NWNX_HTTP_SERVER_RPC_URL</code> to an obscure URL much like Discord does with their webhooks. An example command to produce either this token or url is <code>ruby -rsecurerandom -e 'puts SecureRandom.hex(32)</code>. You can set both or either but you must set at least one.</p>
 <p>If you do not set an <code>NWNX_HTTP_SERVER_RPC_URL</code> environment variable then the url will be <code>/rpc</code>.</p>
-<h2><a class="anchor" id="autotoc_md419"></a>
+<h2><a class="anchor" id="autotoc_md502"></a>
 Events</h2>
-<h3><a class="anchor" id="autotoc_md420"></a>
+<h3><a class="anchor" id="autotoc_md503"></a>
 Server Event Setup</h3>
 <p>The true utility of the HTTP Server is broadcasting a call to the <code>NWNX_ON_HTTP_SERVER_GET</code> event. The builder begins by setting an environment variable <code>NWNX_HTTP_SERVER_EVENT_URL</code> for a path wildcard that accepts requests, for example <code>/nwnx/(.*)</code>. When this is set and an http client visits <a href="http://your.site:8686/nwnx/testing">http://your.site:8686/nwnx/testing</a> an <code>NWNX_ON_HTTP_SERVER_GET</code> event will be signalled. The Event Data is the path <code>PATH</code> and a unique integer <code>REQUEST_ID</code>. Once the event is sent to your nwscript you build the response you wish to return and then send it back with the <code><a class="el" href="group__http.html#ga1e08365b53f8ef70dde3e61f6b762afa" title="Returns a string to the http server.">NWNX_HTTP_Server_SendResponse()</a></code> command.</p>
 <p>Here's an example of the functionality.</p><ol type="1">
@@ -178,7 +178,7 @@ Server Event Setup</h3>
 <div class="line">    }</div>
 </div><!-- fragment --></li>
 </ol>
-<h3><a class="anchor" id="autotoc_md421"></a>
+<h3><a class="anchor" id="autotoc_md504"></a>
 RPC Event Setup</h3>
 <p>Much like the HTTP Server, the RPC Server signals an <code>NWNX_ON_HTTP_SERVER_POST</code> event. The data included with this event includes <code>REQUEST_ID</code> and either <code>JSON_DATA</code> or if using form-urlencoded data it sends <code>PARAM_COUNT</code> and <code>PARAM_KEY_#</code> and <code>PARAM_VALUE_#</code> pairs for the builder to loop through in the event handler script.</p>
 <p>Here's an example of an RPC event handler.</p><ol type="1">
@@ -248,16 +248,16 @@ RPC Event Setup</h3>
 </div><!-- fragment --></li>
 <li>The builder receives the response: <code>Message sent to player(s): &lt;PCName&gt;</code></li>
 </ol>
-<h2><a class="anchor" id="autotoc_md422"></a>
+<h2><a class="anchor" id="autotoc_md505"></a>
 Client Usage</h2>
 <p>The HTTP Client contains two functions, <code><a class="el" href="group__http.html#ga21fd744daa1b2271ab673f6ed175d9c9" title="Sends an http method to the given host.">NWNX_HTTP_Client_SendRequest()</a></code> and <code><a class="el" href="group__http.html#ga8ae7903f18c1674f48ff5e0cd2b03384" title="Returns an NWNX_HTTP_Client_Request structure.">NWNX_HTTP_Client_GetRequest()</a></code> and broadcasts two events, <code>NWNX_ON_HTTP_CLIENT_SUCCESS</code> and <code>NWNX_ON_HTTP_CLIENT_FAILED</code>.</p>
 <p>The builder constructs an <code><a class="el" href="structNWNX__HTTP__Client__Request.html" title="A structure for an HTTP Client Request.">NWNX_HTTP_Client_Request</a></code> struct with the appropriate information then passes that struct into <code><a class="el" href="group__http.html#ga21fd744daa1b2271ab673f6ed175d9c9" title="Sends an http method to the given host.">NWNX_HTTP_Client_SendRequest()</a></code> which will return a unique request identifier. The request is then sent to the host and upon success or failure the respective event is called.</p>
 <p>The event data sent is <code>REQUEST_ID</code>, <code>STATUS</code> and <code>RESPONSE</code>. The <code>REQUEST_ID</code> event data is the integer returned with <code><a class="el" href="group__http.html#ga21fd744daa1b2271ab673f6ed175d9c9" title="Sends an http method to the given host.">NWNX_HTTP_Client_SendRequest()</a></code>. The structure for that request can then be queried via <code><a class="el" href="group__http.html#ga8ae7903f18c1674f48ff5e0cd2b03384" title="Returns an NWNX_HTTP_Client_Request structure.">NWNX_HTTP_Client_GetRequest()</a></code>. The <code>STATUS</code> event data is the server HTTP status return code, (usually 200 on success) and the <code>RESPONSE</code> is the body of text the server returned.</p>
 <p>Additionally the event data includes Rate Limit information that some servers provide. These are <code>RATELIMIT_LIMIT</code> which is how many requests you can send in a given time period, <code>RATELIMIT_REMAINING</code> is how many requests you have left in that time period and <code>RATELIMIT_RESET</code> is an epoch timestamp when the request limit is reset again. There is also <code>RETRY_AFTER</code> which some servers provide which is how long in seconds before you can send another request.</p>
-<h3><a class="anchor" id="autotoc_md423"></a>
+<h3><a class="anchor" id="autotoc_md506"></a>
 JSON Helper</h3>
 <p>The plugin includes a helper library to construct JSON objects for client requests, <code><a class="el" href="nwnx__http__json_8nss.html" title="Helper script for constructing json data for NWNX_HTTP_Client_SendRequest()">nwnx_http_json.nss</a></code>.</p>
-<h3><a class="anchor" id="autotoc_md424"></a>
+<h3><a class="anchor" id="autotoc_md507"></a>
 Example Client Requests</h3>
 <p>Here is an example of posting an issue to a github repository. </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> githubJSON = <a class="code" href="group__http.html#ga30a91be90b4ce7b6274e24aefa9bb506">NWNX_HTTP_JSON_NewObject</a>();</div>
 <div class="line"><a class="code" href="group__http.html#ga2df1142a457b65c3524258ff537fd064">NWNX_HTTP_JSON_ObjectAddString</a>(githubJSON, <span class="stringliteral">&quot;title&quot;</span>, <span class="stringliteral">&quot;Testing HTTP Client&quot;</span>);</div>
@@ -1470,10 +1470,10 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="agroup__http_html_ga82024e1071db32d627d6637a7ef55d2d"><div class="ttname"><a href="group__http.html#ga82024e1071db32d627d6637a7ef55d2d">NWNX_HTTP_REQUEST_METHOD_GET</a></div><div class="ttdeci">const int NWNX_HTTP_REQUEST_METHOD_GET</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__http_8nss_source.html#l00013">nwnx_http.nss:13</a></div></div>
-<div class="ttc" id="agroup__events_html_ga3dd3ccd8df389359c21d5ca3f681718b"><div class="ttname"><a href="group__events.html#ga3dd3ccd8df389359c21d5ca3f681718b">NWNX_Events_GetCurrentEvent</a></div><div class="ttdeci">string NWNX_Events_GetCurrentEvent()</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__events_8nss_source.html#l01794">nwnx_events.nss:1794</a></div></div>
+<div class="ttc" id="agroup__events_html_ga3dd3ccd8df389359c21d5ca3f681718b"><div class="ttname"><a href="group__events.html#ga3dd3ccd8df389359c21d5ca3f681718b">NWNX_Events_GetCurrentEvent</a></div><div class="ttdeci">string NWNX_Events_GetCurrentEvent()</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__events_8nss_source.html#l02445">nwnx_events.nss:2445</a></div></div>
 <div class="ttc" id="aarray__example_8nss_html_acdef7a1fd863a6d3770c1268cb06add3"><div class="ttname"><a href="array__example_8nss.html#acdef7a1fd863a6d3770c1268cb06add3">main</a></div><div class="ttdeci">void main()</div><div class="ttdef"><b>Definition:</b> <a href="array__example_8nss_source.html#l00133">array_example.nss:133</a></div></div>
 <div class="ttc" id="agroup__http_html_ga1e08365b53f8ef70dde3e61f6b762afa"><div class="ttname"><a href="group__http.html#ga1e08365b53f8ef70dde3e61f6b762afa">NWNX_HTTP_Server_SendResponse</a></div><div class="ttdeci">void NWNX_HTTP_Server_SendResponse(int nRequestId, string sMessage, int nContentType=NWNX_HTTP_CONTENT_TYPE_HTML, int nCache=0)</div><div class="ttdoc">Returns a string to the http server.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__http_8nss_source.html#l00079">nwnx_http.nss:79</a></div></div>
-<div class="ttc" id="agroup__events_html_gad74d90c308e190da8d49b1db0aa2f1b6"><div class="ttname"><a href="group__events.html#gad74d90c308e190da8d49b1db0aa2f1b6">NWNX_Events_GetEventData</a></div><div class="ttdeci">string NWNX_Events_GetEventData(string tag)</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__events_8nss_source.html#l01770">nwnx_events.nss:1770</a></div></div>
+<div class="ttc" id="agroup__events_html_gad74d90c308e190da8d49b1db0aa2f1b6"><div class="ttname"><a href="group__events.html#gad74d90c308e190da8d49b1db0aa2f1b6">NWNX_Events_GetEventData</a></div><div class="ttdeci">string NWNX_Events_GetEventData(string tag)</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__events_8nss_source.html#l02421">nwnx_events.nss:2421</a></div></div>
 <div class="ttc" id="astructNWNX__HTTP__Client__Request_html"><div class="ttname"><a href="structNWNX__HTTP__Client__Request.html">NWNX_HTTP_Client_Request</a></div><div class="ttdoc">A structure for an HTTP Client Request.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__http_8nss_source.html#l00044">nwnx_http.nss:44</a></div></div>
 <div class="ttc" id="agroup__http_html_ga0ddd80f53c323ce5a7f95b881ecdc51d"><div class="ttname"><a href="group__http.html#ga0ddd80f53c323ce5a7f95b881ecdc51d">NWNX_HTTP_AUTH_TYPE_BASIC</a></div><div class="ttdeci">const int NWNX_HTTP_AUTH_TYPE_BASIC</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__http_8nss_source.html#l00038">nwnx_http.nss:38</a></div></div>
 <div class="ttc" id="agroup__http_html_ga8ae7903f18c1674f48ff5e0cd2b03384"><div class="ttname"><a href="group__http.html#ga8ae7903f18c1674f48ff5e0cd2b03384">NWNX_HTTP_Client_GetRequest</a></div><div class="ttdeci">struct NWNX_HTTP_Client_Request NWNX_HTTP_Client_GetRequest(int nRequestId)</div><div class="ttdoc">Returns an NWNX_HTTP_Client_Request structure.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__http_8nss_source.html#l00108">nwnx_http.nss:108</a></div></div>
@@ -1482,7 +1482,7 @@ Functions</h2></td></tr>
 <div class="ttc" id="agroup__http_html_ga30a91be90b4ce7b6274e24aefa9bb506"><div class="ttname"><a href="group__http.html#ga30a91be90b4ce7b6274e24aefa9bb506">NWNX_HTTP_JSON_NewObject</a></div><div class="ttdeci">int NWNX_HTTP_JSON_NewObject(int isArray=FALSE)</div><div class="ttdoc">Create a new JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__http__json_8nss_source.html#l00105">nwnx_http_json.nss:105</a></div></div>
 <div class="ttc" id="agroup__http_html_gac1623f655846851046326bd0e62ddd7a"><div class="ttname"><a href="group__http.html#gac1623f655846851046326bd0e62ddd7a">NWNX_HTTP_JSON_GetJSONString</a></div><div class="ttdeci">string NWNX_HTTP_JSON_GetJSONString(int nJSONObjectID)</div><div class="ttdoc">Returns a json string representation of a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__http__json_8nss_source.html#l00311">nwnx_http_json.nss:311</a></div></div>
 <div class="ttc" id="agroup__http_html_gada3f5d9b4e215410e9beed1ca57a87c7"><div class="ttname"><a href="group__http.html#gada3f5d9b4e215410e9beed1ca57a87c7">NWNX_HTTP_JSON_NewArray</a></div><div class="ttdeci">int NWNX_HTTP_JSON_NewArray()</div><div class="ttdoc">Create a new JSON array.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__http__json_8nss_source.html#l00133">nwnx_http_json.nss:133</a></div></div>
-<div class="ttc" id="agroup__util_html_gab0151e2741596a3a9f1ece22c62f9c9b"><div class="ttname"><a href="group__util.html#gab0151e2741596a3a9f1ece22c62f9c9b">NWNX_Util_GetEnvironmentVariable</a></div><div class="ttdeci">string NWNX_Util_GetEnvironmentVariable(string sVarname)</div><div class="ttdoc">Retrieves an environment variable.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__util_8nss_source.html#l00337">nwnx_util.nss:337</a></div></div>
+<div class="ttc" id="agroup__util_html_gab0151e2741596a3a9f1ece22c62f9c9b"><div class="ttname"><a href="group__util.html#gab0151e2741596a3a9f1ece22c62f9c9b">NWNX_Util_GetEnvironmentVariable</a></div><div class="ttdeci">string NWNX_Util_GetEnvironmentVariable(string sVarname)</div><div class="ttdoc">Retrieves an environment variable.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__util_8nss_source.html#l00335">nwnx_util.nss:335</a></div></div>
 <div class="ttc" id="agroup__http_html_ga33fdf1bf8a747c62b7a9e27200bfec48"><div class="ttname"><a href="group__http.html#ga33fdf1bf8a747c62b7a9e27200bfec48">NWNX_HTTP_REQUEST_METHOD_POST</a></div><div class="ttdeci">const int NWNX_HTTP_REQUEST_METHOD_POST</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__http_8nss_source.html#l00014">nwnx_http.nss:14</a></div></div>
 <div class="ttc" id="agroup__http_html_ga0e3e3675561e871b8842bbe86d7b7ed7"><div class="ttname"><a href="group__http.html#ga0e3e3675561e871b8842bbe86d7b7ed7">NWNX_HTTP_JSON_ObjectAddArray</a></div><div class="ttdeci">void NWNX_HTTP_JSON_ObjectAddArray(int nJSONObjectId, string sKey, int nJSONArrayID)</div><div class="ttdoc">Add a JSON array to a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__http__json_8nss_source.html#l00149">nwnx_http_json.nss:149</a></div></div>
 <div class="ttc" id="agroup__http_html_ga2df1142a457b65c3524258ff537fd064"><div class="ttname"><a href="group__http.html#ga2df1142a457b65c3524258ff537fd064">NWNX_HTTP_JSON_ObjectAddString</a></div><div class="ttdeci">void NWNX_HTTP_JSON_ObjectAddString(int nJSONObjectId, string sKey, string sValue)</div><div class="ttdoc">Add a string to a JSON object.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__http__json_8nss_source.html#l00154">nwnx_http_json.nss:154</a></div></div>
@@ -1492,7 +1492,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sun May 8 2022 08:47:21 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Thu Aug 15 2024 01:54:26 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17.
 					<a href="dark/">Dark version</a>
 				</li>
