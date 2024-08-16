@@ -21,7 +21,7 @@ var modules =
     [ "Experimental", "group__experimental.html", "group__experimental" ],
     [ "Feat", "group__feat.html", "group__feat" ],
     [ "Feedback", "group__feedback.html", "group__feedback" ],
-    [ "HTTP", "group__http.html", "group__http" ],
+    [ "HTTPClient", "group__httpclient.html", "group__httpclient" ],
     [ "Item", "group__item.html", "group__item" ],
     [ "ItemProperty", "group__itemproperty.html", "group__itemproperty" ],
     [ "LUA", "group__lua.html", "group__lua" ],

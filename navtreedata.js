@@ -49,19 +49,19 @@ var NAVTREEINDEX =
 "group__elc.html#gaacd02a1af0ad8e78ed791343b97da5e6",
 "group__events.html#ga3b6ed7d30f619d724c204a9de11b5a74",
 "group__events.html#ga8035804ffbf8fa59ed3094c1af765143",
-"group__events.html#gad7ca8f444a8937c054feceaeaf2fdb36",
-"group__feat.html#gae8ca6184d52c8df8dcf6df5e73e79a84",
+"group__events.html#gad7aaa3d480c9905c66c733936d5309a5",
+"group__feat.html#gae56723de98fa8920d489fdb4c5cf7e67",
 "group__feedback.html#ga648275a6f43980990ff2abc36e7fa6f5",
-"group__feedback.html#gad50e6483726890ad175ad4c28ff81b82",
-"group__layonara.html#gaf69e113aa0944992497737603d8fa1fd",
-"group__object.html#gad42e6039777c646447c61fae4d216fdd",
-"group__player.html#gacf6c81cfaffdfcc9380e54332738148f",
-"group__spellchecker.html#autotoc_md629",
-"group__util.html#gad787ec7652e9b2a750ab9534a051c1e0",
-"nwnx__profiler_8nss.html",
-"nwnx__redis__short_8nss.html#a165b5882ccd88192902783f3a41bc739",
-"structNWNX__Area__AreaWind.html#aae39cd5f7fec88ca3b99388667d5c906",
-"structNWNX__Tileset__CustomTileData.html#a72f43f39bfe435c2271885f34db1478d"
+"group__feedback.html#gad49a4ef36df93a1a39ca762f79fb3567",
+"group__nostack.html#gab58506b6c8bd6a1d1f00797a1a7925d8",
+"group__optimizations.html#optimizations",
+"group__race.html#autotoc_md532",
+"group__sql.html#gabdbc6892dd0ea7484e01eeb01fcabfdd",
+"group__weapon.html#ga16ec75cebc8186286084e58172f62e82",
+"nwnx__redis_8nss.html#a2b18212f3955833115eff799191c3585",
+"nwnx__redis__short_8nss.html#a4ad8148dd2cd11295a7729daec27513b",
+"structNWNX__Damage__AttackEventData.html#ad76bfe56fadd9f06296452fe451345f7",
+"structNWNX__Util__WorldTime.html#a40e833c28b4d71306dd171afe50dc3a9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
