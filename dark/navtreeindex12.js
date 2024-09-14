@@ -59,12 +59,12 @@ var NAVTREEINDEX12 =
 "group__nwnx.html#gae9cc53e85c008a30a58c0d7cee4169d6":[4,0,1,0,0,11],
 "group__nwnx.html#nwnx":[0,3,0],
 "group__nwsqliteextensions.html":[0,28],
-"group__nwsqliteextensions.html#autotoc_md521":[42],
-"group__nwsqliteextensions.html#autotoc_md522":[43],
-"group__nwsqliteextensions.html#autotoc_md523":[43,0],
-"group__nwsqliteextensions.html#autotoc_md524":[44],
-"group__nwsqliteextensions.html#autotoc_md525":[44,0],
-"group__nwsqliteextensions.html#autotoc_md526":[44,1],
+"group__nwsqliteextensions.html#autotoc_md522":[42],
+"group__nwsqliteextensions.html#autotoc_md523":[43],
+"group__nwsqliteextensions.html#autotoc_md524":[43,0],
+"group__nwsqliteextensions.html#autotoc_md525":[44],
+"group__nwsqliteextensions.html#autotoc_md526":[44,0],
+"group__nwsqliteextensions.html#autotoc_md527":[44,1],
 "group__nwsqliteextensions.html#ga94bf21272d6e5f2e00b47f11e4ca847e":[4,0,3,26,0,0,1],
 "group__nwsqliteextensions.html#ga99c18e4b05d4d65f5592fd89d83f133a":[0,28,2],
 "group__nwsqliteextensions.html#ga99c18e4b05d4d65f5592fd89d83f133a":[4,0,3,26,0,0,0],
@@ -249,5 +249,5 @@ var NAVTREEINDEX12 =
 "group__object.html#gafed465042375a88ec4194f1da7819813":[0,29,25],
 "group__object.html#object":[0,29,0],
 "group__optimizations.html":[0,30],
-"group__optimizations.html#autotoc_md527":[45]
+"group__optimizations.html#autotoc_md528":[45]
 };

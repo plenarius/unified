@@ -2,8 +2,8 @@ var NAVTREEINDEX13 =
 {
 "group__optimizations.html#optimizations":[0,30,0],
 "group__player.html":[0,31],
-"group__player.html#autotoc_md528":[46],
-"group__player.html#autotoc_md529":[0],
+"group__player.html#autotoc_md529":[46],
+"group__player.html#autotoc_md530":[0],
 "group__player.html#ga0500b78ca6ffccb95db0b7093bc42ca8":[4,0,3,29,0,0,14],
 "group__player.html#ga0500b78ca6ffccb95db0b7093bc42ca8":[0,31,19],
 "group__player.html#ga051071ab18ffa045fd08a744e90c3ed3":[4,0,3,29,0,0,4],
@@ -241,7 +241,7 @@ var NAVTREEINDEX13 =
 "group__player.html#gafdc911593d62608874e6ab34d2d04356":[4,0,3,29,0,0,66],
 "group__player.html#player":[0,31,0],
 "group__profiler.html":[0,32],
-"group__profiler.html#autotoc_md530":[47],
+"group__profiler.html#autotoc_md531":[47],
 "group__profiler.html#ga23259b35b47366c0365ec01049d61e82":[4,0,3,30,0,0,2],
 "group__profiler.html#ga495550a915f20515c9be66513245fdb4":[4,0,3,30,0,0,1],
 "group__profiler.html#ga495550a915f20515c9be66513245fdb4":[0,32,3],
@@ -249,5 +249,5 @@ var NAVTREEINDEX13 =
 "group__profiler.html#ga58c858bf7d10aaf6a166e78de69de79c":[0,32,2],
 "group__profiler.html#profiler":[0,32,0],
 "group__race.html":[0,33],
-"group__race.html#autotoc_md531":[48]
+"group__race.html#autotoc_md532":[48]
 };
