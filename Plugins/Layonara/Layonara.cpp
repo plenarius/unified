@@ -113,7 +113,7 @@ Layonara::Layonara(Services::ProxyServiceList* services)
     m_PhysicalDamageTypes.push_back(DamageType::Slashing);
 
     m_SurfaceMaterialSpeeds[SurfaceMaterials::DIRT] = 33;
-    m_SurfaceMaterialSpeeds[SurfaceMaterials::STONE] = 33;
+    // m_SurfaceMaterialSpeeds[SurfaceMaterials::STONE] = 33;
     m_SurfaceMaterialSpeeds[SurfaceMaterials::DIRTPATH] = 33;
     m_SurfaceMaterialSpeeds[SurfaceMaterials::STONEPATH] = 33;
     m_SurfaceMaterialSpeeds[SurfaceMaterials::WATER] = -25;
