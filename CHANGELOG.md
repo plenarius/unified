@@ -5,7 +5,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
-https://github.com/nwnxee/unified/compare/build8193.36.12...HEAD
+https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
+
+### Added
+- Tweaks: added `NWNX_TWEAKS_RESIST_ENERGY_STACKS_WITH_EPIC_ENERGY_RESISTANCE` to make Resist Energy feats stack with Epic Energy Resistance.
+- Tweaks: added `NWNX_TWEAKS_UNHARDCODE_SPECIAL_ABILITY_TARGET_TYPE` to allow special abilities to be used on target types other than creatures.
+
+##### New Plugins
+- N/A
+
+##### New NWScript Functions
+- Player: GetOpenStore()
+
+### Changed
+- N/A
+
+### Deprecated
+- N/A
+
+### Removed
+- N/A
+
+### Fixed
+- Fixed `NWNX_TWEAKS_SETAREA_CALLS_SETPOSITION` not working with `NWNX_ON_MATERIALCHANGE_*`.
+- MaxLevel: Fixed returning an invalid number of known spells in some cases.
+
+## 8193.37.13
+https://github.com/nwnxee/unified/compare/build8193.36.10...build8193.37.13
+
+**Notice: NWNX API Update**
+
+The NWNX API has been updated, resulting in the removal of nwnx.nss. All nwnx_*.nss files have been modified to use the new API functions. 
+
+What You Need to Do:
+
+* Replace all outdated NWNX include files with the updated versions.
+* Update your custom nwnx_*.nss files to use the new API.
+* Recompile your module
+
+Calling NWNX functions when NWNX is not running will now **abort the script**. To prevent this, use the base game function NWNXGetIsAvailable() to check if NWNX is available before making any NWNX function calls.
 
 ### Added
 - DotNET: Added `NWNX_DOTNET_METHOD` option to change entrypoint method (default: `Bootstrap`)
@@ -14,6 +52,7 @@ https://github.com/nwnxee/unified/compare/build8193.36.12...HEAD
 - Events: Added events `NWNX_ON_SET_EXPERIENCE_{BEFORE|AFTER}` which fire when the XP of a player changes.
 - NoStack: Added `NWNX_NOSTACK_IGNORE_SUPERNATURAL_INNATE` to ignore effects created by the Feat, Race and SkillRanks plugins when stacking.
 - Tweaks: added `NWNX_TWEAKS_CUTSCENE_MODE_NO_TURD` to not drop a TURD when SetCutsceneMode() is called.
+- Tweaks: added `NWNX_TWEAKS_CAN_USE_ITEMS_WHILE_POLYMORPHED` to allow all items to be used while polymorphed.
 
 ##### New Plugins
 - Store: Enables getting and setting store data.
@@ -28,6 +67,12 @@ https://github.com/nwnxee/unified/compare/build8193.36.12...HEAD
 - Store: {Get|Set}MarkUp()
 - Player: ReloadTlk()
 - Player: ReloadColorPalettes()
+- Race: SuppressCreatureRaceEffects()
+- Race: ReactivateCreatureRaceEffects()
+- Creature: {Get|Set}MulticlassLimit()
+- Util: UpdateResourceDirectory()
+- Util: GetDawnHour()
+- Util: GetDuskHour()
 
 ### Changed
 - Player: added bChatWindow parameter to FloatingTextStringOnCreature()
@@ -35,13 +80,16 @@ https://github.com/nwnxee/unified/compare/build8193.36.12...HEAD
 - Docker: Add dotnet-runtime-8.0, dotnet-apphost-pack-8.0 packages.
 - Item: Added parameter `bUpdateCreatureAppearance` to SetItemAppearance() to update the appearance of the item's possessor.
 - Events: Added PLAYER_NAME, CDKEY as event data to the client disconnect events `NWNX_ON_CLIENT_DISCONNECT_{BEFORE|AFTER}`.
+- Profiler: fixed order of parameters in nss script for PushPerfScope()
+- Core: **!!Breaking Change!!** `NWNX_PluginExists` has been renamed to `NWNX_Core_PluginExists` and moved to `nwnx_core.nss`
 
 ### Deprecated
 - DotNET: GetFunctionPointer()
 - DotNET: GetNWNXExportedGlobals()
 
 ### Removed
-- N/A
+- ServerLogRedirector: removed `NWNX_SERVERLOGREDIRECTOR_HIDE_VALIDATEGFFRESOURCE_MESSAGES`
+- Tweaks: removed `NWNX_TWEAKS_FIX_ITEM_NULLPTR_IN_CITEMREPOSITORY`
 
 ### Fixed
 - Race: Documentation updated as `NWNX_Utils` is no longer required with introduction of native `Get2DARowCount()`.

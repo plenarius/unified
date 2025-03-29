@@ -158,7 +158,7 @@ void LoadNetCore(const std::string& assembly)
 {
     hostfxr_handle cxt = nullptr;
 
-    auto runtimeConfig = assembly + ".runtimeConfig.json";
+    auto runtimeConfig = assembly + ".runtimeconfig.json";
     int returnCode = hostfxr_initialize_for_runtime_config(runtimeConfig.c_str(), nullptr, &cxt);
     if (returnCode != 0 || cxt == nullptr)
         LOG_FATAL("Unable to load runtime config '%s'; returnCode=0x%x", runtimeConfig, returnCode);
@@ -221,7 +221,7 @@ void Bootstrap()
     }
     else
     {
-        LOG_WARNING("Using legacy bootstrap method for function exports. This will be removed in a future release. Set NWNX_DOTNET_NEW_BOOTSTRAP to use the new bootstrap method and hide this message.");
+        LOG_WARNING("Using legacy bootstrap method for function exports. This will be removed in the next NWNX release. Set NWNX_DOTNET_NEW_BOOTSTRAP to use the new bootstrap method and hide this message.");
         component_entry_point_fn bootstrap = nullptr;
         returnCode = load_assembly_and_get_function_pointer(assemblyPath.c_str(), fullTypeName.c_str(),
                                                             method.c_str(), nullptr, nullptr, (void**)&bootstrap);
