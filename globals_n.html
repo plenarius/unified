@@ -35,7 +35,7 @@
 						<td id="projectlogo"><img width="80" height="74" alt="Logo" src="logo-transparent.png"/></td>
 						<td id="projectalign" style="padding-left: 0.5em;">
 							<div id="projectname">NWNX:EE
-								&#160;<span id="projectnumber">8193.37.15</span>
+								&#160;<span id="projectnumber">8193.37.17</span>
 							</div>
 						</td>
 						<td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -867,6 +867,9 @@ $(document).ready(function(){initNavTree('globals_n.html',''); initResizable(); 
 <li>NWNX_Creature_GetNoPermanentDeath()
 : <a class="el" href="group__creature.html#ga5597af02da766c4be868386da054b25e">nwnx_creature.nss</a>
 </li>
+<li>NWNX_Creature_GetNumberOfBonusSpells()
+: <a class="el" href="group__creature.html#gacf570fa6ad676a9e5d3fff575cf2e1ee">nwnx_creature.nss</a>
+</li>
 <li>NWNX_Creature_GetOriginalName()
 : <a class="el" href="group__creature.html#gaa2c4265518c9385e694f438ce4fb7816">nwnx_creature.nss</a>
 </li>
@@ -929,6 +932,9 @@ $(document).ready(function(){initNavTree('globals_n.html',''); initResizable(); 
 </li>
 <li>NWNX_Creature_LevelUp()
 : <a class="el" href="group__creature.html#gad9c359948d6fca590e670986a7ed083d">nwnx_creature.nss</a>
+</li>
+<li>NWNX_Creature_ModifyNumberBonusSpells()
+: <a class="el" href="group__creature.html#ga49f2158783a573a0fdedcd343c0d6a35">nwnx_creature.nss</a>
 </li>
 <li>NWNX_Creature_ModifyRawAbilityScore()
 : <a class="el" href="group__creature.html#gac927f01d12df06dc070988e9f5fad3f1">nwnx_creature.nss</a>
@@ -3069,15 +3075,6 @@ $(document).ready(function(){initNavTree('globals_n.html',''); initResizable(); 
 <li>NWNX_Layonara_SetSubraceDayEffects()
 : <a class="el" href="group__layonara.html#ga9f5ba2b54d0f419879889177480fc22e">nwnx_layo.nss</a>
 </li>
-<li>NWNX_Lua_Eval()
-: <a class="el" href="group__lua.html#ga18d5da03291e7b263d9e4c40f4093995">nwnx_lua.nss</a>
-</li>
-<li>NWNX_Lua_EvalVoid()
-: <a class="el" href="group__lua.html#ga1df329114c0aa0ee95ee8fb43c3de63b">nwnx_lua.nss</a>
-</li>
-<li>NWNX_Lua_RunEvent()
-: <a class="el" href="group__lua.html#ga5a16247c28d75f20ccdefbd517cf557b">nwnx_lua.nss</a>
-</li>
 <li>NWNX_NOSTACK_EFFECT_TYPE_CIRCUMSTANCE
 : <a class="el" href="group__nostack.html#gae43da613a7225996ceeb2f8e2604c39e">nwnx_nostack.nss</a>
 </li>
@@ -3593,6 +3590,12 @@ $(document).ready(function(){initNavTree('globals_n.html',''); initResizable(); 
 </li>
 <li>NWNX_ON_DEBUG_RUN_SCRIPT_CHUNK_BEFORE
 : <a class="el" href="group__events.html#ga1b0b61382006074ccdd5182e88c3b15a">nwnx_events.nss</a>
+</li>
+<li>NWNX_ON_DECREMENT_REMAINING_FEAT_USES_AFTER
+: <a class="el" href="group__events.html#ga8872230ccb3128324d4e57f4fdf76723">nwnx_events.nss</a>
+</li>
+<li>NWNX_ON_DECREMENT_REMAINING_FEAT_USES_BEFORE
+: <a class="el" href="group__events.html#ga6924df4774b2089d8fc6bd716390ff4f">nwnx_events.nss</a>
 </li>
 <li>NWNX_ON_DECREMENT_SPELL_COUNT_AFTER
 : <a class="el" href="group__events.html#gab9f1eee7c3462a2e8a8b3c68698eda0a">nwnx_events.nss</a>
@@ -5691,12 +5694,6 @@ $(document).ready(function(){initNavTree('globals_n.html',''); initResizable(); 
 <li>NWNX_SkillRanks_SetSkillFeatFocusModifier()
 : <a class="el" href="group__skillranks.html#gab307895f1388e74a89c5aff2aa5fe0e9">nwnx_skillranks.nss</a>
 </li>
-<li>NWNX_SpellChecker_FindMisspell()
-: <a class="el" href="group__spellchecker.html#ga327dc28981e28b40ba9ca34447e4d639">nwnx_spellcheck.nss</a>
-</li>
-<li>NWNX_SpellChecker_GetSuggestSpell()
-: <a class="el" href="group__spellchecker.html#gacf06740191d7fc00fa355929b1904667">nwnx_spellcheck.nss</a>
-</li>
 <li>NWNX_SQL_DestroyPreparedQuery()
 : <a class="el" href="group__sql.html#ga62eac22694f19682a18f6e01a5bc6e02">nwnx_sql.nss</a>
 </li>
@@ -5757,6 +5754,9 @@ $(document).ready(function(){initNavTree('globals_n.html',''); initResizable(); 
 <li>NWNX_SQL_ReadyToReadNextRow()
 : <a class="el" href="group__sql.html#ga38fdaf8c308512015849ac94ffede3bb">nwnx_sql.nss</a>
 </li>
+<li>NWNX_Store_GetBlackMarket()
+: <a class="el" href="group__store.html#ga92fd3f4bd4c8f0a1cb8cc9654d4c1ac3">nwnx_store.nss</a>
+</li>
 <li>NWNX_Store_GetBlackMarketMarkDown()
 : <a class="el" href="group__store.html#gadd4056f835da629520235bd23a839620">nwnx_store.nss</a>
 </li>
@@ -5771,6 +5771,9 @@ $(document).ready(function(){initNavTree('globals_n.html',''); initResizable(); 
 </li>
 <li>NWNX_Store_GetMarkUp()
 : <a class="el" href="group__store.html#gae5a7bed7fb21efbb887ecd15ba404e98">nwnx_store.nss</a>
+</li>
+<li>NWNX_Store_SetBlackMarket()
+: <a class="el" href="group__store.html#ga089c1d60bafcf52ac9779008d5ce8750">nwnx_store.nss</a>
 </li>
 <li>NWNX_Store_SetBlackMarketMarkDown()
 : <a class="el" href="group__store.html#gac53a3a00bf7430405247295135ae30da">nwnx_store.nss</a>
@@ -6148,7 +6151,7 @@ $(document).ready(function(){initNavTree('globals_n.html',''); initResizable(); 
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Mar 29 2025 17:50:42 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Apr 11 2026 05:30:31 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>

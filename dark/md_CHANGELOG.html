@@ -35,7 +35,7 @@
 						<td id="projectlogo"><img width="80" height="74" alt="Logo" src="logo-transparent.png"/></td>
 						<td id="projectalign" style="padding-left: 0.5em;">
 							<div id="projectname">NWNX:EE
-								&#160;<span id="projectnumber">8193.37.15</span>
+								&#160;<span id="projectnumber">8193.37.17</span>
 							</div>
 						</td>
 						<td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -110,6 +110,10 @@ Added</h2>
 <ul>
 <li>Tweaks: added <code>NWNX_TWEAKS_RESIST_ENERGY_STACKS_WITH_EPIC_ENERGY_RESISTANCE</code> to make Resist Energy feats stack with Epic Energy Resistance.</li>
 <li>Tweaks: added <code>NWNX_TWEAKS_UNHARDCODE_SPECIAL_ABILITY_TARGET_TYPE</code> to allow special abilities to be used on target types other than creatures.</li>
+<li>Events: Added events <code>NWNX_ON_ABILITY_CHANGE_{BEFORE|AFTER}</code> which fire when an ability of a player changes.</li>
+<li>Events: Added <code>NWNX_EVENT_INIT_ON_FIRST_SUBSCRIBE</code> messagebus message as a wrapper for the <code>InitOnFirstSubscribe</code> function. Broadcasts <code>NWNX_EVENT_INIT_ON_FIRST_SUBSCRIBE_CALLBACK</code> message when a registered event gets subscribed to.</li>
+<li>Tweaks: Added <code>NWNX_TWEAKS_CHARLIST_SORT_BY_LAST_PLAYED_DATE</code> to enable character list sorting by last played date</li>
+<li>Events: Added events <code>NWNX_ON_DECREMENT_REMAINING_FEAT_USES_{BEFORE|AFTER}</code> which fire when the remaining uses of a feat are decremented</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md12"></a>
 New Plugins</h4>
@@ -120,11 +124,15 @@ New Plugins</h4>
 New NWScript Functions</h4>
 <ul>
 <li>Player: GetOpenStore()</li>
+<li>Creature: GetNumberOfBonusSpells(), ModifyNumberBonusSpells()</li>
+<li>Store: GetBlackMarket(), SetBlackMarket()</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md14"></a>
 Changed</h2>
 <ul>
-<li>N/A</li>
+<li>Damage: Added bRangedAttack to the <a class="el" href="structNWNX__Damage__AttackEventData.html" title="Attack Event Data.">NWNX_Damage_AttackEventData</a> struct.</li>
+<li>Events: Added ID to the NWNX_ON_ITEMPROPERTY_EFFECT_* events data.</li>
+<li>Utils: Change LOG_INFO to LOG_DEBUG for console commands.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md15"></a>
 Deprecated</h2>
@@ -134,13 +142,15 @@ Deprecated</h2>
 <h2><a class="anchor" id="autotoc_md16"></a>
 Removed</h2>
 <ul>
-<li>N/A</li>
+<li>Removed NWNX_Lua and NWNX_SpellChecker due to presumably being unused and bitrotten.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md17"></a>
 Fixed</h2>
 <ul>
 <li>Fixed <code>NWNX_TWEAKS_SETAREA_CALLS_SETPOSITION</code> not working with <code>NWNX_ON_MATERIALCHANGE_*</code>.</li>
 <li>MaxLevel: Fixed returning an invalid number of known spells in some cases.</li>
+<li>Fixed <code>NWNX_TWEAKS_RESIST_ENERGY_STACKS_WITH_EPIC_ENERGY_RESISTANCE</code> not working correctly when the character has more than one resist energy feat.</li>
+<li>Fixed <code>NWNX_TWEAKS_SNEAK_ATTACK_IGNORE_CRIT_IMMUNITY</code> only considering 3 classes for determining the level difference of attacker and defender.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md18"></a>
 8193.37.13</h1>
@@ -1693,7 +1703,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Mar 29 2025 17:50:42 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Apr 11 2026 05:30:33 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>

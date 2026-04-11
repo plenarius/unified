@@ -8,5 +8,7 @@ var nwnx__store_8nss =
     [ "NWNX_Store_GetMarkUp", "group__store.html#gae5a7bed7fb21efbb887ecd15ba404e98", null ],
     [ "NWNX_Store_SetMarkUp", "group__store.html#gab3144f1d90359ffd4fe9feab9ba0bc61", null ],
     [ "NWNX_Store_GetCurrentCustomersCount", "group__store.html#ga1813e336ba429d980f43382f84c302e2", null ],
+    [ "NWNX_Store_GetBlackMarket", "group__store.html#ga92fd3f4bd4c8f0a1cb8cc9654d4c1ac3", null ],
+    [ "NWNX_Store_SetBlackMarket", "group__store.html#ga089c1d60bafcf52ac9779008d5ce8750", null ],
     [ "NWNX_Store", "group__store.html#gafbba2916dc45d3f28c611015ebe6fbf1", null ]
 ];
