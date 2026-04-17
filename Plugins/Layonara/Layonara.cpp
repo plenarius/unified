@@ -174,7 +174,8 @@ void Layonara::SetArrowsEffect(CNWSCreature *pCreature, bool bOff)
 
     if (!HasEffectByTag(pCreature, "NWNX_Layonara_Quiver"))
     {
-        int nColor = pCreature->m_ScriptVars.GetInt(CExoString("NWNX_Quiver_Color"));
+        CExoString sQuiverColor("NWNX_Quiver_Color");
+        int nColor = pCreature->m_ScriptVars.GetInt(sQuiverColor);
         if (nColor > 0)
         {
             const uint16_t quiverFXStart = 1084;
@@ -792,7 +793,8 @@ ArgumentStack Layonara::SetQuiver(ArgumentStack&& args)
 
     if (nColor == -1)
     {
-        pCreature->m_ScriptVars.DestroyInt(CExoString("NWNX_Quiver_Color"));
+        CExoString sKey("NWNX_Quiver_Color");
+        pCreature->m_ScriptVars.DestroyInt(sKey);
         SetArrowsEffect(pCreature, true);
         return stack;
     }
@@ -815,7 +817,8 @@ ArgumentStack Layonara::SetQuiver(ArgumentStack&& args)
     eff->m_bExpose            = true;
     pCreature->ApplyEffect(eff, true, true);
 
-    pCreature->m_ScriptVars.SetInt(CExoString("NWNX_Quiver_Color"), nColor);
+    CExoString sColorKey("NWNX_Quiver_Color");
+    pCreature->m_ScriptVars.SetInt(sColorKey, nColor);
 
     SetArrowsEffect(pCreature);
 
