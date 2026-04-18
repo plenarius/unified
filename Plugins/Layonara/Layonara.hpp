@@ -1,8 +1,10 @@
 #pragma once
 
 #include "nwnx.hpp"
+#include <fstream>
 #include <list>
 #include <map>
+#include <unordered_set>
 
 using namespace std;
 
@@ -90,6 +92,9 @@ private:
     unordered_map<uint8_t, std::array<int32_t, 10>> m_GemBonuses;
     unordered_map<uint8_t, int8_t> m_SurfaceMaterialSpeeds;
     unordered_map<ObjectID, int32_t> m_objectCurrentMaterial;
+    unordered_set<string> m_CrosserExclusions;
+    void LoadCrosserExclusions();
+    bool IsTileOnRoad(CNWSArea* pArea, Vector vPos, uint8_t iMat);
 
     std::list<int32_t> m_ElementalDamageTypes;
     std::list<int32_t> m_PhysicalDamageTypes;

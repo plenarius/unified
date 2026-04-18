@@ -18,6 +18,7 @@
 #include "API/CNWSInventory.hpp"
 #include "API/CNWSModule.hpp"
 #include "API/CNWSPlaceable.hpp"
+#include "API/CNWTileData.hpp"
 #include "API/CNWSPlayer.hpp"
 #include "API/CNWSTrigger.hpp"
 #include "API/CNWSJournal.hpp"
@@ -119,10 +120,68 @@ Layonara::Layonara(Services::ProxyServiceList* services)
     m_SurfaceMaterialSpeeds[SurfaceMaterials::SWAMP] = -20;
     m_SurfaceMaterialSpeeds[SurfaceMaterials::SNOW] = -5;
     m_SurfaceMaterialSpeeds[SurfaceMaterials::SAND] = -5;
+
+    LoadCrosserExclusions();
 }
 
 Layonara::~Layonara()
 {
+}
+
+void Layonara::LoadCrosserExclusions()
+{
+    auto path = Config::Get<std::string>("CROSSER_EXCLUSIONS_FILE",
+        "/data/surface_speed_exclusions.txt");
+
+    std::ifstream file(path);
+    if (!file.is_open())
+    {
+        LOG_WARNING("No crosser exclusions file at %s, all crossers treated as roads", path);
+        return;
+    }
+
+    std::string line;
+    while (std::getline(file, line))
+    {
+        auto start = line.find_first_not_of(" \t");
+        if (start == std::string::npos || line[start] == '#')
+            continue;
+        auto end = line.find_last_not_of(" \t\r\n");
+        m_CrosserExclusions.insert(line.substr(start, end - start + 1));
+    }
+
+    LOG_INFO("Loaded %d crosser exclusions", m_CrosserExclusions.size());
+}
+
+bool Layonara::IsTileOnRoad(CNWSArea* pArea, Vector vPos, uint8_t iMat)
+{
+    if (iMat != SurfaceMaterials::DIRT && iMat != SurfaceMaterials::STONE)
+        return false;
+
+    int tileX = (int)(vPos.x / 10.0f);
+    int tileY = (int)(vPos.y / 10.0f);
+
+    if (tileX < 0 || tileX >= pArea->m_nWidth ||
+        tileY < 0 || tileY >= pArea->m_nHeight)
+        return false;
+
+    int tileIdx = tileY * pArea->m_nWidth + tileX;
+    auto* pTileData = pArea->m_pTile[tileIdx].m_pTileData;
+    if (!pTileData)
+        return false;
+
+    for (uint8_t e = 0; e < 4; e++)
+    {
+        CExoString edge = pTileData->GetEdgeType(e);
+        if (!edge.IsEmpty())
+        {
+            std::string edgeStr(edge.CStr());
+            if (m_CrosserExclusions.find(edgeStr) == m_CrosserExclusions.end())
+                return true;
+        }
+    }
+
+    return false;
 }
 
 CNWSItem *Layonara::GetItemInSlotHook(CNWSInventory *pThis, uint32_t nSlot)
@@ -936,6 +995,12 @@ void Layonara::SetPositionHook(CNWSObject* thisPtr, Vector vPos, int32_t bDoingC
             return;
         }
         auto iMat = pArea->GetSurfaceMaterial(vPos);
+        if (g_plugin->IsTileOnRoad(pArea, vPos, iMat))
+        {
+            iMat = (iMat == SurfaceMaterials::DIRT)
+                ? SurfaceMaterials::DIRTPATH
+                : SurfaceMaterials::STONEPATH;
+        }
         if (!g_plugin->m_objectCurrentMaterial.count(thisPtr->m_idSelf) ||
              g_plugin->m_objectCurrentMaterial[thisPtr->m_idSelf] != iMat)
         {

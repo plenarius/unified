@@ -1,0 +1,14 @@
+# Crosser edge names that are NOT roads.
+# Any crosser not listed here is treated as a road for speed purposes.
+# One edge name per line. Lines starting with # are comments.
+
+# Streams and water
+Stream_Summer
+stream-deep
+Water_Bridge
+
+# Terrain features (not roads)
+Cliffside_Summer
+Wall_Cobble
+smallwall
+bridge
