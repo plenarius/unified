@@ -18,6 +18,7 @@
 #include "API/CNWSInventory.hpp"
 #include "API/CNWSModule.hpp"
 #include "API/CNWSPlaceable.hpp"
+#include "API/CNWSTile.hpp"
 #include "API/CNWTileData.hpp"
 #include "API/CNWSPlayer.hpp"
 #include "API/CNWSTrigger.hpp"
