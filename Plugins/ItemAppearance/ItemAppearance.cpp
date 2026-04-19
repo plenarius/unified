@@ -730,22 +730,28 @@ ArgumentStack ItemAppearance::GetNextPreviousAppearanceColor(ArgumentStack& args
                         case ModelChange::NextColor:
                         {
                             index++;
-                            if (v[index] / 10 == currentKey / 10)
+                            if (index < v.size() && v[index] / 10 == currentKey / 10)
                             {
                                 retVal = v[index] % 10;
                             }
                             else
                             {
-                                retVal = 1;
+                                for (int i = 0; i <= 9; i++)
+                                {
+                                    if (std::find(v.begin(), v.end(), currentKey - (currentKey % 10) + i) != v.cend())
+                                    {
+                                        retVal = i;
+                                        break;
+                                    }
+                                }
                             }
                             break;
                         }
                         case ModelChange::PreviousColor:
                         {
-                            index--;
-                            if (v[index] / 10 == currentKey / 10)
+                            if (index > 0 && v[index - 1] / 10 == currentKey / 10)
                             {
-                                retVal = v[index] % 10;
+                                retVal = v[index - 1] % 10;
                             }
                             else
                             {
@@ -756,7 +762,6 @@ ArgumentStack ItemAppearance::GetNextPreviousAppearanceColor(ArgumentStack& args
                                         retVal = i;
                                         break;
                                     }
-
                                 }
                             }
                             break;

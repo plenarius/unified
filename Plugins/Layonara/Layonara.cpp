@@ -16,7 +16,6 @@
 #include "API/CNWSModule.hpp"
 #include "API/CNWSCreatureStats.hpp"
 #include "API/CNWSInventory.hpp"
-#include "API/CNWSModule.hpp"
 #include "API/CNWSPlaceable.hpp"
 #include "API/CNWSTile.hpp"
 #include "API/CNWTileData.hpp"
@@ -151,7 +150,7 @@ void Layonara::LoadCrosserExclusions()
         m_CrosserExclusions.insert(line.substr(start, end - start + 1));
     }
 
-    LOG_INFO("Loaded %d crosser exclusions", m_CrosserExclusions.size());
+    LOG_INFO("Loaded %zu crosser exclusions", m_CrosserExclusions.size());
 }
 
 bool Layonara::IsTileOnRoad(CNWSArea* pArea, Vector vPos, uint8_t iMat)
@@ -201,7 +200,8 @@ CNWSItem *Layonara::GetItemInSlotHook(CNWSInventory *pThis, uint32_t nSlot)
 
 void Layonara::RemoveEffectByTag(CNWSCreature *pCreature, std::string sCustomTag)
 {
-    std::vector<uint64_t> remove(128);
+    std::vector<uint64_t> remove;
+    remove.reserve(128);
     for (int i = 0; i < pCreature->m_appliedEffects.num; i++)
     {
         auto eff = (CGameEffect*)pCreature->m_appliedEffects.element[i];
@@ -224,6 +224,44 @@ bool Layonara::HasEffectByTag(CNWSCreature *pCreature, const char* tag)
     return false;
 }
 
+Layonara::RuneInfo Layonara::ParseRuneTag(CNWSItem* pItem)
+{
+    std::string itemTag = pItem->m_sTag.CStr();
+    vector<uint8_t> parts;
+    std::istringstream ss(itemTag);
+    std::string token;
+
+    while (std::getline(ss, token, '_'))
+        parts.push_back(std::strtol(token.c_str(), nullptr, 10));
+
+    if (parts.size() < 4)
+    {
+        LOG_WARNING("ParseRuneTag: malformed tag '%s', expected rune_X_Y_Z", itemTag);
+        return RuneInfo{0, 0, 0, 0};
+    }
+
+    RuneInfo info{parts[1], parts[2], parts[3], 0};
+
+    uint8_t r = info.rune;
+    while (r)
+    {
+        info.runeCount += r & 1;
+        r >>= 1;
+    }
+
+    return info;
+}
+
+uint8_t Layonara::GetRaceVFXOffset(CNWSCreature* pCreature)
+{
+    auto racialType = pCreature->m_pStats->m_nRace;
+    if (racialType == 4 || racialType == 6)
+        return 5;
+    if (racialType == 5)
+        return 4;
+    return racialType;
+}
+
 void Layonara::SetArrowsEffect(CNWSCreature *pCreature, bool bOff)
 {
     RemoveEffectByTag(pCreature, "NWNX_Layonara_QuiverArrows");
@@ -237,12 +275,7 @@ void Layonara::SetArrowsEffect(CNWSCreature *pCreature, bool bOff)
         if (nColor > 0)
         {
             const uint16_t quiverFXStart = 1084;
-            auto racialType = pCreature->m_pStats->m_nRace;
-            auto raceOffset = racialType;
-            if (racialType == 4 || racialType == 6)
-                raceOffset = 5;
-            else if (racialType == 5)
-                raceOffset = 4;
+            auto raceOffset = GetRaceVFXOffset(pCreature);
 
             auto *eff = new CGameEffect(true);
             eff->m_oidCreator         = 0;
@@ -269,12 +302,7 @@ void Layonara::SetArrowsEffect(CNWSCreature *pCreature, bool bOff)
 
     uint8_t iPropOffset = 3;
     const uint16_t arrowFXStart = 1204;
-    auto racialType = pCreature->m_pStats->m_nRace;
-    auto raceOffset = racialType;
-    if (racialType == 4 || racialType == 6)
-        raceOffset = 5;
-    else if (racialType == 5)
-        raceOffset = 4;
+    auto raceOffset = GetRaceVFXOffset(pCreature);
 
     if (pItem->GetPropertyByTypeExists(Constants::ItemProperty::DamageBonus, 8))
         iPropOffset = 9;
@@ -493,29 +521,9 @@ ArgumentStack Layonara::ApplyRune(ArgumentStack&& args)
         return stack;
     }
 
-    // Gets the item tag and parses it to determine rune, gem and power
-    std::string itemTag = pItem->m_sTag.CStr();
-    vector<uint8_t> parts;
-    std::istringstream ss(itemTag);
-    std::string token;
-
-    while (std::getline(ss, token, '_'))
-    {
-        parts.push_back(std::strtol(token.c_str(), nullptr, 10));
-    }
-
-    auto rune = parts[1];
-    auto gem = parts[2];
-    auto power = parts[3];
-
-    // Determines how many rune types are combined so we can calculate duration
-    uint8_t runeCount = 0;
-    while (rune)
-    {
-        runeCount += rune & 1;
-        rune >>= 1;
-    }
-    rune = parts[1];
+    auto [rune, gem, power, runeCount] = ParseRuneTag(pItem);
+    if (rune == 0 && gem == 0 && power == 0)
+        return stack;
 
     float fDuration = (25 - (power * runeCount)) * 60.0f;
 
@@ -684,33 +692,13 @@ ArgumentStack Layonara::CombineRunes(ArgumentStack&& args)
         return stack;
     }
 
-    std::string itemTag = pItem->m_sTag.CStr();
-    vector<uint8_t> parts;
-    std::istringstream ss(itemTag);
-    std::string token;
-
-    while (std::getline(ss, token, '_'))
+    auto [rune, gem, power, runeCount] = ParseRuneTag(pItem);
+    auto [tgtRune, tgtGem, tgtPower, tgtRuneCount] = ParseRuneTag(pTgtItem);
+    if ((rune == 0 && gem == 0 && power == 0) || (tgtRune == 0 && tgtGem == 0 && tgtPower == 0))
     {
-        parts.push_back(std::strtol(token.c_str(), nullptr, 10));
+        ScriptAPI::InsertArgument(stack, std::string(""));
+        return stack;
     }
-
-    auto rune = parts[1];
-    auto gem = parts[2];
-    auto power = parts[3];
-
-    std::string tgtItemTag = pTgtItem->m_sTag.CStr();
-    vector<uint8_t> tgtParts;
-    std::istringstream tgtSs(tgtItemTag);
-    std::string tgtToken;
-
-    while (std::getline(tgtSs, tgtToken, '_'))
-    {
-        tgtParts.push_back(std::strtol(tgtToken.c_str(), nullptr, 10));
-    }
-
-    auto tgtRune = tgtParts[1];
-    auto tgtGem = tgtParts[2];
-    auto tgtPower = tgtParts[3];
 
     if (rune == tgtRune && gem == tgtGem && (power + tgtPower <= 3))
         retVal = "rune_" + std::to_string(rune) + "_" + std::to_string(gem) + "_" + std::to_string(power + tgtPower);
@@ -737,26 +725,12 @@ ArgumentStack Layonara::GetRuneDescription(ArgumentStack&& args)
         return stack;
     }
 
-    std::string itemTag = pItem->m_sTag.CStr();
-    vector<uint8_t> parts;
-    std::istringstream ss(itemTag);
-    std::string token;
-
-    while (std::getline(ss, token, '_'))
+    auto [rune, gem, power, runeCount] = ParseRuneTag(pItem);
+    if (rune == 0 && gem == 0 && power == 0)
     {
-        parts.push_back(std::strtol(token.c_str(), nullptr, 10));
+        ScriptAPI::InsertArgument(stack, std::string("Invalid rune"));
+        return stack;
     }
-
-    auto rune = parts[1];
-    auto gem = parts[2];
-    auto power = parts[3];
-    uint8_t runeCount = 0;
-    while (rune)
-    {
-        runeCount += rune & 1;
-        rune >>= 1;
-    }
-    rune = parts[1];
 
     int32_t fDuration = (25 - (power * runeCount)) * 60;
 
@@ -858,12 +832,7 @@ ArgumentStack Layonara::SetQuiver(ArgumentStack&& args)
     }
 
     const uint16_t quiverFXStart = 1084;
-    auto racialType = pCreature->m_pStats->m_nRace;
-    auto raceOffset = racialType;
-    if (racialType == 4 || racialType == 6)
-        raceOffset = 5;
-    else if (racialType == 5)
-        raceOffset = 4;
+    auto raceOffset = GetRaceVFXOffset(pCreature);
 
     auto *eff = new CGameEffect(true);
     eff->m_oidCreator         = 0;
@@ -1008,17 +977,12 @@ void Layonara::SetPositionHook(CNWSObject* thisPtr, Vector vPos, int32_t bDoingC
             auto *pAIMaster = pServer->GetServerAIMaster();
             auto nDelayDays = pServer->GetWorldTimer()->GetCalendarDayFromSeconds(0.0f);
             auto nDelayTime = pServer->GetWorldTimer()->GetTimeOfDayFromSeconds(0.0f);
-            for (int i = 0; i < thisPtr->m_appliedEffects.num; i++)
-            {
-                auto eff = (CGameEffect*)thisPtr->m_appliedEffects.element[i];
-                if (eff->m_sCustomTag == "NWNX_Layonara_SurfMatMovement")
-                {
-                    pAIMaster->AddEventDeltaTime(nDelayDays, nDelayTime, 0, pCreature->m_idSelf, Constants::AIMasterEvent::RemoveEffect, eff);
-                }
-            }
+
+            RemoveEffectByTag(pCreature, "NWNX_Layonara_SurfMatMovement");
 
             auto nCurrentMovement = pCreature->GetMovementRateFactor();
-            int32_t nSpeed = g_plugin->m_SurfaceMaterialSpeeds[iMat];
+            auto nSpeedIt = g_plugin->m_SurfaceMaterialSpeeds.find(iMat);
+            int32_t nSpeed = (nSpeedIt != g_plugin->m_SurfaceMaterialSpeeds.end()) ? nSpeedIt->second : 0;
             int32_t effectChange = (2.0 - nCurrentMovement) * nSpeed;
             auto bHasStride = pCreature->m_pStats->HasFeat(Constants::Feat::WoodlandStride);
             auto bSlowImmune = pCreature->m_pStats->GetEffectImmunity(Constants::ImmunityType::Slow, nullptr, true);
@@ -1026,9 +990,11 @@ void Layonara::SetPositionHook(CNWSObject* thisPtr, Vector vPos, int32_t bDoingC
             {
                 auto *eff = new CGameEffect(true);
                 eff->m_oidCreator = 0;
-                eff->m_nType = EffectTrueType::MovementSpeedIncrease;
+                eff->m_nType = effectChange > 0
+                    ? EffectTrueType::MovementSpeedIncrease
+                    : EffectTrueType::MovementSpeedDecrease;
                 eff->m_nSubType = EffectSubType::Supernatural | EffectDurationType::Permanent;
-                eff->m_nParamInteger[0] = effectChange;
+                eff->m_nParamInteger[0] = std::abs(effectChange);
                 eff->m_bShowIcon = 0;
                 eff->m_bExpose = true;
 
