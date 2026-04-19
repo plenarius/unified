@@ -25,7 +25,6 @@ private:
     static CNWSItem *GetItemInSlotHook(CNWSInventory*, uint32_t);
     static void SetPositionHook(CNWSObject*, Vector, int32_t);
     static void SendMessageToCombatLog(CNWSCreature* target, const std::string& msg);
-    NWNXLib::Hooks::FunctionHook* m_GetItemInSlotHook;
 
     enum Gems
     {
@@ -88,6 +87,16 @@ private:
         STONEPATH = 29,
         TRIGGER = 30
     };
+
+    struct RuneInfo
+    {
+        uint8_t rune;
+        uint8_t gem;
+        uint8_t power;
+        uint8_t runeCount;
+    };
+    static RuneInfo ParseRuneTag(CNWSItem* pItem);
+    static uint8_t GetRaceVFXOffset(CNWSCreature* pCreature);
 
     unordered_map<uint8_t, std::array<int32_t, 10>> m_GemBonuses;
     unordered_map<uint8_t, int8_t> m_SurfaceMaterialSpeeds;
