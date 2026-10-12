@@ -106,10 +106,10 @@ $(document).ready(function(){initNavTree('group__httpclient.html',''); initResiz
 <div class="contents">
 
 
-<h3><a id="httpclient"></a>Readme</h3><div class="textblock"><h2><a class="anchor" id="autotoc_md508"></a>
+<h3><a id="httpclient"></a>Readme</h3><div class="textblock"><h2><a class="anchor" id="autotoc_md509"></a>
 Introduction</h2>
 <p>The HTTPClient Plugin provides access to an HTTP Client to perform requests and return responses.</p>
-<h2><a class="anchor" id="autotoc_md509"></a>
+<h2><a class="anchor" id="autotoc_md510"></a>
 Environment Variables</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -117,18 +117,18 @@ Environment Variables</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">NWNX_HTTPCLIENT_REQUEST_TIMEOUT   </td><td class="markdownTableBodyCenter">int   </td><td class="markdownTableBodyNone">2000   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md510"></a>
+<h2><a class="anchor" id="autotoc_md511"></a>
 Setup</h2>
-<h3><a class="anchor" id="autotoc_md511"></a>
+<h3><a class="anchor" id="autotoc_md512"></a>
 Client</h3>
 <p>The Client commands are functional by simply loading the plugin.</p>
-<h2><a class="anchor" id="autotoc_md512"></a>
+<h2><a class="anchor" id="autotoc_md513"></a>
 Client Usage</h2>
 <p>The HTTP Client contains two functions, <code><a class="el" href="group__httpclient.html#ga8acd402dd345f0851a4bd7b2da16d0de" title="Sends an http method to the given host.">NWNX_HTTPClient_SendRequest()</a></code> and <code><a class="el" href="group__httpclient.html#ga3dafa443a24d90a53de5ed161e9b8f80" title="Returns an NWNX_HTTP_Client_Request structure.">NWNX_HTTPClient_GetRequest()</a></code> and broadcasts two events, <code>NWNX_ON_HTTPCLIENT_SUCCESS</code> and <code>NWNX_ON_HTTPCLIENT_FAILED</code>.</p>
 <p>The builder constructs an <code><a class="el" href="structNWNX__HTTPClient__Request.html" title="A structure for an HTTP Client Request.">NWNX_HTTPClient_Request</a></code> struct with the appropriate information then passes that struct into <code><a class="el" href="group__httpclient.html#ga8acd402dd345f0851a4bd7b2da16d0de" title="Sends an http method to the given host.">NWNX_HTTPClient_SendRequest()</a></code> which will return a unique request identifier. The request is then sent to the host and upon success or failure the respective event is called.</p>
 <p>The event data sent is <code>REQUEST_ID</code>, <code>STATUS</code> and <code>RESPONSE</code>. The <code>REQUEST_ID</code> event data is the integer returned with <code><a class="el" href="group__httpclient.html#ga8acd402dd345f0851a4bd7b2da16d0de" title="Sends an http method to the given host.">NWNX_HTTPClient_SendRequest()</a></code>. The structure for that request can then be queried via <code><a class="el" href="group__httpclient.html#ga3dafa443a24d90a53de5ed161e9b8f80" title="Returns an NWNX_HTTP_Client_Request structure.">NWNX_HTTPClient_GetRequest()</a></code>. The <code>STATUS</code> event data is the server HTTP status return code, (usually 200 on success) and the <code>RESPONSE</code> is the body of text the server returned.</p>
 <p>Additionally the event data includes Rate Limit information that some servers provide. These are <code>RATELIMIT_LIMIT</code> which is how many requests you can send in a given time period, <code>RATELIMIT_REMAINING</code> is how many requests you have left in that time period and <code>RATELIMIT_RESET</code> is an epoch timestamp when the request limit is reset again. There is also <code>RETRY_AFTER</code> which some servers provide which is how long in seconds before you can send another request.</p>
-<h3><a class="anchor" id="autotoc_md513"></a>
+<h3><a class="anchor" id="autotoc_md514"></a>
 Example Client Requests</h3>
 <p>Here is an example of posting an issue to a github repository. </p><div class="fragment"><div class="line">json githubJSON = JsonObject();</div>
 <div class="line">githubJSON = JsonObjectSet(githubJSON, <span class="stringliteral">&quot;title&quot;</span>, JsonString(GetModuleName() + <span class="stringliteral">&quot; NWN Bug Report via &quot;</span>+sAuthorName));</div>
@@ -158,7 +158,7 @@ Example Client Requests</h3>
 <div class="ttc" id="agroup__httpclient_html_ga8529986dd782e8439714dabc84edb053"><div class="ttname"><a href="group__httpclient.html#ga8529986dd782e8439714dabc84edb053">NWNX_HTTPCLIENT_REQUEST_METHOD_POST</a></div><div class="ttdeci">const int NWNX_HTTPCLIENT_REQUEST_METHOD_POST</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__httpclient_8nss_source.html#l00013">nwnx_httpclient.nss:13</a></div></div>
 <div class="ttc" id="agroup__httpclient_html_ga8acd402dd345f0851a4bd7b2da16d0de"><div class="ttname"><a href="group__httpclient.html#ga8acd402dd345f0851a4bd7b2da16d0de">NWNX_HTTPClient_SendRequest</a></div><div class="ttdeci">int NWNX_HTTPClient_SendRequest(struct NWNX_HTTPClient_Request s)</div><div class="ttdoc">Sends an http method to the given host.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__httpclient_8nss_source.html#l00070">nwnx_httpclient.nss:70</a></div></div>
 <div class="ttc" id="agroup__httpclient_html_ga8dd0c82756977e8804380873008d5e42"><div class="ttname"><a href="group__httpclient.html#ga8dd0c82756977e8804380873008d5e42">NWNX_HTTPCLIENT_AUTH_TYPE_BASIC</a></div><div class="ttdeci">const int NWNX_HTTPCLIENT_AUTH_TYPE_BASIC</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__httpclient_8nss_source.html#l00037">nwnx_httpclient.nss:37</a></div></div>
-<div class="ttc" id="agroup__util_html_gab0151e2741596a3a9f1ece22c62f9c9b"><div class="ttname"><a href="group__util.html#gab0151e2741596a3a9f1ece22c62f9c9b">NWNX_Util_GetEnvironmentVariable</a></div><div class="ttdeci">string NWNX_Util_GetEnvironmentVariable(string sVarname)</div><div class="ttdoc">Retrieves an environment variable.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__util_8nss_source.html#l00341">nwnx_util.nss:341</a></div></div>
+<div class="ttc" id="agroup__util_html_gab0151e2741596a3a9f1ece22c62f9c9b"><div class="ttname"><a href="group__util.html#gab0151e2741596a3a9f1ece22c62f9c9b">NWNX_Util_GetEnvironmentVariable</a></div><div class="ttdeci">string NWNX_Util_GetEnvironmentVariable(string sVarname)</div><div class="ttdoc">Retrieves an environment variable.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__util_8nss_source.html#l00345">nwnx_util.nss:345</a></div></div>
 <div class="ttc" id="astructNWNX__HTTPClient__Request_html"><div class="ttname"><a href="structNWNX__HTTPClient__Request.html">NWNX_HTTPClient_Request</a></div><div class="ttdoc">A structure for an HTTP Client Request.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__httpclient_8nss_source.html#l00043">nwnx_httpclient.nss:44</a></div></div>
 <div class="ttc" id="astructNWNX__HTTPClient__Request_html_a3be08d4ee8eb994359cffb5df8afd6fc"><div class="ttname"><a href="structNWNX__HTTPClient__Request.html#a3be08d4ee8eb994359cffb5df8afd6fc">NWNX_HTTPClient_Request::nRequestMethod</a></div><div class="ttdeci">int nRequestMethod</div><div class="ttdoc">A Request Type.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__httpclient_8nss_source.html#l00045">nwnx_httpclient.nss:45</a></div></div>
 </div><!-- fragment --><p>Here's an example of insulting a PC when they enter an area </p><div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code" href="structNWNX__HTTPClient__Request.html">NWNX_HTTPClient_Request</a> stInsultGen;</div>
@@ -182,8 +182,8 @@ Example Client Requests</h3>
 <div class="line">        DeleteLocalObject(GetModule(), <span class="stringliteral">&quot;INSULTED_&quot;</span> + IntToString(nClientRequestId));</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__events_html_ga3dd3ccd8df389359c21d5ca3f681718b"><div class="ttname"><a href="group__events.html#ga3dd3ccd8df389359c21d5ca3f681718b">NWNX_Events_GetCurrentEvent</a></div><div class="ttdeci">string NWNX_Events_GetCurrentEvent()</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__events_8nss_source.html#l02476">nwnx_events.nss:2476</a></div></div>
-<div class="ttc" id="agroup__events_html_gad74d90c308e190da8d49b1db0aa2f1b6"><div class="ttname"><a href="group__events.html#gad74d90c308e190da8d49b1db0aa2f1b6">NWNX_Events_GetEventData</a></div><div class="ttdeci">string NWNX_Events_GetEventData(string tag)</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__events_8nss_source.html#l02458">nwnx_events.nss:2458</a></div></div>
+<div class="ttc" id="agroup__events_html_ga3dd3ccd8df389359c21d5ca3f681718b"><div class="ttname"><a href="group__events.html#ga3dd3ccd8df389359c21d5ca3f681718b">NWNX_Events_GetCurrentEvent</a></div><div class="ttdeci">string NWNX_Events_GetCurrentEvent()</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__events_8nss_source.html#l02489">nwnx_events.nss:2489</a></div></div>
+<div class="ttc" id="agroup__events_html_gad74d90c308e190da8d49b1db0aa2f1b6"><div class="ttname"><a href="group__events.html#gad74d90c308e190da8d49b1db0aa2f1b6">NWNX_Events_GetEventData</a></div><div class="ttdeci">string NWNX_Events_GetEventData(string tag)</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__events_8nss_source.html#l02471">nwnx_events.nss:2471</a></div></div>
 <div class="ttc" id="agroup__httpclient_html_ga3dafa443a24d90a53de5ed161e9b8f80"><div class="ttname"><a href="group__httpclient.html#ga3dafa443a24d90a53de5ed161e9b8f80">NWNX_HTTPClient_GetRequest</a></div><div class="ttdeci">struct NWNX_HTTPClient_Request NWNX_HTTPClient_GetRequest(int nRequestId)</div><div class="ttdoc">Returns an NWNX_HTTP_Client_Request structure.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__httpclient_8nss_source.html#l00070">nwnx_httpclient.nss:87</a></div></div>
 <div class="ttc" id="astructNWNX__HTTPClient__Request_html_a8cb54bcba1f4c123ede728be04202630"><div class="ttname"><a href="structNWNX__HTTPClient__Request.html#a8cb54bcba1f4c123ede728be04202630">NWNX_HTTPClient_Request::sTag</a></div><div class="ttdeci">string sTag</div><div class="ttdoc">A unique tag for this request.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__httpclient_8nss_source.html#l00046">nwnx_httpclient.nss:46</a></div></div>
 </div><!-- fragment --> </div><table class="memberdecls">
@@ -529,7 +529,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat May 2 2026 20:21:51 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Mon Oct 12 2026 21:05:05 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>

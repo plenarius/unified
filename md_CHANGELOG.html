@@ -115,11 +115,12 @@ Added</h2>
 <li>Tweaks: Added <code>NWNX_TWEAKS_CHARLIST_SORT_BY_LAST_PLAYED_DATE</code> to enable character list sorting by last played date</li>
 <li>Events: Added events <code>NWNX_ON_DECREMENT_REMAINING_FEAT_USES_{BEFORE|AFTER}</code> which fire when the remaining uses of a feat are decremented</li>
 <li>Experimental: added <code>NWNX_EXPERIMENTAL_UFM_HOTFIX</code> to attempt to fix a server hang in CNetLayerWindow::UnpacketizeFullMessages.</li>
+<li>Events: Added events <code>NWNX_ON_INVENTORY_CLOSE_{BEFORE|AFTER}</code> which fire when a player closes an inventory through a client status message.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md12"></a>
 New Plugins</h4>
 <ul>
-<li>N/A</li>
+<li>Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md13"></a>
 New NWScript Functions</h4>
@@ -129,6 +130,7 @@ New NWScript Functions</h4>
 <li>Store: GetBlackMarket(), SetBlackMarket()</li>
 <li>Util: SetStartingLocation()</li>
 <li>Object: GetLocalizedDescription(), SetLocalizedDescription()</li>
+<li>Util: RawPrint()</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md14"></a>
 Changed</h2>
@@ -137,6 +139,7 @@ Changed</h2>
 <li>Events: Added ID to the NWNX_ON_ITEMPROPERTY_EFFECT_* events data.</li>
 <li>Utils: Change LOG_INFO to LOG_DEBUG for console commands.</li>
 <li>Admin: Player/DM password functions no longer print the passwords to the log.</li>
+<li>SQL: Database passwords are no longer printed to the log when connecting.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md15"></a>
 Deprecated</h2>
@@ -155,6 +158,7 @@ Fixed</h2>
 <li>MaxLevel: Fixed returning an invalid number of known spells in some cases.</li>
 <li>Fixed <code>NWNX_TWEAKS_RESIST_ENERGY_STACKS_WITH_EPIC_ENERGY_RESISTANCE</code> not working correctly when the character has more than one resist energy feat.</li>
 <li>Fixed <code>NWNX_TWEAKS_SNEAK_ATTACK_IGNORE_CRIT_IMMUNITY</code> only considering 3 classes for determining the level difference of attacker and defender.</li>
+<li>Fixed <code>NWNX_NWSQLiteExtensions</code> by escaping the columns names during CREATE TABLE.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md18"></a>
 8193.37.13</h1>
@@ -1707,7 +1711,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat May 2 2026 20:21:49 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Mon Oct 12 2026 21:05:03 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>
