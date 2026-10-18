@@ -41,6 +41,7 @@ var modules =
     [ "SkillRanks", "group__skillranks.html", "group__skillranks" ],
     [ "SQL", "group__sql.html", "group__sql" ],
     [ "Store", "group__store.html", "group__store" ],
+    [ "TestPlayer", "group__testplayer.html", "group__testplayer" ],
     [ "ThreadWatchdog", "group__threadwatchdog.html", "group__threadwatchdog" ],
     [ "Tileset", "group__tileset.html", "group__tileset" ],
     [ "Tracking", "group__tracking.html", "group__tracking" ],

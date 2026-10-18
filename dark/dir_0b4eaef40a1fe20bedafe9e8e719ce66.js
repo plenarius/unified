@@ -41,6 +41,7 @@ var dir_0b4eaef40a1fe20bedafe9e8e719ce66 =
     [ "SQL", "dir_3e8b027a039a1b43efbd6770fe5625fa.html", "dir_3e8b027a039a1b43efbd6770fe5625fa" ],
     [ "Store", "dir_50ef9183bee59101dde5c15ccfa615b4.html", "dir_50ef9183bee59101dde5c15ccfa615b4" ],
     [ "SWIG", "dir_b08f275d1c1d284b3456edbfc1dbed2f.html", null ],
+    [ "TestPlayer", "dir_0e1b5507ddcfe75ded04a40494dd7154.html", "dir_0e1b5507ddcfe75ded04a40494dd7154" ],
     [ "ThreadWatchdog", "dir_6c4229521bb538195b33f93c97765e00.html", null ],
     [ "Tileset", "dir_8329b443c9966405f5640b3c2739d08b.html", "dir_8329b443c9966405f5640b3c2739d08b" ],
     [ "Tracking", "dir_5e6b7617d2e851d6b9d8c368e70d1c96.html", null ],
