@@ -17,6 +17,7 @@
 #include "API/CNetLayer.hpp"
 #include "API/CNetLayerPlayerInfo.hpp"
 #include "API/CNWSPlayer.hpp"
+#include "API/CNWSMessage.hpp"
 #include "API/CNWSCreature.hpp"
 #include "API/CNWSCreatureStats.hpp"
 
@@ -31,6 +32,8 @@ static constexpr uint32_t MIN_FAKE_ID   = 0xc0;   // real clients get the low sl
 static std::unordered_map<uint32_t, CNWSPlayer*> s_fakePlayers;   // player id -> player
 static Hooks::Hook s_SendMessageToPlayerHook;
 static Hooks::Hook s_DisconnectPlayerHook;
+static Hooks::Hook s_ExportReplyHook;
+static Hooks::Hook s_SaveServerCharacterHook;
 
 static CServerExoApp* Server() { return Globals::AppManager()->m_pServerExoApp; }
 
@@ -55,6 +58,27 @@ static void Init()
             if (IsFake(nPlayerId))
                 return true;
             return s_DisconnectPlayerHook->CallOriginal<BOOL>(pThis, nPlayerId, nStrRef, bCDAuthFail, sReason);
+        }, Hooks::Order::Earliest);
+
+    // Never save a fake player's character (ExportSingleCharacter, autosave, shutdown): there is
+    // no vault to save to, and a creature made from an NPC blueprint lacks the per-level data a
+    // real character has, which crashes the engine in CNWSCreatureStats::SaveClassInfo.
+    // (CServerExoAppInternal::ExportPlayer can't be hooked; this is what it calls to pack
+    // the character.)
+    s_ExportReplyHook = Hooks::HookFunction(&CNWSMessage::SendServerToPlayerModule_ExportReply,
+        +[](CNWSMessage* pThis, CNWSPlayer* pPlayer) -> BOOL
+        {
+            if (pPlayer && IsFake(pPlayer->m_nPlayerID))
+                return true;
+            return s_ExportReplyHook->CallOriginal<BOOL>(pThis, pPlayer);
+        }, Hooks::Order::Earliest);
+
+    s_SaveServerCharacterHook = Hooks::HookFunction(&CNWSPlayer::SaveServerCharacter,
+        +[](CNWSPlayer* pThis, BOOL bBackupPlayer) -> BOOL
+        {
+            if (IsFake(pThis->m_nPlayerID))
+                return true;
+            return s_SaveServerCharacterHook->CallOriginal<BOOL>(pThis, bBackupPlayer);
         }, Hooks::Order::Earliest);
 }
 
