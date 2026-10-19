@@ -48,6 +48,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Fixed `NWNX_TWEAKS_SNEAK_ATTACK_IGNORE_CRIT_IMMUNITY` only considering 3 classes for determining the level difference of attacker and defender.
 - Fixed `NWNX_NWSQLiteExtensions` by escaping the columns names during CREATE TABLE.
 - SkillRanks: Fixed `GetAreaModifier()` dereferencing an empty `std::optional` (undefined behavior) when the queried area had no modifier set for the skill. Now returns `0` in that case.
+- SQL: Fixed `NWNX_SQL_QUERY_METRICS` dropping metrics after ~100k queries per run. The query ID is now an InfluxDB field instead of a tag, so it no longer creates a new series per query and hits `max-values-per-tag`.
 
 ## 8193.37.13
 https://github.com/nwnxee/unified/compare/build8193.36.10...build8193.37.13
