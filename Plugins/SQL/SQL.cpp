@@ -196,10 +196,11 @@ ArgumentStack SQL::ExecutePreparedQuery(ArgumentStack&&)
         using namespace std::chrono;
         nanoseconds dur = duration_cast<nanoseconds>(timeAfter - timeBefore);
 
+        // ID is a field, not a tag: a unique tag value per query creates a new series every
+        // query and InfluxDB drops writes once max-values-per-tag (default 100k) is reached.
         GetServices()->m_metrics->Push(
             "SQLQueries",
-            { { "ns", std::to_string(dur.count()) } },
-            { { "ID", std::to_string(queryId) } });
+            { { "ns", std::to_string(dur.count()) }, { "ID", std::to_string(queryId) } });
     }
     else
     {
