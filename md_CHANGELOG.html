@@ -110,6 +110,7 @@ Added</h2>
 <ul>
 <li>Tweaks: added <code>NWNX_TWEAKS_RESIST_ENERGY_STACKS_WITH_EPIC_ENERGY_RESISTANCE</code> to make Resist Energy feats stack with Epic Energy Resistance.</li>
 <li>Tweaks: added <code>NWNX_TWEAKS_UNHARDCODE_SPECIAL_ABILITY_TARGET_TYPE</code> to allow special abilities to be used on target types other than creatures.</li>
+<li>Tweaks: added <code>NWNX_TWEAKS_FIX_SKILL_CHECK_DISPLAY</code> to show skill check feedback with the real DC when it is over 127 (the client only reads 7 bits of it).</li>
 <li>Events: Added events <code>NWNX_ON_ABILITY_CHANGE_{BEFORE|AFTER}</code> which fire when an ability of a player changes.</li>
 <li>Events: Added <code>NWNX_EVENT_INIT_ON_FIRST_SUBSCRIBE</code> messagebus message as a wrapper for the <code>InitOnFirstSubscribe</code> function. Broadcasts <code>NWNX_EVENT_INIT_ON_FIRST_SUBSCRIBE_CALLBACK</code> message when a registered event gets subscribed to.</li>
 <li>Tweaks: Added <code>NWNX_TWEAKS_CHARLIST_SORT_BY_LAST_PLAYED_DATE</code> to enable character list sorting by last played date</li>
@@ -1714,7 +1715,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Mon Oct 19 2026 23:58:13 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Wed Oct 21 2026 12:30:58 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>

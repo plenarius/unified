@@ -1,5 +1,6 @@
 var NAVTREEINDEX19 =
 {
+"structNWNX__Damage__AttackEventData.html#ae7b76b4e3cb09563e67132a58fec572d":[0,10,3,10],
 "structNWNX__Damage__AttackEventData.html#ae8062caa6110947a51dc1f8e2fef81aa":[0,10,3,14],
 "structNWNX__Damage__AttackEventData.html#aebba350a6ae68da04b1fdd3d98556d30":[0,10,3,1],
 "structNWNX__Damage__AttackEventData.html#aecc6f36b32c8c79c657852ebc956661b":[0,10,3,22],
@@ -248,6 +249,5 @@ var NAVTREEINDEX19 =
 "structNWNX__Util__WorldTime.html":[0,46,2],
 "structNWNX__Util__WorldTime.html#a40e833c28b4d71306dd171afe50dc3a9":[0,46,2,1],
 "structNWNX__Util__WorldTime.html#afc097db3b754424f759865e53f56de39":[0,46,2,0],
-"structNWNX__Weapon__DevastatingCriticalEvent__Data.html":[0,49,2],
-"structNWNX__Weapon__DevastatingCriticalEvent__Data.html#a05c644a763be5a9e7614b16137de7c23":[0,49,2,1]
+"structNWNX__Weapon__DevastatingCriticalEvent__Data.html":[0,49,2]
 };
