@@ -78,12 +78,14 @@ static int32_t SendServerToPlayerCCMessageHook(CNWSMessage *pMessage, uint32_t n
     if (!pPlayer || !pCreature || !pCreature->m_pStats)
         return CallOriginal();
 
-    // The name, coloured as the client does: light blue for yourself, pink for others.
+    // The name, coloured as the client does: light blue (153, 255, 255) for yourself, pink
+    // (204, 153, 204) for others.
     std::string sName = pCreature->m_sDisplayName.CStr() && *pCreature->m_sDisplayName.CStr() ?
                         pCreature->m_sDisplayName.CStr() : pCreature->m_pStats->GetFullName().CStr();
     auto *pPlayerObject = pPlayer->GetGameObject();
     const bool bSelf = pPlayerObject && pPlayerObject->m_idSelf == pCreature->m_idSelf;
-    sName = (bSelf ? "<c\x99\xff\xff>" : "<c\xcc\x99\xcc>") + sName + "</c>";
+    const int r = bSelf ? 153 : 204, g = bSelf ? 255 : 153, b = bSelf ? 255 : 204;
+    sName = CExoString::F("<c%c%c%c>", r, g, b).CStr() + sName + "</c>";
 
     static const std::unordered_map<int32_t, uint32_t> s_results = {
         {0, 5353},  // failure
