@@ -1,5 +1,6 @@
 var NAVTREEINDEX20 =
 {
+"structNWNX__Weapon__DevastatingCriticalEvent__Data.html":[0,49,2],
 "structNWNX__Weapon__DevastatingCriticalEvent__Data.html#a05c644a763be5a9e7614b16137de7c23":[0,49,2,1],
 "structNWNX__Weapon__DevastatingCriticalEvent__Data.html#a0ab39f5f5fdd4c3c995f8b84a5193c6a":[0,49,2,0],
 "structNWNX__Weapon__DevastatingCriticalEvent__Data.html#ad61f6ae678343f3781deacdb33efb27d":[0,49,2,2],
