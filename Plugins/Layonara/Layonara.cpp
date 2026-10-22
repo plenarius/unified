@@ -27,6 +27,11 @@
 #include "API/Globals.hpp"
 #include "API/Functions.hpp"
 #include <cmath>
+#include <cstdint>
+#include <cstdio>
+#include <cstring>
+#include <dlfcn.h>
+#include <execinfo.h>
 
 using namespace NWNXLib;
 using namespace NWNXLib::Services;
@@ -47,6 +52,36 @@ namespace Layonara {
 
 static Hooks::Hook s_getItemInSlotHook;
 static Hooks::Hook s_setPositionHook;
+static Hooks::Hook s_sendFeedbackMessageHook;
+
+// Diagnostic for layonara/nwn-module#316: log every feedback 23 ("You cannot use that item.") with the
+// nwserver offsets of the calls that sent it, to tell which engine path is responsible. Remove once known.
+static void SendFeedbackMessageHook(CNWSCreature* pCreature, uint16_t nFeedbackID, CNWCCMessageData* pData, CNWSPlayer* pPlayer)
+{
+    if (nFeedbackID == 23 && pCreature)
+    {
+        void* frames[10];
+        const int count = backtrace(frames, 10);
+        std::string trace;
+        for (int i = 1; i < count; i++)
+        {
+            Dl_info info;
+            if (dladdr(frames[i], &info) && info.dli_fname && std::strstr(info.dli_fname, "nwserver"))
+            {
+                char buf[24];
+                std::snprintf(buf, sizeof(buf), " +0x%lx",
+                              (unsigned long)((uintptr_t)frames[i] - (uintptr_t)info.dli_fbase));
+                trace += buf;
+            }
+        }
+        auto* pArea = pCreature->GetArea();
+        LOG_INFO("DIAG316F|%s|%s|%.1f,%.1f|calls:%s",
+                 pCreature->m_pStats ? pCreature->m_pStats->GetFullName().CStr() : "?",
+                 pArea ? pArea->m_sTag.CStr() : "(no area)",
+                 pCreature->m_vPosition.x, pCreature->m_vPosition.y, trace.c_str());
+    }
+    s_sendFeedbackMessageHook->CallOriginal<void>(pCreature, nFeedbackID, pData, pPlayer);
+}
 
 Layonara::Layonara(Services::ProxyServiceList* services)
   : Plugin(services)
@@ -72,6 +107,8 @@ Layonara::Layonara(Services::ProxyServiceList* services)
 
     s_getItemInSlotHook = Hooks::HookFunction(&CNWSInventory::GetItemInSlot,&GetItemInSlotHook, Hooks::Order::Early);
     s_setPositionHook = Hooks::HookFunction(&CNWSObject::SetPosition,&SetPositionHook, Hooks::Order::Early);
+    s_sendFeedbackMessageHook = Hooks::HookFunction(&CNWSCreature::SendFeedbackMessage,
+                                                    &SendFeedbackMessageHook, Hooks::Order::Earliest);
 
     m_GemBonuses[Gems::GRE] = {SavingThrowType::Poison, SavingThrow::All, Skill::Listen, DamageType::Positive,
                                Ability::Strength, Ability::Charisma, -1, -1, -1, -1};
