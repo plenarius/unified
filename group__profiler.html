@@ -141,6 +141,14 @@ Environment Variables</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">NWNX_PROFILER_PATHING_OUTCOMES_INTERVAL   </td><td class="markdownTableBodyCenter">uint32_t   </td><td class="markdownTableBodyNone">60    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">NWNX_PROFILER_PATHING_LOG_SLOW_MS   </td><td class="markdownTableBodyCenter">uint32_t   </td><td class="markdownTableBodyNone">0    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">NWNX_PROFILER_PATHING_LOG_FAILED   </td><td class="markdownTableBodyCenter">bool   </td><td class="markdownTableBodyNone">false    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">NWNX_PROFILER_PATHING_LOG_FAILED_MIN_AI_LEVEL   </td><td class="markdownTableBodyCenter">int32_t   </td><td class="markdownTableBodyNone">2    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">NWNX_PROFILER_PATHING_LOG_INTERVAL   </td><td class="markdownTableBodyCenter">uint32_t   </td><td class="markdownTableBodyNone">60    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">NWNX_PROFILER_ENABLE_SCRIPTS   </td><td class="markdownTableBodyCenter">bool   </td><td class="markdownTableBodyNone">true    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">NWNX_PROFILER_SCRIPTS_AREA_TIMINGS   </td><td class="markdownTableBodyCenter">bool   </td><td class="markdownTableBodyNone">true    </td></tr>
@@ -158,15 +166,26 @@ Pathing outcomes</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Area   </td><td class="markdownTableBodyNone">Area resref    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">AILevel   </td><td class="markdownTableBodyNone">The creature's AI level, <code>-1</code> (default) to <code>4</code>. In an area without players creatures run at <code>0</code>, where a move whose straight line is blocked fails at once and is retried    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Outcome   </td><td class="markdownTableBodyNone"><code>Complete</code>, <code>Partial</code> (complete, but the last waypoint stops more than 1m short of the requested range: the engine's straight-line fallback), <code>Failed</code>    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Controller   </td><td class="markdownTableBodyNone"><code>PC</code> (player-controlled) or <code>NPC</code>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">GridSearch   </td><td class="markdownTableBodyNone"><code>true</code> if the short-range grid search was used    </td></tr>
+<td class="markdownTableBodyNone">Controller   </td><td class="markdownTableBodyNone"><code>PC</code> (player-controlled) or <code>NPC</code>    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">GridSearch   </td><td class="markdownTableBodyNone"><code>true</code> if the short-range grid search was used    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">NoTileRoute   </td><td class="markdownTableBodyNone"><code>true</code> if the tile-to-tile route search found no route during the request   </td></tr>
 </table>
-</div><table class="memberdecls">
+<h3><a class="anchor" id="autotoc_md538"></a>
+Logging single requests</h3>
+<p>These settings need <code>NWNX_PROFILER_ENABLE_PATHING_OUTCOMES</code>. They write one line for a finished request to the NWNX log, with the creature's tag, template, object id and AI level, the start and goal, the number of planner calls, the total time and the slowest call:</p>
+<ul>
+<li><code>NWNX_PROFILER_PATHING_LOG_SLOW_MS</code>: log a request with a planner call at least this many milliseconds long. Each call runs inside the main loop, so a slow call is a server stall. <code>0</code> turns this off.</li>
+<li><code>NWNX_PROFILER_PATHING_LOG_FAILED</code>: log failed requests of creatures at <code>NWNX_PROFILER_PATHING_LOG_FAILED_MIN_AI_LEVEL</code> or higher. The default, <code>2</code> (normal), leaves out creatures in areas without players. Set it to <code>-1</code> to log every failed request.</li>
+<li><code>NWNX_PROFILER_PATHING_LOG_INTERVAL</code>: log a creature at most once in this many seconds.</li>
+</ul>
+<div class="fragment"><div class="line">Pathing failed (slow): area towerofnature001, NPC &#39;NW_DEER&#39; (nw_deer, 2e0), AI level 2, from (46.83, 52.14) to (41.34, 45.45), range 1.00, 101 calls, 134.1 ms (slowest call 3.3 ms), grid search 0, no tile route 0</div>
+</div><!-- fragment --> </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
 <tr class="memitem:nwnx__profiler_8nss"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nwnx__profiler_8nss.html">nwnx_profiler.nss</a></td></tr>
@@ -265,7 +284,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Thu Oct 22 2026 22:04:44 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Fri Oct 23 2026 20:05:51 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>
