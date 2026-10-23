@@ -1,6 +1,5 @@
-#include "ItemAppearance.hpp"
-#include "API/CAppManager.hpp"
-#include "API/CServerExoApp.hpp"
+#include "nwnx.hpp"
+
 #include "API/CNWRules.hpp"
 #include "API/CNWSItem.hpp"
 #include "API/CNWBaseItem.hpp"
@@ -10,765 +9,428 @@
 #include "API/CExoStringList.hpp"
 #include "API/Constants.hpp"
 #include "API/Globals.hpp"
-#include "API/Functions.hpp"
-#include <list>
-#include <random>
+
 #include <algorithm>
-#include <iostream>
+#include <array>
+#include <cctype>
+#include <climits>
+#include <optional>
+#include <random>
+#include <set>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
 using namespace NWNXLib;
 using namespace NWNXLib::API;
 
-static ItemAppearance::ItemAppearance* g_plugin;
+namespace {
 
-NWNX_PLUGIN_ENTRY Plugin* PluginLoad(Services::ProxyServiceList* services)
+// baseitems.2da ModelType
+enum ModelType : uint8_t
 {
-    g_plugin = new ItemAppearance::ItemAppearance(services);
-    return g_plugin;
+    Simple    = 0,
+    Layered   = 1,
+    Composite = 2,
+    Armor     = 3,
+};
+
+constexpr int32_t NUM_PARTS = 3;
+constexpr int32_t RANDOM_WEAPON_TRIES = 1000;
+
+// Inclusive value ranges. Empty means any value.
+using Ranges = std::vector<std::pair<int32_t, int32_t>>;
+
+struct Rule
+{
+    std::array<Ranges, NUM_PARTS> models; // simple and layered items use models[0] only
+    std::array<Ranges, NUM_PARTS> colors;
+};
+
+struct Rules
+{
+    std::vector<Rule> blacklist;
+    std::vector<Ranges> sync;
+};
+
+struct Appearances
+{
+    // Simple and layered items: model numbers. Composite items: model * 10 + color per part.
+    // Both sorted and unique.
+    std::vector<int32_t> simple;
+    std::array<std::vector<int32_t>, NUM_PARTS> parts;
+};
+
+// Both keyed by the lowercase baseitems.2da ItemClass, like the icon and model names.
+std::unordered_map<std::string, Appearances> s_appearances;
+std::unordered_map<std::string, Rules> s_rules;
+std::mt19937 s_rng{std::random_device{}()};
+
+std::string ToLower(std::string s)
+{
+    std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) { return std::tolower(c); });
+    return s;
 }
 
-
-namespace ItemAppearance {
-
-ItemAppearance::ItemAppearance(Services::ProxyServiceList* services)
-        : Plugin(services)
+// A non-negative number of up to six digits.
+std::optional<int32_t> ParseNumber(const std::string& s)
 {
-#define REGISTER(func) \
-    ScriptAPI::RegisterEvent(PLUGIN_NAME, #func, \
-        [this](ArgumentStack&& args){ return func(std::move(args)); })
-
-    REGISTER(CacheAppearances);
-    REGISTER(BlacklistAppearance);
-    REGISTER(SyncAppearance);
-    REGISTER(GetRandomAppearance);
-    REGISTER(GetNextAppearance);
-    REGISTER(GetPreviousAppearance);
-    REGISTER(GetNextColor);
-    REGISTER(GetPreviousColor);
-
-#undef REGISTER
+    if (s.empty() || s.size() > 6 || !std::all_of(s.begin(), s.end(), [](unsigned char c) { return std::isdigit(c); }))
+        return std::nullopt;
+    return std::stoi(s);
 }
 
-ItemAppearance::~ItemAppearance()
+CNWBaseItem* GetBaseItem(int32_t baseItem)
 {
-}
-
-CNWSItem *ItemAppearance::item(ArgumentStack& args)
-{
-    const auto objectId = ScriptAPI::ExtractArgument<ObjectID>(args);
-
-    if (objectId == Constants::OBJECT_INVALID)
-    {
-        LOG_NOTICE("NWNX_Item function called on OBJECT_INVALID");
+    auto *pBaseItemArray = Globals::Rules()->m_pBaseItemArray;
+    if (baseItem < 0 || baseItem >= pBaseItemArray->m_nNumBaseItems)
         return nullptr;
+    return pBaseItemArray->GetBaseItem(baseItem);
+}
+
+std::string GetItemClass(const CNWBaseItem *pBaseItem)
+{
+    return ToLower(pBaseItem->m_ItemClassResRefChunk);
+}
+
+template <typename F>
+void ForEachResOfType(uint16_t type, F&& fn)
+{
+    if (auto *pList = Globals::ExoResMan()->GetResOfType(type, false))
+    {
+        for (int32_t i = 0; i < pList->m_nCount; i++)
+            fn(ToLower(pList->m_pStrings[i]->CStr()));
+        delete pList;
+    }
+}
+
+// "*" is any value. Otherwise a comma separated list of "n", "n-m", "-m" (up to m) and "n-" (n and up).
+std::optional<Ranges> ParseRanges(const std::string& str)
+{
+    Ranges ranges;
+    if (str == "*")
+        return ranges;
+
+    size_t start = 0;
+    while (start <= str.size())
+    {
+        auto end = str.find(',', start);
+        if (end == std::string::npos)
+            end = str.size();
+
+        std::string token;
+        for (auto c : str.substr(start, end - start))
+        {
+            if (!std::isspace(static_cast<unsigned char>(c)))
+                token += c;
+        }
+
+        const auto dash = token.find('-');
+        const auto lower = token.substr(0, dash);
+        const auto upper = dash == std::string::npos ? lower : token.substr(dash + 1);
+        if (lower.empty() && upper.empty())
+            return std::nullopt;
+
+        const auto low = lower.empty() ? std::optional<int32_t>(0) : ParseNumber(lower);
+        const auto high = upper.empty() ? std::optional<int32_t>(INT_MAX) : ParseNumber(upper);
+        if (!low || !high || *low > *high)
+            return std::nullopt;
+        ranges.emplace_back(*low, *high);
+
+        start = end + 1;
+    }
+    return ranges;
+}
+
+bool InRanges(const Ranges& ranges, int32_t value)
+{
+    if (ranges.empty())
+        return true;
+    return std::any_of(ranges.begin(), ranges.end(), [value](const auto& r) { return value >= r.first && value <= r.second; });
+}
+
+const Rules* GetRules(const std::string& itemClass)
+{
+    auto it = s_rules.find(itemClass);
+    return it == s_rules.end() ? nullptr : &it->second;
+}
+
+bool IsSimpleAllowed(const Rules *pRules, int32_t value)
+{
+    if (!pRules)
+        return true;
+    return std::none_of(pRules->blacklist.begin(), pRules->blacklist.end(),
+                        [value](const Rule& rule) { return InRanges(rule.models[0], value); });
+}
+
+bool IsSynced(const Rules *pRules, int32_t model)
+{
+    return pRules && std::any_of(pRules->sync.begin(), pRules->sync.end(),
+                                 [model](const Ranges& sync) { return InRanges(sync, model); });
+}
+
+// values: model * 10 + color for bottom, middle and top.
+bool IsWeaponAllowed(const Rules *pRules, const std::array<int32_t, NUM_PARTS>& values)
+{
+    if (!pRules)
+        return true;
+
+    for (const auto& rule : pRules->blacklist)
+    {
+        bool match = true;
+        for (int32_t k = 0; k < NUM_PARTS && match; k++)
+            match = InRanges(rule.models[k], values[k] / 10) && InRanges(rule.colors[k], values[k] % 10);
+        if (match)
+            return false;
     }
 
-    auto *pGameObject = Globals::AppManager()->m_pServerExoApp->GetGameObject(objectId);
-    auto *pItem = pGameObject->AsNWSItem();
-    if (!pItem)
-        LOG_NOTICE("NWNX_Item function called on non item object");
-
-    return pItem;
-}
-
-static bool startsWithCaseInsensitive(const char *a, const char *b)
-{
-    for (size_t i = 0; b[i]; i++)
+    // A synced model must be used by all three parts.
+    const bool allSame = values[0] / 10 == values[1] / 10 && values[1] / 10 == values[2] / 10;
+    for (int32_t k = 0; k < NUM_PARTS; k++)
     {
-        if (a[i] != b[i] && abs(a[i] - b[i]) != 32)
-        {
+        if (!allSame && IsSynced(pRules, values[k] / 10))
             return false;
-        }
     }
     return true;
 }
 
-static int32_t check_range(const char* app_ranges, int32_t app)
+struct ItemInfo
 {
-    const char *range;
-    int32_t lower, upper;
+    CNWSItem *pItem;
+    uint8_t modelType;
+    const Appearances *pAppearances;
+    const Rules *pRules;
+};
 
-    if (!app_ranges)
+// part is only used by composite items.
+std::optional<ItemInfo> GetItemInfo(CNWSItem *pItem, int32_t part)
+{
+    if (!pItem)
+        return std::nullopt;
+    auto *pBaseItem = GetBaseItem(pItem->m_nBaseItem);
+    if (!pBaseItem)
+        return std::nullopt;
+
+    const auto itemClass = GetItemClass(pBaseItem);
+    auto it = s_appearances.find(itemClass);
+    if (it == s_appearances.end())
+        return std::nullopt;
+    if (pBaseItem->m_nModelType == ModelType::Composite && (part < 0 || part >= NUM_PARTS))
     {
-        return 1;
+        LOG_WARNING("Invalid weapon part %d", part);
+        return std::nullopt;
     }
-
-    for (range = app_ranges; *range != '\0';)
-    {
-        if (*range == '-')
-        {
-            lower = 1;
-            range++;
-            upper = (int32_t) strtol(range, (char **) &range, 10);
-        }
-        else
-        {
-            lower = (int32_t) strtol(range, (char **) &range, 10);
-
-            if (*range == '-')
-            {
-                range++;
-                if (!isdigit(*range & 255))
-                {
-                    upper = 25;
-                }
-                else
-                {
-                    upper = (int32_t) strtol(range, (char **) &range, 10);
-                }
-            }
-            else
-            {
-                upper = lower;
-            }
-        }
-
-        if (app >= lower && app <= upper)
-        {
-            return 1;
-        }
-
-        if (*range == ',')
-        {
-            range++;
-        }
-        else
-        {
-            break;
-        }
-    }
-    return 0;
+    return ItemInfo{pItem, pBaseItem->m_nModelType, &it->second, GetRules(itemClass)};
 }
 
-ArgumentStack ItemAppearance::CacheAppearances(ArgumentStack&&)
+// The values the item's part can take without breaking a rule, keeping its other parts. Sorted.
+std::vector<int32_t> GetAllowed(const ItemInfo& info, int32_t part)
 {
-    ArgumentStack stack;
-    auto numBaseItems = Globals::Rules()->m_pBaseItemArray->m_nNumBaseItems;
-    std::vector<std::string> processedItemClass;
-
-    // Build our lists of resources we're interested in
-    CExoStringList *pltList = Globals::ExoResMan()->GetResOfType(6, 0);
-    CExoStringList *tgaList = Globals::ExoResMan()->GetResOfType(3, 0);
-    std::vector<std::string> pltStrings;
-    std::vector<std::string> tgaStrings;
-    for (int i = 0; i < pltList->m_nCount; i++)
+    std::vector<int32_t> allowed;
+    switch (info.modelType)
     {
-        if (pltList->m_pStrings[i]->CStr()[0] == 'i')
-        {
-            pltStrings.emplace_back(pltList->m_pStrings[i]->CStr());
-        }
-    }
-    std::sort(pltStrings.begin(), pltStrings.end());
-    for (int i = 0; i < tgaList->m_nCount; i++)
-    {
-        if (tgaList->m_pStrings[i]->CStr()[0] == 'i')
-        {
-            tgaStrings.emplace_back(tgaList->m_pStrings[i]->CStr());
-        }
-    }
-    std::sort(tgaStrings.begin(), tgaStrings.end());
-    std::vector<std::string> resList;
-
-    for (int baseItem = 0; baseItem < numBaseItems; baseItem++)
-    {
-        // Baseitem is null
-        if (!Globals::Rules()->m_pBaseItemArray->GetBaseItem(baseItem)->m_nName)
-        {
-            continue;
-        }
-        auto resRef = Globals::Rules()->m_pBaseItemArray->GetBaseItem(baseItem)->m_ItemClassResRefChunk;
-
-        // We've already processed this item class
-        if (std::count(processedItemClass.begin(), processedItemClass.end(), resRef))
-        {
-            continue;
-        }
-        processedItemClass.emplace_back(resRef);
-
-        switch (Globals::Rules()->m_pBaseItemArray->GetBaseItem(baseItem)->m_nModelType)
-        {
-            case Constants::ItemAppearanceType::SimpleModel:
-            case Constants::ItemAppearanceType::WeaponColor:
+        case ModelType::Simple:
+        case ModelType::Layered:
+            for (auto value : info.pAppearances->simple)
             {
-                if (baseItem == Constants::BaseItem::Cloak || baseItem == Constants::BaseItem::CEP_Cloak)
-                {
-                    resList = pltStrings;
-                }
-                else
-                {
-                    resList = tgaStrings;
-                }
-
-                std::string simpleModel = resRef;
-                simpleModel.insert(0, 1, 'i');
-                bool iFoundOne = false;
-                bool iFoundLast = false;
-                for (auto const &name : resList)
-                {
-                    if (iFoundLast)
-                    {
-                        break;
-                    }
-                    if (startsWithCaseInsensitive(name.c_str(), simpleModel.c_str()))
-                    {
-                        iFoundOne = true;
-                        auto appNumber = std::strtol(name.substr(name.find_last_of('_') + 1).c_str(), nullptr, 10);
-                        g_plugin->m_BaseItemSimpleAppearances[resRef].push_back(appNumber);
-                    }
-                    else if (iFoundOne)
-                    {
-                        iFoundLast = true;
-                    }
-                }
-                break;
-            }
-            case Constants::ItemAppearanceType::WeaponModel:
-            {
-                resList = tgaStrings;
-                auto isWpn = Globals::Rules()->m_pBaseItemArray->GetBaseItem(baseItem)->m_bPartEnvMap[1];
-                for (int k = 0; k < 3; k++)
-                {
-                    std::string complexModel = resRef;
-                    complexModel.insert(0, 1, 'i');
-                    if (k == 0)
-                    {
-                        complexModel.append("_b_");
-                    }
-                    else if (k == 1)
-                    {
-                        complexModel.append("_m_");
-                    }
-                    else if (k == 2)
-                    {
-                        complexModel.append("_t_");
-                    }
-
-                    bool iFoundOne = false;
-                    bool iFoundLast = false;
-                    for (auto const &name : resList)
-                    {
-                        if (iFoundLast)
-                        {
-                            break;
-                        }
-                        if (startsWithCaseInsensitive(name.c_str(), complexModel.c_str()))
-                        {
-                            iFoundOne = true;
-                            if (isWpn && !Globals::ExoResMan()->Exists(CResRef(name.substr(1).c_str()), 2002, nullptr))
-                            {
-                                LOG_WARNING("You have an icon for %s but no model.", name.c_str());
-                            }
-                            else
-                            {
-                                auto appNum = std::strtol(name.substr(name.find_last_of('_') + 1).c_str(), nullptr, 10);
-                                g_plugin->m_BaseItemConfigurableAppearances[resRef][k].push_back(appNum);
-                            }
-                        }
-                        else if (iFoundOne)
-                        {
-                            iFoundLast = true;
-                        }
-                    }
-                }
-                break;
-            }
-            default:
-                break;
-        }
-    }
-
-    return stack;
-}
-
-ArgumentStack ItemAppearance::SyncAppearance(ArgumentStack&& args)
-{
-    ArgumentStack stack;
-    auto baseItem = ScriptAPI::ExtractArgument<int32_t>(args);
-    auto models = ScriptAPI::ExtractArgument<std::string>(args);
-    auto resRef = Globals::Rules()->m_pBaseItemArray->GetBaseItem(baseItem)->m_ItemClassResRefChunk;
-
-    std::vector<int8_t> range;
-    if (models == "*")
-    {
-        range.emplace_back(-1);
-    }
-    else
-    {
-        for (int i = 1; i <= 25; i++)
-        {
-            if (check_range(models.c_str(), i))
-            {
-                range.emplace_back(i);
-            }
-        }
-    }
-
-    std::tuple<int8_t, int8_t, int8_t> colors = {-1, -1, -1};
-    for (int i = 1; i <= 25; i++)
-    {
-        for (int j = 1; j <= 25; j++)
-        {
-            for (int k = 1; k <= 25; k++)
-            {
-                for (auto sync : range)
-                {
-                    if (((i != sync || j != sync) && k == sync) ||
-                        ((i != sync || k != sync) && j == sync) ||
-                        ((j != sync || k != sync) && i == sync))
-                    {
-                        std::tuple<int8_t, int8_t, int8_t> parts = {i, j, k};
-                        m_BaseItemBlackListAppearances[resRef].push_back(std::make_pair(parts, colors));
-                    }
-                }
-            }
-        }
-    }
-    return stack;
-}
-
-ArgumentStack ItemAppearance::BlacklistAppearance(ArgumentStack&& args)
-{
-    ArgumentStack stack;
-    auto baseItem = ScriptAPI::ExtractArgument<int32_t>(args);
-    auto bot = ScriptAPI::ExtractArgument<std::string>(args);
-    auto mid = ScriptAPI::ExtractArgument<std::string>(args);
-    auto top = ScriptAPI::ExtractArgument<std::string>(args);
-    auto botc = ScriptAPI::ExtractArgument<std::string>(args);
-    auto midc = ScriptAPI::ExtractArgument<std::string>(args);
-    auto topc = ScriptAPI::ExtractArgument<std::string>(args);
-
-    uint16_t modelType = Globals::Rules()->m_pBaseItemArray->GetBaseItem(baseItem)->m_nModelType;
-    uint8_t rangeCheck = 25;
-    if (modelType == Constants::ItemAppearanceType::SimpleModel || modelType == Constants::ItemAppearanceType::WeaponColor)
-        rangeCheck = 255;
-
-    std::vector<int8_t> bot_range;
-    if (bot == "*")
-    {
-        bot_range.emplace_back(-1);
-    }
-    else
-    {
-        for (int i = 1; i <= rangeCheck; i++)
-        {
-            if (check_range(bot.c_str(), i))
-            {
-                bot_range.emplace_back(i);
-            }
-        }
-    }
-
-    std::vector<int8_t> botc_range;
-    if (botc == "*")
-    {
-        botc_range.emplace_back(-1);
-    }
-    else
-    {
-        for (int i = 1; i <= 9; i++)
-        {
-            if (check_range(botc.c_str(), i))
-            {
-                botc_range.emplace_back(i);
-            }
-        }
-    }
-
-    std::vector<int8_t> mid_range;
-    if (mid == "*")
-    {
-        mid_range.emplace_back(-1);
-    }
-    else
-    {
-        for (int i = 1; i <= 25; i++)
-        {
-            if (check_range(mid.c_str(), i))
-            {
-                mid_range.emplace_back(i);
-            }
-        }
-    }
-
-    std::vector<int8_t> midc_range;
-    if (midc == "*")
-    {
-        midc_range.emplace_back(-1);
-    }
-    else
-    {
-        for (int i = 1; i <= 9; i++)
-        {
-            if (check_range(midc.c_str(), i))
-            {
-                midc_range.emplace_back(i);
-            }
-        }
-    }
-
-    std::vector<int8_t> top_range;
-    if (top == "*")
-    {
-        top_range.emplace_back(-1);
-    }
-    else
-    {
-        for (int i = 1; i <= 25; i++)
-        {
-            if (check_range(top.c_str(), i))
-            {
-                top_range.emplace_back(i);
-            }
-        }
-    }
-
-    std::vector<int8_t> topc_range;
-    if (topc == "*")
-    {
-        topc_range.emplace_back(-1);
-    }
-    else
-    {
-        for (int i = 1; i <= 9; i++)
-        {
-            if (check_range(topc.c_str(), i))
-            {
-                topc_range.emplace_back(i);
-            }
-        }
-    }
-
-    auto resRef = Globals::Rules()->m_pBaseItemArray->GetBaseItem(baseItem)->m_ItemClassResRefChunk;
-
-    for (auto bot_bl : bot_range)
-    {
-        for (auto mid_bl : mid_range)
-        {
-            for (auto top_bl : top_range)
-            {
-                for (auto botc_bl : botc_range)
-                {
-                    for (auto midc_bl : midc_range)
-                    {
-                        for (auto topc_bl : topc_range)
-                        {
-                            std::tuple<int8_t, int8_t, int8_t> parts = {bot_bl, mid_bl, top_bl};
-                            std::tuple<int8_t, int8_t, int8_t> colors = {botc_bl, midc_bl, topc_bl};
-                            m_BaseItemBlackListAppearances[resRef].push_back(std::make_pair(parts, colors));
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return stack;
-}
-
-int32_t ItemAppearance::IsBlacklisted(CNWSItem *pItem, int32_t nPart, int32_t newApp)
-{
-    auto resRef = Globals::Rules()->m_pBaseItemArray->GetBaseItem(pItem->m_nBaseItem)->m_ItemClassResRefChunk;
-    switch (Globals::Rules()->m_pBaseItemArray->GetBaseItem(pItem->m_nBaseItem)->m_nModelType)
-    {
-        case Constants::ItemAppearanceType::SimpleModel:
-        case Constants::ItemAppearanceType::WeaponColor:
-        {
-            for (auto &i : g_plugin->m_BaseItemBlackListAppearances[resRef])
-            {
-                auto parts = i.first;
-                auto part = std::get<0>(parts);
-                if (part == nPart)
-                {
-                    return true;
-                }
+                if (IsSimpleAllowed(info.pRules, value))
+                    allowed.push_back(value);
             }
             break;
-        }
-        case Constants::ItemAppearanceType::WeaponModel:
-        {
-            auto currentBotApp = nPart == 0 ? newApp / 10 : pItem->m_nModelPart[0] / 10;
-            auto currentMidApp = nPart == 1 ? newApp / 10 : pItem->m_nModelPart[1] / 10;
-            auto currentTopApp = nPart == 2 ? newApp / 10 : pItem->m_nModelPart[2] / 10;
-            auto currentBotColor = nPart == 0 ? newApp % 10 : pItem->m_nModelPart[0] % 10;
-            auto currentMidColor = nPart == 1 ? newApp % 10 : pItem->m_nModelPart[1] % 10;
-            auto currentTopColor = nPart == 2 ? newApp % 10 : pItem->m_nModelPart[2] % 10;
 
-            for (auto &i : g_plugin->m_BaseItemBlackListAppearances[resRef])
+        case ModelType::Composite:
+            for (auto value : info.pAppearances->parts[part])
             {
-                auto parts = i.first;
-                auto color = i.second;
-                auto botPart = std::get<0>(parts);
-                auto midPart = std::get<1>(parts);
-                auto topPart = std::get<2>(parts);
-                auto botColor = std::get<0>(color);
-                auto midColor = std::get<1>(color);
-                auto topColor = std::get<2>(color);
-                if ((botPart == currentBotApp || botPart == -1) &&
-                    (midPart == currentMidApp || midPart == -1) &&
-                    (topPart == currentTopApp || topPart == -1) &&
-                    (botColor == currentBotColor || botColor == -1) &&
-                    (midColor == currentMidColor || midColor == -1) &&
-                    (topColor == currentTopColor || topColor == -1))
-                {
-                    return true;
-                }
+                std::array<int32_t, NUM_PARTS> values = {info.pItem->m_nModelPart[0], info.pItem->m_nModelPart[1], info.pItem->m_nModelPart[2]};
+                values[part] = value;
+                if (IsWeaponAllowed(info.pRules, values))
+                    allowed.push_back(value);
             }
             break;
-        }
+
         default:
             break;
-
     }
-    return false;
+    return allowed;
 }
 
-ArgumentStack ItemAppearance::GetRandomAppearance(ArgumentStack&& args)
+int32_t GetCurrentValue(const ItemInfo& info, int32_t part)
 {
-    ArgumentStack stack;
-    if (auto *pItem = item(args))
-    {
-        auto baseItem = pItem->m_nBaseItem;
-        auto index = ScriptAPI::ExtractArgument<int32_t>(args);
-        auto resRef = Globals::Rules()->m_pBaseItemArray->GetBaseItem(baseItem)->m_ItemClassResRefChunk;
-        std::random_device random_device;
-        std::mt19937 engine{random_device()};
-        int32_t appsSize;
-        int32_t randomElement = -1;
+    return info.modelType == ModelType::Composite ? info.pItem->m_nModelPart[part] : info.pItem->m_nModelPart[0];
+}
 
-        switch (Globals::Rules()->m_pBaseItemArray->GetBaseItem(baseItem)->m_nModelType)
+// The next (or previous) value after current in sorted values, wrapping around. -1 if values is empty.
+int32_t Step(const std::vector<int32_t>& values, int32_t current, bool next)
+{
+    if (values.empty())
+        return -1;
+    if (next)
+    {
+        auto it = std::upper_bound(values.begin(), values.end(), current);
+        return it == values.end() ? values.front() : *it;
+    }
+    auto it = std::lower_bound(values.begin(), values.end(), current);
+    return it == values.begin() ? values.back() : *std::prev(it);
+}
+
+int32_t Pick(const std::vector<int32_t>& values)
+{
+    if (values.empty())
+        return -1;
+    std::uniform_int_distribution<size_t> dist(0, values.size() - 1);
+    return values[dist(s_rng)];
+}
+
+int32_t NextPreviousAppearance(ArgumentStack& args, bool next)
+{
+    auto *pItem = Utils::PopItem(args);
+    const auto part = args.extract<int32_t>();
+
+    auto info = GetItemInfo(pItem, part);
+    if (!info)
+        return -1;
+
+    const auto allowed = GetAllowed(*info, part);
+    if (allowed.empty())
+        return -1;
+
+    const auto current = GetCurrentValue(*info, part);
+    if (info->modelType != ModelType::Composite)
+        return Step(allowed, current, next);
+
+    std::vector<int32_t> models;
+    for (auto value : allowed)
+    {
+        if (models.empty() || models.back() != value / 10)
+            models.push_back(value / 10);
+    }
+    const auto model = Step(models, current / 10, next);
+
+    // Keep the current color if the new model has it, otherwise its first allowed color.
+    if (std::binary_search(allowed.begin(), allowed.end(), model * 10 + current % 10))
+        return model * 10 + current % 10;
+    return *std::lower_bound(allowed.begin(), allowed.end(), model * 10);
+}
+
+int32_t NextPreviousColor(ArgumentStack& args, bool next)
+{
+    auto *pItem = Utils::PopItem(args);
+    const auto part = args.extract<int32_t>();
+
+    auto info = GetItemInfo(pItem, part);
+    if (!info)
+        return -1;
+
+    const auto allowed = GetAllowed(*info, part);
+    const auto current = GetCurrentValue(*info, part);
+    if (info->modelType != ModelType::Composite)
+        return Step(allowed, current, next);
+
+    std::vector<int32_t> colors;
+    for (auto value : allowed)
+    {
+        if (value / 10 == current / 10)
+            colors.push_back(value % 10);
+    }
+    return Step(colors, current % 10, next);
+}
+
+}
+
+NWNX_EXPORT ArgumentStack CacheAppearances(ArgumentStack&&)
+{
+    s_appearances.clear();
+    s_rules.clear();
+
+    // Icons are i<class>_<number> for simple and layered items and i<class>_<b|m|t>_<number> for
+    // composite ones; composite models are <class>_<b|m|t>_<number>.
+    std::unordered_map<std::string, std::set<int32_t>> simpleIcons;
+    std::unordered_map<std::string, std::array<std::set<std::string>, NUM_PARTS>> partIcons;
+    auto addIcon = [&](const std::string& name)
+    {
+        if (name.size() < 3 || name[0] != 'i')
+            return;
+        const auto underscore = name.find_last_of('_');
+        const auto number = underscore == std::string::npos ? std::nullopt : ParseNumber(name.substr(underscore + 1));
+        if (!number)
+            return;
+
+        // Simple model 0 can't be set.
+        const auto prefix = name.substr(1, underscore - 1);
+        if (*number > 0)
+            simpleIcons[prefix].insert(*number);
+
+        static const std::string partLetters = "bmt";
+        if (prefix.size() > 2 && prefix[prefix.size() - 2] == '_')
         {
-            case Constants::ItemAppearanceType::SimpleModel:
-            case Constants::ItemAppearanceType::WeaponColor:
-            {
-                appsSize = g_plugin->m_BaseItemSimpleAppearances[resRef].size();
-                if (appsSize > 0)
-                {
-                    std::uniform_int_distribution<int32_t> dist(0, appsSize - 1);
-                    bool first = true;
-                    while (first || IsBlacklisted(pItem, index, randomElement))
-                    {
-                        randomElement = g_plugin->m_BaseItemSimpleAppearances[resRef][dist(engine)];
-                        first = false;
-                    }
-                }
-                break;
-            }
-            case Constants::ItemAppearanceType::WeaponModel:
-            {
-                appsSize = g_plugin->m_BaseItemConfigurableAppearances[resRef][index].size();
-                if (appsSize > 0)
-                {
-                    std::uniform_int_distribution<int32_t> dist(0, appsSize - 1);
-                    bool first = true;
-                    while (first || IsBlacklisted(pItem, index, randomElement))
-                    {
-                        randomElement = g_plugin->m_BaseItemConfigurableAppearances[resRef][index][dist(engine)];
-                        first = false;
-                    }
-                }
-                break;
-            }
-            default:
-                break;
+            const auto part = partLetters.find(prefix.back());
+            if (part != std::string::npos)
+                partIcons[prefix.substr(0, prefix.size() - 2)][part].insert(name.substr(1));
         }
-        ScriptAPI::InsertArgument(stack, randomElement);
-    }
+    };
+    ForEachResOfType(Constants::ResRefType::TGA, addIcon);
+    ForEachResOfType(Constants::ResRefType::DDS, addIcon);
+    ForEachResOfType(Constants::ResRefType::PLT, addIcon);
 
-    return stack;
-}
+    std::unordered_set<std::string> models;
+    ForEachResOfType(Constants::ResRefType::MDL, [&](const std::string& name) { models.insert(name); });
 
-ArgumentStack ItemAppearance::GetNextPreviousAppearanceColor(ArgumentStack& args, uint8_t appType)
-{
-    ArgumentStack stack;
-    int32_t retVal = -1;
-    if (auto *pItem = item(args))
+    auto *pBaseItemArray = Globals::Rules()->m_pBaseItemArray;
+    for (int32_t baseItem = 0; baseItem < pBaseItemArray->m_nNumBaseItems; baseItem++)
     {
-        auto part = ScriptAPI::ExtractArgument<int32_t>(args);
-        auto resRef = Globals::Rules()->m_pBaseItemArray->GetBaseItem(pItem->m_nBaseItem)->m_ItemClassResRefChunk;
+        auto *pBaseItem = pBaseItemArray->GetBaseItem(baseItem);
+        if (!pBaseItem || !pBaseItem->m_nName)
+            continue;
 
-        switch (Globals::Rules()->m_pBaseItemArray->GetBaseItem(pItem->m_nBaseItem)->m_nModelType)
+        const auto itemClass = GetItemClass(pBaseItem);
+        if (itemClass.empty() || s_appearances.count(itemClass))
+            continue;
+
+        auto& appearances = s_appearances[itemClass];
+        switch (pBaseItem->m_nModelType)
         {
-            case Constants::ItemAppearanceType::SimpleModel:
-            case Constants::ItemAppearanceType::WeaponColor:
+            case ModelType::Simple:
+            case ModelType::Layered:
             {
-                auto v = g_plugin->m_BaseItemSimpleAppearances[resRef];
-                switch (appType)
-                {
-                    case ModelChange::NextAppearance:
-                    case ModelChange::NextColor:
-                    {
-                        auto currentKey = pItem->m_nModelPart[0];
-                        auto itr = std::find(v.begin(), v.end(), currentKey);
-                        uint32_t index;
-                        if (itr != v.cend())
-                        {
-                            index = std::distance(v.begin(), itr) + 1;
-                            while (IsBlacklisted(pItem, part, v[index]) && v[index] != v.back())
-                                index++;
-                            if (v[index] == v.back() && IsBlacklisted(pItem, part, v[index]))
-                            {
-                                index = 0;
-                                while (IsBlacklisted(pItem, part, v[index]) && v[index] != v.back())
-                                    index++;
-                                if (index == v.size() - 1)
-                                {
-                                    retVal = -1;
-                                }
-                                else
-                                {
-                                    retVal = index;
-                                }
-                            }
-                            else
-                            {
-                                retVal = v[index];
-                            }
-                        }
-                        break;
-                    }
-                    case ModelChange::PreviousAppearance:
-                    case ModelChange::PreviousColor:
-                    {
-                        auto currentKey = pItem->m_nModelPart[0];
-                        auto itr = std::find(v.begin(), v.end(), currentKey);
-                        uint32_t index;
-                        if (itr != v.cend())
-                        {
-                            index = std::distance(v.begin(), itr) - 1;
-                            if (index > 255)
-                                index = v.size() - 1;
-                            while (IsBlacklisted(pItem, part, v[index]) && v[index] != v.front())
-                                index--;
-                            if (v[index] == v.front() && IsBlacklisted(pItem, part, v[index]))
-                            {
-                                index = v.size() - 1;
-                                while (IsBlacklisted(pItem, part, v[index]) && v[index] != v.front())
-                                    index--;
-                                if (index == 0)
-                                {
-                                    retVal = -1;
-                                }
-                                else
-                                {
-                                    retVal = index;
-                                }
-                            }
-                            else
-                            {
-                                retVal = v[index];
-                            }
-                        }
-                        break;
-                    }
-                    default:
-                        break;
-                }
+                std::set<int32_t> numbers;
+                auto it = simpleIcons.find(itemClass);
+                if (it != simpleIcons.end())
+                    numbers = it->second;
+                // Cloak icons are icloak_m_<number>.
+                it = simpleIcons.find(itemClass + "_m");
+                if (pBaseItem->m_nModelType == ModelType::Layered && it != simpleIcons.end())
+                    numbers.insert(it->second.begin(), it->second.end());
+                appearances.simple.assign(numbers.begin(), numbers.end());
                 break;
             }
-            case Constants::ItemAppearanceType::WeaponModel:
+            case ModelType::Composite:
             {
-                auto v = g_plugin->m_BaseItemConfigurableAppearances[resRef][part];
-                auto currentKey = pItem->m_nModelPart[part];
-                uint32_t index;
-                auto itr = std::find(v.begin(), v.end(), currentKey);
-                if (itr != v.cend())
+                auto it = partIcons.find(itemClass);
+                if (it == partIcons.end())
+                    break;
+
+                // Items whose parts are drawn (weapons) need a model for each icon; items that are
+                // never drawn (boots) have none.
+                bool hasModels = false;
+                for (const auto& part : it->second)
                 {
-                    index = std::distance(v.begin(), itr);
-                    switch (appType)
+                    for (const auto& name : part)
+                        hasModels = hasModels || models.count(name);
+                }
+
+                for (int32_t k = 0; k < NUM_PARTS; k++)
+                {
+                    for (const auto& name : it->second[k])
                     {
-                        case ModelChange::NextAppearance:
+                        if (hasModels && !models.count(name))
                         {
-                            while ((v[index] / 10 == currentKey / 10 || IsBlacklisted(pItem, part, v[index])) &&
-                                   v[index] != v.back())
-                                index++;
-                            if (v[index] == v.back())
-                            {
-                                index = 0;
-                                while ((v[index] / 10 == currentKey / 10 || IsBlacklisted(pItem, part, v[index])) &&
-                                       v[index] != v.back())
-                                    index++;
-                                if (v[index] == v.back() && IsBlacklisted(pItem, part, v[index]))
-                                {
-                                    retVal = -1;
-                                }
-                                else
-                                {
-                                    retVal = v[index] / 10;
-                                }
-                            }
-                            else
-                            {
-                                retVal = v[index] / 10;
-                            }
-                            break;
+                            LOG_WARNING("You have an icon for i%s but no model.", name.c_str());
+                            continue;
                         }
-                        case ModelChange::PreviousAppearance:
-                        {
-                            while ((v[index] / 10 == currentKey / 10 || IsBlacklisted(pItem, part, v[index])) &&
-                                   v[index] != v.front())
-                                index--;
-                            if (v[index] == v.front())
-                            {
-                                index = v.size() - 1;
-                                while ((v[index] / 10 == currentKey / 10 || IsBlacklisted(pItem, part, v[index])) &&
-                                       v[index] != v.front())
-                                    index--;
-                                if (v[index] == v.front() && IsBlacklisted(pItem, part, v[index]))
-                                {
-                                    retVal = -1;
-                                }
-                                else
-                                {
-                                    retVal = v[index] / 10;
-                                }
-                            }
-                            else
-                            {
-                                retVal = v[index] / 10;
-                            }
-                            break;
-                        }
-                        case ModelChange::NextColor:
-                        {
-                            index++;
-                            if (index < v.size() && v[index] / 10 == currentKey / 10)
-                            {
-                                retVal = v[index] % 10;
-                            }
-                            else
-                            {
-                                for (int i = 0; i <= 9; i++)
-                                {
-                                    if (std::find(v.begin(), v.end(), currentKey - (currentKey % 10) + i) != v.cend())
-                                    {
-                                        retVal = i;
-                                        break;
-                                    }
-                                }
-                            }
-                            break;
-                        }
-                        case ModelChange::PreviousColor:
-                        {
-                            if (index > 0 && v[index - 1] / 10 == currentKey / 10)
-                            {
-                                retVal = v[index - 1] % 10;
-                            }
-                            else
-                            {
-                                for (int i = 9; i >= 0; i--)
-                                {
-                                    if (std::find(v.begin(), v.end(), currentKey - (currentKey % 10) + i) != v.cend())
-                                    {
-                                        retVal = i;
-                                        break;
-                                    }
-                                }
-                            }
-                            break;
-                        }
-                        default:
-                            break;
+                        appearances.parts[k].push_back(*ParseNumber(name.substr(name.find_last_of('_') + 1)));
                     }
+                    std::sort(appearances.parts[k].begin(), appearances.parts[k].end());
+                    appearances.parts[k].erase(std::unique(appearances.parts[k].begin(), appearances.parts[k].end()), appearances.parts[k].end());
                 }
                 break;
             }
@@ -776,28 +438,135 @@ ArgumentStack ItemAppearance::GetNextPreviousAppearanceColor(ArgumentStack& args
                 break;
         }
     }
-    ScriptAPI::InsertArgument(stack, retVal);
-    return stack;
+
+    LOG_INFO("Cached appearances for %zu item classes.", s_appearances.size());
+    return {};
 }
 
-ArgumentStack ItemAppearance::GetNextAppearance(ArgumentStack&& args)
+NWNX_EXPORT ArgumentStack BlacklistAppearance(ArgumentStack&& args)
 {
-    return GetNextPreviousAppearanceColor(args, ModelChange::NextAppearance);
+    const auto baseItem = args.extract<int32_t>();
+    std::array<std::string, NUM_PARTS * 2> ranges;
+    for (auto& range : ranges)
+        range = args.extract<std::string>();
+
+    auto *pBaseItem = GetBaseItem(baseItem);
+    if (!pBaseItem)
+    {
+        LOG_WARNING("BlacklistAppearance: invalid base item %d", baseItem);
+        return {};
+    }
+
+    Rule rule;
+    for (int32_t k = 0; k < NUM_PARTS * 2; k++)
+    {
+        auto parsed = ParseRanges(ranges[k]);
+        if (!parsed)
+        {
+            LOG_WARNING("BlacklistAppearance: base item %d: invalid range '%s', rule ignored", baseItem, ranges[k].c_str());
+            return {};
+        }
+        (k < NUM_PARTS ? rule.models[k] : rule.colors[k - NUM_PARTS]) = *parsed;
+    }
+    s_rules[GetItemClass(pBaseItem)].blacklist.push_back(std::move(rule));
+    return {};
 }
 
-ArgumentStack ItemAppearance::GetPreviousAppearance(ArgumentStack&& args)
+NWNX_EXPORT ArgumentStack SyncAppearance(ArgumentStack&& args)
 {
-    return GetNextPreviousAppearanceColor(args, ModelChange::PreviousAppearance);
+    const auto baseItem = args.extract<int32_t>();
+    const auto models = args.extract<std::string>();
+
+    auto *pBaseItem = GetBaseItem(baseItem);
+    if (!pBaseItem)
+    {
+        LOG_WARNING("SyncAppearance: invalid base item %d", baseItem);
+        return {};
+    }
+
+    auto parsed = ParseRanges(models);
+    if (!parsed)
+    {
+        LOG_WARNING("SyncAppearance: base item %d: invalid range '%s', ignored", baseItem, models.c_str());
+        return {};
+    }
+    s_rules[GetItemClass(pBaseItem)].sync.push_back(std::move(*parsed));
+    return {};
 }
 
-ArgumentStack ItemAppearance::GetNextColor(ArgumentStack&& args)
+NWNX_EXPORT ArgumentStack GetRandomAppearance(ArgumentStack&& args)
 {
-    return GetNextPreviousAppearanceColor(args, ModelChange::NextColor);
+    auto *pItem = Utils::PopItem(args);
+    const auto part = args.extract<int32_t>();
+
+    auto info = GetItemInfo(pItem, part);
+    if (!info)
+        return -1;
+    return Pick(GetAllowed(*info, part));
 }
 
-ArgumentStack ItemAppearance::GetPreviousColor(ArgumentStack&& args)
+NWNX_EXPORT ArgumentStack GetRandomWeaponAppearance(ArgumentStack&& args)
 {
-    return GetNextPreviousAppearanceColor(args, ModelChange::PreviousColor);
+    std::array<int32_t, NUM_PARTS> values = {-1, -1, -1};
+
+    auto info = GetItemInfo(Utils::PopItem(args), 0);
+    if (!info || info->modelType != ModelType::Composite)
+        return {values[0], values[1], values[2]};
+
+    const auto& parts = info->pAppearances->parts;
+    if (parts[0].empty() || parts[1].empty() || parts[2].empty())
+        return {values[0], values[1], values[2]};
+
+    // Pick the bottom first. A synced model there is used for all three parts; otherwise synced
+    // models are left out of the middle and top.
+    for (int32_t i = 0; i < RANDOM_WEAPON_TRIES; i++)
+    {
+        std::array<int32_t, NUM_PARTS> candidate;
+        candidate[0] = Pick(parts[0]);
+        const auto model = candidate[0] / 10;
+        const bool synced = IsSynced(info->pRules, model);
+
+        bool ok = true;
+        for (int32_t k = 1; k < NUM_PARTS && ok; k++)
+        {
+            std::vector<int32_t> choices;
+            for (auto value : parts[k])
+            {
+                if (synced ? value / 10 == model : !IsSynced(info->pRules, value / 10))
+                    choices.push_back(value);
+            }
+            candidate[k] = Pick(choices);
+            ok = candidate[k] != -1;
+        }
+
+        if (ok && IsWeaponAllowed(info->pRules, candidate))
+        {
+            values = candidate;
+            break;
+        }
+    }
+
+    if (values[0] == -1)
+        LOG_WARNING("GetRandomWeaponAppearance: no allowed appearance found for base item %d", info->pItem->m_nBaseItem);
+    return {values[0], values[1], values[2]};
 }
 
+NWNX_EXPORT ArgumentStack GetNextAppearance(ArgumentStack&& args)
+{
+    return NextPreviousAppearance(args, true);
+}
+
+NWNX_EXPORT ArgumentStack GetPreviousAppearance(ArgumentStack&& args)
+{
+    return NextPreviousAppearance(args, false);
+}
+
+NWNX_EXPORT ArgumentStack GetNextColor(ArgumentStack&& args)
+{
+    return NextPreviousColor(args, true);
+}
+
+NWNX_EXPORT ArgumentStack GetPreviousColor(ArgumentStack&& args)
+{
+    return NextPreviousColor(args, false);
 }

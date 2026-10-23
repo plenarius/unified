@@ -1,107 +1,140 @@
-#include "nwnx"
+/// @addtogroup itemappearance ItemAppearance
+/// @brief Lists the appearances an item can take, with rules to leave some out.
+/// @{
+/// @file nwnx_itemapp.nss
 
-const string NWNX_ItemAppearance = "NWNX_ItemAppearance";
+const string NWNX_ItemAppearance = "NWNX_ItemAppearance"; ///< @private
 
-// Cache item appearances
+/// @brief A random weapon appearance: model * 10 + color for each part, -1 if none was found.
+struct NWNX_ItemAppearance_Weapon
+{
+    int nBottom;
+    int nMiddle;
+    int nTop;
+};
+
+/// @brief Build the appearance lists from the icons in the module and haks, and clear all rules.
+/// @remark Call once on module load, before adding rules.
 void NWNX_ItemAppearance_CacheAppearances();
 
-// Blacklist item appearance
+/// @brief Leave out the appearances matching every given range.
+/// @remark A range is "*" (any), or a comma separated list of "n", "n-m", "-m" (up to m) and "n-" (n and up).
+/// @remark Simple items (rings, shields, cloaks, helmets) only use sBot, matched against the model number.
+/// Weapons match sBot, sMid and sTop against the model and sBotC, sMidC and sTopC against the color.
+/// @param nBaseItem The BASE_ITEM_* the rule is for (it applies to every base item of the same item class).
 void NWNX_ItemAppearance_BlacklistAppearance(int nBaseItem, string sBot = "*", string sMid = "*", string sTop = "*", string sBotC = "*", string sMidC = "*", string sTopC = "*");
 
-// Sync appearance number (all parts use same value whenever one of them randomly is selected
-void NWNX_ItemAppearance_SyncAppearance(int nBaseItem, string sPart);
+/// @brief The weapon models in sModels may only be used on all three parts together.
+/// @param nBaseItem The BASE_ITEM_* the rule is for.
+/// @param sModels A range, as in NWNX_ItemAppearance_BlacklistAppearance().
+void NWNX_ItemAppearance_SyncAppearance(int nBaseItem, string sModels);
 
-// Get random appearance
+/// @brief A random appearance for one part of an item, allowed with its other parts as they are.
+/// @param oItem The item.
+/// @param nPart For weapons, ITEM_APPR_WEAPON_MODEL_*. Ignored for simple items.
+/// @return The model number for simple items, model * 10 + color for weapons, -1 if there is none.
 int NWNX_ItemAppearance_GetRandomAppearance(object oItem, int nPart = 0);
 
-// Get next valid appearance
+/// @brief A random appearance for all three parts of a weapon.
+/// @remark A synced model picked for the bottom is used for all three parts.
+/// @param oItem The weapon.
+/// @return The appearance; all parts are -1 if none was found.
+struct NWNX_ItemAppearance_Weapon NWNX_ItemAppearance_GetRandomWeaponAppearance(object oItem);
+
+/// @brief The next allowed appearance for one part of an item, wrapping around.
+/// @param oItem The item.
+/// @param nPart For weapons, ITEM_APPR_WEAPON_MODEL_*. Ignored for simple items.
+/// @return The model number for simple items. For weapons, model * 10 + color of the next model, keeping the
+/// current color if the model has it. The current appearance if it is the only one allowed, -1 if none is.
 int NWNX_ItemAppearance_GetNextAppearance(object oItem, int nPart = 0);
 
-// Get previous valid appearance
+/// @brief The previous allowed appearance for one part of an item, wrapping around.
+/// @copydetails NWNX_ItemAppearance_GetNextAppearance()
 int NWNX_ItemAppearance_GetPreviousAppearance(object oItem, int nPart = 0);
 
-// Get next valid color
+/// @brief The next allowed color of one weapon part's current model, wrapping around.
+/// @param oItem The item.
+/// @param nPart ITEM_APPR_WEAPON_COLOR_*.
+/// @return The color (0-9), -1 if none is allowed. Simple items return the next appearance.
 int NWNX_ItemAppearance_GetNextColor(object oItem, int nPart = 0);
 
-// Get previous valid color
+/// @brief The previous allowed color of one weapon part's current model, wrapping around.
+/// @copydetails NWNX_ItemAppearance_GetNextColor()
 int NWNX_ItemAppearance_GetPreviousColor(object oItem, int nPart = 0);
+
+/// @}
 
 void NWNX_ItemAppearance_CacheAppearances()
 {
-    string sFunc = "CacheAppearances";
-
-    NWNX_CallFunction(NWNX_ItemAppearance, sFunc);
+    NWNXCall(NWNX_ItemAppearance, "CacheAppearances");
 }
 
 void NWNX_ItemAppearance_BlacklistAppearance(int nBaseItem, string sBot = "*", string sMid = "*", string sTop = "*", string sBotC = "*", string sMidC = "*", string sTopC = "*")
 {
-    string sFunc = "BlacklistAppearance";
-    NWNX_PushArgumentString(sTopC);
-    NWNX_PushArgumentString(sMidC);
-    NWNX_PushArgumentString(sBotC);
-    NWNX_PushArgumentString(sTop);
-    NWNX_PushArgumentString(sMid);
-    NWNX_PushArgumentString(sBot);
-    NWNX_PushArgumentInt(nBaseItem);
-
-    NWNX_CallFunction(NWNX_ItemAppearance, sFunc);
+    NWNXPushString(sTopC);
+    NWNXPushString(sMidC);
+    NWNXPushString(sBotC);
+    NWNXPushString(sTop);
+    NWNXPushString(sMid);
+    NWNXPushString(sBot);
+    NWNXPushInt(nBaseItem);
+    NWNXCall(NWNX_ItemAppearance, "BlacklistAppearance");
 }
 
-void NWNX_ItemAppearance_SyncAppearance(int nBaseItem, string sPart)
+void NWNX_ItemAppearance_SyncAppearance(int nBaseItem, string sModels)
 {
-    string sFunc = "SyncAppearance";
-    NWNX_PushArgumentString(sPart);
-    NWNX_PushArgumentInt(nBaseItem);
-
-    NWNX_CallFunction(NWNX_ItemAppearance, sFunc);
+    NWNXPushString(sModels);
+    NWNXPushInt(nBaseItem);
+    NWNXCall(NWNX_ItemAppearance, "SyncAppearance");
 }
 
 int NWNX_ItemAppearance_GetRandomAppearance(object oItem, int nPart = 0)
 {
-    string sFunc = "GetRandomAppearance";
-    NWNX_PushArgumentInt(nPart);
-    NWNX_PushArgumentObject(oItem);
+    NWNXPushInt(nPart);
+    NWNXPushObject(oItem);
+    NWNXCall(NWNX_ItemAppearance, "GetRandomAppearance");
+    return NWNXPopInt();
+}
 
-    NWNX_CallFunction(NWNX_ItemAppearance, sFunc);
-    return  NWNX_GetReturnValueInt();
+struct NWNX_ItemAppearance_Weapon NWNX_ItemAppearance_GetRandomWeaponAppearance(object oItem)
+{
+    struct NWNX_ItemAppearance_Weapon weapon;
+    NWNXPushObject(oItem);
+    NWNXCall(NWNX_ItemAppearance, "GetRandomWeaponAppearance");
+    weapon.nTop = NWNXPopInt();
+    weapon.nMiddle = NWNXPopInt();
+    weapon.nBottom = NWNXPopInt();
+    return weapon;
 }
 
 int NWNX_ItemAppearance_GetNextAppearance(object oItem, int nPart = 0)
 {
-    string sFunc = "GetNextAppearance";
-    NWNX_PushArgumentInt(nPart);
-    NWNX_PushArgumentObject(oItem);
-
-    NWNX_CallFunction(NWNX_ItemAppearance, sFunc);
-    return  NWNX_GetReturnValueInt();
+    NWNXPushInt(nPart);
+    NWNXPushObject(oItem);
+    NWNXCall(NWNX_ItemAppearance, "GetNextAppearance");
+    return NWNXPopInt();
 }
 
 int NWNX_ItemAppearance_GetPreviousAppearance(object oItem, int nPart = 0)
 {
-    string sFunc = "GetPreviousAppearance";
-    NWNX_PushArgumentInt(nPart);
-    NWNX_PushArgumentObject(oItem);
-
-    NWNX_CallFunction(NWNX_ItemAppearance, sFunc);
-    return  NWNX_GetReturnValueInt();
+    NWNXPushInt(nPart);
+    NWNXPushObject(oItem);
+    NWNXCall(NWNX_ItemAppearance, "GetPreviousAppearance");
+    return NWNXPopInt();
 }
 
 int NWNX_ItemAppearance_GetNextColor(object oItem, int nPart = 0)
 {
-    string sFunc = "GetNextColor";
-    NWNX_PushArgumentInt(nPart);
-    NWNX_PushArgumentObject(oItem);
-
-    NWNX_CallFunction(NWNX_ItemAppearance, sFunc);
-    return  NWNX_GetReturnValueInt();
+    NWNXPushInt(nPart);
+    NWNXPushObject(oItem);
+    NWNXCall(NWNX_ItemAppearance, "GetNextColor");
+    return NWNXPopInt();
 }
 
 int NWNX_ItemAppearance_GetPreviousColor(object oItem, int nPart = 0)
 {
-    string sFunc = "GetPreviousColor";
-    NWNX_PushArgumentInt(nPart);
-    NWNX_PushArgumentObject(oItem);
-
-    NWNX_CallFunction(NWNX_ItemAppearance, sFunc);
-    return  NWNX_GetReturnValueInt();
+    NWNXPushInt(nPart);
+    NWNXPushObject(oItem);
+    NWNXCall(NWNX_ItemAppearance, "GetPreviousColor");
+    return NWNXPopInt();
 }
