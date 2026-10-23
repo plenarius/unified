@@ -107,7 +107,12 @@ Profiler::Profiler(Services::ProxyServiceList* services)
     if (Config::Get<bool>("ENABLE_PATHING_OUTCOMES", false))
     {
         const auto interval = std::chrono::seconds(Config::Get<uint32_t>("PATHING_OUTCOMES_INTERVAL", 60));
-        m_pathingOutcomes = std::make_unique<PathingOutcomes>(g_metrics, interval);
+        PathingOutcomes::LogSettings log;
+        log.slowMs = Config::Get<uint32_t>("PATHING_LOG_SLOW_MS", 0);
+        log.failed = Config::Get<bool>("PATHING_LOG_FAILED", false);
+        log.failedMinAILevel = Config::Get<int32_t>("PATHING_LOG_FAILED_MIN_AI_LEVEL", 2);
+        log.interval = std::chrono::seconds(Config::Get<uint32_t>("PATHING_LOG_INTERVAL", 60));
+        m_pathingOutcomes = std::make_unique<PathingOutcomes>(g_metrics, interval, log);
     }
 
     if (Config::Get<bool>("ENABLE_SCRIPTS", true))
