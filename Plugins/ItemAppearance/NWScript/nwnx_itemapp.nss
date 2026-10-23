@@ -22,6 +22,12 @@ void NWNX_ItemAppearance_CacheAppearances();
 /// @remark Simple items (rings, shields, cloaks, helmets) only use sBot, matched against the model number.
 /// Weapons match sBot, sMid and sTop against the model and sBotC, sMidC and sTopC against the color.
 /// @param nBaseItem The BASE_ITEM_* the rule is for (it applies to every base item of the same item class).
+/// @param sBot Bottom model range (the model number for simple items).
+/// @param sMid Middle model range.
+/// @param sTop Top model range.
+/// @param sBotC Bottom color range.
+/// @param sMidC Middle color range.
+/// @param sTopC Top color range.
 void NWNX_ItemAppearance_BlacklistAppearance(int nBaseItem, string sBot = "*", string sMid = "*", string sTop = "*", string sBotC = "*", string sMidC = "*", string sTopC = "*");
 
 /// @brief The weapon models in sModels may only be used on all three parts together.
@@ -49,7 +55,9 @@ struct NWNX_ItemAppearance_Weapon NWNX_ItemAppearance_GetRandomWeaponAppearance(
 int NWNX_ItemAppearance_GetNextAppearance(object oItem, int nPart = 0);
 
 /// @brief The previous allowed appearance for one part of an item, wrapping around.
-/// @copydetails NWNX_ItemAppearance_GetNextAppearance()
+/// @param oItem The item.
+/// @param nPart For weapons, ITEM_APPR_WEAPON_MODEL_*. Ignored for simple items.
+/// @return As NWNX_ItemAppearance_GetNextAppearance(), for the previous model.
 int NWNX_ItemAppearance_GetPreviousAppearance(object oItem, int nPart = 0);
 
 /// @brief The next allowed color of one weapon part's current model, wrapping around.
@@ -59,7 +67,9 @@ int NWNX_ItemAppearance_GetPreviousAppearance(object oItem, int nPart = 0);
 int NWNX_ItemAppearance_GetNextColor(object oItem, int nPart = 0);
 
 /// @brief The previous allowed color of one weapon part's current model, wrapping around.
-/// @copydetails NWNX_ItemAppearance_GetNextColor()
+/// @param oItem The item.
+/// @param nPart ITEM_APPR_WEAPON_COLOR_*.
+/// @return The color (0-9), -1 if none is allowed. Simple items return the previous appearance.
 int NWNX_ItemAppearance_GetPreviousColor(object oItem, int nPart = 0);
 
 /// @}
