@@ -72,8 +72,23 @@ void NWNX_Item_SetBaseItemType(object oItem, int nBaseItem);
 /// @param nType The type
 /// @param nIndex The index
 /// @param nValue The value
-/// @param bUpdateCreatureAppearance If TRUE, also update the appearance of oItem's possessor. Only works for armor/helmets/cloaks. Will remove the item from the quickbar as side effect.
+/// @param bUpdateCreatureAppearance If TRUE, also update the appearance of oItem's possessor. Works for armor, helmets, cloaks and items in either hand (see NWNX_Item_RefreshWieldedItems() for the hands). Will remove the item from the quickbar as side effect; see NWNX_Item_RefreshInventoryWindow() for an open inventory window.
 void NWNX_Item_SetItemAppearance(object oItem, int nType, int nIndex, int nValue, int bUpdateCreatureAppearance = FALSE);
+
+/// @brief Close and reopen a player's inventory window and resend everything in it.
+/// @remark The client keeps showing a worn item's old icon while its inventory window is open. Call this
+/// a moment (e.g. DelayCommand 0.5) after NWNX_Item_SetItemAppearance() so the window shows the new look.
+/// Does nothing if the window is closed.
+/// @param oPlayer The player whose inventory window to refresh.
+void NWNX_Item_RefreshInventoryWindow(object oPlayer);
+
+/// @brief Make every player resend what oCreature holds in its hands, without destroying the items.
+/// @remark After NWNX_Item_SetItemAppearance() on a wielded weapon or shield, the client recreates the item
+/// but can't draw it straight away, so the hand looks empty. Call this every 0.05 s for about 0.5 s
+/// afterwards; once the client can draw it, a resend is invisible. Players still see a re-equip motion
+/// (the client's equip routine resets the animation state); nothing is unequipped on the server.
+/// @param oCreature The creature holding the items.
+void NWNX_Item_RefreshWieldedItems(object oCreature);
 
 /// @brief Return a string containing the entire appearance for an item.
 /// @sa NWNX_Item_RestoreItemAppearance
@@ -249,4 +264,16 @@ int NWNX_Item_GetMinEquipLevelOverride(object oItem)
     NWNXPushObject(oItem);
     NWNXCall(NWNX_Item, "GetMinEquipLevelOverride");
     return NWNXPopInt();
+}
+
+void NWNX_Item_RefreshInventoryWindow(object oPlayer)
+{
+    NWNXPushObject(oPlayer);
+    NWNXCall(NWNX_Item, "RefreshInventoryWindow");
+}
+
+void NWNX_Item_RefreshWieldedItems(object oCreature)
+{
+    NWNXPushObject(oCreature);
+    NWNXCall(NWNX_Item, "RefreshWieldedItems");
 }
