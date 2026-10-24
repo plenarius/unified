@@ -11,6 +11,7 @@ var annotated =
     [ "NWNX_Encounter_CreatureListEntry", "structNWNX__Encounter__CreatureListEntry.html", "structNWNX__Encounter__CreatureListEntry" ],
     [ "NWNX_HTTPClient_Request", "structNWNX__HTTPClient__Request.html", "structNWNX__HTTPClient__Request" ],
     [ "NWNX_IPUnpacked", "structNWNX__IPUnpacked.html", "structNWNX__IPUnpacked" ],
+    [ "NWNX_ItemAppearance_Weapon", "structNWNX__ItemAppearance__Weapon.html", "structNWNX__ItemAppearance__Weapon" ],
     [ "NWNX_Object_LocalVariable", "structNWNX__Object__LocalVariable.html", "structNWNX__Object__LocalVariable" ],
     [ "NWNX_Player_JournalEntry", "structNWNX__Player__JournalEntry.html", "structNWNX__Player__JournalEntry" ],
     [ "NWNX_Player_QuickBarSlot", "structNWNX__Player__QuickBarSlot.html", "structNWNX__Player__QuickBarSlot" ],

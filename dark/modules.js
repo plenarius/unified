@@ -23,6 +23,7 @@ var modules =
     [ "Feedback", "group__feedback.html", "group__feedback" ],
     [ "HTTPClient", "group__httpclient.html", "group__httpclient" ],
     [ "Item", "group__item.html", "group__item" ],
+    [ "ItemAppearance", "group__itemappearance.html", "group__itemappearance" ],
     [ "ItemProperty", "group__itemproperty.html", "group__itemproperty" ],
     [ "MaxLevel", "group__maxlevel.html", "group__maxlevel" ],
     [ "Metrics InfluxDB", "group__metrics__influxdb.html", "group__metrics__influxdb" ],

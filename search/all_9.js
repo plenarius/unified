@@ -65,9 +65,10 @@ var searchData=
   ['isonic_266',['iSonic',['../structNWNX__Damage__DamageEventData.html#ab621265dce87ad6d8f00805455aef99f',1,'NWNX_Damage_DamageEventData::iSonic()'],['../structNWNX__Damage__DamageData.html#a7c3afe6cc289c5904aa533d76938521b',1,'NWNX_Damage_DamageData::iSonic()'],['../structNWNX__Damage__AttackEventData.html#a320fa9900bb825ce2f251fbf7a942f60',1,'NWNX_Damage_AttackEventData::iSonic()']]],
   ['ispellid_267',['iSpellId',['../structNWNX__Damage__DamageEventData.html#a65a5a8c26c08cd945914f05335170a6f',1,'NWNX_Damage_DamageEventData']]],
   ['item_268',['Item',['../group__item.html',1,'']]],
-  ['itemproperty_269',['ItemProperty',['../group__itemproperty.html',1,'']]],
-  ['itimestamp_270',['iTimestamp',['../structNWNX__WebHook__Message.html#acc31ee95b8eeebba9f5d970bcc796c90',1,'NWNX_WebHook_Message']]],
-  ['itohitmodifier_271',['iToHitModifier',['../structNWNX__Damage__AttackEventData.html#afc5f25c2e9d25dfe026a45eb479f0ece',1,'NWNX_Damage_AttackEventData']]],
-  ['itohitroll_272',['iToHitRoll',['../structNWNX__Damage__AttackEventData.html#a2418445d5a02752410e894d927d81235',1,'NWNX_Damage_AttackEventData']]],
-  ['iweaponattacktype_273',['iWeaponAttackType',['../structNWNX__Damage__AttackEventData.html#a839798bdaa39dbf0756a9f930f4a4873',1,'NWNX_Damage_AttackEventData']]]
+  ['itemappearance_269',['ItemAppearance',['../group__itemappearance.html',1,'']]],
+  ['itemproperty_270',['ItemProperty',['../group__itemproperty.html',1,'']]],
+  ['itimestamp_271',['iTimestamp',['../structNWNX__WebHook__Message.html#acc31ee95b8eeebba9f5d970bcc796c90',1,'NWNX_WebHook_Message']]],
+  ['itohitmodifier_272',['iToHitModifier',['../structNWNX__Damage__AttackEventData.html#afc5f25c2e9d25dfe026a45eb479f0ece',1,'NWNX_Damage_AttackEventData']]],
+  ['itohitroll_273',['iToHitRoll',['../structNWNX__Damage__AttackEventData.html#a2418445d5a02752410e894d927d81235',1,'NWNX_Damage_AttackEventData']]],
+  ['iweaponattacktype_274',['iWeaponAttackType',['../structNWNX__Damage__AttackEventData.html#a839798bdaa39dbf0756a9f930f4a4873',1,'NWNX_Damage_AttackEventData']]]
 ];
