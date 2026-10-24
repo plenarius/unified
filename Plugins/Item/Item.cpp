@@ -94,6 +94,25 @@ NWNX_EXPORT ArgumentStack RefreshInventoryWindow(ArgumentStack&& args)
     return {};
 }
 
+// Make every player resend what oCreature holds in its hands, without destroying the items. After
+// SetItemAppearance on a wielded item the client recreates it but attaches it before its model has
+// loaded, leaving the hand empty; calling this a moment later puts it back.
+NWNX_EXPORT ArgumentStack RefreshWieldedItems(ArgumentStack&& args)
+{
+    if (auto *pCreature = Utils::PopCreature(args))
+    {
+        for (auto *pPlayer : Globals::AppManager()->m_pServerExoApp->GetPlayerList())
+        {
+            if (auto *pLUO = pPlayer->GetLastUpdateObject(pCreature->m_idSelf))
+            {
+                pLUO->m_cAppearance.m_oidRightHandItem = Constants::OBJECT_INVALID;
+                pLUO->m_cAppearance.m_oidLeftHandItem = Constants::OBJECT_INVALID;
+            }
+        }
+    }
+    return {};
+}
+
 NWNX_EXPORT ArgumentStack SetItemAppearance(ArgumentStack&& args)
 {
     if (auto *pItem = Utils::PopItem(args))
@@ -157,7 +176,8 @@ NWNX_EXPORT ArgumentStack SetItemAppearance(ArgumentStack&& args)
             if (!bUpdateCreatureAppearance || !pPossessor->m_pInventory->GetItemInInventory(pItem))
                 return {};
             uint32_t nSlot = pPossessor->m_pInventory->GetSlotFromItem(pItem);
-            if (nSlot != Constants::EquipmentSlot::Head && nSlot != Constants::EquipmentSlot::Chest && nSlot != Constants::EquipmentSlot::Cloak)
+            if (nSlot != Constants::EquipmentSlot::Head && nSlot != Constants::EquipmentSlot::Chest && nSlot != Constants::EquipmentSlot::Cloak &&
+                nSlot != Constants::EquipmentSlot::RightHand && nSlot != Constants::EquipmentSlot::LeftHand)
                 return {};
 
             auto *pMessage = Globals::AppManager()->m_pServerExoApp->GetNWSMessage();
@@ -174,6 +194,8 @@ NWNX_EXPORT ArgumentStack SetItemAppearance(ArgumentStack&& args)
                     UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidHeadItem)
                     UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidChestItem)
                     UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidCloakItem)
+                    UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidRightHandItem)
+                    UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidLeftHandItem)
 #undef UPDATE_ITEM_APPEARANCE
                 }
             }
