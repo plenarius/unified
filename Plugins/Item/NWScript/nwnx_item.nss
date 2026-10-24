@@ -75,6 +75,13 @@ void NWNX_Item_SetBaseItemType(object oItem, int nBaseItem);
 /// @param bUpdateCreatureAppearance If TRUE, also update the appearance of oItem's possessor. Only works for armor/helmets/cloaks. Will remove the item from the quickbar as side effect.
 void NWNX_Item_SetItemAppearance(object oItem, int nType, int nIndex, int nValue, int bUpdateCreatureAppearance = FALSE);
 
+/// @brief Close and reopen a player's inventory window and resend everything in it.
+/// @remark The client keeps showing a worn item's old icon while its inventory window is open. Call this
+/// a moment (e.g. DelayCommand 0.5) after NWNX_Item_SetItemAppearance() so the window shows the new look.
+/// Does nothing if the window is closed.
+/// @param oPlayer The player whose inventory window to refresh.
+void NWNX_Item_RefreshInventoryWindow(object oPlayer);
+
 /// @brief Return a string containing the entire appearance for an item.
 /// @sa NWNX_Item_RestoreItemAppearance
 /// @param oItem The item object.
@@ -249,4 +256,10 @@ int NWNX_Item_GetMinEquipLevelOverride(object oItem)
     NWNXPushObject(oItem);
     NWNXCall(NWNX_Item, "GetMinEquipLevelOverride");
     return NWNXPopInt();
+}
+
+void NWNX_Item_RefreshInventoryWindow(object oPlayer)
+{
+    NWNXPushObject(oPlayer);
+    NWNXCall(NWNX_Item, "RefreshInventoryWindow");
 }

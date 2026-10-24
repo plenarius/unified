@@ -13,6 +13,8 @@
 #include "API/CNWCCMessageData.hpp"
 #include "API/CNWSPlayer.hpp"
 #include "API/CNWSInventory.hpp"
+#include "API/CNWSPlayerInventoryGUI.hpp"
+#include "API/CNWSPlayerLUOInventory.hpp"
 
 using namespace NWNXLib;
 using namespace NWNXLib::API;
@@ -68,6 +70,27 @@ NWNX_EXPORT ArgumentStack SetBaseItemType(ArgumentStack&& args)
     if (auto *pItem = Utils::PopItem(args))
         pItem->m_nBaseItem = args.extract<int32_t>();
 
+    return {};
+}
+
+// Close and reopen a player's inventory window, as the player would, and resend everything in it.
+// The client keeps an item's old icon while the window stays open (CGuiInvbox::AddItem returns
+// early for the item it already shows), so call this a moment after changing a worn item's look.
+NWNX_EXPORT ArgumentStack RefreshInventoryWindow(ArgumentStack&& args)
+{
+    if (auto *pCreature = Utils::PopCreature(args))
+    {
+        auto *pPlayer = Globals::AppManager()->m_pServerExoApp->GetClientObjectByObjectId(pCreature->m_idSelf);
+        if (pPlayer && pPlayer->m_pInventoryGUI && pPlayer->m_pInventoryGUI->m_bGuiInventoryOpen &&
+            pPlayer->m_pInventoryGUI->m_pcLastUpdateInventory)
+        {
+            auto *pMessage = Globals::AppManager()->m_pServerExoApp->GetNWSMessage();
+            pMessage->SendPlayerToServerGuiInventory_Status(pPlayer, false, pCreature->m_idSelf);
+            pMessage->SendPlayerToServerGuiInventory_Status(pPlayer, true, pCreature->m_idSelf);
+            pPlayer->m_pInventoryGUI->m_pcLastUpdateInventory->ClearSlots();
+            pPlayer->m_pInventoryGUI->m_pcLastUpdateInventory->ClearRepository();
+        }
+    }
     return {};
 }
 
@@ -152,6 +175,21 @@ NWNX_EXPORT ArgumentStack SetItemAppearance(ArgumentStack&& args)
                     UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidChestItem)
                     UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidCloakItem)
 #undef UPDATE_ITEM_APPEARANCE
+                }
+            }
+
+            // The owner's inventory window still shows the item it had before the destroy; forget it
+            // there too, so the next inventory update puts the item back in its slot.
+            if (auto *pPlayer = Globals::AppManager()->m_pServerExoApp->GetClientObjectByObjectId(pPossessor->m_idSelf))
+            {
+                if (pPlayer->m_pInventoryGUI && pPlayer->m_pInventoryGUI->m_pcLastUpdateInventory)
+                {
+                    auto& oidSlot = pPlayer->m_pInventoryGUI->m_pcLastUpdateInventory->m_oidInventorySlots[__builtin_ctz(nSlot)];
+                    if (oidSlot == pItem->m_idSelf)
+                        oidSlot = Constants::OBJECT_INVALID;
+
+                    // The client won't redraw a slot that already holds this item (CGuiInvbox::AddItem
+                    // returns early), so close and reopen the window like the player would.
                 }
             }
         }
