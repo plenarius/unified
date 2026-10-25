@@ -1,5 +1,13 @@
 var NAVTREEINDEX18 =
 {
+"nwnx__redis__short_8nss.html#a32ec1b29c4993b3938ca3a9896eb0d38":[4,0,3,31,0,3,109],
+"nwnx__redis__short_8nss.html#a335f261a68a0af560bd2a712525e8ebb":[4,0,3,31,0,3,92],
+"nwnx__redis__short_8nss.html#a33612ed4aee117cdf6639ddedc072f80":[4,0,3,31,0,3,15],
+"nwnx__redis__short_8nss.html#a3744b71d4fa9b9363fdc997909a864a2":[4,0,3,31,0,3,65],
+"nwnx__redis__short_8nss.html#a389ba4a3d5f1438de8ced69bb34a314e":[4,0,3,31,0,3,97],
+"nwnx__redis__short_8nss.html#a3a728ec56f956f7c8dc04740fb06ea53":[4,0,3,31,0,3,181],
+"nwnx__redis__short_8nss.html#a3ab71a95d791b27a0583c33bcb72fe1e":[4,0,3,31,0,3,213],
+"nwnx__redis__short_8nss.html#a3d2504c4499e2661f9fef80f41df198e":[4,0,3,31,0,3,182],
 "nwnx__redis__short_8nss.html#a3ef0bab4ce4f18dff779e435a21a0145":[4,0,3,31,0,3,71],
 "nwnx__redis__short_8nss.html#a40a53f13200e006d312351b80707dd08":[4,0,3,31,0,3,9],
 "nwnx__redis__short_8nss.html#a40db82e7d1ef791e660aad47632735e9":[4,0,3,31,0,3,68],
@@ -241,13 +249,5 @@ var NAVTREEINDEX18 =
 "structNWNX__Damage__AttackEventData.html#a2414d16a8249c9b9d3e78a6bdd1d376b":[0,10,3,5],
 "structNWNX__Damage__AttackEventData.html#a2418445d5a02752410e894d927d81235":[0,10,3,40],
 "structNWNX__Damage__AttackEventData.html#a28199024e132392f41b56daaab82032e":[0,10,3,16],
-"structNWNX__Damage__AttackEventData.html#a28fce1406884ca59dd146d31c99d7fb2":[0,10,3,37],
-"structNWNX__Damage__AttackEventData.html#a2e54f8edc87d2f8425dbd9b7fbc01ba3":[0,10,3,24],
-"structNWNX__Damage__AttackEventData.html#a2f860433eb2ee4d0af58701b077f226b":[0,10,3,34],
-"structNWNX__Damage__AttackEventData.html#a3111cfb99ea72164d3cf4a853b7a3581":[0,10,3,19],
-"structNWNX__Damage__AttackEventData.html#a320fa9900bb825ce2f251fbf7a942f60":[0,10,3,12],
-"structNWNX__Damage__AttackEventData.html#a3f96ac7d57b79a1d652e0629de19ed73":[0,10,3,17],
-"structNWNX__Damage__AttackEventData.html#a43f2070d4f74934061cb83620d37b030":[0,10,3,23],
-"structNWNX__Damage__AttackEventData.html#a4a442823998c0b06cb99d7ac45c0a3d3":[0,10,3,3],
-"structNWNX__Damage__AttackEventData.html#a4d17206ebc330bb76f5227665bc6ef31":[0,10,3,20]
+"structNWNX__Damage__AttackEventData.html#a28fce1406884ca59dd146d31c99d7fb2":[0,10,3,37]
 };

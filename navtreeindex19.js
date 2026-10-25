@@ -1,5 +1,13 @@
 var NAVTREEINDEX19 =
 {
+"structNWNX__Damage__AttackEventData.html#a2e54f8edc87d2f8425dbd9b7fbc01ba3":[0,10,3,24],
+"structNWNX__Damage__AttackEventData.html#a2f860433eb2ee4d0af58701b077f226b":[0,10,3,34],
+"structNWNX__Damage__AttackEventData.html#a3111cfb99ea72164d3cf4a853b7a3581":[0,10,3,19],
+"structNWNX__Damage__AttackEventData.html#a320fa9900bb825ce2f251fbf7a942f60":[0,10,3,12],
+"structNWNX__Damage__AttackEventData.html#a3f96ac7d57b79a1d652e0629de19ed73":[0,10,3,17],
+"structNWNX__Damage__AttackEventData.html#a43f2070d4f74934061cb83620d37b030":[0,10,3,23],
+"structNWNX__Damage__AttackEventData.html#a4a442823998c0b06cb99d7ac45c0a3d3":[0,10,3,3],
+"structNWNX__Damage__AttackEventData.html#a4d17206ebc330bb76f5227665bc6ef31":[0,10,3,20],
 "structNWNX__Damage__AttackEventData.html#a58e7ae969bea68f6676564575bfbd1c8":[0,10,3,31],
 "structNWNX__Damage__AttackEventData.html#a7360868ab701bc83ef18b1891f99239c":[0,10,3,21],
 "structNWNX__Damage__AttackEventData.html#a77439bb6727bb0e78ad1c145170ac3d5":[0,10,3,6],
@@ -170,10 +178,10 @@ var NAVTREEINDEX19 =
 "structNWNX__IPUnpacked.html#ad95e63782ed593741a81e19741a978dc":[0,24,2,4],
 "structNWNX__IPUnpacked.html#adec6dfc16333f7643f4b2b3a948a461d":[0,24,2,8],
 "structNWNX__IPUnpacked.html#ae35c18ac2c0b8af028ee28e2f424b486":[0,24,2,7],
-"structNWNX__ItemAppearance__Weapon.html":[0,23,1],
-"structNWNX__ItemAppearance__Weapon.html#a374d865f9122cd776486b75b32afe6a6":[0,23,1,0],
-"structNWNX__ItemAppearance__Weapon.html#a604d3d40a69f6a27ed5c884c9e67d5d6":[0,23,1,2],
-"structNWNX__ItemAppearance__Weapon.html#ac17760e155f410b7ccfff4950f5435ef":[0,23,1,1],
+"structNWNX__ItemAppearance__Weapon.html":[0,23,2],
+"structNWNX__ItemAppearance__Weapon.html#a374d865f9122cd776486b75b32afe6a6":[0,23,2,0],
+"structNWNX__ItemAppearance__Weapon.html#a604d3d40a69f6a27ed5c884c9e67d5d6":[0,23,2,2],
+"structNWNX__ItemAppearance__Weapon.html#ac17760e155f410b7ccfff4950f5435ef":[0,23,2,1],
 "structNWNX__Object__LocalVariable.html":[0,29,2],
 "structNWNX__Object__LocalVariable.html#a71602dfd910b91f55beda204d293e7c4":[0,29,2,1],
 "structNWNX__Object__LocalVariable.html#a8d610962730ec74152b0fca0a45fce6d":[0,29,2,0],
@@ -241,13 +249,5 @@ var NAVTREEINDEX19 =
 "structNWNX__Tileset__TileEdgesAndCorners.html#a565fa43dc398344172a3168be6184bbd":[0,44,4,2],
 "structNWNX__Tileset__TileEdgesAndCorners.html#aa985b5db2627da932f350d7d5a0138c3":[0,44,4,4],
 "structNWNX__Tileset__TileEdgesAndCorners.html#ae49ce3f6be1e4a5afbb34fe31d48c354":[0,44,4,7],
-"structNWNX__Tileset__TileEdgesAndCorners.html#aeca0c8be1795dafc4f6cfc34acbc60a6":[0,44,4,1],
-"structNWNX__Tileset__TileEdgesAndCorners.html#afdf284cd807a36ca64ade8a549f43b92":[0,44,4,6],
-"structNWNX__Tileset__TilesetData.html":[0,44,2],
-"structNWNX__Tileset__TilesetData.html#a010d411b92f707702a3a40cebcb37f67":[0,44,2,4],
-"structNWNX__Tileset__TilesetData.html#a09fa4cfdc5ae13b61f5d1099b03e7b3d":[0,44,2,3],
-"structNWNX__Tileset__TilesetData.html#a21acdd4c8bf99eb5df29977b805fd8c0":[0,44,2,5],
-"structNWNX__Tileset__TilesetData.html#a28a1cc6ee6bb8ae51286c357f429a548":[0,44,2,11],
-"structNWNX__Tileset__TilesetData.html#a31228a8531da39309b35df8157ed134d":[0,44,2,6],
-"structNWNX__Tileset__TilesetData.html#a64738f1c4face0905ca5deea1ecff5f5":[0,44,2,7]
+"structNWNX__Tileset__TileEdgesAndCorners.html#aeca0c8be1795dafc4f6cfc34acbc60a6":[0,44,4,1]
 };

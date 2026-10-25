@@ -104,7 +104,26 @@ $(document).ready(function(){initNavTree('group__itemappearance.html',''); initR
 <div class="title">ItemAppearance</div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
+
+
+<h3><a id="itemappearance"></a>Readme</h3><div class="textblock">Lists the appearances an item can take and picks, steps through or randomizes them, with rules to leave some out.The lists are built from the icons in the module and haks, so only appearances that have an icon (and, for weapons, a model) are offered.<h2><a class="anchor" id="autotoc_md515"></a>
+Usage</h2>
+<p>Call <code><a class="el" href="group__itemappearance.html#gaaaf252ec687616238cc9b75219b160d0" title="Build the appearance lists from the icons in the module and haks, and clear all rules.">NWNX_ItemAppearance_CacheAppearances()</a></code> once on module load, after the haks are available. It builds the lists and clears every rule, so add rules (<code><a class="el" href="group__itemappearance.html#ga7150692446b358695b3df581c49c4aa8" title="Leave out the appearances matching every given range.">NWNX_ItemAppearance_BlacklistAppearance()</a></code>, <code><a class="el" href="group__itemappearance.html#ga0ee17ff98d66cd71a9ebbadff9e813db" title="The weapon models in sModels may only be used on all three parts together.">NWNX_ItemAppearance_SyncAppearance()</a></code>) afterwards.</p>
+<p>Rules apply to an item class (the <code>ItemClass</code> column of baseitems.2da), so a rule for one base item applies to every base item sharing its class.</p>
+<p>Ranges are written as <code>*</code> (any value) or a comma separated list of <code>n</code>, <code>n-m</code>, <code>-m</code> (up to m) and <code>n-</code> (n and up). A range that doesn't parse ignores the whole rule and logs a warning.</p>
+<h2><a class="anchor" id="autotoc_md516"></a>
+Notes</h2>
+<ul>
+<li>Simple and layered items (rings, shields, cloaks, helmets...) have a single model number and use only the first range of a blacklist rule. Weapons have three parts, each with a model and a color (0-9), written as <code>model * 10 + color</code>.</li>
+<li>A synced weapon model can only be used on all three parts together. Stepping or randomizing a single part never lands on a synced model, since the other parts would no longer match. To reach one, use <code><a class="el" href="group__itemappearance.html#gad45dd5a2bb964b313c0e47b2d07e21e2" title="The next allowed appearance for all three parts of a weapon, by bottom model, wrapping around.">NWNX_ItemAppearance_GetNextWeaponAppearance()</a></code> / <code>GetPreviousWeaponAppearance()</code> (step all three parts by bottom model) or <code>GetRandomWeaponAppearance()</code>.</li>
+<li>A blacklist rule for a simple or layered item may only use the first range; a rule with any other range is ignored with a warning.</li>
+<li>For weapons the next and previous functions return <code>model * 10 + color</code>, like the random ones, not just the model.</li>
+<li>The functions only return values. Apply them with <code><a class="el" href="group__item.html#ga521f6fb8560e5e15b3755006f533fd33" title="Make a single change to the appearance of an item.">NWNX_Item_SetItemAppearance()</a></code> or <code>CopyItemAndModify()</code>.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md517"></a>
+Environment Variables</h2>
+<p>There are no environment variables for this plugin. </p>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
 <tr class="memitem:nwnx__itemapp_8nss"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nwnx__itemapp_8nss.html">nwnx_itemapp.nss</a></td></tr>
@@ -133,6 +152,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga5c75d583135f521910656f8d68cb315f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structNWNX__ItemAppearance__Weapon.html">NWNX_ItemAppearance_Weapon</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__itemappearance.html#ga5c75d583135f521910656f8d68cb315f">NWNX_ItemAppearance_GetRandomWeaponAppearance</a> (object oItem)</td></tr>
 <tr class="memdesc:ga5c75d583135f521910656f8d68cb315f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A random appearance for all three parts of a weapon.  <a href="group__itemappearance.html#ga5c75d583135f521910656f8d68cb315f">More...</a><br /></td></tr>
 <tr class="separator:ga5c75d583135f521910656f8d68cb315f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad45dd5a2bb964b313c0e47b2d07e21e2"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structNWNX__ItemAppearance__Weapon.html">NWNX_ItemAppearance_Weapon</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__itemappearance.html#gad45dd5a2bb964b313c0e47b2d07e21e2">NWNX_ItemAppearance_GetNextWeaponAppearance</a> (object oItem)</td></tr>
+<tr class="memdesc:gad45dd5a2bb964b313c0e47b2d07e21e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The next allowed appearance for all three parts of a weapon, by bottom model, wrapping around.  <a href="group__itemappearance.html#gad45dd5a2bb964b313c0e47b2d07e21e2">More...</a><br /></td></tr>
+<tr class="separator:gad45dd5a2bb964b313c0e47b2d07e21e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50dbbd7cdb66a00afc69b101de39350d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structNWNX__ItemAppearance__Weapon.html">NWNX_ItemAppearance_Weapon</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__itemappearance.html#ga50dbbd7cdb66a00afc69b101de39350d">NWNX_ItemAppearance_GetPreviousWeaponAppearance</a> (object oItem)</td></tr>
+<tr class="memdesc:ga50dbbd7cdb66a00afc69b101de39350d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The previous allowed appearance for all three parts of a weapon, by bottom model, wrapping around.  <a href="group__itemappearance.html#ga50dbbd7cdb66a00afc69b101de39350d">More...</a><br /></td></tr>
+<tr class="separator:ga50dbbd7cdb66a00afc69b101de39350d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9518ac201d6a395a4dd46a67e60f08cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__itemappearance.html#ga9518ac201d6a395a4dd46a67e60f08cb">NWNX_ItemAppearance_GetNextAppearance</a> (object oItem, int nPart=0)</td></tr>
 <tr class="memdesc:ga9518ac201d6a395a4dd46a67e60f08cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The next allowed appearance for one part of an item, wrapping around.  <a href="group__itemappearance.html#ga9518ac201d6a395a4dd46a67e60f08cb">More...</a><br /></td></tr>
 <tr class="separator:ga9518ac201d6a395a4dd46a67e60f08cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,7 +190,7 @@ Functions</h2></td></tr>
 <p>Build the appearance lists from the icons in the module and haks, and clear all rules. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>Call once on module load, before adding rules. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00077">77</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00094">94</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
 
 </div>
 </div>
@@ -228,7 +253,7 @@ Functions</h2></td></tr>
 <p>Leave out the appearances matching every given range. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>A range is "*" (any), or a comma separated list of "n", "n-m", "-m" (up to m) and "n-" (n and up). </dd>
 <dd>
-Simple items (rings, shields, cloaks, helmets) only use sBot, matched against the model number. Weapons match sBot, sMid and sTop against the model and sBotC, sMidC and sTopC against the color. </dd></dl>
+Simple items (rings, shields, cloaks, helmets) only use sBot, matched against the model number. A rule for one of them with any other range is ignored, with a warning in the log. Weapons match sBot, sMid and sTop against the model and sBotC, sMidC and sTopC against the color. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nBaseItem</td><td>The BASE_ITEM_* the rule is for (it applies to every base item of the same item class). </td></tr>
@@ -242,7 +267,7 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00082">82</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00099">99</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
 
 </div>
 </div>
@@ -281,7 +306,7 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00094">94</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00111">111</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
 
 </div>
 </div>
@@ -312,6 +337,7 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
 </div><div class="memdoc">
 
 <p>A random appearance for one part of an item, allowed with its other parts as they are. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>A single part never lands on a synced model, since the other parts would no longer match. Use <a class="el" href="group__itemappearance.html#ga5c75d583135f521910656f8d68cb315f" title="A random appearance for all three parts of a weapon.">NWNX_ItemAppearance_GetRandomWeaponAppearance()</a> or <a class="el" href="group__itemappearance.html#gad45dd5a2bb964b313c0e47b2d07e21e2" title="The next allowed appearance for all three parts of a weapon, by bottom model, wrapping around.">NWNX_ItemAppearance_GetNextWeaponAppearance()</a> for those. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">oItem</td><td>The item. </td></tr>
@@ -321,7 +347,7 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The model number for simple items, model * 10 + color for weapons, -1 if there is none. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00101">101</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00118">118</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
 
 </div>
 </div>
@@ -342,7 +368,7 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
 </div><div class="memdoc">
 
 <p>A random appearance for all three parts of a weapon. </p>
-<dl class="section remark"><dt>Remarks</dt><dd>A synced model picked for the bottom is used for all three parts. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>A synced model picked for the bottom is used for all three parts. The models are picked evenly, not the model and color together, so a model with many colors isn't favored. Only returns -1 if no weapon is allowed. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">oItem</td><td>The weapon. </td></tr>
@@ -351,7 +377,66 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The appearance; all parts are -1 if none was found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00101">101</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00118">118</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
+
+</div>
+</div>
+<a id="gad45dd5a2bb964b313c0e47b2d07e21e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad45dd5a2bb964b313c0e47b2d07e21e2">&#9670;&nbsp;</a></span>NWNX_ItemAppearance_GetNextWeaponAppearance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structNWNX__ItemAppearance__Weapon.html">NWNX_ItemAppearance_Weapon</a> NWNX_ItemAppearance_GetNextWeaponAppearance </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oItem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The next allowed appearance for all three parts of a weapon, by bottom model, wrapping around. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>The middle and top parts stay as they are if the rules allow it. Otherwise they take the new bottom model (all three parts do for a synced model), or failing that the first model that isn't synced. The current color is kept where the new model has it. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oItem</td><td>The weapon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The appearance, the current one if it is the only one allowed; all parts are -1 if none is. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00118">118</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga50dbbd7cdb66a00afc69b101de39350d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga50dbbd7cdb66a00afc69b101de39350d">&#9670;&nbsp;</a></span>NWNX_ItemAppearance_GetPreviousWeaponAppearance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structNWNX__ItemAppearance__Weapon.html">NWNX_ItemAppearance_Weapon</a> NWNX_ItemAppearance_GetPreviousWeaponAppearance </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oItem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The previous allowed appearance for all three parts of a weapon, by bottom model, wrapping around. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oItem</td><td>The weapon. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>As <a class="el" href="group__itemappearance.html#gad45dd5a2bb964b313c0e47b2d07e21e2" title="The next allowed appearance for all three parts of a weapon, by bottom model, wrapping around.">NWNX_ItemAppearance_GetNextWeaponAppearance()</a>, for the previous model. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00118">118</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
 
 </div>
 </div>
@@ -391,7 +476,7 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The model number for simple items. For weapons, model * 10 + color of the next model, keeping the current color if the model has it. The current appearance if it is the only one allowed, -1 if none is. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00120">120</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00159">159</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
 
 </div>
 </div>
@@ -431,7 +516,7 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>As <a class="el" href="group__itemappearance.html#ga9518ac201d6a395a4dd46a67e60f08cb" title="The next allowed appearance for one part of an item, wrapping around.">NWNX_ItemAppearance_GetNextAppearance()</a>, for the previous model. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00128">128</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00167">167</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
 
 </div>
 </div>
@@ -471,7 +556,7 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The color (0-9), -1 if none is allowed. Simple items return the next appearance. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00136">136</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00175">175</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
 
 </div>
 </div>
@@ -511,7 +596,7 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The color (0-9), -1 if none is allowed. Simple items return the previous appearance. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00144">144</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__itemapp_8nss_source.html#l00183">183</a> of file <a class="el" href="nwnx__itemapp_8nss_source.html">nwnx_itemapp.nss</a>.</p>
 
 </div>
 </div>
@@ -521,7 +606,7 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Oct 24 2026 02:42:13 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Oct 25 2026 15:46:19 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>

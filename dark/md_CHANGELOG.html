@@ -121,6 +121,7 @@ Added</h2>
 <h4><a class="anchor" id="autotoc_md12"></a>
 New Plugins</h4>
 <ul>
+<li>ItemAppearance: Lists the appearances an item can take, with blacklist and sync rules, and gets the next, previous or a random one for simple items and weapons.</li>
 <li>Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md13"></a>
@@ -132,6 +133,8 @@ New NWScript Functions</h4>
 <li>Util: SetStartingLocation()</li>
 <li>Object: GetLocalizedDescription(), SetLocalizedDescription()</li>
 <li>Util: RawPrint()</li>
+<li>Item: RefreshInventoryWindow(), RefreshWieldedItems()</li>
+<li>ItemAppearance: CacheAppearances(), BlacklistAppearance(), SyncAppearance(), GetRandomAppearance(), GetRandomWeaponAppearance(), GetNextWeaponAppearance(), GetPreviousWeaponAppearance(), GetNextAppearance(), GetPreviousAppearance(), GetNextColor(), GetPreviousColor()</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md14"></a>
 Changed</h2>
@@ -142,6 +145,7 @@ Changed</h2>
 <li>Admin: Player/DM password functions no longer print the passwords to the log.</li>
 <li>SQL: Database passwords are no longer printed to the log when connecting.</li>
 <li>HTTPClient: Enable three custom fields to pass to response.</li>
+<li>Item: <code>SetItemAppearance()</code> with <code>bUpdateCreatureAppearance</code> now also updates items held in either hand.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md15"></a>
 Deprecated</h2>
@@ -156,6 +160,7 @@ Removed</h2>
 <h2><a class="anchor" id="autotoc_md17"></a>
 Fixed</h2>
 <ul>
+<li>Item: Fixed <code>SetItemAppearance()</code> rejecting color 0 for <code>ITEM_APPR_WEAPON_COLOR_*</code>.</li>
 <li>Fixed <code>NWNX_TWEAKS_SETAREA_CALLS_SETPOSITION</code> not working with <code>NWNX_ON_MATERIALCHANGE_*</code>.</li>
 <li>MaxLevel: Fixed returning an invalid number of known spells in some cases.</li>
 <li>Fixed <code>NWNX_TWEAKS_RESIST_ENERGY_STACKS_WITH_EPIC_ENERGY_RESISTANCE</code> not working correctly when the character has more than one resist energy feat.</li>
@@ -1715,7 +1720,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Oct 24 2026 02:42:14 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Oct 25 2026 15:46:20 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>

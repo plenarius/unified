@@ -1,5 +1,6 @@
 var group__itemappearance =
 [
+    [ "Readme", "group__itemappearance.html#itemappearance", null ],
     [ "nwnx_itemapp.nss", "nwnx__itemapp_8nss.html", null ],
     [ "NWNX_ItemAppearance_Weapon", "structNWNX__ItemAppearance__Weapon.html", [
       [ "nBottom", "structNWNX__ItemAppearance__Weapon.html#a374d865f9122cd776486b75b32afe6a6", null ],
@@ -11,6 +12,8 @@ var group__itemappearance =
     [ "NWNX_ItemAppearance_SyncAppearance", "group__itemappearance.html#ga0ee17ff98d66cd71a9ebbadff9e813db", null ],
     [ "NWNX_ItemAppearance_GetRandomAppearance", "group__itemappearance.html#ga15a1560fb46062bceb0e2d7422b400fe", null ],
     [ "NWNX_ItemAppearance_GetRandomWeaponAppearance", "group__itemappearance.html#ga5c75d583135f521910656f8d68cb315f", null ],
+    [ "NWNX_ItemAppearance_GetNextWeaponAppearance", "group__itemappearance.html#gad45dd5a2bb964b313c0e47b2d07e21e2", null ],
+    [ "NWNX_ItemAppearance_GetPreviousWeaponAppearance", "group__itemappearance.html#ga50dbbd7cdb66a00afc69b101de39350d", null ],
     [ "NWNX_ItemAppearance_GetNextAppearance", "group__itemappearance.html#ga9518ac201d6a395a4dd46a67e60f08cb", null ],
     [ "NWNX_ItemAppearance_GetPreviousAppearance", "group__itemappearance.html#gaea0fc39d592a2bf92f8f4f95421c0873", null ],
     [ "NWNX_ItemAppearance_GetNextColor", "group__itemappearance.html#ga32758d4ff020cfca5d5e724904e23dc9", null ],
