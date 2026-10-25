@@ -119,6 +119,19 @@ Functions</h2></td></tr>
 <tr class="separator:ga7e4571a5d447d07e04a67d1cdb205b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga85079c0f81a0ede6161767f7660cba73"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__testplayer.html#ga85079c0f81a0ede6161767f7660cba73">NWNX_TestPlayer_GetIsFake</a> (object oCreature)</td></tr>
 <tr class="separator:ga85079c0f81a0ede6161767f7660cba73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabe69f83cebb0fa9ce7fbd6cf966d6b08"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__testplayer.html#gabe69f83cebb0fa9ce7fbd6cf966d6b08">NWNX_TestPlayer_GetPlayerId</a> (object oCreature)</td></tr>
+<tr class="separator:gabe69f83cebb0fa9ce7fbd6cf966d6b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga44c571b9a26db46698d6ac576cb10ecc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__testplayer.html#ga44c571b9a26db46698d6ac576cb10ecc">NWNX_TestPlayer_GetCount</a> ()</td></tr>
+<tr class="separator:ga44c571b9a26db46698d6ac576cb10ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab2d646590271ac9cf112d570f039b7bc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__testplayer.html#gab2d646590271ac9cf112d570f039b7bc">NWNX_TestPlayer_GetMessageCount</a> (object oCreature, int nMajor, int nMinor=-1)</td></tr>
+<tr class="memdesc:gab2d646590271ac9cf112d570f039b7bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count what the server has sent a fake player, by message type.  <a href="group__testplayer.html#gab2d646590271ac9cf112d570f039b7bc">More...</a><br /></td></tr>
+<tr class="separator:gab2d646590271ac9cf112d570f039b7bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa0a28b52d84da9f47faeb667a4a8c5b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__testplayer.html#gaa0a28b52d84da9f47faeb667a4a8c5b1">NWNX_TestPlayer_ClearMessages</a> (object oCreature)</td></tr>
+<tr class="memdesc:gaa0a28b52d84da9f47faeb667a4a8c5b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the message counts of a fake player.  <a href="group__testplayer.html#gaa0a28b52d84da9f47faeb667a4a8c5b1">More...</a><br /></td></tr>
+<tr class="separator:gaa0a28b52d84da9f47faeb667a4a8c5b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga55a9d4618f487e2e616f460a36a2ea56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__testplayer.html#ga55a9d4618f487e2e616f460a36a2ea56">NWNX_TestPlayer_SetInventoryOpen</a> (object oCreature, int bOpen=TRUE)</td></tr>
+<tr class="memdesc:ga55a9d4618f487e2e616f460a36a2ea56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell the server a fake player has its inventory window open (or closed).  <a href="group__testplayer.html#ga55a9d4618f487e2e616f460a36a2ea56">More...</a><br /></td></tr>
+<tr class="separator:ga55a9d4618f487e2e616f460a36a2ea56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga2ea4052955de9f95ed81e6d3016ea273"></a>
@@ -164,7 +177,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The fake player's id, or 0 on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__testplayer_8nss_source.html#l00024">24</a> of file <a class="el" href="nwnx__testplayer_8nss_source.html">nwnx_testplayer.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__testplayer_8nss_source.html#l00051">51</a> of file <a class="el" href="nwnx__testplayer_8nss_source.html">nwnx_testplayer.nss</a>.</p>
 
 </div>
 </div>
@@ -187,7 +200,7 @@ Functions</h2></td></tr>
 <p>Turn a fake player's creature back into an ordinary creature. </p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if oCreature had a fake player. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__testplayer_8nss_source.html#l00033">33</a> of file <a class="el" href="nwnx__testplayer_8nss_source.html">nwnx_testplayer.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__testplayer_8nss_source.html#l00060">60</a> of file <a class="el" href="nwnx__testplayer_8nss_source.html">nwnx_testplayer.nss</a>.</p>
 
 </div>
 </div>
@@ -208,7 +221,153 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>TRUE if oCreature is controlled by a fake player. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__testplayer_8nss_source.html#l00040">40</a> of file <a class="el" href="nwnx__testplayer_8nss_source.html">nwnx_testplayer.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__testplayer_8nss_source.html#l00067">67</a> of file <a class="el" href="nwnx__testplayer_8nss_source.html">nwnx_testplayer.nss</a>.</p>
+
+</div>
+</div>
+<a id="gabe69f83cebb0fa9ce7fbd6cf966d6b08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabe69f83cebb0fa9ce7fbd6cf966d6b08">&#9670;&nbsp;</a></span>NWNX_TestPlayer_GetPlayerId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_TestPlayer_GetPlayerId </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The fake player's id, 0 if oCreature has none. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__testplayer_8nss_source.html#l00074">74</a> of file <a class="el" href="nwnx__testplayer_8nss_source.html">nwnx_testplayer.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga44c571b9a26db46698d6ac576cb10ecc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga44c571b9a26db46698d6ac576cb10ecc">&#9670;&nbsp;</a></span>NWNX_TestPlayer_GetCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_TestPlayer_GetCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>How many fake players there are. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__testplayer_8nss_source.html#l00081">81</a> of file <a class="el" href="nwnx__testplayer_8nss_source.html">nwnx_testplayer.nss</a>.</p>
+
+</div>
+</div>
+<a id="gab2d646590271ac9cf112d570f039b7bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab2d646590271ac9cf112d570f039b7bc">&#9670;&nbsp;</a></span>NWNX_TestPlayer_GetMessageCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_TestPlayer_GetMessageCount </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nMajor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nMinor</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Count what the server has sent a fake player, by message type. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>Counts messages written through CNWSMessage::SendServerToPlayerMessage since the player was attached or last cleared. Discrete messages can be told apart, e.g. a destroyed item is major 5 (game object update) minor 7, and the inventory window open/close is major 13 minor 1. The per-tick object updates are one message each, so what is inside them can't be checked. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oCreature</td><td>The fake player's creature. </td></tr>
+    <tr><td class="paramname">nMajor</td><td>The message's major type (MessageMajor in NWNXLib/API/Constants/Messages.hpp). </td></tr>
+    <tr><td class="paramname">nMinor</td><td>The minor type, or -1 for all of them. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of messages, 0 if oCreature has no fake player. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__testplayer_8nss_source.html#l00087">87</a> of file <a class="el" href="nwnx__testplayer_8nss_source.html">nwnx_testplayer.nss</a>.</p>
+
+</div>
+</div>
+<a id="gaa0a28b52d84da9f47faeb667a4a8c5b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa0a28b52d84da9f47faeb667a4a8c5b1">&#9670;&nbsp;</a></span>NWNX_TestPlayer_ClearMessages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_TestPlayer_ClearMessages </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reset the message counts of a fake player. </p>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if oCreature had a fake player. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__testplayer_8nss_source.html#l00096">96</a> of file <a class="el" href="nwnx__testplayer_8nss_source.html">nwnx_testplayer.nss</a>.</p>
+
+</div>
+</div>
+<a id="ga55a9d4618f487e2e616f460a36a2ea56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga55a9d4618f487e2e616f460a36a2ea56">&#9670;&nbsp;</a></span>NWNX_TestPlayer_SetInventoryOpen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NWNX_TestPlayer_SetInventoryOpen </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>oCreature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bOpen</em> = <code>TRUE</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tell the server a fake player has its inventory window open (or closed). </p>
+<dl class="section remark"><dt>Remarks</dt><dd>A real client reports this itself. <a class="el" href="group__item.html#ga7eec3080688df90df49234a8cbb9dec5" title="Close and reopen a player&#39;s inventory window and resend everything in it.">NWNX_Item_RefreshInventoryWindow()</a> does nothing while the window is closed. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if oCreature had a fake player. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nwnx__testplayer_8nss_source.html#l00103">103</a> of file <a class="el" href="nwnx__testplayer_8nss_source.html">nwnx_testplayer.nss</a>.</p>
 
 </div>
 </div>
@@ -218,7 +377,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sun Oct 25 2026 15:46:20 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Oct 25 2026 15:46:46 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>

@@ -1,5 +1,15 @@
 var NAVTREEINDEX19 =
 {
+"structNWNX__Damage__AttackEventData.html":[0,10,3],
+"structNWNX__Damage__AttackEventData.html#a02fb96244bd01690723d23386250b2e9":[0,10,3,4],
+"structNWNX__Damage__AttackEventData.html#a086c6998c3f5de7813d81ac0e2eecb5f":[0,10,3,39],
+"structNWNX__Damage__AttackEventData.html#a1aefa90a3b3a666dc22b3e7e905b7bd6":[0,10,3,27],
+"structNWNX__Damage__AttackEventData.html#a1d9294445235a4ee280cc4ff1d78cbd0":[0,10,3,36],
+"structNWNX__Damage__AttackEventData.html#a1e25bc683d9ffdefce1378c01b808621":[0,10,3,18],
+"structNWNX__Damage__AttackEventData.html#a2414d16a8249c9b9d3e78a6bdd1d376b":[0,10,3,5],
+"structNWNX__Damage__AttackEventData.html#a2418445d5a02752410e894d927d81235":[0,10,3,40],
+"structNWNX__Damage__AttackEventData.html#a28199024e132392f41b56daaab82032e":[0,10,3,16],
+"structNWNX__Damage__AttackEventData.html#a28fce1406884ca59dd146d31c99d7fb2":[0,10,3,37],
 "structNWNX__Damage__AttackEventData.html#a2e54f8edc87d2f8425dbd9b7fbc01ba3":[0,10,3,24],
 "structNWNX__Damage__AttackEventData.html#a2f860433eb2ee4d0af58701b077f226b":[0,10,3,34],
 "structNWNX__Damage__AttackEventData.html#a3111cfb99ea72164d3cf4a853b7a3581":[0,10,3,19],
@@ -239,15 +249,5 @@ var NAVTREEINDEX19 =
 "structNWNX__Tileset__TileDoorData.html":[0,44,5],
 "structNWNX__Tileset__TileDoorData.html#a13c99bb578bbc84c38ef0cdf68e44b8d":[0,44,5,1],
 "structNWNX__Tileset__TileDoorData.html#a63e63fe2cc264b297f8eec33a4972977":[0,44,5,4],
-"structNWNX__Tileset__TileDoorData.html#a93698bc6f87a876bfc65d9c9b617ec30":[0,44,5,0],
-"structNWNX__Tileset__TileDoorData.html#afc94ab09db9ffb667788d7366c7f7849":[0,44,5,3],
-"structNWNX__Tileset__TileDoorData.html#afe7d809a6de5f72329bde4cc8c3e331d":[0,44,5,2],
-"structNWNX__Tileset__TileEdgesAndCorners.html":[0,44,4],
-"structNWNX__Tileset__TileEdgesAndCorners.html#a0a674c8e88796ed53f38fd71de9f1fff":[0,44,4,5],
-"structNWNX__Tileset__TileEdgesAndCorners.html#a4b3593031bb6088c4e772c565efb23b5":[0,44,4,3],
-"structNWNX__Tileset__TileEdgesAndCorners.html#a50b40ab9a4231e2b4c26624d02f2debc":[0,44,4,0],
-"structNWNX__Tileset__TileEdgesAndCorners.html#a565fa43dc398344172a3168be6184bbd":[0,44,4,2],
-"structNWNX__Tileset__TileEdgesAndCorners.html#aa985b5db2627da932f350d7d5a0138c3":[0,44,4,4],
-"structNWNX__Tileset__TileEdgesAndCorners.html#ae49ce3f6be1e4a5afbb34fe31d48c354":[0,44,4,7],
-"structNWNX__Tileset__TileEdgesAndCorners.html#aeca0c8be1795dafc4f6cfc34acbc60a6":[0,44,4,1]
+"structNWNX__Tileset__TileDoorData.html#a93698bc6f87a876bfc65d9c9b617ec30":[0,44,5,0]
 };

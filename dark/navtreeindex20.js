@@ -1,5 +1,15 @@
 var NAVTREEINDEX20 =
 {
+"structNWNX__Tileset__TileDoorData.html#afc94ab09db9ffb667788d7366c7f7849":[0,44,5,3],
+"structNWNX__Tileset__TileDoorData.html#afe7d809a6de5f72329bde4cc8c3e331d":[0,44,5,2],
+"structNWNX__Tileset__TileEdgesAndCorners.html":[0,44,4],
+"structNWNX__Tileset__TileEdgesAndCorners.html#a0a674c8e88796ed53f38fd71de9f1fff":[0,44,4,5],
+"structNWNX__Tileset__TileEdgesAndCorners.html#a4b3593031bb6088c4e772c565efb23b5":[0,44,4,3],
+"structNWNX__Tileset__TileEdgesAndCorners.html#a50b40ab9a4231e2b4c26624d02f2debc":[0,44,4,0],
+"structNWNX__Tileset__TileEdgesAndCorners.html#a565fa43dc398344172a3168be6184bbd":[0,44,4,2],
+"structNWNX__Tileset__TileEdgesAndCorners.html#aa985b5db2627da932f350d7d5a0138c3":[0,44,4,4],
+"structNWNX__Tileset__TileEdgesAndCorners.html#ae49ce3f6be1e4a5afbb34fe31d48c354":[0,44,4,7],
+"structNWNX__Tileset__TileEdgesAndCorners.html#aeca0c8be1795dafc4f6cfc34acbc60a6":[0,44,4,1],
 "structNWNX__Tileset__TileEdgesAndCorners.html#afdf284cd807a36ca64ade8a549f43b92":[0,44,4,6],
 "structNWNX__Tileset__TilesetData.html":[0,44,2],
 "structNWNX__Tileset__TilesetData.html#a010d411b92f707702a3a40cebcb37f67":[0,44,2,4],
