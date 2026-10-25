@@ -30,7 +30,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Object: GetLocalizedDescription(), SetLocalizedDescription()
 - Util: RawPrint()
 - Item: RefreshInventoryWindow(), RefreshWieldedItems()
-- ItemAppearance: CacheAppearances(), BlacklistAppearance(), SyncAppearance(), GetRandomAppearance(), GetRandomWeaponAppearance(), GetNextAppearance(), GetPreviousAppearance(), GetNextColor(), GetPreviousColor()
+- ItemAppearance: CacheAppearances(), BlacklistAppearance(), SyncAppearance(), GetRandomAppearance(), GetRandomWeaponAppearance(), GetNextWeaponAppearance(), GetPreviousWeaponAppearance(), GetNextAppearance(), GetPreviousAppearance(), GetNextColor(), GetPreviousColor()
 
 ### Changed
 - Damage: Added bRangedAttack to the NWNX_Damage_AttackEventData struct.

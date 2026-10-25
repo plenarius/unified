@@ -16,7 +16,9 @@ Ranges are written as `*` (any value) or a comma separated list of `n`, `n-m`, `
 ## Notes
 
 - Simple and layered items (rings, shields, cloaks, helmets...) have a single model number and use only the first range of a blacklist rule. Weapons have three parts, each with a model and a color (0-9), written as `model * 10 + color`.
-- A synced weapon model can only be used on all three parts together. Stepping or randomizing a single part never lands on a synced model, since the other parts would no longer match; use `NWNX_ItemAppearance_GetRandomWeaponAppearance()` to pick all three parts at once.
+- A synced weapon model can only be used on all three parts together. Stepping or randomizing a single part never lands on a synced model, since the other parts would no longer match. To reach one, use `NWNX_ItemAppearance_GetNextWeaponAppearance()` / `GetPreviousWeaponAppearance()` (step all three parts by bottom model) or `GetRandomWeaponAppearance()`.
+- A blacklist rule for a simple or layered item may only use the first range; a rule with any other range is ignored with a warning.
+- For weapons the next and previous functions return `model * 10 + color`, like the random ones, not just the model.
 - The functions only return values. Apply them with `NWNX_Item_SetItemAppearance()` or `CopyItemAndModify()`.
 
 ## Environment Variables
