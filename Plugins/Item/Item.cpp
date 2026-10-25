@@ -200,8 +200,9 @@ NWNX_EXPORT ArgumentStack SetItemAppearance(ArgumentStack&& args)
                 }
             }
 
-            // The owner's inventory window still shows the item it had before the destroy; forget it
-            // there too, so the next inventory update puts the item back in its slot.
+            // The destroy above deletes the item on the client, but not from the owner's own equipment box,
+            // so the server must forget it too and resend the item with the next inventory update.
+            // The box keeps its old icon until the window is reopened, see RefreshInventoryWindow().
             if (auto *pPlayer = Globals::AppManager()->m_pServerExoApp->GetClientObjectByObjectId(pPossessor->m_idSelf))
             {
                 if (pPlayer->m_pInventoryGUI && pPlayer->m_pInventoryGUI->m_pcLastUpdateInventory)
@@ -209,9 +210,6 @@ NWNX_EXPORT ArgumentStack SetItemAppearance(ArgumentStack&& args)
                     auto& oidSlot = pPlayer->m_pInventoryGUI->m_pcLastUpdateInventory->m_oidInventorySlots[__builtin_ctz(nSlot)];
                     if (oidSlot == pItem->m_idSelf)
                         oidSlot = Constants::OBJECT_INVALID;
-
-                    // The client won't redraw a slot that already holds this item (CGuiInvbox::AddItem
-                    // returns early), so close and reopen the window like the player would.
                 }
             }
         }

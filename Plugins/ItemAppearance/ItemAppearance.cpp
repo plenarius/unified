@@ -37,6 +37,7 @@ enum ModelType : uint8_t
 
 constexpr int32_t NUM_PARTS = 3;
 constexpr int32_t RANDOM_WEAPON_TRIES = 1000;
+constexpr int64_t MAX_WEAPON_SEARCH = 5000000; // appearances tried when the random tries fail
 
 // Inclusive value ranges. Empty means any value.
 using Ranges = std::vector<std::pair<int32_t, int32_t>>;
@@ -281,6 +282,154 @@ int32_t Pick(const std::vector<int32_t>& values)
     return values[dist(s_rng)];
 }
 
+// A value from sorted values with the model picked first, so a model with many colors isn't favored.
+int32_t PickByModel(const std::vector<int32_t>& values)
+{
+    if (values.empty())
+        return -1;
+
+    std::vector<int32_t> models;
+    for (auto value : values)
+    {
+        if (models.empty() || models.back() != value / 10)
+            models.push_back(value / 10);
+    }
+    const auto model = Pick(models);
+    const auto first = std::lower_bound(values.begin(), values.end(), model * 10);
+    const auto last = std::lower_bound(first, values.end(), model * 10 + 10);
+    return Pick(std::vector<int32_t>(first, last));
+}
+
+// The values of a middle or top part to go with a bottom model: only that model if it is synced,
+// otherwise any model that isn't. Sorted.
+std::vector<int32_t> GetWeaponChoices(const Rules *pRules, const std::vector<int32_t>& values, int32_t bottomModel)
+{
+    const bool synced = IsSynced(pRules, bottomModel);
+    std::vector<int32_t> choices;
+    for (auto value : values)
+    {
+        if (synced ? value / 10 == bottomModel : !IsSynced(pRules, value / 10))
+            choices.push_back(value);
+    }
+    return choices;
+}
+
+// The value of sorted values with the model, keeping the color if the model has it. -1 if there is none.
+int32_t GetValueForModel(const std::vector<int32_t>& values, int32_t model, int32_t color)
+{
+    auto it = std::lower_bound(values.begin(), values.end(), model * 10 + color);
+    if (it != values.end() && *it == model * 10 + color)
+        return *it;
+    it = std::lower_bound(values.begin(), values.end(), model * 10);
+    return it != values.end() && *it / 10 == model ? *it : -1;
+}
+
+using Weapon = std::array<int32_t, NUM_PARTS>;
+
+// The weapon with this bottom model that is closest to the item's current one: its other parts stay as they
+// are if the rules allow, otherwise they take the bottom model, otherwise the first model that isn't synced.
+std::optional<Weapon> BuildWeapon(const ItemInfo& info, int32_t bottomModel)
+{
+    const auto& parts = info.pAppearances->parts;
+    std::array<std::vector<int32_t>, NUM_PARTS> options;
+    for (int32_t k = 0; k < NUM_PARTS; k++)
+    {
+        const int32_t current = info.pItem->m_nModelPart[k];
+        std::vector<int32_t> candidates;
+        if (k == 0 || IsSynced(info.pRules, bottomModel))
+            candidates = {GetValueForModel(parts[k], bottomModel, current % 10)};
+        else
+        {
+            const auto unsynced = GetWeaponChoices(info.pRules, parts[k], bottomModel);
+            candidates = {current, GetValueForModel(parts[k], bottomModel, current % 10),
+                          unsynced.empty() ? -1 : unsynced.front()};
+        }
+        for (auto value : candidates)
+        {
+            if (value != -1 && std::find(options[k].begin(), options[k].end(), value) == options[k].end())
+                options[k].push_back(value);
+        }
+    }
+
+    for (auto bottom : options[0])
+    {
+        for (auto middle : options[1])
+        {
+            for (auto top : options[2])
+            {
+                const Weapon weapon = {bottom, middle, top};
+                if (IsWeaponAllowed(info.pRules, weapon))
+                    return weapon;
+            }
+        }
+    }
+    return std::nullopt;
+}
+
+// The next (or previous) bottom model, wrapping around, that has an allowed weapon. -1 for every part if none.
+Weapon StepWeapon(const ItemInfo& info, bool next)
+{
+    std::vector<int32_t> models;
+    for (auto value : info.pAppearances->parts[0])
+    {
+        if (models.empty() || models.back() != value / 10)
+            models.push_back(value / 10);
+    }
+    if (models.empty())
+        return {-1, -1, -1};
+
+    // Every model gets a turn, the item's own last.
+    const int64_t count = models.size();
+    const int32_t current = info.pItem->m_nModelPart[0] / 10;
+    const int64_t start = next ? std::upper_bound(models.begin(), models.end(), current) - models.begin()
+                               : std::lower_bound(models.begin(), models.end(), current) - models.begin() - 1;
+    for (int64_t i = 0; i < count; i++)
+    {
+        const int64_t pos = ((next ? start + i : start - i) % count + count) % count;
+        if (auto weapon = BuildWeapon(info, models[pos]))
+            return *weapon;
+    }
+    return {-1, -1, -1};
+}
+
+// Every allowed weapon in random order until one is found; for when the random tries come up empty.
+std::optional<Weapon> SearchWeapon(const ItemInfo& info)
+{
+    const auto& parts = info.pAppearances->parts;
+    auto bottoms = parts[0];
+    std::shuffle(bottoms.begin(), bottoms.end(), s_rng);
+
+    int64_t checked = 0;
+    for (auto bottom : bottoms)
+    {
+        auto middles = GetWeaponChoices(info.pRules, parts[1], bottom / 10);
+        auto tops = GetWeaponChoices(info.pRules, parts[2], bottom / 10);
+        std::shuffle(middles.begin(), middles.end(), s_rng);
+        std::shuffle(tops.begin(), tops.end(), s_rng);
+        for (auto middle : middles)
+        {
+            for (auto top : tops)
+            {
+                if (++checked > MAX_WEAPON_SEARCH)
+                    return std::nullopt;
+                const Weapon weapon = {bottom, middle, top};
+                if (IsWeaponAllowed(info.pRules, weapon))
+                    return weapon;
+            }
+        }
+    }
+    return std::nullopt;
+}
+
+ArgumentStack StepWeaponAppearance(ArgumentStack& args, bool next)
+{
+    Weapon weapon = {-1, -1, -1};
+    auto info = GetItemInfo(Utils::PopItem(args), 0);
+    if (info && info->modelType == ModelType::Composite)
+        weapon = StepWeapon(*info, next);
+    return {weapon[0], weapon[1], weapon[2]};
+}
+
 int32_t NextPreviousAppearance(ArgumentStack& args, bool next)
 {
     auto *pItem = Utils::PopItem(args);
@@ -457,6 +606,14 @@ NWNX_EXPORT ArgumentStack BlacklistAppearance(ArgumentStack&& args)
         return {};
     }
 
+    // Simple and layered items have one model and no colors; a rule for more would block too much.
+    if (pBaseItem->m_nModelType != ModelType::Composite &&
+        std::any_of(ranges.begin() + 1, ranges.end(), [](const std::string& range) { return range != "*"; }))
+    {
+        LOG_WARNING("BlacklistAppearance: base item %d has a single model, only sBot can be used, rule ignored", baseItem);
+        return {};
+    }
+
     Rule rule;
     for (int32_t k = 0; k < NUM_PARTS * 2; k++)
     {
@@ -507,48 +664,45 @@ NWNX_EXPORT ArgumentStack GetRandomAppearance(ArgumentStack&& args)
 
 NWNX_EXPORT ArgumentStack GetRandomWeaponAppearance(ArgumentStack&& args)
 {
-    std::array<int32_t, NUM_PARTS> values = {-1, -1, -1};
+    Weapon weapon = {-1, -1, -1};
 
     auto info = GetItemInfo(Utils::PopItem(args), 0);
     if (!info || info->modelType != ModelType::Composite)
-        return {values[0], values[1], values[2]};
+        return {weapon[0], weapon[1], weapon[2]};
 
     const auto& parts = info->pAppearances->parts;
     if (parts[0].empty() || parts[1].empty() || parts[2].empty())
-        return {values[0], values[1], values[2]};
+        return {weapon[0], weapon[1], weapon[2]};
 
     // Pick the bottom first. A synced model there is used for all three parts; otherwise synced
     // models are left out of the middle and top.
-    for (int32_t i = 0; i < RANDOM_WEAPON_TRIES; i++)
+    bool found = false;
+    for (int32_t i = 0; i < RANDOM_WEAPON_TRIES && !found; i++)
     {
-        std::array<int32_t, NUM_PARTS> candidate;
-        candidate[0] = Pick(parts[0]);
-        const auto model = candidate[0] / 10;
-        const bool synced = IsSynced(info->pRules, model);
-
-        bool ok = true;
-        for (int32_t k = 1; k < NUM_PARTS && ok; k++)
+        Weapon candidate;
+        candidate[0] = PickByModel(parts[0]);
+        found = true;
+        for (int32_t k = 1; k < NUM_PARTS && found; k++)
         {
-            std::vector<int32_t> choices;
-            for (auto value : parts[k])
-            {
-                if (synced ? value / 10 == model : !IsSynced(info->pRules, value / 10))
-                    choices.push_back(value);
-            }
-            candidate[k] = Pick(choices);
-            ok = candidate[k] != -1;
+            candidate[k] = PickByModel(GetWeaponChoices(info->pRules, parts[k], candidate[0] / 10));
+            found = candidate[k] != -1;
         }
 
-        if (ok && IsWeaponAllowed(info->pRules, candidate))
-        {
-            values = candidate;
-            break;
-        }
+        if (found && IsWeaponAllowed(info->pRules, candidate))
+            weapon = candidate;
+        else
+            found = false;
     }
 
-    if (values[0] == -1)
-        LOG_WARNING("GetRandomWeaponAppearance: no allowed appearance found for base item %d", info->pItem->m_nBaseItem);
-    return {values[0], values[1], values[2]};
+    // Blacklists can leave so few weapons that picking at random rarely finds one.
+    if (!found)
+    {
+        if (auto searched = SearchWeapon(*info))
+            weapon = *searched;
+        else
+            LOG_WARNING("GetRandomWeaponAppearance: no allowed appearance found for base item %d", info->pItem->m_nBaseItem);
+    }
+    return {weapon[0], weapon[1], weapon[2]};
 }
 
 NWNX_EXPORT ArgumentStack GetNextAppearance(ArgumentStack&& args)
@@ -569,4 +723,14 @@ NWNX_EXPORT ArgumentStack GetNextColor(ArgumentStack&& args)
 NWNX_EXPORT ArgumentStack GetPreviousColor(ArgumentStack&& args)
 {
     return NextPreviousColor(args, false);
+}
+
+NWNX_EXPORT ArgumentStack GetNextWeaponAppearance(ArgumentStack&& args)
+{
+    return StepWeaponAppearance(args, true);
+}
+
+NWNX_EXPORT ArgumentStack GetPreviousWeaponAppearance(ArgumentStack&& args)
+{
+    return StepWeaponAppearance(args, false);
 }
