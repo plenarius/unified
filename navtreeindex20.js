@@ -1,5 +1,6 @@
 var NAVTREEINDEX20 =
 {
+"structNWNX__Tileset__TileDoorData.html#a93698bc6f87a876bfc65d9c9b617ec30":[0,44,5,0],
 "structNWNX__Tileset__TileDoorData.html#afc94ab09db9ffb667788d7366c7f7849":[0,44,5,3],
 "structNWNX__Tileset__TileDoorData.html#afe7d809a6de5f72329bde4cc8c3e331d":[0,44,5,2],
 "structNWNX__Tileset__TileEdgesAndCorners.html":[0,44,4],

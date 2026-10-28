@@ -1,5 +1,6 @@
 var NAVTREEINDEX19 =
 {
+"structNWNX__Creature__SpecialAbility.html#a29feef7d645de43a1d4c9e7b923b0d58":[0,9,2,1],
 "structNWNX__Damage__AttackEventData.html":[0,10,3],
 "structNWNX__Damage__AttackEventData.html#a02fb96244bd01690723d23386250b2e9":[0,10,3,4],
 "structNWNX__Damage__AttackEventData.html#a086c6998c3f5de7813d81ac0e2eecb5f":[0,10,3,39],
@@ -248,6 +249,5 @@ var NAVTREEINDEX19 =
 "structNWNX__Tileset__CustomTileData.html#ad7cc06ac7a4fb8eeca5a33810e1cf479":[0,44,6,7],
 "structNWNX__Tileset__TileDoorData.html":[0,44,5],
 "structNWNX__Tileset__TileDoorData.html#a13c99bb578bbc84c38ef0cdf68e44b8d":[0,44,5,1],
-"structNWNX__Tileset__TileDoorData.html#a63e63fe2cc264b297f8eec33a4972977":[0,44,5,4],
-"structNWNX__Tileset__TileDoorData.html#a93698bc6f87a876bfc65d9c9b617ec30":[0,44,5,0]
+"structNWNX__Tileset__TileDoorData.html#a63e63fe2cc264b297f8eec33a4972977":[0,44,5,4]
 };
