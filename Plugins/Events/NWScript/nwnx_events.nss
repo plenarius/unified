@@ -2294,6 +2294,9 @@ int NWNX_Events_SignalEvent(string evt, object target);
 /// THIS SHOULD ONLY BE CALLED FROM WITHIN AN EVENT HANDLER.
 string NWNX_Events_GetEventData(string tag);
 
+/// Returns true if the event data tag exists for the currently executing script.
+int NWNX_Events_PeekEventData(string tag);
+
 /// Skips execution of the currently executing event.
 /// If this is a NWNX event, that means that the base function call won't be called.
 /// This won't impact any other subscribers, nor dispatch for before / after functions.
@@ -2382,6 +2385,11 @@ void NWNX_Events_AddObjectToDispatchList(string sEvent, string sScriptOrChunk, o
 
 /// Remove oObject from the dispatch list for sEvent+sScript(Chunk).
 void NWNX_Events_RemoveObjectFromDispatchList(string sEvent, string sScriptOrChunk, object oObject);
+
+/// @brief Remove oObject from the dispatch list of every event.
+/// @param oObject The object to remove.
+/// @note The lists themselves stay enabled, they just no longer contain oObject.
+void NWNX_Events_RemoveObjectFromAllDispatchLists(object oObject);
 
 /// @brief Toggle the whitelisting of IDs for sEvent. If whitelisting is enabled, the event will only fire for IDs that are
 /// on its whitelist.
@@ -2475,6 +2483,13 @@ string NWNX_Events_GetEventData(string tag)
     return NWNXPopString();
 }
 
+int NWNX_Events_PeekEventData(string tag)
+{
+    NWNXPushString(tag);
+    NWNXCall(NWNX_Events, "PeekEventData");
+    return NWNXPopInt();
+}
+
 void NWNX_Events_SkipEvent()
 {
     NWNXCall(NWNX_Events, "SkipEvent");
@@ -2514,6 +2529,12 @@ void NWNX_Events_RemoveObjectFromDispatchList(string sEvent, string sScriptOrChu
     NWNXPushString(sScriptOrChunk);
     NWNXPushString(sEvent);
     NWNXCall(NWNX_Events, "RemoveObjectFromDispatchList");
+}
+
+void NWNX_Events_RemoveObjectFromAllDispatchLists(object oObject)
+{
+    NWNXPushObject(oObject);
+    NWNXCall(NWNX_Events, "RemoveObjectFromAllDispatchLists");
 }
 
 void NWNX_Events_ToggleIDWhitelist(string sEvent, int bEnable)
