@@ -32,6 +32,9 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Util: RawPrint()
 - Item: RefreshInventoryWindow(), RefreshWieldedItems()
 - ItemAppearance: CacheAppearances(), BlacklistAppearance(), SyncAppearance(), GetRandomAppearance(), GetRandomWeaponAppearance(), GetNextWeaponAppearance(), GetPreviousWeaponAppearance(), GetNextAppearance(), GetPreviousAppearance(), GetNextColor(), GetPreviousColor()
+- Events: PeekEventData()
+- Creature: {Get|Set}BaseACPolymorph()
+- Events: RemoveObjectFromAllDispatchLists()
 
 ### Changed
 - Damage: Added bRangedAttack to the NWNX_Damage_AttackEventData struct.
