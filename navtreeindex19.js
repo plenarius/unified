@@ -1,5 +1,13 @@
 var NAVTREEINDEX19 =
 {
+"structNWNX__Creature__MemorisedSpell.html":[3,2],
+"structNWNX__Creature__MemorisedSpell.html#a3d9cd596f9cd780ae69f4a497a90a335":[3,2,2],
+"structNWNX__Creature__MemorisedSpell.html#aa08e4d7e4f0f2b8b8c639e152670329a":[3,2,0],
+"structNWNX__Creature__MemorisedSpell.html#aa4c41f82a0cc4321ef229bf99d9e303b":[3,2,3],
+"structNWNX__Creature__MemorisedSpell.html#adc7177afc73856b1ac6b2481c250418b":[3,2,1],
+"structNWNX__Creature__SpecialAbility.html":[0,9,2],
+"structNWNX__Creature__SpecialAbility.html#a12855dd394f582dfae061237afa14172":[0,9,2,0],
+"structNWNX__Creature__SpecialAbility.html#a15cf0191817ec4432918e349d765f094":[0,9,2,2],
 "structNWNX__Creature__SpecialAbility.html#a29feef7d645de43a1d4c9e7b923b0d58":[0,9,2,1],
 "structNWNX__Damage__AttackEventData.html":[0,10,3],
 "structNWNX__Damage__AttackEventData.html#a02fb96244bd01690723d23386250b2e9":[0,10,3,4],
@@ -241,13 +249,5 @@ var NAVTREEINDEX19 =
 "structNWNX__Tileset__CustomTileData.html#a03d7816f7820a8a5ce99e487c490da55":[0,44,6,2],
 "structNWNX__Tileset__CustomTileData.html#a1aed6d385d1dabe3ebd93d34db2b471b":[0,44,6,4],
 "structNWNX__Tileset__CustomTileData.html#a1bee0e1c334d3b979be6aca7649c7151":[0,44,6,0],
-"structNWNX__Tileset__CustomTileData.html#a30505568a8b8de5ae31632768738ff65":[0,44,6,1],
-"structNWNX__Tileset__CustomTileData.html#a72f43f39bfe435c2271885f34db1478d":[0,44,6,9],
-"structNWNX__Tileset__CustomTileData.html#a800fec1c59fd92234fa6d7cf4e4b3964":[0,44,6,8],
-"structNWNX__Tileset__CustomTileData.html#a92470763dfd5aa5b8fe4c094ef62f9b9":[0,44,6,6],
-"structNWNX__Tileset__CustomTileData.html#ad508d7c21240eec8265362cc25a891f7":[0,44,6,5],
-"structNWNX__Tileset__CustomTileData.html#ad7cc06ac7a4fb8eeca5a33810e1cf479":[0,44,6,7],
-"structNWNX__Tileset__TileDoorData.html":[0,44,5],
-"structNWNX__Tileset__TileDoorData.html#a13c99bb578bbc84c38ef0cdf68e44b8d":[0,44,5,1],
-"structNWNX__Tileset__TileDoorData.html#a63e63fe2cc264b297f8eec33a4972977":[0,44,5,4]
+"structNWNX__Tileset__CustomTileData.html#a30505568a8b8de5ae31632768738ff65":[0,44,6,1]
 };

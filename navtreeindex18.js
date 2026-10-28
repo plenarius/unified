@@ -1,5 +1,13 @@
 var NAVTREEINDEX18 =
 {
+"nwnx__redis__short_8nss.html#a1b0dbeebc1457524f2dc71277b469c86":[4,0,3,31,0,3,39],
+"nwnx__redis__short_8nss.html#a1cd5be519900d2093a0ade3c72c65755":[4,0,3,31,0,3,132],
+"nwnx__redis__short_8nss.html#a1d162b7dd324dca3c21d57371101abae":[4,0,3,31,0,3,173],
+"nwnx__redis__short_8nss.html#a1d4664d3ea2e8f8bec2f95044fea1259":[4,0,3,31,0,3,161],
+"nwnx__redis__short_8nss.html#a1e432e478644b80a2c800e37d151bf43":[4,0,3,31,0,3,26],
+"nwnx__redis__short_8nss.html#a1e5b60c3f73cf5ad6682455329028646":[4,0,3,31,0,3,27],
+"nwnx__redis__short_8nss.html#a22ff63475aafe0b74924663c682d4d17":[4,0,3,31,0,3,74],
+"nwnx__redis__short_8nss.html#a247fcd0ec8cfcd87384ee5c8429b27df":[4,0,3,31,0,3,13],
 "nwnx__redis__short_8nss.html#a2597f493ac8afcb6271089c923396da3":[4,0,3,31,0,3,171],
 "nwnx__redis__short_8nss.html#a27848afdc3b53b9259821787863ed964":[4,0,3,31,0,3,203],
 "nwnx__redis__short_8nss.html#a284b7d047987457c5acf3e5b39f4016a":[4,0,3,31,0,3,43],
@@ -241,13 +249,5 @@ var NAVTREEINDEX18 =
 "structNWNX__Area__TileInfo.html#a3d62c52ed6d20acdfd5468396e6d62a1":[0,6,2,2],
 "structNWNX__Area__TileInfo.html#a8f251dcba2c20218ca755ad14ac30bf6":[0,6,2,3],
 "structNWNX__Area__TileInfo.html#a9401d512230306a66f9896d24847f2f2":[0,6,2,4],
-"structNWNX__Area__TileInfo.html#af58eb65e41d9b1cec04ba3af9ff11025":[0,6,2,1],
-"structNWNX__Creature__MemorisedSpell.html":[3,2],
-"structNWNX__Creature__MemorisedSpell.html#a3d9cd596f9cd780ae69f4a497a90a335":[3,2,2],
-"structNWNX__Creature__MemorisedSpell.html#aa08e4d7e4f0f2b8b8c639e152670329a":[3,2,0],
-"structNWNX__Creature__MemorisedSpell.html#aa4c41f82a0cc4321ef229bf99d9e303b":[3,2,3],
-"structNWNX__Creature__MemorisedSpell.html#adc7177afc73856b1ac6b2481c250418b":[3,2,1],
-"structNWNX__Creature__SpecialAbility.html":[0,9,2],
-"structNWNX__Creature__SpecialAbility.html#a12855dd394f582dfae061237afa14172":[0,9,2,0],
-"structNWNX__Creature__SpecialAbility.html#a15cf0191817ec4432918e349d765f094":[0,9,2,2]
+"structNWNX__Area__TileInfo.html#af58eb65e41d9b1cec04ba3af9ff11025":[0,6,2,1]
 };
