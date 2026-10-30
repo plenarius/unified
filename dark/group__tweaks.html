@@ -313,9 +313,7 @@ NWNX_TWEAKS_HIDE_HARDCODED_ITEM_VFX</h3>
 </table>
 <h2><a class="anchor" id="autotoc_md658"></a>
 NWNX_TWEAKS_FAST_ITEM_REPOSITORY_FIND_POSITION</h2>
-<p>To place an item, the game tries every cell of the inventory grid in turn, and for each cell it checks the item against every item already there. That is quadratic in the number of items: adding one item to a store that holds 400 takes about 100 times as long as adding it to an empty one (roughly 3.8 ms against 0.03 ms), and filling a store, a placeable or a bag in a loop gets slower with every item.</p>
-<p>With this tweak the cells the other items cover are marked once and the grid is scanned for the first cell the item fits on, in the same order as the game (rows, then columns), so items land in the same places. If nothing fits, or the position is asked for by a script (<code>bOriginatingFromScript</code>), the game's own code runs.</p>
-<p><code>NWNX_TWEAKS_FAST_ITEM_REPOSITORY_FIND_POSITION_VERIFY=true</code> also runs the game's code for every hit and logs an error if the two disagree. It is meant for testing and gives the time back.</p>
+<p>Finding a free spot for an item in a store, container or inventory is quadratic in the number of items. With this tweak it is linear, and items land in the same cells. Calls from scripts, and a repository with no room (Lost Items handling), still run the game's own code.</p>
 <h2><a class="anchor" id="autotoc_md659"></a>
 NWNX_TWEAKS_CHARLIST_SORT_BY_LAST_PLAYED_DATE</h2>
 <p>Warning: This tweak will disable savegame characters getting sent to the client. If you are using multiplayer savegames do not use this tweak!</p>
@@ -329,7 +327,7 @@ NWNX_TWEAKS_FIX_SKILL_CHECK_DISPLAY</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Wed Oct 28 2026 15:43:53 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Fri Oct 30 2026 20:07:22 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>
