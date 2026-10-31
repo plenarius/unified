@@ -975,8 +975,10 @@ ArgumentStack Layonara::CreateVFXAtTransitionCentroid(ArgumentStack &&)
             auto *placeable = new CNWSPlaceable(API::Constants::OBJECT_INVALID);
             placeable->LoadFromTemplate(CResRef("at_vfx"), &sTag);
             placeable->SetPosition(vPos, 0);
+            // AddToArea already puts the placeable into the area's X-sorted object list. Adding it again put a
+            // second copy at the end of the list, out of order, and GetFirstObjectInShape then missed the objects
+            // with the largest X (issue 440, bard song).
             placeable->AddToArea(pArea, vPos.x, vPos.y, pArea->ComputeHeight(vPos), false);
-            pArea->m_aGameObjects.Add(placeable->m_idSelf);
         }
     }
     return stack;
