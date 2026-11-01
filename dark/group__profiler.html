@@ -178,13 +178,14 @@ Pathing outcomes</h2>
 </table>
 <h3><a class="anchor" id="autotoc_md541"></a>
 Logging single requests</h3>
-<p>These settings need <code>NWNX_PROFILER_ENABLE_PATHING_OUTCOMES</code>. They write one line for a finished request to the NWNX log, with the creature's tag, template, object id and AI level, the start and goal, the number of planner calls, the total time and the slowest call:</p>
+<p>These settings need <code>NWNX_PROFILER_ENABLE_PATHING_OUTCOMES</code>. They write lines to the NWNX log, with the creature's tag, template, object id and AI level, and the start and goal:</p>
 <ul>
-<li><code>NWNX_PROFILER_PATHING_LOG_SLOW_MS</code>: log a request with a planner call at least this many milliseconds long. Each call runs inside the main loop, so a slow call is a server stall. <code>0</code> turns this off.</li>
-<li><code>NWNX_PROFILER_PATHING_LOG_FAILED</code>: log failed requests of creatures at <code>NWNX_PROFILER_PATHING_LOG_FAILED_MIN_AI_LEVEL</code> or higher. The default, <code>2</code> (normal), leaves out creatures in areas without players. Set it to <code>-1</code> to log every failed request.</li>
-<li><code>NWNX_PROFILER_PATHING_LOG_INTERVAL</code>: log a creature at most once in this many seconds.</li>
+<li><code>NWNX_PROFILER_PATHING_LOG_SLOW_MS</code>: log each planner call (one <code>CNWSModule::PlotPath</code>, the same call the <code>PlotPath</code> timing measures) that takes at least this many milliseconds. Each call runs inside the main loop, so a slow call is a server stall. <code>0</code> turns this off. The line splits the time into the inter-area search (<code>ComputeInterAreaPath</code>), the in-area planner (<code>PlotPathInArea</code>) and everything else, so it shows where a stall goes. It is logged as the call ends, so requests that never finish are logged too.</li>
+<li><code>NWNX_PROFILER_PATHING_LOG_FAILED</code>: log failed requests (counted when the in-area planner finishes) of creatures at <code>NWNX_PROFILER_PATHING_LOG_FAILED_MIN_AI_LEVEL</code> or higher. The default, <code>2</code> (normal), leaves out creatures in areas without players. Set it to <code>-1</code> to log every failed request. A request that fails in the inter-area search, before the in-area planner runs, is not counted.</li>
+<li><code>NWNX_PROFILER_PATHING_LOG_INTERVAL</code>: log a creature at most once in this many seconds, separately for each kind of line.</li>
 </ul>
-<div class="fragment"><div class="line">Pathing failed (slow): area towerofnature001, NPC &#39;NW_DEER&#39; (nw_deer, 2e0), AI level 2, from (46.83, 52.14) to (41.34, 45.45), range 1.00, 101 calls, 134.1 ms (slowest call 3.3 ms), grid search 0, no tile route 0</div>
+<div class="fragment"><div class="line">Pathing slow call: NPC &#39;AGreatOakDefender2&#39; (agreatoakdefende, 248), AI level 2, area thegreatforest13, leg goal area thegreatforest13, final goal area -, route areas 1 (resolved 1, in progress 0), from (33.87, 72.80) to (77.85, 39.73), range 1.00, call 1, complete, 9.89 ms: inter-area search 0.00, in-area planner 0.00, other 9.89</div>
+<div class="line">Pathing failed: area towerofnature001, NPC &#39;NW_DEER&#39; (nw_deer, 2e0), AI level 2, from (46.83, 52.14) to (41.34, 45.45), range 1.00, 101 calls, 134.1 ms (slowest call 3.3 ms), grid search 0, no tile route 0</div>
 </div><!-- fragment --> </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
@@ -284,7 +285,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Fri Oct 30 2026 20:07:22 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Nov 1 2026 00:56:34 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>
