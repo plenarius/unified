@@ -517,8 +517,9 @@ NWNX_EXPORT ArgumentStack CacheAppearances(ArgumentStack&&)
                 partIcons[prefix.substr(0, prefix.size() - 2)][part].insert(name.substr(1));
         }
     };
+    // The client loads an item icon only as TGA or PLT (CNWCMessage::CreateItem checks nothing else), so a DDS-only icon
+    // is not an appearance it can show: the item would fail to be created on the client.
     ForEachResOfType(Constants::ResRefType::TGA, addIcon);
-    ForEachResOfType(Constants::ResRefType::DDS, addIcon);
     ForEachResOfType(Constants::ResRefType::PLT, addIcon);
 
     std::unordered_set<std::string> models;

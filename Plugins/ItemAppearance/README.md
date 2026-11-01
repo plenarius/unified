@@ -3,7 +3,7 @@
 
 Lists the appearances an item can take and picks, steps through or randomizes them, with rules to leave some out.
 
-The lists are built from the icons in the module and haks, so only appearances that have an icon (and, for weapons, a model) are offered.
+The lists are built from the TGA and PLT icons in the module and haks (the client cannot show an icon that is only a DDS), so only appearances that have an icon (and, for weapons, a model) are offered.
 
 ## Usage
 
