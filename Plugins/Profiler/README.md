@@ -53,6 +53,6 @@ These settings need `NWNX_PROFILER_ENABLE_PATHING_OUTCOMES`. They write lines to
 - `NWNX_PROFILER_PATHING_LOG_INTERVAL`: log a creature at most once in this many seconds, separately for each kind of line.
 
 ```
-Pathing slow call: NPC 'Commoner' (commoner001, 5a2f1), AI level 1, area cari_center, leg goal area cari_center, final goal area -, route areas 1 (resolved 1, in progress 0), from (42.10, 33.20) to (61.40, 70.85), range 1.00, call 2, complete, 31.40 ms: inter-area search 0.00, in-area planner 4.10, other 27.30
+Pathing slow call: NPC 'AGreatOakDefender2' (agreatoakdefende, 248), AI level 2, area thegreatforest13, leg goal area thegreatforest13, final goal area -, route areas 1 (resolved 1, in progress 0), from (33.87, 72.80) to (77.85, 39.73), range 1.00, call 1, complete, 9.89 ms: inter-area search 0.00, in-area planner 0.00, other 9.89
 Pathing failed: area towerofnature001, NPC 'NW_DEER' (nw_deer, 2e0), AI level 2, from (46.83, 52.14) to (41.34, 45.45), range 1.00, 101 calls, 134.1 ms (slowest call 3.3 ms), grid search 0, no tile route 0
 ```
