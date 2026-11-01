@@ -46,12 +46,13 @@ Acquires shared hooks to expose various useful metrics.
 
 ### Logging single requests
 
-These settings need `NWNX_PROFILER_ENABLE_PATHING_OUTCOMES`. They write one line for a finished request to the NWNX log, with the creature's tag, template, object id and AI level, the start and goal, the number of planner calls, the total time and the slowest call:
+These settings need `NWNX_PROFILER_ENABLE_PATHING_OUTCOMES`. They write lines to the NWNX log, with the creature's tag, template, object id and AI level, and the start and goal:
 
-- `NWNX_PROFILER_PATHING_LOG_SLOW_MS`: log a request with a planner call at least this many milliseconds long. Each call runs inside the main loop, so a slow call is a server stall. `0` turns this off.
-- `NWNX_PROFILER_PATHING_LOG_FAILED`: log failed requests of creatures at `NWNX_PROFILER_PATHING_LOG_FAILED_MIN_AI_LEVEL` or higher. The default, `2` (normal), leaves out creatures in areas without players. Set it to `-1` to log every failed request.
-- `NWNX_PROFILER_PATHING_LOG_INTERVAL`: log a creature at most once in this many seconds.
+- `NWNX_PROFILER_PATHING_LOG_SLOW_MS`: log each planner call (one `CNWSModule::PlotPath`, the same call the `PlotPath` timing measures) that takes at least this many milliseconds. Each call runs inside the main loop, so a slow call is a server stall. `0` turns this off. The line splits the time into the inter-area search (`ComputeInterAreaPath`), the in-area planner (`PlotPathInArea`) and everything else, so it shows where a stall goes. It is logged as the call ends, so requests that never finish are logged too.
+- `NWNX_PROFILER_PATHING_LOG_FAILED`: log failed requests (counted when the in-area planner finishes) of creatures at `NWNX_PROFILER_PATHING_LOG_FAILED_MIN_AI_LEVEL` or higher. The default, `2` (normal), leaves out creatures in areas without players. Set it to `-1` to log every failed request. A request that fails in the inter-area search, before the in-area planner runs, is not counted.
+- `NWNX_PROFILER_PATHING_LOG_INTERVAL`: log a creature at most once in this many seconds, separately for each kind of line.
 
 ```
-Pathing failed (slow): area towerofnature001, NPC 'NW_DEER' (nw_deer, 2e0), AI level 2, from (46.83, 52.14) to (41.34, 45.45), range 1.00, 101 calls, 134.1 ms (slowest call 3.3 ms), grid search 0, no tile route 0
+Pathing slow call: NPC 'Commoner' (commoner001, 5a2f1), AI level 1, area cari_center, leg goal area cari_center, final goal area -, route areas 1 (resolved 1, in progress 0), from (42.10, 33.20) to (61.40, 70.85), range 1.00, call 2, complete, 31.40 ms: inter-area search 0.00, in-area planner 4.10, other 27.30
+Pathing failed: area towerofnature001, NPC 'NW_DEER' (nw_deer, 2e0), AI level 2, from (46.83, 52.14) to (41.34, 45.45), range 1.00, 101 calls, 134.1 ms (slowest call 3.3 ms), grid search 0, no tile route 0
 ```

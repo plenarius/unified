@@ -48,10 +48,18 @@ static std::unordered_map<uint64_t, uint32_t> g_counts;
 struct RequestTime { int64_t totalNs = 0; int64_t maxNs = 0; };
 static std::unordered_map<CPathfindInformation*, RequestTime> g_times;
 
-static PathingOutcomes::LogSettings g_log;
-// When each creature may be logged again.
-static std::unordered_map<ObjectID, std::chrono::steady_clock::time_point> g_nextLog;
+// Inside the current CNWSModule::PlotPath call: time in ComputeInterAreaPath and in PlotPathInArea.
+static int64_t g_callInterAreaNs;
+static int64_t g_callInAreaNs;
 
+static PathingOutcomes::LogSettings g_log;
+// When each creature may be logged again, for failed requests and for slow calls.
+using LogTimes = std::unordered_map<ObjectID, std::chrono::steady_clock::time_point>;
+static LogTimes g_nextLog;
+static LogTimes g_nextSlowLog;
+
+static Hooks::Hook s_PlotPathHook;
+static Hooks::Hook s_ComputeInterAreaPathHook;
 static Hooks::Hook s_PlotPathInAreaHook;
 static Hooks::Hook s_GenerateInterTilePathHook;
 static Hooks::Hook s_MainLoopHook;
@@ -67,21 +75,49 @@ static uint64_t MakeKey(ObjectID oidArea, uint8_t aiBits, Outcome outcome, bool 
     return (uint64_t(oidArea) << 8) | (aiBits << 5) | (outcome << 3) | (bPC << 2) | (bGrid << 1) | uint64_t(bNoRoute);
 }
 
+static int64_t ElapsedNs(std::chrono::steady_clock::time_point since)
+{
+    return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - since).count();
+}
+
+// True (and starts the pause) if this creature may be logged now.
+static bool MayLog(LogTimes& times, ObjectID oid)
+{
+    const auto now = std::chrono::steady_clock::now();
+    auto& next = times[oid];
+    if (now < next)
+        return false;
+    next = now + g_log.interval;
+    return true;
+}
+
+static std::string AreaName(ObjectID oidArea)
+{
+    if (oidArea == Constants::OBJECT_INVALID || oidArea == 0)
+        return "-";
+
+    if (CNWSArea* pArea = Globals::AppManager()->m_pServerExoApp->GetAreaByGameObjectID(oidArea))
+    {
+        const char* resRef = pArea->m_cResRef.GetResRefStr();
+        return std::string(resRef, strnlen(resRef, 16));
+    }
+
+    return "(unknown)";
+}
+
+static bool IsPC(const CPathfindInformation* pf)
+{
+    return pf->m_oidSelf != Constants::OBJECT_INVALID &&
+        Globals::AppManager()->m_pServerExoApp->GetClientObjectByObjectId(pf->m_oidSelf);
+}
+
 static void LogRequest(const CPathfindInformation* pf, CNWSObject* self, const char* what, bool bPC,
                        bool bNoRoute, const RequestTime& t)
 {
-    const auto now = std::chrono::steady_clock::now();
-    auto& next = g_nextLog[pf->m_oidSelf];
-    if (now < next)
+    if (!MayLog(g_nextLog, pf->m_oidSelf))
         return;
-    next = now + g_log.interval;
 
-    std::string area = "(unknown)";
-    if (CNWSArea* pArea = Globals::AppManager()->m_pServerExoApp->GetAreaByGameObjectID(pf->m_oidNewPointStartArea))
-    {
-        const char* resRef = pArea->m_cResRef.GetResRefStr();
-        area.assign(resRef, strnlen(resRef, 16));
-    }
+    const std::string area = AreaName(pf->m_oidNewPointStartArea);
 
     LOG_INFO("Pathing %s: area %s, %s '%s' (%s, %x), AI level %d, from (%.2f, %.2f) to (%.2f, %.2f), range %.2f, "
              "%d calls, %.1f ms (slowest call %.1f ms), grid search %d, no tile route %d",
@@ -105,6 +141,59 @@ static Outcome ClassifyComplete(const CPathfindInformation* pf)
     return dx * dx + dy * dy > reach * reach ? OUTCOME_PARTIAL : OUTCOME_COMPLETE;
 }
 
+static const char* ResultName(uint32_t ret)
+{
+    return ret == ACTION_COMPLETE ? "complete" : ret == ACTION_FAILED ? "failed" : "in progress";
+}
+
+static void LogSlowCall(const CPathfindInformation* pf, uint32_t ret, int64_t totalNs)
+{
+    if (!MayLog(g_nextSlowLog, pf->m_oidSelf))
+        return;
+
+    CNWSObject* self = Utils::AsNWSObject(Utils::GetGameObject(pf->m_oidSelf));
+    const std::string start = AreaName(pf->m_oidNewPointStartArea);
+    const std::string leg = AreaName(pf->m_oidNewPointEndArea);
+    const std::string goal = AreaName(pf->m_oidTempPointEndArea);
+    const int64_t otherNs = totalNs - g_callInterAreaNs - g_callInAreaNs;
+
+    LOG_INFO("Pathing slow call: %s '%s' (%s, %x), AI level %d, area %s, leg goal area %s, final goal area %s, "
+             "route areas %d (resolved %d, in progress %d), from (%.2f, %.2f) to (%.2f, %.2f), range %.2f, "
+             "call %d, %s, %.2f ms: inter-area search %.2f, in-area planner %.2f, other %.2f",
+             IsPC(pf) ? "PC" : "NPC",
+             self ? self->m_sTag.CStr() : "", self ? self->m_sTemplate.CStr() : "", pf->m_oidSelf,
+             self ? self->m_nAILevel : -1, start.c_str(), leg.c_str(), goal.c_str(),
+             pf->m_nInterAreas, pf->m_bInterAreaPathResolved ? 1 : 0, pf->m_bInterAreaPathInProgress ? 1 : 0,
+             pf->m_fNewPointStartX, pf->m_fNewPointStartY, pf->m_fNewPointEndX, pf->m_fNewPointEndY,
+             pf->m_fPointTolerance, pf->m_nCallsToPlotPath, ResultName(ret), totalNs / 1e6,
+             g_callInterAreaNs / 1e6, g_callInAreaNs / 1e6, otherNs / 1e6);
+}
+
+// The whole of a planner call: ComputeInterAreaPath, SetIntraAreaGoal and PlotPathInArea. This is what
+// the PlotPath timing measures, and a slow call here can be slow outside PlotPathInArea.
+static uint32_t PlotPathHook(CNWSModule* pThis, CPathfindInformation* pf, uint32_t nTimeSlice)
+{
+    g_callInterAreaNs = 0;
+    g_callInAreaNs = 0;
+
+    const auto start = std::chrono::steady_clock::now();
+    const uint32_t ret = s_PlotPathHook->CallOriginal<uint32_t>(pThis, pf, nTimeSlice);
+    const int64_t ns = ElapsedNs(start);
+
+    if (pf && g_log.slowMs > 0 && ns >= int64_t(g_log.slowMs) * 1000000)
+        LogSlowCall(pf, ret, ns);
+
+    return ret;
+}
+
+static int32_t ComputeInterAreaPathHook(CNWSModule* pThis, CPathfindInformation* pf)
+{
+    const auto start = std::chrono::steady_clock::now();
+    const int32_t ret = s_ComputeInterAreaPathHook->CallOriginal<int32_t>(pThis, pf);
+    g_callInterAreaNs += ElapsedNs(start);
+    return ret;
+}
+
 static uint32_t PlotPathInAreaHook(CNWSModule* pThis, CPathfindInformation* pf, uint32_t nTimeSlice)
 {
     // The engine counts calls per request from zero, so this is a fresh request.
@@ -117,8 +206,9 @@ static uint32_t PlotPathInAreaHook(CNWSModule* pThis, CPathfindInformation* pf, 
     g_currentRequest = pf;
     const auto start = std::chrono::steady_clock::now();
     const uint32_t ret = s_PlotPathInAreaHook->CallOriginal<uint32_t>(pThis, pf, nTimeSlice);
-    const int64_t ns = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - start).count();
+    const int64_t ns = ElapsedNs(start);
     g_currentRequest = nullptr;
+    g_callInAreaNs += ns;
 
     auto& t = g_times[pf];
     t.totalNs += ns;
@@ -128,8 +218,7 @@ static uint32_t PlotPathInAreaHook(CNWSModule* pThis, CPathfindInformation* pf, 
         return ret;
 
     const Outcome outcome = ret == ACTION_FAILED ? OUTCOME_FAILED : ClassifyComplete(pf);
-    const bool bPC = pf->m_oidSelf != Constants::OBJECT_INVALID &&
-        Globals::AppManager()->m_pServerExoApp->GetClientObjectByObjectId(pf->m_oidSelf);
+    const bool bPC = IsPC(pf);
     const bool bNoRoute = g_noRoute.erase(pf) > 0;
     CNWSObject* self = Utils::AsNWSObject(Utils::GetGameObject(pf->m_oidSelf));
     const int32_t aiLevel = self ? self->m_nAILevel : -1;
@@ -139,10 +228,8 @@ static uint32_t PlotPathInAreaHook(CNWSModule* pThis, CPathfindInformation* pf, 
     const RequestTime time = t;
     g_times.erase(pf);
 
-    const bool bSlow = g_log.slowMs > 0 && time.maxNs >= int64_t(g_log.slowMs) * 1000000;
-    const bool bFailed = g_log.failed && outcome == OUTCOME_FAILED && aiLevel >= g_log.failedMinAILevel;
-    if (bSlow || bFailed)
-        LogRequest(pf, self, bFailed ? (bSlow ? "failed (slow)" : "failed") : "slow", bPC, bNoRoute, time);
+    if (g_log.failed && outcome == OUTCOME_FAILED && aiLevel >= g_log.failedMinAILevel)
+        LogRequest(pf, self, "failed", bPC, bNoRoute, time);
 
     return ret;
 }
@@ -189,8 +276,9 @@ static void Flush()
     // Forget creatures whose log pause is over, and requests left unfinished
     // (their creature was destroyed mid-request) once there are many.
     const auto now = std::chrono::steady_clock::now();
-    for (auto it = g_nextLog.begin(); it != g_nextLog.end();)
-        it = it->second <= now ? g_nextLog.erase(it) : std::next(it);
+    for (LogTimes* times : { &g_nextLog, &g_nextSlowLog })
+        for (auto it = times->begin(); it != times->end();)
+            it = it->second <= now ? times->erase(it) : std::next(it);
     if (g_times.size() > 4096)
         g_times.clear();
 }
@@ -216,6 +304,8 @@ PathingOutcomes::PathingOutcomes(Services::MetricsProxy* metrics, std::chrono::s
     g_nextFlush = std::chrono::steady_clock::now() + interval;
 
     // Earliest, so this sees the final result even if another plugin replaces the planner.
+    s_PlotPathHook = Hooks::HookFunction(&CNWSModule::PlotPath, &PlotPathHook, Hooks::Order::Earliest);
+    s_ComputeInterAreaPathHook = Hooks::HookFunction(&CNWSModule::ComputeInterAreaPath, &ComputeInterAreaPathHook, Hooks::Order::Earliest);
     s_PlotPathInAreaHook = Hooks::HookFunction(&CNWSModule::PlotPathInArea, &PlotPathInAreaHook, Hooks::Order::Earliest);
     s_GenerateInterTilePathHook = Hooks::HookFunction(&CNWSArea::GenerateInterTilePath, &GenerateInterTilePathHook, Hooks::Order::Earliest);
     s_MainLoopHook = Hooks::HookFunction(&CServerExoAppInternal::MainLoop, &MainLoopHook, Hooks::Order::Late);
