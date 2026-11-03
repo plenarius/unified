@@ -146,7 +146,40 @@ static const char* ResultName(uint32_t ret)
     return ret == ACTION_COMPLETE ? "complete" : ret == ACTION_FAILED ? "failed" : "in progress";
 }
 
-static void LogSlowCall(const CPathfindInformation* pf, uint32_t ret, int64_t totalNs)
+// The request as CNWSCreature::AIActionMoveToPoint left it, before PlotPath works on it. PlotInterAreaPath
+// flips the start and goal and overwrites the areas, so the fields read after the call are not the order.
+struct EntrySnapshot
+{
+    ObjectID oidStartArea, oidGoalArea, oidTempGoalArea, oidMovingTo;
+    float startX, startY, goalX, goalY, tolerance;
+    int32_t calls, interAreas;
+    bool bTempPoints, bNewPoints, bResolved, bInProgress;
+};
+
+static EntrySnapshot Snapshot(const CPathfindInformation* pf)
+{
+    return {
+        pf->m_oidNewPointStartArea, pf->m_oidNewPointEndArea, pf->m_oidTempPointEndArea, pf->m_oidMovingTo,
+        pf->m_fNewPointStartX, pf->m_fNewPointStartY, pf->m_fNewPointEndX, pf->m_fNewPointEndY, pf->m_fPointTolerance,
+        pf->m_nCallsToPlotPath, pf->m_nInterAreas,
+        pf->m_bTempPoints != 0, pf->m_bNewPoints != 0, pf->m_bInterAreaPathResolved != 0, pf->m_bInterAreaPathInProgress != 0,
+    };
+}
+
+// "'tag' (area)" of the object the creature is moving to, or "-" if it moves to a point.
+static std::string MovingToName(ObjectID oid)
+{
+    if (oid == Constants::OBJECT_INVALID || oid == 0)
+        return "-";
+
+    CNWSObject* obj = Utils::AsNWSObject(Utils::GetGameObject(oid));
+    if (!obj)
+        return "(gone)";
+
+    return std::string("'") + obj->m_sTag.CStr() + "' (" + AreaName(obj->m_oidArea) + ")";
+}
+
+static void LogSlowCall(const CPathfindInformation* pf, const EntrySnapshot& in, uint32_t ret, int64_t totalNs)
 {
     if (!MayLog(g_nextSlowLog, pf->m_oidSelf))
         return;
@@ -157,15 +190,25 @@ static void LogSlowCall(const CPathfindInformation* pf, uint32_t ret, int64_t to
     const std::string goal = AreaName(pf->m_oidTempPointEndArea);
     const int64_t otherNs = totalNs - g_callInterAreaNs - g_callInAreaNs;
 
-    LOG_INFO("Pathing slow call: %s '%s' (%s, %x), AI level %d, area %s, leg goal area %s, final goal area %s, "
-             "route areas %d (resolved %d, in progress %d), from (%.2f, %.2f) to (%.2f, %.2f), range %.2f, "
+    const std::string inStart = AreaName(in.oidStartArea);
+    const std::string inGoal = AreaName(in.oidGoalArea);
+    const std::string inTemp = AreaName(in.oidTempGoalArea);
+    const std::string movingTo = MovingToName(in.oidMovingTo);
+    const std::string creatureArea = self ? AreaName(self->m_oidArea) : "-";
+
+    LOG_INFO("Pathing slow call: %s '%s' (%s, %x), AI level %d, in area %s, "
+             "at entry: from (%.2f, %.2f) in %s to (%.2f, %.2f) in %s, temp goal area %s, moving to %s, "
+             "range %.2f, route areas %d (resolved %d, in progress %d, new points %d, temp points %d), "
+             "after: area %s, leg goal area %s, final goal area %s, route areas %d (resolved %d, in progress %d), "
              "call %d, %s, %.2f ms: inter-area search %.2f, in-area planner %.2f, other %.2f",
              IsPC(pf) ? "PC" : "NPC",
              self ? self->m_sTag.CStr() : "", self ? self->m_sTemplate.CStr() : "", pf->m_oidSelf,
-             self ? self->m_nAILevel : -1, start.c_str(), leg.c_str(), goal.c_str(),
+             self ? self->m_nAILevel : -1, creatureArea.c_str(),
+             in.startX, in.startY, inStart.c_str(), in.goalX, in.goalY, inGoal.c_str(), inTemp.c_str(), movingTo.c_str(),
+             in.tolerance, in.interAreas, in.bResolved ? 1 : 0, in.bInProgress ? 1 : 0, in.bNewPoints ? 1 : 0, in.bTempPoints ? 1 : 0,
+             start.c_str(), leg.c_str(), goal.c_str(),
              pf->m_nInterAreas, pf->m_bInterAreaPathResolved ? 1 : 0, pf->m_bInterAreaPathInProgress ? 1 : 0,
-             pf->m_fNewPointStartX, pf->m_fNewPointStartY, pf->m_fNewPointEndX, pf->m_fNewPointEndY,
-             pf->m_fPointTolerance, pf->m_nCallsToPlotPath, ResultName(ret), totalNs / 1e6,
+             pf->m_nCallsToPlotPath, ResultName(ret), totalNs / 1e6,
              g_callInterAreaNs / 1e6, g_callInAreaNs / 1e6, otherNs / 1e6);
 }
 
@@ -176,12 +219,15 @@ static uint32_t PlotPathHook(CNWSModule* pThis, CPathfindInformation* pf, uint32
     g_callInterAreaNs = 0;
     g_callInAreaNs = 0;
 
+    const bool bLog = pf && g_log.slowMs > 0;
+    const EntrySnapshot entry = bLog ? Snapshot(pf) : EntrySnapshot{};
+
     const auto start = std::chrono::steady_clock::now();
     const uint32_t ret = s_PlotPathHook->CallOriginal<uint32_t>(pThis, pf, nTimeSlice);
     const int64_t ns = ElapsedNs(start);
 
-    if (pf && g_log.slowMs > 0 && ns >= int64_t(g_log.slowMs) * 1000000)
-        LogSlowCall(pf, ret, ns);
+    if (bLog && ns >= int64_t(g_log.slowMs) * 1000000)
+        LogSlowCall(pf, entry, ret, ns);
 
     return ret;
 }
