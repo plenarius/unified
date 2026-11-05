@@ -52,6 +52,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Removed NWNX_Lua and NWNX_SpellChecker due to presumably being unused and bitrotten.
 
 ### Fixed
+- Player: Fixed `NWNX_Player_QBS_UseSpecialAbility()` making a slot of type `NWNX_PLAYER_QBS_TYPE_SPELL` instead of `NWNX_PLAYER_QBS_TYPE_SPELLLIKEABILITY`.
 - Item: Fixed `SetItemAppearance()` rejecting color 0 for `ITEM_APPR_WEAPON_COLOR_*`.
 - Fixed `NWNX_TWEAKS_SETAREA_CALLS_SETPOSITION` not working with `NWNX_ON_MATERIALCHANGE_*`.
 - MaxLevel: Fixed returning an invalid number of known spells in some cases.
