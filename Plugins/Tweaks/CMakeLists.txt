@@ -17,6 +17,7 @@ add_plugin(Tweaks
     "FixSkillCheckDisplay.cpp"
     "FixTriggerEnterDetection.cpp"
     "FixUnlimitedPotionsBug.cpp"
+    "GuardTakeGoldNoCaller.cpp"
     "HideOnCharList.cpp"
     "HideHardcodedItemVFX.cpp"
     "ItemChargesCost.cpp"
