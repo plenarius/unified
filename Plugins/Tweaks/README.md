@@ -28,6 +28,7 @@ Tweaks stuff. See below.
 | `NWNX_TWEAKS_FIX_DISPEL_EFFECT_LEVELS` | true or false | Fixes dispel checks vs. effects created by deleted objects. |
 | `NWNX_TWEAKS_ADD_PRESTIGECLASS_CASTER_LEVELS` | true or false | Adds prestige class levels to caster level. |
 | `NWNX_TWEAKS_FIX_UNLIMITED_POTIONS_BUG` | true or false | Fixes a bug where scrolls/potions could have unlimited uses. |
+| `NWNX_TWEAKS_GUARD_TAKE_GOLD_NO_CALLER` | true (default) or false | TakeGoldFromCreature() does nothing, instead of crashing the server, when OBJECT_SELF no longer exists (a script run on a destroyed object). |
 | `NWNX_TWEAKS_UNHARDCODE_SHIELDS` | true or false | baseitems.2da will be used to define shield AC for shields and shield-like items. |
 | `NWNX_TWEAKS_BLOCK_DM_SPAWNITEM` | true or false | Disables the dm_spawnitem console command. |
 | `NWNX_TWEAKS_FIX_ARMOR_DEX_BONUS_UNDER_ONE` | true or false | Allows armor with a max DEX bonus of under 1. |
