@@ -22,9 +22,11 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 
 ##### New Plugins
 - ItemAppearance: Lists the appearances an item can take, with blacklist and sync rules, and gets the next, previous or a random one for simple items and weapons.
+- Chess: Chess games in plugin memory (rules from the vendored header-only chess-library: legal moves, check, mate, stalemate, repetition, fifty-move and insufficient-material draws, FEN, PGN) and engine moves from Stockfish over UCI on a worker thread, delivered by polling or the `NWNX_ON_CHESS_BESTMOVE` event.
 - Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.
 
 ##### New NWScript Functions
+- Chess: NewGame(), EndGame(), MakeMove(), GetLegalMoves(), GetMoves(), GetFEN(), GetPGN(), GetStatus(), GetSideToMove(), GetPieceAt(), RequestBestMove(), GetBestMoveResult(), GetBestMoveState()
 - Player: GetOpenStore()
 - Creature: GetNumberOfBonusSpells(), ModifyNumberBonusSpells()
 - Store: GetBlackMarket(), SetBlackMarket()

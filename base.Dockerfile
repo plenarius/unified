@@ -14,6 +14,7 @@ RUN runDeps="default-libmysqlclient-dev \
     libssl3 \
     inotify-tools \
     patch \
+    stockfish \
     unzip \
     dotnet-runtime-8.0 \
     dotnet-apphost-pack-8.0 \
