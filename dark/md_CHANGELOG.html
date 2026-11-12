@@ -124,11 +124,13 @@ Added</h2>
 New Plugins</h4>
 <ul>
 <li>ItemAppearance: Lists the appearances an item can take, with blacklist and sync rules, and gets the next, previous or a random one for simple items and weapons.</li>
+<li>Chess: Chess games in plugin memory (rules from the vendored header-only chess-library: legal moves, check, mate, stalemate, repetition, fifty-move and insufficient-material draws, FEN, PGN) and engine moves from Stockfish over UCI on a worker thread, delivered by polling or the <code>NWNX_ON_CHESS_BESTMOVE</code> event.</li>
 <li>Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md13"></a>
 New NWScript Functions</h4>
 <ul>
+<li>Chess: NewGame(), EndGame(), MakeMove(), GetLegalMoves(), GetMoves(), GetFEN(), GetPGN(), GetStatus(), GetSideToMove(), GetPieceAt(), RequestBestMove(), GetBestMoveResult(), GetBestMoveState()</li>
 <li>Player: GetOpenStore()</li>
 <li>Creature: GetNumberOfBonusSpells(), ModifyNumberBonusSpells()</li>
 <li>Store: GetBlackMarket(), SetBlackMarket()</li>
@@ -1726,7 +1728,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Nov 7 2026 01:34:38 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Thu Nov 12 2026 02:19:49 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>

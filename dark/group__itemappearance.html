@@ -106,12 +106,12 @@ $(document).ready(function(){initNavTree('group__itemappearance.html',''); initR
 <div class="contents">
 
 
-<h3><a id="itemappearance"></a>Readme</h3><div class="textblock">Lists the appearances an item can take and picks, steps through or randomizes them, with rules to leave some out.The lists are built from the TGA and PLT icons in the module and haks (the client cannot show an icon that is only a DDS), so only appearances that have an icon (and, for weapons, a model) are offered.<h2><a class="anchor" id="autotoc_md515"></a>
+<h3><a id="itemappearance"></a>Readme</h3><div class="textblock">Lists the appearances an item can take and picks, steps through or randomizes them, with rules to leave some out.The lists are built from the TGA and PLT icons in the module and haks (the client cannot show an icon that is only a DDS), so only appearances that have an icon (and, for weapons, a model) are offered.<h2><a class="anchor" id="autotoc_md519"></a>
 Usage</h2>
 <p>Call <code><a class="el" href="group__itemappearance.html#gaaaf252ec687616238cc9b75219b160d0" title="Build the appearance lists from the icons in the module and haks, and clear all rules.">NWNX_ItemAppearance_CacheAppearances()</a></code> once on module load, after the haks are available. It builds the lists and clears every rule, so add rules (<code><a class="el" href="group__itemappearance.html#ga7150692446b358695b3df581c49c4aa8" title="Leave out the appearances matching every given range.">NWNX_ItemAppearance_BlacklistAppearance()</a></code>, <code><a class="el" href="group__itemappearance.html#ga0ee17ff98d66cd71a9ebbadff9e813db" title="The weapon models in sModels may only be used on all three parts together.">NWNX_ItemAppearance_SyncAppearance()</a></code>) afterwards.</p>
 <p>Rules apply to an item class (the <code>ItemClass</code> column of baseitems.2da), so a rule for one base item applies to every base item sharing its class.</p>
 <p>Ranges are written as <code>*</code> (any value) or a comma separated list of <code>n</code>, <code>n-m</code>, <code>-m</code> (up to m) and <code>n-</code> (n and up). A range that doesn't parse ignores the whole rule and logs a warning.</p>
-<h2><a class="anchor" id="autotoc_md516"></a>
+<h2><a class="anchor" id="autotoc_md520"></a>
 Notes</h2>
 <ul>
 <li>Simple and layered items (rings, shields, cloaks, helmets...) have a single model number and use only the first range of a blacklist rule. Weapons have three parts, each with a model and a color (0-9), written as <code>model * 10 + color</code>.</li>
@@ -120,7 +120,7 @@ Notes</h2>
 <li>For weapons the next and previous functions return <code>model * 10 + color</code>, like the random ones, not just the model.</li>
 <li>The functions only return values. Apply them with <code><a class="el" href="group__item.html#ga521f6fb8560e5e15b3755006f533fd33" title="Make a single change to the appearance of an item.">NWNX_Item_SetItemAppearance()</a></code> or <code>CopyItemAndModify()</code>.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md517"></a>
+<h2><a class="anchor" id="autotoc_md521"></a>
 Environment Variables</h2>
 <p>There are no environment variables for this plugin. </p>
 </div><table class="memberdecls">
@@ -606,7 +606,7 @@ Simple items (rings, shields, cloaks, helmets) only use sBot, matched against th
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Nov 7 2026 01:34:39 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Thu Nov 12 2026 02:19:49 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>
