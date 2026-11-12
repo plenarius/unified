@@ -94,10 +94,8 @@ bool Engine::Submit(EngineRequest request, std::string& error)
         }
     }
 
-    const auto gameId = request.gameId;
-    m_queue.erase(std::remove_if(m_queue.begin(), m_queue.end(),
-                                 [gameId](const EngineRequest& r) { return r.gameId == gameId; }),
-                  m_queue.end());
+    // A newer request for the same game replaces the queued or running one.
+    CancelLocked(request.gameId);
     if (m_queue.size() >= m_config.maxQueue)
     {
         error = "too many engine requests queued";
@@ -111,9 +109,16 @@ bool Engine::Submit(EngineRequest request, std::string& error)
 void Engine::Cancel(int32_t gameId)
 {
     std::lock_guard<std::mutex> lock(m_mutex);
+    CancelLocked(gameId);
+}
+
+void Engine::CancelLocked(int32_t gameId)
+{
     m_queue.erase(std::remove_if(m_queue.begin(), m_queue.end(),
                                  [gameId](const EngineRequest& r) { return r.gameId == gameId; }),
                   m_queue.end());
+    if (gameId != 0 && m_searchingGameId == gameId)
+        m_abortSearch = true;
 }
 
 void Engine::Stop()
@@ -149,9 +154,16 @@ void Engine::Run()
                 break;
             request = std::move(m_queue.front());
             m_queue.pop_front();
+            m_searchingGameId = request.gameId;
+            m_abortSearch = false;
         }
 
         auto result = Search(request);
+        {
+            std::lock_guard<std::mutex> lock(m_mutex);
+            m_searchingGameId = 0;
+            m_abortSearch = false;
+        }
         if (m_onResult)
             m_onResult(std::move(result));
     }
@@ -179,6 +191,8 @@ EngineResult Engine::Search(const EngineRequest& request)
     result.requestId = request.requestId;
     result.gameId = request.gameId;
 
+    m_stopSent = false;
+
     std::string error;
     if (!EnsureStarted(error))
     {
@@ -202,6 +216,11 @@ EngineResult Engine::Search(const EngineRequest& request)
         m_lastGameId = request.gameId;
     }
     ok = ok && Send("isready") && WaitFor("readyok", UCI_INIT_TIMEOUT_MS);
+    if (ok && m_abortSearch)
+    {
+        result.error = "cancelled";
+        return result;
+    }
     ok = ok && Send(request.position) && Send("go movetime " + std::to_string(moveTime));
     if (!ok)
     {
@@ -226,6 +245,12 @@ EngineResult Engine::Search(const EngineRequest& request)
             KillProcess();
             return result;
         }
+    }
+
+    if (m_abortSearch)
+    {
+        result.error = "cancelled";
+        return result;
     }
 
     std::istringstream words(line);
@@ -414,6 +439,13 @@ bool Engine::ReadLine(std::string& line, int32_t timeoutMs)
 
         if (m_fromEngine < 0 || m_stop)
             return false;
+
+        // Cancel(): ask the engine to stop searching; it answers with its bestmove at once.
+        if (m_abortSearch && !m_stopSent)
+        {
+            m_stopSent = true;
+            Send("stop");
+        }
 
         const auto remaining = std::chrono::duration_cast<std::chrono::milliseconds>(
                                    deadline - std::chrono::steady_clock::now()).count();

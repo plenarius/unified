@@ -58,8 +58,8 @@ The answer reaches the module on the main thread in two ways; use either:
 | `SUCCESS`  | int    | TRUE if there is a move. |
 
 The engine's move isn't played: the module plays it with `NWNX_Chess_MakeMove()` (after an animation,
-say). A move played, a new request, or `NWNX_Chess_EndGame()` while the engine is thinking discards its
-answer, and no event fires for it.
+say). A move played, a new request, or `NWNX_Chess_EndGame()` while the engine is thinking stops that search
+and discards its answer; no event fires for it.
 
 ## Tests
 

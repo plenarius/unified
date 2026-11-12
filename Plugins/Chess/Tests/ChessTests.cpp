@@ -642,6 +642,40 @@ static void TestEngineStockfish(const std::string& path)
     CHECK(c.Wait(300, 15000, r));
     CHECK(!c.Wait(301, 1000, r));
 
+    // Cancel a long search that is running: it ends at once instead of after 10 seconds.
+    req.gameId = 70;
+    req.requestId = 350;
+    req.moveTimeMs = 10000;
+    CHECK(engine->Submit(req, error));
+    usleep(300000);
+    auto cancelStart = std::chrono::steady_clock::now();
+    engine->Cancel(70);
+    CHECK(c.Wait(350, 3000, r));
+    CHECK(!r.success && r.error == "cancelled");
+    std::printf("  cancel during a search took %lld ms\n",
+                (long long)std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - cancelStart).count());
+    // A new request for the game being searched replaces it, and the engine then answers the new one.
+    req.requestId = 351;
+    CHECK(engine->Submit(req, error));
+    usleep(300000);
+    req.requestId = 352;
+    req.moveTimeMs = 100;
+    cancelStart = std::chrono::steady_clock::now();
+    CHECK(engine->Submit(req, error));
+    CHECK(c.Wait(351, 3000, r));
+    CHECK(!r.success && r.error == "cancelled");
+    CHECK(c.Wait(352, 3000, r));
+    CHECK(r.success && Has(g.GetLegalMoves(), r.move));
+    CHECK(std::chrono::steady_clock::now() - cancelStart < std::chrono::seconds(3));
+    // Cancelling another game leaves the search alone.
+    req.requestId = 353;
+    req.moveTimeMs = 500;
+    CHECK(engine->Submit(req, error));
+    usleep(100000);
+    engine->Cancel(71);
+    CHECK(c.Wait(353, 5000, r));
+    CHECK(r.success);
+
     // Kill the engine process: the next request starts a new one.
     std::printf("  killing the engine process\n");
     const auto cmd = "exec pkill -KILL -P " + std::to_string(getpid());

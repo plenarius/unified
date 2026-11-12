@@ -92,6 +92,11 @@ jobs:
         endif()
         execute_process(COMMAND ccache -s)
 
+    - name: Chess plugin tests
+      run: |
+        cmake --build build --target ChessTests -j 4
+        build/Plugins/Chess/ChessTests
+
     - name: Drop timestamp into Binaries folder
       if: github.event_name == 'push'
       working-directory: ${{runner.workspace}}/unified/Binaries

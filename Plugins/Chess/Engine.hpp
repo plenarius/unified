@@ -65,8 +65,8 @@ public:
     // Returns false with error set if the engine binary is missing or the queue is full.
     bool Submit(EngineRequest request, std::string& error);
 
-    // Drops queued requests for a game. A request already being searched still finishes;
-    // the caller ignores its result by request id.
+    // Drops queued requests for a game, and stops the search if the engine is busy with it
+    // (that request then fails with "cancelled"; the caller ignores its result by request id anyway).
     void Cancel(int32_t gameId);
 
     // Stops the worker thread and the engine process. Called by the destructor.
@@ -74,6 +74,7 @@ public:
 
 private:
     void Run();
+    void CancelLocked(int32_t gameId);
     EngineResult Search(const EngineRequest& request);
     bool EnsureStarted(std::string& error);
     bool StartProcess(std::string& error);
@@ -93,6 +94,8 @@ private:
     std::condition_variable m_cv;
     std::deque<EngineRequest> m_queue;
     std::atomic<bool> m_stop{false};
+    int32_t m_searchingGameId = 0;       // guarded by m_mutex
+    std::atomic<bool> m_abortSearch{false};
     std::thread m_thread;
 
     // Worker thread only.
@@ -102,6 +105,7 @@ private:
     std::string m_readBuffer;
     int32_t m_currentSkill = -1;
     int32_t m_lastGameId = 0;
+    bool m_stopSent = false;
 };
 
 }

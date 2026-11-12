@@ -97,7 +97,7 @@ string NWNX_Chess_GetPieceAt(int nGameId, string sSquare);
 /// engine thinks on its own thread. When it is done, NWNX_Chess_GetBestMoveResult() returns the move
 /// and the NWNX_ON_CHESS_BESTMOVE event fires (see the plugin's README).
 /// @note The move isn't played: play it with NWNX_Chess_MakeMove(). A move played, a new request or
-/// NWNX_Chess_EndGame() before the engine is done discards its answer.
+/// NWNX_Chess_EndGame() before the engine is done stops the search and discards its answer.
 /// @param nGameId The game id.
 /// @param nSkill Stockfish's Skill Level, 0 (weakest) to 20 (full strength).
 /// @param nMoveTimeMs How long the engine may think, in milliseconds (capped by NWNX_CHESS_MAX_MOVETIME_MS).
