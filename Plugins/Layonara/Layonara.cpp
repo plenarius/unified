@@ -5,6 +5,7 @@
 #include "API/CScriptEvent.hpp"
 #include "API/CServerAIMaster.hpp"
 #include "API/CServerExoApp.hpp"
+#include "API/CServerInfo.hpp"
 #include "API/CWorldTimer.hpp"
 #include "API/CNWRules.hpp"
 #include "API/CNWBaseItem.hpp"
@@ -67,6 +68,9 @@ Layonara::Layonara(Services::ProxyServiceList* services)
     REGISTER(SetQuiverArrows);
     REGISTER(CreateVFXAtTransitionCentroid);
     REGISTER(ClearSurfaceMaterial);
+    REGISTER(GetNWSyncAdvertHash);
+    REGISTER(GetNWSyncAdvertUrl);
+    REGISTER(SetNWSyncAdvert);
 
 #undef REGISTER
 
@@ -1037,6 +1041,60 @@ ArgumentStack Layonara::ClearSurfaceMaterial(ArgumentStack&& args)
     g_plugin->m_objectCurrentMaterial.erase(creatureId);
 
     return stack;
+}
+
+// The NWSync advert lives in CServerInfo::m_nwsyncAdvertisedData. nwserver fills it once at startup from
+// -nwsyncurl/-nwsynchash, then reads it again whenever it answers a BNXI query (the reply a client gets
+// before it connects, and which wins over the master server's copy) and on every master server heartbeat.
+// Changing it at runtime therefore changes the manifest that every client connecting afterwards downloads.
+static NWSync::Advertisement& GetNWSyncAdvert()
+{
+    return Globals::AppManager()->m_pServerExoApp->GetServerInfo()->m_nwsyncAdvertisedData;
+}
+
+ArgumentStack Layonara::GetNWSyncAdvertHash(ArgumentStack&&)
+{
+    const auto& advert = GetNWSyncAdvert();
+    // An empty Hash::SHA1 keeps an all-zero m_hex, so check m_empty rather than returning it.
+    return ScriptAPI::Arguments(std::string(advert.m_primary_manifest.m_empty ? "" : advert.m_primary_manifest.m_hex));
+}
+
+ArgumentStack Layonara::GetNWSyncAdvertUrl(ArgumentStack&&)
+{
+    return ScriptAPI::Arguments(std::string(GetNWSyncAdvert().m_url.CStr()));
+}
+
+ArgumentStack Layonara::SetNWSyncAdvert(ArgumentStack&& args)
+{
+    const auto hash = ScriptAPI::ExtractArgument<std::string>(args);
+    const auto url = ScriptAPI::ExtractArgument<std::string>(args);
+
+    // Both set, or both empty (clears the advert, as if the server had started without -nwsyncurl).
+    if (hash.empty() != url.empty())
+    {
+        LOG_WARNING("SetNWSyncAdvert: the hash and the URL must both be set or both be empty (hash '%s', url '%s')",
+                    hash, url);
+        return ScriptAPI::Arguments(0);
+    }
+    if (!hash.empty() &&
+        (hash.size() != SHA1_DIGEST_SIZE * 2 || hash.find_first_not_of("0123456789abcdefABCDEF") != std::string::npos))
+    {
+        LOG_WARNING("SetNWSyncAdvert: '%s' is not a SHA1 (40 hex characters)", hash);
+        return ScriptAPI::Arguments(0);
+    }
+
+    auto& advert = GetNWSyncAdvert();
+    const std::string oldHash = advert.m_primary_manifest.m_empty ? "" : advert.m_primary_manifest.m_hex;
+    const std::string oldUrl = advert.m_url.CStr();
+
+    advert.m_primary_manifest = Hash::SHA1(CExoString(hash));
+    advert.m_url = CExoString(url);
+    // Any additional manifests were published for the old primary manifest; don't advertise them with the new one.
+    advert.m_additional_manifests.clear();
+
+    LOG_INFO("NWSync advert changed from '%s' @ '%s' to '%s' @ '%s'", oldHash, oldUrl,
+             advert.m_primary_manifest.m_empty ? "" : advert.m_primary_manifest.m_hex, advert.m_url);
+    return ScriptAPI::Arguments(1);
 }
 
 void Layonara::SendMessageToCombatLog(CNWSCreature* target, const std::string& msg)
