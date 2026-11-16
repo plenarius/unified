@@ -121,6 +121,9 @@ private:
     ArgumentStack SetQuiverArrows                 (ArgumentStack&& args);
     ArgumentStack CreateVFXAtTransitionCentroid   (ArgumentStack&& args);
     ArgumentStack ClearSurfaceMaterial            (ArgumentStack&& args);
+    ArgumentStack GetNWSyncAdvertHash             (ArgumentStack&& args);
+    ArgumentStack GetNWSyncAdvertUrl              (ArgumentStack&& args);
+    ArgumentStack SetNWSyncAdvert                 (ArgumentStack&& args);
 };
 
 }

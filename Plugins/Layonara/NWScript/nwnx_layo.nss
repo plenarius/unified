@@ -2,9 +2,8 @@
 /// @brief Various Layonara specific functions
 /// @{
 /// @file nwnx_layo.nss
-#include "nwnx"
 
-const string NWNX_Layonara = "NWNX_Layonara";
+const string NWNX_Layonara = "NWNX_Layonara"; ///< @private
 
 /// @brief Set the slots you can equip a base item
 /// @param nBaseItem The base item id.
@@ -68,133 +67,180 @@ void NWNX_Layonara_CreateVFXAtTransitionCentroid();
 /// @param creature The creature object.
 void NWNX_Layonara_ClearSurfaceMaterial(object creature);
 
+/// @brief Get the NWSync manifest hash the server advertises to connecting clients.
+/// @return The 40 character lowercase SHA1, or "" if the server advertises no manifest.
+string NWNX_Layonara_GetNWSyncAdvertHash();
+
+/// @brief Get the NWSync URL the server advertises to connecting clients.
+/// @return The URL, or "" if the server advertises no NWSync repository.
+string NWNX_Layonara_GetNWSyncAdvertUrl();
+
+/// @brief Change the NWSync manifest the server advertises, at runtime and without a restart.
+/// @note Every client that connects afterwards gets the new manifest; players already in the game keep what
+/// they downloaded. The manifest must already be published at sUrl and hold every hak and the TLK the module
+/// uses, or connecting clients fail their sync. Any additional manifests the server advertised are dropped.
+/// @param sHash The primary manifest's SHA1: 40 hex characters.
+/// @param sUrl The NWSync repository URL, as for -nwsyncurl.
+/// @remark Pass "" for both to stop advertising NWSync, as if the server had started without it.
+/// @return TRUE if the advert changed, FALSE if sHash isn't a SHA1 or only one of the two is empty.
+int NWNX_Layonara_SetNWSyncAdvert(string sHash, string sUrl);
+
 /// @}
 
 void NWNX_Layonara_SetEquippableSlots(int nBaseItem, int nSlots)
 {
     string sFunc = "SetEquippableSlots";
 
-    NWNX_PushArgumentInt(nSlots);
-    NWNX_PushArgumentInt(nBaseItem);
+    NWNXPushInt(nSlots);
+    NWNXPushInt(nBaseItem);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 }
 
 void NWNX_Layonara_SetHostileFeat(int nFeatID, int bHostile)
 {
     string sFunc = "SetHostileFeat";
 
-    NWNX_PushArgumentInt(bHostile);
-    NWNX_PushArgumentInt(nFeatID);
+    NWNXPushInt(bHostile);
+    NWNXPushInt(nFeatID);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 }
 
 void NWNX_Layonara_SetDuelistCannyDefense(object creature, int nBonus)
 {
     string sFunc = "SetDuelistCannyDefense";
 
-    NWNX_PushArgumentInt(nBonus);
-    NWNX_PushArgumentObject(creature);
+    NWNXPushInt(nBonus);
+    NWNXPushObject(creature);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 }
 
 void NWNX_Layonara_SetDuelistGrace(object creature, int nBonus)
 {
     string sFunc = "SetDuelistGrace";
 
-    NWNX_PushArgumentInt(nBonus);
-    NWNX_PushArgumentObject(creature);
+    NWNXPushInt(nBonus);
+    NWNXPushObject(creature);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 }
 
 void NWNX_Layonara_SetDuelistElaborateParry(object creature, int nBonus)
 {
     string sFunc = "SetDuelistElaborateParry";
 
-    NWNX_PushArgumentInt(nBonus);
-    NWNX_PushArgumentObject(creature);
+    NWNXPushInt(nBonus);
+    NWNXPushObject(creature);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 }
 
 void NWNX_Layonara_SetSubraceDayEffects(object creature, int nActive = TRUE)
 {
     string sFunc = "SetSubraceDayEffects";
 
-    NWNX_PushArgumentInt(nActive);
-    NWNX_PushArgumentObject(creature);
+    NWNXPushInt(nActive);
+    NWNXPushObject(creature);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 }
 
 void NWNX_Layonara_ApplyRune(object creature, object item)
 {
     string sFunc = "ApplyRune";
 
-    NWNX_PushArgumentObject(item);
-    NWNX_PushArgumentObject(creature);
+    NWNXPushObject(item);
+    NWNXPushObject(creature);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 }
 
 string NWNX_Layonara_CombineRunes(object target, object item)
 {
     string sFunc = "CombineRunes";
 
-    NWNX_PushArgumentObject(item);
-    NWNX_PushArgumentObject(target);
+    NWNXPushObject(item);
+    NWNXPushObject(target);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 
-    return NWNX_GetReturnValueString();
+    return NWNXPopString();
 }
 
 string NWNX_Layonara_GetRuneDescription(object item)
 {
     string sFunc = "GetRuneDescription";
 
-    NWNX_PushArgumentObject(item);
+    NWNXPushObject(item);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 
-    return NWNX_GetReturnValueString();
+    return NWNXPopString();
 }
 
 void NWNX_Layonara_SetQuiver(object creature, int nColor)
 {
     string sFunc = "SetQuiver";
 
-    NWNX_PushArgumentInt(nColor);
-    NWNX_PushArgumentObject(creature);
+    NWNXPushInt(nColor);
+    NWNXPushObject(creature);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 }
 
 void NWNX_Layonara_SetQuiverArrows(object creature)
 {
     string sFunc = "SetQuiverArrows";
 
-    NWNX_PushArgumentObject(creature);
+    NWNXPushObject(creature);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 }
 
 void NWNX_Layonara_CreateVFXAtTransitionCentroid()
 {
     string sFunc = "CreateVFXAtTransitionCentroid";
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 }
 
 void NWNX_Layonara_ClearSurfaceMaterial(object creature)
 {
     string sFunc = "ClearSurfaceMaterial";
 
-    NWNX_PushArgumentObject(creature);
+    NWNXPushObject(creature);
 
-    NWNX_CallFunction(NWNX_Layonara, sFunc);
+    NWNXCall(NWNX_Layonara, sFunc);
 }
 
+string NWNX_Layonara_GetNWSyncAdvertHash()
+{
+    string sFunc = "GetNWSyncAdvertHash";
+
+    NWNXCall(NWNX_Layonara, sFunc);
+
+    return NWNXPopString();
+}
+
+string NWNX_Layonara_GetNWSyncAdvertUrl()
+{
+    string sFunc = "GetNWSyncAdvertUrl";
+
+    NWNXCall(NWNX_Layonara, sFunc);
+
+    return NWNXPopString();
+}
+
+int NWNX_Layonara_SetNWSyncAdvert(string sHash, string sUrl)
+{
+    string sFunc = "SetNWSyncAdvert";
+
+    NWNXPushString(sUrl);
+    NWNXPushString(sHash);
+
+    NWNXCall(NWNX_Layonara, sFunc);
+
+    return NWNXPopInt();
+}
