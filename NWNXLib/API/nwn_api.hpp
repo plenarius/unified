@@ -172,14 +172,27 @@ namespace Nui::JSON {
     //using EventQueue = std::queue<Event>;
 }
 
+struct CResGFF;
+struct CResStruct;
+
+// The virtuals must be declared in the same order as the server's (8193.37), because NWNX code calls
+// them through the server's vtables. The server's vtable for JsonEngineStructure is:
+//   GetId, ~ (complete), ~ (deleting), IsEmpty, Clear, Unlink, SaveToGFF, LoadFromGff
+// Without GetId first, every virtual call from NWNX lands one slot early: destroying a
+// JsonEngineStructure through a pointer (as std::variant does in ScriptVariant) called GetId()
+// instead of the destructor, so the shared_ptr was never released and every JSON value passed
+// to or returned from an NWNX function leaked.
 template<typename T>
 struct SharedPtrEngineStructure
 {
     std::shared_ptr<T> m_shared;
+    virtual uint64_t GetId() const = 0;
     virtual ~SharedPtrEngineStructure() {}
     virtual bool IsEmpty() const = 0;
     virtual void Clear() = 0;
     virtual void Unlink() = 0;
+    virtual void SaveToGFF(CResGFF*, CResStruct*) {}
+    virtual void LoadFromGff(CResGFF*, CResStruct*) {}
 };
 
 template<typename T>
