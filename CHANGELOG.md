@@ -32,6 +32,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Store: GetBlackMarket(), SetBlackMarket()
 - Util: SetStartingLocation()
 - Object: GetLocalizedDescription(), SetLocalizedDescription()
+- Object: GetLocalVariables()
 - Util: RawPrint()
 - Item: RefreshInventoryWindow(), RefreshWieldedItems()
 - ItemAppearance: CacheAppearances(), BlacklistAppearance(), SyncAppearance(), GetRandomAppearance(), GetRandomWeaponAppearance(), GetNextWeaponAppearance(), GetPreviousWeaponAppearance(), GetNextAppearance(), GetPreviousAppearance(), GetNextColor(), GetPreviousColor()
