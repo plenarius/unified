@@ -1,16 +1,16 @@
 var searchData=
 [
-  ['banimloop1_4122',['bAnimLoop1',['../structNWNX__Tileset__CustomTileData.html#ad7cc06ac7a4fb8eeca5a33810e1cf479',1,'NWNX_Tileset_CustomTileData']]],
-  ['banimloop2_4123',['bAnimLoop2',['../structNWNX__Tileset__CustomTileData.html#a800fec1c59fd92234fa6d7cf4e4b3964',1,'NWNX_Tileset_CustomTileData']]],
-  ['banimloop3_4124',['bAnimLoop3',['../structNWNX__Tileset__CustomTileData.html#a72f43f39bfe435c2271885f34db1478d',1,'NWNX_Tileset_CustomTileData']]],
-  ['bbypassarmorcheckpenalty_4125',['bBypassArmorCheckPenalty',['../structNWNX__SkillRanks__SkillFeat.html#a7dd800dcb05d188252a50c070ae71f2b',1,'NWNX_SkillRanks_SkillFeat']]],
-  ['bexpose_4126',['bExpose',['../structNWNX__EffectUnpacked.html#ae72adce7ceb667a20c4baf86bfad47c8',1,'NWNX_EffectUnpacked']]],
-  ['bhasheighttransition_4127',['bHasHeightTransition',['../structNWNX__Tileset__TilesetData.html#a28a1cc6ee6bb8ae51286c357f429a548',1,'NWNX_Tileset_TilesetData']]],
-  ['binterior_4128',['bInterior',['../structNWNX__Tileset__TilesetData.html#ab190d02f421837b6e1ffa9b3e3f302ff',1,'NWNX_Tileset_TilesetData']]],
-  ['bkillingblow_4129',['bKillingBlow',['../structNWNX__Damage__AttackEventData.html#a838f86200ed83ab9b52a84720168222d',1,'NWNX_Damage_AttackEventData']]],
-  ['blinkleftvalid_4130',['bLinkLeftValid',['../structNWNX__EffectUnpacked.html#a6616a557c8c9c73faa051ff023450212',1,'NWNX_EffectUnpacked']]],
-  ['blinkrightvalid_4131',['bLinkRightValid',['../structNWNX__EffectUnpacked.html#a14f3744ff2467b6314841a0cd2e87350',1,'NWNX_EffectUnpacked']]],
-  ['brangedattack_4132',['bRangedAttack',['../structNWNX__Damage__AttackEventData.html#a28fce1406884ca59dd146d31c99d7fb2',1,'NWNX_Damage_AttackEventData']]],
-  ['bshowicon_4133',['bShowIcon',['../structNWNX__EffectUnpacked.html#a332fd2e3db2012dc15d2fff35b88332e',1,'NWNX_EffectUnpacked']]],
-  ['busable_4134',['bUsable',['../structNWNX__IPUnpacked.html#aaa2c8bc13b51d3f6ceaf64e3b7fd5326',1,'NWNX_IPUnpacked']]]
+  ['banimloop1_4127',['bAnimLoop1',['../structNWNX__Tileset__CustomTileData.html#ad7cc06ac7a4fb8eeca5a33810e1cf479',1,'NWNX_Tileset_CustomTileData']]],
+  ['banimloop2_4128',['bAnimLoop2',['../structNWNX__Tileset__CustomTileData.html#a800fec1c59fd92234fa6d7cf4e4b3964',1,'NWNX_Tileset_CustomTileData']]],
+  ['banimloop3_4129',['bAnimLoop3',['../structNWNX__Tileset__CustomTileData.html#a72f43f39bfe435c2271885f34db1478d',1,'NWNX_Tileset_CustomTileData']]],
+  ['bbypassarmorcheckpenalty_4130',['bBypassArmorCheckPenalty',['../structNWNX__SkillRanks__SkillFeat.html#a7dd800dcb05d188252a50c070ae71f2b',1,'NWNX_SkillRanks_SkillFeat']]],
+  ['bexpose_4131',['bExpose',['../structNWNX__EffectUnpacked.html#ae72adce7ceb667a20c4baf86bfad47c8',1,'NWNX_EffectUnpacked']]],
+  ['bhasheighttransition_4132',['bHasHeightTransition',['../structNWNX__Tileset__TilesetData.html#a28a1cc6ee6bb8ae51286c357f429a548',1,'NWNX_Tileset_TilesetData']]],
+  ['binterior_4133',['bInterior',['../structNWNX__Tileset__TilesetData.html#ab190d02f421837b6e1ffa9b3e3f302ff',1,'NWNX_Tileset_TilesetData']]],
+  ['bkillingblow_4134',['bKillingBlow',['../structNWNX__Damage__AttackEventData.html#a838f86200ed83ab9b52a84720168222d',1,'NWNX_Damage_AttackEventData']]],
+  ['blinkleftvalid_4135',['bLinkLeftValid',['../structNWNX__EffectUnpacked.html#a6616a557c8c9c73faa051ff023450212',1,'NWNX_EffectUnpacked']]],
+  ['blinkrightvalid_4136',['bLinkRightValid',['../structNWNX__EffectUnpacked.html#a14f3744ff2467b6314841a0cd2e87350',1,'NWNX_EffectUnpacked']]],
+  ['brangedattack_4137',['bRangedAttack',['../structNWNX__Damage__AttackEventData.html#a28fce1406884ca59dd146d31c99d7fb2',1,'NWNX_Damage_AttackEventData']]],
+  ['bshowicon_4138',['bShowIcon',['../structNWNX__EffectUnpacked.html#a332fd2e3db2012dc15d2fff35b88332e',1,'NWNX_EffectUnpacked']]],
+  ['busable_4139',['bUsable',['../structNWNX__IPUnpacked.html#aaa2c8bc13b51d3f6ceaf64e3b7fd5326',1,'NWNX_IPUnpacked']]]
 ];
