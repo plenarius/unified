@@ -1839,17 +1839,7 @@ _______________________________________
     NEW_STATE             | int  | The new state, see @ref events_encumbrance "Encumbrance States"      |
     TOTAL_WEIGHT          | int  | The weight the creature now carries, in tenths of pounds              |
 
-    @note The event fires whenever the engine recomputes the state and it differs from before: items picked up, dropped,
-    equipped, split, merged, bartered or moved, Strength changes from effects, item properties, level up/down or
-    NWNX_Creature_SetRawAbilityScore(), resting, resurrection and a character being loaded.
-    @note When a character logs in already encumbered, the event fires while the character is loaded, before the client
-    has entered the area and before the module's OnClientEnter. Messages sent to the player from the event are lost
-    then; use OnClientEnter (or later) for anything the player must see.
-    @note The engine only tracks encumbrance for player characters and for henchmen whose master is a player.
-    Other creatures always stay at NWNX_EVENTS_ENCUMBRANCE_STATE_NORMAL, so the event never fires for them.
-    @note With the default ruleset an encumbered creature can't run and a heavily encumbered one also moves at half speed.
-    @note There is no BEFORE event: the engine works out the new state, and applies its movement speed penalty, in the same function.
-    The penalty is an innate EFFECT_TYPE_MOVEMENT_SPEED_DECREASE, so it is not seen by the NWNX_ON_EFFECT_APPLIED events.
+    @note Only fires for player characters and their henchmen. It fires during (before) client enter if the character logs in encumbered.
 */
 
 /// @name Events Event Constants
