@@ -5,6 +5,7 @@ NWNX_EXPECT_VERSION(8193, 37);
 NWNXLIB_FUNCTION(_ZN21CServerExoAppInternal8SaveGameEjR10CExoStringS1_P10CNWSPlayeriS1_)
 NWNXLIB_FUNCTION(_ZN16CGameObjectArrayC1Ei)
 NWNXLIB_FUNCTION(_ZN10CNWSPlayerD1Ev)
+NWNXLIB_FUNCTION(_ZN12CNWSCreatureD1Ev)
 NWNXLIB_FUNCTION(_ZN10CNWSModule15LoadModuleStartE10CExoStringiiRKN6NWSync13AdvertisementE)
 
 // Hooking functions that override a virtual function doesn't work with the new &Class::Function way...

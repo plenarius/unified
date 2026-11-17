@@ -28,6 +28,7 @@ static Hooks::Hook s_SendMessageToPlayerHook;
 static Hooks::Hook s_DisconnectPlayerHook;
 static Hooks::Hook s_ExportReplyHook;
 static Hooks::Hook s_SaveServerCharacterHook;
+static Hooks::Hook s_CreatureDestructorHook;
 static bool s_enabled;
 
 static CServerExoApp* Server() { return Globals::AppManager()->m_pServerExoApp; }
@@ -35,6 +36,16 @@ static CServerExoApp* Server() { return Globals::AppManager()->m_pServerExoApp; 
 static bool IsTestPlayer(uint32_t nPlayerId) { return s_fakePlayers.count(nPlayerId) != 0; }
 
 static void DetachPlayer(CNWSPlayer* pPlayer);
+
+static CNWSPlayer* FindFakeByCreature(ObjectID oid)
+{
+    for (auto& [id, pPlayer] : s_fakePlayers)
+    {
+        if (pPlayer->m_oidNWSObject == oid)
+            return pPlayer;
+    }
+    return nullptr;
+}
 
 static void Init() __attribute__((constructor));
 static void Init()
@@ -87,6 +98,15 @@ static void Init()
                 return true;
             return s_SaveServerCharacterHook->CallOriginal<BOOL>(pThis, bBackupPlayer);
         }, Hooks::Order::Earliest);
+
+    // Otherwise the player would stay in the list, controlling an object that is gone.
+    s_CreatureDestructorHook = Hooks::HookFunction(Functions::_ZN12CNWSCreatureD1Ev,
+        +[](CNWSCreature* pThis) -> void
+        {
+            if (auto* pPlayer = FindFakeByCreature(pThis->m_idSelf))
+                DetachPlayer(pPlayer);
+            s_CreatureDestructorHook->CallOriginal<void>(pThis);
+        }, Hooks::Order::Earliest);
 }
 
 static uint32_t FindFreePlayerId()
@@ -113,16 +133,6 @@ static auto s_destroyServerSubscription = MessageBus::Subscribe("NWNX_CORE_SIGNA
         while (!s_fakePlayers.empty())
             DetachPlayer(s_fakePlayers.begin()->second);
     });
-
-static CNWSPlayer* FindFakeByCreature(ObjectID oid)
-{
-    for (auto& [id, pPlayer] : s_fakePlayers)
-    {
-        if (pPlayer->m_oidNWSObject == oid)
-            return pPlayer;
-    }
-    return nullptr;
-}
 
 // The engine reads one entry per level of a player character: for its hit points, to save it, to level it down.
 static void BuildLevelStats(CNWSCreature* pCreature)
