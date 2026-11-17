@@ -119,8 +119,6 @@ void main()
     Report("FindStoredMessage (Many)", NWNX_TestPlayer_FindStoredMessage(oCreature, "message 44.") == -1 && NWNX_TestPlayer_FindStoredMessage(oCreature, "message 300.") == 255);
     Report("ClearMessages", NWNX_TestPlayer_ClearMessages(oCreature) && NWNX_TestPlayer_GetMessageCount(oCreature, 18) == 0 && NWNX_TestPlayer_GetStoredMessageCount(oCreature) == 0);
 
-    Report("SetInventoryOpen", NWNX_TestPlayer_SetInventoryOpen(oCreature, TRUE));
-
     object oTo = CreateArea(GetResRef(oArea));
     Report("CompleteAreaTransition (Not Between Areas)", GetIsObjectValid(oTo) && !NWNX_TestPlayer_CompleteAreaTransition(oCreature));
     AssignCommand(oCreature, SpeakString("NWNX_TestPlayer shout", TALKVOLUME_SHOUT));

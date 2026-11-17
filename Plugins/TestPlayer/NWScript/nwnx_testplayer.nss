@@ -88,13 +88,6 @@ int NWNX_TestPlayer_FindStoredMessage(object oCreature, string sText, int nMajor
 /// @return TRUE if oCreature had a fake player.
 int NWNX_TestPlayer_ClearMessages(object oCreature);
 
-/// @brief Set whether the server believes a fake player has its inventory window open.
-/// @note A real client reports this itself.
-/// @param oCreature The fake player's creature.
-/// @param bOpen TRUE for open, FALSE for closed.
-/// @return TRUE if oCreature had a fake player.
-int NWNX_TestPlayer_SetInventoryOpen(object oCreature, int bOpen = TRUE);
-
 /// @}
 
 int NWNX_TestPlayer_Attach(object oCreature, string sPlayerName, string sCDKey)
@@ -185,13 +178,5 @@ int NWNX_TestPlayer_ClearMessages(object oCreature)
 {
     NWNXPushObject(oCreature);
     NWNXCall(NWNX_TestPlayer, "ClearMessages");
-    return NWNXPopInt();
-}
-
-int NWNX_TestPlayer_SetInventoryOpen(object oCreature, int bOpen = TRUE)
-{
-    NWNXPushInt(bOpen);
-    NWNXPushObject(oCreature);
-    NWNXCall(NWNX_TestPlayer, "SetInventoryOpen");
     return NWNXPopInt();
 }

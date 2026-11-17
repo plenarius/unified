@@ -5,7 +5,6 @@
 #include "API/CNetLayer.hpp"
 #include "API/CNetLayerPlayerInfo.hpp"
 #include "API/CNWSPlayer.hpp"
-#include "API/CNWSPlayerInventoryGUI.hpp"
 #include "API/CNWSMessage.hpp"
 #include "API/CNWSCreature.hpp"
 #include "API/CNWSCreatureStats.hpp"
@@ -440,14 +439,4 @@ NWNX_EXPORT ArgumentStack FindStoredMessage(ArgumentStack&& args)
             return nIndex;
     }
     return -1;
-}
-
-NWNX_EXPORT ArgumentStack SetInventoryOpen(ArgumentStack&& args)
-{
-    auto* pPlayer = FindFakeByCreature(args.extract<ObjectID>());
-    const auto bOpen = args.extract<int32_t>();
-    if (!pPlayer || !pPlayer->m_pInventoryGUI)
-        return false;
-    pPlayer->m_pInventoryGUI->m_bGuiInventoryOpen = !!bOpen;
-    return true;
 }
