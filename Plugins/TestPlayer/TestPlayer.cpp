@@ -30,7 +30,7 @@ static bool s_enabled;
 
 static CServerExoApp* Server() { return Globals::AppManager()->m_pServerExoApp; }
 
-static bool IsFake(uint32_t nPlayerId) { return s_fakePlayers.count(nPlayerId) != 0; }
+static bool IsTestPlayer(uint32_t nPlayerId) { return s_fakePlayers.count(nPlayerId) != 0; }
 
 static void Init() __attribute__((constructor));
 static void Init()
@@ -42,7 +42,7 @@ static void Init()
     s_SendServerToPlayerMessageHook = Hooks::HookFunction(&CNWSMessage::SendServerToPlayerMessage,
         +[](CNWSMessage* pThis, uint32_t nPlayerId, uint8_t nMajor, uint8_t nMinor, uint8_t* pBuffer, uint32_t nSize) -> BOOL
         {
-            if (IsFake(nPlayerId))
+            if (IsTestPlayer(nPlayerId))
                 s_messages[nPlayerId][(uint16_t)(nMajor << 8 | nMinor)]++;
             return s_SendServerToPlayerMessageHook->CallOriginal<BOOL>(pThis, nPlayerId, nMajor, nMinor, pBuffer, nSize);
         }, Hooks::Order::Earliest);
@@ -50,7 +50,7 @@ static void Init()
     s_SendMessageToPlayerHook = Hooks::HookFunction(&CNetLayer::SendMessageToPlayer,
         +[](CNetLayer* pThis, uint32_t nPlayerId, uint8_t* pData, uint32_t nSize, uint32_t nFlags) -> BOOL
         {
-            if (IsFake(nPlayerId))
+            if (IsTestPlayer(nPlayerId))
                 return true;
             return s_SendMessageToPlayerHook->CallOriginal<BOOL>(pThis, nPlayerId, pData, nSize, nFlags);
         }, Hooks::Order::Earliest);
@@ -59,7 +59,7 @@ static void Init()
     s_DisconnectPlayerHook = Hooks::HookFunction(&CNetLayer::DisconnectPlayer,
         +[](CNetLayer* pThis, uint32_t nPlayerId, uint32_t nStrRef, BOOL bCDAuthFail, const CExoString& sReason) -> BOOL
         {
-            if (IsFake(nPlayerId))
+            if (IsTestPlayer(nPlayerId))
                 return true;
             return s_DisconnectPlayerHook->CallOriginal<BOOL>(pThis, nPlayerId, nStrRef, bCDAuthFail, sReason);
         }, Hooks::Order::Earliest);
@@ -68,7 +68,7 @@ static void Init()
     s_ExportReplyHook = Hooks::HookFunction(&CNWSMessage::SendServerToPlayerModule_ExportReply,
         +[](CNWSMessage* pThis, CNWSPlayer* pPlayer) -> BOOL
         {
-            if (pPlayer && IsFake(pPlayer->m_nPlayerID))
+            if (pPlayer && IsTestPlayer(pPlayer->m_nPlayerID))
                 return true;
             return s_ExportReplyHook->CallOriginal<BOOL>(pThis, pPlayer);
         }, Hooks::Order::Earliest);
@@ -76,7 +76,7 @@ static void Init()
     s_SaveServerCharacterHook = Hooks::HookFunction(&CNWSPlayer::SaveServerCharacter,
         +[](CNWSPlayer* pThis, BOOL bBackupPlayer) -> BOOL
         {
-            if (IsFake(pThis->m_nPlayerID))
+            if (IsTestPlayer(pThis->m_nPlayerID))
                 return true;
             return s_SaveServerCharacterHook->CallOriginal<BOOL>(pThis, bBackupPlayer);
         }, Hooks::Order::Earliest);
@@ -87,7 +87,7 @@ static uint32_t FindFreePlayerId()
     auto* pNetLayer = Server()->GetNetLayer();
     for (uint32_t id = MAX_PLAYER_ID; id >= MIN_FAKE_ID; id--)
     {
-        if (IsFake(id) || Server()->GetClientObjectByPlayerId(id))
+        if (IsTestPlayer(id) || Server()->GetClientObjectByPlayerId(id))
             continue;
         auto* pInfo = pNetLayer->GetPlayerInfo(id);
         if (pInfo && !pInfo->m_bPlayerInUse)
@@ -207,7 +207,7 @@ NWNX_EXPORT ArgumentStack Detach(ArgumentStack&& args)
     return true;
 }
 
-NWNX_EXPORT ArgumentStack GetIsFake(ArgumentStack&& args)
+NWNX_EXPORT ArgumentStack GetIsTestPlayer(ArgumentStack&& args)
 {
     return FindFakeByCreature(args.extract<ObjectID>()) != nullptr;
 }
