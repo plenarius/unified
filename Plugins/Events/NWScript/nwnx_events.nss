@@ -1842,6 +1842,9 @@ _______________________________________
     @note The event fires whenever the engine recomputes the state and it differs from before: items picked up, dropped,
     equipped, split, merged, bartered or moved, Strength changes from effects, item properties, level up/down or
     NWNX_Creature_SetRawAbilityScore(), resting, resurrection and a character being loaded.
+    @note When a character logs in already encumbered, the event fires while the character is loaded, before the client
+    has entered the area and before the module's OnClientEnter. Messages sent to the player from the event are lost
+    then; use OnClientEnter (or later) for anything the player must see.
     @note The engine only tracks encumbrance for player characters and for henchmen whose master is a player.
     Other creatures always stay at NWNX_EVENTS_ENCUMBRANCE_STATE_NORMAL, so the event never fires for them.
     @note With the default ruleset an encumbered creature can't run and a heavily encumbered one also moves at half speed.
