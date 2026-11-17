@@ -10,6 +10,7 @@
 #include "API/CNWSCreature.hpp"
 #include "API/CNWSCreatureStats.hpp"
 #include "API/CNWLevelStats.hpp"
+#include "API/CNWSModule.hpp"
 
 #include <algorithm>
 #include <unordered_map>
@@ -290,6 +291,22 @@ NWNX_EXPORT ArgumentStack Detach(ArgumentStack&& args)
         return false;
     DetachPlayer(pPlayer);
     return true;
+}
+
+NWNX_EXPORT ArgumentStack CompleteAreaTransition(ArgumentStack&& args)
+{
+    auto* pPlayer = FindFakeByCreature(args.extract<ObjectID>());
+    if (!pPlayer)
+        return false;
+
+    // Between areas a player's creature is in no area and has a desired one, see CNWSCreature::AddToArea.
+    auto* pCreature = Utils::AsNWSCreature(Utils::GetGameObject(pPlayer->m_oidNWSObject));
+    if (!pCreature || pCreature->GetArea() || !Server()->GetModule()->GetArea(pCreature->m_oidDesiredArea))
+        return false;
+
+    // What the server does when a client reports the area as loaded.
+    Server()->MovePlayerToArea(pPlayer);
+    return pCreature->GetArea() != nullptr;
 }
 
 NWNX_EXPORT ArgumentStack GetIsTestPlayer(ArgumentStack&& args)
