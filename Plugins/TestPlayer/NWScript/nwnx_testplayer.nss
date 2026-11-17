@@ -51,7 +51,8 @@ int NWNX_TestPlayer_GetPlayerId(object oCreature);
 int NWNX_TestPlayer_GetCount();
 
 /// @brief Count the messages the server has sent to a fake player, by message type.
-/// @note Counts start when the player is attached or NWNX_TestPlayer_ClearMessages() is called.
+/// @note Counts start when the player is attached or NWNX_TestPlayer_ClearMessages() is called. They include the
+/// messages sent to all players at once.
 /// The types are the MessageMajor and Message*Minor constants in NWNXLib/API/Constants/Messages.hpp.
 /// @param oCreature The fake player's creature.
 /// @param nMajor The major type of the messages.

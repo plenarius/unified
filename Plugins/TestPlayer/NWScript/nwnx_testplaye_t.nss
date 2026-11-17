@@ -34,6 +34,7 @@ void TestAreaTransition(object oCreature, object oFrom, object oTo, int nPlayers
 {
     Report("JumpToLocation (Between Areas)", !GetIsObjectValid(GetArea(oCreature)));
     Report("JumpToLocation (Players In Area)", NWNX_Area_GetNumberOfPlayersInArea(oFrom) == nPlayers && NWNX_Area_GetNumberOfPlayersInArea(oTo) == 0);
+    Report("FindStoredMessage (Sent To All Players)", NWNX_TestPlayer_FindStoredMessage(oCreature, "NWNX_TestPlayer shout") >= 0);
     Report("CompleteAreaTransition", NWNX_TestPlayer_CompleteAreaTransition(oCreature) && GetArea(oCreature) == oTo);
     Report("CompleteAreaTransition (Players In Area)", NWNX_Area_GetNumberOfPlayersInArea(oFrom) == nPlayers && NWNX_Area_GetNumberOfPlayersInArea(oTo) == 1);
     Report("CompleteAreaTransition (Twice)", !NWNX_TestPlayer_CompleteAreaTransition(oCreature));
@@ -122,6 +123,7 @@ void main()
 
     object oTo = CreateArea(GetResRef(oArea));
     Report("CompleteAreaTransition (Not Between Areas)", GetIsObjectValid(oTo) && !NWNX_TestPlayer_CompleteAreaTransition(oCreature));
+    AssignCommand(oCreature, SpeakString("NWNX_TestPlayer shout", TALKVOLUME_SHOUT));
     AssignCommand(oCreature, JumpToLocation(Location(oTo, GetPositionFromLocation(locStart), 0.0)));
     DelayCommand(2.0, TestAreaTransition(oCreature, oArea, oTo, nPlayers, nCount));
 }
