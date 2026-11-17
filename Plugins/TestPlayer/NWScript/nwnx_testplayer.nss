@@ -18,6 +18,13 @@ int NWNX_TestPlayer_Attach(object oCreature, string sPlayerName, string sCDKey);
 /// @return TRUE if oCreature had a fake player.
 int NWNX_TestPlayer_Detach(object oCreature);
 
+/// @brief Complete the area transition of a fake player, as a client does when it has loaded the new area.
+/// @note A player that is moved to another area leaves its area and only enters the new one when its client has
+/// loaded it. Until then GetArea() returns OBJECT_INVALID for the creature and its action queue waits.
+/// @param oCreature The fake player's creature.
+/// @return TRUE if oCreature was between areas and is now in the new one.
+int NWNX_TestPlayer_CompleteAreaTransition(object oCreature);
+
 /// @brief Get if a creature is controlled by a fake player.
 /// @param oCreature The creature.
 /// @return TRUE if oCreature is controlled by a fake player.
@@ -68,6 +75,13 @@ int NWNX_TestPlayer_Detach(object oCreature)
 {
     NWNXPushObject(oCreature);
     NWNXCall(NWNX_TestPlayer, "Detach");
+    return NWNXPopInt();
+}
+
+int NWNX_TestPlayer_CompleteAreaTransition(object oCreature)
+{
+    NWNXPushObject(oCreature);
+    NWNXCall(NWNX_TestPlayer, "CompleteAreaTransition");
     return NWNXPopInt();
 }
 
