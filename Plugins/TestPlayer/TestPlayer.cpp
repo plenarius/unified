@@ -212,6 +212,21 @@ NWNX_EXPORT ArgumentStack Attach(ArgumentStack&& args)
         return 0;
     }
 
+    if (sPlayerName.empty() || sCDKey.empty())
+    {
+        LOG_ERROR("Attach: the player name and the cd key can't be empty");
+        return 0;
+    }
+    for (uint32_t id = 0; id <= MAX_PLAYER_ID; id++)
+    {
+        auto* pInfo = Server()->GetNetLayer()->GetPlayerInfo(id);
+        if (pInfo->m_bPlayerInUse && (pInfo->m_sPlayerName == sPlayerName.c_str() || pInfo->m_cCDKey.sPublic == sCDKey.c_str()))
+        {
+            LOG_ERROR("Attach: player name '%s' or cd key '%s' is in use by player %u", sPlayerName.c_str(), sCDKey.c_str(), id);
+            return 0;
+        }
+    }
+
     const uint32_t nPlayerId = FindFreePlayerId();
     if (!nPlayerId)
     {
