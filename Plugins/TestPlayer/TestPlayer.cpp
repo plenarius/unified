@@ -30,6 +30,7 @@ static Hooks::Hook s_ExportReplyHook;
 static Hooks::Hook s_SaveServerCharacterHook;
 static Hooks::Hook s_CreatureDestructorHook;
 static bool s_enabled;
+static bool s_allowOnPublicServer;
 
 static CServerExoApp* Server() { return Globals::AppManager()->m_pServerExoApp; }
 
@@ -53,6 +54,7 @@ static void Init()
     s_enabled = Config::Get<bool>("ENABLE", false);
     if (!s_enabled)
         return;
+    s_allowOnPublicServer = Config::Get<bool>("ALLOW_ON_PUBLIC_SERVER", false);
 
     s_SendServerToPlayerMessageHook = Hooks::HookFunction(&CNWSMessage::SendServerToPlayerMessage,
         +[](CNWSMessage* pThis, uint32_t nPlayerId, uint8_t nMajor, uint8_t nMinor, uint8_t* pBuffer, uint32_t nSize) -> BOOL
@@ -190,6 +192,11 @@ NWNX_EXPORT ArgumentStack Attach(ArgumentStack&& args)
     if (!s_enabled)
     {
         LOG_ERROR("Attach: fake players are off; set NWNX_TESTPLAYER_ENABLE=y on a test server");
+        return 0;
+    }
+    if (Server()->GetGamePostedToInternet() && !s_allowOnPublicServer)
+    {
+        LOG_ERROR("Attach: this server is publicly listed; set NWNX_TESTPLAYER_ALLOW_ON_PUBLIC_SERVER=y to allow fake players on it");
         return 0;
     }
 
