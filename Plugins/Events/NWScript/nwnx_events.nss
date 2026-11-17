@@ -1827,6 +1827,26 @@ _______________________________________
     @note The event only fires for players. It might fire a few times during (before) client enter when all the items are equipped and one or more of them have a bonus to abilities. To detect and possibly skip events happening before client enter one can use `GetIsObjectValid(GetArea(OBJECT_SELF))`.
 
     @warning The nwscript function GetAbilityModifier() will return the **old** modifier when used in this event. Use the MOD event data to get the new value.
+    _______________________________________
+    ## Encumbrance Change Events
+    - NWNX_ON_ENCUMBRANCE_CHANGE_AFTER
+
+    `OBJECT_SELF` = The creature whose encumbrance state changed
+
+    Event Data Tag        | Type | Notes
+    ----------------------|------|-------
+    OLD_STATE             | int  | The previous state, see @ref events_encumbrance "Encumbrance States" |
+    NEW_STATE             | int  | The new state, see @ref events_encumbrance "Encumbrance States"      |
+    TOTAL_WEIGHT          | int  | The weight the creature now carries, in tenths of pounds              |
+
+    @note The event fires whenever the engine recomputes the state and it differs from before: items picked up, dropped,
+    equipped, split, merged, bartered or moved, Strength changes from effects, item properties, level up/down or
+    NWNX_Creature_SetRawAbilityScore(), resting, resurrection and a character being loaded.
+    @note The engine only tracks encumbrance for player characters and for henchmen whose master is a player.
+    Other creatures always stay at NWNX_EVENTS_ENCUMBRANCE_STATE_NORMAL, so the event never fires for them.
+    @note With the default ruleset an encumbered creature can't run and a heavily encumbered one also moves at half speed.
+    @note There is no BEFORE event: the engine works out the new state, and applies its movement speed penalty, in the same function.
+    The penalty is an innate EFFECT_TYPE_MOVEMENT_SPEED_DECREASE, so it is not seen by the NWNX_ON_EFFECT_APPLIED events.
 */
 
 /// @name Events Event Constants
@@ -2183,6 +2203,14 @@ const string NWNX_ON_ITEMPROPERTY_EFFECT_APPLIED_BEFORE = "NWNX_ON_ITEMPROPERTY_
 const string NWNX_ON_ITEMPROPERTY_EFFECT_APPLIED_AFTER = "NWNX_ON_ITEMPROPERTY_EFFECT_APPLIED_AFTER";
 const string NWNX_ON_ITEMPROPERTY_EFFECT_REMOVED_BEFORE = "NWNX_ON_ITEMPROPERTY_EFFECT_REMOVED_BEFORE";
 const string NWNX_ON_ITEMPROPERTY_EFFECT_REMOVED_AFTER = "NWNX_ON_ITEMPROPERTY_EFFECT_REMOVED_AFTER";
+/// @}
+
+/// @name Events Encumbrance State Constants
+/// @anchor events_encumbrance
+/// @{
+const int NWNX_EVENTS_ENCUMBRANCE_STATE_NORMAL             = 0;
+const int NWNX_EVENTS_ENCUMBRANCE_STATE_ENCUMBERED         = 1;
+const int NWNX_EVENTS_ENCUMBRANCE_STATE_HEAVILY_ENCUMBERED = 2;
 /// @}
 
 /// @name Events ObjectType Constants
