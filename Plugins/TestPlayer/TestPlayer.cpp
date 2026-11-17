@@ -9,7 +9,9 @@
 #include "API/CNWSMessage.hpp"
 #include "API/CNWSCreature.hpp"
 #include "API/CNWSCreatureStats.hpp"
+#include "API/CNWLevelStats.hpp"
 
+#include <algorithm>
 #include <unordered_map>
 
 using namespace NWNXLib;
@@ -64,7 +66,7 @@ static void Init()
             return s_DisconnectPlayerHook->CallOriginal<BOOL>(pThis, nPlayerId, nStrRef, bCDAuthFail, sReason);
         }, Hooks::Order::Earliest);
 
-    // Saving a creature that has no per-level data as a character crashes in SaveClassInfo.
+    // A fake player has no character in the vault to write to.
     s_ExportReplyHook = Hooks::HookFunction(&CNWSMessage::SendServerToPlayerModule_ExportReply,
         +[](CNWSMessage* pThis, CNWSPlayer* pPlayer) -> BOOL
         {
@@ -119,6 +121,53 @@ static CNWSPlayer* FindFakeByCreature(ObjectID oid)
     return nullptr;
 }
 
+// The engine reads one entry per level of a player character: for its hit points, to save it, to level it down.
+static void BuildLevelStats(CNWSCreature* pCreature)
+{
+    auto* pStats = pCreature->m_pStats;
+    auto* pLevels = &pStats->m_lstLevelStats;
+
+    // Every creature has one entry from its constructor, which nothing fills in for an NPC.
+    auto* pUnused = pLevels->num == 1 && !pLevels->element[0]->m_nHitDie ? pLevels->element[0] : nullptr;
+
+    int32_t nHitPoints = pCreature->m_nBaseHitPoints;
+    int32_t nMissing = pStats->GetLevel(false) - (pUnused ? 0 : pLevels->num);
+    uint8_t nClassLevels[8] = {};
+    for (auto* pLevel : *pLevels)
+    {
+        if (pLevel == pUnused)
+            break;
+        nHitPoints -= pLevel->m_nHitDie;
+        for (uint8_t nMultiClass = 0; nMultiClass < pStats->m_nNumMultiClasses; nMultiClass++)
+        {
+            if (pStats->m_ClassInfo[nMultiClass].m_nClass == pLevel->m_nClass)
+            {
+                nClassLevels[nMultiClass]++;
+                break;
+            }
+        }
+    }
+
+    for (uint8_t nMultiClass = 0; nMultiClass < pStats->m_nNumMultiClasses; nMultiClass++)
+    {
+        auto* pClassInfo = &pStats->m_ClassInfo[nMultiClass];
+        for (; nClassLevels[nMultiClass] < pClassInfo->m_nLevel && nMissing > 0; nClassLevels[nMultiClass]++, nMissing--)
+        {
+            auto* pLevel = pUnused ? pUnused : new CNWLevelStats();
+            pLevel->m_nClass = pClassInfo->m_nClass;
+            pLevel->m_nHitDie = std::clamp(nHitPoints / nMissing, 0, 255);
+            pLevel->m_nSkillPointsRemaining = 0;
+            nHitPoints -= pLevel->m_nHitDie;
+
+            if (pUnused)
+                pUnused = nullptr;
+            else
+                pLevels->Add(pLevel);
+            pLevel->m_bEpic = pLevels->num > 20;
+        }
+    }
+}
+
 NWNX_EXPORT ArgumentStack Attach(ArgumentStack&& args)
 {
     const auto oid = args.extract<ObjectID>();
@@ -162,6 +211,7 @@ NWNX_EXPORT ArgumentStack Attach(ArgumentStack&& args)
     pPlayer->m_oidLastObjectControlled = oid;
     pPlayer->m_bIsPrimaryPlayer = false;
 
+    BuildLevelStats(pCreature);
     pCreature->m_bPlayerCharacter = true;
     pCreature->m_pStats->m_bIsPC = true;
 
