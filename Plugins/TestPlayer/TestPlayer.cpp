@@ -206,7 +206,6 @@ NWNX_EXPORT ArgumentStack Attach(ArgumentStack&& args)
     pInfo->m_bPlayerInUse = true;
 
     auto* pPlayer = new CNWSPlayer(nPlayerId);
-    pPlayer->m_oidNWSObject = oid;
     pPlayer->m_oidPCObject = oid;
     pPlayer->m_oidLastObjectControlled = oid;
     pPlayer->m_bIsPrimaryPlayer = false;
@@ -216,6 +215,7 @@ NWNX_EXPORT ArgumentStack Attach(ArgumentStack&& args)
     pCreature->m_pStats->m_bIsPC = true;
 
     Server()->m_pcExoAppInternal->m_lstPlayerList.Add(pPlayer);
+    pPlayer->SetGameObject(pCreature);
     s_fakePlayers[nPlayerId] = pPlayer;
     s_messages.erase(nPlayerId);
 
@@ -227,6 +227,7 @@ static void DetachPlayer(CNWSPlayer* pPlayer)
 {
     const uint32_t nPlayerId = pPlayer->m_nPlayerID;
     const ObjectID oid = pPlayer->m_oidNWSObject;
+    pPlayer->SetGameObject(nullptr);
     Server()->m_pcExoAppInternal->m_lstPlayerList.Remove(pPlayer);
     s_fakePlayers.erase(nPlayerId);
     s_messages.erase(nPlayerId);
@@ -244,7 +245,6 @@ static void DetachPlayer(CNWSPlayer* pPlayer)
     pInfo->m_bPlayerInUse = false;
 
     // Not deleted: the destructor is untested on a player that never had a client.
-    pPlayer->m_oidNWSObject = Constants::OBJECT_INVALID;
     LOG_INFO("Detached fake player %u from %x", nPlayerId, oid);
 }
 
