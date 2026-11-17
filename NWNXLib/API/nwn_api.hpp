@@ -248,6 +248,9 @@ enum class CNetInstance
     INSTANCE_SERVER
 };
 
+#define NWN_CLASS_EXTENSION_CNetLayer \
+    static const uint32_t MAX_PLAYERS;
+
 #define NWN_CLASS_EXTENSION_CGameObject \
     using CleanupFunc = std::function<void(void*)>;                                                                         \
     void nwnxSet(const std::string& key, int value, bool persist = false, const char *pn = PLUGIN_NAME);                    \
