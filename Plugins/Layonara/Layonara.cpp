@@ -1,7 +1,6 @@
 #include "Layonara.hpp"
 
 #include "API/CAppManager.hpp"
-#include "API/CNWCCMessageData.hpp"
 #include "API/CScriptEvent.hpp"
 #include "API/CServerAIMaster.hpp"
 #include "API/CServerExoApp.hpp"
@@ -303,16 +302,6 @@ ArgumentStack Layonara::SetNWSyncAdvert(ArgumentStack&& args)
     LOG_INFO("NWSync advert changed from '%s' @ '%s' to '%s' @ '%s'", oldHash, oldUrl,
              advert.m_primary_manifest.m_empty ? "" : advert.m_primary_manifest.m_hex, advert.m_url);
     return ScriptAPI::Arguments(1);
-}
-
-void Layonara::SendMessageToCombatLog(CNWSCreature* target, const std::string& msg)
-{
-    if (!target->m_pStats->m_bIsPC)
-        return;
-    CNWCCMessageData* pMessageData = new CNWCCMessageData();
-    CExoString message(msg);
-    pMessageData->SetString(0, message);
-    target->SendFeedbackMessage(0xCC, pMessageData, 0);
 }
 
 }
