@@ -15,14 +15,16 @@ struct NWNX_TestPlayer_Message
 };
 
 /// @brief Make a creature a player character with no client behind it.
-/// @note Fails unless the environment variable `NWNX_TESTPLAYER_ENABLE` is true.
+/// @note Fails unless the environment variable `NWNX_TESTPLAYER_ENABLE` is true, and on a public server unless
+/// `NWNX_TESTPLAYER_ALLOW_ON_PUBLIC_SERVER` is true as well.
 /// @param oCreature An existing creature that is not controlled by a player.
-/// @param sPlayerName The player name, as returned by GetPCPlayerName().
-/// @param sCDKey The public cd key, as returned by GetPCPublicCDKey().
+/// @param sPlayerName The player name, as returned by GetPCPlayerName(). Not empty or in use by another player.
+/// @param sCDKey The public cd key, as returned by GetPCPublicCDKey(). Not empty or in use by another player.
 /// @return The fake player's id, or 0 on failure.
 int NWNX_TestPlayer_Attach(object oCreature, string sPlayerName, string sCDKey);
 
 /// @brief Turn a fake player's creature back into an ordinary creature.
+/// @note BootPC() does the same.
 /// @param oCreature The fake player's creature.
 /// @return TRUE if oCreature had a fake player.
 int NWNX_TestPlayer_Detach(object oCreature);
