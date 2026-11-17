@@ -13,6 +13,7 @@
 #include "API/CNWSModule.hpp"
 
 #include <algorithm>
+#include <deque>
 #include <unordered_map>
 
 using namespace NWNXLib;
@@ -23,6 +24,18 @@ static constexpr uint32_t MIN_FAKE_ID = 0xc0;   // real clients get the low slot
 static std::unordered_map<uint32_t, CNWSPlayer*> s_fakePlayers;   // player id -> player
 // player id -> (major << 8 | minor) -> messages sent
 static std::unordered_map<uint32_t, std::unordered_map<uint16_t, uint32_t>> s_messages;
+
+struct StoredMessage
+{
+    uint8_t m_nMajor;
+    uint8_t m_nMinor;
+    uint32_t m_nSize;
+    std::string m_sData;
+};
+static constexpr uint32_t MESSAGE_HEADER_SIZE = 3;
+static constexpr uint32_t MAX_STORED_MESSAGE_SIZE = 1024;
+static std::unordered_map<uint32_t, std::deque<StoredMessage>> s_storedMessages;   // player id -> newest last
+static size_t s_messageStoreSize;
 static Hooks::Hook s_SendServerToPlayerMessageHook;
 static Hooks::Hook s_SendMessageToPlayerHook;
 static Hooks::Hook s_DisconnectPlayerHook;
@@ -55,12 +68,24 @@ static void Init()
     if (!s_enabled)
         return;
     s_allowOnPublicServer = Config::Get<bool>("ALLOW_ON_PUBLIC_SERVER", false);
+    s_messageStoreSize = std::clamp(Config::Get<int32_t>("MESSAGE_STORE_SIZE", 256), 0, 4096);
 
     s_SendServerToPlayerMessageHook = Hooks::HookFunction(&CNWSMessage::SendServerToPlayerMessage,
         +[](CNWSMessage* pThis, uint32_t nPlayerId, uint8_t nMajor, uint8_t nMinor, uint8_t* pBuffer, uint32_t nSize) -> BOOL
         {
             if (IsTestPlayer(nPlayerId))
+            {
                 s_messages[nPlayerId][(uint16_t)(nMajor << 8 | nMinor)]++;
+                if (s_messageStoreSize && pBuffer && nSize >= MESSAGE_HEADER_SIZE)
+                {
+                    auto* pStored = &s_storedMessages[nPlayerId];
+                    if (pStored->size() >= s_messageStoreSize)
+                        pStored->pop_front();
+                    const uint32_t nDataSize = nSize - MESSAGE_HEADER_SIZE;
+                    pStored->push_back({nMajor, nMinor, nDataSize,
+                        std::string((const char*)pBuffer + MESSAGE_HEADER_SIZE, std::min(nDataSize, MAX_STORED_MESSAGE_SIZE))});
+                }
+            }
             return s_SendServerToPlayerMessageHook->CallOriginal<BOOL>(pThis, nPlayerId, nMajor, nMinor, pBuffer, nSize);
         }, Hooks::Order::Earliest);
 
@@ -253,6 +278,7 @@ NWNX_EXPORT ArgumentStack Attach(ArgumentStack&& args)
     pPlayer->SetGameObject(pCreature);
     s_fakePlayers[nPlayerId] = pPlayer;
     s_messages.erase(nPlayerId);
+    s_storedMessages.erase(nPlayerId);
 
     LOG_INFO("Attached fake player %u (%s) to %x", nPlayerId, sPlayerName.c_str(), oid);
     return (int32_t)nPlayerId;
@@ -266,6 +292,7 @@ static void DetachPlayer(CNWSPlayer* pPlayer)
     Server()->m_pcExoAppInternal->m_lstPlayerList.Remove(pPlayer);
     s_fakePlayers.erase(nPlayerId);
     s_messages.erase(nPlayerId);
+    s_storedMessages.erase(nPlayerId);
 
     if (auto* pCreature = Utils::AsNWSCreature(Utils::GetGameObject(oid)))
     {
@@ -352,7 +379,59 @@ NWNX_EXPORT ArgumentStack ClearMessages(ArgumentStack&& args)
     if (!pPlayer)
         return false;
     s_messages.erase(pPlayer->m_nPlayerID);
+    s_storedMessages.erase(pPlayer->m_nPlayerID);
     return true;
+}
+
+static std::deque<StoredMessage>* FindStoredMessages(ObjectID oid)
+{
+    auto* pPlayer = FindFakeByCreature(oid);
+    auto it = pPlayer ? s_storedMessages.find(pPlayer->m_nPlayerID) : s_storedMessages.end();
+    return it != s_storedMessages.end() ? &it->second : nullptr;
+}
+
+NWNX_EXPORT ArgumentStack GetStoredMessageCount(ArgumentStack&& args)
+{
+    auto* pStored = FindStoredMessages(args.extract<ObjectID>());
+    return pStored ? (int32_t)pStored->size() : 0;
+}
+
+NWNX_EXPORT ArgumentStack GetStoredMessage(ArgumentStack&& args)
+{
+    auto* pStored = FindStoredMessages(args.extract<ObjectID>());
+    const auto nIndex = args.extract<int32_t>();
+    if (!pStored || nIndex < 0 || nIndex >= (int32_t)pStored->size())
+        return {-1, -1, 0, std::string()};
+
+    const auto* pMessage = &(*pStored)[nIndex];
+    std::string sHex;
+    sHex.reserve(pMessage->m_sData.size() * 2);
+    for (const uint8_t nByte : pMessage->m_sData)
+    {
+        sHex += "0123456789abcdef"[nByte >> 4];
+        sHex += "0123456789abcdef"[nByte & 0xf];
+    }
+    return {(int32_t)pMessage->m_nMajor, (int32_t)pMessage->m_nMinor, (int32_t)pMessage->m_nSize, sHex};
+}
+
+NWNX_EXPORT ArgumentStack FindStoredMessage(ArgumentStack&& args)
+{
+    auto* pStored = FindStoredMessages(args.extract<ObjectID>());
+    const auto sText = args.extract<std::string>();
+    const auto nMajor = args.extract<int32_t>();
+    const auto nMinor = args.extract<int32_t>();
+    const auto nStart = args.extract<int32_t>();
+    if (!pStored)
+        return -1;
+
+    for (int32_t nIndex = std::max(nStart, 0); nIndex < (int32_t)pStored->size(); nIndex++)
+    {
+        const auto* pMessage = &(*pStored)[nIndex];
+        if ((nMajor < 0 || pMessage->m_nMajor == nMajor) && (nMinor < 0 || pMessage->m_nMinor == nMinor) &&
+            pMessage->m_sData.find(sText) != std::string::npos)
+            return nIndex;
+    }
+    return -1;
 }
 
 NWNX_EXPORT ArgumentStack SetInventoryOpen(ArgumentStack&& args)
