@@ -1,48 +1,55 @@
 /// @addtogroup testplayer TestPlayer
 /// @brief Fake players for headless test servers. Never enable on a live server.
-/// @remark Attach only works with NWNX_TESTPLAYER_ENABLE=y, on top of the plugin being loaded.
 /// @{
 /// @file nwnx_testplayer.nss
 
 const string NWNX_TestPlayer = "NWNX_TestPlayer"; ///< @private
 
-/// @brief Make oCreature a player character with no client behind it.
-/// @param oCreature An existing creature (not already controlled by a player).
-/// @param sPlayerName What GetPCPlayerName() returns.
-/// @param sCDKey What GetPCPublicCDKey() returns.
+/// @brief Make a creature a player character with no client behind it.
+/// @note Fails unless the environment variable `NWNX_TESTPLAYER_ENABLE` is true.
+/// @param oCreature An existing creature that is not controlled by a player.
+/// @param sPlayerName The player name, as returned by GetPCPlayerName().
+/// @param sCDKey The public cd key, as returned by GetPCPublicCDKey().
 /// @return The fake player's id, or 0 on failure.
 int NWNX_TestPlayer_Attach(object oCreature, string sPlayerName, string sCDKey);
 
 /// @brief Turn a fake player's creature back into an ordinary creature.
+/// @param oCreature The fake player's creature.
 /// @return TRUE if oCreature had a fake player.
 int NWNX_TestPlayer_Detach(object oCreature);
 
+/// @brief Get if a creature is controlled by a fake player.
+/// @param oCreature The creature.
 /// @return TRUE if oCreature is controlled by a fake player.
 int NWNX_TestPlayer_GetIsFake(object oCreature);
 
-/// @return The fake player's id, 0 if oCreature has none.
+/// @brief Get the player id of a fake player.
+/// @param oCreature The fake player's creature.
+/// @return The fake player's id, or 0 if oCreature has none.
 int NWNX_TestPlayer_GetPlayerId(object oCreature);
 
-/// @return How many fake players there are.
+/// @brief Get the number of fake players.
+/// @return The number of fake players.
 int NWNX_TestPlayer_GetCount();
 
-/// @brief Count what the server has sent a fake player, by message type.
-/// @remark Counts messages written through CNWSMessage::SendServerToPlayerMessage since the player was
-/// attached or last cleared. Discrete messages can be told apart, e.g. a destroyed item is major 5
-/// (game object update) minor 7, and the inventory window open/close is major 13 minor 1. The per-tick
-/// object updates are one message each, so what is inside them can't be checked.
+/// @brief Count the messages the server has sent to a fake player, by message type.
+/// @note Counts start when the player is attached or NWNX_TestPlayer_ClearMessages() is called.
+/// The types are the MessageMajor and Message*Minor constants in NWNXLib/API/Constants/Messages.hpp.
 /// @param oCreature The fake player's creature.
-/// @param nMajor The message's major type (MessageMajor in NWNXLib/API/Constants/Messages.hpp).
-/// @param nMinor The minor type, or -1 for all of them.
-/// @return The number of messages, 0 if oCreature has no fake player.
+/// @param nMajor The major type of the messages.
+/// @param nMinor The minor type of the messages, or -1 for all of them.
+/// @return The number of messages, or 0 if oCreature has no fake player.
 int NWNX_TestPlayer_GetMessageCount(object oCreature, int nMajor, int nMinor = -1);
 
 /// @brief Reset the message counts of a fake player.
+/// @param oCreature The fake player's creature.
 /// @return TRUE if oCreature had a fake player.
 int NWNX_TestPlayer_ClearMessages(object oCreature);
 
-/// @brief Tell the server a fake player has its inventory window open (or closed).
-/// @remark A real client reports this itself. NWNX_Item_RefreshInventoryWindow() does nothing while the window is closed.
+/// @brief Set whether the server believes a fake player has its inventory window open.
+/// @note A real client reports this itself.
+/// @param oCreature The fake player's creature.
+/// @param bOpen TRUE for open, FALSE for closed.
 /// @return TRUE if oCreature had a fake player.
 int NWNX_TestPlayer_SetInventoryOpen(object oCreature, int bOpen = TRUE);
 
