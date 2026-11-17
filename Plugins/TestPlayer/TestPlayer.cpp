@@ -1,18 +1,3 @@
-// TestPlayer: turn an existing creature into a player character with no client behind it.
-//
-// For headless test servers (Layonara's tests/run.sh): scripts that only work on PCs
-// (GetIsPC, GetFirstPC, GetPCPlayerName, object databases via SqlPrepareQueryObject...)
-// can then be tested without anyone logging in.
-//
-// A fake player is a CNWSPlayer in a free player slot (counted down from the top), added to
-// the server's player list and controlling the creature. Nothing is connected to the slot,
-// so everything the server sends to it is dropped at CNetLayer::SendMessageToPlayer.
-//
-// Everything the server sends a fake player is counted by message type (see GetMessageCount),
-// so tests can check what a client would have been sent.
-//
-// NEVER enable this on a live server. Attach refuses to work unless NWNX_TESTPLAYER_ENABLE=y.
-
 #include "nwnx.hpp"
 #include "API/CAppManager.hpp"
 #include "API/CServerExoApp.hpp"
@@ -30,11 +15,11 @@
 using namespace NWNXLib;
 using namespace NWNXLib::API;
 
-static constexpr uint32_t MAX_PLAYER_ID = 0xfe;   // NWN_MAX_PLAYERS - 1
+static constexpr uint32_t MAX_PLAYER_ID = 0xfe;
 static constexpr uint32_t MIN_FAKE_ID   = 0xc0;   // real clients get the low slots
 
 static std::unordered_map<uint32_t, CNWSPlayer*> s_fakePlayers;   // player id -> player
-// player id -> (major << 8 | minor) -> number of messages sent to that fake player
+// player id -> (major << 8 | minor) -> messages sent
 static std::unordered_map<uint32_t, std::unordered_map<uint16_t, uint32_t>> s_messages;
 static Hooks::Hook s_SendServerToPlayerMessageHook;
 static Hooks::Hook s_SendMessageToPlayerHook;
@@ -54,8 +39,6 @@ static void Init()
     if (!s_enabled)
         return;
 
-    // The funnel for everything the server writes for a player; it still reaches the (dropped)
-    // net layer send below.
     s_SendServerToPlayerMessageHook = Hooks::HookFunction(&CNWSMessage::SendServerToPlayerMessage,
         +[](CNWSMessage* pThis, uint32_t nPlayerId, uint8_t nMajor, uint8_t nMinor, uint8_t* pBuffer, uint32_t nSize) -> BOOL
         {
@@ -72,8 +55,7 @@ static void Init()
             return s_SendMessageToPlayerHook->CallOriginal<BOOL>(pThis, nPlayerId, pData, nSize, nFlags);
         }, Hooks::Order::Earliest);
 
-    // The slot is marked in use (GetPCPlayerName and friends need that) but has no
-    // connection; never let the net layer try to drop it.
+    // The slot is in use but has no connection for the net layer to drop.
     s_DisconnectPlayerHook = Hooks::HookFunction(&CNetLayer::DisconnectPlayer,
         +[](CNetLayer* pThis, uint32_t nPlayerId, uint32_t nStrRef, BOOL bCDAuthFail, const CExoString& sReason) -> BOOL
         {
@@ -82,11 +64,7 @@ static void Init()
             return s_DisconnectPlayerHook->CallOriginal<BOOL>(pThis, nPlayerId, nStrRef, bCDAuthFail, sReason);
         }, Hooks::Order::Earliest);
 
-    // Never save a fake player's character (ExportSingleCharacter, autosave, shutdown): there is
-    // no vault to save to, and a creature made from an NPC blueprint lacks the per-level data a
-    // real character has, which crashes the engine in CNWSCreatureStats::SaveClassInfo.
-    // (CServerExoAppInternal::ExportPlayer can't be hooked; this is what it calls to pack
-    // the character.)
+    // Saving a creature that has no per-level data as a character crashes in SaveClassInfo.
     s_ExportReplyHook = Hooks::HookFunction(&CNWSMessage::SendServerToPlayerModule_ExportReply,
         +[](CNWSMessage* pThis, CNWSPlayer* pPlayer) -> BOOL
         {
@@ -120,8 +98,7 @@ static uint32_t FindFreePlayerId()
 
 static void DetachPlayer(CNWSPlayer* pPlayer);
 
-// The engine's shutdown waits on every player in the list (saving, disconnecting); a fake
-// one never answers and the thread watchdog kills the server. Let them go first.
+// The engine's shutdown waits on every player in the list, and a fake one never answers.
 static auto s_destroyServerSubscription = MessageBus::Subscribe("NWNX_CORE_SIGNAL",
     [](const std::vector<std::string>& message)
     {
@@ -142,7 +119,6 @@ static CNWSPlayer* FindFakeByCreature(ObjectID oid)
     return nullptr;
 }
 
-// Attach(object oCreature, string sPlayerName, string sCDKey) -> player id, or 0 on failure.
 NWNX_EXPORT ArgumentStack Attach(ArgumentStack&& args)
 {
     const auto oid = args.extract<ObjectID>();
@@ -217,13 +193,11 @@ static void DetachPlayer(CNWSPlayer* pPlayer)
     pInfo->m_bPlayerPrivileges = false;
     pInfo->m_bPlayerInUse = false;
 
-    // Not deleted: the destructor may tear down state a fake player never had, and a few
-    // leaked players on a test server don't matter.
+    // Not deleted: the destructor is untested on a player that never had a client.
     pPlayer->m_oidNWSObject = Constants::OBJECT_INVALID;
     LOG_INFO("Detached fake player %u from %x", nPlayerId, oid);
 }
 
-// Detach(object oCreature) -> TRUE if it had a fake player.
 NWNX_EXPORT ArgumentStack Detach(ArgumentStack&& args)
 {
     auto* pPlayer = FindFakeByCreature(args.extract<ObjectID>());
@@ -233,27 +207,22 @@ NWNX_EXPORT ArgumentStack Detach(ArgumentStack&& args)
     return true;
 }
 
-// GetIsFake(object oCreature) -> TRUE if a fake player controls it.
 NWNX_EXPORT ArgumentStack GetIsFake(ArgumentStack&& args)
 {
     return FindFakeByCreature(args.extract<ObjectID>()) != nullptr;
 }
 
-// GetPlayerId(object oCreature) -> the fake player's id, or 0 if oCreature has none.
 NWNX_EXPORT ArgumentStack GetPlayerId(ArgumentStack&& args)
 {
     auto* pPlayer = FindFakeByCreature(args.extract<ObjectID>());
     return pPlayer ? (int32_t)pPlayer->m_nPlayerID : 0;
 }
 
-// GetCount() -> how many fake players there are.
 NWNX_EXPORT ArgumentStack GetCount(ArgumentStack&&)
 {
     return (int32_t)s_fakePlayers.size();
 }
 
-// GetMessageCount(object oCreature, int nMajor, int nMinor) -> messages of that type sent to the
-// fake player since it was attached or last cleared; nMinor -1 counts every minor type.
 NWNX_EXPORT ArgumentStack GetMessageCount(ArgumentStack&& args)
 {
     auto* pPlayer = FindFakeByCreature(args.extract<ObjectID>());
@@ -275,7 +244,6 @@ NWNX_EXPORT ArgumentStack GetMessageCount(ArgumentStack&& args)
     return (int32_t)nCount;
 }
 
-// ClearMessages(object oCreature) -> TRUE if it had a fake player.
 NWNX_EXPORT ArgumentStack ClearMessages(ArgumentStack&& args)
 {
     auto* pPlayer = FindFakeByCreature(args.extract<ObjectID>());
@@ -285,8 +253,6 @@ NWNX_EXPORT ArgumentStack ClearMessages(ArgumentStack&& args)
     return true;
 }
 
-// SetInventoryOpen(object oCreature, int bOpen) -> TRUE if it had a fake player.
-// What the server believes about the player's inventory window; a real client reports it itself.
 NWNX_EXPORT ArgumentStack SetInventoryOpen(ArgumentStack&& args)
 {
     auto* pPlayer = FindFakeByCreature(args.extract<ObjectID>());
