@@ -26,7 +26,7 @@ void main()
     NWNX_Tests_Report("NWNX_TestPlayer", "Attach (GetPCPlayerName)", GetPCPlayerName(oCreature) == "TestPlayer");
     NWNX_Tests_Report("NWNX_TestPlayer", "Attach (GetPCPublicCDKey)", GetPCPublicCDKey(oCreature) == "TESTKEY1");
     NWNX_Tests_Report("NWNX_TestPlayer", "Attach (Twice)", NWNX_TestPlayer_Attach(oCreature, "TestPlayer2", "TESTKEY2") == 0);
-    NWNX_Tests_Report("NWNX_TestPlayer", "GetIsFake", NWNX_TestPlayer_GetIsFake(oCreature));
+    NWNX_Tests_Report("NWNX_TestPlayer", "GetIsTestPlayer", NWNX_TestPlayer_GetIsTestPlayer(oCreature));
     NWNX_Tests_Report("NWNX_TestPlayer", "GetPlayerId", NWNX_TestPlayer_GetPlayerId(oCreature) == nPlayerId);
     NWNX_Tests_Report("NWNX_TestPlayer", "GetCount", NWNX_TestPlayer_GetCount() == nCount + 1);
 
@@ -39,7 +39,7 @@ void main()
 
     NWNX_Tests_Report("NWNX_TestPlayer", "Detach", NWNX_TestPlayer_Detach(oCreature));
     NWNX_Tests_Report("NWNX_TestPlayer", "Detach (GetIsPC)", !GetIsPC(oCreature));
-    NWNX_Tests_Report("NWNX_TestPlayer", "Detach (GetIsFake)", !NWNX_TestPlayer_GetIsFake(oCreature));
+    NWNX_Tests_Report("NWNX_TestPlayer", "Detach (GetIsTestPlayer)", !NWNX_TestPlayer_GetIsTestPlayer(oCreature));
     NWNX_Tests_Report("NWNX_TestPlayer", "Detach (GetCount)", NWNX_TestPlayer_GetCount() == nCount);
     NWNX_Tests_Report("NWNX_TestPlayer", "Detach (Twice)", !NWNX_TestPlayer_Detach(oCreature));
 

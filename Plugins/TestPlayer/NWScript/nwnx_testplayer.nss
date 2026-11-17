@@ -21,7 +21,7 @@ int NWNX_TestPlayer_Detach(object oCreature);
 /// @brief Get if a creature is controlled by a fake player.
 /// @param oCreature The creature.
 /// @return TRUE if oCreature is controlled by a fake player.
-int NWNX_TestPlayer_GetIsFake(object oCreature);
+int NWNX_TestPlayer_GetIsTestPlayer(object oCreature);
 
 /// @brief Get the player id of a fake player.
 /// @param oCreature The fake player's creature.
@@ -71,10 +71,10 @@ int NWNX_TestPlayer_Detach(object oCreature)
     return NWNXPopInt();
 }
 
-int NWNX_TestPlayer_GetIsFake(object oCreature)
+int NWNX_TestPlayer_GetIsTestPlayer(object oCreature)
 {
     NWNXPushObject(oCreature);
-    NWNXCall(NWNX_TestPlayer, "GetIsFake");
+    NWNXCall(NWNX_TestPlayer, "GetIsTestPlayer");
     return NWNXPopInt();
 }
 
