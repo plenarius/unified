@@ -244,7 +244,8 @@ static void DetachPlayer(CNWSPlayer* pPlayer)
     pInfo->m_bPlayerPrivileges = false;
     pInfo->m_bPlayerInUse = false;
 
-    // Not deleted: the destructor is untested on a player that never had a client.
+    // Deleted from the main loop: engine code up the stack may still hold the pointer.
+    Tasks::QueueOnMainThread([pPlayer]() { delete pPlayer; });
     LOG_INFO("Detached fake player %u from %x", nPlayerId, oid);
 }
 
