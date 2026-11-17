@@ -34,6 +34,8 @@ static CServerExoApp* Server() { return Globals::AppManager()->m_pServerExoApp; 
 
 static bool IsTestPlayer(uint32_t nPlayerId) { return s_fakePlayers.count(nPlayerId) != 0; }
 
+static void DetachPlayer(CNWSPlayer* pPlayer);
+
 static void Init() __attribute__((constructor));
 static void Init()
 {
@@ -57,12 +59,15 @@ static void Init()
             return s_SendMessageToPlayerHook->CallOriginal<BOOL>(pThis, nPlayerId, pData, nSize, nFlags);
         }, Hooks::Order::Earliest);
 
-    // The slot is in use but has no connection for the net layer to drop.
+    // There is no connection to drop, and the engine expects the player to be gone from the list afterwards.
     s_DisconnectPlayerHook = Hooks::HookFunction(&CNetLayer::DisconnectPlayer,
         +[](CNetLayer* pThis, uint32_t nPlayerId, uint32_t nStrRef, BOOL bCDAuthFail, const CExoString& sReason) -> BOOL
         {
-            if (IsTestPlayer(nPlayerId))
+            if (auto it = s_fakePlayers.find(nPlayerId); it != s_fakePlayers.end())
+            {
+                DetachPlayer(it->second);
                 return true;
+            }
             return s_DisconnectPlayerHook->CallOriginal<BOOL>(pThis, nPlayerId, nStrRef, bCDAuthFail, sReason);
         }, Hooks::Order::Earliest);
 
@@ -98,9 +103,7 @@ static uint32_t FindFreePlayerId()
     return 0;
 }
 
-static void DetachPlayer(CNWSPlayer* pPlayer);
-
-// The engine's shutdown waits on every player in the list, and a fake one never answers.
+// Detach while the module is still loaded; the engine's own shutdown disconnects its players later.
 static auto s_destroyServerSubscription = MessageBus::Subscribe("NWNX_CORE_SIGNAL",
     [](const std::vector<std::string>& message)
     {
