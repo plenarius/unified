@@ -2,7 +2,6 @@
 
 #include "nwnx.hpp"
 #include <fstream>
-#include <list>
 #include <map>
 #include <unordered_set>
 
@@ -20,38 +19,9 @@ public:
 
 private:
     static void RemoveEffectByTag(CNWSCreature *pCreature, std::string sCustomTag);
-    static bool HasEffectByTag(CNWSCreature *pCreature, const char* tag);
-    static void SetArrowsEffect(CNWSCreature *pCreature, bool bOff=false);
     static CNWSItem *GetItemInSlotHook(CNWSInventory*, uint32_t);
     static void SetPositionHook(CNWSObject*, Vector, int32_t);
     static void SendMessageToCombatLog(CNWSCreature* target, const std::string& msg);
-
-    enum Gems
-    {
-        GRE = 1,
-        MAL = 2,
-        FIA = 3,
-        AVE = 4,
-        PHE = 5,
-        AME = 6,
-        FEL = 7,
-        GAR = 8,
-        ALE = 9,
-        TOP = 10,
-        SAP = 11,
-        FIO = 12,
-        DIA = 13,
-        RUB = 14,
-        EME = 15
-    };
-
-    enum Runes
-    {
-        SHADOW = 0x0001,
-        TIDAL = 0x0002,
-        FORESTAL = 0x0004,
-        ALNOTH = 0x0008
-    };
 
     enum SurfaceMaterials
     {
@@ -88,38 +58,12 @@ private:
         TRIGGER = 30
     };
 
-    struct RuneInfo
-    {
-        uint8_t rune;
-        uint8_t gem;
-        uint8_t power;
-        uint8_t runeCount;
-    };
-    static RuneInfo ParseRuneTag(CNWSItem* pItem);
-    static uint8_t GetRaceVFXOffset(CNWSCreature* pCreature);
-
-    unordered_map<uint8_t, std::array<int32_t, 10>> m_GemBonuses;
     unordered_map<uint8_t, int8_t> m_SurfaceMaterialSpeeds;
     unordered_map<ObjectID, int32_t> m_objectCurrentMaterial;
     unordered_set<string> m_CrosserExclusions;
     void LoadCrosserExclusions();
     bool IsTileOnRoad(CNWSArea* pArea, Vector vPos, uint8_t iMat);
 
-    std::list<int32_t> m_ElementalDamageTypes;
-    std::list<int32_t> m_PhysicalDamageTypes;
-
-    ArgumentStack SetEquippableSlots              (ArgumentStack&& args);
-    ArgumentStack SetHostileFeat                  (ArgumentStack&& args);
-    ArgumentStack SetDuelistCannyDefense          (ArgumentStack&& args);
-    ArgumentStack SetDuelistGrace                 (ArgumentStack&& args);
-    ArgumentStack SetDuelistElaborateParry        (ArgumentStack&& args);
-    ArgumentStack SetSubraceDayEffects            (ArgumentStack&& args);
-    ArgumentStack ApplyRune                       (ArgumentStack&& args);
-    ArgumentStack CombineRunes                    (ArgumentStack&& args);
-    ArgumentStack GetRuneDescription              (ArgumentStack&& args);
-    ArgumentStack SetQuiver                       (ArgumentStack&& args);
-    ArgumentStack SetQuiverArrows                 (ArgumentStack&& args);
-    ArgumentStack CreateVFXAtTransitionCentroid   (ArgumentStack&& args);
     ArgumentStack ClearSurfaceMaterial            (ArgumentStack&& args);
     ArgumentStack GetNWSyncAdvertHash             (ArgumentStack&& args);
     ArgumentStack GetNWSyncAdvertUrl              (ArgumentStack&& args);
