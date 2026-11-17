@@ -17,8 +17,7 @@
 using namespace NWNXLib;
 using namespace NWNXLib::API;
 
-static constexpr uint32_t MAX_PLAYER_ID = 0xfe;
-static constexpr uint32_t MIN_FAKE_ID   = 0xc0;   // real clients get the low slots
+static constexpr uint32_t MIN_FAKE_ID = 0xc0;   // real clients get the low slots
 
 static std::unordered_map<uint32_t, CNWSPlayer*> s_fakePlayers;   // player id -> player
 // player id -> (major << 8 | minor) -> messages sent
@@ -114,7 +113,7 @@ static void Init()
 static uint32_t FindFreePlayerId()
 {
     auto* pNetLayer = Server()->GetNetLayer();
-    for (uint32_t id = MAX_PLAYER_ID; id >= MIN_FAKE_ID; id--)
+    for (uint32_t id = CNetLayer::MAX_PLAYERS - 1; id >= MIN_FAKE_ID; id--)
     {
         if (IsTestPlayer(id) || Server()->GetClientObjectByPlayerId(id))
             continue;
@@ -217,7 +216,7 @@ NWNX_EXPORT ArgumentStack Attach(ArgumentStack&& args)
         LOG_ERROR("Attach: the player name and the cd key can't be empty");
         return 0;
     }
-    for (uint32_t id = 0; id <= MAX_PLAYER_ID; id++)
+    for (uint32_t id = 0; id < CNetLayer::MAX_PLAYERS; id++)
     {
         auto* pInfo = Server()->GetNetLayer()->GetPlayerInfo(id);
         if (pInfo->m_bPlayerInUse && (pInfo->m_sPlayerName == sPlayerName.c_str() || pInfo->m_cCDKey.sPublic == sCDKey.c_str()))
