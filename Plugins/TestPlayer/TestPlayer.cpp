@@ -61,6 +61,20 @@ static CNWSPlayer* FindFakeByCreature(ObjectID oid)
     return nullptr;
 }
 
+static void RecordMessage(uint32_t nPlayerId, uint8_t nMajor, uint8_t nMinor, const uint8_t* pBuffer, uint32_t nSize)
+{
+    s_messages[nPlayerId][(uint16_t)(nMajor << 8 | nMinor)]++;
+    if (!s_messageStoreSize || !pBuffer || nSize < MESSAGE_HEADER_SIZE)
+        return;
+
+    auto* pStored = &s_storedMessages[nPlayerId];
+    if (pStored->size() >= s_messageStoreSize)
+        pStored->pop_front();
+    const uint32_t nDataSize = nSize - MESSAGE_HEADER_SIZE;
+    pStored->push_back({nMajor, nMinor, nDataSize,
+        std::string((const char*)pBuffer + MESSAGE_HEADER_SIZE, std::min(nDataSize, MAX_STORED_MESSAGE_SIZE))});
+}
+
 static void Init() __attribute__((constructor));
 static void Init()
 {
@@ -73,19 +87,13 @@ static void Init()
     s_SendServerToPlayerMessageHook = Hooks::HookFunction(&CNWSMessage::SendServerToPlayerMessage,
         +[](CNWSMessage* pThis, uint32_t nPlayerId, uint8_t nMajor, uint8_t nMinor, uint8_t* pBuffer, uint32_t nSize) -> BOOL
         {
-            if (IsTestPlayer(nPlayerId))
+            if (nPlayerId == Constants::PLAYERID_ALL_PLAYERS || nPlayerId == Constants::PLAYERID_ALL_CLIENTS)
             {
-                s_messages[nPlayerId][(uint16_t)(nMajor << 8 | nMinor)]++;
-                if (s_messageStoreSize && pBuffer && nSize >= MESSAGE_HEADER_SIZE)
-                {
-                    auto* pStored = &s_storedMessages[nPlayerId];
-                    if (pStored->size() >= s_messageStoreSize)
-                        pStored->pop_front();
-                    const uint32_t nDataSize = nSize - MESSAGE_HEADER_SIZE;
-                    pStored->push_back({nMajor, nMinor, nDataSize,
-                        std::string((const char*)pBuffer + MESSAGE_HEADER_SIZE, std::min(nDataSize, MAX_STORED_MESSAGE_SIZE))});
-                }
+                for (const auto& [id, pPlayer] : s_fakePlayers)
+                    RecordMessage(id, nMajor, nMinor, pBuffer, nSize);
             }
+            else if (IsTestPlayer(nPlayerId))
+                RecordMessage(nPlayerId, nMajor, nMinor, pBuffer, nSize);
             return s_SendServerToPlayerMessageHook->CallOriginal<BOOL>(pThis, nPlayerId, nMajor, nMinor, pBuffer, nSize);
         }, Hooks::Order::Earliest);
 
