@@ -41,6 +41,7 @@ static Hooks::Hook s_SendMessageToPlayerHook;
 static Hooks::Hook s_DisconnectPlayerHook;
 static Hooks::Hook s_ExportReplyHook;
 static Hooks::Hook s_SaveServerCharacterHook;
+static bool s_enabled;
 
 static CServerExoApp* Server() { return Globals::AppManager()->m_pServerExoApp; }
 
@@ -49,6 +50,10 @@ static bool IsFake(uint32_t nPlayerId) { return s_fakePlayers.count(nPlayerId) !
 static void Init() __attribute__((constructor));
 static void Init()
 {
+    s_enabled = Config::Get<bool>("ENABLE", false);
+    if (!s_enabled)
+        return;
+
     // The funnel for everything the server writes for a player; it still reaches the (dropped)
     // net layer send below.
     s_SendServerToPlayerMessageHook = Hooks::HookFunction(&CNWSMessage::SendServerToPlayerMessage,
@@ -144,7 +149,7 @@ NWNX_EXPORT ArgumentStack Attach(ArgumentStack&& args)
     const auto sPlayerName = args.extract<std::string>();
     const auto sCDKey = args.extract<std::string>();
 
-    if (!Config::Get<bool>("ENABLE", false))
+    if (!s_enabled)
     {
         LOG_ERROR("Attach: fake players are off; set NWNX_TESTPLAYER_ENABLE=y on a test server");
         return 0;
