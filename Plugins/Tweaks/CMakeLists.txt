@@ -16,6 +16,7 @@ add_plugin(Tweaks
     "FixGreaterSanctuaryBug.cpp"
     "FixSkillCheckDisplay.cpp"
     "FixTriggerEnterDetection.cpp"
+    "FixTriggerPointTest.cpp"
     "FixUnlimitedPotionsBug.cpp"
     "GuardTakeGoldNoCaller.cpp"
     "HideOnCharList.cpp"
