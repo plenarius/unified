@@ -5,10 +5,6 @@
 
 const string NWNX_Layonara = "NWNX_Layonara"; ///< @private
 
-/// @brief Clear the surface material so a change is fired on next movement.
-/// @param creature The creature object.
-void NWNX_Layonara_ClearSurfaceMaterial(object creature);
-
 /// @brief Get the NWSync manifest hash the server advertises to connecting clients.
 /// @return The 40 character lowercase SHA1, or "" if the server advertises no manifest.
 string NWNX_Layonara_GetNWSyncAdvertHash();
@@ -28,15 +24,6 @@ string NWNX_Layonara_GetNWSyncAdvertUrl();
 int NWNX_Layonara_SetNWSyncAdvert(string sHash, string sUrl);
 
 /// @}
-
-void NWNX_Layonara_ClearSurfaceMaterial(object creature)
-{
-    string sFunc = "ClearSurfaceMaterial";
-
-    NWNXPushObject(creature);
-
-    NWNXCall(NWNX_Layonara, sFunc);
-}
 
 string NWNX_Layonara_GetNWSyncAdvertHash()
 {
