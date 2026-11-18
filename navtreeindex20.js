@@ -1,5 +1,13 @@
 var NAVTREEINDEX20 =
 {
+"structNWNX__IPUnpacked.html#ad0a17e958cb47f9e3c5e182784bfe5a0":[0,25,2,5],
+"structNWNX__IPUnpacked.html#ad8edb88bbe3a1b0195ff9fab79242c3a":[0,25,2,11],
+"structNWNX__IPUnpacked.html#ad95e63782ed593741a81e19741a978dc":[0,25,2,4],
+"structNWNX__IPUnpacked.html#adec6dfc16333f7643f4b2b3a948a461d":[0,25,2,8],
+"structNWNX__IPUnpacked.html#ae35c18ac2c0b8af028ee28e2f424b486":[0,25,2,7],
+"structNWNX__ItemAppearance__Weapon.html":[0,24,2],
+"structNWNX__ItemAppearance__Weapon.html#a374d865f9122cd776486b75b32afe6a6":[0,24,2,0],
+"structNWNX__ItemAppearance__Weapon.html#a604d3d40a69f6a27ed5c884c9e67d5d6":[0,24,2,2],
 "structNWNX__ItemAppearance__Weapon.html#ac17760e155f410b7ccfff4950f5435ef":[0,24,2,1],
 "structNWNX__Object__LocalVariable.html":[0,30,2],
 "structNWNX__Object__LocalVariable.html#a71602dfd910b91f55beda204d293e7c4":[0,30,2,1],

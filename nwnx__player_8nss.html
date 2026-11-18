@@ -294,6 +294,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga544fa0a06d383a6ee5c92bb0dc641e06"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__player.html#ga544fa0a06d383a6ee5c92bb0dc641e06">NWNX_Player_GetOpenStore</a> (object oPlayer)</td></tr>
 <tr class="memdesc:ga544fa0a06d383a6ee5c92bb0dc641e06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current open store of oPlayer.  <a href="group__player.html#ga544fa0a06d383a6ee5c92bb0dc641e06">More...</a><br /></td></tr>
 <tr class="separator:ga544fa0a06d383a6ee5c92bb0dc641e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6aec83cfa546924a8a286b924e934419"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__player.html#ga6aec83cfa546924a8a286b924e934419">NWNX_Player_ReloadResources</a> (object oPlayer, int nFlags)</td></tr>
+<tr class="memdesc:ga6aec83cfa546924a8a286b924e934419"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make oPlayer's client reload cached resources.  <a href="group__player.html#ga6aec83cfa546924a8a286b924e934419">More...</a><br /></td></tr>
+<tr class="separator:ga6aec83cfa546924a8a286b924e934419"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -353,6 +356,17 @@ Variables</h2></td></tr>
 <tr class="separator:ga21d587709818c38216b5788d652111d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadd7e638820452402763d64737369bde8"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__player.html#gadd7e638820452402763d64737369bde8">NWNX_PLAYER_PLATFORM_SONY_PS4</a> = 70</td></tr>
 <tr class="separator:gadd7e638820452402763d64737369bde8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Reload Resources Flags</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p><a class="anchor" id="reload_resources_flags"></a> Flags for <a class="el" href="group__player.html#ga6aec83cfa546924a8a286b924e934419" title="Make oPlayer&#39;s client reload cached resources.">NWNX_Player_ReloadResources()</a>, combine them with |. Each reload happens on the client of that one player only.</p>
+<p>Dump every cached texture (tga, dds, ktx, mtr) and rebuild every loaded texture and shared material, the same full texture refresh the client does when it joins a module. Unlike the reload that SetTextureOverride() triggers, this also reloads every same-name copy of a texture. Expect a short hitch. </p>
+</div></td></tr>
+<tr class="memitem:ga2f857810a45bd497c24b68e37631d794"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__player.html#ga2f857810a45bd497c24b68e37631d794">NWNX_PLAYER_RELOAD_TEXTURES</a> = 0x2</td></tr>
+<tr class="separator:ga2f857810a45bd497c24b68e37631d794"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa19f71ddab04c0acb78ef1a9589098d4"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__player.html#gaa19f71ddab04c0acb78ef1a9589098d4">NWNX_PLAYER_RELOAD_CURSORS</a> = 0x4</td></tr>
+<tr class="memdesc:gaa19f71ddab04c0acb78ef1a9589098d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reload the mouse cursors, so a cursor override set with <a class="el" href="group__player.html#ga3696c80cbeecf942d00e2e4c5a089698" title="Override sOldResName with sNewResName of nResType for oPlayer.">NWNX_Player_SetResManOverride()</a> shows.  <a href="group__player.html#gaa19f71ddab04c0acb78ef1a9589098d4">More...</a><br /></td></tr>
+<tr class="separator:gaa19f71ddab04c0acb78ef1a9589098d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6d6d8c5c575d5aa5c983c860e5151d7"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__player.html#gaf6d6d8c5c575d5aa5c983c860e5151d7">NWNX_PLAYER_RELOAD_NUI_SKIN</a> = 0x200</td></tr>
+<tr class="separator:gaf6d6d8c5c575d5aa5c983c860e5151d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -361,7 +375,7 @@ Variables</h2></td></tr>
 			<ul>
 				<li class="navelem"><a class="el" href="dir_0b4eaef40a1fe20bedafe9e8e719ce66.html">Plugins</a></li><li class="navelem"><a class="el" href="dir_d90d35e7a4c53163d70fc449fc96c95f.html">Player</a></li><li class="navelem"><a class="el" href="dir_74eb7d1146c85797e2e5ace6439ccaf8.html">NWScript</a></li><li class="navelem"><a class="el" href="nwnx__player_8nss.html">nwnx_player.nss</a></li>
 				<li class="footer">
-					Generated on Tue Nov 17 2026 14:44:23 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Wed Nov 18 2026 03:13:43 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>

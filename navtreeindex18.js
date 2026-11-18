@@ -1,5 +1,13 @@
 var NAVTREEINDEX18 =
 {
+"nwnx__redis_8nss.html#ae512fc1e30673be1fe678400e5e212a1":[4,0,3,32,0,0,55],
+"nwnx__redis_8nss.html#ae5f9347fa086ee278ab0dd8eb4866ed7":[4,0,3,32,0,0,222],
+"nwnx__redis_8nss.html#ae65858ca77ea763159ac2a7f355a6680":[4,0,3,32,0,0,148],
+"nwnx__redis_8nss.html#ae7cbd7411609799424da085469877eeb":[4,0,3,32,0,0,95],
+"nwnx__redis_8nss.html#ae902d9436dacd6eb7aca030494b1dca8":[4,0,3,32,0,0,20],
+"nwnx__redis_8nss.html#ae94508aa30f4b34f358937c20363a91a":[4,0,3,32,0,0,183],
+"nwnx__redis_8nss.html#ae961a303393a7202baa714759ca35c48":[4,0,3,32,0,0,81],
+"nwnx__redis_8nss.html#ae9a6bcd3f3149a2e9135db70cd5c6055":[4,0,3,32,0,0,73],
 "nwnx__redis_8nss.html#ae9d8fa446cf880969d99d6970c469401":[4,0,3,32,0,0,102],
 "nwnx__redis_8nss.html#aea1a2654f73630b0935bb5865e838ab5":[4,0,3,32,0,0,46],
 "nwnx__redis_8nss.html#aec15375343a042771baa20c940d7a85a":[4,0,3,32,0,0,72],
@@ -241,13 +249,5 @@ var NAVTREEINDEX18 =
 "nwnx__redis__short_8nss.html#aefb1fe0e85b177ae6c1400f8d964d18e":[4,0,3,32,0,3,35],
 "nwnx__redis__short_8nss.html#af115823d095e003d6c42e931106698f4":[4,0,3,32,0,3,166],
 "nwnx__redis__short_8nss.html#af12666ce4befe1fa83fc09de1e84f1f3":[4,0,3,32,0,3,185],
-"nwnx__redis__short_8nss.html#af15545f2b874e9ee02b6d3cc37434fa8":[4,0,3,32,0,3,30],
-"nwnx__redis__short_8nss.html#af2f46bcd914140eeb49598d63951c3d4":[4,0,3,32,0,3,49],
-"nwnx__redis__short_8nss.html#af450c0c8bdbfdd4b3b1e75b1d1240eb7":[4,0,3,32,0,3,174],
-"nwnx__redis__short_8nss.html#af497f2f31bf361e09929e1e6399c4b72":[4,0,3,32,0,3,127],
-"nwnx__redis__short_8nss.html#af628aa6c7cd81d264a9e22be1ab2d0c9":[4,0,3,32,0,3,196],
-"nwnx__redis__short_8nss.html#af89de605c6eecc1614b0b0d699a88092":[4,0,3,32,0,3,140],
-"nwnx__redis__short_8nss.html#af98804c25dbb680a54e50c62b06fa05b":[4,0,3,32,0,3,51],
-"nwnx__redis__short_8nss.html#afb22eed5de78e64a6dbd4b6cf983ab35":[4,0,3,32,0,3,189],
-"nwnx__redis__short_8nss.html#afb3937256478125b9a0a5afcbacedd73":[4,0,3,32,0,3,60]
+"nwnx__redis__short_8nss.html#af15545f2b874e9ee02b6d3cc37434fa8":[4,0,3,32,0,3,30]
 };
