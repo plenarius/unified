@@ -72,6 +72,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Fixed every `json` value returned from or passed to an NWNX function leaking: NWNX declared `SharedPtrEngineStructure`'s virtuals in a different order from the 8193.37 server, so destroying one called `GetId()` instead of the destructor.
 - SkillRanks: Fixed `GetAreaModifier()` dereferencing an empty `std::optional` (undefined behavior) when the queried area had no modifier set for the skill. Now returns `0` in that case.
 - SQL: Fixed `NWNX_SQL_QUERY_METRICS` dropping metrics after ~100k queries per run. The query ID is now an InfluxDB field instead of a tag, so it no longer creates a new series per query and hits `max-values-per-tag`.
+- POS: fixed a crash or double free when a player with NWNX pointer data (looping VFX, visual transform or appearance overrides) leaves cutscene mode.
 
 ## 8193.37.13
 https://github.com/nwnxee/unified/compare/build8193.36.10...build8193.37.13
