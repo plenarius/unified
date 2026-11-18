@@ -20,6 +20,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Experimental: added `NWNX_EXPERIMENTAL_UFM_HOTFIX` to attempt to fix a server hang in CNetLayerWindow::UnpacketizeFullMessages.
 - Events: Added events `NWNX_ON_INVENTORY_CLOSE_{BEFORE|AFTER}` which fire when a player closes an inventory through a client status message.
 - Tweaks: added `NWNX_TWEAKS_FIX_TRIGGER_POINT_TEST` to fix the point-in-trigger test giving the wrong answer for points straight south of a trigger corner.
+- Optimizations: added `NWNX_OPTIMIZATIONS_GET_OBJECT_BY_TAG` to keep the tag lookup table in a hash map, which makes `GetObjectByTag()` and adding or removing tagged objects faster on modules with many objects.
 
 ##### New Plugins
 - ItemAppearance: Lists the appearances an item can take, with blacklist and sync rules, and gets the next, previous or a random one for simple items and weapons.
