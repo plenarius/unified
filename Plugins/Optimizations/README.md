@@ -16,4 +16,4 @@ Game optimizations. Improves performance of various game elements.
 | `NWNX_OPTIMIZATIONS_CACHE_SCRIPT_CHUNKS` | true/false | Caches all script chunks, improving performance |
 | `NWNX_OPTIMIZATIONS_CACHE_DEBUGGER_INSTANCES` | true/false | Caches all nwscript debugger instances, improving GetScriptBacktrace() performance |
 | `NWNX_OPTIMIZATIONS_CACHE_SCRIPTS` | true/false | Caches all scripts, improving performance |
-| `NWNX_OPTIMIZATIONS_EVENT_MASTER_PRIORITY_QUEUE` | true/false | Replaces the AI event linked list with a priority queue, improving event insert speed from o(n) to o(log n), and eliminating many allocations |
+| `NWNX_OPTIMIZATIONS_EVENT_MASTER_PRIORITY_QUEUE` | true/false | Replaces the AI event queue (every DelayCommand, AssignCommand, effect expiry...) linked list with a priority queue: adding an event costs O(log n) instead of O(n) in the number of pending events. Events due at the same time still run in the stock order. |
