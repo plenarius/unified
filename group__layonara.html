@@ -111,9 +111,6 @@ Files</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga5e2197d80e96609c885b02b91895187a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__layonara.html#ga5e2197d80e96609c885b02b91895187a">NWNX_Layonara_ClearSurfaceMaterial</a> (object creature)</td></tr>
-<tr class="memdesc:ga5e2197d80e96609c885b02b91895187a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the surface material so a change is fired on next movement.  <a href="group__layonara.html#ga5e2197d80e96609c885b02b91895187a">More...</a><br /></td></tr>
-<tr class="separator:ga5e2197d80e96609c885b02b91895187a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga74a4de133429e5e147e330ecc67163ba"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__layonara.html#ga74a4de133429e5e147e330ecc67163ba">NWNX_Layonara_GetNWSyncAdvertHash</a> ()</td></tr>
 <tr class="memdesc:ga74a4de133429e5e147e330ecc67163ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the NWSync manifest hash the server advertises to connecting clients.  <a href="group__layonara.html#ga74a4de133429e5e147e330ecc67163ba">More...</a><br /></td></tr>
 <tr class="separator:ga74a4de133429e5e147e330ecc67163ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,34 +122,6 @@ Functions</h2></td></tr>
 <tr class="separator:gaadfff34fc234e72cf008ffe5e0eeabfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga5e2197d80e96609c885b02b91895187a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5e2197d80e96609c885b02b91895187a">&#9670;&nbsp;</a></span>NWNX_Layonara_ClearSurfaceMaterial()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void NWNX_Layonara_ClearSurfaceMaterial </td>
-          <td>(</td>
-          <td class="paramtype">object&#160;</td>
-          <td class="paramname"><em>creature</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Clear the surface material so a change is fired on next movement. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">creature</td><td>The creature object. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="nwnx__layo_8nss_source.html#l00032">32</a> of file <a class="el" href="nwnx__layo_8nss_source.html">nwnx_layo.nss</a>.</p>
-
-</div>
-</div>
 <a id="ga74a4de133429e5e147e330ecc67163ba"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga74a4de133429e5e147e330ecc67163ba">&#9670;&nbsp;</a></span>NWNX_Layonara_GetNWSyncAdvertHash()</h2>
 
@@ -171,7 +140,7 @@ Functions</h2></td></tr>
 <p>Get the NWSync manifest hash the server advertises to connecting clients. </p>
 <dl class="section return"><dt>Returns</dt><dd>The 40 character lowercase SHA1, or "" if the server advertises no manifest. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__layo_8nss_source.html#l00041">41</a> of file <a class="el" href="nwnx__layo_8nss_source.html">nwnx_layo.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__layo_8nss_source.html#l00028">28</a> of file <a class="el" href="nwnx__layo_8nss_source.html">nwnx_layo.nss</a>.</p>
 
 </div>
 </div>
@@ -193,7 +162,7 @@ Functions</h2></td></tr>
 <p>Get the NWSync URL the server advertises to connecting clients. </p>
 <dl class="section return"><dt>Returns</dt><dd>The URL, or "" if the server advertises no NWSync repository. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__layo_8nss_source.html#l00050">50</a> of file <a class="el" href="nwnx__layo_8nss_source.html">nwnx_layo.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__layo_8nss_source.html#l00037">37</a> of file <a class="el" href="nwnx__layo_8nss_source.html">nwnx_layo.nss</a>.</p>
 
 </div>
 </div>
@@ -235,7 +204,7 @@ Functions</h2></td></tr>
 <dl class="section remark"><dt>Remarks</dt><dd>Pass "" for both to stop advertising NWSync, as if the server had started without it. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if the advert changed, FALSE if sHash isn't a SHA1 or only one of the two is empty. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__layo_8nss_source.html#l00059">59</a> of file <a class="el" href="nwnx__layo_8nss_source.html">nwnx_layo.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__layo_8nss_source.html#l00046">46</a> of file <a class="el" href="nwnx__layo_8nss_source.html">nwnx_layo.nss</a>.</p>
 
 </div>
 </div>
@@ -245,7 +214,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Wed Nov 18 2026 08:16:35 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Wed Nov 18 2026 08:19:59 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>
