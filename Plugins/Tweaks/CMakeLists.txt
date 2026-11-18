@@ -15,6 +15,7 @@ add_plugin(Tweaks
     "FixDispelEffectLevels.cpp"
     "FixGreaterSanctuaryBug.cpp"
     "FixSkillCheckDisplay.cpp"
+    "FixInventoryPanelOwnerCrash.cpp"
     "FixNuiEventCrash.cpp"
     "FixSplitItemInForeignContainer.cpp"
     "FixStaleItemsInItemRepository.cpp"
