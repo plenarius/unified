@@ -28,6 +28,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 ##### New NWScript Functions
 - Chess: NewGame(), EndGame(), MakeMove(), GetLegalMoves(), GetMoves(), GetFEN(), GetPGN(), GetStatus(), GetSideToMove(), GetPieceAt(), RequestBestMove(), GetBestMoveResult(), GetBestMoveState()
 - Player: GetOpenStore()
+- Player: ReloadResources() makes one player's client reload its NUI skin, textures or cursors.
 - Creature: GetNumberOfBonusSpells(), ModifyNumberBonusSpells()
 - Store: GetBlackMarket(), SetBlackMarket()
 - Util: SetStartingLocation()
