@@ -77,6 +77,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Area/Optimizations: fixed player TURDs being treated as sound objects (crash in NWNX_Area_ExportGIT after a player logged out, corruption in RotateArea).
 - Race: Fixed a heap overflow when an effect with more than 8 integers (e.g. loaded from a character file) was copied from a parent race to its child races.
 - Feat, Race: Fixed 128 needless `RemoveEffectById(0)` calls on every feat modifier removal, TURD load and racial modifier reapply. Applied effects with ID 0 are no longer removed by them.
+- Feat: Fixed removing an effect with two or more linked bonus feats that have feat modifiers leaving some of the bonus feats and their modifiers applied. Modifier removal now waits until the engine has finished removing the effect.
 
 ## 8193.37.13
 https://github.com/nwnxee/unified/compare/build8193.36.10...build8193.37.13
