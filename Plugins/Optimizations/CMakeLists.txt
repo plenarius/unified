@@ -7,4 +7,5 @@ add_plugin(Optimizations
         "CacheDebuggerInstances.cpp"
         "CacheScripts.cpp"
         "EventMasterPriorityQueue.cpp"
+        "EventQueueBench.cpp"
 )
