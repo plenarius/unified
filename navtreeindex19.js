@@ -1,5 +1,9 @@
 var NAVTREEINDEX19 =
 {
+"nwnx__redis__short_8nss.html#aefb1fe0e85b177ae6c1400f8d964d18e":[4,0,3,32,0,3,35],
+"nwnx__redis__short_8nss.html#af115823d095e003d6c42e931106698f4":[4,0,3,32,0,3,166],
+"nwnx__redis__short_8nss.html#af12666ce4befe1fa83fc09de1e84f1f3":[4,0,3,32,0,3,185],
+"nwnx__redis__short_8nss.html#af15545f2b874e9ee02b6d3cc37434fa8":[4,0,3,32,0,3,30],
 "nwnx__redis__short_8nss.html#af2f46bcd914140eeb49598d63951c3d4":[4,0,3,32,0,3,49],
 "nwnx__redis__short_8nss.html#af450c0c8bdbfdd4b3b1e75b1d1240eb7":[4,0,3,32,0,3,174],
 "nwnx__redis__short_8nss.html#af497f2f31bf361e09929e1e6399c4b72":[4,0,3,32,0,3,127],
@@ -245,9 +249,5 @@ var NAVTREEINDEX19 =
 "structNWNX__IPUnpacked.html#a240e9078eb102d6be03ec5e517b083f9":[0,25,2,1],
 "structNWNX__IPUnpacked.html#a28d5dd1ff936a69a03304c96ee3f1f5a":[0,25,2,2],
 "structNWNX__IPUnpacked.html#a40f155e0ea3624566d16be67a0647062":[0,25,2,6],
-"structNWNX__IPUnpacked.html#a6ce26f6d7aad00efb729b282a901a413":[0,25,2,0],
-"structNWNX__IPUnpacked.html#a812ab3e4d434a6e636613446bc23d005":[0,25,2,12],
-"structNWNX__IPUnpacked.html#a9bc37d8e686ed58efc4481fc6ced2619":[0,25,2,10],
-"structNWNX__IPUnpacked.html#aaa2c8bc13b51d3f6ceaf64e3b7fd5326":[0,25,2,9],
-"structNWNX__IPUnpacked.html#ab280d7238552e633946cfc1cc1bf2571":[0,25,2,3]
+"structNWNX__IPUnpacked.html#a6ce26f6d7aad00efb729b282a901a413":[0,25,2,0]
 };
