@@ -16,6 +16,8 @@ add_plugin(Tweaks
     "FixGreaterSanctuaryBug.cpp"
     "FixSkillCheckDisplay.cpp"
     "FixNuiEventCrash.cpp"
+    "FixSplitItemInForeignContainer.cpp"
+    "FixStaleItemsInItemRepository.cpp"
     "FixTriggerEnterDetection.cpp"
     "FixTriggerPointTest.cpp"
     "FixUnlimitedPotionsBug.cpp"
