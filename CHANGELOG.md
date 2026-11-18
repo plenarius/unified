@@ -52,6 +52,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - SQL: Database passwords are no longer printed to the log when connecting.
 - HTTPClient: Enable three custom fields to pass to response.
 - Item: `SetItemAppearance()` with `bUpdateCreatureAppearance` now also updates items held in either hand.
+- Core: per-object storage lookups (`nwnxGet`) no longer copy the whole map, or create storage for objects that have none, on every call; this speeds up the Appearance and Player per-object update hooks.
 
 ### Deprecated
 - N/A
