@@ -120,6 +120,7 @@ Added</h2>
 <li>Experimental: added <code>NWNX_EXPERIMENTAL_UFM_HOTFIX</code> to attempt to fix a server hang in CNetLayerWindow::UnpacketizeFullMessages.</li>
 <li>Events: Added events <code>NWNX_ON_INVENTORY_CLOSE_{BEFORE|AFTER}</code> which fire when a player closes an inventory through a client status message.</li>
 <li>Tweaks: added <code>NWNX_TWEAKS_FIX_TRIGGER_POINT_TEST</code> to fix the point-in-trigger test giving the wrong answer for points straight south of a trigger corner.</li>
+<li>Optimizations: added <code>NWNX_OPTIMIZATIONS_GET_OBJECT_BY_TAG</code> to keep the tag lookup table in a hash map, which makes <code>GetObjectByTag()</code> and adding or removing tagged objects faster on modules with many objects.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md12"></a>
 New Plugins</h4>
@@ -1733,7 +1734,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Wed Nov 18 2026 09:59:26 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Wed Nov 18 2026 14:12:18 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>
