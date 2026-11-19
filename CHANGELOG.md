@@ -78,7 +78,6 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Fixed `NWNX_NWSQLiteExtensions` by escaping the columns names during CREATE TABLE.
 - Fixed every `json` value returned from or passed to an NWNX function leaking: NWNX declared `SharedPtrEngineStructure`'s virtuals in a different order from the 8193.37 server, so destroying one called `GetId()` instead of the destructor.
 - SkillRanks: Fixed `GetAreaModifier()` dereferencing an empty `std::optional` (undefined behavior) when the queried area had no modifier set for the skill. Now returns `0` in that case.
-- SQL: Fixed `NWNX_SQL_QUERY_METRICS` dropping metrics after ~100k queries per run. The query ID is now an InfluxDB field instead of a tag, so it no longer creates a new series per query and hits `max-values-per-tag`.
 - POS: fixed a crash or double free when a player with NWNX pointer data (looping VFX, visual transform or appearance overrides) leaves cutscene mode.
 - ELC: fixed a crash when an ELC script skipped an INVALID_FEAT/INVALID_SPELL failure, or NON_PLAYER_RACE/CLASS for an id outside the 2da.
 - Area/Optimizations: fixed player TURDs being treated as sound objects (crash in NWNX_Area_ExportGIT after a player logged out, corruption in RotateArea).
