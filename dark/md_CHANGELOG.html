@@ -127,6 +127,7 @@ Added</h2>
 <li>Tweaks: added <code>NWNX_TWEAKS_FIX_TRIGGER_POINT_TEST</code> to fix the point-in-trigger test giving the wrong answer for points straight south of a trigger corner.</li>
 <li>Optimizations: added <code>NWNX_OPTIMIZATIONS_GET_OBJECT_BY_TAG</code> to keep the tag lookup table in a hash map, which makes <code>GetObjectByTag()</code> and adding or removing tagged objects faster on modules with many objects.</li>
 <li>Events: Added event <code>NWNX_ON_ENCUMBRANCE_CHANGE_AFTER</code> which fires when a creature's encumbrance state changes.</li>
+<li>SQL: Added <code>NWNX_SQL_QUERY_METRICS_ID_AS_FIELD</code> to send the query ID of <code>NWNX_SQL_QUERY_METRICS</code> as a field instead of a tag, so a long running server doesn't hit InfluxDB's <code>max-values-per-tag</code> limit.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md12"></a>
 New Plugins</h4>
@@ -190,7 +191,6 @@ Fixed</h2>
 <li>Fixed <code>NWNX_NWSQLiteExtensions</code> by escaping the columns names during CREATE TABLE.</li>
 <li>Fixed every <code>json</code> value returned from or passed to an NWNX function leaking: NWNX declared <code>SharedPtrEngineStructure</code>'s virtuals in a different order from the 8193.37 server, so destroying one called <code>GetId()</code> instead of the destructor.</li>
 <li>SkillRanks: Fixed <code>GetAreaModifier()</code> dereferencing an empty <code>std::optional</code> (undefined behavior) when the queried area had no modifier set for the skill. Now returns <code>0</code> in that case.</li>
-<li>SQL: Fixed <code>NWNX_SQL_QUERY_METRICS</code> dropping metrics after ~100k queries per run. The query ID is now an InfluxDB field instead of a tag, so it no longer creates a new series per query and hits <code>max-values-per-tag</code>.</li>
 <li>POS: fixed a crash or double free when a player with NWNX pointer data (looping VFX, visual transform or appearance overrides) leaves cutscene mode.</li>
 <li>ELC: fixed a crash when an ELC script skipped an INVALID_FEAT/INVALID_SPELL failure, or NON_PLAYER_RACE/CLASS for an id outside the 2da.</li>
 <li>Area/Optimizations: fixed player TURDs being treated as sound objects (crash in NWNX_Area_ExportGIT after a player logged out, corruption in RotateArea).</li>
@@ -1750,7 +1750,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Thu Nov 19 2026 12:23:01 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Thu Nov 19 2026 13:46:15 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>
