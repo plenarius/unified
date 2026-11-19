@@ -27,6 +27,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Tweaks: added `NWNX_TWEAKS_FIX_TRIGGER_POINT_TEST` to fix the point-in-trigger test giving the wrong answer for points straight south of a trigger corner.
 - Optimizations: added `NWNX_OPTIMIZATIONS_GET_OBJECT_BY_TAG` to keep the tag lookup table in a hash map, which makes `GetObjectByTag()` and adding or removing tagged objects faster on modules with many objects.
 - Events: Added event `NWNX_ON_ENCUMBRANCE_CHANGE_AFTER` which fires when a creature's encumbrance state changes.
+- SQL: Added `NWNX_SQL_QUERY_METRICS_ID_AS_FIELD` to send the query ID of `NWNX_SQL_QUERY_METRICS` as a field instead of a tag, so a long running server doesn't hit InfluxDB's `max-values-per-tag` limit.
 
 ##### New Plugins
 - ItemAppearance: Lists the appearances an item can take, with blacklist and sync rules, and gets the next, previous or a random one for simple items and weapons.
