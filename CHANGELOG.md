@@ -13,6 +13,11 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Tweaks: added `NWNX_TWEAKS_FIX_SKILL_CHECK_DISPLAY` to show skill check feedback with the real DC when it is over 127 (the client only reads 7 bits of it).
 - Tweaks: added `NWNX_TWEAKS_FAST_ITEM_REPOSITORY_FIND_POSITION` to find a free inventory spot in linear instead of quadratic time, which speeds up filling stores and large containers.
 - Tweaks: added `NWNX_TWEAKS_GUARD_TAKE_GOLD_NO_CALLER` (on by default) so `TakeGoldFromCreature()` does nothing, instead of crashing the server, when `OBJECT_SELF` no longer exists (a script run with `ExecuteScript()` on a destroyed object).
+- Tweaks: added `NWNX_TWEAKS_FIX_NUI_EVENT_CRASH` which fixes a server crash when a NUI event holds invalid UTF-8.
+- Tweaks: added `NWNX_TWEAKS_FIX_SPLIT_ITEM_IN_FOREIGN_CONTAINER` which refuses to split a stack inside a container owned by another object, as the engine puts the new stack in the wrong inventory, and refuses splits of items with no owner.
+- Tweaks: added `NWNX_TWEAKS_FIX_STALE_ITEMS_IN_ITEM_REPOSITORY` which fixes a server crash when an inventory holds an item ID that no longer resolves to an item.
+- Tweaks: added `NWNX_TWEAKS_FIX_INVENTORY_PANEL_OWNER_CRASH` which fixes a server crash when an open inventory panel's owner is not (or no longer) a creature.
+- Tweaks: added `NWNX_TWEAKS_FIX_AOE_JUMP_WITHOUT_AREA_CRASH` which fixes a server crash when a creature jumps to another area while linked to an area of effect that is in no area.
 - Events: Added events `NWNX_ON_ABILITY_CHANGE_{BEFORE|AFTER}` which fire when an ability of a player changes.
 - Events: Added `NWNX_EVENT_INIT_ON_FIRST_SUBSCRIBE` messagebus message as a wrapper for the `InitOnFirstSubscribe` function. Broadcasts `NWNX_EVENT_INIT_ON_FIRST_SUBSCRIBE_CALLBACK` message when a registered event gets subscribed to.
 - Tweaks: Added `NWNX_TWEAKS_CHARLIST_SORT_BY_LAST_PLAYED_DATE` to enable character list sorting by last played date
@@ -52,6 +57,8 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - SQL: Database passwords are no longer printed to the log when connecting.
 - HTTPClient: Enable three custom fields to pass to response.
 - Item: `SetItemAppearance()` with `bUpdateCreatureAppearance` now also updates items held in either hand.
+- Core: per-object storage lookups (`nwnxGet`) no longer copy the whole map, or create storage for objects that have none, on every call; this speeds up the Appearance and Player per-object update hooks.
+- Race: the effect-apply hook no longer adds a child-race map entry for every new effect parameter or copies the child list, and does nothing when no child races are set.
 
 ### Deprecated
 - N/A
@@ -70,6 +77,13 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Fixed every `json` value returned from or passed to an NWNX function leaking: NWNX declared `SharedPtrEngineStructure`'s virtuals in a different order from the 8193.37 server, so destroying one called `GetId()` instead of the destructor.
 - SkillRanks: Fixed `GetAreaModifier()` dereferencing an empty `std::optional` (undefined behavior) when the queried area had no modifier set for the skill. Now returns `0` in that case.
 - SQL: Fixed `NWNX_SQL_QUERY_METRICS` dropping metrics after ~100k queries per run. The query ID is now an InfluxDB field instead of a tag, so it no longer creates a new series per query and hits `max-values-per-tag`.
+- POS: fixed a crash or double free when a player with NWNX pointer data (looping VFX, visual transform or appearance overrides) leaves cutscene mode.
+- ELC: fixed a crash when an ELC script skipped an INVALID_FEAT/INVALID_SPELL failure, or NON_PLAYER_RACE/CLASS for an id outside the 2da.
+- Area/Optimizations: fixed player TURDs being treated as sound objects (crash in NWNX_Area_ExportGIT after a player logged out, corruption in RotateArea).
+- Race: Fixed a heap overflow when an effect with more than 8 integers (e.g. loaded from a character file) was copied from a parent race to its child races.
+- Feat, Race: Fixed 128 needless `RemoveEffectById(0)` calls on every feat modifier removal, TURD load and racial modifier reapply. Applied effects with ID 0 are no longer removed by them.
+- Feat: Fixed removing an effect with two or more linked bonus feats that have feat modifiers leaving some of the bonus feats and their modifiers applied. Modifier removal now waits until the engine has finished removing the effect.
+- Player: `OpenInventory()` no longer opens the inventory of a target that isn't a creature, which crashed the server.
 
 ## 8193.37.13
 https://github.com/nwnxee/unified/compare/build8193.36.10...build8193.37.13

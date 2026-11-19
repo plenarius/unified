@@ -8,6 +8,7 @@
 #include "API/CNWSModule.hpp"
 #include "API/CNWSPlayerTURD.hpp"
 
+#include <algorithm>
 #include <regex>
 #include <unordered_map>
 #include <sstream>
@@ -50,30 +51,32 @@ public:
     PointerMap& GetPointerMap()
     {
         if (!m_PointerMap)
-            m_PointerMap = std::make_unique<PointerMap>();
+            m_PointerMap = std::shared_ptr<PointerMap>(new PointerMap(), DestroyPointerMap);
         return *m_PointerMap;
     }
 
-    ObjectStorage(ObjectID owner) : m_oidOwner(owner), m_bCloned(false) {}
-    ~ObjectStorage()
+    // Shared by a player creature and its TURDs
+    static void DestroyPointerMap(PointerMap *map)
     {
-        if (m_PointerMap && !m_bCloned)
+        std::vector<void*> freed;
+        for (auto& it: *map)
         {
-            for (auto it: *m_PointerMap)
+            auto ptr = it.second.first;
+            if (it.second.second && std::find(freed.begin(), freed.end(), ptr) == freed.end())
             {
-                auto ptr = it.second.first;
-                if (auto cleanup = it.second.second)
-                    cleanup(ptr);
+                freed.push_back(ptr);
+                it.second.second(ptr);
             }
         }
+        delete map;
     }
+
+    ObjectStorage(ObjectID owner) : m_oidOwner(owner) {}
 
     void CloneFrom(ObjectStorage *other)
     {
-        if (!other)
+        if (!other || other == this)
             return;
-
-        other->m_bCloned = true;
 
         if (other->m_IntMap)
             m_IntMap = std::make_unique<IntMap>(*other->m_IntMap);
@@ -82,7 +85,7 @@ public:
         if (other->m_StringMap)
             m_StringMap = std::make_unique<StringMap>(*other->m_StringMap);
         if (other->m_PointerMap)
-            m_PointerMap = std::make_unique<PointerMap>(*other->m_PointerMap);
+            m_PointerMap = other->m_PointerMap;
     }
 
     std::string DumpToString()
@@ -164,7 +167,8 @@ public:
         if (m_IntMap)     m_IntMap->clear();
         if (m_FloatMap)   m_FloatMap->clear();
         if (m_StringMap)  m_StringMap->clear();
-        if (m_PointerMap) m_PointerMap->clear();
+        // May be shared with a TURD
+        m_PointerMap.reset();
 
     #define SSCANF_OR_ABORT(s, fmt, val) \
         do { int inc = 0; if (sscanf(s, fmt "%n", val, &inc) != 1)                                                        \
@@ -229,11 +233,10 @@ public:
     }
 
     ObjectID        m_oidOwner;
-    bool                        m_bCloned;
     std::unique_ptr<IntMap>     m_IntMap;
     std::unique_ptr<FloatMap>   m_FloatMap;
     std::unique_ptr<StringMap>  m_StringMap;
-    std::unique_ptr<PointerMap> m_PointerMap;
+    std::shared_ptr<PointerMap> m_PointerMap;
 };
 
 static ObjectStorage* GetObjectStorage(CGameObject *pGameObject)
@@ -284,11 +287,11 @@ void Set(CGameObject *pGameObject, const std::string& prefix, const std::string&
 
 template <> std::optional<int> Get<int>(CGameObject *pGameObject, const std::string& prefix, const std::string& key)
 {
-    if (auto *pOS = GetObjectStorage(pGameObject))
+    auto *pOS = pGameObject ? static_cast<ObjectStorage*>(pGameObject->m_pNwnxData) : nullptr;
+    if (pOS && pOS->m_IntMap)
     {
-        auto fullkey = prefix + "!" + key;
-        auto map = pOS->GetIntMap();
-        auto it = map.find(fullkey);
+        const auto& map = *pOS->m_IntMap;
+        auto it = map.find(prefix + "!" + key);
         if (it != map.end())
             return std::make_optional<int>(it->second.first);
     }
@@ -297,11 +300,11 @@ template <> std::optional<int> Get<int>(CGameObject *pGameObject, const std::str
 
 template <> std::optional<float> Get<float>(CGameObject *pGameObject, const std::string& prefix, const std::string& key)
 {
-    if (auto *pOS = GetObjectStorage(pGameObject))
+    auto *pOS = pGameObject ? static_cast<ObjectStorage*>(pGameObject->m_pNwnxData) : nullptr;
+    if (pOS && pOS->m_FloatMap)
     {
-        auto fullkey = prefix + "!" + key;
-        auto map = pOS->GetFloatMap();
-        auto it = map.find(fullkey);
+        const auto& map = *pOS->m_FloatMap;
+        auto it = map.find(prefix + "!" + key);
         if (it != map.end())
             return std::make_optional<float>(it->second.first);
     }
@@ -310,11 +313,11 @@ template <> std::optional<float> Get<float>(CGameObject *pGameObject, const std:
 
 template <> std::optional<std::string> Get<std::string>(CGameObject *pGameObject,  const std::string& prefix, const std::string& key)
 {
-    if (auto *pOS = GetObjectStorage(pGameObject))
+    auto *pOS = pGameObject ? static_cast<ObjectStorage*>(pGameObject->m_pNwnxData) : nullptr;
+    if (pOS && pOS->m_StringMap)
     {
-        auto fullkey = prefix + "!" + key;
-        auto map = pOS->GetStringMap();
-        auto it = map.find(fullkey);
+        const auto& map = *pOS->m_StringMap;
+        auto it = map.find(prefix + "!" + key);
         if (it != map.end())
             return std::make_optional<std::string>(it->second.first);
     }
@@ -323,11 +326,11 @@ template <> std::optional<std::string> Get<std::string>(CGameObject *pGameObject
 
 template <> std::optional<void*> Get<void*>(CGameObject *pGameObject, const std::string& prefix, const std::string& key)
 {
-    if (auto *pOS = GetObjectStorage(pGameObject))
+    auto *pOS = pGameObject ? static_cast<ObjectStorage*>(pGameObject->m_pNwnxData) : nullptr;
+    if (pOS && pOS->m_PointerMap)
     {
-        auto fullkey = prefix + "!" + key;
-        auto map = pOS->GetPointerMap();
-        auto it = map.find(fullkey);
+        const auto& map = *pOS->m_PointerMap;
+        auto it = map.find(prefix + "!" + key);
         if (it != map.end())
             return std::make_optional<void*>(it->second.first);
     }
@@ -410,21 +413,27 @@ void InitializeHooks()
     static Hooks::Hook s_DropTURDHook        = Hooks::HookFunction(&CNWSPlayer::DropTURD,
         +[](CNWSPlayer* pThis)
         {
-            s_DropTURDHook->CallOriginal<void>(pThis);
-
             // Be very, very paranoid. Bad things happen when the TURD list doesn't exist
             // This can happen when you BootPC() the very first PC to connect to your sever
             //     https://github.com/nwnxee/unified/issues/319
-            if (auto turdlist = Utils::GetModule()->m_lstTURDList.m_pcExoLinkedListInternal)
+            auto GetHeadTURD = []() -> CNWSPlayerTURD*
             {
-                if (auto *pHead = turdlist->pHead)
+                if (auto turdlist = Utils::GetModule()->m_lstTURDList.m_pcExoLinkedListInternal)
                 {
-                    if (auto *pTURD = static_cast<CNWSPlayerTURD*>(pHead->pObject))
-                    {
-                        auto pObjThis = Utils::GetGameObject(pThis->m_oidNWSObject);
-                        GetObjectStorage(pTURD)->CloneFrom(GetObjectStorage(pObjThis));
-                    }
+                    if (auto *pHead = turdlist->pHead)
+                        return static_cast<CNWSPlayerTURD*>(pHead->pObject);
                 }
+                return nullptr;
+            };
+
+            auto *pOldHead = GetHeadTURD();
+            s_DropTURDHook->CallOriginal<void>(pThis);
+
+            // DropTURD doesn't always add a TURD
+            if (auto *pTURD = GetHeadTURD(); pTURD && pTURD != pOldHead)
+            {
+                auto pObjThis = Utils::GetGameObject(pThis->m_oidNWSObject);
+                GetObjectStorage(pTURD)->CloneFrom(GetObjectStorage(pObjThis));
             }
         }, Hooks::Order::VeryEarly);
 
