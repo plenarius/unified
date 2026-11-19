@@ -26,6 +26,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Events: Added events `NWNX_ON_INVENTORY_CLOSE_{BEFORE|AFTER}` which fire when a player closes an inventory through a client status message.
 - Tweaks: added `NWNX_TWEAKS_FIX_TRIGGER_POINT_TEST` to fix the point-in-trigger test giving the wrong answer for points straight south of a trigger corner.
 - Optimizations: added `NWNX_OPTIMIZATIONS_GET_OBJECT_BY_TAG` to keep the tag lookup table in a hash map, which makes `GetObjectByTag()` and adding or removing tagged objects faster on modules with many objects.
+- Events: Added event `NWNX_ON_ENCUMBRANCE_CHANGE_AFTER` which fires when a creature's encumbrance state changes.
 
 ##### New Plugins
 - ItemAppearance: Lists the appearances an item can take, with blacklist and sync rules, and gets the next, previous or a random one for simple items and weapons.
@@ -48,6 +49,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Creature: {Get|Set}BaseACPolymorph()
 - Events: RemoveObjectFromAllDispatchLists()
 - Creature: GetMovementRateFactorModifier(), SetMovementRateFactorModifier()
+- Administration: GetNWSyncAdvertHash(), GetNWSyncAdvertUrl(), SetNWSyncAdvert()
 
 ### Changed
 - Damage: Added bRangedAttack to the NWNX_Damage_AttackEventData struct.
