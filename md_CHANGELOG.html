@@ -113,6 +113,11 @@ Added</h2>
 <li>Tweaks: added <code>NWNX_TWEAKS_FIX_SKILL_CHECK_DISPLAY</code> to show skill check feedback with the real DC when it is over 127 (the client only reads 7 bits of it).</li>
 <li>Tweaks: added <code>NWNX_TWEAKS_FAST_ITEM_REPOSITORY_FIND_POSITION</code> to find a free inventory spot in linear instead of quadratic time, which speeds up filling stores and large containers.</li>
 <li>Tweaks: added <code>NWNX_TWEAKS_GUARD_TAKE_GOLD_NO_CALLER</code> (on by default) so <code>TakeGoldFromCreature()</code> does nothing, instead of crashing the server, when <code>OBJECT_SELF</code> no longer exists (a script run with <code>ExecuteScript()</code> on a destroyed object).</li>
+<li>Tweaks: added <code>NWNX_TWEAKS_FIX_NUI_EVENT_CRASH</code> which fixes a server crash when a NUI event holds invalid UTF-8.</li>
+<li>Tweaks: added <code>NWNX_TWEAKS_FIX_SPLIT_ITEM_IN_FOREIGN_CONTAINER</code> which refuses to split a stack inside a container owned by another object, as the engine puts the new stack in the wrong inventory, and refuses splits of items with no owner.</li>
+<li>Tweaks: added <code>NWNX_TWEAKS_FIX_STALE_ITEMS_IN_ITEM_REPOSITORY</code> which fixes a server crash when an inventory holds an item ID that no longer resolves to an item.</li>
+<li>Tweaks: added <code>NWNX_TWEAKS_FIX_INVENTORY_PANEL_OWNER_CRASH</code> which fixes a server crash when an open inventory panel's owner is not (or no longer) a creature.</li>
+<li>Tweaks: added <code>NWNX_TWEAKS_FIX_AOE_JUMP_WITHOUT_AREA_CRASH</code> which fixes a server crash when a creature jumps to another area while linked to an area of effect that is in no area.</li>
 <li>Events: Added events <code>NWNX_ON_ABILITY_CHANGE_{BEFORE|AFTER}</code> which fire when an ability of a player changes.</li>
 <li>Events: Added <code>NWNX_EVENT_INIT_ON_FIRST_SUBSCRIBE</code> messagebus message as a wrapper for the <code>InitOnFirstSubscribe</code> function. Broadcasts <code>NWNX_EVENT_INIT_ON_FIRST_SUBSCRIBE_CALLBACK</code> message when a registered event gets subscribed to.</li>
 <li>Tweaks: Added <code>NWNX_TWEAKS_CHARLIST_SORT_BY_LAST_PLAYED_DATE</code> to enable character list sorting by last played date</li>
@@ -158,6 +163,8 @@ Changed</h2>
 <li>SQL: Database passwords are no longer printed to the log when connecting.</li>
 <li>HTTPClient: Enable three custom fields to pass to response.</li>
 <li>Item: <code>SetItemAppearance()</code> with <code>bUpdateCreatureAppearance</code> now also updates items held in either hand.</li>
+<li>Core: per-object storage lookups (<code>nwnxGet</code>) no longer copy the whole map, or create storage for objects that have none, on every call; this speeds up the Appearance and Player per-object update hooks.</li>
+<li>Race: the effect-apply hook no longer adds a child-race map entry for every new effect parameter or copies the child list, and does nothing when no child races are set.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md15"></a>
 Deprecated</h2>
@@ -182,6 +189,13 @@ Fixed</h2>
 <li>Fixed every <code>json</code> value returned from or passed to an NWNX function leaking: NWNX declared <code>SharedPtrEngineStructure</code>'s virtuals in a different order from the 8193.37 server, so destroying one called <code>GetId()</code> instead of the destructor.</li>
 <li>SkillRanks: Fixed <code>GetAreaModifier()</code> dereferencing an empty <code>std::optional</code> (undefined behavior) when the queried area had no modifier set for the skill. Now returns <code>0</code> in that case.</li>
 <li>SQL: Fixed <code>NWNX_SQL_QUERY_METRICS</code> dropping metrics after ~100k queries per run. The query ID is now an InfluxDB field instead of a tag, so it no longer creates a new series per query and hits <code>max-values-per-tag</code>.</li>
+<li>POS: fixed a crash or double free when a player with NWNX pointer data (looping VFX, visual transform or appearance overrides) leaves cutscene mode.</li>
+<li>ELC: fixed a crash when an ELC script skipped an INVALID_FEAT/INVALID_SPELL failure, or NON_PLAYER_RACE/CLASS for an id outside the 2da.</li>
+<li>Area/Optimizations: fixed player TURDs being treated as sound objects (crash in NWNX_Area_ExportGIT after a player logged out, corruption in RotateArea).</li>
+<li>Race: Fixed a heap overflow when an effect with more than 8 integers (e.g. loaded from a character file) was copied from a parent race to its child races.</li>
+<li>Feat, Race: Fixed 128 needless <code>RemoveEffectById(0)</code> calls on every feat modifier removal, TURD load and racial modifier reapply. Applied effects with ID 0 are no longer removed by them.</li>
+<li>Feat: Fixed removing an effect with two or more linked bonus feats that have feat modifiers leaving some of the bonus feats and their modifiers applied. Modifier removal now waits until the engine has finished removing the effect.</li>
+<li>Player: <code>OpenInventory()</code> no longer opens the inventory of a target that isn't a creature, which crashed the server.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md18"></a>
 8193.37.13</h1>
@@ -1734,7 +1748,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Wed Nov 18 2026 14:12:17 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Thu Nov 19 2026 00:48:56 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>
