@@ -1,5 +1,17 @@
 var NAVTREEINDEX20 =
 {
+"structNWNX__HTTPClient__Request.html#a8cb54bcba1f4c123ede728be04202630":[0,22,2,1],
+"structNWNX__HTTPClient__Request.html#acba89bf369c2950e276428f6c028f4f7":[0,22,2,9],
+"structNWNX__HTTPClient__Request.html#ad0f541924d188dcf930d85298fb758b0":[0,22,2,6],
+"structNWNX__HTTPClient__Request.html#ad279f7e1271cbb76d755e2b1a7f8178f":[0,22,2,12],
+"structNWNX__HTTPClient__Request.html#ad6df66a939bfb3f734a0de33858545df":[0,22,2,2],
+"structNWNX__HTTPClient__Request.html#af705494b4d6606db496e0ef6cc55aa9e":[0,22,2,10],
+"structNWNX__IPUnpacked.html":[0,25,2],
+"structNWNX__IPUnpacked.html#a240e9078eb102d6be03ec5e517b083f9":[0,25,2,1],
+"structNWNX__IPUnpacked.html#a28d5dd1ff936a69a03304c96ee3f1f5a":[0,25,2,2],
+"structNWNX__IPUnpacked.html#a40f155e0ea3624566d16be67a0647062":[0,25,2,6],
+"structNWNX__IPUnpacked.html#a6ce26f6d7aad00efb729b282a901a413":[0,25,2,0],
+"structNWNX__IPUnpacked.html#a812ab3e4d434a6e636613446bc23d005":[0,25,2,12],
 "structNWNX__IPUnpacked.html#a9bc37d8e686ed58efc4481fc6ced2619":[0,25,2,10],
 "structNWNX__IPUnpacked.html#aaa2c8bc13b51d3f6ceaf64e3b7fd5326":[0,25,2,9],
 "structNWNX__IPUnpacked.html#ab280d7238552e633946cfc1cc1bf2571":[0,25,2,3],
