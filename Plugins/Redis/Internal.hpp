@@ -28,7 +28,8 @@ struct Internal {
     bool m_pubsub_stop = false;
 
     // Fail fast instead of reconnecting on every call while redis is down.
-    std::chrono::steady_clock::time_point m_last_connect_failure;
+    std::chrono::steady_clock::time_point m_next_connect_attempt;
+    std::chrono::seconds m_connect_retry_delay{0};
     std::string m_last_connect_error;
     std::string m_last_pubsub_channel;
     std::string m_last_pubsub_message;

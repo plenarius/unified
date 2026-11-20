@@ -11,7 +11,7 @@ using namespace NWNXLib::Services;
 using namespace std::chrono_literals;
 
 static constexpr auto AUTH_TIMEOUT = 5s;
-static constexpr auto CONNECT_RETRY_INTERVAL = 1s;
+static constexpr auto CONNECT_RETRY_MAX = 8s;
 static constexpr auto PUBSUB_MAX_BACKOFF = 30s;
 
 // Sends AUTH through send() and checks the reply. Never logs the password.
@@ -90,9 +90,8 @@ std::unique_ptr<cpp_redis::redis_client> Redis::PoolMakeFunc()
     }
 
     // Called under the pool lock, so the failure state needs no lock of its own.
-    const auto now = std::chrono::steady_clock::now();
     if (!m_internal->m_last_connect_error.empty() &&
-        now - m_internal->m_last_connect_failure < CONNECT_RETRY_INTERVAL)
+        std::chrono::steady_clock::now() < m_internal->m_next_connect_attempt)
     {
         throw cpp_redis::redis_error(m_internal->m_last_connect_error);
     }
@@ -116,11 +115,15 @@ std::unique_ptr<cpp_redis::redis_client> Redis::PoolMakeFunc()
         if (!m_internal->m_last_connect_error.empty())
             LOG_INFO("Pool: connection to %s:%d restored", host, port);
         m_internal->m_last_connect_error.clear();
+        m_internal->m_connect_retry_delay = 0s;
         return p;
     }
     catch (const std::exception& e)
     {
-        m_internal->m_last_connect_failure = now;
+        // Back off from the end of the attempt: a hung server costs AUTH_TIMEOUT per try on the main thread.
+        auto& delay = m_internal->m_connect_retry_delay;
+        delay = std::min<std::chrono::seconds>(delay == 0s ? 1s : delay * 2, CONNECT_RETRY_MAX);
+        m_internal->m_next_connect_attempt = std::chrono::steady_clock::now() + delay;
         m_internal->m_last_connect_error = std::string("redis unavailable: ") + e.what();
         LOG_ERROR("Pool: could not open a connection to %s:%d: %s", host, port, e.what());
         throw cpp_redis::redis_error(m_internal->m_last_connect_error);
@@ -193,6 +196,7 @@ bool Redis::ConnectPubsub()
 void Redis::PubsubSupervisor()
 {
     auto backoff = std::chrono::seconds(1);
+    bool retrying = false;
     std::unique_lock<std::mutex> lock(m_internal->m_pubsub_mtx);
 
     while (!m_internal->m_pubsub_stop)
@@ -209,17 +213,23 @@ void Redis::PubsubSupervisor()
             continue;
 
         m_internal->m_pubsub_lost = false;
+        const bool wasConnected = conn != nullptr && !retrying;
         lock.unlock();
-        LOG_WARNING("PubSub: connection lost, reconnecting");
+        if (wasConnected)
+            LOG_WARNING("%s", "PubSub: connection lost, reconnecting");
         const bool ok = ConnectPubsub();
         lock.lock();
 
         if (ok)
         {
-            LOG_INFO("PubSub: reconnected");
+            LOG_INFO("%s", "PubSub: connected");
             backoff = std::chrono::seconds(1);
+            retrying = false;
             continue;
         }
+
+        LOG_INFO("PubSub: retrying in %ds", (int)backoff.count());
+        retrying = true;
 
         m_internal->m_pubsub_cv.wait_for(lock, backoff, [this] { return m_internal->m_pubsub_stop; });
         backoff = std::min<std::chrono::seconds>(backoff * 2, PUBSUB_MAX_BACKOFF);

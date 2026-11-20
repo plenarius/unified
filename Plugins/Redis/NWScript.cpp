@@ -53,7 +53,8 @@ void Redis::RegisterWithNWScript()
                 }
                 catch (const std::exception& e)
                 {
-                    LOG_ERROR("Query '%s' failed: %s", v.empty() ? std::string() : v[0], e.what());
+                    // Connection failures are already logged (rate limited) by the pool.
+                    LOG_DEBUG("Query '%s' failed: %s", v.empty() ? std::string() : v[0], e.what());
                     s_results.emplace_back(std::string(e.what()), cpp_redis::reply::string_type::error);
                 }
 
