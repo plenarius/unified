@@ -89,6 +89,44 @@ struct ModernClient::Impl
 
     void Log(LogLevel l, const std::string& s) { if (log) log(l, s); }
 
+    // While Redis is down every command fails; log the first failure and then
+    // at most one summary every 10 seconds instead of one line per command.
+    std::mutex conn_log_mtx;
+    std::chrono::steady_clock::time_point conn_log_last{};
+    uint64_t conn_log_suppressed = 0;
+    bool conn_down = false;
+
+    void LogConnError(const std::string& what)
+    {
+        std::lock_guard<std::mutex> lock(conn_log_mtx);
+        auto now = std::chrono::steady_clock::now();
+        if (!conn_down || now - conn_log_last > std::chrono::seconds(10))
+        {
+            std::string msg = "Connection error: " + what;
+            if (conn_log_suppressed)
+                msg += " (" + std::to_string(conn_log_suppressed) + " more since last report)";
+            Log(LogLevel::Warning, msg);
+            conn_log_last = now;
+            conn_log_suppressed = 0;
+            conn_down = true;
+        }
+        else
+            conn_log_suppressed++;
+    }
+
+    void ConnOk()
+    {
+        if (!conn_down)
+            return;
+        std::lock_guard<std::mutex> lock(conn_log_mtx);
+        if (conn_down)
+        {
+            Log(LogLevel::Info, "Connection to Redis restored");
+            conn_down = false;
+            conn_log_suppressed = 0;
+        }
+    }
+
     cpp_redis::reply Execute(const std::vector<std::string>& cmd)
     {
         if (cmd.empty())
@@ -96,19 +134,27 @@ struct ModernClient::Impl
         try
         {
             auto reply = redis->command(cmd.begin(), cmd.end());
+            ConnOk();
             return ToCppRedis(reply.get());
         }
         catch (const sw::redis::ReplyError& e)
         {
-            // The server answered with an error reply (WRONGTYPE, NOAUTH, ...).
-            return ErrorReply(e.what());
+            // The server answered with an error reply (WRONGTYPE, ...).
+            // Auth failures happen while connecting, so treat them like
+            // connection problems for logging.
+            std::string what = e.what();
+            if (what.rfind("WRONGPASS", 0) == 0 || what.rfind("NOAUTH", 0) == 0 || what.rfind("NOPERM", 0) == 0)
+                LogConnError(what);
+            else
+                ConnOk();
+            return ErrorReply(what);
         }
         catch (const sw::redis::Error& e)
         {
             // Connection problem (refused, timeout, closed). The pool
             // reconnects on the next command; report it like a server error so
             // NWScript sees NWNX_REDIS_RESULT_ERROR instead of the server crashing.
-            Log(LogLevel::Warning, std::string("Connection error: ") + e.what());
+            LogConnError(e.what());
             return ErrorReply(std::string("NWNX_Redis: ") + e.what());
         }
         catch (const std::exception& e)
@@ -193,7 +239,7 @@ struct ModernClient::Impl
                 auto until = std::chrono::steady_clock::now() + backoff;
                 while (!stopping && std::chrono::steady_clock::now() < until)
                     std::this_thread::sleep_for(std::chrono::milliseconds(50));
-                backoff = std::min(backoff * 2, std::chrono::milliseconds(10000));
+                backoff = std::min(backoff * 2, std::chrono::milliseconds(2000));
             }
         }
     }

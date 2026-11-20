@@ -10,6 +10,7 @@
 #include <iostream>
 #include <sstream>
 #include <thread>
+#include <cstdlib>
 
 using namespace Redis;
 static std::string str(const cpp_redis::reply& r) { std::stringstream ss; ss << r; return ss.str(); }
@@ -30,8 +31,12 @@ int main(int argc, char** argv) {
     std::string mode = argv[1];
     ModernOptions o; o.host = argv[2]; o.port = std::stoi(argv[3]);
     if (mode == "compare") {
+        // Each client gets its own database so mutating commands see the same state.
         cpp_redis::redis_client legacy; legacy.connect(o.host, o.port);
+        legacy.send({"SELECT","1"}).send({"FLUSHDB"}).sync_commit();
+        o.database = 2; o.pool_size = 1;
         ModernClient modern(o, log);
+        modern.Execute({"FLUSHDB"});
         std::vector<std::vector<std::string>> cmds = {
             {"DEL","k","l","h","z","s"}, {"PING"}, {"SET","k","v"}, {"GET","k"}, {"GET","missing"},
             {"INCR","n"}, {"INCRBYFLOAT","f","1.5"}, {"LPUSH","l","a","b","c"}, {"LRANGE","l","0","-1"},
@@ -50,6 +55,29 @@ int main(int argc, char** argv) {
         }
         std::cout << "compare: " << fails << " differences\n";
         return fails ? 1 : 0;
+    }
+    if (mode == "legacysoak") {
+        // The legacy client exactly as the plugin uses it: one connection, send + sync_commit().
+        int secs = std::stoi(argv[4]);
+        cpp_redis::redis_client c; c.connect(o.host, o.port);
+        std::atomic<long> callStart{0};
+        std::thread watchdog([&]{ for (;;) { std::this_thread::sleep_for(std::chrono::milliseconds(200));
+            long s0 = callStart; long now = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+            if (s0 && now - s0 > 10000) { std::cout << "legacysoak: HUNG - a sync_commit() has blocked for >10s (the game main thread would be frozen)" << std::endl; std::_Exit(3); } } });
+        watchdog.detach();
+        int ok = 0, err = 0;
+        auto end = std::chrono::steady_clock::now() + std::chrono::seconds(secs);
+        for (int i = 0; std::chrono::steady_clock::now() < end; i++) {
+            try {
+                callStart = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+                cpp_redis::reply rt; c.send({"INCR","legacycounter"}, [&](cpp_redis::reply& r){ rt = r; }).sync_commit();
+                callStart = 0;
+                if (rt.is_error() || rt.is_null()) { err++; } else ok++;
+            } catch (const std::exception& e) { callStart = 0; err++; if (err < 3) std::cout << "t=" << i << " exception: " << e.what() << std::endl; }
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
+        std::cout << "legacysoak: ok=" << ok << " err=" << err << " connected=" << c.is_connected() << std::endl;
+        return 0;
     }
     o.username = argv[4]; o.password = argv[5];
     if (mode == "smoke") {
