@@ -1,6 +1,8 @@
 #pragma once
 
 #include "External/tinyformat/tinyformat.hpp"
+#include <atomic>
+#include <cstdint>
 #include <cstdio>
 #include <cstring>
 #include <sstream>
@@ -8,8 +10,12 @@
 
 namespace NWNXLib::Log {
 
+// The level check happens here, so a filtered call costs one load and evaluates none of its arguments.
 #define LOG_IMPL(sev, format, ...) \
-    ::NWNXLib::Log::Trace(::NWNXLib::Log::Channel::sev, PLUGIN_NAME, __FILE__, __LINE__, (format), ##__VA_ARGS__)
+    (__builtin_expect(static_cast<uint32_t>(::NWNXLib::Log::Channel::sev) <= \
+                      ::NWNXLib::Log::PluginLogLevel().load(std::memory_order_relaxed), 0) \
+        ? ::NWNXLib::Log::TraceUnchecked(::NWNXLib::Log::Channel::sev, PLUGIN_NAME, __FILE__, __LINE__, (format), ##__VA_ARGS__) \
+        : void())
 
 struct Channel
 {
@@ -53,6 +59,8 @@ void Trace(Channel::Enum channel, const char* plugin, const char* file, int line
 
 Channel::Enum GetLogLevel(const char* plugin);
 void SetLogLevel(const char* plugin, Channel::Enum logLevel);
+// The atomic behind Get/SetLogLevel. It is never freed, so callers can keep the reference.
+std::atomic<uint32_t>& GetLogLevelSlot(const char* plugin);
 void SetPrintTimestamp(bool value);
 bool GetPrintTimestamp();
 void SetPrintDate(bool value);
@@ -70,17 +78,20 @@ void SetLogFile(const std::string& logfile = "");
 void InternalTrace(Channel::Enum channel, Channel::Enum allowedChannel, const char* message);
 void WriteToLogFile(const char* message);
 
-template <typename ... Args>
-void Trace(Channel::Enum channel, const char* plugin, const char* file, int line, const char* format, Args&& ... args)
+namespace {
+// Internal linkage on purpose: with external linkage the dynamic linker would merge this function and its
+// static across plugins, and every plugin would read the level of whichever loaded first.
+inline std::atomic<uint32_t>& PluginLogLevel()
 {
-    Channel::Enum allowedChannel = GetLogLevel(plugin);
+    static std::atomic<uint32_t>& s_level = GetLogLevelSlot(PLUGIN_NAME);
+    return s_level;
+}
+}
 
-    if (channel > allowedChannel)
-    {
-        // No need to do anything. Our log level is lower.
-        return;
-    }
-
+// Formats and writes a line whose level was already checked.
+template <typename ... Args>
+void TraceUnchecked(Channel::Enum channel, const char* plugin, const char* file, int line, const char* format, Args&& ... args)
+{
     static constexpr const char * SEVERITY_NAMES[] = { "", "", "F", "E", "W", "N", "I", "D" };
 
     std::ostringstream formatted_message;
@@ -126,7 +137,21 @@ void Trace(Channel::Enum channel, const char* plugin, const char* file, int line
 
     stream << formatted_message.str();
 
-    InternalTrace(channel, allowedChannel, stream.str().c_str());
+    InternalTrace(channel, channel, stream.str().c_str());
+}
+
+template <typename ... Args>
+void Trace(Channel::Enum channel, const char* plugin, const char* file, int line, const char* format, Args&& ... args)
+{
+    Channel::Enum allowedChannel = GetLogLevel(plugin);
+
+    if (channel > allowedChannel)
+    {
+        // No need to do anything. Our log level is lower.
+        return;
+    }
+
+    TraceUnchecked(channel, plugin, file, line, format, std::forward<Args>(args)...);
 }
 
 }

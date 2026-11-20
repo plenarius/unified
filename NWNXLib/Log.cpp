@@ -3,6 +3,7 @@
 #include "API/CExoBase.hpp"
 
 #include <cstring>
+#include <mutex>
 #include <unordered_map>
 
 #include "External/rang/rang.hpp"
@@ -126,21 +127,24 @@ void WriteToLogFile(const char* message)
     }
 }
 
-// Unfortunately this needs to be backed by an std::string rather than a const char* because the C++ standard library
-// doesn't provide a hashing function for a const char* and I'm too lazy to write or copy/paste one.
-// Small perf hit when logging.
-static std::unordered_map<std::string, Channel::Enum> s_LogLevelMap;
+static std::mutex s_LogLevelMutex;
+
+std::atomic<uint32_t>& GetLogLevelSlot(const char* plugin)
+{
+    // Never freed: call sites keep references, and plugins log during static destruction.
+    static auto* s_LogLevels = new std::unordered_map<std::string, std::atomic<uint32_t>>();
+    std::lock_guard<std::mutex> lock(s_LogLevelMutex);
+    return s_LogLevels->try_emplace(plugin, Channel::SEV_NOTICE).first->second;
+}
 
 Channel::Enum GetLogLevel(const char* plugin)
 {
-    // TODO: Is this thread safe? I think so if we're just looking up but I don't know.
-    auto entry = s_LogLevelMap.find(plugin);
-    return entry == std::end(s_LogLevelMap) ? Channel::SEV_NOTICE : entry->second;
+    return static_cast<Channel::Enum>(GetLogLevelSlot(plugin).load(std::memory_order_relaxed));
 }
 
 void SetLogLevel(const char* plugin, Channel::Enum logLevel)
 {
-    s_LogLevelMap[plugin] = logLevel;
+    GetLogLevelSlot(plugin).store(static_cast<uint32_t>(logLevel), std::memory_order_relaxed);
 }
 
 }
