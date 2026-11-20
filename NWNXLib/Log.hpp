@@ -111,6 +111,11 @@ std::string SetJsonStatic(const std::string& object, std::vector<std::string>& r
 void SetTextFields(bool value);
 bool GetTextFields();
 
+// The threshold NWNX_LOG_LOGGER_LEVELS (bank:7,craft:4) gives a named logger, if any.
+std::optional<uint32_t> GetLoggerLevel(std::string_view logger);
+// Whether NWNX_LOG_LOGGER_LEVELS names any logger, so callers can skip finding the logger's name.
+bool HasLoggerLevels();
+
 // Async writing: a writer thread does the I/O, so a slow stdout or disk does not stall the caller.
 struct AsyncOptions
 {

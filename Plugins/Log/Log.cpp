@@ -5,8 +5,6 @@
 #include "../../Core/EngineLogFiles.hpp"
 
 #include <algorithm>
-#include <utility>
-#include <vector>
 
 using namespace NWNXLib;
 using namespace NWNXLib::API;
@@ -14,30 +12,8 @@ namespace Bindings = ScriptLog::Bindings;
 
 namespace {
 
-// Per-logger thresholds from NWNX_LOG_LOGGER_LEVELS=bank:7,craft:4. Usually empty.
-std::vector<std::pair<std::string, uint32_t>> s_loggerLevels;
-
-[[maybe_unused]] const bool s_configured = []
-{
-    if (auto levels = Config::Get<std::string>("LOGGER_LEVELS"))
-    {
-        for (const auto& entry : String::Split(*levels, ','))
-        {
-            const auto colon = entry.find(':');
-            auto name = entry.substr(0, colon);
-            auto value = colon == std::string::npos ? std::string() : entry.substr(colon + 1);
-            const auto level = String::FromString<uint32_t>(String::Trim(value));
-            if (!level)
-            {
-                LOG_WARNING("Ignoring '%s' in NWNX_LOG_LOGGER_LEVELS: expected logger:level.", entry);
-                continue;
-            }
-            s_loggerLevels.emplace_back(String::Trim(name), *level);
-        }
-    }
-
-    return true;
-}();
+// Parses NWNX_LOG_LOGGER_LEVELS now, so a mistake in it is reported at startup.
+[[maybe_unused]] const bool s_configured = Log::HasLoggerLevels();
 
 // Scripts get DEBUG..ERROR; FATAL would abort the server.
 Log::Channel::Enum ToChannel(int32_t level)
@@ -48,16 +24,10 @@ Log::Channel::Enum ToChannel(int32_t level)
 bool IsLevelEnabled(Log::Channel::Enum channel, const std::string& logger)
 {
     uint32_t threshold = Log::PluginLogLevel().load(std::memory_order_relaxed);
-    if (!s_loggerLevels.empty())
-    {
-        const std::string* name = logger.empty() ? Bindings::FindLogger() : &logger;
-        if (name)
-        {
-            auto it = std::find_if(s_loggerLevels.begin(), s_loggerLevels.end(), [&](const auto& l) { return l.first == *name; });
-            if (it != s_loggerLevels.end())
-                threshold = it->second;
-        }
-    }
+    if (!Log::HasLoggerLevels())
+        return static_cast<uint32_t>(channel) <= threshold;
+    if (const std::string* name = logger.empty() ? Bindings::FindLogger() : &logger)
+        threshold = Log::GetLoggerLevel(*name).value_or(threshold);
     return static_cast<uint32_t>(channel) <= threshold;
 }
 

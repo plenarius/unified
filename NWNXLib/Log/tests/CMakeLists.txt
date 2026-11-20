@@ -13,7 +13,9 @@ set(NWNXLIB_DIR ${CMAKE_SOURCE_DIR}/NWNXLib)
 add_library(LogTestCore SHARED
     ${NWNXLIB_DIR}/Log.cpp
     ${NWNXLIB_DIR}/Log/Json.cpp
+    ${NWNXLIB_DIR}/Log/LoggerLevels.cpp
     ${NWNXLIB_DIR}/Log/Rotation.cpp
+    ${NWNXLIB_DIR}/Utils/String.cpp
     ${NWNXLIB_DIR}/Encoding.cpp
     ${NWNXLIB_DIR}/MessageBus.cpp
     ${NWNXLIB_DIR}/Assert.cpp

@@ -31,4 +31,4 @@ Guard expensive fields with `NWNX_Log_IsEnabled()`: a filtered call returns befo
 | Variable Name | Value | Default | Notes |
 | ------------- | :---: | ------- | ----- |
 | `NWNX_LOG_LOG_LEVEL` | int | `NWNX_CORE_LOG_LEVEL` | The level of script records, as for any plugin (7 = DEBUG, 3 = ERROR). |
-| `NWNX_LOG_LOGGER_LEVELS` | string | Unset | Per-logger levels that override `NWNX_LOG_LOG_LEVEL`, e.g. `bank:7,craft:4`. |
+| `NWNX_LOG_LOGGER_LEVELS` | string | Unset | Per-logger levels that override `NWNX_LOG_LOG_LEVEL`, e.g. `bank:7,craft:4`. They also apply to loggers named through `NWNX_Log_Emit` (see the Core README). |
