@@ -178,10 +178,22 @@ Environment Variables</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>NWNX_REDIS_PORT</code>   </td><td class="markdownTableBodyCenter">int16   </td><td class="markdownTableBodyNone">6379    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_REDIS_USERNAME</code>   </td><td class="markdownTableBodyCenter">string   </td><td class="markdownTableBodyNone">""    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_REDIS_PASSWORD</code>   </td><td class="markdownTableBodyCenter">string   </td><td class="markdownTableBodyNone">""    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>NWNX_REDIS_PUBSUB_SCRIPT</code>   </td><td class="markdownTableBodyCenter">string   </td><td class="markdownTableBodyNone">on_pubsub    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>NWNX_REDIS_PUBSUB_CHANNELS</code>   </td><td class="markdownTableBodyCenter">comma-separated strings   </td><td class="markdownTableBodyNone">""   </td></tr>
 </table>
+<h2><a class="anchor" id="autotoc_md625"></a>
+Authentication</h2>
+<ul>
+<li>Set <code>NWNX_REDIS_PASSWORD</code> to send <code>AUTH</code> on every new connection (the connection pool and the pubsub connection). With <code>NWNX_REDIS_USERNAME</code> also set, it sends <code>AUTH username password</code> for a Redis 6+ ACL user; leave it empty for <code>requirepass</code> or the <code>default</code> user.</li>
+<li>A failed <code>AUTH</code> (wrong password, unknown user, timeout) is logged and the connection is not used. Queries made meanwhile return an error result (<code>NWNX_REDIS_RESULT_ERROR</code>), and new connections are retried at most every 1 to 8 seconds.</li>
+<li>Connections that drop (for example when redis restarts) are replaced and authenticated again. The pubsub connection reconnects in the background with backoff and subscribes to <code>NWNX_REDIS_PUBSUB_CHANNELS</code> again; messages published while it is down are lost.</li>
+<li>TLS is not supported by this client; use a private network or a tunnel to reach a remote redis. </li>
+</ul>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
@@ -498,7 +510,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Thu Nov 19 2026 13:46:14 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Fri Nov 20 2026 22:54:49 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>

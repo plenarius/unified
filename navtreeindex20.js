@@ -1,5 +1,6 @@
 var NAVTREEINDEX20 =
 {
+"structNWNX__HTTPClient__Request.html#a648c1ae47babf0efaf9c071488f938f7":[0,22,2,13],
 "structNWNX__HTTPClient__Request.html#a6cb4ad7ff1f7327daefe399f896933cd":[0,22,2,4],
 "structNWNX__HTTPClient__Request.html#a8cb54bcba1f4c123ede728be04202630":[0,22,2,1],
 "structNWNX__HTTPClient__Request.html#acba89bf369c2950e276428f6c028f4f7":[0,22,2,9],

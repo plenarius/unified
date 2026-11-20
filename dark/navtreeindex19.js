@@ -1,5 +1,6 @@
 var NAVTREEINDEX19 =
 {
+"nwnx__redis__short_8nss.html#ae76e50982756c8c36c308c154a44c6cc":[4,0,3,32,0,3,70],
 "nwnx__redis__short_8nss.html#ae888bfa43e68f708e49eef4c082df544":[4,0,3,32,0,3,114],
 "nwnx__redis__short_8nss.html#ae9e1ff299893c4b141ec557f51676745":[4,0,3,32,0,3,94],
 "nwnx__redis__short_8nss.html#aea1a824a483718b3ba49b227b51f07d0":[4,0,3,32,0,3,117],
@@ -248,6 +249,5 @@ var NAVTREEINDEX19 =
 "structNWNX__HTTPClient__Request.html#a1d4f9177155fe5b64a7e6b293ba7514f":[0,22,2,8],
 "structNWNX__HTTPClient__Request.html#a3a14a77cc0e40f4a4e3d8ceb273c8003":[0,22,2,5],
 "structNWNX__HTTPClient__Request.html#a3be08d4ee8eb994359cffb5df8afd6fc":[0,22,2,0],
-"structNWNX__HTTPClient__Request.html#a59a878131eaaa380b071e0b00cd70f8a":[0,22,2,11],
-"structNWNX__HTTPClient__Request.html#a648c1ae47babf0efaf9c071488f938f7":[0,22,2,13]
+"structNWNX__HTTPClient__Request.html#a59a878131eaaa380b071e0b00cd70f8a":[0,22,2,11]
 };
