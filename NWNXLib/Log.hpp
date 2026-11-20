@@ -195,6 +195,14 @@ public:
     // Left out when empty.
     template <typename T>
     Record& With(std::string_view key, const std::optional<T>& value) { return value ? With(key, *value) : *this; }
+    // A group of fields: any type with AddTo(Record&), such as Log::Http::Request. Skipped when fields are off.
+    template <typename T, typename = decltype(std::declval<const T&>().AddTo(std::declval<Record&>()))>
+    Record& With(const T& group)
+    {
+        if (m_fields)
+            group.AddTo(*this);
+        return *this;
+    }
     // A Platform::GetStackTrace text as an array of frames.
     Record& WithStack(std::string_view key, std::string_view trace) { return m_fields ? AddStack(key, trace) : *this; }
     // "err":{"message":...,"code":...}

@@ -3,6 +3,7 @@
 // evaluates nothing.
 #include "nwnx.hpp"
 #include "Log/Json.hpp"
+#include "Log/Http.hpp"
 #include "External/json/json.hpp"
 
 #include <cmath>
@@ -159,6 +160,37 @@ static void TestContext()
     CHECK_EQ(Fields(line), R"(,"script":"ctx_script","oid":"call wins","n":1)");
 }
 
+struct Group
+{
+    int n;
+    void AddTo(Log::Record& record) const { record.With("g1", n).With("g2", n + 1); }
+};
+
+static void TestGroupsAndHttp()
+{
+    const std::string line = Capture([] { LOG_NOTICE_F("group").With(Group{1}).With("after", true); });
+    CHECK_EQ(Fields(line), R"(,"g1":1,"g2":2,"after":true)");
+
+    using Log::Http::RedactPath;
+    CHECK_EQ(RedactPath("/api/webhooks/1/token?wait=true"), "/api/...");
+    CHECK_EQ(RedactPath("/api?token=x"), "/api/...");
+    CHECK_EQ(RedactPath("/api"), "/api");
+    CHECK_EQ(RedactPath("/"), "/");
+    CHECK_EQ(RedactPath(""), "");
+    CHECK_EQ(RedactPath("relative/path"), "relative/...");
+
+    Log::Http::Options options;
+    const auto request = [&options]
+    {
+        return Fields(Capture([&options] { LOG_NOTICE_F("http").With(Log::Http::Request{options, "h", "/a/secret", "body"}); }));
+    };
+    CHECK_EQ(request(), R"(,"host":"h","path":"/a/...")");
+    options = { Log::Http::PathMode::Full, true };
+    CHECK_EQ(request(), R"(,"host":"h","path":"/a/secret","body":"body")");
+    options = { Log::Http::PathMode::None, false };
+    CHECK_EQ(request(), R"(,"host":"h")");
+}
+
 static void TestFiltered()
 {
     Log::SetLogLevel(PLUGIN_NAME, Channel::SEV_WARNING);
@@ -247,6 +279,7 @@ int main()
     TestKeys();
     TestMsgSrcOrigin();
     TestContext();
+    TestGroupsAndHttp();
     TestFiltered();
     TestText();
 
