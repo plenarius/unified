@@ -84,6 +84,17 @@ void Redis::RawAsync(const std::vector<std::string>& v,
 {
     const auto start = steady_clock::now();
 
+    if (m_internal->m_modern)
+    {
+        m_internal->m_modern->ExecuteAsync(v, [this, v, start, results](cpp_redis::reply& r) {
+            const auto diff = duration_cast<nanoseconds>(steady_clock::now() - start).count();
+            this->LogQuery(v, r, static_cast<uint64_t>(diff));
+            if (results)
+                results(r);
+        });
+        return;
+    }
+
     m_internal->m_redis_pool.Borrow<void>([&](auto & c) {
         c.send(v, [&](auto & r) {
             const auto end = steady_clock::now();
@@ -98,6 +109,14 @@ void Redis::RawAsync(const std::vector<std::string>& v,
 cpp_redis::reply Redis::RawSync(const std::vector<std::string>& v)
 {
     const auto start = steady_clock::now();
+
+    if (m_internal->m_modern)
+    {
+        auto r = m_internal->m_modern->Execute(v);
+        const auto diff = duration_cast<nanoseconds>(steady_clock::now() - start).count();
+        this->LogQuery(v, r, static_cast<uint64_t>(diff));
+        return r;
+    }
 
     return m_internal->m_redis_pool.Borrow<cpp_redis::reply>([&](auto & c) {
         cpp_redis::reply rt;

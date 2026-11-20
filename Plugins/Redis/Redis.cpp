@@ -33,6 +33,9 @@ Redis::Redis(Services::ProxyServiceList* services)
 
 Redis::~Redis()
 {
+    if (m_internal->m_modern)
+        m_internal->m_modern->Stop();
+
     {
         std::lock_guard<std::mutex> lock(m_internal->m_pubsub_mtx);
         m_internal->m_pubsub_stop = true;

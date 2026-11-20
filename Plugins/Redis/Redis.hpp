@@ -34,6 +34,29 @@ public:
         // PASSWORD (empty = no AUTH)
         std::string m_password;
 
+        // CLIENT: false = cpp_redis (default), true = redis-plus-plus.
+        // The settings below apply to the redis-plus-plus client only.
+        bool m_modern_client = false;
+        // DATABASE
+        int m_database = 0;
+        // RESP (2 or 3)
+        int m_resp = 2;
+        // TLS, TLS_CACERT, TLS_CACERTDIR, TLS_CERT, TLS_KEY, TLS_SNI, TLS_VERIFY
+        bool m_tls = false;
+        std::string m_tls_cacert;
+        std::string m_tls_cacertdir;
+        std::string m_tls_cert;
+        std::string m_tls_key;
+        std::string m_tls_sni;
+        bool m_tls_verify = true;
+        // POOL_SIZE
+        int m_pool_size = 4;
+        // CONNECT_TIMEOUT_MS, SOCKET_TIMEOUT_MS, FAILFAST_MS, POOL_WAIT_TIMEOUT_MS
+        int m_connect_timeout_ms = 1000;
+        int m_socket_timeout_ms = 2000;
+        int m_failfast_ms = 3000;
+        int m_pool_wait_timeout_ms = 1000;
+
         // TODO:
         // Bridge the internal message bus to redis?
         bool m_bridge_message_bus;
@@ -53,6 +76,7 @@ public:
     // connection or one from a pool; no guarantees are made!
     //
     // This call is fully threadsafe.
+    // Only available with the default cpp_redis client (NWNX_REDIS_CLIENT).
     template <typename Ret>
     Ret WithConnection(std::function<Ret(cpp_redis::redis_client&)>);
 
@@ -87,6 +111,7 @@ private:
     Internal* m_internal;
 
     void Reconfigure();
+    void ConfigureModernClient();
     void RegisterWithNWScript();
     void HookSCORCO();
     void OnPubsub(const std::string& channel, const std::string& message);
