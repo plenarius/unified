@@ -27,6 +27,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Core: added `NWNX_CORE_LOG_FORMAT=json` and `NWNX_CORE_LOG_FILE_FORMAT` to write NWNX's logs as one JSON object per line (pino style), set with the `NWNX_CORE_LOG_JSON_*` options; `logformat text|json` switches it at runtime.
 - Core: added `NWNX_CORE_LOG_ASYNC` (on by default with JSON) to write logs on a background thread, with `NWNX_CORE_LOG_ASYNC_FLUSH_MS`, `_MAX_BYTES` and `_FULL`.
 - Core: plugins can add fields to log records (`LOG_INFO_F(...).With(key, value).Msg(...)`), shown in JSON and, with `NWNX_CORE_LOG_TEXT_FIELDS`, as `key=value` after text lines; text lines are unchanged by default.
+- SQL: each query is one log record with its id, text, rows and duration in JSON; added `NWNX_SQL_LOG_SLOW_MS` to log slow queries and `NWNX_SQL_LOG_QUERY_TEXT`.
 
 ##### New Plugins
 - Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.
