@@ -12,6 +12,8 @@ set(NWNXLIB_DIR ${CMAKE_SOURCE_DIR}/NWNXLib)
 # Stands in for NWNX_Core: the logger plus a translation unit that logs as NWNXLib.
 add_library(LogTestCore SHARED
     ${NWNXLIB_DIR}/Log.cpp
+    ${NWNXLIB_DIR}/Log/Json.cpp
+    ${NWNXLIB_DIR}/Encoding.cpp
     ${NWNXLIB_DIR}/MessageBus.cpp
     ${NWNXLIB_DIR}/Assert.cpp
     EngineStubs.cpp
@@ -41,3 +43,9 @@ target_link_libraries(LogLevels LogTestCore ${CMAKE_DL_LIBS} pthread)
 target_compile_definitions(LogLevels PRIVATE "-DPLUGIN_NAME=\"NWNX_LogLevels\"")
 add_dependencies(LogLevels LogPluginA LogPluginB)
 add_test(NAME LogLevels COMMAND LogLevels $<TARGET_FILE:LogPluginA> $<TARGET_FILE:LogPluginB>)
+
+add_executable(LogJson LogJson.cpp)
+add_sanitizers(LogJson)
+target_link_libraries(LogJson LogTestCore)
+target_compile_definitions(LogJson PRIVATE "-DPLUGIN_NAME=\"NWNX_LogJson\"")
+add_test(NAME LogJson COMMAND LogJson)

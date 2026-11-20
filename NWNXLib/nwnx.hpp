@@ -5,6 +5,7 @@
 #include "API/Functions.hpp"
 #include "API/Globals.hpp"
 
+#include <array>
 #include <atomic>
 #include <string>
 #include <optional>
@@ -162,6 +163,14 @@ namespace String
     std::string ToUTF8(const std::string& str, Locale locale = Default);
     std::string FromUTF8(const char *str, Locale locale = Default);
     std::string FromUTF8(const std::string& str, Locale locale = Default);
+
+    struct UTF8Char
+    {
+        uint8_t bytes[3];
+        uint8_t length;
+    };
+    // The UTF-8 of bytes 0x80-0xFF in a codepage (cp1252 if unknown); undefined bytes map to their C1 controls.
+    const std::array<UTF8Char, 128>& CodepageToUTF8(Locale locale);
 
     std::string ToBase64(const std::vector<uint8_t>& in);
     std::vector<uint8_t> FromBase64(const std::string &in);

@@ -19,6 +19,7 @@ endmacro()
 nwnxlib_add(
     "Assert.cpp"
     "Log.cpp"
+    "Log/Json.cpp"
     "Serialize.cpp"
     "Utils.cpp"
     "Encoding.cpp"
