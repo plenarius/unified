@@ -27,6 +27,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Core: added `NWNX_CORE_LOG_FORMAT=json` and `NWNX_CORE_LOG_FILE_FORMAT` to write NWNX's logs as one JSON object per line (pino style), set with the `NWNX_CORE_LOG_JSON_*` options; `logformat text|json` switches it at runtime.
 - Core: added `NWNX_CORE_LOG_ASYNC` (on by default with JSON) to write logs on a background thread, with `NWNX_CORE_LOG_ASYNC_FLUSH_MS`, `_MAX_BYTES` and `_FULL`.
 - Core: added `NWNX_CORE_LOG_CAPTURE_STDIO` (on by default with JSON) to write other `stdout` and `stderr` lines as JSON records, so every line is JSON.
+- ServerLogRedirector: with `NWNX_CORE_LOG_FORMAT=json`, every engine log line (`nwserverLog1.txt`, `nwengineLog.txt`) is a record with its category, source, the running script, the print command, and script and SQLite errors as `err`; added `NWNX_SERVERLOGREDIRECTOR_DROP_CATEGORIES` and `NWNX_SERVERLOGREDIRECTOR_ENGINE_FILES`. Text mode is unchanged.
 - Core: plugins can add fields to log records (`LOG_INFO_F(...).With(key, value).Msg(...)`), shown in JSON and, with `NWNX_CORE_LOG_TEXT_FIELDS`, as `key=value` after text lines; text lines are unchanged by default.
 - SQL: each query is one log record with its id, text, rows and duration in JSON; added `NWNX_SQL_LOG_SLOW_MS` to log slow queries and `NWNX_SQL_LOG_QUERY_TEXT`.
 - Chat: added `NWNX_CHAT_LOG_CHANNELS`, `NWNX_CHAT_LOG_CONTENT_CHANNELS` and `NWNX_CHAT_LOG_MESSAGE_LEVEL` to choose which chat is logged, with or without its text, and at what level.

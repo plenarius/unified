@@ -53,6 +53,9 @@ struct Database : sqlite::database, InstanceLookup::List<Database>
 #endif
 };
 
+// Writes a SQLite error to the engine log; query may be null.
+void LogError(const char* message, int code, const char* query);
+
 
 #ifdef NWN_API_EPILOGUE
 NWN_API_EPILOGUE(Database)
