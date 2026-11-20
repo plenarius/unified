@@ -114,8 +114,26 @@ struct ModernClient::Impl
             conn_log_suppressed++;
     }
 
+    // Fail fast after a timeout: while Redis is hung every command would
+    // otherwise block the caller (usually the game's main thread) for the
+    // full socket timeout. Within the window, commands return an error at once.
+    std::atomic<int64_t> failfast_until_ns{0};
+
+    bool InFailFast()
+    {
+        auto until = failfast_until_ns.load();
+        return until && std::chrono::steady_clock::now().time_since_epoch().count() < until;
+    }
+
+    void StartFailFast()
+    {
+        if (opts.failfast.count() > 0)
+            failfast_until_ns = (std::chrono::steady_clock::now() + opts.failfast).time_since_epoch().count();
+    }
+
     void ConnOk()
     {
+        failfast_until_ns = 0;
         if (!conn_down)
             return;
         std::lock_guard<std::mutex> lock(conn_log_mtx);
@@ -131,6 +149,11 @@ struct ModernClient::Impl
     {
         if (cmd.empty())
             return ErrorReply("NWNX_Redis: empty command");
+        if (InFailFast())
+        {
+            LogConnError("timed out recently, failing fast");
+            return ErrorReply("NWNX_Redis: Redis timed out recently, not retrying yet");
+        }
         try
         {
             auto reply = redis->command(cmd.begin(), cmd.end());
@@ -148,6 +171,12 @@ struct ModernClient::Impl
             else
                 ConnOk();
             return ErrorReply(what);
+        }
+        catch (const sw::redis::TimeoutError& e)
+        {
+            StartFailFast();
+            LogConnError(e.what());
+            return ErrorReply(std::string("NWNX_Redis: ") + e.what());
         }
         catch (const sw::redis::Error& e)
         {

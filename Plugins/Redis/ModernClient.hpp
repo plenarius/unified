@@ -47,6 +47,9 @@ struct ModernOptions
     // 0 = block forever. Commands from NWScript run on the game's main thread,
     // so a finite timeout bounds how long a dead Redis can freeze the server.
     std::chrono::milliseconds socket_timeout{5000};
+    // After a command times out, fail every command at once for this long
+    // instead of blocking each caller for socket_timeout again (0 = off).
+    std::chrono::milliseconds failfast{3000};
     // How long a caller waits for a free pooled connection.
     std::chrono::milliseconds pool_wait_timeout{1000};
 

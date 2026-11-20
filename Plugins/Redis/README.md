@@ -72,3 +72,33 @@ if (NWNX_Redis_GetResultAsInt(NWNX_Redis_EXISTS("examples:examplekey")))
 | `NWNX_REDIS_PORT`            | int16                   | 6379                               |
 | `NWNX_REDIS_PUBSUB_SCRIPT`   | string                  | on_pubsub                          |
 | `NWNX_REDIS_PUBSUB_CHANNELS` | comma-separated strings | ""                                 |
+
+## Opt-in client: redis-plus-plus (experimental)
+
+By default the plugin uses the bundled cpp_redis client. Set `NWNX_REDIS_CLIENT=redis-plus-plus` to use [redis-plus-plus](https://github.com/sewenew/redis-plus-plus) on [hiredis](https://github.com/redis/hiredis) instead (both bundled and linked statically). NWScript functions, result types and pubsub work the same; the new client adds:
+
+* a connection pool that reconnects on its own after Redis restarts, and a pubsub connection that resubscribes;
+* ACL users and passwords (`NWNX_REDIS_USERNAME`, `NWNX_REDIS_PASSWORD`), database selection, TLS;
+* connect and read timeouts, so a hung Redis returns an error (`NWNX_REDIS_RESULT_ERROR`) instead of freezing the server.
+
+Commands from NWScript still run synchronously on the game's main thread: while Redis is unreachable each command returns an error, and while it is hung each command can block for up to `NWNX_REDIS_SOCKET_TIMEOUT_MS` (after one timeout, commands fail at once for `NWNX_REDIS_FAILFAST_MS`).
+
+| Variable Name                     | Type   | Default     | Notes |
+| --------------------------------- | :----: | ----------- | ----- |
+| `NWNX_REDIS_CLIENT`               | string | `cpp_redis` | `redis-plus-plus` to opt in |
+| `NWNX_REDIS_USERNAME`             | string | ""          | ACL user; empty for `requirepass`/`default` |
+| `NWNX_REDIS_PASSWORD`             | string | ""          | |
+| `NWNX_REDIS_DATABASE`             | int    | 0           | |
+| `NWNX_REDIS_TLS`                  | bool   | false       | |
+| `NWNX_REDIS_TLS_CACERT`           | string | ""          | CA file to verify the server |
+| `NWNX_REDIS_TLS_CACERTDIR`        | string | ""          | |
+| `NWNX_REDIS_TLS_CERT`             | string | ""          | client certificate (mutual TLS) |
+| `NWNX_REDIS_TLS_KEY`              | string | ""          | client key (mutual TLS) |
+| `NWNX_REDIS_TLS_SNI`              | string | ""          | server name to send and verify |
+| `NWNX_REDIS_TLS_VERIFY`           | bool   | true        | false skips certificate verification |
+| `NWNX_REDIS_POOL_SIZE`            | int    | 4           | |
+| `NWNX_REDIS_CONNECT_TIMEOUT_MS`   | int    | 1000        | |
+| `NWNX_REDIS_SOCKET_TIMEOUT_MS`    | int    | 5000        | 0 = wait forever; must exceed the timeout of blocking commands (BLPOP...) |
+| `NWNX_REDIS_FAILFAST_MS`          | int    | 3000        | 0 = off |
+| `NWNX_REDIS_POOL_WAIT_TIMEOUT_MS` | int    | 1000        | |
+| `NWNX_REDIS_RESP`                 | int    | 2           | 3 = RESP3; maps, sets, doubles and booleans are folded into arrays, strings and integers |

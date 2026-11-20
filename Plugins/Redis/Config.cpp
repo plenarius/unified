@@ -29,8 +29,8 @@ void Redis::ConfigureModernClient()
     ModernOptions o;
     o.host = m_internal->m_config.m_host;
     o.port = m_internal->m_config.m_port;
-    o.username = Config::Get<std::string>("AUTH_USERNAME", "");
-    o.password = Config::Get<std::string>("AUTH_PASSWORD", "");
+    o.username = Config::Get<std::string>("USERNAME", "");
+    o.password = Config::Get<std::string>("PASSWORD", "");
     o.database = Config::Get<int>("DATABASE", 0);
     o.resp = Config::Get<int>("RESP", 2);
     o.tls = Config::Get<bool>("TLS", false);
@@ -43,6 +43,7 @@ void Redis::ConfigureModernClient()
     o.pool_size = static_cast<size_t>(std::max(1, Config::Get<int>("POOL_SIZE", 4)));
     o.connect_timeout = std::chrono::milliseconds(Config::Get<int>("CONNECT_TIMEOUT_MS", 1000));
     o.socket_timeout = std::chrono::milliseconds(Config::Get<int>("SOCKET_TIMEOUT_MS", 5000));
+    o.failfast = std::chrono::milliseconds(Config::Get<int>("FAILFAST_MS", 3000));
     o.pool_wait_timeout = std::chrono::milliseconds(Config::Get<int>("POOL_WAIT_TIMEOUT_MS", 1000));
     for (auto& ch : m_internal->m_config.m_pubsub_channels)
         if (!ch.empty())
