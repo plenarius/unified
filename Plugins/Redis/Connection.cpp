@@ -101,13 +101,18 @@ cpp_redis::reply Redis::RawSync(const std::vector<std::string>& v)
 
     return m_internal->m_redis_pool.Borrow<cpp_redis::reply>([&](auto & c) {
         cpp_redis::reply rt;
+        bool replied = false;
         c.send(v, [&](auto & r) {
             const auto end = steady_clock::now();
             const auto diff = duration_cast<nanoseconds>(end - start).count();
             this->LogQuery(v, r, static_cast<uint64_t>(diff));
 
             rt = r;
+            replied = true;
         }).sync_commit();
+        // sync_commit also returns when the connection drops and the callback is discarded.
+        if (!replied)
+            throw cpp_redis::redis_error("connection lost before the reply arrived");
         return rt;
     });
 }

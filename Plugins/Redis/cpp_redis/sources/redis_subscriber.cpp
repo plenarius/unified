@@ -69,6 +69,13 @@ redis_subscriber::auth(const std::string& password, const reply_callback_t& repl
   return *this;
 }
 
+redis_subscriber&
+redis_subscriber::auth(const std::string& username, const std::string& password, const reply_callback_t& reply_callback) {
+  m_client.send({"AUTH", username, password});
+  m_auth_reply_callback = reply_callback;
+  return *this;
+}
+
 void
 redis_subscriber::disconnect(bool wait_for_removal) {
   __CPP_REDIS_LOG(debug, "cpp_redis::redis_subscriber attempts to disconnect");
