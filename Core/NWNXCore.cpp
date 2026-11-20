@@ -15,6 +15,7 @@
 #include "API/CExoStringList.hpp"
 #include "API/CScriptCompiler.hpp"
 #include "Log/Json.hpp"
+#include "Log/ScriptContext.hpp"
 
 #include <csignal>
 #include <regex>
@@ -332,6 +333,26 @@ void NWNXCore::InitialSetupLogging()
         String::SetDefaultLocale(*locale);
     }
     String::SetBestFit(Config::Get<bool>("ENCODING_BEST_FIT", false));
+
+    // The running script's context on records made during a script; "none" turns it off.
+    uint32_t contextKeys = Log::ContextKey::Default;
+    if (auto context = Config::Get<std::string>("LOG_CONTEXT"))
+    {
+        static constexpr std::pair<std::string_view, uint32_t> keys[] = {
+            {"script", Log::ContextKey::Script}, {"oid", Log::ContextKey::Oid}, {"tag", Log::ContextKey::Tag},
+            {"area", Log::ContextKey::Area}, {"pc", Log::ContextKey::Pc}, {"player", Log::ContextKey::Player}};
+        contextKeys = 0;
+        for (const auto& name : String::Split(*context == "none" ? std::string() : *context, ','))
+        {
+            auto key = std::find_if(std::begin(keys), std::end(keys), [&](const auto& k) { return name == k.first; });
+            if (key != std::end(keys))
+                contextKeys |= key->second;
+            else
+                problems.push_back("NWNX_CORE_LOG_CONTEXT: unknown key '" + name + "'");
+        }
+    }
+    Log::SetScriptContextKeys(contextKeys);
+    Log::SetContextSource(contextKeys ? &Log::AddScriptContext : nullptr);
 
     const auto async = Config::Get<std::string>("LOG_ASYNC", "auto");
     if (async != "auto" && async != "true" && async != "false")

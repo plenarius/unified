@@ -30,6 +30,7 @@ nwnxlib_add(
     "Hooks.cpp"
     "Tasks.cpp"
     "POS.cpp"
+    "Log/ScriptContext.cpp"
 )
 
 add_subdirectory(API)

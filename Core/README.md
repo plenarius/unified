@@ -36,6 +36,7 @@ The core of NWNX:EE that does all the things.
 | `NWNX_CORE_LOG_JSON_MAX_VALUE` | int | 8192 | Longer strings are cut (at a character boundary) and the record gets `"truncated":true`.
 | `NWNX_CORE_LOG_JSON_MAX_LINE` | int | 65536 | Longer records are shortened the same way: the message first, then the fields are dropped.
 | `NWNX_CORE_LOG_JSON_STATIC` | JSON object | Unset | Added to every JSON record, e.g. `{"server":"main"}`.
+| `NWNX_CORE_LOG_CONTEXT` | string | `script,oid,tag,area` | The keys of the running script added to records with fields (JSON, `LOG_TEXT_FIELDS`) made during a script: `script`, `oid` (`OBJECT_SELF`), its `tag` and `area` tag, and, only when listed, `pc` (character name) and `player` (login name) for player-controlled creatures. `none` turns it off.
 | `NWNX_CORE_LOG_ASYNC` | auto, true, false | auto | Write logs on a background thread, so a slow `stdout` or disk does not stall the server. `auto`: on when `LOG_FORMAT` or `LOG_FILE_FORMAT` is `json`. Decided at startup: switching to JSON later with `logformat` stays synchronous. The bytes are the same, but NWNX lines can reach `stdout` up to `LOG_ASYNC_FLUSH_MS` after other output.
 | `NWNX_CORE_LOG_ASYNC_FLUSH_MS` | int | 50 | The longest a line waits before it is written. Warnings and worse, and every 64 KiB of lines, are written at once.
 | `NWNX_CORE_LOG_ASYNC_MAX_BYTES` | int | 8388608 | How much may wait to be written (at least 262144).

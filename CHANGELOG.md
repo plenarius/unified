@@ -31,6 +31,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Chat: added `NWNX_CHAT_LOG_CHANNELS`, `NWNX_CHAT_LOG_CONTENT_CHANNELS` and `NWNX_CHAT_LOG_MESSAGE_LEVEL` to choose which chat is logged, with or without its text, and at what level.
 - WebHook, HTTPClient: each request is one log record in JSON; added `NWNX_WEBHOOK_LOG_PATH|BODY` and `NWNX_HTTPCLIENT_LOG_PATH|BODY` (paths redacted by default).
 - Watchcat: each stall callstack is one JSON log record with its frames.
+- Core: added `NWNX_CORE_LOG_CONTEXT` to add the running script's `script`, `oid`, `tag` and `area` to records with fields.
 
 ##### New Plugins
 - Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.
