@@ -88,3 +88,16 @@ set_target_properties(LogRotate PROPERTIES ENABLE_EXPORTS ON)
 target_link_libraries(LogRotate LogTestCore pthread)
 target_compile_definitions(LogRotate PRIVATE "-DPLUGIN_NAME=\"NWNX_LogRotate\"")
 add_test(NAME LogRotate COMMAND LogRotate)
+
+# The bridge entry points, in a library of their own so the test finds them with dlopen/dlsym as a bridge does.
+add_library(LogCApiCore MODULE ${CMAKE_SOURCE_DIR}/Core/NWNXLog.cpp)
+add_sanitizers(LogCApiCore)
+target_link_libraries(LogCApiCore LogTestCore)
+target_compile_definitions(LogCApiCore PRIVATE "-DPLUGIN_NAME=\"NWNX_Core\"")
+
+add_executable(LogCApi LogCApi.cpp)
+add_sanitizers(LogCApi)
+target_link_libraries(LogCApi LogTestCore ${CMAKE_DL_LIBS} pthread)
+target_compile_definitions(LogCApi PRIVATE "-DPLUGIN_NAME=\"NWNX_LogCApi\"")
+add_dependencies(LogCApi LogCApiCore)
+add_test(NAME LogCApi COMMAND LogCApi $<TARGET_FILE:LogCApiCore>)

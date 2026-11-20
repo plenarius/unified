@@ -236,6 +236,8 @@ public:
 
     // The JSON msg, a short stable text such as "sql query"; text lines keep the formatted message.
     Record& Msg(std::string_view msg);
+    // The same, for a msg that is UTF-8 whatever NWNX_CORE_LOG_JSON_ENCODING says.
+    Record& Msg(Utf8 msg);
     // JSON "src" ("nwnx" unless set); the string must outlive the record, e.g. a literal.
     Record& Src(const char* src) { m_src = src; return *this; }
     // A reserved origin key written after plugin/file/line, e.g. "logger" or "cat", and in text before the

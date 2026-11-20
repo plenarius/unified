@@ -216,6 +216,7 @@ struct JsonRecord
     bool fieldsTruncated;
     const char* src = "nwnx";
     std::string_view origin = {};       // pre-encoded ,"key":value origin members
+    bool msgUtf8 = false;               // msg is UTF-8 whatever the JSON encoding option says
 };
 
 // One line of JSON (without the newline) in key order: time, level, lvl, msg, src, origin, truncated, static, fields.
@@ -253,7 +254,7 @@ void EncodeJson(std::string& out, const JsonRecord& record)
         out += ",\"msg\":";
         const size_t msgStart = out.size();
         bool truncated = !Json::AppendString(out, record.msg,
-            { options.encoding, String::GetDefaultLocale(), options.stripColors, msgLimit });
+            { record.msgUtf8 ? Json::Encoding::Utf8 : options.encoding, String::GetDefaultLocale(), options.stripColors, msgLimit });
         const size_t msgLength = out.size() - msgStart - 2;
         out += ",\"src\":";
         Json::AppendString(out, record.src, plain);
@@ -1118,6 +1119,7 @@ struct Record::Buffers
     std::ostream stream{&sink};
     bool fieldsTruncated = false;
     bool hasJsonMsg = false;
+    bool jsonMsgUtf8 = false;
     bool textFields = false;
     bool inUse = false;
 };
@@ -1138,6 +1140,7 @@ Record::Record(Channel::Enum channel, const char* plugin, const char* file, int 
     m_buffers->index.clear();
     m_buffers->fieldsTruncated = false;
     m_buffers->hasJsonMsg = false;
+    m_buffers->jsonMsgUtf8 = false;
     m_buffers->textFields = false;
 
     // Same state as the fresh std::ostringstream each line used to get.
@@ -1362,6 +1365,13 @@ Record& Record::Msg(std::string_view msg)
     return *this;
 }
 
+Record& Record::Msg(Utf8 msg)
+{
+    Msg(msg.s);
+    m_buffers->jsonMsgUtf8 = m_json;
+    return *this;
+}
+
 // Appends a string value in logfmt: bare unless it is empty or has a space, '=', a quote, a backslash or a
 // control character; then quoted with those escaped. Other bytes stay as they are.
 static void AppendLogfmtString(std::string& out, std::string_view value)
@@ -1504,7 +1514,7 @@ static void WriteRecord(Record::Buffers& buffers, Channel::Enum channel, const c
     {
         const std::string_view msg = buffers.hasJsonMsg ? buffers.jsonMsg : buffers.message;
         EncodeJson(buffers.json, { channel, plugin, file, line, msg, buffers.fields, &buffers.index, buffers.keys,
-                                   buffers.fieldsTruncated, src, buffers.origin });
+                                   buffers.fieldsTruncated, src, buffers.origin, buffers.hasJsonMsg && buffers.jsonMsgUtf8 });
         buffers.json += '\n';
     }
     Deliver(channel, sinks, buffers.text.c_str(), buffers.json);

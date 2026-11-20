@@ -80,6 +80,36 @@ With `NWNX_CORE_LOG_FORMAT=json`, every NWNX log line is one JSON object, in [pi
 - `NWNX_CORE_LOG_MESSAGE` subscribers get the same payload as in text mode.
 - Writing is async (`NWNX_CORE_LOG_ASYNC`), and `time` is when the record was made. Lines are never split: on a pipe, such as a container's `stdout`, NWNX writes at most 4096 bytes at a time and only whole lines, so other writers to the pipe cannot land inside them. A fatal error or a crash writes everything still queued first.
 
+### Logging from DotNET, SWIG and Ruby
+
+`NWNX_Core.so` exports two C functions (declared in `Core/NWNXLog.h`) so other runtimes can write records into the same stream:
+
+```c
+void NWNX_Log_Emit(int syslogLevel, const char* src, const char* logger, const char* msg, const char* fieldsJson);
+int  NWNX_Log_IsEnabled(int syslogLevel, const char* src, const char* logger);
+```
+
+- `syslogLevel` as in `LOG_LEVEL` (7 debug to 3 error; fatal is treated as error). `src` is `dotnet`, `swig` or `ruby`: the record gets that `src`, the plugin name `NWNX_DotNET`, `NWNX_SWIG` or `NWNX_Ruby`, and that plugin's `LOG_LEVEL`. Any other `src` logs as `bridge` under Core's level.
+- `logger` (optional) becomes the `logger` key; `NWNX_LOG_LOGGER_LEVELS` can give it its own level. `fieldsJson` is a JSON object whose members become fields, or `NULL`; JSON that does not parse or nests deeper than 64 levels adds a `fields_error` field instead, and any other value goes under `data`.
+- Strings are UTF-8 and every pointer may be `NULL`. Text lines get the message and string fields in game-locale bytes (`NWNX_CORE_LOCALE`) like the rest of the line; JSON keeps them as UTF-8 whatever `NWNX_CORE_LOG_JSON_ENCODING` says. Both functions can be called from any thread and never throw. Called on the main thread while a script runs, the record gets the script context (`NWNX_CORE_LOG_CONTEXT`). As for `NWNX_Log` records, text lines show the fields and JSON has no `file`/`line`.
+- `NWNX_Log_IsEnabled` lets a caller skip building the message and fields of a record that would be filtered.
+
+DotNET and Anvil (C# 11, .NET 7 or later):
+```csharp
+var emit = (delegate* unmanaged<int, byte*, byte*, byte*, byte*, void>)
+    NativeLibrary.GetExport(NativeLibrary.GetMainProgramHandle(), "NWNX_Log_Emit");
+fixed (byte* src = "dotnet\0"u8, logger = "Bank\0"u8, msg = "deposit\0"u8, fields = "{\"gold\":250}\0"u8)
+    emit(6, src, logger, msg, fields);
+```
+
+Code using the SWIG bindings (`NWN.Native`) calls it the same way, with `src` `swig`.
+
+Ruby (`fiddle`):
+```ruby
+emit = Fiddle::Function.new(Fiddle::Handle::DEFAULT["NWNX_Log_Emit"], [Fiddle::TYPE_INT] + [Fiddle::TYPE_VOIDP] * 4, Fiddle::TYPE_VOID)
+emit.call(6, "ruby", "bank", "deposit", '{"gold":250}')
+```
+
 ## Custom Resman Definition File
 
 A file that lets you specify additional resource directories that act the same as the `/development` and `/nwnx` folders.
