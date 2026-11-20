@@ -29,6 +29,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Core: plugins can add fields to log records (`LOG_INFO_F(...).With(key, value).Msg(...)`), shown in JSON and, with `NWNX_CORE_LOG_TEXT_FIELDS`, as `key=value` after text lines; text lines are unchanged by default.
 - SQL: each query is one log record with its id, text, rows and duration in JSON; added `NWNX_SQL_LOG_SLOW_MS` to log slow queries and `NWNX_SQL_LOG_QUERY_TEXT`.
 - Chat: added `NWNX_CHAT_LOG_CHANNELS`, `NWNX_CHAT_LOG_CONTENT_CHANNELS` and `NWNX_CHAT_LOG_MESSAGE_LEVEL` to choose which chat is logged, with or without its text, and at what level.
+- WebHook, HTTPClient: each request is one log record in JSON; added `NWNX_WEBHOOK_LOG_PATH|BODY` and `NWNX_HTTPCLIENT_LOG_PATH|BODY` (paths redacted by default).
 
 ##### New Plugins
 - Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.

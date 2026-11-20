@@ -7,6 +7,15 @@ Events exist for SUCCESS or FAILURE.
 
 - Top tip: Append `/slack` to the end of a Discord webhook url for it to work.
 
+## Environment Variables
+
+| Variable Name | Value | Default |
+| ------------- | :---: | ------- |
+| `NWNX_WEBHOOK_LOG_PATH` | full, redacted, none | redacted |
+| `NWNX_WEBHOOK_LOG_BODY` | bool | false |
+
+In JSON logs (`NWNX_CORE_LOG_FORMAT=json`) each webhook is one record with `host`, `path`, `status` and `ms`. A webhook path holds its token, so `LOG_PATH=redacted` keeps only its first segment (`/api/...`) and `none` leaves it out. The message body is logged only with `LOG_BODY=true`. Text log lines still print the full path and the message.
+
 ## Limitations
 
 For added security, it is highly recommended to set your webhook path as an environment variable and use NWNX_Util_GetEnvironmentVariable() to construct your path.
