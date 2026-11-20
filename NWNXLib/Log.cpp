@@ -1,6 +1,8 @@
 #include "nwnx.hpp"
 #include "API/Globals.hpp"
 #include "API/CExoBase.hpp"
+#include "API/API/CExoString.hpp"
+#include "API/API/CResRef.hpp"
 
 #include "Log/Json.hpp"
 
@@ -96,6 +98,8 @@ static std::vector<Json::Member>& JsonStatic()
 }
 
 static Format s_Format = Format::Text;
+static bool s_TextFields;
+static std::atomic<ContextSource> s_ContextSource;
 static Format s_FileFormat = Format::Text;
 static Json::Options s_JsonOptions;
 static std::mutex s_SinkMutex;
@@ -113,6 +117,19 @@ Format GetFormat()
 {
     return s_Format;
 }
+void SetTextFields(bool value)
+{
+    s_TextFields = value;
+}
+bool GetTextFields()
+{
+    return s_TextFields;
+}
+void SetContextSource(ContextSource source)
+{
+    s_ContextSource.store(source, std::memory_order_relaxed);
+}
+
 void SetFileFormat(Format format)
 {
     s_FileFormat = format;
@@ -148,6 +165,7 @@ enum Sink : uint8_t
     FileText = 4,
     FileJson = 8,
     JsonSinks = StdoutJson | FileJson,
+    TextSinks = StdoutText | FileText,
 };
 
 uint8_t ActiveSinks()
@@ -171,6 +189,18 @@ int64_t NowMs()
     return static_cast<int64_t>(ts.tv_sec) * 1000 + ts.tv_nsec / 1000000;
 }
 
+// A field's place in Record::Buffers: its final key (renamed if reserved) in the key arena, and where its
+// ,"key":value member starts in the fields buffer. A member ends where the next one starts.
+struct FieldIndex
+{
+    uint32_t keyOffset;
+    uint32_t keyLength;
+    uint32_t start;
+    uint32_t valueStart;
+    uint32_t rawStart = UINT32_MAX; // a string's text-mode bytes in Buffers::raw, if kept
+    uint32_t rawLength = 0;
+};
+
 // The parts of a record the JSON encoder needs beyond the message.
 struct JsonRecord
 {
@@ -180,8 +210,11 @@ struct JsonRecord
     int line;
     std::string_view msg;
     std::string_view fields;            // pre-encoded ,"key":value members
-    const std::vector<std::pair<const char*, bool>>* keys; // their keys and whether they were renamed
+    const std::vector<FieldIndex>* index; // their keys, so static members can be overridden
+    std::string_view keys;              // the key arena FieldIndex points into
     bool fieldsTruncated;
+    const char* src = "nwnx";
+    std::string_view origin = {};       // pre-encoded ,"key":value origin members
 };
 
 // One line of JSON (without the newline) in key order: time, level, lvl, msg, src, origin, truncated, static, fields.
@@ -221,7 +254,8 @@ void EncodeJson(std::string& out, const JsonRecord& record)
         bool truncated = !Json::AppendString(out, record.msg,
             { options.encoding, String::GetDefaultLocale(), options.stripColors, msgLimit });
         const size_t msgLength = out.size() - msgStart - 2;
-        out += ",\"src\":\"nwnx\"";
+        out += ",\"src\":";
+        Json::AppendString(out, record.src, plain);
         if (record.plugin)
         {
             out += ",\"plugin\":";
@@ -234,6 +268,7 @@ void EncodeJson(std::string& out, const JsonRecord& record)
             out += ",\"line\":";
             Json::AppendInt(out, record.line);
         }
+        out += record.origin;
         truncated |= record.fieldsTruncated || !withExtras;
         if (truncated)
             out += truncatedKey;
@@ -244,11 +279,10 @@ void EncodeJson(std::string& out, const JsonRecord& record)
             for (const auto& member : JsonStatic())
             {
                 // A call field overrides a static member of the same name.
-                const bool overridden = record.keys && std::any_of(record.keys->begin(), record.keys->end(),
-                    [&member](const auto& key)
+                const bool overridden = record.index && std::any_of(record.index->begin(), record.index->end(),
+                    [&](const FieldIndex& field)
                     {
-                        const std::string_view name = member.key;
-                        return key.second ? name.size() > 1 && name[0] == '_' && name.substr(1) == key.first : name == key.first;
+                        return record.keys.substr(field.keyOffset, field.keyLength) == member.key;
                     });
                 if (!overridden)
                     out += member.encoded;
@@ -330,7 +364,7 @@ void OpenLogFile()
     if (s_FileFormat == Format::Json)
     {
         std::string banner;
-        EncodeJson(banner, { Channel::SEV_INFO, nullptr, nullptr, 0, "NWNX secondary log file opened", {}, nullptr, false });
+        EncodeJson(banner, { Channel::SEV_INFO, nullptr, nullptr, 0, "NWNX secondary log file opened", {}, nullptr, {}, false });
         banner += '\n';
         WriteLines(s_FileFd, s_FileChunked, banner);
         return;
@@ -725,7 +759,7 @@ void WriteUnprefixed(Channel::Enum channel, uint8_t sinks, const char* message)
     thread_local std::string t_json;
     if (sinks & JsonSinks)
     {
-        EncodeJson(t_json, { channel, nullptr, nullptr, 0, message, {}, nullptr, false });
+        EncodeJson(t_json, { channel, nullptr, nullptr, 0, message, {}, nullptr, {}, false });
         t_json += '\n';
     }
     Deliver(channel, sinks, message, t_json);
@@ -806,7 +840,7 @@ void ReportDropped(uint64_t dropped)
 {
     Record record(Channel::SEV_WARNING, PLUGIN_NAME, __FILE__, __LINE__);
     record.Stream() << "Dropped " << dropped << " log records: the log queue was full";
-    record.With("dropped", static_cast<int64_t>(dropped)).Write();
+    record.Msg("log records dropped").With("dropped", static_cast<int64_t>(dropped)).Write();
 }
 }
 
@@ -884,10 +918,17 @@ struct Record::Buffers
     std::string text;
     std::string json;
     std::string fields;
-    std::vector<std::pair<const char*, bool>> keys;
+    std::string keys;    // final field keys, for duplicates and static overrides
+    std::string jsonMsg; // Msg()
+    std::string origin;
+    std::string originText; // the origin keys in logfmt
+    std::string raw;     // string values as the text line shows them (game-locale bytes)
+    std::vector<FieldIndex> index;
     StringSink sink{message};
     std::ostream stream{&sink};
     bool fieldsTruncated = false;
+    bool hasJsonMsg = false;
+    bool textFields = false;
     bool inUse = false;
 };
 
@@ -901,7 +942,13 @@ Record::Record(Channel::Enum channel, const char* plugin, const char* file, int 
     m_buffers->message.clear();
     m_buffers->fields.clear();
     m_buffers->keys.clear();
+    m_buffers->origin.clear();
+    m_buffers->originText.clear();
+    m_buffers->raw.clear();
+    m_buffers->index.clear();
     m_buffers->fieldsTruncated = false;
+    m_buffers->hasJsonMsg = false;
+    m_buffers->textFields = false;
 
     // Same state as the fresh std::ostringstream each line used to get.
     m_stream = &m_buffers->stream;
@@ -910,6 +957,19 @@ Record::Record(Channel::Enum channel, const char* plugin, const char* file, int 
     m_stream->precision(6);
     m_stream->width(0);
     m_stream->fill(' ');
+
+    const uint8_t sinks = ActiveSinks();
+    m_json = sinks & JsonSinks;
+    m_textRaw = s_TextFields && (sinks & TextSinks);
+    m_fields = m_json || m_textRaw;
+    if (m_fields)
+        AddContext();
+}
+
+void Record::AddContext()
+{
+    if (ContextSource source = s_ContextSource.load(std::memory_order_relaxed))
+        source(*this);
 }
 
 Record::~Record()
@@ -923,46 +983,164 @@ Record::~Record()
     m_buffers->inUse = false;
     // Don't let one huge line pin its memory for the life of the thread.
     constexpr size_t maxKeptCapacity = 64 * 1024;
-    for (std::string* buffer : { &m_buffers->message, &m_buffers->text, &m_buffers->json, &m_buffers->fields })
+    for (std::string* buffer : { &m_buffers->message, &m_buffers->text, &m_buffers->json, &m_buffers->fields,
+                                 &m_buffers->keys, &m_buffers->jsonMsg, &m_buffers->origin, &m_buffers->originText, &m_buffers->raw })
     {
         if (buffer->capacity() > maxKeptCapacity)
             std::string().swap(*buffer);
     }
+    if (m_buffers->index.capacity() > 1024)
+        std::vector<FieldIndex>().swap(m_buffers->index);
 }
 
-Record& Record::With(const char* key, std::string_view value)
+static Json::StringOptions ValueOptions(Json::Encoding encoding, bool stripColors = s_JsonOptions.stripColors)
 {
-    if (ActiveSinks() & JsonSinks)
+    return { encoding, String::GetDefaultLocale(), stripColors, s_JsonOptions.maxValue };
+}
+
+std::string& Record::BeginField(std::string_view key, bool reservedAllowed)
+{
+    Buffers& b = *m_buffers;
+    const int reserved = reservedAllowed ? -1 : Json::ReservedKeyIndex(key);
+    if (reserved >= 0)
     {
-        const bool renamed = Json::AppendKey(m_buffers->fields, key);
-        const Json::StringOptions options = { s_JsonOptions.encoding, String::GetDefaultLocale(),
-                                              s_JsonOptions.stripColors, s_JsonOptions.maxValue };
-        m_buffers->fieldsTruncated |= !Json::AppendString(m_buffers->fields, value, options);
-        m_buffers->keys.emplace_back(key, renamed);
+        // Warn once per key, where it is first used.
+        static std::atomic<uint32_t> s_warned;
+        const uint32_t bit = 1u << reserved;
+        if (!(s_warned.fetch_or(bit, std::memory_order_relaxed) & bit) && m_plugin && GetLogLevel(m_plugin) >= Channel::SEV_WARNING)
+        {
+            Record warning(Channel::SEV_WARNING, m_plugin, m_file, m_line);
+            warning.Stream() << "Log field '" << key << "' is a reserved key; it is written as '_" << key << "'.";
+            warning.Write();
+        }
+    }
+
+    const auto keyOffset = static_cast<uint32_t>(b.keys.size());
+    if (reserved >= 0)
+        b.keys += '_';
+    b.keys += key;
+    const std::string_view name = std::string_view(b.keys).substr(keyOffset);
+
+    // A later value for the same key replaces the earlier one, at the later position.
+    for (size_t i = 0; i < b.index.size(); i++)
+    {
+        if (std::string_view(b.keys).substr(b.index[i].keyOffset, b.index[i].keyLength) != name)
+            continue;
+        const uint32_t start = b.index[i].start;
+        const uint32_t end = i + 1 < b.index.size() ? b.index[i + 1].start : static_cast<uint32_t>(b.fields.size());
+        b.fields.erase(start, end - start);
+        b.index.erase(b.index.begin() + static_cast<ptrdiff_t>(i));
+        for (size_t j = i; j < b.index.size(); j++)
+        {
+            b.index[j].start -= end - start;
+            b.index[j].valueStart -= end - start;
+        }
+        break;
+    }
+
+    const auto start = static_cast<uint32_t>(b.fields.size());
+    b.fields += ",\"";
+    Json::AppendKeyContents(b.fields, name);
+    b.fields += "\":";
+    b.index.push_back({ keyOffset, static_cast<uint32_t>(name.size()), start, static_cast<uint32_t>(b.fields.size()) });
+    return b.fields;
+}
+
+Record& Record::AddString(std::string_view key, std::string_view value, StringKind kind)
+{
+    const Json::Encoding mode = kind == StringKind::Game ? Json::Encoding::Locale
+                              : kind == StringKind::Utf8 ? Json::Encoding::Utf8 : s_JsonOptions.encoding;
+    std::string& out = BeginField(key);
+    m_buffers->fieldsTruncated |= !Json::AppendString(out, value, ValueOptions(mode));
+    if (m_textRaw)
+    {
+        // Text lines are in game-locale bytes, so the value is kept as given, colours and all.
+        if (kind == StringKind::Utf8)
+            SetRaw(String::FromUTF8(std::string(value), String::GetDefaultLocale()));
+        else
+            SetRaw(value);
     }
     return *this;
 }
 
-Record& Record::With(const char* key, int64_t value)
+void Record::SetRaw(std::string_view value)
 {
-    if (ActiveSinks() & JsonSinks)
-    {
-        const bool renamed = Json::AppendKey(m_buffers->fields, key);
-        Json::AppendInt(m_buffers->fields, value);
-        m_buffers->keys.emplace_back(key, renamed);
-    }
+    FieldIndex& field = m_buffers->index.back();
+    field.rawStart = static_cast<uint32_t>(m_buffers->raw.size());
+    field.rawLength = static_cast<uint32_t>(value.size());
+    m_buffers->raw += value;
+}
+
+Record& Record::With(std::string_view key, const CExoString& value)
+{
+    return With(key, std::string_view(value.CStr(), value.GetLength()));
+}
+
+Record& Record::With(std::string_view key, const CResRef& value)
+{
+    return With(key, std::string_view(value.GetResRefStr()));
+}
+
+Record& Record::AddOid(std::string_view key, uint32_t id)
+{
+    char buffer[16];
+    const int length = std::snprintf(buffer, sizeof(buffer), "\"%08x\"", id);
+    BeginField(key).append(buffer, static_cast<size_t>(length));
+    if (m_textRaw)
+        SetRaw(std::string_view(buffer + 1, static_cast<size_t>(length) - 2));
     return *this;
 }
 
-Record& Record::WithStack(const char* key, std::string_view trace)
+Record& Record::AddRaw(std::string_view key, std::string_view json)
 {
-    if (!(ActiveSinks() & JsonSinks))
-        return *this;
+    BeginField(key).append(json.empty() ? "null" : json);
+    return *this;
+}
 
+Record& Record::AddInt(std::string_view key, int64_t value)
+{
+    Json::AppendInt(BeginField(key), value);
+    return *this;
+}
+
+Record& Record::AddUInt(std::string_view key, uint64_t value)
+{
+    Json::AppendUInt(BeginField(key), value);
+    return *this;
+}
+
+Record& Record::AddDouble(std::string_view key, double value)
+{
+    Json::AppendDouble(BeginField(key), value);
+    return *this;
+}
+
+Record& Record::AddJson(std::string_view key, const nlohmann::json& value)
+{
+    std::string& out = BeginField(key);
+    m_buffers->fieldsTruncated |= !Json::AppendValue(out, value, ValueOptions(s_JsonOptions.encoding));
+    return *this;
+}
+
+Record& Record::AddErr(std::string_view message, std::optional<int64_t> code)
+{
+    std::string& out = BeginField("err", true);
+    out += "{\"message\":";
+    m_buffers->fieldsTruncated |= !Json::AppendString(out, message, ValueOptions(s_JsonOptions.encoding));
+    if (code)
+    {
+        out += ",\"code\":";
+        Json::AppendInt(out, *code);
+    }
+    out += '}';
+    return *this;
+}
+
+Record& Record::AddStack(std::string_view key, std::string_view trace)
+{
     // Frames are the lines indented by four spaces.
-    const Json::StringOptions options = { s_JsonOptions.encoding, String::GetDefaultLocale(), false, s_JsonOptions.maxValue };
-    std::string& out = m_buffers->fields;
-    const bool renamed = Json::AppendKey(out, key);
+    const Json::StringOptions options = ValueOptions(s_JsonOptions.encoding, false);
+    std::string& out = BeginField(key);
     out += '[';
     bool first = true;
     for (size_t pos = 0; pos < trace.size();)
@@ -981,8 +1159,106 @@ Record& Record::WithStack(const char* key, std::string_view trace)
         pos = end + 1;
     }
     out += ']';
-    m_buffers->keys.emplace_back(key, renamed);
     return *this;
+}
+
+Record& Record::Msg(std::string_view msg)
+{
+    if (m_json)
+    {
+        m_buffers->jsonMsg.assign(msg);
+        m_buffers->hasJsonMsg = true;
+    }
+    return *this;
+}
+
+// Appends a string value in logfmt: bare unless it is empty or has a space, '=', a quote, a backslash or a
+// control character; then quoted with those escaped. Other bytes stay as they are.
+static void AppendLogfmtString(std::string& out, std::string_view value)
+{
+    const auto needsQuotes = [](unsigned char c) { return c <= ' ' || c == '=' || c == '"' || c == '\\' || c == 0x7f; };
+    if (!value.empty() && std::none_of(value.begin(), value.end(), needsQuotes))
+    {
+        out += value;
+        return;
+    }
+    out += '"';
+    for (const char c : value)
+    {
+        switch (c)
+        {
+            case '"':  out += "\\\""; break;
+            case '\\': out += "\\\\"; break;
+            case '\n': out += "\\n"; break;
+            case '\r': out += "\\r"; break;
+            case '\t': out += "\\t"; break;
+            default:
+                if (static_cast<unsigned char>(c) < ' ' || c == 0x7f)
+                {
+                    char buffer[8];
+                    out.append(buffer, static_cast<size_t>(std::snprintf(buffer, sizeof(buffer), "\\u%04x", static_cast<unsigned char>(c))));
+                }
+                else
+                    out += c;
+        }
+    }
+    out += '"';
+}
+
+Record& Record::Origin(const char* key, std::string_view value)
+{
+    if (m_json)
+    {
+        m_buffers->origin.append(",\"").append(key).append("\":");
+        m_buffers->fieldsTruncated |= !Json::AppendString(m_buffers->origin, value, ValueOptions(s_JsonOptions.encoding));
+    }
+    if (m_textRaw)
+    {
+        m_buffers->originText.append(" ").append(key).append("=");
+        AppendLogfmtString(m_buffers->originText, value);
+    }
+    return *this;
+}
+
+Record& Record::TextOnly()
+{
+    m_textOnly = true;
+    m_json = false;
+    m_fields = m_fields && (s_TextFields || m_buffers->textFields);
+    return *this;
+}
+
+Record& Record::TextFields()
+{
+    m_buffers->textFields = true;
+    if (!m_textRaw && (ActiveSinks() & TextSinks))
+    {
+        m_textRaw = true;
+        // (Re)adds the context so its strings keep their text form too; nothing else is set yet.
+        m_fields = true;
+        AddContext();
+    }
+    return *this;
+}
+
+// Appends the fields in logfmt: strings as their text-mode bytes, any other value as its JSON.
+static void AppendLogfmt(std::string& out, const Record::Buffers& buffers)
+{
+    const std::string& fields = buffers.fields;
+    for (size_t i = 0; i < buffers.index.size(); i++)
+    {
+        const FieldIndex& field = buffers.index[i];
+        out += ' ';
+        out.append(buffers.keys, field.keyOffset, field.keyLength);
+        out += '=';
+        if (field.rawStart != UINT32_MAX)
+        {
+            AppendLogfmtString(out, std::string_view(buffers.raw).substr(field.rawStart, field.rawLength));
+            continue;
+        }
+        const size_t end = i + 1 < buffers.index.size() ? buffers.index[i + 1].start : fields.size();
+        out.append(fields, field.valueStart, end - field.valueStart);
+    }
 }
 
 static void AppendPrefix(std::string& out, Channel::Enum channel, const char* plugin, const char* file, int line)
@@ -1020,39 +1296,58 @@ static void AppendPrefix(std::string& out, Channel::Enum channel, const char* pl
     }
 }
 
-static void WriteRecord(Record::Buffers& buffers, Channel::Enum channel, const char* plugin, const char* file, int line, uint8_t sinks)
+static void WriteRecord(Record::Buffers& buffers, Channel::Enum channel, const char* plugin, const char* file, int line,
+                        const char* src, uint8_t sinks)
 {
-    if (sinks & (StdoutText | FileText))
+    if (sinks & TextSinks)
     {
         buffers.text.clear();
         AppendPrefix(buffers.text, channel, plugin, file, line);
         buffers.text += buffers.message;
+        if (s_TextFields || buffers.textFields)
+        {
+            buffers.text += buffers.originText;
+            AppendLogfmt(buffers.text, buffers);
+        }
     }
     if (sinks & JsonSinks)
     {
-        EncodeJson(buffers.json, { channel, plugin, file, line, buffers.message, buffers.fields, &buffers.keys, buffers.fieldsTruncated });
+        const std::string_view msg = buffers.hasJsonMsg ? buffers.jsonMsg : buffers.message;
+        EncodeJson(buffers.json, { channel, plugin, file, line, msg, buffers.fields, &buffers.index, buffers.keys,
+                                   buffers.fieldsTruncated, src, buffers.origin });
         buffers.json += '\n';
     }
     Deliver(channel, sinks, buffers.text.c_str(), buffers.json);
 }
 
+void Record::Format()
+{
+    if (m_format)
+        tfm::vformat(*m_stream, m_format, *m_args);
+    m_format = nullptr;
+}
+
 void Record::Write()
 {
-    const std::string& message = m_buffers->message;
+    const uint8_t sinks = ActiveSinks() & (m_textOnly ? TextSinks : 0xff);
+    static const std::atomic<bool>* s_hasSubscribers = &MessageBus::GetSubscribedFlag("NWNX_CORE_LOG_MESSAGE");
+    const bool subscribed = s_hasSubscribers->load(std::memory_order_relaxed);
+    // JSON with Msg() is the one case that never shows the formatted message.
+    if (subscribed || (sinks & TextSinks) || !m_buffers->hasJsonMsg)
+        Format();
 
-    static const std::atomic<bool>& s_hasSubscribers = MessageBus::GetSubscribedFlag("NWNX_CORE_LOG_MESSAGE");
-    if (s_hasSubscribers.load(std::memory_order_relaxed))
+    if (subscribed)
     {
         MessageBus::Broadcast("NWNX_CORE_LOG_MESSAGE", {
             std::to_string((int) m_channel),
             m_plugin ? m_plugin : "",
             m_file ? m_file : "",
             std::to_string(m_line),
-            message
+            m_buffers->message
         });
     }
 
-    WriteRecord(*m_buffers, m_channel, m_plugin, m_file, m_line, ActiveSinks());
+    WriteRecord(*m_buffers, m_channel, m_plugin, m_file, m_line, m_src, sinks);
 
     if (m_channel == Channel::SEV_FATAL)
     {
@@ -1064,13 +1359,14 @@ void Record::Write()
 void Record::WriteJson()
 {
     if (const uint8_t sinks = ActiveSinks() & JsonSinks)
-        WriteRecord(*m_buffers, m_channel, m_plugin, m_file, m_line, sinks);
+    {
+        if (!m_buffers->hasJsonMsg)
+            Format();
+        WriteRecord(*m_buffers, m_channel, m_plugin, m_file, m_line, m_src, sinks);
+    }
 }
 
 }
-
-#include "API/API/CExoString.hpp"
-#include "API/API/CResRef.hpp"
 
 std::ostream& operator<<(std::ostream& out, const CExoString& str)
 {

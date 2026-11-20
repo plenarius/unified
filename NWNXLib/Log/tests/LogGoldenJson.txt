@@ -84,6 +84,7 @@
 {"time":1709611569123,"level":"error","msg":"error","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1006}
 ## fields and static
 static error: '' renamed level
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"Log field 'level' is a reserved key; it is written as '_level'.","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3702,"_level":9,"server":"main","tags":["a",1]}
 {"time":1709611569123,"level":30,"lvl":"info","msg":"with fields","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3702,"tags":["a",1],"server":"overrides the static server","rows":3,"_level":"a reserved key","text":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyé","stack":["./nwserver(frame+0x1) [0x1]","/lib/libc.so.6(\"q\"+0x2) [0x2]"]}
 {"time":1709611569123,"level":30,"lvl":"info","msg":"no fields after fields","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3710,"_level":9,"server":"main","tags":["a",1]}
 bad static: 'not a JSON object'
@@ -92,6 +93,11 @@ bad static: 'not a JSON object'
 {"time":1709611569123,"level":35,"lvl":"notice","msg":"notice left    |+7|-0002.50|0xbeef","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1004,"_level":9,"server":"main","tags":["a",1]}
 {"time":1709611569123,"level":40,"lvl":"warn","msg":"warning bool=true char=Z 0.333333","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1005,"_level":9,"server":"main","tags":["a",1]}
 {"time":1709611569123,"level":50,"lvl":"error","msg":"error","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1006,"_level":9,"server":"main","tags":["a",1]}
+## _F records
+{"time":1709611569123,"level":30,"lvl":"info","msg":"sql query","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8002,"query_id":412,"query":"SELECT 1","rows":1,"ms":0.84,"db":"MYSQL"}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"sql query failed","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8004,"query_id":413,"query":"SELEC","err":{"message":"syntax error","code":1064}}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"no fields, no Msg 1","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8006}
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"chat","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8007,"channel":"talk","speaker":"7f000000","text":"hi é"}
 ## limits
 {"time":1709611569123,"level":35,"lvl":"notice","msg":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3002,"truncated":true}
 {"time":1709611569123,"level":35,"lvl":"notice","msg":"short after long","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3003}
@@ -152,7 +158,11 @@ E [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:1006] error
 ASSERTION FAILURE
   Summary: (a == b) failed at (/abs/path/Checked.cpp:42)
   Message: the messageASSERTION FAILURE
-  Summary: Failed at (Checked.cpp:43)internal trace to the file
+  Summary: Failed at (Checked.cpp:43)I [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:8002] Successful SQL query. Query ID: '412', Query: 'SELECT 1', Rows affected: '1'.
+W [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:8004] Failed SQL query. Query ID: '413', Query: 'SELEC'.
+N [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:8006] no fields, no Msg 1
+D [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:8007] chat
+internal trace to the file
 === file ===
 {"time":1709611569123,"level":30,"lvl":"info","msg":"NWNX secondary log file opened","src":"nwnx"}
 {"time":1709611569123,"level":20,"lvl":"debug","msg":"debug 15: std::string","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1002}
@@ -162,6 +172,10 @@ ASSERTION FAILURE
 {"time":1709611569123,"level":50,"lvl":"error","msg":"error","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1006}
 {"time":1709611569123,"level":50,"lvl":"error","msg":"Assertion failure","src":"nwnx","file":"Checked.cpp","line":42,"condition":"a == b","message":"the message","stack":[]}
 {"time":1709611569123,"level":50,"lvl":"error","msg":"Assertion failure","src":"nwnx","file":"Checked.cpp","line":43,"stack":[]}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"sql query","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8002,"query_id":412,"query":"SELECT 1","rows":1,"ms":0.84,"db":"MYSQL"}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"sql query failed","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8004,"query_id":413,"query":"SELEC","err":{"message":"syntax error","code":1064}}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"no fields, no Msg 1","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8006}
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"chat","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8007,"channel":"talk","speaker":"7f000000","text":"hi é"}
 {"time":1709611569123,"level":35,"lvl":"notice","msg":"internal trace to the file","src":"nwnx"}
 {"time":1709611569123,"level":35,"lvl":"notice","msg":"written to the file","src":"nwnx"}
 === bus ===

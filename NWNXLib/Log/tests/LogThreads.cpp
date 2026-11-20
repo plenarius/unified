@@ -28,8 +28,10 @@ static void LogFromThreads()
         {
             for (int i = 0; i < s_lines; i++)
             {
-                if (i % 2)
+                if (i % 4 == 1)
                     LOG_NOTICE("thread %d line %d %s", t, i, std::string(static_cast<size_t>(i % 300), 'x'));
+                else if (i % 4 == 3)
+                    LOG_NOTICE_F("thread %d line %d", t, i).With("thread", t).With("thread", i).Msg("thread fields");
                 else
                 {
                     Log::Record record(Log::Channel::SEV_NOTICE, PLUGIN_NAME, __FILE__, __LINE__);

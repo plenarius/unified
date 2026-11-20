@@ -29,6 +29,7 @@ The core of NWNX:EE that does all the things.
 | `NWNX_CORE_LOG_FILE_PATH` | string | Unset | Sets the secondary (in addition to `stdout`) log file.
 | `NWNX_CORE_LOG_FORMAT` | text, json | text | The format of the logs printed to `stdout`. `json` prints one JSON object per line (see below); then only `LOG_SOURCE` of the options above applies.
 | `NWNX_CORE_LOG_FILE_FORMAT` | text, json | `LOG_FORMAT` | The format of the log file.
+| `NWNX_CORE_LOG_TEXT_FIELDS` | 0-1 | 0 | Appends the fields of structured records to text lines as ` key=value`, strings in game-locale bytes like the rest of the line (quoted when they hold a space, `=`, `"` or a control character), other values as JSON writes them. By default text lines print only the message.
 | `NWNX_CORE_LOG_JSON_LEVEL` | number, label | number | `number`: `"level":30,"lvl":"info"`. `label`: `"level":"info"`.
 | `NWNX_CORE_LOG_JSON_ENCODING` | auto, locale, utf8 | auto | How strings become UTF-8. `auto`: valid UTF-8 is kept, anything else is converted from `NWNX_CORE_LOCALE`. `locale`: always converted. `utf8`: invalid bytes become U+FFFD.
 | `NWNX_CORE_LOG_JSON_STRIP_COLORS` | 0-1 | 1 | Removes NWN colour tokens (`<cXYZ>`, `</c>`) from JSON strings.
@@ -66,7 +67,8 @@ With `NWNX_CORE_LOG_FORMAT=json`, every NWNX log line is one JSON object, in [pi
 ```
 
 - `time`: milliseconds since the Unix epoch. `level`: 20 debug, 30 info, 35 notice, 40 warn, 50 error, 60 fatal.
-- `file` and `line` are left out when `NWNX_CORE_LOG_SOURCE=0`. Any other key is a field of that record; a field named like one of the keys above (or `cat`, `err`, `logger`, `truncated`) gets a leading `_`.
+- `file` and `line` are left out when `NWNX_CORE_LOG_SOURCE=0`. Any other key is a field of that record; a field named like one of the keys above (or `cat`, `err`, `logger`, `truncated`) gets a leading `_`, with a warning the first time. A key given twice keeps its last value.
+- Plugins add fields with `LOG_INFO_F("Text line %d", n).With("rows", n).Msg("stable message")`: the text line is unchanged, the JSON record gets `msg` and the fields. A filtered call evaluates none of its arguments.
 - The startup banner, version checks, assertion failures and crashes become records too. Engine output and other lines printed to `stdout` stay as they are.
 - `NWNX_CORE_LOG_MESSAGE` subscribers get the same payload as in text mode.
 - Writing is async (`NWNX_CORE_LOG_ASYNC`), and `time` is when the record was made. Lines are never split: on a pipe, such as a container's `stdout`, NWNX writes at most 4096 bytes at a time and only whole lines, so other writers to the pipe cannot land inside them. A fatal error or a crash writes everything still queued first.

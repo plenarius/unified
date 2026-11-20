@@ -297,6 +297,7 @@ void NWNXCore::InitialSetupLogging()
     Log::SetFormat(format);
     const auto fileFormat = getFormat("LOG_FILE_FORMAT", format);
     Log::SetFileFormat(fileFormat);
+    Log::SetTextFields(Config::Get<bool>("LOG_TEXT_FIELDS", false));
 
     Log::Json::Options options;
     const auto level = Config::Get<std::string>("LOG_JSON_LEVEL", "number");

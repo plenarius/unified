@@ -196,61 +196,6 @@ bool AppendContents(std::string& out, std::string_view s, const StringOptions& o
 
 constexpr StringOptions s_utf8Options = { Encoding::Utf8, String::cp1252, false, SIZE_MAX };
 
-void AppendValue(std::string& out, const nlohmann::json& value)
-{
-    switch (value.type())
-    {
-        case nlohmann::json::value_t::boolean:
-            out += value.get<bool>() ? "true" : "false";
-            break;
-        case nlohmann::json::value_t::number_integer:
-            AppendInt(out, value.get<int64_t>());
-            break;
-        case nlohmann::json::value_t::number_unsigned:
-            AppendUInt(out, value.get<uint64_t>());
-            break;
-        case nlohmann::json::value_t::number_float:
-            AppendDouble(out, value.get<double>());
-            break;
-        case nlohmann::json::value_t::string:
-            AppendString(out, value.get_ref<const std::string&>(), s_utf8Options);
-            break;
-        case nlohmann::json::value_t::array:
-        {
-            out += '[';
-            bool first = true;
-            for (const auto& element : value)
-            {
-                if (!first)
-                    out += ',';
-                first = false;
-                AppendValue(out, element);
-            }
-            out += ']';
-            break;
-        }
-        case nlohmann::json::value_t::object:
-        {
-            out += '{';
-            bool first = true;
-            for (const auto& item : value.items())
-            {
-                if (!first)
-                    out += ',';
-                first = false;
-                AppendString(out, item.key(), s_utf8Options);
-                out += ':';
-                AppendValue(out, item.value());
-            }
-            out += '}';
-            break;
-        }
-        default:
-            out += "null";
-            break;
-    }
-}
-
 }
 
 bool AppendString(std::string& out, std::string_view s, const StringOptions& options)
@@ -284,13 +229,88 @@ void AppendDouble(std::string& out, double value)
     out.append(buf, std::to_chars(buf, buf + sizeof(buf), value).ptr);
 }
 
-bool IsReservedKey(std::string_view key)
+int ReservedKeyIndex(std::string_view key)
 {
     static constexpr std::string_view reserved[] =
     {
         "cat", "err", "file", "level", "line", "logger", "lvl", "msg", "plugin", "src", "time", "truncated"
     };
-    return std::binary_search(std::begin(reserved), std::end(reserved), key);
+    // Called for every field: compare lengths and first bytes before any memcmp.
+    if (key.size() < 3 || key.size() > 9)
+        return -1;
+    for (size_t i = 0; i < std::size(reserved); i++)
+    {
+        if (reserved[i].size() == key.size() && reserved[i][0] == key[0] && reserved[i] == key)
+            return static_cast<int>(i);
+    }
+    return -1;
+}
+
+bool AppendValue(std::string& out, const nlohmann::json& value, const StringOptions& options)
+{
+    switch (value.type())
+    {
+        case nlohmann::json::value_t::boolean:
+            out += value.get<bool>() ? "true" : "false";
+            return true;
+        case nlohmann::json::value_t::number_integer:
+            AppendInt(out, value.get<int64_t>());
+            return true;
+        case nlohmann::json::value_t::number_unsigned:
+            AppendUInt(out, value.get<uint64_t>());
+            return true;
+        case nlohmann::json::value_t::number_float:
+            AppendDouble(out, value.get<double>());
+            return true;
+        case nlohmann::json::value_t::string:
+            return AppendString(out, value.get_ref<const std::string&>(), options);
+        case nlohmann::json::value_t::array:
+        {
+            bool complete = true;
+            out += '[';
+            for (const auto& element : value)
+            {
+                complete &= AppendValue(out, element, options);
+                out += ',';
+            }
+            if (out.back() == ',')
+                out.back() = ']';
+            else
+                out += ']';
+            return complete;
+        }
+        case nlohmann::json::value_t::object:
+        {
+            // Keys are never cut or stripped.
+            const StringOptions keyOptions = { options.encoding, options.locale, false, SIZE_MAX };
+            bool complete = true;
+            out += '{';
+            for (const auto& item : value.items())
+            {
+                AppendString(out, item.key(), keyOptions);
+                out += ':';
+                complete &= AppendValue(out, item.value(), options);
+                out += ',';
+            }
+            if (out.back() == ',')
+                out.back() = '}';
+            else
+                out += '}';
+            return complete;
+        }
+        default:
+            out += "null";
+            return true;
+    }
+}
+
+void AppendKeyContents(std::string& out, std::string_view key)
+{
+    // Keys are nearly always plain ASCII literals.
+    if (std::all_of(key.begin(), key.end(), [](char c) { return s_byteClass[static_cast<uint8_t>(c)] == Plain; }))
+        out += key;
+    else
+        AppendContents(out, key, s_utf8Options);
 }
 
 bool AppendKey(std::string& out, std::string_view key)
@@ -299,7 +319,7 @@ bool AppendKey(std::string& out, std::string_view key)
     out += ",\"";
     if (reserved)
         out += '_';
-    AppendContents(out, key, s_utf8Options);
+    AppendKeyContents(out, key);
     out += "\":";
     return reserved;
 }
@@ -361,7 +381,7 @@ std::string EncodeObjectMembers(const std::string& object, std::vector<Member>& 
             renamed.push_back(member.key);
             member.key.insert(0, 1, '_');
         }
-        AppendValue(member.encoded, item.value());
+        AppendValue(member.encoded, item.value(), s_utf8Options);
         out.push_back(std::move(member));
     }
     return "";

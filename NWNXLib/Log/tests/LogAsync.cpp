@@ -340,12 +340,13 @@ static void TestFull(Log::Format format, bool drop)
             written++;
             warnings += i % 1000 == 999;
         }
-        else if (msg.find("Dropped ") == 0)
+        else if (format == Log::Format::Json ? msg == "log records dropped" : msg.find("Dropped ") == 0)
         {
-            const int64_t count = std::atoll(msg.c_str() + 8);
+            // JSON has the count in its own field, text in the message.
+            const int64_t count = format == Log::Format::Json ? record.value("dropped", int64_t(-1)) : std::atoll(msg.c_str() + 8);
             dropped += count;
             if (format == Log::Format::Json)
-                CHECK(record.value("dropped", int64_t(-1)) == count && record.value("level", 0) == 40, "%s: dropped record %s", name.c_str(), line.c_str());
+                CHECK(count > 0 && record.value("level", 0) == 40, "%s: dropped record %s", name.c_str(), line.c_str());
         }
         else
             bad++;

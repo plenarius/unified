@@ -85,6 +85,7 @@ void LogBus();
 void LogFromSubscriber();
 void LogFatal();
 void LogAssert();
+void LogFieldsF();
 
 // Runs LogFatal in a child (it aborts). The assertion's own line in Log.cpp is masked.
 static void RunFatal()
@@ -187,6 +188,9 @@ static std::string Run(const std::string& tmpDir)
     LogAllLevels(-2);
     Log::SetJsonStatic("{}", renamed);
 
+    Section("_F records");
+    LogFieldsF();
+
     Section("limits");
     SetJson([](auto& o) { o.maxValue = 64; o.maxLine = 1024; });
     LogSpecial();
@@ -232,6 +236,7 @@ static std::string Run(const std::string& tmpDir)
     Log::SetColorOutput(false);
     LogAllLevels(15);
     LogAssert();
+    LogFieldsF();
     Log::InternalTrace(Channel::SEV_NOTICE, Channel::SEV_DEBUG, "internal trace to the file");
     Log::WriteToLogFile("written to the file");
 
@@ -429,4 +434,15 @@ void LogAssert()
 {
     Assert::FailInternal("a == b", "/abs/path/Checked.cpp", 42, "the message");
     Assert::FailInternal(nullptr, "Checked.cpp", 43, nullptr);
+}
+
+#line 8000 "/nwnx/home/NWNXLib/Log/tests/GoldenJson.cpp"
+void LogFieldsF()
+{
+    LOG_INFO_F("Successful SQL query. Query ID: '%i', Query: '%s', Rows affected: '%u'.", 412, "SELECT 1", 1u)
+        .Msg("sql query").With("query_id", 412).With("query", "SELECT 1").With("rows", 1u).With("ms", 0.84).With("db", "MYSQL");
+    LOG_WARNING_F("Failed SQL query. Query ID: '%i', Query: '%s'.", 413, "SELEC")
+        .Msg("sql query failed").With("query_id", 413).With("query", "SELEC").Err("syntax error", 1064);
+    LOG_NOTICE_F("no fields, no Msg %d", 1);
+    LOG_DEBUG_F("chat").With("channel", "talk").With("speaker", Log::Oid{0x7f000000}).With("text", "<c\xff\x01\x01>hi</c> \xe9");
 }

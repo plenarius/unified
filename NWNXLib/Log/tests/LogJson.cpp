@@ -79,7 +79,7 @@ static std::string RoundTrip(std::string_view s, const Json::StringOptions& opti
     }
 }
 
-static std::string Utf8(uint32_t cp)
+static std::string EncodeUtf8(uint32_t cp)
 {
     std::string out;
     if (cp < 0x80)
@@ -122,7 +122,7 @@ static std::string IconvByte(const char* codepage, unsigned char byte)
     const size_t result = iconv(cd, &inPtr, &inLeft, &outPtr, &outLeft);
     iconv_close(cd);
     if (result == (size_t)-1)
-        return Utf8(byte);
+        return EncodeUtf8(byte);
     return std::string(out, sizeof(out) - outLeft);
 }
 

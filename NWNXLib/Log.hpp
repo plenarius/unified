@@ -1,14 +1,20 @@
 #pragma once
 
 #include "External/tinyformat/tinyformat.hpp"
+#include "External/json/json.hpp"
 #include <atomic>
 #include <cstdint>
 #include <cstdio>
 #include <cstring>
+#include <optional>
 #include <sstream>
 #include <string_view>
+#include <type_traits>
 #include <vector>
 #include <ctime>
+
+struct CExoString;
+struct CResRef;
 
 namespace NWNXLib::Log {
 
@@ -18,6 +24,15 @@ namespace NWNXLib::Log {
                       ::NWNXLib::Log::PluginLogLevel().load(std::memory_order_relaxed), 0) \
         ? ::NWNXLib::Log::TraceUnchecked(::NWNXLib::Log::Channel::sev, PLUGIN_NAME, __FILE__, __LINE__, (format), ##__VA_ARGS__) \
         : void())
+
+// LOG_IMPL with fields: LOG_INFO_F("fmt", args).With("key", value).Msg("stable msg"). A filtered call evaluates
+// neither the format arguments nor anything in the With() chain.
+#define LOG_IMPL_F(sev, format, ...) \
+    !__builtin_expect(static_cast<uint32_t>(::NWNXLib::Log::Channel::sev) <= \
+                      ::NWNXLib::Log::PluginLogLevel().load(std::memory_order_relaxed), 0) \
+        ? void() \
+        : ::NWNXLib::Log::Voidify() & ::NWNXLib::Log::FormattedRecord(::NWNXLib::Log::Channel::sev, PLUGIN_NAME, \
+                                                                      __FILE__, __LINE__, (format), ##__VA_ARGS__)
 
 struct Channel
 {
@@ -90,6 +105,10 @@ const Json::Options& GetJsonOptions();
 // renamed receives the reserved keys that were renamed with a leading '_'.
 std::string SetJsonStatic(const std::string& object, std::vector<std::string>& renamed);
 
+// Appends the fields of LOG_*_F records to text lines in logfmt (NWNX_CORE_LOG_TEXT_FIELDS).
+void SetTextFields(bool value);
+bool GetTextFields();
+
 // Async writing: a writer thread does the I/O, so a slow stdout or disk does not stall the caller.
 struct AsyncOptions
 {
@@ -119,6 +138,18 @@ inline std::atomic<uint32_t>& PluginLogLevel()
 }
 }
 
+// Field values that need more than their C++ type says.
+struct Game { std::string_view s; };    // game-locale bytes: always transcoded
+struct Utf8 { std::string_view s; };    // UTF-8: invalid sequences become U+FFFD
+struct Oid { uint32_t id; };            // "8000012a", as ObjectToString prints it
+struct RawJson { std::string_view s; }; // a value that is already valid JSON, copied as is
+
+class Record;
+// Adds context fields (the running script) to each record before its own fields; set by the Log plugin.
+// It runs on whichever thread logs, and only when the record has fields.
+using ContextSource = void (*)(Record& record);
+void SetContextSource(ContextSource source);
+
 // One log record, built in reusable thread-local buffers. A record started while another is being built on
 // the same thread (from an argument or a log subscriber that logs itself) gets buffers of its own.
 class Record
@@ -132,11 +163,56 @@ public:
     // The message, as the text format prints it.
     std::ostream& Stream() { return *m_stream; }
 
-    // Fields for the JSON sinks; keys are string literals.
-    Record& With(const char* key, std::string_view value);
-    Record& With(const char* key, int64_t value);
+    // Whether fields are encoded at all: false in text mode without NWNX_CORE_LOG_TEXT_FIELDS, where With()
+    // does nothing. Lets a caller skip building a value no sink would show.
+    bool HasFields() const { return m_fields; }
+
+    // Fields, in call order. A key used twice keeps its last value; a reserved key (msg, level, ...) is
+    // renamed with a leading '_'. Strings follow NWNX_CORE_LOG_JSON_ENCODING unless wrapped in Game or Utf8.
+    Record& With(std::string_view key, std::string_view value) { return m_fields ? AddString(key, value, StringKind::Default) : *this; }
+    Record& With(std::string_view key, const char* value) { return With(key, std::string_view(value ? value : "")); }
+    Record& With(std::string_view key, const std::string& value) { return With(key, std::string_view(value)); }
+    Record& With(std::string_view key, const CExoString& value);
+    Record& With(std::string_view key, const CResRef& value);
+    Record& With(std::string_view key, Game value) { return m_fields ? AddString(key, value.s, StringKind::Game) : *this; }
+    Record& With(std::string_view key, Utf8 value) { return m_fields ? AddString(key, value.s, StringKind::Utf8) : *this; }
+    Record& With(std::string_view key, Oid value) { return m_fields ? AddOid(key, value.id) : *this; }
+    Record& With(std::string_view key, RawJson value) { return m_fields ? AddRaw(key, value.s) : *this; }
+    Record& With(std::string_view key, bool value) { return m_fields ? AddRaw(key, value ? "true" : "false") : *this; }
+    Record& With(std::string_view key, double value) { return m_fields ? AddDouble(key, value) : *this; }
+    template <typename T, std::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T, bool>, int> = 0>
+    Record& With(std::string_view key, T value)
+    {
+        if (!m_fields)
+            return *this;
+        if constexpr (std::is_signed_v<T>)
+            return AddInt(key, static_cast<int64_t>(value));
+        else
+            return AddUInt(key, static_cast<uint64_t>(value));
+    }
+    // Objects and arrays; strings in it follow the same encoding rules as other string values.
+    Record& With(std::string_view key, const nlohmann::json& value) { return m_fields ? AddJson(key, value) : *this; }
+    // Left out when empty.
+    template <typename T>
+    Record& With(std::string_view key, const std::optional<T>& value) { return value ? With(key, *value) : *this; }
     // A Platform::GetStackTrace text as an array of frames.
-    Record& WithStack(const char* key, std::string_view trace);
+    Record& WithStack(std::string_view key, std::string_view trace) { return m_fields ? AddStack(key, trace) : *this; }
+    // "err":{"message":...,"code":...}
+    Record& Err(std::string_view message, std::optional<int64_t> code = {}) { return m_fields ? AddErr(message, code) : *this; }
+
+    // The JSON msg, a short stable text such as "sql query"; text lines keep the formatted message.
+    Record& Msg(std::string_view msg);
+    // JSON "src" ("nwnx" unless set); the string must outlive the record, e.g. a literal.
+    Record& Src(const char* src) { m_src = src; return *this; }
+    // A reserved origin key written after plugin/file/line, e.g. "logger" or "cat", and in text before the
+    // fields when they show. The key must be a literal.
+    Record& Origin(const char* key, std::string_view value);
+    // Shows this record's fields in text lines whatever NWNX_CORE_LOG_TEXT_FIELDS says, for output that has
+    // no legacy form to keep. Call it before the first With().
+    Record& TextFields();
+
+    // Writes only to the text sinks, for a legacy line whose content JSON has in another record. Call it first.
+    Record& TextOnly();
 
     // Writes to every sink. FATAL then asserts and aborts.
     void Write();
@@ -145,14 +221,67 @@ public:
 
     struct Buffers;
 
+protected:
+    // Set by FormattedRecord: the message is formatted only if a sink or subscriber needs it.
+    const char* m_format = nullptr;
+    const tfm::FormatList* m_args = nullptr;
+
 private:
+    enum class StringKind : uint8_t { Default, Game, Utf8 };
+    Record& AddString(std::string_view key, std::string_view value, StringKind kind);
+    Record& AddOid(std::string_view key, uint32_t id);
+    Record& AddRaw(std::string_view key, std::string_view json);
+    Record& AddInt(std::string_view key, int64_t value);
+    Record& AddUInt(std::string_view key, uint64_t value);
+    Record& AddDouble(std::string_view key, double value);
+    Record& AddJson(std::string_view key, const nlohmann::json& value);
+    Record& AddStack(std::string_view key, std::string_view trace);
+    Record& AddErr(std::string_view message, std::optional<int64_t> code);
+    // Starts a member: drops an earlier one with the same key, writes ,"key": and returns the buffer.
+    std::string& BeginField(std::string_view key, bool reservedAllowed = false);
+    // Keeps the text form of the field just begun.
+    void SetRaw(std::string_view value);
+    void AddContext();
+    void Format();
+
     Buffers* m_buffers;
     std::ostream* m_stream;
     const char* m_plugin;
     const char* m_file;
+    const char* m_src = "nwnx";
     int m_line;
     Channel::Enum m_channel;
     bool m_nested;
+    bool m_fields;
+    bool m_json;
+    bool m_textRaw;  // a text sink shows this record's fields: keep strings' own bytes
+    bool m_textOnly = false;
+};
+
+// The record LOG_*_F builds: it keeps references to the format arguments, which live until the end of the
+// full expression, formats only when needed and writes when the expression ends.
+template <typename... Args>
+class FormattedRecord final : public Record
+{
+public:
+    FormattedRecord(Channel::Enum channel, const char* plugin, const char* file, int line, const char* format, const Args&... args)
+        : Record(channel, plugin, file, line), m_list(args...)
+    {
+        m_format = format;
+        m_args = &m_list;
+    }
+    ~FormattedRecord() { Write(); }
+
+private:
+    tfm::detail::FormatListN<sizeof...(Args)> m_list;
+};
+template <typename... Args>
+FormattedRecord(Channel::Enum, const char*, const char*, int, const char*, const Args&...) -> FormattedRecord<Args...>;
+
+// Lets LOG_IMPL_F be one expression: & binds looser than the With() chain and tighter than ?:.
+struct Voidify
+{
+    void operator&(const Record&) const {}
 };
 
 // Formats and writes a line whose level was already checked.
@@ -179,9 +308,6 @@ void Trace(Channel::Enum channel, const char* plugin, const char* file, int line
 }
 
 }
-
-struct CExoString;
-struct CResRef;
 
 std::ostream& operator<<(std::ostream& out, const CExoString& str);
 std::ostream& operator<<(std::ostream& out, const CResRef& str);

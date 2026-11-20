@@ -27,6 +27,13 @@ namespace NWNXLib
 #define LOG_ERROR(format, ...)   LOG_IMPL(SEV_ERROR,   format, ##__VA_ARGS__)
 #define LOG_FATAL(format, ...)   LOG_IMPL(SEV_FATAL,   format, ##__VA_ARGS__)
 
+#define LOG_DEBUG_F(format, ...)   LOG_IMPL_F(SEV_DEBUG,   format, ##__VA_ARGS__)
+#define LOG_INFO_F(format, ...)    LOG_IMPL_F(SEV_INFO,    format, ##__VA_ARGS__)
+#define LOG_NOTICE_F(format, ...)  LOG_IMPL_F(SEV_NOTICE,  format, ##__VA_ARGS__)
+#define LOG_WARNING_F(format, ...) LOG_IMPL_F(SEV_WARNING, format, ##__VA_ARGS__)
+#define LOG_ERROR_F(format, ...)   LOG_IMPL_F(SEV_ERROR,   format, ##__VA_ARGS__)
+#define LOG_FATAL_F(format, ...)   LOG_IMPL_F(SEV_FATAL,   format, ##__VA_ARGS__)
+
 #define ASSERT(condition)                   ASSERT_IMPL(condition)
 #define ASSERT_MSG(condition, format, ...)  ASSERT_MSG_IMPL(condition, format, ##__VA_ARGS__)
 #define ASSERT_FAIL()                       ASSERT_FAIL_IMPL()

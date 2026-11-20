@@ -2,6 +2,7 @@
 
 // JSON encoding for structured log records: strings in the game's code page or UTF-8, numbers and keys.
 #include "nwnx.hpp"
+#include "External/json/json.hpp"
 
 #include <cstdint>
 #include <string>
@@ -41,9 +42,16 @@ void AppendUInt(std::string& out, uint64_t value);
 // Shortest round-trip form; NaN and infinities become null, as JSON.stringify does.
 void AppendDouble(std::string& out, double value);
 
-bool IsReservedKey(std::string_view key);
+// The index of a reserved key (0 to 31), or -1.
+int ReservedKeyIndex(std::string_view key);
+inline bool IsReservedKey(std::string_view key) { return ReservedKeyIndex(key) >= 0; }
+// Appends a key between quotes (UTF-8, invalid bytes replaced), without the quotes.
+void AppendKeyContents(std::string& out, std::string_view key);
 // Appends ,"key": and renames a reserved key with a leading '_'. Returns true if it was renamed.
 bool AppendKey(std::string& out, std::string_view key);
+
+// Appends a JSON value with every string encoded by options. Returns false if a string was cut.
+bool AppendValue(std::string& out, const nlohmann::json& value, const StringOptions& options);
 
 // Removes NWN colour tokens (<cXYZ> and </c>) into out. Returns false, leaving out alone, if there are none.
 bool StripColors(std::string_view s, std::string& out);
