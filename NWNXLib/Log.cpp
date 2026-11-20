@@ -1286,10 +1286,10 @@ static void AppendPrefix(std::string& out, Channel::Enum channel, const char* pl
         out += plugin ? plugin : "";
         out += "] ";
     }
-    if (s_PrintSource)
+    if (s_PrintSource && file)
     {
         out += '[';
-        out += file ? Basename(file) : "";
+        out += Basename(file);
         out += ':';
         out.append(buffer, std::to_chars(buffer, buffer + sizeof(buffer), line).ptr);
         out += "] ";

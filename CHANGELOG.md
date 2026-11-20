@@ -35,6 +35,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 
 ##### New Plugins
 - Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.
+- Log: structured logging from NWScript into the NWNX log, with fields, per-script-run bindings, loggers and their own levels (`NWNX_LOG_LOGGER_LEVELS`).
 
 ##### New NWScript Functions
 - Player: GetOpenStore()
@@ -52,6 +53,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Administration: GetNWSyncAdvertHash(), GetNWSyncAdvertUrl(), SetNWSyncAdvert()
 - Encounter: SetNumberOfCreaturesInEncounterList()
 - Encounter: Set{Min|Max}NumSpawned()
+- Log: Debug(), Info(), Notice(), Warning(), Error(), Write(), IsEnabled(), Bind(), Unbind(), GetBindings(), SetLogger(), SetGlobal(), Rotate()
 
 ### Changed
 - Damage: Added bRangedAttack to the NWNX_Damage_AttackEventData struct.
