@@ -1,5 +1,6 @@
 #include "nwnx.hpp"
 #include "NWNXCore.hpp"
+#include "EngineLogFiles.hpp"
 
 #include "API/CAppManager.hpp"
 #include "API/CExoString.hpp"
@@ -720,6 +721,16 @@ void NWNXCore::InitialSetupCommands()
                  Log::GetPrintSource(), Log::GetColorOutput(), Log::GetForceColor());
     });
 
+    Commands::Register("logrotate", [](std::string&, std::string& args)
+    {
+        if (args == "engine")
+            EngineLogFiles::Rotate(EngineLogFiles::File::Engine);
+        else if (args == "server")
+            EngineLogFiles::Rotate(EngineLogFiles::File::Server);
+        else
+            LOG_INFO("Usage: logrotate engine|server");
+    });
+
 }
 
 
@@ -809,6 +820,7 @@ int32_t NWNXCore::MainLoopInternalHandler(CServerExoAppInternal *pServerExoAppIn
     g_core->m_services->m_metrics->Update();
     Tasks::ProcessMainThreadWork();
     Commands::RunScheduled();
+    EngineLogFiles::Tick();
 
     return g_core->m_mainLoopInternalHook->CallOriginal<int32_t>(pServerExoAppInternal);
 }

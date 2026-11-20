@@ -22,6 +22,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Events: Added events `NWNX_ON_INVENTORY_CLOSE_{BEFORE|AFTER}` which fire when a player closes an inventory through a client status message.
 - Core: added `NWNX_CORE_ENCODING_BEST_FIT` to replace characters the codepage lacks with close equivalents instead of `?` when converting from UTF-8.
 - Events: Added event `NWNX_ON_ENCUMBRANCE_CHANGE_AFTER` which fires when a creature's encumbrance state changes.
+- Core: added `NWNX_CORE_LOG_ENGINE_KEEP_PREVIOUS` to keep the previous run's `nwengineLog.txt` and `nwserverLog1.txt` instead of overwriting them, the `logrotate engine|server` console command and `NWNX_CORE_LOG_ENGINE_ROTATE_SIZE|TIME` to rotate them while the server runs, and `NWNX_CORE_LOG_ENGINE_KEEP` for the number of archives kept.
 - SQL: Added `NWNX_SQL_QUERY_METRICS_ID_AS_FIELD` to send the query ID of `NWNX_SQL_QUERY_METRICS` as a field instead of a tag, so a long running server doesn't hit InfluxDB's `max-values-per-tag` limit.
 - Core: added `NWNX_CORE_LOG_FORMAT=json` and `NWNX_CORE_LOG_FILE_FORMAT` to write NWNX's logs as one JSON object per line (pino style), set with the `NWNX_CORE_LOG_JSON_*` options; `logformat text|json` switches it at runtime.
 - Core: added `NWNX_CORE_LOG_ASYNC` (on by default with JSON) to write logs on a background thread, with `NWNX_CORE_LOG_ASYNC_FLUSH_MS`, `_MAX_BYTES` and `_FULL`.
