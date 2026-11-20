@@ -1,6 +1,8 @@
 #include "Redis.hpp"
 #include "Internal.hpp"
 
+#include <algorithm>
+#include <cctype>
 #include <future>
 
 namespace Redis
@@ -237,8 +239,66 @@ void Redis::PubsubSupervisor()
     }
 }
 
+void Redis::ConfigureModernClient()
+{
+    ModernOptions o;
+    {
+        std::lock_guard<std::mutex> lock(m_internal->m_config_mtx);
+        const auto& c = m_internal->m_config;
+        o.host = c.m_host;
+        o.port = c.m_port;
+        o.username = c.m_username;
+        o.password = c.m_password;
+        o.database = c.m_database;
+        o.resp = c.m_resp;
+        o.tls = c.m_tls;
+        o.tls_cacert = c.m_tls_cacert;
+        o.tls_cacertdir = c.m_tls_cacertdir;
+        o.tls_cert = c.m_tls_cert;
+        o.tls_key = c.m_tls_key;
+        o.tls_sni = c.m_tls_sni;
+        o.tls_verify = c.m_tls_verify;
+        o.pool_size = static_cast<size_t>(std::max(1, c.m_pool_size));
+        o.connect_timeout = std::chrono::milliseconds(c.m_connect_timeout_ms);
+        o.socket_timeout = std::chrono::milliseconds(c.m_socket_timeout_ms);
+        o.failfast = std::chrono::milliseconds(c.m_failfast_ms);
+        o.pool_wait_timeout = std::chrono::milliseconds(c.m_pool_wait_timeout_ms);
+        for (auto& ch : c.m_pubsub_channels)
+            if (!ch.empty())
+                o.pubsub_channels.push_back(ch);
+    }
+
+    LOG_INFO("Client: redis-plus-plus (hiredis), pool=%d, tls=%s, resp=%d, socket timeout=%dms",
+             (int)o.pool_size, o.tls ? "on" : "off", o.resp, (int)o.socket_timeout.count());
+
+    m_internal->m_modern.reset();
+    m_internal->m_modern = std::make_unique<ModernClient>(o, [](ModernClient::LogLevel l, const std::string& s) {
+        switch (l)
+        {
+            case ModernClient::LogLevel::Error:   LOG_ERROR("%s", s); break;
+            case ModernClient::LogLevel::Warning: LOG_WARNING("%s", s); break;
+            case ModernClient::LogLevel::Info:    LOG_INFO("%s", s); break;
+            case ModernClient::LogLevel::Debug:   LOG_DEBUG("%s", s); break;
+        }
+    });
+
+    // Don't fail startup if Redis is down: the pool reconnects on its own.
+    auto pong = m_internal->m_modern->Execute({"PING"});
+    if (pong.is_error())
+        LOG_WARNING("Redis not reachable yet (%s); will keep retrying", pong.error());
+    else
+        LOG_INFO("%s", "Connected!");
+
+    for (auto& ch : o.pubsub_channels)
+        LOG_INFO("PubSub: Subscribing to %s", ch);
+    m_internal->m_modern->StartPubSub([this](const std::string& channel, const std::string& message) {
+        OnPubsub(channel, message);
+    });
+}
+
 void Redis::Reconfigure()
 {
+    bool modern;
     {
         std::lock_guard<std::mutex> lock(m_internal->m_config_mtx);
 
@@ -253,6 +313,30 @@ void Redis::Reconfigure()
         m_internal->m_config.m_pubsub_channels = String::Split(
             Config::Get<std::string>("PUBSUB_CHANNELS", ""), ',');
 
+        // Client backend.
+        auto client = Config::Get<std::string>("CLIENT", "cpp_redis");
+        std::transform(client.begin(), client.end(), client.begin(), ::tolower);
+        m_internal->m_config.m_modern_client = client == "redis-plus-plus" || client == "redis++" || client == "hiredis";
+        modern = m_internal->m_config.m_modern_client;
+        if (!modern && client != "cpp_redis")
+            LOG_WARNING("Unknown NWNX_REDIS_CLIENT '%s', using cpp_redis", client);
+
+        // Settings of the redis-plus-plus client.
+        m_internal->m_config.m_database = Config::Get<int>("DATABASE", 0);
+        m_internal->m_config.m_resp = Config::Get<int>("RESP", 2);
+        m_internal->m_config.m_tls = Config::Get<bool>("TLS", false);
+        m_internal->m_config.m_tls_cacert = Config::Get<std::string>("TLS_CACERT", "");
+        m_internal->m_config.m_tls_cacertdir = Config::Get<std::string>("TLS_CACERTDIR", "");
+        m_internal->m_config.m_tls_cert = Config::Get<std::string>("TLS_CERT", "");
+        m_internal->m_config.m_tls_key = Config::Get<std::string>("TLS_KEY", "");
+        m_internal->m_config.m_tls_sni = Config::Get<std::string>("TLS_SNI", "");
+        m_internal->m_config.m_tls_verify = Config::Get<bool>("TLS_VERIFY", true);
+        m_internal->m_config.m_pool_size = Config::Get<int>("POOL_SIZE", 4);
+        m_internal->m_config.m_connect_timeout_ms = Config::Get<int>("CONNECT_TIMEOUT_MS", 1000);
+        m_internal->m_config.m_socket_timeout_ms = Config::Get<int>("SOCKET_TIMEOUT_MS", 2000);
+        m_internal->m_config.m_failfast_ms = Config::Get<int>("FAILFAST_MS", 3000);
+        m_internal->m_config.m_pool_wait_timeout_ms = Config::Get<int>("POOL_WAIT_TIMEOUT_MS", 1000);
+
         LOG_INFO("Reconfiguring for redis at %s:%d",
                                    m_internal->m_config.m_host,
                                    m_internal->m_config.m_port);
@@ -264,6 +348,14 @@ void Redis::Reconfigure()
             LOG_WARNING("%s", "NWNX_REDIS_USERNAME is set without NWNX_REDIS_PASSWORD; not authenticating");
 
         LOG_INFO("PubSub: Using NWScript: %s", m_internal->m_config.m_pubsub_script);
+    }
+
+    if (modern)
+    {
+        // redis-plus-plus has its own pool and pubsub reconnect: the cpp_redis
+        // pool stays empty and the pubsub supervisor is not started.
+        ConfigureModernClient();
+        return;
     }
 
     if (ConnectPubsub())
