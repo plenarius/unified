@@ -35,6 +35,10 @@ The core of NWNX:EE that does all the things.
 | `NWNX_CORE_LOG_JSON_MAX_VALUE` | int | 8192 | Longer strings are cut (at a character boundary) and the record gets `"truncated":true`.
 | `NWNX_CORE_LOG_JSON_MAX_LINE` | int | 65536 | Longer records are shortened the same way: the message first, then the fields are dropped.
 | `NWNX_CORE_LOG_JSON_STATIC` | JSON object | Unset | Added to every JSON record, e.g. `{"server":"main"}`.
+| `NWNX_CORE_LOG_ASYNC` | auto, true, false | auto | Write logs on a background thread, so a slow `stdout` or disk does not stall the server. `auto`: on when `LOG_FORMAT` or `LOG_FILE_FORMAT` is `json`. Decided at startup: switching to JSON later with `logformat` stays synchronous. The bytes are the same, but NWNX lines can reach `stdout` up to `LOG_ASYNC_FLUSH_MS` after other output.
+| `NWNX_CORE_LOG_ASYNC_FLUSH_MS` | int | 50 | The longest a line waits before it is written. Warnings and worse, and every 64 KiB of lines, are written at once.
+| `NWNX_CORE_LOG_ASYNC_MAX_BYTES` | int | 8388608 | How much may wait to be written (at least 262144).
+| `NWNX_CORE_LOG_ASYNC_FULL` | block, drop | block | When that is full: `block` waits for room; `drop` drops debug, info and notice lines and later logs a warning with the number dropped. Warnings and worse always wait.
 | `NWNX_CORE_HARD_EXIT` | 0-1| 0 | If set, NWNX will hard kill the process after it unloads.
 | `NWNX_CORE_BASE_GAME_CRASH_HANDLER` | 0-1 | 0 | Sets whether to also call the base game handler in case of crash.
 
@@ -60,6 +64,7 @@ With `NWNX_CORE_LOG_FORMAT=json`, every NWNX log line is one JSON object, in [pi
 - `file` and `line` are left out when `NWNX_CORE_LOG_SOURCE=0`. Any other key is a field of that record; a field named like one of the keys above (or `cat`, `err`, `logger`, `truncated`) gets a leading `_`.
 - The startup banner, version checks, assertion failures and crashes become records too. Engine output and other lines printed to `stdout` stay as they are.
 - `NWNX_CORE_LOG_MESSAGE` subscribers get the same payload as in text mode.
+- Writing is async (`NWNX_CORE_LOG_ASYNC`), and `time` is when the record was made. Lines are never split: on a pipe, such as a container's `stdout`, NWNX writes at most 4096 bytes at a time and only whole lines, so other writers to the pipe cannot land inside them. A fatal error or a crash writes everything still queued first.
 
 ## Custom Resman Definition File
 

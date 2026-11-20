@@ -32,6 +32,8 @@ void FailInternal(const char* condition, const char* file, int line, const char*
     std::string stackTrace = Platform::GetStackTrace(20);
     MessageBus::Broadcast("NWNX_ASSERT_FAIL", { buffer, stackTrace });
     std::strncat(buffer, stackTrace.c_str(), sizeof(buffer)-1);
+    // Queued lines first, and the record out before a following abort.
+    Log::Flush();
     if (Log::GetFormat() == Log::Format::Text)
     {
         std::fputs(buffer, stdout);
@@ -48,6 +50,7 @@ void FailInternal(const char* condition, const char* file, int line, const char*
     if (message && *message)
         record.With("message", message);
     record.WithStack("stack", stackTrace).WriteJson();
+    Log::Flush();
 
     if (Platform::IsDebuggerPresent())
     {

@@ -73,6 +73,9 @@ extern "C" void nwnx_signal_handler(int sig)
         default:       err = "Unknown error";            break;
     }
 
+    // Queued lines first; the crash output below is then written directly.
+    Log::EmergencyFlush();
+
     const bool text = Log::GetFormat() == Log::Format::Text;
     if (text)
     {
@@ -273,7 +276,8 @@ void NWNXCore::InitialSetupLogging()
     Log::SetPrintSource(Config::Get<bool>("LOG_SOURCE", true));
     Log::SetColorOutput(Config::Get<bool>("LOG_COLOR", true));
     Log::SetForceColor(Config::Get<bool>("LOG_FORCE_COLOR", false));
-    Log::SetLogFile(Config::Get<std::string>("LOG_FILE_PATH", ""));
+    const auto logFile = Config::Get<std::string>("LOG_FILE_PATH", "");
+    Log::SetLogFile(logFile);
 
     // Problems are logged once the format is set, so they come out in it.
     std::vector<std::string> problems;
@@ -290,7 +294,8 @@ void NWNXCore::InitialSetupLogging()
     };
     const auto format = getFormat("LOG_FORMAT", Log::Format::Text);
     Log::SetFormat(format);
-    Log::SetFileFormat(getFormat("LOG_FILE_FORMAT", format));
+    const auto fileFormat = getFormat("LOG_FILE_FORMAT", format);
+    Log::SetFileFormat(fileFormat);
 
     Log::Json::Options options;
     const auto level = Config::Get<std::string>("LOG_JSON_LEVEL", "number");
@@ -325,6 +330,23 @@ void NWNXCore::InitialSetupLogging()
         String::SetDefaultLocale(*locale);
     }
     String::SetBestFit(Config::Get<bool>("ENCODING_BEST_FIT", false));
+
+    const auto async = Config::Get<std::string>("LOG_ASYNC", "auto");
+    if (async != "auto" && async != "true" && async != "false")
+        problems.push_back("NWNX_CORE_LOG_ASYNC='" + async + "' is not auto, true or false");
+    const bool anyJson = format == Log::Format::Json || (!logFile.empty() && fileFormat == Log::Format::Json);
+    if (async == "true" || (async != "false" && anyJson))
+    {
+        Log::AsyncOptions asyncOptions;
+        asyncOptions.flushMs = Config::Get<uint32_t>("LOG_ASYNC_FLUSH_MS", uint32_t(asyncOptions.flushMs));
+        // A floor keeps room for a few long records.
+        asyncOptions.maxBytes = std::max(Config::Get<uint32_t>("LOG_ASYNC_MAX_BYTES", uint32_t(asyncOptions.maxBytes)), 256u * 1024);
+        const auto full = Config::Get<std::string>("LOG_ASYNC_FULL", "block");
+        asyncOptions.dropWhenFull = full == "drop";
+        if (full != "block" && full != "drop")
+            problems.push_back("NWNX_CORE_LOG_ASYNC_FULL='" + full + "' is not block or drop");
+        Log::StartAsync(asyncOptions);
+    }
 
     for (const auto& problem : problems)
         LOG_WARNING("%s", problem);
@@ -713,6 +735,8 @@ void NWNXCore::Shutdown()
     {
         Plugin::UnloadAll();
         UnloadServices();
+        // Drains the log queue; anything logged later is written directly.
+        Log::Shutdown();
         Tasks::StopAsyncWorkers();
         g_core = nullptr;
         if (Config::Get<bool>("HARD_EXIT", false))

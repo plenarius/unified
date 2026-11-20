@@ -24,6 +24,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Events: Added event `NWNX_ON_ENCUMBRANCE_CHANGE_AFTER` which fires when a creature's encumbrance state changes.
 - SQL: Added `NWNX_SQL_QUERY_METRICS_ID_AS_FIELD` to send the query ID of `NWNX_SQL_QUERY_METRICS` as a field instead of a tag, so a long running server doesn't hit InfluxDB's `max-values-per-tag` limit.
 - Core: added `NWNX_CORE_LOG_FORMAT=json` and `NWNX_CORE_LOG_FILE_FORMAT` to write NWNX's logs as one JSON object per line (pino style), set with the `NWNX_CORE_LOG_JSON_*` options; `logformat text|json` switches it at runtime.
+- Core: added `NWNX_CORE_LOG_ASYNC` (on by default with JSON) to write logs on a background thread, with `NWNX_CORE_LOG_ASYNC_FLUSH_MS`, `_MAX_BYTES` and `_FULL`.
 
 ##### New Plugins
 - Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.

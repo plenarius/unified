@@ -90,6 +90,22 @@ const Json::Options& GetJsonOptions();
 // renamed receives the reserved keys that were renamed with a leading '_'.
 std::string SetJsonStatic(const std::string& object, std::vector<std::string>& renamed);
 
+// Async writing: a writer thread does the I/O, so a slow stdout or disk does not stall the caller.
+struct AsyncOptions
+{
+    uint32_t flushMs = 50;             // longest wait before a quiet line is written
+    size_t maxBytes = 8 * 1024 * 1024; // queue size at which callers wait, or drop
+    bool dropWhenFull = false;         // drop DEBUG, INFO and NOTICE records when full instead of waiting
+};
+// Starts the writer thread; records are queued from then on. FATAL records still drain and write at once.
+void StartAsync(const AsyncOptions& options);
+// Writes everything queued so far, on the calling thread.
+void Flush();
+// Writes what is queued and stops the writer; later records are written on the calling thread.
+void Shutdown();
+// For the crash handler: writes the queue without waiting for the lock, and writes later records directly.
+void EmergencyFlush();
+
 void InternalTrace(Channel::Enum channel, Channel::Enum allowedChannel, const char* message);
 void WriteToLogFile(const char* message);
 

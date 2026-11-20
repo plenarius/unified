@@ -5,11 +5,22 @@
 #include "Log/Json.hpp"
 
 #include <algorithm>
+#include <cerrno>
 #include <charconv>
+#include <climits>
+#include <condition_variable>
+#include <deque>
+#include <csignal>
 #include <cstring>
 #include <mutex>
 #include <thread>
 #include <unordered_map>
+
+#include <fcntl.h>
+#include <poll.h>
+#include <pthread.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 #include "External/rang/rang.hpp"
 
@@ -88,7 +99,6 @@ static Format s_Format = Format::Text;
 static Format s_FileFormat = Format::Text;
 static Json::Options s_JsonOptions;
 static std::mutex s_SinkMutex;
-static FILE* s_File;
 
 void SetLogFile(const std::string& logfilepath)
 {
@@ -259,28 +269,88 @@ void EncodeJson(std::string& out, const JsonRecord& record)
     }
 }
 
+// Writes all of data, waiting out EINTR and a non-blocking fd that is full. False on any other error.
+bool WriteAll(int fd, const char* data, size_t size)
+{
+    while (size)
+    {
+        const ssize_t written = ::write(fd, data, size);
+        if (written > 0)
+        {
+            data += written;
+            size -= static_cast<size_t>(written);
+        }
+        else if (written < 0 && errno == EAGAIN)
+        {
+            pollfd pfd = { fd, POLLOUT, 0 };
+            ::poll(&pfd, 1, -1);
+        }
+        else if (written == 0 || errno != EINTR)
+            return false;
+    }
+    return true;
+}
+
+// Writes whole lines. On a pipe or socket each write(2) is at most PIPE_BUF bytes and ends on a newline, so
+// another writer of the same pipe can never land inside one of our lines; a longer line is written alone.
+void WriteLines(int fd, bool chunked, std::string_view data)
+{
+    while (!data.empty())
+    {
+        size_t size = data.size();
+        if (chunked && size > PIPE_BUF)
+        {
+            size = data.rfind('\n', PIPE_BUF - 1);
+            if (size == std::string_view::npos)
+                size = std::min(data.find('\n'), data.size() - 1);
+            size++;
+        }
+        if (!WriteAll(fd, data.data(), size))
+            return;
+        data.remove_prefix(size);
+    }
+}
+
+bool IsPipe(int fd)
+{
+    struct stat st = {};
+    return ::fstat(fd, &st) == 0 && (S_ISFIFO(st.st_mode) || S_ISSOCK(st.st_mode));
+}
+
+int s_FileFd = -1;
+bool s_FileChunked;
+
 void OpenLogFile()
 {
-    s_File = std::fopen(LogFilePath().c_str(), "a+");
-    if (!s_File)
+    s_FileFd = ::open(LogFilePath().c_str(), O_WRONLY | O_APPEND | O_CREAT | O_CLOEXEC, 0666);
+    if (s_FileFd < 0)
         return;
+    s_FileChunked = IsPipe(s_FileFd);
 
     if (s_FileFormat == Format::Json)
     {
         std::string banner;
         EncodeJson(banner, { Channel::SEV_INFO, nullptr, nullptr, 0, "NWNX secondary log file opened", {}, nullptr, false });
         banner += '\n';
-        std::fwrite(banner.data(), 1, banner.size(), s_File);
+        WriteLines(s_FileFd, s_FileChunked, banner);
         return;
     }
-    std::fprintf(s_File,
+    WriteLines(s_FileFd, s_FileChunked,
         "=====================================================================\n"
         "       NWNX secondary log file. This log file may be incomplete!     \n"
         " Please attach stdout output instead of this file to any bug reports.\n"
         "=====================================================================\n");
 }
 
-void WriteText(Channel::Enum channel, const char* message)
+void WriteFile(std::string_view lines)
+{
+    if (s_FileFd < 0)
+        OpenLogFile();
+    if (s_FileFd >= 0)
+        WriteLines(s_FileFd, s_FileChunked, lines);
+}
+
+void WriteText(Channel::Enum channel, std::string_view message)
 {
     switch (channel)
     {
@@ -294,43 +364,359 @@ void WriteText(Channel::Enum channel, const char* message)
     std::cout << message << rang::style::reset << rang::fg::reset  << std::endl;
 }
 
-// Writes the finished lines to the given sinks. The text line stops at an embedded NUL, as it always has;
-// the JSON line ends with a newline.
-void WriteSinks(Channel::Enum channel, uint8_t sinks, const char* text, const std::string& json)
+// The bytes WriteText would send: rang's codes when it would colour std::cout.
+struct TextColors
 {
-    std::unique_lock<std::mutex> lock(s_SinkMutex, std::defer_lock);
-    // A crashing thread may already hold the lock: FATAL records wait for it only so long.
-    if (channel == Channel::SEV_FATAL)
+    std::string_view on;
+    std::string_view off;
+};
+TextColors GetTextColors(Channel::Enum channel)
+{
+    const rang::control mode = rang::rang_implementation::controlMode();
+    if (mode != rang::control::Force && (mode != rang::control::Auto || !rang::rang_implementation::supportsColor() ||
+                                          !rang::rang_implementation::isTerminal(std::cout.rdbuf())))
+        return {};
+    constexpr std::string_view off = "\033[0m\033[39m";
+    switch (channel)
     {
-        for (int i = 0; i < 1000 && !lock.try_lock(); i++)
-            std::this_thread::yield();
+        case Channel::SEV_DEBUG:   return { "\033[36m\033[2m", off };
+        case Channel::SEV_INFO:    return { "\033[37m", off };
+        case Channel::SEV_WARNING: return { "\033[33m", off };
+        case Channel::SEV_ERROR:   return { "\033[31m", off };
+        case Channel::SEV_FATAL:   return { "\033[31m\033[1m", off };
+        default:                   return { "", off };
     }
-    else
-        lock.lock();
+}
 
+// Lines per sink, each with its newline, for writes on the calling thread.
+struct Batch
+{
+    std::string out;
+    std::string file;
+
+    void Clear()
+    {
+        // Keep the capacity for the next batch, unless a burst made it large.
+        for (std::string* lines : { &out, &file })
+        {
+            if (lines->capacity() > 1024 * 1024)
+                std::string().swap(*lines);
+            else
+                lines->clear();
+        }
+    }
+};
+
+// What one record adds to a batch.
+struct Lines
+{
+    uint8_t sinks;
+    std::string_view text; // without newline
+    std::string_view json; // with newline
+    TextColors colors;
+
+    size_t OutSize() const
+    {
+        if (sinks & StdoutText)
+            return colors.on.size() + text.size() + colors.off.size() + 1;
+        return sinks & StdoutJson ? json.size() : 0;
+    }
+    size_t FileSize() const
+    {
+        if (sinks & FileText)
+            return text.size() + 1;
+        return sinks & FileJson ? json.size() : 0;
+    }
+
+    void AppendOut(std::string& out) const
+    {
+        if (sinks & StdoutText)
+        {
+            out += colors.on;
+            out += text;
+            out += colors.off;
+            out += '\n';
+        }
+        else if (sinks & StdoutJson)
+            out += json;
+    }
+    void AppendFile(std::string& file) const
+    {
+        if (sinks & FileText)
+        {
+            file += text;
+            file += '\n';
+        }
+        else if (sinks & FileJson)
+            file += json;
+    }
+    void AppendTo(Batch& batch) const
+    {
+        AppendOut(batch.out);
+        AppendFile(batch.file);
+    }
+};
+
+// The writer takes one block at a time, so room comes back as each is written, not after the whole queue.
+constexpr size_t s_BlockBytes = 64 * 1024;
+
+// The writer thread and its queue. Guarded by s_SinkMutex, except where noted.
+struct AsyncWriter
+{
+    AsyncOptions options;
+    std::thread thread;
+    std::condition_variable wake;     // to the writer: urgent lines, a flush or stop
+    std::condition_variable progress; // to callers: room in the queue, or a block written
+    // Per sink, blocks of up to s_BlockBytes that hold whole lines, so each write(2) keeps lines whole.
+    std::deque<std::string> out;
+    std::deque<std::string> file;
+    std::vector<std::string> spare;   // written blocks, kept for reuse
+    size_t bytes = 0;                 // queued, plus the block being written
+    uint64_t dropped = 0;             // since the last report
+    int outFd = -1;                   // the writer's dup of stdout; set while no writer runs
+    bool outChunked = false;
+    bool running = false;
+    bool stop = false;
+    bool urgent = false;
+    bool busy = false;                // writing a block outside the lock
+    bool draining = false;            // a caller waits to write the queue itself
+    bool direct = false;              // after EmergencyFlush: nothing is queued any more
+};
+
+// Never freed: plugins log during static destruction.
+AsyncWriter& Writer()
+{
+    static auto* s_writer = new AsyncWriter();
+    return *s_writer;
+}
+
+thread_local bool t_IsWriter;
+
+// The block to append size bytes to: a new one when the last has no room, so a line never spans two.
+std::string& Tail(std::deque<std::string>& blocks, size_t size)
+{
+    AsyncWriter& w = Writer();
+    if (blocks.empty() || (!blocks.back().empty() && blocks.back().size() + size > s_BlockBytes))
+    {
+        if (w.spare.empty())
+            blocks.emplace_back().reserve(s_BlockBytes);
+        else
+        {
+            blocks.push_back(std::move(w.spare.back()));
+            w.spare.pop_back();
+        }
+    }
+    return blocks.back();
+}
+
+void Recycle(std::string&& block)
+{
+    AsyncWriter& w = Writer();
+    // Up to 1 MiB stays for bursts; a line longer than a block got a block of its own size.
+    if (w.spare.size() < 16 && block.capacity() <= s_BlockBytes * 2)
+    {
+        block.clear();
+        w.spare.push_back(std::move(block));
+    }
+}
+
+void WriteBatch(const Batch& batch)
+{
+    AsyncWriter& w = Writer();
+    if (!batch.out.empty())
+        WriteLines(w.outFd, w.outChunked, batch.out);
+    if (!batch.file.empty())
+        WriteFile(batch.file);
+}
+
+// The writing done on the calling thread when there is no writer: std::cout for stdout, so lines keep their
+// order with other std::cout users.
+void WriteSync(Channel::Enum channel, const Lines& lines)
+{
+    if (lines.sinks & StdoutText)
+        WriteText(channel, lines.text);
+    else if (lines.sinks & StdoutJson)
+    {
+        std::cout.write(lines.json.data(), static_cast<std::streamsize>(lines.json.size()));
+        std::cout.flush();
+    }
+
+    if (lines.sinks & (FileText | FileJson))
+    {
+        thread_local Batch t_file;
+        Lines{ static_cast<uint8_t>(lines.sinks & (FileText | FileJson)), lines.text, lines.json, {} }.AppendTo(t_file);
+        WriteFile(t_file.file);
+        t_file.Clear();
+    }
+}
+
+// Writes the queue on the calling thread, after the block the writer has in hand. FATAL and the crash handler
+// wait for that only so long; without the lock at all this is a best effort, as the thread holding it is most
+// likely the one crashing.
+void Drain(std::unique_lock<std::mutex>& lock, bool bounded)
+{
+    AsyncWriter& w = Writer();
+    if (lock.owns_lock())
+    {
+        // The writer stops taking blocks while this waits.
+        w.draining = true;
+        if (bounded)
+            w.progress.wait_for(lock, std::chrono::seconds(1), [&w] { return !w.busy; });
+        else
+            w.progress.wait(lock, [&w] { return !w.busy; });
+        w.draining = false;
+    }
+    for (auto& block : w.out)
+        WriteLines(w.outFd, w.outChunked, block);
+    for (auto& block : w.file)
+        WriteFile(block);
+    for (auto* blocks : { &w.out, &w.file })
+    {
+        for (auto& block : *blocks)
+            Recycle(std::move(block));
+        blocks->clear();
+    }
+    w.bytes = 0;
+}
+
+// Writes the lines on the calling thread through the writer's fds, after what is queued if the lock is held.
+void WriteDirect(std::unique_lock<std::mutex>& lock, const Lines& lines)
+{
+    if (lock.owns_lock())
+        Drain(lock, true);
+    thread_local Batch t_batch;
+    lines.AppendTo(t_batch);
+    WriteBatch(t_batch);
+    t_batch.Clear();
+}
+
+void LockSinks(std::unique_lock<std::mutex>& lock, bool bounded)
+{
+    // A crashing thread may already hold the lock: FATAL records and the crash handler wait for it only so long.
+    if (!bounded)
+        return lock.lock();
+    for (int i = 0; i < 1000 && !lock.try_lock(); i++)
+        std::this_thread::yield();
+}
+
+// Hands a record's finished lines to the sinks: text without its newline (cut at an embedded NUL, as it always
+// has been), json with it.
+void Deliver(Channel::Enum channel, uint8_t sinks, std::string_view text, std::string_view json)
+{
     if (sinks & StdoutText)
     {
-        INSTR_MESSAGE(text, strlen(text));
-        WriteText(channel, text);
+        INSTR_MESSAGE(text.data(), text.size());
     }
     else if (sinks & StdoutJson)
     {
         INSTR_MESSAGE(json.data(), json.size() - 1);
-        std::cout.write(json.data(), static_cast<std::streamsize>(json.size()));
-        std::cout.flush();
     }
 
-    if (!(sinks & (FileText | FileJson)))
-        return;
-    if (!s_File)
-        OpenLogFile();
-    if (!s_File)
-        return;
-    if (sinks & FileText)
-        std::fprintf(s_File, "%s\n", text);
-    else
-        std::fwrite(json.data(), 1, json.size(), s_File);
-    std::fflush(s_File);
+    AsyncWriter& w = Writer();
+    const Lines lines = { sinks, text, json, GetTextColors(channel) };
+    if (t_IsWriter)
+    {
+        // The writer's own records (dropped counts): it owns the fds, and must not wait on its own queue.
+        Batch batch;
+        lines.AppendTo(batch);
+        return WriteBatch(batch);
+    }
+
+    std::unique_lock<std::mutex> lock(s_SinkMutex, std::defer_lock);
+    LockSinks(lock, channel == Channel::SEV_FATAL);
+    if (!w.running)
+        return WriteSync(channel, lines);
+
+    // FATAL drains the queue first, so it comes out after everything logged before it.
+    if (channel == Channel::SEV_FATAL || w.direct || !lock.owns_lock())
+        return WriteDirect(lock, lines);
+
+    const bool important = channel <= Channel::SEV_WARNING;
+    const size_t outSize = lines.OutSize();
+    const size_t fileSize = lines.FileSize();
+    const size_t size = outSize + fileSize;
+    if (w.bytes && w.bytes + size > w.options.maxBytes)
+    {
+        if (!important && w.options.dropWhenFull)
+        {
+            w.dropped++;
+            return;
+        }
+        w.urgent = true;
+        w.wake.notify_one();
+        w.progress.wait(lock, [&w, size]
+        {
+            return !w.running || w.direct || !w.bytes || w.bytes + size <= w.options.maxBytes;
+        });
+        if (!w.running)
+            return WriteSync(channel, lines);
+        if (w.direct)
+            return WriteDirect(lock, lines);
+    }
+
+    if (outSize)
+        lines.AppendOut(Tail(w.out, outSize));
+    if (fileSize)
+        lines.AppendFile(Tail(w.file, fileSize));
+    w.bytes += size;
+    const bool wake = !w.urgent && (important || w.bytes > s_BlockBytes);
+    w.urgent |= wake;
+    lock.unlock();
+    if (wake)
+        w.wake.notify_one();
+}
+
+void ReportDropped(uint64_t dropped);
+
+void WriterThread()
+{
+    t_IsWriter = true;
+    pthread_setname_np(pthread_self(), "nwnx-log");
+    AsyncWriter& w = Writer();
+    const auto interval = std::chrono::milliseconds(w.options.flushMs);
+
+    std::unique_lock<std::mutex> lock(s_SinkMutex);
+    bool fileFirst = false;
+    for (;;)
+    {
+        w.wake.wait_for(lock, interval, [&w] { return w.urgent || w.stop; });
+        w.urgent = false;
+        while ((!w.out.empty() || !w.file.empty() || w.dropped) && !w.draining)
+        {
+            if (!w.out.empty() || !w.file.empty())
+            {
+                // Take turns, so a stalled stdout does not hold the file back for good.
+                fileFirst = !fileFirst;
+                const bool toFile = w.out.empty() || (fileFirst && !w.file.empty());
+                auto& blocks = toFile ? w.file : w.out;
+                std::string block = std::move(blocks.front());
+                blocks.pop_front();
+                w.busy = true;
+                lock.unlock();
+
+                if (toFile)
+                    WriteFile(block);
+                else
+                    WriteLines(w.outFd, w.outChunked, block);
+
+                lock.lock();
+                w.busy = false;
+                w.bytes -= block.size();
+                Recycle(std::move(block));
+                w.progress.notify_all();
+            }
+            if (const uint64_t dropped = std::exchange(w.dropped, 0))
+            {
+                lock.unlock();
+                ReportDropped(dropped);
+                lock.lock();
+            }
+        }
+        if (w.stop)
+            break;
+    }
+    w.running = false;
+    w.progress.notify_all();
 }
 
 // Writes a message that has no prefix in text: InternalTrace and WriteToLogFile.
@@ -342,11 +728,86 @@ void WriteUnprefixed(Channel::Enum channel, uint8_t sinks, const char* message)
         EncodeJson(t_json, { channel, nullptr, nullptr, 0, message, {}, nullptr, false });
         t_json += '\n';
     }
-    WriteSinks(channel, sinks, message, t_json);
+    Deliver(channel, sinks, message, t_json);
     if (t_json.capacity() > 64 * 1024)
         std::string().swap(t_json);
 }
 
+}
+
+void StartAsync(const AsyncOptions& options)
+{
+    std::lock_guard<std::mutex> lock(s_SinkMutex);
+    AsyncWriter& w = Writer();
+    if (w.running || w.thread.joinable())
+        return;
+    w.outFd = ::fcntl(STDOUT_FILENO, F_DUPFD_CLOEXEC, 3);
+    if (w.outFd < 0)
+        return;
+    w.outChunked = IsPipe(w.outFd);
+    w.options = options;
+    w.options.flushMs = std::max(options.flushMs, 1u);
+    w.running = true;
+    w.stop = w.urgent = w.direct = false;
+
+    // Process signals (SIGINT, SIGTERM, ...) stay with the game's threads.
+    sigset_t all, previous;
+    sigfillset(&all);
+    for (int sig : { SIGSEGV, SIGBUS, SIGFPE, SIGILL, SIGABRT })
+        sigdelset(&all, sig);
+    pthread_sigmask(SIG_SETMASK, &all, &previous);
+    w.thread = std::thread(WriterThread);
+    pthread_sigmask(SIG_SETMASK, &previous, nullptr);
+
+    // exit() without NWNXCore::Shutdown must not lose the queue either.
+    static const bool s_atExit = std::atexit(Shutdown) == 0;
+    (void)s_atExit;
+}
+
+void Flush()
+{
+    AsyncWriter& w = Writer();
+    std::unique_lock<std::mutex> lock(s_SinkMutex);
+    if (!w.running || t_IsWriter)
+        return;
+    Drain(lock, false);
+}
+
+void Shutdown()
+{
+    AsyncWriter& w = Writer();
+    std::unique_lock<std::mutex> lock(s_SinkMutex);
+    if (!w.thread.joinable() || t_IsWriter)
+        return;
+    std::thread thread = std::move(w.thread);
+    w.stop = true;
+    w.wake.notify_one();
+    lock.unlock();
+    thread.join();
+
+    lock.lock();
+    ::close(w.outFd);
+    w.outFd = -1;
+}
+
+void EmergencyFlush()
+{
+    AsyncWriter& w = Writer();
+    std::unique_lock<std::mutex> lock(s_SinkMutex, std::defer_lock);
+    LockSinks(lock, true);
+    if (!w.running || w.direct)
+        return;
+    w.direct = true;
+    Drain(lock, true);
+}
+
+namespace {
+void ReportDropped(uint64_t dropped)
+{
+    Record record(Channel::SEV_WARNING, PLUGIN_NAME, __FILE__, __LINE__);
+    record.Stream() << "Dropped " << dropped << " log records: the log queue was full";
+    record.With("dropped", static_cast<int64_t>(dropped)).Write();
+}
 }
 
 void InternalTrace(Channel::Enum channel, Channel::Enum allowedChannel, const char* message)
@@ -572,7 +1033,7 @@ static void WriteRecord(Record::Buffers& buffers, Channel::Enum channel, const c
         EncodeJson(buffers.json, { channel, plugin, file, line, buffers.message, buffers.fields, &buffers.keys, buffers.fieldsTruncated });
         buffers.json += '\n';
     }
-    WriteSinks(channel, sinks, buffers.text.c_str(), buffers.json);
+    Deliver(channel, sinks, buffers.text.c_str(), buffers.json);
 }
 
 void Record::Write()

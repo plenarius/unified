@@ -63,3 +63,11 @@ add_sanitizers(LogThreads)
 target_link_libraries(LogThreads LogTestCore pthread)
 target_compile_definitions(LogThreads PRIVATE "-DPLUGIN_NAME=\"NWNX_LogThreads\"")
 add_test(NAME LogThreads COMMAND LogThreads)
+
+# ENABLE_EXPORTS lets the test's time() and clock_gettime() override the ones libc gives the logger.
+add_executable(LogAsync LogAsync.cpp)
+add_sanitizers(LogAsync)
+set_target_properties(LogAsync PROPERTIES ENABLE_EXPORTS ON)
+target_link_libraries(LogAsync LogTestCore pthread)
+target_compile_definitions(LogAsync PRIVATE "-DPLUGIN_NAME=\"NWNX_LogAsync\"")
+add_test(NAME LogAsync COMMAND LogAsync)
