@@ -49,6 +49,7 @@ public:
     // connection or one from a pool; no guarantees are made!
     //
     // This call is fully threadsafe.
+    // Only available with the default cpp_redis client (NWNX_REDIS_CLIENT).
     template <typename Ret>
     Ret WithConnection(std::function<Ret(cpp_redis::redis_client&)>);
 
@@ -83,6 +84,7 @@ private:
     Internal* m_internal;
 
     void Reconfigure();
+    void ConfigureModernClient();
     void RegisterWithNWScript();
     void HookSCORCO();
     void OnPubsub(const std::string& channel, const std::string& message);

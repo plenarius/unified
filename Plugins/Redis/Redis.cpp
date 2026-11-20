@@ -33,6 +33,8 @@ Redis::Redis(Services::ProxyServiceList* services)
 
 Redis::~Redis()
 {
+    if (m_internal->m_modern)
+        m_internal->m_modern->Stop();
     delete m_internal;
 }
 

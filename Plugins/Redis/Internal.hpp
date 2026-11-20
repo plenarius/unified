@@ -3,6 +3,8 @@
 #include <cpp_redis/cpp_redis>
 #include "Redis.hpp"
 #include "Pool.hpp"
+#include "ModernClient.hpp"
+#include <memory>
 #include <mutex>
 #include <sstream>
 
@@ -27,6 +29,11 @@ struct Internal {
 
     // Aaand the config
     Redis::Configuration m_config;
+
+    // Opt-in client (NWNX_REDIS_CLIENT=redis-plus-plus). When set, every
+    // command and the pubsub subscription go through it, and the cpp_redis
+    // pool and subscriber above stay unused.
+    std::unique_ptr<ModernClient> m_modern;
 };
 
 inline std::string RedisReplyTypeToString(const cpp_redis::reply::type& t)
