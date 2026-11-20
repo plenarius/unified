@@ -1,0 +1,867 @@
+## color=0 format=0
+D debug 0: std::string
+I info 42 3.142 ff %
+N notice left    |+7|-0002.50|0xbeef
+W warning bool=true char=Z 0.333333
+E error
+N absolute path
+I no directory here
+W trailing slash
+E empty file
+## color=0 format=1
+D [04:06:09] debug 1: std::string
+I [04:06:09] info 42 3.142 ff %
+N [04:06:09] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] warning bool=true char=Z 0.333333
+E [04:06:09] error
+N [04:06:09] absolute path
+I [04:06:09] no directory here
+W [04:06:09] trailing slash
+E [04:06:09] empty file
+## color=0 format=2
+D debug 2: std::string
+I info 42 3.142 ff %
+N notice left    |+7|-0002.50|0xbeef
+W warning bool=true char=Z 0.333333
+E error
+N absolute path
+I no directory here
+W trailing slash
+E empty file
+## color=0 format=3
+D [2024-03-05 04:06:09] debug 3: std::string
+I [2024-03-05 04:06:09] info 42 3.142 ff %
+N [2024-03-05 04:06:09] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] error
+N [2024-03-05 04:06:09] absolute path
+I [2024-03-05 04:06:09] no directory here
+W [2024-03-05 04:06:09] trailing slash
+E [2024-03-05 04:06:09] empty file
+## color=0 format=4
+D [NWNX_LogGolden] debug 4: std::string
+I [NWNX_LogGolden] info 42 3.142 ff %
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] error
+N [NWNX_Direct] absolute path
+I [NWNX_Direct] no directory here
+W [NWNX_Direct] trailing slash
+E [NWNX_Direct] empty file
+## color=0 format=5
+D [04:06:09] [NWNX_LogGolden] debug 5: std::string
+I [04:06:09] [NWNX_LogGolden] info 42 3.142 ff %
+N [04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [04:06:09] [NWNX_LogGolden] error
+N [04:06:09] [NWNX_Direct] absolute path
+I [04:06:09] [NWNX_Direct] no directory here
+W [04:06:09] [NWNX_Direct] trailing slash
+E [04:06:09] [NWNX_Direct] empty file
+## color=0 format=6
+D [NWNX_LogGolden] debug 6: std::string
+I [NWNX_LogGolden] info 42 3.142 ff %
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] error
+N [NWNX_Direct] absolute path
+I [NWNX_Direct] no directory here
+W [NWNX_Direct] trailing slash
+E [NWNX_Direct] empty file
+## color=0 format=7
+D [2024-03-05 04:06:09] [NWNX_LogGolden] debug 7: std::string
+I [2024-03-05 04:06:09] [NWNX_LogGolden] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [NWNX_LogGolden] error
+N [2024-03-05 04:06:09] [NWNX_Direct] absolute path
+I [2024-03-05 04:06:09] [NWNX_Direct] no directory here
+W [2024-03-05 04:06:09] [NWNX_Direct] trailing slash
+E [2024-03-05 04:06:09] [NWNX_Direct] empty file
+## color=0 format=8
+D [Golden.cpp:1002] debug 8: std::string
+I [Golden.cpp:1003] info 42 3.142 ff %
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [Golden.cpp:1006] error
+N [Direct.cpp:12] absolute path
+I [Plain.cpp:0] no directory here
+W [:-1] trailing slash
+E [:99999] empty file
+## color=0 format=9
+D [04:06:09] [Golden.cpp:1002] debug 9: std::string
+I [04:06:09] [Golden.cpp:1003] info 42 3.142 ff %
+N [04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [04:06:09] [Golden.cpp:1006] error
+N [04:06:09] [Direct.cpp:12] absolute path
+I [04:06:09] [Plain.cpp:0] no directory here
+W [04:06:09] [:-1] trailing slash
+E [04:06:09] [:99999] empty file
+## color=0 format=10
+D [Golden.cpp:1002] debug 10: std::string
+I [Golden.cpp:1003] info 42 3.142 ff %
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [Golden.cpp:1006] error
+N [Direct.cpp:12] absolute path
+I [Plain.cpp:0] no directory here
+W [:-1] trailing slash
+E [:99999] empty file
+## color=0 format=11
+D [2024-03-05 04:06:09] [Golden.cpp:1002] debug 11: std::string
+I [2024-03-05 04:06:09] [Golden.cpp:1003] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [Golden.cpp:1006] error
+N [2024-03-05 04:06:09] [Direct.cpp:12] absolute path
+I [2024-03-05 04:06:09] [Plain.cpp:0] no directory here
+W [2024-03-05 04:06:09] [:-1] trailing slash
+E [2024-03-05 04:06:09] [:99999] empty file
+## color=0 format=12
+D [NWNX_LogGolden] [Golden.cpp:1002] debug 12: std::string
+I [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] [Golden.cpp:1006] error
+N [NWNX_Direct] [Direct.cpp:12] absolute path
+I [NWNX_Direct] [Plain.cpp:0] no directory here
+W [NWNX_Direct] [:-1] trailing slash
+E [NWNX_Direct] [:99999] empty file
+## color=0 format=13
+D [04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 13: std::string
+I [04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error
+N [04:06:09] [NWNX_Direct] [Direct.cpp:12] absolute path
+I [04:06:09] [NWNX_Direct] [Plain.cpp:0] no directory here
+W [04:06:09] [NWNX_Direct] [:-1] trailing slash
+E [04:06:09] [NWNX_Direct] [:99999] empty file
+## color=0 format=14
+D [NWNX_LogGolden] [Golden.cpp:1002] debug 14: std::string
+I [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] [Golden.cpp:1006] error
+N [NWNX_Direct] [Direct.cpp:12] absolute path
+I [NWNX_Direct] [Plain.cpp:0] no directory here
+W [NWNX_Direct] [:-1] trailing slash
+E [NWNX_Direct] [:99999] empty file
+## color=0 format=15
+D [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 15: std::string
+I [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error
+N [2024-03-05 04:06:09] [NWNX_Direct] [Direct.cpp:12] absolute path
+I [2024-03-05 04:06:09] [NWNX_Direct] [Plain.cpp:0] no directory here
+W [2024-03-05 04:06:09] [NWNX_Direct] [:-1] trailing slash
+E [2024-03-05 04:06:09] [NWNX_Direct] [:99999] empty file
+## color=1 format=0
+D debug 0: std::string
+I info 42 3.142 ff %
+N notice left    |+7|-0002.50|0xbeef
+W warning bool=true char=Z 0.333333
+E error
+N absolute path
+I no directory here
+W trailing slash
+E empty file
+## color=1 format=1
+D [04:06:09] debug 1: std::string
+I [04:06:09] info 42 3.142 ff %
+N [04:06:09] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] warning bool=true char=Z 0.333333
+E [04:06:09] error
+N [04:06:09] absolute path
+I [04:06:09] no directory here
+W [04:06:09] trailing slash
+E [04:06:09] empty file
+## color=1 format=2
+D debug 2: std::string
+I info 42 3.142 ff %
+N notice left    |+7|-0002.50|0xbeef
+W warning bool=true char=Z 0.333333
+E error
+N absolute path
+I no directory here
+W trailing slash
+E empty file
+## color=1 format=3
+D [2024-03-05 04:06:09] debug 3: std::string
+I [2024-03-05 04:06:09] info 42 3.142 ff %
+N [2024-03-05 04:06:09] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] error
+N [2024-03-05 04:06:09] absolute path
+I [2024-03-05 04:06:09] no directory here
+W [2024-03-05 04:06:09] trailing slash
+E [2024-03-05 04:06:09] empty file
+## color=1 format=4
+D [NWNX_LogGolden] debug 4: std::string
+I [NWNX_LogGolden] info 42 3.142 ff %
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] error
+N [NWNX_Direct] absolute path
+I [NWNX_Direct] no directory here
+W [NWNX_Direct] trailing slash
+E [NWNX_Direct] empty file
+## color=1 format=5
+D [04:06:09] [NWNX_LogGolden] debug 5: std::string
+I [04:06:09] [NWNX_LogGolden] info 42 3.142 ff %
+N [04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [04:06:09] [NWNX_LogGolden] error
+N [04:06:09] [NWNX_Direct] absolute path
+I [04:06:09] [NWNX_Direct] no directory here
+W [04:06:09] [NWNX_Direct] trailing slash
+E [04:06:09] [NWNX_Direct] empty file
+## color=1 format=6
+D [NWNX_LogGolden] debug 6: std::string
+I [NWNX_LogGolden] info 42 3.142 ff %
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] error
+N [NWNX_Direct] absolute path
+I [NWNX_Direct] no directory here
+W [NWNX_Direct] trailing slash
+E [NWNX_Direct] empty file
+## color=1 format=7
+D [2024-03-05 04:06:09] [NWNX_LogGolden] debug 7: std::string
+I [2024-03-05 04:06:09] [NWNX_LogGolden] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [NWNX_LogGolden] error
+N [2024-03-05 04:06:09] [NWNX_Direct] absolute path
+I [2024-03-05 04:06:09] [NWNX_Direct] no directory here
+W [2024-03-05 04:06:09] [NWNX_Direct] trailing slash
+E [2024-03-05 04:06:09] [NWNX_Direct] empty file
+## color=1 format=8
+D [Golden.cpp:1002] debug 8: std::string
+I [Golden.cpp:1003] info 42 3.142 ff %
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [Golden.cpp:1006] error
+N [Direct.cpp:12] absolute path
+I [Plain.cpp:0] no directory here
+W [:-1] trailing slash
+E [:99999] empty file
+## color=1 format=9
+D [04:06:09] [Golden.cpp:1002] debug 9: std::string
+I [04:06:09] [Golden.cpp:1003] info 42 3.142 ff %
+N [04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [04:06:09] [Golden.cpp:1006] error
+N [04:06:09] [Direct.cpp:12] absolute path
+I [04:06:09] [Plain.cpp:0] no directory here
+W [04:06:09] [:-1] trailing slash
+E [04:06:09] [:99999] empty file
+## color=1 format=10
+D [Golden.cpp:1002] debug 10: std::string
+I [Golden.cpp:1003] info 42 3.142 ff %
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [Golden.cpp:1006] error
+N [Direct.cpp:12] absolute path
+I [Plain.cpp:0] no directory here
+W [:-1] trailing slash
+E [:99999] empty file
+## color=1 format=11
+D [2024-03-05 04:06:09] [Golden.cpp:1002] debug 11: std::string
+I [2024-03-05 04:06:09] [Golden.cpp:1003] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [Golden.cpp:1006] error
+N [2024-03-05 04:06:09] [Direct.cpp:12] absolute path
+I [2024-03-05 04:06:09] [Plain.cpp:0] no directory here
+W [2024-03-05 04:06:09] [:-1] trailing slash
+E [2024-03-05 04:06:09] [:99999] empty file
+## color=1 format=12
+D [NWNX_LogGolden] [Golden.cpp:1002] debug 12: std::string
+I [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] [Golden.cpp:1006] error
+N [NWNX_Direct] [Direct.cpp:12] absolute path
+I [NWNX_Direct] [Plain.cpp:0] no directory here
+W [NWNX_Direct] [:-1] trailing slash
+E [NWNX_Direct] [:99999] empty file
+## color=1 format=13
+D [04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 13: std::string
+I [04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error
+N [04:06:09] [NWNX_Direct] [Direct.cpp:12] absolute path
+I [04:06:09] [NWNX_Direct] [Plain.cpp:0] no directory here
+W [04:06:09] [NWNX_Direct] [:-1] trailing slash
+E [04:06:09] [NWNX_Direct] [:99999] empty file
+## color=1 format=14
+D [NWNX_LogGolden] [Golden.cpp:1002] debug 14: std::string
+I [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] [Golden.cpp:1006] error
+N [NWNX_Direct] [Direct.cpp:12] absolute path
+I [NWNX_Direct] [Plain.cpp:0] no directory here
+W [NWNX_Direct] [:-1] trailing slash
+E [NWNX_Direct] [:99999] empty file
+## color=1 format=15
+D [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 15: std::string
+I [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error
+N [2024-03-05 04:06:09] [NWNX_Direct] [Direct.cpp:12] absolute path
+I [2024-03-05 04:06:09] [NWNX_Direct] [Plain.cpp:0] no directory here
+W [2024-03-05 04:06:09] [NWNX_Direct] [:-1] trailing slash
+E [2024-03-05 04:06:09] [NWNX_Direct] [:99999] empty file
+## color=2 format=0
+D debug 0: std::string
+I info 42 3.142 ff %
+N notice left    |+7|-0002.50|0xbeef
+W warning bool=true char=Z 0.333333
+E error
+N absolute path
+I no directory here
+W trailing slash
+E empty file
+## color=2 format=1
+D [04:06:09] debug 1: std::string
+I [04:06:09] info 42 3.142 ff %
+N [04:06:09] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] warning bool=true char=Z 0.333333
+E [04:06:09] error
+N [04:06:09] absolute path
+I [04:06:09] no directory here
+W [04:06:09] trailing slash
+E [04:06:09] empty file
+## color=2 format=2
+D debug 2: std::string
+I info 42 3.142 ff %
+N notice left    |+7|-0002.50|0xbeef
+W warning bool=true char=Z 0.333333
+E error
+N absolute path
+I no directory here
+W trailing slash
+E empty file
+## color=2 format=3
+D [2024-03-05 04:06:09] debug 3: std::string
+I [2024-03-05 04:06:09] info 42 3.142 ff %
+N [2024-03-05 04:06:09] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] error
+N [2024-03-05 04:06:09] absolute path
+I [2024-03-05 04:06:09] no directory here
+W [2024-03-05 04:06:09] trailing slash
+E [2024-03-05 04:06:09] empty file
+## color=2 format=4
+D [NWNX_LogGolden] debug 4: std::string
+I [NWNX_LogGolden] info 42 3.142 ff %
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] error
+N [NWNX_Direct] absolute path
+I [NWNX_Direct] no directory here
+W [NWNX_Direct] trailing slash
+E [NWNX_Direct] empty file
+## color=2 format=5
+D [04:06:09] [NWNX_LogGolden] debug 5: std::string
+I [04:06:09] [NWNX_LogGolden] info 42 3.142 ff %
+N [04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [04:06:09] [NWNX_LogGolden] error
+N [04:06:09] [NWNX_Direct] absolute path
+I [04:06:09] [NWNX_Direct] no directory here
+W [04:06:09] [NWNX_Direct] trailing slash
+E [04:06:09] [NWNX_Direct] empty file
+## color=2 format=6
+D [NWNX_LogGolden] debug 6: std::string
+I [NWNX_LogGolden] info 42 3.142 ff %
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] error
+N [NWNX_Direct] absolute path
+I [NWNX_Direct] no directory here
+W [NWNX_Direct] trailing slash
+E [NWNX_Direct] empty file
+## color=2 format=7
+D [2024-03-05 04:06:09] [NWNX_LogGolden] debug 7: std::string
+I [2024-03-05 04:06:09] [NWNX_LogGolden] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [NWNX_LogGolden] error
+N [2024-03-05 04:06:09] [NWNX_Direct] absolute path
+I [2024-03-05 04:06:09] [NWNX_Direct] no directory here
+W [2024-03-05 04:06:09] [NWNX_Direct] trailing slash
+E [2024-03-05 04:06:09] [NWNX_Direct] empty file
+## color=2 format=8
+D [Golden.cpp:1002] debug 8: std::string
+I [Golden.cpp:1003] info 42 3.142 ff %
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [Golden.cpp:1006] error
+N [Direct.cpp:12] absolute path
+I [Plain.cpp:0] no directory here
+W [:-1] trailing slash
+E [:99999] empty file
+## color=2 format=9
+D [04:06:09] [Golden.cpp:1002] debug 9: std::string
+I [04:06:09] [Golden.cpp:1003] info 42 3.142 ff %
+N [04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [04:06:09] [Golden.cpp:1006] error
+N [04:06:09] [Direct.cpp:12] absolute path
+I [04:06:09] [Plain.cpp:0] no directory here
+W [04:06:09] [:-1] trailing slash
+E [04:06:09] [:99999] empty file
+## color=2 format=10
+D [Golden.cpp:1002] debug 10: std::string
+I [Golden.cpp:1003] info 42 3.142 ff %
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [Golden.cpp:1006] error
+N [Direct.cpp:12] absolute path
+I [Plain.cpp:0] no directory here
+W [:-1] trailing slash
+E [:99999] empty file
+## color=2 format=11
+D [2024-03-05 04:06:09] [Golden.cpp:1002] debug 11: std::string
+I [2024-03-05 04:06:09] [Golden.cpp:1003] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [Golden.cpp:1006] error
+N [2024-03-05 04:06:09] [Direct.cpp:12] absolute path
+I [2024-03-05 04:06:09] [Plain.cpp:0] no directory here
+W [2024-03-05 04:06:09] [:-1] trailing slash
+E [2024-03-05 04:06:09] [:99999] empty file
+## color=2 format=12
+D [NWNX_LogGolden] [Golden.cpp:1002] debug 12: std::string
+I [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] [Golden.cpp:1006] error
+N [NWNX_Direct] [Direct.cpp:12] absolute path
+I [NWNX_Direct] [Plain.cpp:0] no directory here
+W [NWNX_Direct] [:-1] trailing slash
+E [NWNX_Direct] [:99999] empty file
+## color=2 format=13
+D [04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 13: std::string
+I [04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error
+N [04:06:09] [NWNX_Direct] [Direct.cpp:12] absolute path
+I [04:06:09] [NWNX_Direct] [Plain.cpp:0] no directory here
+W [04:06:09] [NWNX_Direct] [:-1] trailing slash
+E [04:06:09] [NWNX_Direct] [:99999] empty file
+## color=2 format=14
+D [NWNX_LogGolden] [Golden.cpp:1002] debug 14: std::string
+I [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] [Golden.cpp:1006] error
+N [NWNX_Direct] [Direct.cpp:12] absolute path
+I [NWNX_Direct] [Plain.cpp:0] no directory here
+W [NWNX_Direct] [:-1] trailing slash
+E [NWNX_Direct] [:99999] empty file
+## color=2 format=15
+D [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 15: std::string
+I [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error
+N [2024-03-05 04:06:09] [NWNX_Direct] [Direct.cpp:12] absolute path
+I [2024-03-05 04:06:09] [NWNX_Direct] [Plain.cpp:0] no directory here
+W [2024-03-05 04:06:09] [NWNX_Direct] [:-1] trailing slash
+E [2024-03-05 04:06:09] [NWNX_Direct] [:99999] empty file
+## color=3 format=0
+[36m[2mD debug 0: std::string[0m[39m
+[37mI info 42 3.142 ff %[0m[39m
+N notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW warning bool=true char=Z 0.333333[0m[39m
+[31mE error[0m[39m
+N absolute path[0m[39m
+[37mI no directory here[0m[39m
+[33mW trailing slash[0m[39m
+[31mE empty file[0m[39m
+## color=3 format=1
+[36m[2mD [04:06:09] debug 1: std::string[0m[39m
+[37mI [04:06:09] info 42 3.142 ff %[0m[39m
+N [04:06:09] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [04:06:09] warning bool=true char=Z 0.333333[0m[39m
+[31mE [04:06:09] error[0m[39m
+N [04:06:09] absolute path[0m[39m
+[37mI [04:06:09] no directory here[0m[39m
+[33mW [04:06:09] trailing slash[0m[39m
+[31mE [04:06:09] empty file[0m[39m
+## color=3 format=2
+[36m[2mD debug 2: std::string[0m[39m
+[37mI info 42 3.142 ff %[0m[39m
+N notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW warning bool=true char=Z 0.333333[0m[39m
+[31mE error[0m[39m
+N absolute path[0m[39m
+[37mI no directory here[0m[39m
+[33mW trailing slash[0m[39m
+[31mE empty file[0m[39m
+## color=3 format=3
+[36m[2mD [2024-03-05 04:06:09] debug 3: std::string[0m[39m
+[37mI [2024-03-05 04:06:09] info 42 3.142 ff %[0m[39m
+N [2024-03-05 04:06:09] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [2024-03-05 04:06:09] warning bool=true char=Z 0.333333[0m[39m
+[31mE [2024-03-05 04:06:09] error[0m[39m
+N [2024-03-05 04:06:09] absolute path[0m[39m
+[37mI [2024-03-05 04:06:09] no directory here[0m[39m
+[33mW [2024-03-05 04:06:09] trailing slash[0m[39m
+[31mE [2024-03-05 04:06:09] empty file[0m[39m
+## color=3 format=4
+[36m[2mD [NWNX_LogGolden] debug 4: std::string[0m[39m
+[37mI [NWNX_LogGolden] info 42 3.142 ff %[0m[39m
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [NWNX_LogGolden] warning bool=true char=Z 0.333333[0m[39m
+[31mE [NWNX_LogGolden] error[0m[39m
+N [NWNX_Direct] absolute path[0m[39m
+[37mI [NWNX_Direct] no directory here[0m[39m
+[33mW [NWNX_Direct] trailing slash[0m[39m
+[31mE [NWNX_Direct] empty file[0m[39m
+## color=3 format=5
+[36m[2mD [04:06:09] [NWNX_LogGolden] debug 5: std::string[0m[39m
+[37mI [04:06:09] [NWNX_LogGolden] info 42 3.142 ff %[0m[39m
+N [04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333[0m[39m
+[31mE [04:06:09] [NWNX_LogGolden] error[0m[39m
+N [04:06:09] [NWNX_Direct] absolute path[0m[39m
+[37mI [04:06:09] [NWNX_Direct] no directory here[0m[39m
+[33mW [04:06:09] [NWNX_Direct] trailing slash[0m[39m
+[31mE [04:06:09] [NWNX_Direct] empty file[0m[39m
+## color=3 format=6
+[36m[2mD [NWNX_LogGolden] debug 6: std::string[0m[39m
+[37mI [NWNX_LogGolden] info 42 3.142 ff %[0m[39m
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [NWNX_LogGolden] warning bool=true char=Z 0.333333[0m[39m
+[31mE [NWNX_LogGolden] error[0m[39m
+N [NWNX_Direct] absolute path[0m[39m
+[37mI [NWNX_Direct] no directory here[0m[39m
+[33mW [NWNX_Direct] trailing slash[0m[39m
+[31mE [NWNX_Direct] empty file[0m[39m
+## color=3 format=7
+[36m[2mD [2024-03-05 04:06:09] [NWNX_LogGolden] debug 7: std::string[0m[39m
+[37mI [2024-03-05 04:06:09] [NWNX_LogGolden] info 42 3.142 ff %[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [2024-03-05 04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333[0m[39m
+[31mE [2024-03-05 04:06:09] [NWNX_LogGolden] error[0m[39m
+N [2024-03-05 04:06:09] [NWNX_Direct] absolute path[0m[39m
+[37mI [2024-03-05 04:06:09] [NWNX_Direct] no directory here[0m[39m
+[33mW [2024-03-05 04:06:09] [NWNX_Direct] trailing slash[0m[39m
+[31mE [2024-03-05 04:06:09] [NWNX_Direct] empty file[0m[39m
+## color=3 format=8
+[36m[2mD [Golden.cpp:1002] debug 8: std::string[0m[39m
+[37mI [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [Golden.cpp:1006] error[0m[39m
+N [Direct.cpp:12] absolute path[0m[39m
+[37mI [Plain.cpp:0] no directory here[0m[39m
+[33mW [:-1] trailing slash[0m[39m
+[31mE [:99999] empty file[0m[39m
+## color=3 format=9
+[36m[2mD [04:06:09] [Golden.cpp:1002] debug 9: std::string[0m[39m
+[37mI [04:06:09] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [04:06:09] [Golden.cpp:1006] error[0m[39m
+N [04:06:09] [Direct.cpp:12] absolute path[0m[39m
+[37mI [04:06:09] [Plain.cpp:0] no directory here[0m[39m
+[33mW [04:06:09] [:-1] trailing slash[0m[39m
+[31mE [04:06:09] [:99999] empty file[0m[39m
+## color=3 format=10
+[36m[2mD [Golden.cpp:1002] debug 10: std::string[0m[39m
+[37mI [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [Golden.cpp:1006] error[0m[39m
+N [Direct.cpp:12] absolute path[0m[39m
+[37mI [Plain.cpp:0] no directory here[0m[39m
+[33mW [:-1] trailing slash[0m[39m
+[31mE [:99999] empty file[0m[39m
+## color=3 format=11
+[36m[2mD [2024-03-05 04:06:09] [Golden.cpp:1002] debug 11: std::string[0m[39m
+[37mI [2024-03-05 04:06:09] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [2024-03-05 04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [2024-03-05 04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [2024-03-05 04:06:09] [Golden.cpp:1006] error[0m[39m
+N [2024-03-05 04:06:09] [Direct.cpp:12] absolute path[0m[39m
+[37mI [2024-03-05 04:06:09] [Plain.cpp:0] no directory here[0m[39m
+[33mW [2024-03-05 04:06:09] [:-1] trailing slash[0m[39m
+[31mE [2024-03-05 04:06:09] [:99999] empty file[0m[39m
+## color=3 format=12
+[36m[2mD [NWNX_LogGolden] [Golden.cpp:1002] debug 12: std::string[0m[39m
+[37mI [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [NWNX_LogGolden] [Golden.cpp:1006] error[0m[39m
+N [NWNX_Direct] [Direct.cpp:12] absolute path[0m[39m
+[37mI [NWNX_Direct] [Plain.cpp:0] no directory here[0m[39m
+[33mW [NWNX_Direct] [:-1] trailing slash[0m[39m
+[31mE [NWNX_Direct] [:99999] empty file[0m[39m
+## color=3 format=13
+[36m[2mD [04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 13: std::string[0m[39m
+[37mI [04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error[0m[39m
+N [04:06:09] [NWNX_Direct] [Direct.cpp:12] absolute path[0m[39m
+[37mI [04:06:09] [NWNX_Direct] [Plain.cpp:0] no directory here[0m[39m
+[33mW [04:06:09] [NWNX_Direct] [:-1] trailing slash[0m[39m
+[31mE [04:06:09] [NWNX_Direct] [:99999] empty file[0m[39m
+## color=3 format=14
+[36m[2mD [NWNX_LogGolden] [Golden.cpp:1002] debug 14: std::string[0m[39m
+[37mI [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [NWNX_LogGolden] [Golden.cpp:1006] error[0m[39m
+N [NWNX_Direct] [Direct.cpp:12] absolute path[0m[39m
+[37mI [NWNX_Direct] [Plain.cpp:0] no directory here[0m[39m
+[33mW [NWNX_Direct] [:-1] trailing slash[0m[39m
+[31mE [NWNX_Direct] [:99999] empty file[0m[39m
+## color=3 format=15
+[36m[2mD [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 15: std::string[0m[39m
+[37mI [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error[0m[39m
+N [2024-03-05 04:06:09] [NWNX_Direct] [Direct.cpp:12] absolute path[0m[39m
+[37mI [2024-03-05 04:06:09] [NWNX_Direct] [Plain.cpp:0] no directory here[0m[39m
+[33mW [2024-03-05 04:06:09] [NWNX_Direct] [:-1] trailing slash[0m[39m
+[31mE [2024-03-05 04:06:09] [NWNX_Direct] [:99999] empty file[0m[39m
+## special
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:3002] xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxend[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:3003] short after long[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:3004] [0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:3005] two
+lines[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:3006] embedded a[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:3007] 0xff then 255[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:3008] next line 255 255 1.500000[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:911] nested inner[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:3009] outer-arg[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:3010] a|q    |-0042|1.234568e+04|0.0001|10|BEEF[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:3011] unicode Ã© and cp1252 é[0m[39m
+[36m[2mD [2031-12-31 23:59:58] [NWNX_LogGolden] [Golden.cpp:1002] debug -1: std::string[0m[39m
+[37mI [2031-12-31 23:59:58] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [2031-12-31 23:59:58] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [2031-12-31 23:59:58] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [2031-12-31 23:59:58] [NWNX_LogGolden] [Golden.cpp:1006] error[0m[39m
+## levels
+level 0 reads back 0
+level 1 reads back 1
+level 2 reads back 2
+level 4 reads back 4
+E [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4008] error at level 4
+W [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4009] warning at level 4
+level 5 reads back 5
+E [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4008] error at level 5
+W [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4009] warning at level 5
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4010] notice at level 5
+level 7 reads back 7
+E [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4008] error at level 7
+W [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4009] warning at level 7
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4010] notice at level 7
+I [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4011] info at level 7
+D [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4012] debug at level 7
+level 255 reads back 255
+E [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4008] error at level 255
+W [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4009] warning at level 255
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4010] notice at level 255
+I [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4011] info at level 255
+D [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:4012] debug at level 255
+unknown plugin reads 5
+N [2024-03-05 04:06:09] [NWNX_NeverSet] [x.cpp:1] default notice is shown
+## bus
+I [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:5002] bus 1
+W [2024-03-05 04:06:09] [NWNX_Direct] [Direct.cpp:7] bus direct
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:5010] logged from a subscriber
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:5004] bus nested
+D [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:5005] bus debug
+I [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:5015] after unsubscribe
+## fatal
+F [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:6002] fatal 1
+<ASSERTION FAILURE> signal=6
+[31m[1mF [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:6002] fatal 1[0m[39m
+<ASSERTION FAILURE> signal=6
+## file
+[36m[2mD debug 0: std::string[0m[39m
+[37mI info 42 3.142 ff %[0m[39m
+N notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW warning bool=true char=Z 0.333333[0m[39m
+[31mE error[0m[39m
+[36m[2mD [04:06:09] debug 1: std::string[0m[39m
+[37mI [04:06:09] info 42 3.142 ff %[0m[39m
+N [04:06:09] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [04:06:09] warning bool=true char=Z 0.333333[0m[39m
+[31mE [04:06:09] error[0m[39m
+[36m[2mD debug 2: std::string[0m[39m
+[37mI info 42 3.142 ff %[0m[39m
+N notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW warning bool=true char=Z 0.333333[0m[39m
+[31mE error[0m[39m
+[36m[2mD [2024-03-05 04:06:09] debug 3: std::string[0m[39m
+[37mI [2024-03-05 04:06:09] info 42 3.142 ff %[0m[39m
+N [2024-03-05 04:06:09] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [2024-03-05 04:06:09] warning bool=true char=Z 0.333333[0m[39m
+[31mE [2024-03-05 04:06:09] error[0m[39m
+[36m[2mD [NWNX_LogGolden] debug 4: std::string[0m[39m
+[37mI [NWNX_LogGolden] info 42 3.142 ff %[0m[39m
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [NWNX_LogGolden] warning bool=true char=Z 0.333333[0m[39m
+[31mE [NWNX_LogGolden] error[0m[39m
+[36m[2mD [04:06:09] [NWNX_LogGolden] debug 5: std::string[0m[39m
+[37mI [04:06:09] [NWNX_LogGolden] info 42 3.142 ff %[0m[39m
+N [04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333[0m[39m
+[31mE [04:06:09] [NWNX_LogGolden] error[0m[39m
+[36m[2mD [NWNX_LogGolden] debug 6: std::string[0m[39m
+[37mI [NWNX_LogGolden] info 42 3.142 ff %[0m[39m
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [NWNX_LogGolden] warning bool=true char=Z 0.333333[0m[39m
+[31mE [NWNX_LogGolden] error[0m[39m
+[36m[2mD [2024-03-05 04:06:09] [NWNX_LogGolden] debug 7: std::string[0m[39m
+[37mI [2024-03-05 04:06:09] [NWNX_LogGolden] info 42 3.142 ff %[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [2024-03-05 04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333[0m[39m
+[31mE [2024-03-05 04:06:09] [NWNX_LogGolden] error[0m[39m
+[36m[2mD [Golden.cpp:1002] debug 8: std::string[0m[39m
+[37mI [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [Golden.cpp:1006] error[0m[39m
+[36m[2mD [04:06:09] [Golden.cpp:1002] debug 9: std::string[0m[39m
+[37mI [04:06:09] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [04:06:09] [Golden.cpp:1006] error[0m[39m
+[36m[2mD [Golden.cpp:1002] debug 10: std::string[0m[39m
+[37mI [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [Golden.cpp:1006] error[0m[39m
+[36m[2mD [2024-03-05 04:06:09] [Golden.cpp:1002] debug 11: std::string[0m[39m
+[37mI [2024-03-05 04:06:09] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [2024-03-05 04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [2024-03-05 04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [2024-03-05 04:06:09] [Golden.cpp:1006] error[0m[39m
+[36m[2mD [NWNX_LogGolden] [Golden.cpp:1002] debug 12: std::string[0m[39m
+[37mI [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [NWNX_LogGolden] [Golden.cpp:1006] error[0m[39m
+[36m[2mD [04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 13: std::string[0m[39m
+[37mI [04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error[0m[39m
+[36m[2mD [NWNX_LogGolden] [Golden.cpp:1002] debug 14: std::string[0m[39m
+[37mI [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [NWNX_LogGolden] [Golden.cpp:1006] error[0m[39m
+[36m[2mD [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 15: std::string[0m[39m
+[37mI [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %[0m[39m
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef[0m[39m
+[33mW [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333[0m[39m
+[31mE [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error[0m[39m
+=== file ===
+=====================================================================
+       NWNX secondary log file. This log file may be incomplete!     
+ Please attach stdout output instead of this file to any bug reports.
+=====================================================================
+D debug 0: std::string
+I info 42 3.142 ff %
+N notice left    |+7|-0002.50|0xbeef
+W warning bool=true char=Z 0.333333
+E error
+D [04:06:09] debug 1: std::string
+I [04:06:09] info 42 3.142 ff %
+N [04:06:09] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] warning bool=true char=Z 0.333333
+E [04:06:09] error
+D debug 2: std::string
+I info 42 3.142 ff %
+N notice left    |+7|-0002.50|0xbeef
+W warning bool=true char=Z 0.333333
+E error
+D [2024-03-05 04:06:09] debug 3: std::string
+I [2024-03-05 04:06:09] info 42 3.142 ff %
+N [2024-03-05 04:06:09] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] error
+D [NWNX_LogGolden] debug 4: std::string
+I [NWNX_LogGolden] info 42 3.142 ff %
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] error
+D [04:06:09] [NWNX_LogGolden] debug 5: std::string
+I [04:06:09] [NWNX_LogGolden] info 42 3.142 ff %
+N [04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [04:06:09] [NWNX_LogGolden] error
+D [NWNX_LogGolden] debug 6: std::string
+I [NWNX_LogGolden] info 42 3.142 ff %
+N [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] error
+D [2024-03-05 04:06:09] [NWNX_LogGolden] debug 7: std::string
+I [2024-03-05 04:06:09] [NWNX_LogGolden] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [NWNX_LogGolden] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [NWNX_LogGolden] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [NWNX_LogGolden] error
+D [Golden.cpp:1002] debug 8: std::string
+I [Golden.cpp:1003] info 42 3.142 ff %
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [Golden.cpp:1006] error
+D [04:06:09] [Golden.cpp:1002] debug 9: std::string
+I [04:06:09] [Golden.cpp:1003] info 42 3.142 ff %
+N [04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [04:06:09] [Golden.cpp:1006] error
+D [Golden.cpp:1002] debug 10: std::string
+I [Golden.cpp:1003] info 42 3.142 ff %
+N [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [Golden.cpp:1006] error
+D [2024-03-05 04:06:09] [Golden.cpp:1002] debug 11: std::string
+I [2024-03-05 04:06:09] [Golden.cpp:1003] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [Golden.cpp:1006] error
+D [NWNX_LogGolden] [Golden.cpp:1002] debug 12: std::string
+I [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] [Golden.cpp:1006] error
+D [04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 13: std::string
+I [04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error
+D [NWNX_LogGolden] [Golden.cpp:1002] debug 14: std::string
+I [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [NWNX_LogGolden] [Golden.cpp:1006] error
+D [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1002] debug 15: std::string
+I [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1003] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1005] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [NWNX_LogGolden] [Golden.cpp:1006] error
+=== bus ===
+6|NWNX_LogGolden|/nwnx/home/NWNXLib/Log/tests/Golden.cpp|5002|bus 1|
+4|NWNX_Direct|/abs/path/Direct.cpp|7|bus direct|
+5|NWNX_LogGolden|/nwnx/home/NWNXLib/Log/tests/Golden.cpp|5004|bus nested|
+5|NWNX_LogGolden|/nwnx/home/NWNXLib/Log/tests/Golden.cpp|5010|logged from a subscriber|
+7|NWNX_LogGolden|/nwnx/home/NWNXLib/Log/tests/Golden.cpp|5005|bus debug|
