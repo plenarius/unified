@@ -49,3 +49,17 @@ add_sanitizers(LogJson)
 target_link_libraries(LogJson LogTestCore)
 target_compile_definitions(LogJson PRIVATE "-DPLUGIN_NAME=\"NWNX_LogJson\"")
 add_test(NAME LogJson COMMAND LogJson)
+
+# ENABLE_EXPORTS lets the test's time() and clock_gettime() override the ones libc gives the logger.
+add_executable(LogGoldenJson LogGoldenJson.cpp)
+add_sanitizers(LogGoldenJson)
+set_target_properties(LogGoldenJson PROPERTIES ENABLE_EXPORTS ON)
+target_link_libraries(LogGoldenJson LogTestCore)
+target_compile_definitions(LogGoldenJson PRIVATE "-DPLUGIN_NAME=\"NWNX_LogGoldenJson\"")
+add_test(NAME LogGoldenJson COMMAND LogGoldenJson ${CMAKE_CURRENT_SOURCE_DIR}/LogGoldenJson.txt)
+
+add_executable(LogThreads LogThreads.cpp)
+add_sanitizers(LogThreads)
+target_link_libraries(LogThreads LogTestCore pthread)
+target_compile_definitions(LogThreads PRIVATE "-DPLUGIN_NAME=\"NWNX_LogThreads\"")
+add_test(NAME LogThreads COMMAND LogThreads)

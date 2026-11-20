@@ -6,6 +6,8 @@
 #include <cstdio>
 #include <cstring>
 #include <sstream>
+#include <string_view>
+#include <vector>
 #include <ctime>
 
 namespace NWNXLib::Log {
@@ -75,6 +77,19 @@ void SetForceColor(bool value);
 bool GetForceColor();
 void SetLogFile(const std::string& logfile = "");
 
+enum class Format : uint8_t { Text, Json };
+namespace Json { struct Options; }
+// The stdout format.
+void SetFormat(Format format);
+Format GetFormat();
+void SetFileFormat(Format format);
+Format GetFileFormat();
+void SetJsonOptions(const Json::Options& options);
+const Json::Options& GetJsonOptions();
+// Members added to every JSON record, given as a JSON object. Returns an error message, or an empty string;
+// renamed receives the reserved keys that were renamed with a leading '_'.
+std::string SetJsonStatic(const std::string& object, std::vector<std::string>& renamed);
+
 void InternalTrace(Channel::Enum channel, Channel::Enum allowedChannel, const char* message);
 void WriteToLogFile(const char* message);
 
@@ -88,35 +103,49 @@ inline std::atomic<uint32_t>& PluginLogLevel()
 }
 }
 
-namespace Detail {
-// Formats one line in a reusable thread-local buffer. A nested call (an argument or a log subscriber
-// that logs itself) gets a buffer of its own.
-class LineFormatter
+// One log record, built in reusable thread-local buffers. A record started while another is being built on
+// the same thread (from an argument or a log subscriber that logs itself) gets buffers of its own.
+class Record
 {
 public:
-    LineFormatter();
-    ~LineFormatter();
-    LineFormatter(const LineFormatter&) = delete;
-    LineFormatter& operator=(const LineFormatter&) = delete;
+    Record(Channel::Enum channel, const char* plugin, const char* file, int line);
+    ~Record();
+    Record(const Record&) = delete;
+    Record& operator=(const Record&) = delete;
 
+    // The message, as the text format prints it.
     std::ostream& Stream() { return *m_stream; }
-    void Write(Channel::Enum channel, const char* plugin, const char* file, int line);
+
+    // Fields for the JSON sinks; keys are string literals.
+    Record& With(const char* key, std::string_view value);
+    Record& With(const char* key, int64_t value);
+    // A Platform::GetStackTrace text as an array of frames.
+    Record& WithStack(const char* key, std::string_view trace);
+
+    // Writes to every sink. FATAL then asserts and aborts.
+    void Write();
+    // Writes only to the sinks that use JSON, for reports that print their own text.
+    void WriteJson();
+
+    struct Buffers;
 
 private:
-    struct Buffer;
-    Buffer* m_buffer;
+    Buffers* m_buffers;
     std::ostream* m_stream;
+    const char* m_plugin;
+    const char* m_file;
+    int m_line;
+    Channel::Enum m_channel;
     bool m_nested;
 };
-}
 
 // Formats and writes a line whose level was already checked.
 template <typename ... Args>
 void TraceUnchecked(Channel::Enum channel, const char* plugin, const char* file, int line, const char* format, Args&& ... args)
 {
-    Detail::LineFormatter formatter;
-    tfm::format(formatter.Stream(), format, std::forward<Args>(args)...);
-    formatter.Write(channel, plugin, file, line);
+    Record record(channel, plugin, file, line);
+    tfm::format(record.Stream(), format, std::forward<Args>(args)...);
+    record.Write();
 }
 
 template <typename ... Args>
