@@ -5,6 +5,7 @@
 #include "API/Functions.hpp"
 #include "API/Globals.hpp"
 
+#include <atomic>
 #include <string>
 #include <optional>
 #include <vector>
@@ -122,6 +123,9 @@ namespace MessageBus
     uint32_t Subscribe(const std::string& tag, const Handler& handler);
     void Unsubscribe(const uint32_t id);
     void Broadcast(const std::string& tag, const Message& message);
+    bool HasSubscribers(const std::string& tag);
+    // The flag behind HasSubscribers, for hot paths. It is never freed, so callers can keep the reference.
+    const std::atomic<bool>& GetSubscribedFlag(const std::string& tag);
 }
 
 namespace Platform

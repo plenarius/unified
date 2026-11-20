@@ -55,6 +55,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Race: the effect-apply hook no longer adds a child-race map entry for every new effect parameter or copies the child list, and does nothing when no child races are set.
 - Core: a filtered `LOG_*` call is one atomic load and evaluates none of its arguments, and changing a level with `loglevel` no longer races plugins logging from other threads.
 - Core: log lines are formatted in a reused thread-local buffer instead of allocating two string streams each.
+- Core: `NWNX_CORE_LOG_MESSAGE` is only broadcast when something subscribes to it.
 
 ### Deprecated
 - N/A

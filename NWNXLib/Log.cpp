@@ -263,13 +263,17 @@ void Detail::LineFormatter::Write(Channel::Enum channel, const char* plugin, con
 {
     const std::string& message = m_buffer->message;
 
-    MessageBus::Broadcast("NWNX_CORE_LOG_MESSAGE", {
-        std::to_string((int) channel),
-        plugin,
-        file,
-        std::to_string(line),
-        message
-    });
+    static const std::atomic<bool>& s_hasSubscribers = MessageBus::GetSubscribedFlag("NWNX_CORE_LOG_MESSAGE");
+    if (s_hasSubscribers.load(std::memory_order_relaxed))
+    {
+        MessageBus::Broadcast("NWNX_CORE_LOG_MESSAGE", {
+            std::to_string((int) channel),
+            plugin,
+            file,
+            std::to_string(line),
+            message
+        });
+    }
 
     std::string& out = m_buffer->line;
     out.clear();
