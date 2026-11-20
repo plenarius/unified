@@ -13,6 +13,7 @@
 #include "API/CVirtualMachine.hpp"
 #include "API/CExoStringList.hpp"
 #include "API/CScriptCompiler.hpp"
+#include "Log/Json.hpp"
 
 #include <csignal>
 #include <regex>
@@ -29,6 +30,12 @@ using namespace NWNXLib;
 using namespace NWNXLib::API;
 
 static uint32_t s_PostFixVersion;
+
+static std::string NWNXVersion()
+{
+    return std::to_string(NWNX_TARGET_NWN_BUILD) + "." + std::to_string(NWNX_TARGET_NWN_BUILD_REVISION) + "-" +
+           std::to_string(NWNX_TARGET_NWN_BUILD_POSTFIX);
+}
 
 static void (*nwn_crash_handler)(int);
 
@@ -66,27 +73,43 @@ extern "C" void nwnx_signal_handler(int sig)
         default:       err = "Unknown error";            break;
     }
 
-    std::fprintf(stdout, " NWNX Signal Handler:\n"
-        "==============================================================\n"
-        " NWNX %d.%d-%d (%s) has crashed. Fatal error: %s (%d).\n"
-        " Please file a bug at https://github.com/nwnxee/unified/issues\n"
-        "==============================================================\n",
-        NWNX_TARGET_NWN_BUILD, NWNX_TARGET_NWN_BUILD_REVISION, NWNX_TARGET_NWN_BUILD_POSTFIX, NWNX_BUILD_SHA, err, sig);
-
-    if (s_PostFixVersion != NWNX_TARGET_NWN_BUILD_POSTFIX)
+    const bool text = Log::GetFormat() == Log::Format::Text;
+    if (text)
     {
-        std::fprintf(stdout, " Postfix Version Mismatch: Expected: %d, Got: %d\n"
-                " This may have been the cause of this crash.\n"
-                "==============================================================\n",
-                NWNX_TARGET_NWN_BUILD_POSTFIX, s_PostFixVersion);
+        std::fprintf(stdout, " NWNX Signal Handler:\n"
+            "==============================================================\n"
+            " NWNX %d.%d-%d (%s) has crashed. Fatal error: %s (%d).\n"
+            " Please file a bug at https://github.com/nwnxee/unified/issues\n"
+            "==============================================================\n",
+            NWNX_TARGET_NWN_BUILD, NWNX_TARGET_NWN_BUILD_REVISION, NWNX_TARGET_NWN_BUILD_POSTFIX, NWNX_BUILD_SHA, err, sig);
+
+        if (s_PostFixVersion != NWNX_TARGET_NWN_BUILD_POSTFIX)
+        {
+            std::fprintf(stdout, " Postfix Version Mismatch: Expected: %d, Got: %d\n"
+                    " This may have been the cause of this crash.\n"
+                    "==============================================================\n",
+                    NWNX_TARGET_NWN_BUILD_POSTFIX, s_PostFixVersion);
+        }
     }
 
     // stdout is fully buffered when it is not a terminal (under Docker, for one): flush the header now,
     // so it survives if building the stack trace faults and the re-entry guard aborts.
     std::fflush(stdout);
 
-    std::fputs(NWNXLib::Platform::GetStackTrace(20).c_str(), stdout);
-    std::fflush(stdout);
+    const std::string stackTrace = NWNXLib::Platform::GetStackTrace(20);
+    if (text)
+    {
+        std::fputs(stackTrace.c_str(), stdout);
+        std::fflush(stdout);
+    }
+
+    // The sinks that use JSON get one record instead of the text.
+    Log::Record record(Log::Channel::SEV_FATAL, PLUGIN_NAME, __FILE__, __LINE__);
+    record.Stream() << "NWNX has crashed";
+    record.With("signal", sig).With("reason", err).With("version", NWNXVersion()).With("sha", NWNX_BUILD_SHA);
+    if (s_PostFixVersion != NWNX_TARGET_NWN_BUILD_POSTFIX)
+        record.With("postfix_expected", NWNX_TARGET_NWN_BUILD_POSTFIX).With("postfix", s_PostFixVersion);
+    record.WithStack("stack", stackTrace).WriteJson();
 
     if (Config::Get<bool>("BASE_GAME_CRASH_HANDLER", false))
     {
@@ -163,11 +186,16 @@ NWNXCore::NWNXCore()
 {
     g_core = this;
     CleanupPreload();
+    InitialSetupLogging();
 
     // NOTE: We should do the version check here, but the global in the binary hasn't been initialised yet at this point.
     // This will be fixed in a future release of NWNX:EE. For now, the version check will happen *too late* - we may
     // crash before the version check happens.
-    std::printf("Starting NWNX %d.%d-%d [%s]\n", NWNX_TARGET_NWN_BUILD, NWNX_TARGET_NWN_BUILD_REVISION, NWNX_TARGET_NWN_BUILD_POSTFIX, NWNX_BUILD_SHA);
+    if (Log::GetFormat() == Log::Format::Text)
+        std::printf("Starting NWNX %d.%d-%d [%s]\n", NWNX_TARGET_NWN_BUILD, NWNX_TARGET_NWN_BUILD_REVISION, NWNX_TARGET_NWN_BUILD_POSTFIX, NWNX_BUILD_SHA);
+    Log::Record banner(Log::Channel::SEV_NOTICE, PLUGIN_NAME, __FILE__, __LINE__);
+    banner.Stream() << "Starting NWNX";
+    banner.With("version", NWNXVersion()).With("sha", NWNX_BUILD_SHA).WriteJson();
 
     // Initialise export table. New plugin code should endeavour to use direct linking
     // for hook naming, but these might help if you want to target a overloaded function.
@@ -233,6 +261,74 @@ void NWNXCore::ConfigureLogLevel(const std::string& plugin)
     }
 }
 
+
+void NWNXCore::InitialSetupLogging()
+{
+    ConfigureLogLevel(NWNX_CORE_PLUGIN_NAME);
+    // We need to set the NWNXLib log level (separate from Core now) to match the core log level.
+    Log::SetLogLevel("NWNXLib", Log::GetLogLevel(NWNX_CORE_PLUGIN_NAME));
+    Log::SetPrintTimestamp(Config::Get<bool>("LOG_TIMESTAMP", true));
+    Log::SetPrintDate(Config::Get<bool>("LOG_DATE", false));
+    Log::SetPrintPlugin(Config::Get<bool>("LOG_PLUGIN", true));
+    Log::SetPrintSource(Config::Get<bool>("LOG_SOURCE", true));
+    Log::SetColorOutput(Config::Get<bool>("LOG_COLOR", true));
+    Log::SetForceColor(Config::Get<bool>("LOG_FORCE_COLOR", false));
+    Log::SetLogFile(Config::Get<std::string>("LOG_FILE_PATH", ""));
+
+    // Problems are logged once the format is set, so they come out in it.
+    std::vector<std::string> problems;
+    auto getFormat = [&problems](const char* key, Log::Format def)
+    {
+        const auto value = Config::Get<std::string>(key);
+        if (!value)
+            return def;
+        if (*value == "json")
+            return Log::Format::Json;
+        if (*value != "text")
+            problems.push_back(std::string("NWNX_CORE_") + key + "='" + *value + "' is not text or json");
+        return *value == "text" ? Log::Format::Text : def;
+    };
+    const auto format = getFormat("LOG_FORMAT", Log::Format::Text);
+    Log::SetFormat(format);
+    Log::SetFileFormat(getFormat("LOG_FILE_FORMAT", format));
+
+    Log::Json::Options options;
+    const auto level = Config::Get<std::string>("LOG_JSON_LEVEL", "number");
+    options.levelLabel = level == "label";
+    if (level != "number" && level != "label")
+        problems.push_back("NWNX_CORE_LOG_JSON_LEVEL='" + level + "' is not number or label");
+    const auto encoding = Config::Get<std::string>("LOG_JSON_ENCODING", "auto");
+    if (encoding == "locale")
+        options.encoding = Log::Json::Encoding::Locale;
+    else if (encoding == "utf8")
+        options.encoding = Log::Json::Encoding::Utf8;
+    else if (encoding != "auto")
+        problems.push_back("NWNX_CORE_LOG_JSON_ENCODING='" + encoding + "' is not auto, locale or utf8");
+    options.stripColors = Config::Get<bool>("LOG_JSON_STRIP_COLORS", true);
+    // Floors keep room for the fixed keys of a record.
+    options.maxValue = std::max(Config::Get<uint32_t>("LOG_JSON_MAX_VALUE", 8 * 1024), 64u);
+    options.maxLine = std::max(Config::Get<uint32_t>("LOG_JSON_MAX_LINE", 64 * 1024), 1024u);
+    Log::SetJsonOptions(options);
+
+    if (auto json = Config::Get<std::string>("LOG_JSON_STATIC"))
+    {
+        std::vector<std::string> renamed;
+        const std::string error = Log::SetJsonStatic(*json, renamed);
+        if (!error.empty())
+            problems.push_back("NWNX_CORE_LOG_JSON_STATIC is not a JSON object: " + error);
+        for (const auto& key : renamed)
+            problems.push_back("NWNX_CORE_LOG_JSON_STATIC: '" + key + "' is a reserved key, renamed to '_" + key + "'");
+    }
+
+    if (auto locale = Config::Get<std::string>("LOCALE"))
+    {
+        String::SetDefaultLocale(*locale);
+    }
+    String::SetBestFit(Config::Get<bool>("ENCODING_BEST_FIT", false));
+
+    for (const auto& problem : problems)
+        LOG_WARNING("%s", problem);
+}
 
 void NWNXCore::InitialSetupHooks()
 {
@@ -317,25 +413,45 @@ void NWNXCore::InitialVersionCheck()
 
         s_PostFixVersion = postfix;
 
+        const bool text = Log::GetFormat() == Log::Format::Text;
         if (version != NWNX_TARGET_NWN_BUILD || revision != NWNX_TARGET_NWN_BUILD_REVISION)
         {
-            std::fprintf(stdout, "NWNX: Expected build %u.%u, got build %u.%u.\n", NWNX_TARGET_NWN_BUILD, NWNX_TARGET_NWN_BUILD_REVISION, version, revision);
-            std::fprintf(stdout, "NWNX: Will terminate. Please use the correct NWNX build for your game version.\n");
-            std::fflush(stdout);
+            if (text)
+            {
+                std::fprintf(stdout, "NWNX: Expected build %u.%u, got build %u.%u.\n", NWNX_TARGET_NWN_BUILD, NWNX_TARGET_NWN_BUILD_REVISION, version, revision);
+                std::fprintf(stdout, "NWNX: Will terminate. Please use the correct NWNX build for your game version.\n");
+                std::fflush(stdout);
+            }
+            Log::Record record(Log::Channel::SEV_FATAL, PLUGIN_NAME, __FILE__, __LINE__);
+            record.Stream() << "Wrong game build; use the NWNX build for your game version";
+            record.With("expected", std::to_string(NWNX_TARGET_NWN_BUILD) + "." + std::to_string(NWNX_TARGET_NWN_BUILD_REVISION))
+                  .With("got", std::to_string(version) + "." + std::to_string(revision)).WriteJson();
             std::exit(1);
         }
 
         if (postfix != NWNX_TARGET_NWN_BUILD_POSTFIX)
         {
-            std::fprintf(stdout, "NWNX: WARNING: POSTFIX VERSION MISMATCH: EXPECTED: %d, GOT: %d\n", NWNX_TARGET_NWN_BUILD_POSTFIX, postfix);
-            std::fprintf(stdout, "NWNX:          THE NWNX API MAY NOT BE UP TO DATE AND CRASH YOUR SERVER.\n");
-            std::fflush(stdout);
+            if (text)
+            {
+                std::fprintf(stdout, "NWNX: WARNING: POSTFIX VERSION MISMATCH: EXPECTED: %d, GOT: %d\n", NWNX_TARGET_NWN_BUILD_POSTFIX, postfix);
+                std::fprintf(stdout, "NWNX:          THE NWNX API MAY NOT BE UP TO DATE AND CRASH YOUR SERVER.\n");
+                std::fflush(stdout);
+            }
+            Log::Record record(Log::Channel::SEV_WARNING, PLUGIN_NAME, __FILE__, __LINE__);
+            record.Stream() << "Postfix version mismatch; the NWNX API may not be up to date and crash your server";
+            record.With("expected", NWNX_TARGET_NWN_BUILD_POSTFIX).With("got", postfix).WriteJson();
         }
     }
     else
     {
-        std::fprintf(stdout, "NWNX: Could not determine build version.\n");
-        std::fflush(stdout);
+        if (Log::GetFormat() == Log::Format::Text)
+        {
+            std::fprintf(stdout, "NWNX: Could not determine build version.\n");
+            std::fflush(stdout);
+        }
+        Log::Record record(Log::Channel::SEV_FATAL, PLUGIN_NAME, __FILE__, __LINE__);
+        record.Stream() << "Could not determine the game build";
+        record.WriteJson();
         std::abort();
     }
 }
@@ -573,6 +689,10 @@ void NWNXCore::InitialSetupCommands()
             Log::SetColorOutput(args.find("nocolor") == std::string::npos);
         if (args.find("force") != std::string::npos)
             Log::SetForceColor(args.find("noforce") == std::string::npos);
+        if (args.find("json") != std::string::npos)
+            Log::SetFormat(Log::Format::Json);
+        else if (args.find("text") != std::string::npos)
+            Log::SetFormat(Log::Format::Text);
         LOG_INFO("Log format updated: Timestamp:%s Date:%s Plugin:%s Source:%s Color:%s Force:%s.",
                  Log::GetPrintTimestamp(), Log::GetPrintDate(), Log::GetPrintPlugin(),
                  Log::GetPrintSource(), Log::GetColorOutput(), Log::GetForceColor());
@@ -607,22 +727,6 @@ void NWNXCore::CreateServerHandler(CAppManager* app)
 
     g_core->m_services = g_core->ConstructCoreServices();
     g_core->m_coreServices = g_core->ConstructProxyServices(NWNX_CORE_PLUGIN_NAME);
-
-    // We need to set the NWNXLib log level (separate from Core now) to match the core log level.
-    Log::SetLogLevel("NWNXLib", Log::GetLogLevel(NWNX_CORE_PLUGIN_NAME));
-    Log::SetPrintTimestamp(Config::Get<bool>("LOG_TIMESTAMP", true));
-    Log::SetPrintDate(Config::Get<bool>("LOG_DATE", false));
-    Log::SetPrintPlugin(Config::Get<bool>("LOG_PLUGIN", true));
-    Log::SetPrintSource(Config::Get<bool>("LOG_SOURCE", true));
-    Log::SetColorOutput(Config::Get<bool>("LOG_COLOR", true));
-    Log::SetForceColor(Config::Get<bool>("LOG_FORCE_COLOR", false));
-    Log::SetLogFile(Config::Get<std::string>("LOG_FILE_PATH", ""));
-
-    if (auto locale = Config::Get<std::string>("LOCALE"))
-    {
-        String::SetDefaultLocale(*locale);
-    }
-    String::SetBestFit(Config::Get<bool>("ENCODING_BEST_FIT", false));
 
     if (Config::Get<bool>("SKIP", false))
     {
