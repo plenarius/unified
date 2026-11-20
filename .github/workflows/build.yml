@@ -70,6 +70,7 @@ jobs:
             -D CMAKE_BUILD_TYPE=$ENV{BUILD_TYPE}
             -D CMAKE_C_COMPILER_LAUNCHER=ccache
             -D CMAKE_CXX_COMPILER_LAUNCHER=ccache
+            -D NWNX_BUILD_TESTS=ON
           RESULT_VARIABLE result
         )
         if (NOT result EQUAL 0)
@@ -96,6 +97,10 @@ jobs:
           message(FATAL_ERROR "Build failed")
         endif()
         execute_process(COMMAND ccache -s)
+
+    - name: Test
+      working-directory: build
+      run: ctest --output-on-failure
 
     - name: Drop timestamp into Binaries folder
       if: github.event_name == 'push'
