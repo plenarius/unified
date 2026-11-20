@@ -46,9 +46,17 @@ void Redis::RegisterWithNWScript()
                 }
                 reverse(v.begin(), v.end());
 
-                auto ret = RawSync(v);
-
-                s_results.emplace_back(ret);
+                // Hand connection failures to the script as an error result instead of no result.
+                try
+                {
+                    s_results.emplace_back(RawSync(v));
+                }
+                catch (const std::exception& e)
+                {
+                    // Connection failures are already logged (rate limited) by the pool.
+                    LOG_DEBUG("Query '%s' failed: %s", v.empty() ? std::string() : v[0], e.what());
+                    s_results.emplace_back(std::string(e.what()), cpp_redis::reply::string_type::error);
+                }
 
                 // We return the assigned opaque value. Ignore that this is an array index.
                 return ScriptAPI::Arguments(static_cast<int32_t>(s_results.size() - 1));

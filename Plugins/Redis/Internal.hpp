@@ -5,20 +5,32 @@
 #include "Pool.hpp"
 #include <mutex>
 #include <sstream>
+#include <thread>
+#include <condition_variable>
 
 namespace Redis
 {
 
 struct Internal {
     Internal(Pool<cpp_redis::redis_client>::MakeFunc m) :
-        m_redis_pool(m) {}
+        m_redis_pool(m, [](cpp_redis::redis_client& c) { return c.is_connected(); }) {}
 
     // Connection pool for redis, used both for nwscript and for
     // external consumers (like other Plugins).
     Pool<cpp_redis::redis_client> m_redis_pool;
 
-    // The pubsub connection.
-    cpp_redis::redis_subscriber m_connection_pubsub;
+    // The pubsub connection, replaced by m_pubsub_thread whenever it drops.
+    std::unique_ptr<cpp_redis::redis_subscriber> m_connection_pubsub;
+    std::thread m_pubsub_thread;
+    std::mutex m_pubsub_mtx;
+    std::condition_variable m_pubsub_cv;
+    bool m_pubsub_lost = false;
+    bool m_pubsub_stop = false;
+
+    // Fail fast instead of reconnecting on every call while redis is down.
+    std::chrono::steady_clock::time_point m_next_connect_attempt;
+    std::chrono::seconds m_connect_retry_delay{0};
+    std::string m_last_connect_error;
     std::string m_last_pubsub_channel;
     std::string m_last_pubsub_message;
 

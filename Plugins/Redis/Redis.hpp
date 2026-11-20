@@ -29,6 +29,10 @@ public:
         std::string m_host;
         // PORT
         int m_port;
+        // USERNAME (Redis 6+ ACL user; empty = default user)
+        std::string m_username;
+        // PASSWORD (empty = no AUTH)
+        std::string m_password;
 
         // TODO:
         // Bridge the internal message bus to redis?
@@ -89,6 +93,10 @@ private:
     void LogQuery(const std::vector<std::string>&, const cpp_redis::reply&,
                   const uint64_t ns);
     std::unique_ptr<cpp_redis::redis_client> PoolMakeFunc();
+    using AuthSender = std::function<void(std::function<void(cpp_redis::reply&)>)>;
+    bool Authenticate(const char* what, const AuthSender& send);
+    bool ConnectPubsub();
+    void PubsubSupervisor();
 
     static inline NWNXLib::Hooks::Hook m_ClearStackHook;
     static void CleanState(CVirtualMachineStack*);

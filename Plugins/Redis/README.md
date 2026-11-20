@@ -70,5 +70,14 @@ if (NWNX_Redis_GetResultAsInt(NWNX_Redis_EXISTS("examples:examplekey")))
 | ---------------------------- | :---------------------: | ---------------------------------- |
 | `NWNX_REDIS_HOST`            | string                  | (none)                             |
 | `NWNX_REDIS_PORT`            | int16                   | 6379                               |
+| `NWNX_REDIS_USERNAME`        | string                  | ""                                 |
+| `NWNX_REDIS_PASSWORD`        | string                  | ""                                 |
 | `NWNX_REDIS_PUBSUB_SCRIPT`   | string                  | on_pubsub                          |
 | `NWNX_REDIS_PUBSUB_CHANNELS` | comma-separated strings | ""                                 |
+
+## Authentication
+
+* Set `NWNX_REDIS_PASSWORD` to send `AUTH` on every new connection (the connection pool and the pubsub connection). With `NWNX_REDIS_USERNAME` also set, it sends `AUTH username password` for a Redis 6+ ACL user; leave it empty for `requirepass` or the `default` user.
+* A failed `AUTH` (wrong password, unknown user, timeout) is logged and the connection is not used. Queries made meanwhile return an error result (`NWNX_REDIS_RESULT_ERROR`), and new connections are retried at most every 1 to 8 seconds.
+* Connections that drop (for example when redis restarts) are replaced and authenticated again. The pubsub connection reconnects in the background with backoff and subscribes to `NWNX_REDIS_PUBSUB_CHANNELS` again; messages published while it is down are lost.
+* TLS is not supported by this client; use a private network or a tunnel to reach a remote redis.
