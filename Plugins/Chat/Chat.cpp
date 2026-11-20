@@ -10,6 +10,7 @@
 #include "API/CServerInfo.hpp"
 #include "API/CScriptEvent.hpp"
 #include "API/CServerAIMaster.hpp"
+#include "API/CNWSCreatureStats.hpp"
 
 using namespace NWNXLib;
 using namespace NWNXLib::API;
@@ -27,6 +28,109 @@ static std::unordered_map<uint8_t, float> s_HearingDistances{{Constants::ChatCha
                                                              {Constants::ChatChannel::PlayerTalk, 20.0f},
                                                              {Constants::ChatChannel::DmWhisper, 3.0f},
                                                              {Constants::ChatChannel::PlayerWhisper, 3.0f}};
+
+namespace {
+
+constexpr std::pair<uint8_t, const char*> s_ChannelNames[] = {
+    { Constants::ChatChannel::PlayerTalk, "talk" }, { Constants::ChatChannel::PlayerShout, "shout" },
+    { Constants::ChatChannel::PlayerWhisper, "whisper" }, { Constants::ChatChannel::PlayerTell, "tell" },
+    { Constants::ChatChannel::ServerMessage, "server" }, { Constants::ChatChannel::PlayerParty, "party" },
+    { Constants::ChatChannel::PlayerDm, "dm" }, { Constants::ChatChannel::DmTalk, "dm_talk" },
+    { Constants::ChatChannel::DmShout, "dm_shout" }, { Constants::ChatChannel::DmWhisper, "dm_whisper" },
+    { Constants::ChatChannel::DmTell, "dm_tell" }, { Constants::ChatChannel::DmParty, "dm_party" },
+    { Constants::ChatChannel::DmDm, "dm_dm" },
+};
+
+const char* ChannelName(uint8_t channel)
+{
+    for (const auto& [id, name] : s_ChannelNames)
+    {
+        if (id == channel)
+            return name;
+    }
+    return "unknown";
+}
+
+// A bit per channel id, from a list of channel names; nullopt when the variable is unset.
+std::optional<uint32_t> ChannelMask(const char* variable)
+{
+    const auto list = Config::Get<std::string>(variable);
+    if (!list)
+        return std::nullopt;
+    uint32_t mask = 0;
+    for (auto name : String::Split(*list, ','))
+    {
+        std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+        const auto* it = std::find_if(std::begin(s_ChannelNames), std::end(s_ChannelNames),
+                                      [&name](const auto& channel) { return name == channel.second; });
+        if (it != std::end(s_ChannelNames))
+            mask |= 1u << it->first;
+        else
+            LOG_WARNING("NWNX_CHAT_%s: unknown channel '%s'", variable, name);
+    }
+    return mask;
+}
+
+struct LogConfig
+{
+    // Unset: every channel logs, and every channel but tells with its text, as before these options.
+    uint32_t channels = ~0u;
+    std::optional<uint32_t> contentChannels;
+    Log::Channel::Enum level = Log::Channel::SEV_DEBUG;
+
+    LogConfig()
+    {
+        channels = ChannelMask("LOG_CHANNELS").value_or(~0u);
+        contentChannels = ChannelMask("LOG_CONTENT_CHANNELS");
+        level = static_cast<Log::Channel::Enum>(std::clamp<int32_t>(
+            Config::Get<int32_t>("LOG_MESSAGE_LEVEL", Log::Channel::SEV_DEBUG), Log::Channel::SEV_FATAL, Log::Channel::SEV_DEBUG));
+    }
+};
+
+void LogChatMessage(uint8_t channel, const CExoString& message, ObjectID speaker, uint32_t tellPlayerId)
+{
+    static const LogConfig s_config;
+    const uint32_t bit = channel < 32 ? 1u << channel : 0;
+    if (!(s_config.channels & bit) || static_cast<uint32_t>(s_config.level) > Log::PluginLogLevel().load(std::memory_order_relaxed))
+        return;
+
+    const bool tell = channel == Constants::ChatChannel::PlayerTell || channel == Constants::ChatChannel::DmTell;
+    const bool content = s_config.contentChannels ? (*s_config.contentChannels & bit) != 0 : !tell;
+    const char* skipped = s_SkipMessage ? "Skipped" : "Sent";
+
+    auto addFields = [&](Log::Record& record)
+    {
+        if (!record.HasFields())
+            return;
+        record.Msg("chat message").With("channel", ChannelName(channel)).With("channel_id", channel)
+              .With("speaker", Log::Oid{speaker}).With("skipped", s_SkipMessage);
+        if (auto* creature = Utils::AsNWSCreature(Utils::GetGameObject(speaker)))
+            record.With("speaker_name", creature->m_pStats->GetFullName());
+        if (tell)
+        {
+            auto* player = Globals::AppManager()->m_pServerExoApp->GetClientObjectByPlayerId(tellPlayerId);
+            record.With("target", Log::Oid{player ? player->m_oidPCObject : Constants::OBJECT_INVALID});
+        }
+        if (content)
+            record.With("text", message);
+    };
+
+    // The text lines are the ones this plugin always printed.
+    if (content)
+    {
+        Log::FormattedRecord record(s_config.level, PLUGIN_NAME, __FILE__, __LINE__,
+            "%s chat message. Channel: '%i', Message: '%s', Sender (ObjID): '0x%08x', Target (PlayerID): '0x%08x'",
+            skipped, channel, message, speaker, tellPlayerId);
+        addFields(record);
+    }
+    else
+    {
+        Log::FormattedRecord record(s_config.level, PLUGIN_NAME, __FILE__, __LINE__, "%s chat message. Channel: '%i'", skipped, channel);
+        addFields(record);
+    }
+}
+
+}
 
 static Hooks::Hook s_SendServerToPlayerChatMessageHook = Hooks::HookFunction(
         &CNWSMessage::SendServerToPlayerChatMessage,
@@ -48,17 +152,7 @@ static Hooks::Hook s_SendServerToPlayerChatMessageHook = Hooks::HookFunction(
                 Utils::ExecuteScript(s_ChatScript, oidSpeaker);
                 --s_Depth;
             }
-            // Suppress player to player tells
-            if ((nChatMessageType != Constants::ChatChannel::PlayerTell && nChatMessageType != Constants::ChatChannel::DmTell) ||
-                oidSpeaker == nTellPlayerId)
-            {
-                LOG_DEBUG("%s chat message. Channel: '%i', Message: '%s', Sender (ObjID): '0x%08x', Target (PlayerID): '0x%08x'",
-                          s_SkipMessage ? "Skipped" : "Sent", nChatMessageType, sSpeakerMessage, oidSpeaker, nTellPlayerId);
-            }
-            else
-            {
-                LOG_DEBUG("%s chat message. Channel: '%i'", s_SkipMessage ? "Skipped" : "Sent", nChatMessageType);
-            }
+            LogChatMessage(nChatMessageType, sSpeakerMessage, oidSpeaker, nTellPlayerId);
 
             if (s_Depth > 0 || !s_SkipMessage)
             {
