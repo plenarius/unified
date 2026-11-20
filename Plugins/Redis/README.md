@@ -80,4 +80,34 @@ if (NWNX_Redis_GetResultAsInt(NWNX_Redis_EXISTS("examples:examplekey")))
 * Set `NWNX_REDIS_PASSWORD` to send `AUTH` on every new connection (the connection pool and the pubsub connection). With `NWNX_REDIS_USERNAME` also set, it sends `AUTH username password` for a Redis 6+ ACL user; leave it empty for `requirepass` or the `default` user.
 * A failed `AUTH` (wrong password, unknown user, timeout) is logged and the connection is not used. Queries made meanwhile return an error result (`NWNX_REDIS_RESULT_ERROR`), and new connections are retried at most every 1 to 8 seconds.
 * Connections that drop (for example when redis restarts) are replaced and authenticated again. The pubsub connection reconnects in the background with backoff and subscribes to `NWNX_REDIS_PUBSUB_CHANNELS` again; messages published while it is down are lost.
-* TLS is not supported by this client; use a private network or a tunnel to reach a remote redis.
+* The default client does not support TLS; use the redis-plus-plus client below, a private network or a tunnel to reach a remote redis.
+
+## Opt-in client: redis-plus-plus (experimental)
+
+By default the plugin uses the bundled cpp_redis client. Set `NWNX_REDIS_CLIENT=redis-plus-plus` to use [redis-plus-plus](https://github.com/sewenew/redis-plus-plus) on [hiredis](https://github.com/redis/hiredis) instead (both bundled and linked statically). NWScript functions, result types and pubsub work the same; the new client adds:
+
+* a connection pool that reconnects on its own after Redis restarts, and a pubsub connection that resubscribes;
+* the same `NWNX_REDIS_USERNAME`/`NWNX_REDIS_PASSWORD` login as the default client, plus database selection and TLS;
+* connect and read timeouts, so a hung Redis returns an error (`NWNX_REDIS_RESULT_ERROR`) instead of freezing the server.
+
+Commands from NWScript still run synchronously on the game's main thread: while Redis is unreachable each command returns an error, and while it is hung each command can block for up to `NWNX_REDIS_SOCKET_TIMEOUT_MS` (2 seconds by default; after one timeout, commands fail at once for `NWNX_REDIS_FAILFAST_MS`). The timeout also limits blocking commands: raise `NWNX_REDIS_SOCKET_TIMEOUT_MS` above the longest timeout you pass to `BLPOP`, `BRPOP`, `BLMOVE`, `XREAD BLOCK` and the like, or they fail with a timeout error.
+
+The settings below only apply to this client; with the default client they are ignored.
+
+| Variable Name                     | Type   | Default     | Notes |
+| --------------------------------- | :----: | ----------- | ----- |
+| `NWNX_REDIS_CLIENT`               | string | `cpp_redis` | `redis-plus-plus` to opt in |
+| `NWNX_REDIS_DATABASE`             | int    | 0           | |
+| `NWNX_REDIS_TLS`                  | bool   | false       | |
+| `NWNX_REDIS_TLS_CACERT`           | string | ""          | CA file to verify the server |
+| `NWNX_REDIS_TLS_CACERTDIR`        | string | ""          | |
+| `NWNX_REDIS_TLS_CERT`             | string | ""          | client certificate (mutual TLS) |
+| `NWNX_REDIS_TLS_KEY`              | string | ""          | client key (mutual TLS) |
+| `NWNX_REDIS_TLS_SNI`              | string | ""          | server name to send and verify |
+| `NWNX_REDIS_TLS_VERIFY`           | bool   | true        | false skips certificate verification |
+| `NWNX_REDIS_POOL_SIZE`            | int    | 4           | |
+| `NWNX_REDIS_CONNECT_TIMEOUT_MS`   | int    | 1000        | |
+| `NWNX_REDIS_SOCKET_TIMEOUT_MS`    | int    | 2000        | how long one command may wait for its reply; 0 = wait forever. Raise it above the timeout of blocking commands (`BLPOP`...) |
+| `NWNX_REDIS_FAILFAST_MS`          | int    | 3000        | 0 = off |
+| `NWNX_REDIS_POOL_WAIT_TIMEOUT_MS` | int    | 1000        | |
+| `NWNX_REDIS_RESP`                 | int    | 2           | 3 = RESP3; maps, sets, doubles and booleans are folded into arrays, strings and integers |
