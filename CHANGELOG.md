@@ -83,6 +83,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - WebHook: Fixed a crash when a webhook sent during shutdown got no response.
 - HTTPClient: The README named the timeout variable `NWNX_HTTPCLIENT_REQUEST_TIMEOUT`; the code reads `NWNX_HTTPCLIENT_CLIENT_REQUEST_TIMEOUT`.
 - Core: Fixed the crash handler looping forever without a backtrace when it runs on a small signal stack, as it does with the .NET runtime loaded.
+- Core: the README gave the default `NWNX_CORE_LOG_LEVEL` as 0; it is 5.
 
 ## 8193.37.13
 https://github.com/nwnxee/unified/compare/build8193.36.10...build8193.37.13
