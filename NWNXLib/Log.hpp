@@ -88,56 +88,35 @@ inline std::atomic<uint32_t>& PluginLogLevel()
 }
 }
 
+namespace Detail {
+// Formats one line in a reusable thread-local buffer. A nested call (an argument or a log subscriber
+// that logs itself) gets a buffer of its own.
+class LineFormatter
+{
+public:
+    LineFormatter();
+    ~LineFormatter();
+    LineFormatter(const LineFormatter&) = delete;
+    LineFormatter& operator=(const LineFormatter&) = delete;
+
+    std::ostream& Stream() { return *m_stream; }
+    void Write(Channel::Enum channel, const char* plugin, const char* file, int line);
+
+private:
+    struct Buffer;
+    Buffer* m_buffer;
+    std::ostream* m_stream;
+    bool m_nested;
+};
+}
+
 // Formats and writes a line whose level was already checked.
 template <typename ... Args>
 void TraceUnchecked(Channel::Enum channel, const char* plugin, const char* file, int line, const char* format, Args&& ... args)
 {
-    static constexpr const char * SEVERITY_NAMES[] = { "", "", "F", "E", "W", "N", "I", "D" };
-
-    std::ostringstream formatted_message;
-    tfm::format(formatted_message, format, std::forward<Args>(args)...);
-
-    MessageBus::Broadcast("NWNX_CORE_LOG_MESSAGE", {
-        std::to_string((int) channel),
-        plugin,
-        file,
-        std::to_string(line),
-        formatted_message.str()
-    });
-
-    // Get filename without the full path.
-    const char* filename = file;
-    const char* filenameTemp = filename;
-    while ((filenameTemp = std::strstr(filename, "/")))
-    {
-        filename = filenameTemp + 1;
-    }
-
-    std::ostringstream stream;
-    stream << SEVERITY_NAMES[static_cast<size_t>(channel)] << " ";
-    if (GetPrintTimestamp())
-    {
-        time_t now = std::time(nullptr);
-        tm* timeinfo = std::localtime(&now);
-
-        if (GetPrintDate())
-            tfm::format(stream, "[%04d-%02d-%02d %02d:%02d:%02d] ", 1900 + timeinfo->tm_year,  1 + timeinfo->tm_mon,
-                    timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
-        else
-            tfm::format(stream, "[%02d:%02d:%02d] ", timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
-    }
-    if (GetPrintPlugin())
-    {
-        tfm::format(stream, "[%s] ", plugin);
-    }
-    if (GetPrintSource())
-    {
-        tfm::format(stream, "[%s:%d] ", filename, line);
-    }
-
-    stream << formatted_message.str();
-
-    InternalTrace(channel, channel, stream.str().c_str());
+    Detail::LineFormatter formatter;
+    tfm::format(formatter.Stream(), format, std::forward<Args>(args)...);
+    formatter.Write(channel, plugin, file, line);
 }
 
 template <typename ... Args>

@@ -2,6 +2,7 @@
 #include "API/Globals.hpp"
 #include "API/CExoBase.hpp"
 
+#include <charconv>
 #include <cstring>
 #include <mutex>
 #include <unordered_map>
@@ -73,14 +74,8 @@ void SetLogFile(const std::string& logfilepath)
     s_LogFile = logfilepath;
 }
 
-void InternalTrace(Channel::Enum channel, Channel::Enum allowedChannel, const char* message)
+static void WriteLine(Channel::Enum channel, const char* message)
 {
-    if (channel > allowedChannel)
-    {
-        // No need to do anything. Our log level is lower.
-        return;
-    }
-
     INSTR_MESSAGE(message, strlen(message));
 
     switch (channel)
@@ -102,6 +97,17 @@ void InternalTrace(Channel::Enum channel, Channel::Enum allowedChannel, const ch
         ASSERT_FAIL();
         std::abort();
     }
+}
+
+void InternalTrace(Channel::Enum channel, Channel::Enum allowedChannel, const char* message)
+{
+    if (channel > allowedChannel)
+    {
+        // No need to do anything. Our log level is lower.
+        return;
+    }
+
+    WriteLine(channel, message);
 }
 
 void WriteToLogFile(const char* message)
@@ -145,6 +151,132 @@ Channel::Enum GetLogLevel(const char* plugin)
 void SetLogLevel(const char* plugin, Channel::Enum logLevel)
 {
     GetLogLevelSlot(plugin).store(static_cast<uint32_t>(logLevel), std::memory_order_relaxed);
+}
+
+namespace {
+// Writes into a std::string, which keeps its capacity from line to line.
+class StringSink final : public std::streambuf
+{
+public:
+    explicit StringSink(std::string& str) : m_str(str) {}
+
+protected:
+    int_type overflow(int_type ch) override
+    {
+        if (!traits_type::eq_int_type(ch, traits_type::eof()))
+            m_str.push_back(traits_type::to_char_type(ch));
+        return traits_type::not_eof(ch);
+    }
+
+    std::streamsize xsputn(const char* s, std::streamsize count) override
+    {
+        m_str.append(s, static_cast<size_t>(count));
+        return count;
+    }
+
+private:
+    std::string& m_str;
+};
+}
+
+struct Detail::LineFormatter::Buffer
+{
+    std::string message;
+    std::string line;
+    StringSink sink{message};
+    std::ostream stream{&sink};
+    bool inUse = false;
+};
+
+Detail::LineFormatter::LineFormatter()
+{
+    thread_local Buffer t_buffer;
+    m_nested = t_buffer.inUse;
+    m_buffer = m_nested ? new Buffer() : &t_buffer;
+    m_buffer->inUse = true;
+    m_buffer->message.clear();
+
+    // Same state as the fresh std::ostringstream each line used to get.
+    m_stream = &m_buffer->stream;
+    m_stream->clear();
+    m_stream->flags(std::ios_base::skipws | std::ios_base::dec);
+    m_stream->precision(6);
+    m_stream->width(0);
+    m_stream->fill(' ');
+}
+
+Detail::LineFormatter::~LineFormatter()
+{
+    if (m_nested)
+    {
+        delete m_buffer;
+        return;
+    }
+
+    m_buffer->inUse = false;
+    // Don't let one huge line pin its memory for the life of the thread.
+    constexpr size_t maxKeptCapacity = 64 * 1024;
+    if (m_buffer->message.capacity() > maxKeptCapacity)
+        std::string().swap(m_buffer->message);
+    if (m_buffer->line.capacity() > maxKeptCapacity)
+        std::string().swap(m_buffer->line);
+}
+
+static void AppendPrefix(std::string& out, Channel::Enum channel, const char* plugin, const char* file, int line)
+{
+    static constexpr const char * SEVERITY_NAMES[] = { "", "", "F", "E", "W", "N", "I", "D" };
+    out += SEVERITY_NAMES[static_cast<size_t>(channel)];
+    out += ' ';
+
+    char buffer[96];
+    if (s_PrintTimestamp)
+    {
+        time_t now = std::time(nullptr);
+        tm timeinfo = {};
+        localtime_r(&now, &timeinfo);
+
+        int length = s_PrintDate
+            ? std::snprintf(buffer, sizeof(buffer), "[%04d-%02d-%02d %02d:%02d:%02d] ", 1900 + timeinfo.tm_year,
+                            1 + timeinfo.tm_mon, timeinfo.tm_mday, timeinfo.tm_hour, timeinfo.tm_min, timeinfo.tm_sec)
+            : std::snprintf(buffer, sizeof(buffer), "[%02d:%02d:%02d] ", timeinfo.tm_hour, timeinfo.tm_min, timeinfo.tm_sec);
+        out.append(buffer, static_cast<size_t>(length));
+    }
+    if (s_PrintPlugin)
+    {
+        out += '[';
+        out += plugin;
+        out += "] ";
+    }
+    if (s_PrintSource)
+    {
+        // Get filename without the full path.
+        const char* slash = std::strrchr(file, '/');
+        out += '[';
+        out += slash ? slash + 1 : file;
+        out += ':';
+        out.append(buffer, std::to_chars(buffer, buffer + sizeof(buffer), line).ptr);
+        out += "] ";
+    }
+}
+
+void Detail::LineFormatter::Write(Channel::Enum channel, const char* plugin, const char* file, int line)
+{
+    const std::string& message = m_buffer->message;
+
+    MessageBus::Broadcast("NWNX_CORE_LOG_MESSAGE", {
+        std::to_string((int) channel),
+        plugin,
+        file,
+        std::to_string(line),
+        message
+    });
+
+    std::string& out = m_buffer->line;
+    out.clear();
+    AppendPrefix(out, channel, plugin, file, line);
+    out += message;
+
+    WriteLine(channel, out.c_str());
 }
 
 }
