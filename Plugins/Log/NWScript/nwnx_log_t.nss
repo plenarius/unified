@@ -2,6 +2,7 @@
 // NWNX_CORE_ALLOW_NWNX_FUNCTIONS_IN_EXECUTE_SCRIPT_CHUNK=true. Runs itself with ExecuteScript() and the
 // script parameter "mode" for the nested-run cases.
 #include "nwnx_log"
+#include "nwnx_util"
 #include "nwnx_tests"
 
 const string NWNX_LOG_T = "nwnx_log_t";
@@ -161,8 +162,9 @@ void main()
     NWNX_Log_Unbind();
     NWNX_Tests_Report("NWNX_Log", "UnbindAll", !HasBinding("txn") && GetBinding("shard") == "main");
 
-    // The NWNX target does nothing yet and counts as done; the server log is open while the module runs.
-    NWNX_Tests_Report("NWNX_Log", "RotateNwnx", NWNX_Log_Rotate(NWNX_LOG_ROTATE_NWNX));
+    // NWNX's own file rotates when there is one; the server log is open while the module runs.
+    int bNwnxFile = NWNX_Util_GetEnvironmentVariable("NWNX_CORE_LOG_FILE_PATH") != "";
+    NWNX_Tests_Report("NWNX_Log", "RotateNwnx", NWNX_Log_Rotate(NWNX_LOG_ROTATE_NWNX) == bNwnxFile);
     NWNX_Tests_Report("NWNX_Log", "RotateServer", NWNX_Log_Rotate(NWNX_LOG_ROTATE_SERVER));
 
     NWNX_Log_Bind(JsonParse("{\"txn\":\"delay\"}"));

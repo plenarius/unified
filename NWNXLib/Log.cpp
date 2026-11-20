@@ -5,6 +5,7 @@
 #include "API/API/CResRef.hpp"
 
 #include "Log/Json.hpp"
+#include "Log/Rotation.hpp"
 
 #include <algorithm>
 #include <cerrno>
@@ -104,9 +105,9 @@ static Format s_FileFormat = Format::Text;
 static Json::Options s_JsonOptions;
 static std::mutex s_SinkMutex;
 
-void SetLogFile(const std::string& logfilepath)
+const std::string& GetLogFile()
 {
-    LogFilePath() = logfilepath;
+    return LogFilePath();
 }
 
 void SetFormat(Format format)
@@ -351,37 +352,66 @@ bool IsPipe(int fd)
     return ::fstat(fd, &st) == 0 && (S_ISFIFO(st.st_mode) || S_ISSOCK(st.st_mode));
 }
 
+// The file's fd belongs to whoever holds s_SinkMutex while the writer is not writing it (AsyncWriter::busyFile).
 int s_FileFd = -1;
 bool s_FileChunked;
+FileRotation s_FileRotation;
+std::atomic<off_t> s_FileWritten; // record bytes in the current file, for the triggers
+std::atomic<bool> s_RotateDue;
+std::atomic<bool> s_ReopenDue;
+std::mutex s_RotateMutex;
 
-void OpenLogFile()
+// Opens the file's path and writes its banner, naming the archive it continues from after a rotation.
+// The old fd is closed only once the new one is open.
+bool OpenLogFile(const char* rotatedFrom = nullptr)
 {
-    s_FileFd = ::open(LogFilePath().c_str(), O_WRONLY | O_APPEND | O_CREAT | O_CLOEXEC, 0666);
-    if (s_FileFd < 0)
-        return;
+    const int fd = ::open(LogFilePath().c_str(), O_WRONLY | O_APPEND | O_CREAT | O_CLOEXEC, 0666);
+    if (fd < 0)
+        return false;
+    if (s_FileFd >= 0)
+        ::close(s_FileFd);
+    s_FileFd = fd;
     s_FileChunked = IsPipe(s_FileFd);
+    s_FileWritten.store(0, std::memory_order_relaxed);
 
     if (s_FileFormat == Format::Json)
     {
-        std::string banner;
-        EncodeJson(banner, { Channel::SEV_INFO, nullptr, nullptr, 0, "NWNX secondary log file opened", {}, nullptr, {}, false });
+        std::string fields, banner;
+        if (rotatedFrom)
+        {
+            fields = ",\"rotated_from\":";
+            Json::AppendString(fields, Basename(rotatedFrom), { Json::Encoding::Utf8, String::cp1252, false, SIZE_MAX });
+        }
+        EncodeJson(banner, { Channel::SEV_INFO, nullptr, nullptr, 0, "NWNX secondary log file opened", fields, nullptr, {}, false });
         banner += '\n';
         WriteLines(s_FileFd, s_FileChunked, banner);
-        return;
+        return true;
     }
-    WriteLines(s_FileFd, s_FileChunked,
-        "=====================================================================\n"
-        "       NWNX secondary log file. This log file may be incomplete!     \n"
-        " Please attach stdout output instead of this file to any bug reports.\n"
-        "=====================================================================\n");
+    static constexpr std::string_view s_rule = "=====================================================================\n";
+    std::string banner;
+    banner += s_rule;
+    banner += "       NWNX secondary log file. This log file may be incomplete!     \n"
+              " Please attach stdout output instead of this file to any bug reports.\n";
+    if (rotatedFrom)
+    {
+        banner += " Rotated from: ";
+        banner += Basename(rotatedFrom);
+        banner += '\n';
+    }
+    banner += s_rule;
+    WriteLines(s_FileFd, s_FileChunked, banner);
+    return true;
 }
 
 void WriteFile(std::string_view lines)
 {
-    if (s_FileFd < 0)
-        OpenLogFile();
-    if (s_FileFd >= 0)
-        WriteLines(s_FileFd, s_FileChunked, lines);
+    if (s_FileFd < 0 && !OpenLogFile())
+        return;
+    WriteLines(s_FileFd, s_FileChunked, lines);
+    const off_t written = s_FileWritten.load(std::memory_order_relaxed) + static_cast<off_t>(lines.size());
+    s_FileWritten.store(written, std::memory_order_relaxed);
+    if (s_FileRotation.size && written >= s_FileRotation.size)
+        s_RotateDue.store(true, std::memory_order_relaxed);
 }
 
 void WriteText(Channel::Enum channel, std::string_view message)
@@ -513,6 +543,7 @@ struct AsyncWriter
     bool stop = false;
     bool urgent = false;
     bool busy = false;                // writing a block outside the lock
+    bool busyFile = false;            // ... to the file
     bool draining = false;            // a caller waits to write the queue itself
     bool direct = false;              // after EmergencyFlush: nothing is queued any more
 };
@@ -726,6 +757,7 @@ void WriterThread()
                 std::string block = std::move(blocks.front());
                 blocks.pop_front();
                 w.busy = true;
+                w.busyFile = toFile;
                 lock.unlock();
 
                 if (toFile)
@@ -734,16 +766,20 @@ void WriterThread()
                     WriteLines(w.outFd, w.outChunked, block);
 
                 lock.lock();
-                w.busy = false;
+                w.busy = w.busyFile = false;
                 w.bytes -= block.size();
                 Recycle(std::move(block));
                 w.progress.notify_all();
             }
             if (const uint64_t dropped = std::exchange(w.dropped, 0))
             {
+                // The report is written on this thread, to both sinks.
+                w.busy = w.busyFile = true;
                 lock.unlock();
                 ReportDropped(dropped);
                 lock.lock();
+                w.busy = w.busyFile = false;
+                w.progress.notify_all();
             }
         }
         if (w.stop)
@@ -833,6 +869,160 @@ void EmergencyFlush()
         return;
     w.direct = true;
     Drain(lock, true);
+}
+
+namespace {
+// Makes the caller the owner of the file's fd: waits while the writer writes a block to it.
+void TakeFile(std::unique_lock<std::mutex>& lock)
+{
+    AsyncWriter& w = Writer();
+    if (!w.busyFile)
+        return;
+    w.draining = true;
+    w.progress.wait(lock, [&w] { return !w.busyFile; });
+    w.draining = false;
+    // The writer paused for us: let it go on with what is queued.
+    if (w.bytes)
+    {
+        w.urgent = true;
+        w.wake.notify_one();
+    }
+}
+
+// Writes what is queued for the file to its current fd, before it is replaced: it was logged before. The caller owns the fd.
+void WriteQueuedFile()
+{
+    AsyncWriter& w = Writer();
+    for (auto& block : w.file)
+    {
+        WriteFile(block);
+        w.bytes -= block.size();
+        Recycle(std::move(block));
+    }
+    w.file.clear();
+    w.progress.notify_all();
+}
+}
+
+void SetLogFile(const std::string& logfilepath)
+{
+    // A new path starts a new file at the next record.
+    std::unique_lock<std::mutex> lock(s_SinkMutex);
+    TakeFile(lock);
+    WriteQueuedFile();
+    if (s_FileFd >= 0)
+        ::close(s_FileFd);
+    s_FileFd = -1;
+    LogFilePath() = logfilepath;
+}
+
+void SetFileRotation(const FileRotation& rotation)
+{
+    std::lock_guard<std::mutex> lock(s_SinkMutex);
+    s_FileRotation = rotation;
+}
+
+std::optional<std::string> RotateFile()
+{
+    if (t_IsWriter)
+        return std::nullopt;
+    // One rotation or reopen at a time, so a computed archive name stays free.
+    std::lock_guard<std::mutex> rotating(s_RotateMutex);
+    const std::string path = LogFilePath();
+    struct stat st;
+    if (path.empty() || ::stat(path.c_str(), &st) || !S_ISREG(st.st_mode))
+    {
+        LOG_ERROR("Cannot rotate the NWNX log file: there is none, or it is not a regular file");
+        return std::nullopt;
+    }
+
+    // Logged first, so it is the archive's last line and the new file is empty of records until others log.
+    const std::string archive = Rotation::ArchiveName(path, std::time(nullptr));
+    LOG_NOTICE("Rotating '%s' to '%s'", path, archive);
+
+    std::unique_lock<std::mutex> lock(s_SinkMutex);
+    TakeFile(lock);
+    WriteQueuedFile();
+
+    const char* failed = nullptr;
+    if (::rename(path.c_str(), archive.c_str()))
+        failed = "rename";
+    else if (!OpenLogFile(archive.c_str()))
+    {
+        failed = "open";
+        const int error = errno;
+        ::rename(archive.c_str(), path.c_str());
+        errno = error;
+    }
+    const int error = errno;
+    // A failure retries only after another ROTATE_SIZE bytes, not on every tick.
+    s_RotateDue.store(false, std::memory_order_relaxed);
+    if (failed)
+        s_FileWritten.store(0, std::memory_order_relaxed);
+    lock.unlock();
+
+    if (failed)
+    {
+        LOG_ERROR("Cannot rotate '%s': %s failed: %s", path, failed, std::strerror(error));
+        return std::nullopt;
+    }
+    Rotation::Prune(path, s_FileRotation.keep);
+    return archive;
+}
+
+bool ReopenFile()
+{
+    if (t_IsWriter)
+        return false;
+    std::lock_guard<std::mutex> rotating(s_RotateMutex);
+    std::unique_lock<std::mutex> lock(s_SinkMutex);
+    if (LogFilePath().empty())
+        return false;
+    TakeFile(lock);
+    const std::string path = LogFilePath();
+
+    // Only a file moved away (external logrotate) is reopened; one not open yet opens at its first record.
+    struct stat atPath, atFd;
+    if (s_FileFd < 0 || (!::stat(path.c_str(), &atPath) && !::fstat(s_FileFd, &atFd) &&
+        atPath.st_dev == atFd.st_dev && atPath.st_ino == atFd.st_ino))
+        return false;
+    WriteQueuedFile();
+    const bool ok = OpenLogFile();
+    const int error = errno;
+    lock.unlock();
+
+    if (!ok)
+        LOG_ERROR("Cannot reopen '%s': %s", path, std::strerror(error));
+    else
+        LOG_NOTICE("Reopened '%s'", path);
+    return ok;
+}
+
+void RequestReopen()
+{
+    s_ReopenDue.store(true, std::memory_order_relaxed);
+}
+
+bool Tick()
+{
+    if (const std::time_t period = s_FileRotation.period)
+    {
+        // Archives end on the boundary; a file with no records since the last rotation stays.
+        static std::time_t s_nextBoundary;
+        const std::time_t now = std::time(nullptr);
+        if (now >= s_nextBoundary)
+        {
+            if (s_nextBoundary && s_FileWritten.load(std::memory_order_relaxed) > 0)
+                s_RotateDue.store(true, std::memory_order_relaxed);
+            s_nextBoundary = (now / period + 1) * period;
+        }
+    }
+    if (s_RotateDue.load(std::memory_order_relaxed))
+        RotateFile();
+    if (!s_ReopenDue.load(std::memory_order_relaxed) || !s_ReopenDue.exchange(false))
+        return false;
+    ReopenFile();
+    return true;
 }
 
 namespace {

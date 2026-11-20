@@ -22,7 +22,7 @@ NWNX_Log_Info("deposit", JsonParse("{\"gold\":250}"));
 
 In text mode the fields follow the message as `key=value`, strings in the game's encoding like the message; values with spaces, `=`, `"`, `\` or control characters are quoted. In JSON (`NWNX_CORE_LOG_FORMAT=json`) the record has `"src":"script"` and the `logger` after `plugin`; script records have no `file` or `line`.
 
-`NWNX_Log_Rotate()` rotates `nwserverLog1.txt` and `nwengineLog.txt` like the `logrotate` console command (see `NWNX_CORE_LOG_ENGINE_*` in the Core README); rotating NWNX's own log file is not there yet.
+`NWNX_Log_Rotate()` rotates NWNX's own log file, `nwserverLog1.txt` and `nwengineLog.txt` like the `logrotate` console command (see `NWNX_CORE_LOG_FILE_*` and `NWNX_CORE_LOG_ENGINE_*` in the Core README).
 
 Guard expensive fields with `NWNX_Log_IsEnabled()`: a filtered call returns before it looks at its fields, but the script still builds them.
 

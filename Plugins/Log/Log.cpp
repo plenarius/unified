@@ -144,10 +144,12 @@ NWNX_EXPORT ArgumentStack SetGlobal(ArgumentStack&& args)
 
 NWNX_EXPORT ArgumentStack Rotate(ArgumentStack&& args)
 {
-    // NWNX_LOG_ROTATE_NWNX (1) is accepted but does nothing yet: NWNX's own log file comes later.
     const auto targets = args.extract<int32_t>();
     namespace Files = Core::EngineLogFiles;
     bool ok = true;
+    // NWNX_LOG_ROTATE_ALL leaves out NWNX's own file when there is none.
+    if ((targets & 1) && (targets != 7 || !Log::GetLogFile().empty()))
+        ok &= Log::RotateFile().has_value();
     if (targets & 2)
         ok &= Files::Rotate(Files::File::Server).has_value();
     if (targets & 4)

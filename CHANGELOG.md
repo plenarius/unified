@@ -32,6 +32,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - WebHook, HTTPClient: each request is one log record in JSON; added `NWNX_WEBHOOK_LOG_PATH|BODY` and `NWNX_HTTPCLIENT_LOG_PATH|BODY` (paths redacted by default).
 - Watchcat: each stall callstack is one JSON log record with its frames.
 - Core: added `NWNX_CORE_LOG_CONTEXT` to add the running script's `script`, `oid`, `tag` and `area` to records with fields.
+- Core: added `NWNX_CORE_LOG_FILE_ROTATE_SIZE|TIME`, `NWNX_CORE_LOG_FILE_KEEP` and `NWNX_CORE_LOG_FILE_KEEP_PREVIOUS` to rotate NWNX's own log file like the engine's, `logrotate nwnx|all`, and `logreopen` and `NWNX_CORE_LOG_REOPEN_SIGNAL` to reopen log files moved by an external logrotate.
 
 ##### New Plugins
 - Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.

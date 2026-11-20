@@ -5,23 +5,20 @@
 #include "API/CExoDebug.hpp"
 #include "API/CExoDebugInternal.hpp"
 #include "API/CExoFile.hpp"
+#include "Log/Rotation.hpp"
 
 #include <algorithm>
 #include <atomic>
 #include <cctype>
 #include <cerrno>
 #include <cstdio>
-#include <cstdlib>
 #include <cstring>
 #include <ctime>
-#include <dirent.h>
 #include <dlfcn.h>
 #include <fcntl.h>
 #include <mutex>
-#include <strings.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <vector>
 
 using namespace NWNXLib;
 using namespace NWNXLib::API;
@@ -72,116 +69,12 @@ std::optional<File> Classify(const char* path)
     return std::strcmp(p, ".txt") ? std::nullopt : std::make_optional(File::Server);
 }
 
-// Archive suffix: YYYYmmddTHHMMSSZ, plus -N when that second is already taken.
-bool IsArchiveSuffix(const char* s)
-{
-    for (int i = 0; i < 15; ++i)
-    {
-        if (i == 8 ? s[i] != 'T' : !IsDigit(s[i]))
-            return false;
-    }
-    if (s[15] != 'Z')
-        return false;
-    s += 16;
-    if (!*s)
-        return true;
-    if (*s++ != '-' || !*s)
-        return false;
-    for (; *s; ++s)
-    {
-        if (!IsDigit(*s))
-            return false;
-    }
-    return true;
-}
-
-struct Archives
-{
-    std::string dir;
-    size_t stampEnd = 0;            // where the time stamp ends in each name
-    std::vector<std::string> names; // oldest first
-};
-
-// The -N of a same-second archive; 0 for the first.
-unsigned long long Seq(const std::string& name, size_t stampEnd)
-{
-    return name.size() > stampEnd ? std::strtoull(name.c_str() + stampEnd + 1, nullptr, 10) : 0;
-}
-
-Archives List(const std::string& path)
-{
-    const auto slash = path.rfind('/');
-    const std::string prefix = (slash == std::string::npos ? path : path.substr(slash + 1)) + ".";
-    Archives archives;
-    archives.dir = slash == std::string::npos ? "." : path.substr(0, slash);
-    archives.stampEnd = prefix.size() + 16;
-
-    if (DIR* d = opendir(archives.dir.c_str()))
-    {
-        while (auto* entry = readdir(d))
-        {
-            if (!std::strncmp(entry->d_name, prefix.c_str(), prefix.size()) && IsArchiveSuffix(entry->d_name + prefix.size()))
-                archives.names.emplace_back(entry->d_name);
-        }
-        closedir(d);
-    }
-
-    // By time stamp, then by -N numerically (-2 before -10).
-    const size_t stampEnd = archives.stampEnd;
-    std::sort(archives.names.begin(), archives.names.end(), [stampEnd](const std::string& a, const std::string& b)
-    {
-        const int cmp = a.compare(0, stampEnd, b, 0, stampEnd);
-        return cmp ? cmp < 0 : Seq(a, stampEnd) < Seq(b, stampEnd);
-    });
-    return archives;
-}
-
-std::string ArchiveName(const std::string& path, std::time_t when)
-{
-    std::tm tm;
-    char stamp[32];
-    gmtime_r(&when, &tm);
-    std::strftime(stamp, sizeof(stamp), "%Y%m%dT%H%M%SZ", &tm);
-
-    // A second archive in the same second gets the next -N above all existing ones, so the newest
-    // always sorts last, even after pruning freed a lower name.
-    const auto archives = List(path);
-    bool taken = false;
-    unsigned long long next = 1;
-    for (const auto& name : archives.names)
-    {
-        if (!name.compare(archives.stampEnd - 16, 16, stamp))
-        {
-            taken = true;
-            next = std::max(next, Seq(name, archives.stampEnd) + 1);
-        }
-    }
-    return path + "." + stamp + (taken ? "-" + std::to_string(next) : "");
-}
-
-// Deletes the oldest archives of path beyond NWNX_CORE_LOG_ENGINE_KEEP.
-void Prune(const std::string& path)
-{
-    const int keep = Keep();
-    if (keep <= 0)
-        return;
-
-    const auto archives = List(path);
-    for (size_t i = 0; i + static_cast<size_t>(keep) < archives.names.size(); ++i)
-        unlink((archives.dir + "/" + archives.names[i]).c_str());
-}
-
 // Moves last run's file aside before the engine truncates it. Called with s_lock held.
 void KeepPrevious(const char* path)
 {
-    struct stat st;
-    if (stat(path, &st) || !S_ISREG(st.st_mode) || st.st_size == 0)
+    auto archive = Log::Rotation::KeepPrevious(path, Keep());
+    if (archive.empty())
         return;
-
-    auto archive = ArchiveName(path, st.st_mtime);
-    if (rename(path, archive.c_str()))
-        return;
-    Prune(path);
 
     // The engine may open its log on a worker thread inside its own log lock: report from the main thread.
     Tasks::QueueOnMainThread([archive = std::move(archive)]
@@ -266,35 +159,36 @@ off_t Written(File file)
     return fp ? ftello(fp) - tracked.start : -1;
 }
 
-// "<bytes>[K|M|G]"; 0 or unset is off.
+// Size and period, warning about malformed values.
 off_t ParseSize(const std::string& value)
 {
-    char* end;
-    const unsigned long long n = std::strtoull(value.c_str(), &end, 10);
-    if (IsDigit(value[0]) && (!*end || !end[1]))
-    {
-        switch (std::toupper(static_cast<unsigned char>(*end)))
-        {
-            case 0:   return n;
-            case 'K': return n << 10;
-            case 'M': return n << 20;
-            case 'G': return n << 30;
-        }
-    }
+    if (auto size = Log::Rotation::ParseSize(value))
+        return *size;
     LOG_WARNING("Ignoring NWNX_CORE_LOG_ENGINE_ROTATE_SIZE '%s': expected bytes with an optional K, M or G", value);
     return 0;
 }
-
-// "hourly" or "daily" (UTC boundaries); unset or "off" is off.
 std::time_t ParsePeriod(const std::string& value)
 {
-    if (!strcasecmp(value.c_str(), "hourly"))
-        return 3600;
-    if (!strcasecmp(value.c_str(), "daily"))
-        return 86400;
-    if (strcasecmp(value.c_str(), "off"))
-        LOG_WARNING("Ignoring NWNX_CORE_LOG_ENGINE_ROTATE_TIME '%s': expected hourly, daily or off", value);
+    if (auto period = Log::Rotation::ParsePeriod(value))
+        return *period;
+    LOG_WARNING("Ignoring NWNX_CORE_LOG_ENGINE_ROTATE_TIME '%s': expected hourly, daily or off", value);
     return 0;
+}
+
+// The stream the engine writes file to now, or nullptr; debug gets the server log's state. Called with s_lock held.
+FILE* Live(File file, CExoDebugInternal*& debug)
+{
+    FILE* fp = s_files[static_cast<int>(file)].fp.load();
+    debug = nullptr;
+    if (file == File::Server)
+    {
+        // The engine may have moved on to nwserverLog<N+1>.txt: only the file it writes now counts.
+        if (auto* exoBase = Globals::ExoBase(); exoBase && exoBase->m_pcExoDebug)
+            debug = exoBase->m_pcExoDebug->m_pcExoDebugInternal;
+        if (!debug || !debug->m_bFilesOpen || !debug->m_pLogFile || debug->m_pLogFile->GetFileHandle() != fp)
+            fp = nullptr;
+    }
+    return fp;
 }
 
 }
@@ -304,17 +198,8 @@ std::optional<std::string> Rotate(File file)
     std::unique_lock<std::mutex> lock(s_lock);
     t_holding = true;
     auto& tracked = s_files[static_cast<int>(file)];
-    FILE* fp = tracked.fp.load();
-
-    CExoDebugInternal* debug = nullptr;
-    if (file == File::Server)
-    {
-        // The engine may have moved on to nwserverLog<N+1>.txt: only rotate the file it writes now.
-        if (auto* exoBase = Globals::ExoBase(); exoBase && exoBase->m_pcExoDebug)
-            debug = exoBase->m_pcExoDebug->m_pcExoDebugInternal;
-        if (!debug || !debug->m_bFilesOpen || !debug->m_pLogFile || debug->m_pLogFile->GetFileHandle() != fp)
-            fp = nullptr;
-    }
+    CExoDebugInternal* debug;
+    FILE* fp = Live(file, debug);
     if (!fp)
     {
         t_holding = false;
@@ -325,7 +210,7 @@ std::optional<std::string> Rotate(File file)
 
     const std::string path = tracked.path;
     const std::time_t now = std::time(nullptr);
-    const std::string archive = ArchiveName(path, now);
+    const std::string archive = Log::Rotation::ArchiveName(path, now);
     const char* failed = nullptr;
     int error = 0;
 
@@ -369,9 +254,52 @@ std::optional<std::string> Rotate(File file)
         return std::nullopt;
     }
 
-    Prune(path);
+    Log::Rotation::Prune(path, Keep());
     LOG_NOTICE("Rotated '%s' to '%s'", path, archive);
     return archive;
+}
+
+bool Reopen(File file)
+{
+    std::unique_lock<std::mutex> lock(s_lock);
+    t_holding = true;
+    auto& tracked = s_files[static_cast<int>(file)];
+    CExoDebugInternal* debug;
+    FILE* fp = Live(file, debug);
+    const std::string path = tracked.path;
+
+    // Only a file moved away (external logrotate with create, not copytruncate) is reopened.
+    struct stat atPath, atFd;
+    if (!fp || (!stat(path.c_str(), &atPath) && !fstat(fileno(fp), &atFd) && atPath.st_dev == atFd.st_dev && atPath.st_ino == atFd.st_ino))
+    {
+        t_holding = false;
+        return false;
+    }
+
+    // As in Rotate: what is buffered goes to the moved file, the rest to the new one.
+    flockfile(fp);
+    std::fflush(fp);
+    const int fd = ::open(path.c_str(), O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC, 0666);
+    const bool ok = fd >= 0 && dup2(fd, fileno(fp)) >= 0;
+    const int error = errno;
+    if (fd >= 0)
+        close(fd);
+    if (ok)
+    {
+        fseeko(fp, 0, SEEK_END);
+        tracked.start = ftello(fp);
+        if (debug)
+            debug->m_nCurrentLogSize = static_cast<int32_t>(tracked.start);
+    }
+    funlockfile(fp);
+    t_holding = false;
+    lock.unlock();
+
+    if (!ok)
+        LOG_ERROR("Cannot reopen '%s': %s", path, std::strerror(error));
+    else
+        LOG_NOTICE("Reopened '%s'", path);
+    return ok;
 }
 
 void Tick()

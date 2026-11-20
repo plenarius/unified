@@ -15,6 +15,7 @@
 #include "API/CExoStringList.hpp"
 #include "API/CScriptCompiler.hpp"
 #include "Log/Json.hpp"
+#include "Log/Rotation.hpp"
 #include "Log/ScriptContext.hpp"
 
 #include <csignal>
@@ -27,6 +28,7 @@
 #include <atomic>
 #include <pthread.h>
 #include <execinfo.h>
+#include <strings.h>
 
 using namespace NWNXLib;
 using namespace NWNXLib::API;
@@ -170,6 +172,13 @@ void RestoreCrashHandlers()
     std::signal(SIGILL, nwn_crash_handler);
 }
 
+// Both engine files, for logreopen and the reopen signal. Returns whether either was reopened.
+bool ReopenEngineLogs()
+{
+    const bool engine = Core::EngineLogFiles::Reopen(Core::EngineLogFiles::File::Engine);
+    return Core::EngineLogFiles::Reopen(Core::EngineLogFiles::File::Server) || engine;
+}
+
 }
 
 // TODO: Remove and allow auto-init post-load
@@ -280,6 +289,12 @@ void NWNXCore::InitialSetupLogging()
     Log::SetForceColor(Config::Get<bool>("LOG_FORCE_COLOR", false));
     const auto logFile = Config::Get<std::string>("LOG_FILE_PATH", "");
     Log::SetLogFile(logFile);
+    Log::FileRotation rotation;
+    rotation.keep = Config::Get<int>("LOG_FILE_KEEP", int(rotation.keep));
+    // Before the file is first opened, so the new run starts a new file.
+    std::string keptFile;
+    if (!logFile.empty() && Config::Get<bool>("LOG_FILE_KEEP_PREVIOUS", false))
+        keptFile = Log::Rotation::KeepPrevious(logFile, rotation.keep);
 
     // Problems are logged once the format is set, so they come out in it.
     std::vector<std::string> problems;
@@ -354,6 +369,33 @@ void NWNXCore::InitialSetupLogging()
     Log::SetScriptContextKeys(contextKeys);
     Log::SetContextSource(contextKeys ? &Log::AddScriptContext : nullptr);
 
+    const auto rotateSize = Config::Get<std::string>("LOG_FILE_ROTATE_SIZE", "0");
+    if (auto size = Log::Rotation::ParseSize(rotateSize))
+        rotation.size = *size;
+    else
+        problems.push_back("NWNX_CORE_LOG_FILE_ROTATE_SIZE='" + rotateSize + "' is not bytes with an optional K, M or G");
+    const auto rotateTime = Config::Get<std::string>("LOG_FILE_ROTATE_TIME", "off");
+    if (auto period = Log::Rotation::ParsePeriod(rotateTime))
+        rotation.period = *period;
+    else
+        problems.push_back("NWNX_CORE_LOG_FILE_ROTATE_TIME='" + rotateTime + "' is not hourly, daily or off");
+    Log::SetFileRotation(rotation);
+
+    // Installed only when asked for: by default SIGHUP still ends the server, as it always has.
+    const auto reopenSignal = Config::Get<std::string>("LOG_REOPEN_SIGNAL", "off");
+    const int sig = !strcasecmp(reopenSignal.c_str(), "HUP") ? SIGHUP : !strcasecmp(reopenSignal.c_str(), "USR1") ? SIGUSR1
+                  : !strcasecmp(reopenSignal.c_str(), "USR2") ? SIGUSR2 : 0;
+    if (sig)
+    {
+        struct sigaction action = {};
+        action.sa_handler = [](int) { Log::RequestReopen(); };
+        action.sa_flags = SA_RESTART;
+        sigemptyset(&action.sa_mask);
+        sigaction(sig, &action, nullptr);
+    }
+    else if (strcasecmp(reopenSignal.c_str(), "off"))
+        problems.push_back("NWNX_CORE_LOG_REOPEN_SIGNAL='" + reopenSignal + "' is not off, HUP, USR1 or USR2");
+
     const auto async = Config::Get<std::string>("LOG_ASYNC", "auto");
     if (async != "auto" && async != "true" && async != "false")
         problems.push_back("NWNX_CORE_LOG_ASYNC='" + async + "' is not auto, true or false");
@@ -373,6 +415,8 @@ void NWNXCore::InitialSetupLogging()
 
     for (const auto& problem : problems)
         LOG_WARNING("%s", problem);
+    if (!keptFile.empty())
+        LOG_NOTICE("Kept the previous run's log as '%s'", keptFile);
 }
 
 void NWNXCore::InitialSetupHooks()
@@ -745,12 +789,22 @@ void NWNXCore::InitialSetupCommands()
 
     Commands::Register("logrotate", [](std::string&, std::string& args)
     {
-        if (args == "engine")
+        const bool all = args == "all";
+        if (args == "nwnx" || (all && !Log::GetLogFile().empty()))
+            Log::RotateFile();
+        if (args == "engine" || all)
             EngineLogFiles::Rotate(EngineLogFiles::File::Engine);
-        else if (args == "server")
+        if (args == "server" || all)
             EngineLogFiles::Rotate(EngineLogFiles::File::Server);
-        else
-            LOG_INFO("Usage: logrotate engine|server");
+        if (args != "nwnx" && args != "engine" && args != "server" && !all)
+            LOG_INFO("Usage: logrotate nwnx|engine|server|all");
+    });
+
+    Commands::Register("logreopen", [](std::string&, std::string&)
+    {
+        const bool nwnx = Log::ReopenFile();
+        if (!ReopenEngineLogs() && !nwnx)
+            LOG_INFO("No log file was moved: nothing to reopen");
     });
 
 }
@@ -843,6 +897,8 @@ int32_t NWNXCore::MainLoopInternalHandler(CServerExoAppInternal *pServerExoAppIn
     Tasks::ProcessMainThreadWork();
     Commands::RunScheduled();
     EngineLogFiles::Tick();
+    if (Log::Tick())
+        ReopenEngineLogs();
 
     return g_core->m_mainLoopInternalHook->CallOriginal<int32_t>(pServerExoAppInternal);
 }

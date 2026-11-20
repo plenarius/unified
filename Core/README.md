@@ -41,6 +41,11 @@ The core of NWNX:EE that does all the things.
 | `NWNX_CORE_LOG_ASYNC_FLUSH_MS` | int | 50 | The longest a line waits before it is written. Warnings and worse, and every 64 KiB of lines, are written at once.
 | `NWNX_CORE_LOG_ASYNC_MAX_BYTES` | int | 8388608 | How much may wait to be written (at least 262144).
 | `NWNX_CORE_LOG_ASYNC_FULL` | block, drop | block | When that is full: `block` waits for room; `drop` drops debug, info and notice lines and later logs a warning with the number dropped. Warnings and worse always wait.
+| `NWNX_CORE_LOG_FILE_KEEP_PREVIOUS` | true/false | false | Move the previous run's `LOG_FILE_PATH` to `<name>.<UTC time>` at startup instead of appending to it.
+| `NWNX_CORE_LOG_FILE_KEEP` | int | 7 | The number of archives of `LOG_FILE_PATH` kept, by `LOG_FILE_KEEP_PREVIOUS` and by rotation. `0` keeps all.
+| `NWNX_CORE_LOG_FILE_ROTATE_SIZE` | bytes, with an optional `K`, `M` or `G` | 0 | When above 0, rotate `LOG_FILE_PATH` (as `logrotate nwnx`) once this much has been written to it.
+| `NWNX_CORE_LOG_FILE_ROTATE_TIME` | off, hourly, daily | off | Rotate `LOG_FILE_PATH` at every full hour or at midnight UTC, unless nothing was written since the last rotation.
+| `NWNX_CORE_LOG_REOPEN_SIGNAL` | off, HUP, USR1, USR2 | off | On this signal, reopen the log files an external tool (e.g. logrotate without `copytruncate`) moved away, as `logreopen` does. `USR1` is the recommended choice; with `off` no handler is installed, so the signal keeps its default action.
 | `NWNX_CORE_LOG_ENGINE_KEEP_PREVIOUS` | true/false | false | Keep the previous run's `nwengineLog.txt` and `nwserverLog1.txt` as `<name>.<UTC time>` instead of the engine overwriting them.
 | `NWNX_CORE_LOG_ENGINE_KEEP` | int | 7 | The number of archives kept of each engine log file, by `NWNX_CORE_LOG_ENGINE_KEEP_PREVIOUS` and by rotation. `0` keeps all.
 | `NWNX_CORE_LOG_ENGINE_ROTATE_SIZE` | bytes, with an optional `K`, `M` or `G` | 0 | When above 0, rotate an engine log file (as `logrotate`) once it reaches this size. Checked every 10 seconds.
@@ -57,7 +62,8 @@ The core of NWNX:EE that does all the things.
 | `evalx <script chunk>` | Executes the given nwscript chunk, this command already includes all nwnx headers available in the module. Example: `evalx NWNX_Administration_ShutdownServer();`
 | `loglevel <plugin> [<loglevel>]` | Sets the log level of the given plugin. `<plugin>` should not have the `NWNX_` prefix.  Example: `loglevel Events 7`
 | `logformat [timestamp\|notimestamp] [plugin\|noplugin] [source\|nosource] [color\|nocolor] [force\|noforce] [text\|json]` | Control the output format of logs. Example: `logformat color timestamp noplugin nosource`
-| `logrotate engine\|server` | Moves `nwengineLog.txt` (`engine`) or the current `nwserverLog<N>.txt` (`server`) to `<name>.<UTC time>`; the engine continues in a new file of the same name, which starts by naming the archive (a server log with the engine's banner, the engine log with a dated line). No line is lost or written twice.
+| `logrotate nwnx\|engine\|server\|all` | Moves `LOG_FILE_PATH` (`nwnx`), `nwengineLog.txt` (`engine`), the current `nwserverLog<N>.txt` (`server`), or all of them to `<name>.<UTC time>`, and logging continues in a new file of the same name, which starts by naming the archive (`LOG_FILE_PATH` in its banner, `rotated_from` in JSON; a server log with the engine's banner, the engine log with a dated line). No line is lost or written twice.
+| `logreopen` | Reopens the log files that were moved away (`LOG_FILE_PATH`, `nwengineLog.txt`, `nwserverLog<N>.txt`), for external rotation. `NWNX_CORE_LOG_REOPEN_SIGNAL` does the same on a signal.
 
 ## JSON Logs
 

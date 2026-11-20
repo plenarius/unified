@@ -23,7 +23,7 @@ const int NWNX_LOG_LEVEL_ERROR   = 3;
 /// @anchor log_rotate
 /// Flags for NWNX_Log_Rotate(); combine them with `|`.
 /// @{
-const int NWNX_LOG_ROTATE_NWNX   = 1; ///< NWNX's own log file: reserved, does nothing yet.
+const int NWNX_LOG_ROTATE_NWNX   = 1; ///< NWNX's own log file (NWNX_CORE_LOG_FILE_PATH); ALL skips it when there is none.
 const int NWNX_LOG_ROTATE_SERVER = 2; ///< nwserverLog1.txt
 const int NWNX_LOG_ROTATE_ENGINE = 4; ///< nwengineLog.txt
 const int NWNX_LOG_ROTATE_ALL    = 7;
@@ -94,9 +94,9 @@ void NWNX_Log_SetLogger(string sLogger);
 void NWNX_Log_SetGlobal(json jFields);
 
 /// @brief Rotates log files as the `logrotate` console command does: the file moves to `<name>.<UTC time>`
-/// and logging continues in a new one. NWNX_CORE_LOG_ENGINE_KEEP sets how many archives stay.
+/// and logging continues in a new one. NWNX_CORE_LOG_FILE_KEEP and NWNX_CORE_LOG_ENGINE_KEEP set how many archives stay.
 /// @param nTargets @ref log_rotate "Rotation targets".
-/// @return TRUE if every requested engine and server log rotation ran.
+/// @return TRUE if every requested rotation ran.
 int NWNX_Log_Rotate(int nTargets = NWNX_LOG_ROTATE_ALL);
 
 /// @}

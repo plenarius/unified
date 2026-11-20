@@ -20,6 +20,7 @@ nwnxlib_add(
     "Assert.cpp"
     "Log.cpp"
     "Log/Json.cpp"
+    "Log/Rotation.cpp"
     "Serialize.cpp"
     "Utils.cpp"
     "Encoding.cpp"

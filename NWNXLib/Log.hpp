@@ -12,6 +12,7 @@
 #include <type_traits>
 #include <vector>
 #include <ctime>
+#include <sys/types.h>
 
 struct CExoString;
 struct CResRef;
@@ -91,6 +92,7 @@ bool GetColorOutput();
 void SetForceColor(bool value);
 bool GetForceColor();
 void SetLogFile(const std::string& logfile = "");
+const std::string& GetLogFile();
 
 enum class Format : uint8_t { Text, Json };
 namespace Json { struct Options; }
@@ -124,6 +126,25 @@ void Flush();
 void Shutdown();
 // For the crash handler: writes the queue without waiting for the lock, and writes later records directly.
 void EmergencyFlush();
+
+// Rotation of the log file (SetLogFile), to <path>.YYYYmmddTHHMMSSZ like the engine's files.
+struct FileRotation
+{
+    off_t size = 0;          // rotate at this many bytes of records; 0 is off
+    std::time_t period = 0;  // or at every UTC multiple of this many seconds; 0 is off
+    int keep = 7;            // archives kept; 0 keeps all
+};
+// Set before the first record is written to the file.
+void SetFileRotation(const FileRotation& rotation);
+// Moves the file to an archive and continues in a new one. Returns the archive, or nullopt (logged).
+std::optional<std::string> RotateFile();
+// Opens the file's path anew when it was moved away (external logrotate). Returns whether it reopened.
+bool ReopenFile();
+// Async-signal-safe: asks the next Tick to reopen the file.
+void RequestReopen();
+// From the main loop: runs the size and time triggers and reopen requests. Near-free when none is due.
+// Returns whether a reopen was requested, so the caller reopens its own files too.
+bool Tick();
 
 void InternalTrace(Channel::Enum channel, Channel::Enum allowedChannel, const char* message);
 void WriteToLogFile(const char* message);

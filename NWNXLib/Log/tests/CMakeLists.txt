@@ -13,6 +13,7 @@ set(NWNXLIB_DIR ${CMAKE_SOURCE_DIR}/NWNXLib)
 add_library(LogTestCore SHARED
     ${NWNXLIB_DIR}/Log.cpp
     ${NWNXLIB_DIR}/Log/Json.cpp
+    ${NWNXLIB_DIR}/Log/Rotation.cpp
     ${NWNXLIB_DIR}/Encoding.cpp
     ${NWNXLIB_DIR}/MessageBus.cpp
     ${NWNXLIB_DIR}/Assert.cpp
@@ -77,3 +78,11 @@ set_target_properties(LogAsync PROPERTIES ENABLE_EXPORTS ON)
 target_link_libraries(LogAsync LogTestCore pthread)
 target_compile_definitions(LogAsync PRIVATE "-DPLUGIN_NAME=\"NWNX_LogAsync\"")
 add_test(NAME LogAsync COMMAND LogAsync)
+
+# ENABLE_EXPORTS lets the test's time() override the one libc gives the logger.
+add_executable(LogRotate LogRotate.cpp)
+add_sanitizers(LogRotate)
+set_target_properties(LogRotate PROPERTIES ENABLE_EXPORTS ON)
+target_link_libraries(LogRotate LogTestCore pthread)
+target_compile_definitions(LogRotate PRIVATE "-DPLUGIN_NAME=\"NWNX_LogRotate\"")
+add_test(NAME LogRotate COMMAND LogRotate)
