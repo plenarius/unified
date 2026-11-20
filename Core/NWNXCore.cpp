@@ -23,6 +23,7 @@
 #include <dirent.h>
 #include <unistd.h>
 #include <cstdio>
+#include <cstring>
 #include <sstream>
 #include <dlfcn.h>
 #include <atomic>
@@ -77,6 +78,8 @@ extern "C" void nwnx_signal_handler(int sig)
         default:       err = "Unknown error";            break;
     }
 
+    // The real stdout and stderr first, so nothing below waits in a pipe nobody reads any more.
+    Log::RestoreStdio();
     // Queued lines first; the crash output below is then written directly.
     Log::EmergencyFlush();
 
@@ -395,6 +398,15 @@ void NWNXCore::InitialSetupLogging()
     }
     else if (strcasecmp(reopenSignal.c_str(), "off"))
         problems.push_back("NWNX_CORE_LOG_REOPEN_SIGNAL='" + reopenSignal + "' is not off, HUP, USR1 or USR2");
+
+    // Before the async writer, which then writes to the real stdout.
+    const auto capture = Config::Get<std::string>("LOG_CAPTURE_STDIO", "auto");
+    if (capture != "auto" && capture != "true" && capture != "false")
+        problems.push_back("NWNX_CORE_LOG_CAPTURE_STDIO='" + capture + "' is not auto, true or false");
+    if (capture == "true" && format != Log::Format::Json)
+        problems.push_back("NWNX_CORE_LOG_CAPTURE_STDIO=true needs NWNX_CORE_LOG_FORMAT=json");
+    if (capture != "false" && format == Log::Format::Json && !Log::StartStdioCapture())
+        problems.push_back(std::string("Cannot capture stdout and stderr: ") + std::strerror(errno));
 
     const auto async = Config::Get<std::string>("LOG_ASYNC", "auto");
     if (async != "auto" && async != "true" && async != "false")
@@ -824,6 +836,7 @@ void NWNXCore::Shutdown()
         UnloadServices();
         // Drains the log queue; anything logged later is written directly.
         Log::Shutdown();
+        Log::StopStdioCapture();
         Tasks::StopAsyncWorkers();
         g_core = nullptr;
         if (Config::Get<bool>("HARD_EXIT", false))

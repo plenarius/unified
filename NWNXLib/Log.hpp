@@ -150,6 +150,15 @@ void RequestReopen();
 // From the main loop: runs the size and time triggers and reopen requests. Near-free when none is due.
 // Returns whether a reopen was requested, so the caller reopens its own files too.
 bool Tick();
+// Stdio capture (NWNX_CORE_LOG_CAPTURE_STDIO, JSON stdout only): fd 1 and 2 become pipes, and a reader thread
+// writes their lines to the real fds as JSON records. NWNX's own records go to the real stdout directly.
+bool StartStdioCapture();
+// Puts the real fds back on 1 and 2, writes what the pipes still hold and joins the reader.
+void StopStdioCapture();
+// For the crash handler: only puts the real fds back, so the crash report is not left in a pipe.
+void RestoreStdio();
+// While set, captured lines in the engine's console format are dropped: ServerLogRedirector made them records.
+void SetEngineLinesHooked(bool value);
 
 void InternalTrace(Channel::Enum channel, Channel::Enum allowedChannel, const char* message);
 void WriteToLogFile(const char* message);

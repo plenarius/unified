@@ -361,6 +361,9 @@ std::atomic<off_t> s_FileWritten; // record bytes in the current file, for the t
 std::atomic<bool> s_RotateDue;
 std::atomic<bool> s_ReopenDue;
 std::mutex s_RotateMutex;
+// The real stdout while stdio is captured, else -1. Guarded by s_SinkMutex.
+int s_StdoutFd = -1;
+bool s_StdoutChunked;
 
 // Opens the file's path and writes its banner, naming the archive it continues from after a rotation.
 // The old fd is closed only once the new one is open.
@@ -601,6 +604,8 @@ void WriteSync(Channel::Enum channel, const Lines& lines)
 {
     if (lines.sinks & StdoutText)
         WriteText(channel, lines.text);
+    else if (lines.sinks & StdoutJson && s_StdoutFd >= 0)
+        WriteLines(s_StdoutFd, s_StdoutChunked, lines.json);
     else if (lines.sinks & StdoutJson)
     {
         std::cout.write(lines.json.data(), static_cast<std::streamsize>(lines.json.size()));
@@ -812,7 +817,7 @@ void StartAsync(const AsyncOptions& options)
     AsyncWriter& w = Writer();
     if (w.running || w.thread.joinable())
         return;
-    w.outFd = ::fcntl(STDOUT_FILENO, F_DUPFD_CLOEXEC, 3);
+    w.outFd = ::fcntl(s_StdoutFd >= 0 ? s_StdoutFd : STDOUT_FILENO, F_DUPFD_CLOEXEC, 3);
     if (w.outFd < 0)
         return;
     w.outChunked = IsPipe(w.outFd);
@@ -1564,6 +1569,295 @@ void Record::WriteJson()
             Format();
         WriteRecord(*m_buffers, m_channel, m_plugin, m_file, m_line, m_src, sinks);
     }
+}
+
+namespace {
+
+// fd 1 and 2 while captured: a pipe each, read by one thread that writes records to the real fds.
+struct StdioCapture
+{
+    struct Stream
+    {
+        int read = -1;
+        int real = -1;
+        bool chunked = false;
+        const char* src;
+        std::string pending; // bytes after the last newline
+    };
+    Stream streams[2] = { { -1, -1, false, "stdout", {} }, { -1, -1, false, "stderr", {} } };
+    int stop[2] = { -1, -1 };
+    std::thread thread;
+};
+
+// Never freed, and made on first use: capture starts from NWNX_Core's static initialisation.
+StdioCapture& Capture()
+{
+    static auto* s_capture = new StdioCapture();
+    return *s_capture;
+}
+std::atomic<bool> s_EngineLinesHooked;
+// Set before the reader starts and cleared after it joins; the crash handler reads them.
+std::atomic<int> s_RealOut{-1};
+std::atomic<int> s_RealErr{-1};
+
+// Removes ANSI CSI sequences (ESC [ params final), such as the engine's colours.
+std::string_view StripAnsi(std::string_view line, std::string& out)
+{
+    if (line.find('\033') == std::string_view::npos)
+        return line;
+    out.clear();
+    for (size_t i = 0; i < line.size(); i++)
+    {
+        if (line[i] != '\033' || i + 1 >= line.size() || line[i + 1] != '[')
+        {
+            out += line[i];
+            continue;
+        }
+        for (i += 2; i < line.size() && !(line[i] >= 0x40 && line[i] <= 0x7e); i++) {}
+    }
+    return out;
+}
+
+// "I [21:00:27] Network (exonetinternal.cpp:293:InitializeUDP): msg", the engine's console line.
+bool IsEngineLine(std::string_view line)
+{
+    return line.size() > 13 && std::string_view("DIWE?").find(line[0]) != std::string_view::npos && line[1] == ' ' && line[2] == '[' &&
+           line[5] == ':' && line[8] == ':' && line[11] == ']' && line[12] == ' ';
+}
+
+void CaptureLine(StdioCapture::Stream& stream, std::string_view line)
+{
+    thread_local std::string t_stripped, t_out;
+    if (!line.empty() && line.back() == '\r')
+        line.remove_suffix(1);
+    line = StripAnsi(line, t_stripped);
+    if (line.find_first_not_of(" \t") == std::string_view::npos)
+        return;
+
+    // A JSON object, such as Anvil's NLog layout, passes through unchanged.
+    if (line.front() == '{' && line.back() == '}' && nlohmann::json::accept(line))
+    {
+        t_out.assign(line);
+    }
+    else
+    {
+        Channel::Enum channel = Channel::SEV_INFO;
+        std::string origin;
+        const bool hooked = s_EngineLinesHooked.load(std::memory_order_relaxed);
+        // The engine's stderr notice for a worker thread's userdata line, which ServerLogRedirector kept.
+        if (hooked && line == std::string_view("!! Userdata log emitted from non-main thread discarded !!"))
+            return;
+        if (IsEngineLine(line))
+        {
+            if (hooked)
+                return;
+            // Without ServerLogRedirector: level and category from the line, best effort.
+            switch (line[0])
+            {
+                case 'D': channel = Channel::SEV_DEBUG;   break;
+                case 'W': channel = Channel::SEV_WARNING; break;
+                case 'E': channel = Channel::SEV_ERROR;   break;
+                default: break;
+            }
+            const std::string_view rest = line.substr(13);
+            const size_t paren = rest.find(" (");
+            if (paren != std::string_view::npos && paren > 0 && rest.substr(0, paren).find(' ') == std::string_view::npos)
+            {
+                origin = ",\"cat\":";
+                Json::AppendString(origin, rest.substr(0, paren), { Json::Encoding::Utf8, String::cp1252, false, 64 });
+            }
+        }
+        EncodeJson(t_out, { channel, nullptr, nullptr, 0, line, {}, nullptr, {}, false, stream.src, origin });
+    }
+    t_out += '\n';
+    WriteLines(stream.real, stream.chunked, t_out);
+    if (t_out.capacity() > 64 * 1024)
+        std::string().swap(t_out);
+}
+
+// Reads what the pipe holds now. Returns false at EOF or on an error.
+bool ReadCaptured(StdioCapture::Stream& stream)
+{
+    constexpr size_t maxLine = 64 * 1024;
+    char buffer[16 * 1024];
+    for (;;)
+    {
+        const ssize_t n = ::read(stream.read, buffer, sizeof(buffer));
+        if (n < 0 && errno == EINTR)
+            continue;
+        if (n <= 0)
+            return n < 0 && errno == EAGAIN;
+
+        std::string_view data(buffer, static_cast<size_t>(n));
+        for (size_t newline; (newline = data.find('\n')) != std::string_view::npos; data.remove_prefix(newline + 1))
+        {
+            if (stream.pending.empty())
+                CaptureLine(stream, data.substr(0, newline));
+            else
+            {
+                stream.pending.append(data.data(), newline);
+                CaptureLine(stream, stream.pending);
+                stream.pending.clear();
+            }
+        }
+        stream.pending.append(data);
+        if (stream.pending.size() >= maxLine)
+        {
+            CaptureLine(stream, stream.pending);
+            stream.pending.clear();
+        }
+    }
+}
+
+void FlushPending(StdioCapture::Stream& stream)
+{
+    if (!stream.pending.empty())
+        CaptureLine(stream, stream.pending);
+    std::string().swap(stream.pending);
+}
+
+void CaptureThread()
+{
+    StdioCapture& c = Capture();
+    auto& streams = c.streams;
+    pollfd fds[3] = { { streams[0].read, POLLIN, 0 }, { streams[1].read, POLLIN, 0 }, { c.stop[0], POLLIN, 0 } };
+    for (;;)
+    {
+        // A partial line is written after 100 ms without more output, such as a prompt.
+        const bool partial = !streams[0].pending.empty() || !streams[1].pending.empty();
+        const int ready = ::poll(fds, 3, partial ? 100 : -1);
+        if (ready < 0 && errno == EINTR)
+            continue;
+        if (ready == 0)
+        {
+            FlushPending(streams[0]);
+            FlushPending(streams[1]);
+            continue;
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            if (fds[i].revents && !ReadCaptured(streams[i]))
+                fds[i].fd = -1;
+        }
+        // Stop: fd 1 and 2 are the real ones again, so what the pipes hold now is all there is.
+        if (fds[2].revents)
+        {
+            for (auto& stream : streams)
+            {
+                ReadCaptured(stream);
+                FlushPending(stream);
+            }
+            return;
+        }
+    }
+}
+
+}
+
+bool StartStdioCapture()
+{
+    StdioCapture& c = Capture();
+    std::lock_guard<std::mutex> lock(s_SinkMutex);
+    if (s_StdoutFd >= 0 || Writer().running)
+        return false;
+    std::fflush(stdout);
+    std::cout.flush();
+
+    int pipes[2][2] = { { -1, -1 }, { -1, -1 } };
+    bool ok = ::pipe2(c.stop, O_CLOEXEC) == 0;
+    for (int i = 0; ok && i < 2; i++)
+    {
+        auto& stream = c.streams[i];
+        stream.real = ::fcntl(i + 1, F_DUPFD_CLOEXEC, 3);
+        ok = stream.real >= 0 && ::pipe2(pipes[i], O_CLOEXEC | O_NONBLOCK) == 0;
+        if (ok)
+        {
+            // The writers block as before; only the reader's end is non-blocking.
+            ::fcntl(pipes[i][1], F_SETFL, 0);
+            stream.read = pipes[i][0];
+            stream.chunked = IsPipe(stream.real);
+        }
+    }
+    if (!ok)
+    {
+        for (auto* fd : { &c.stop[0], &c.stop[1], &c.streams[0].real, &c.streams[1].real,
+                          &pipes[0][0], &pipes[0][1], &pipes[1][0], &pipes[1][1] })
+        {
+            if (*fd >= 0)
+                ::close(*fd);
+            *fd = -1;
+        }
+        c.streams[0].read = c.streams[1].read = -1;
+        return false;
+    }
+
+    // A terminal stdout stays line-buffered rather than becoming a pipe's full buffer.
+    if (::isatty(c.streams[0].real))
+        std::setvbuf(stdout, nullptr, _IOLBF, 0);
+    s_StdoutFd = c.streams[0].real;
+    s_StdoutChunked = c.streams[0].chunked;
+    s_RealOut = c.streams[0].real;
+    s_RealErr = c.streams[1].real;
+
+    // Like the async writer, the reader leaves process signals to the game's threads.
+    sigset_t all, previous;
+    sigfillset(&all);
+    for (int sig : { SIGSEGV, SIGBUS, SIGFPE, SIGILL, SIGABRT })
+        sigdelset(&all, sig);
+    pthread_sigmask(SIG_SETMASK, &all, &previous);
+    c.thread = std::thread(CaptureThread);
+    pthread_sigmask(SIG_SETMASK, &previous, nullptr);
+
+    for (int i = 0; i < 2; i++)
+    {
+        ::dup2(pipes[i][1], i + 1);
+        ::close(pipes[i][1]);
+    }
+
+    static const bool s_atExit = std::atexit(StopStdioCapture) == 0;
+    (void)s_atExit;
+    return true;
+}
+
+void StopStdioCapture()
+{
+    StdioCapture& c = Capture();
+    std::unique_lock<std::mutex> lock(s_SinkMutex);
+    if (!c.thread.joinable())
+        return;
+    std::fflush(stdout);
+    std::fflush(stderr);
+    std::cout.flush();
+    RestoreStdio();
+    s_StdoutFd = -1;
+    std::thread thread = std::move(c.thread);
+    lock.unlock();
+
+    const char stop = 0;
+    while (::write(c.stop[1], &stop, 1) < 0 && errno == EINTR) {}
+    thread.join();
+
+    s_RealOut = s_RealErr = -1;
+    for (auto* fd : { &c.stop[0], &c.stop[1], &c.streams[0].read, &c.streams[1].read,
+                      &c.streams[0].real, &c.streams[1].real })
+    {
+        ::close(*fd);
+        *fd = -1;
+    }
+}
+
+void RestoreStdio()
+{
+    const int out = s_RealOut, err = s_RealErr;
+    if (out >= 0)
+        ::dup2(out, STDOUT_FILENO);
+    if (err >= 0)
+        ::dup2(err, STDERR_FILENO);
+}
+
+void SetEngineLinesHooked(bool value)
+{
+    s_EngineLinesHooked = value;
 }
 
 }
