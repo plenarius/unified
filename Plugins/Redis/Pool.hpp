@@ -26,12 +26,15 @@ class Pool
 public:
     typedef std::unique_ptr<T> Contained;
     typedef std::function<Contained()> MakeFunc;
+    typedef std::function<bool(T&)> CheckFunc;
 
 public:
     Pool(Pool<T>& other) = delete;
     Pool<T> operator=(Pool<T> const& other) = delete;
 
-    Pool(MakeFunc make, size_t min = 1, size_t max = 10)
+    // check() decides whether an idle T is still usable; failing ones are dropped.
+    Pool(MakeFunc make, CheckFunc check = nullptr, size_t min = 1, size_t max = 10)
+        : m_check(check)
     {
         Reconfigure(make, min, max);
     }
@@ -86,9 +89,32 @@ public:
     {
         std::lock_guard<std::mutex> lock(m_pool_mtx);
 
+        // Connections can die while idle (server restart, timeout): drop them so make() replaces them.
+        if (m_check)
+        {
+            std::queue<Contained> alive;
+            for (; !m_pool_available.empty(); m_pool_available.pop())
+            {
+                if (m_check(*m_pool_available.front()))
+                    alive.push(std::move(m_pool_available.front()));
+                else
+                    LOG_DEBUG("Pool: dropping dead instance");
+            }
+            m_pool_available.swap(alive);
+        }
+
+        // Hand out an existing instance even if topping up the pool fails.
         while (m_pool_available.size() < 1 + m_min)
         {
-            m_pool_available.push(m_make());
+            if (m_pool_available.empty())
+            {
+                m_pool_available.push(m_make());
+            }
+            else
+            {
+                try { m_pool_available.push(m_make()); }
+                catch (const std::exception&) { break; }
+            }
             LOG_DEBUG("Pool exhausted, making new; pool at: %d", m_pool_available.size());
         }
 
@@ -106,6 +132,9 @@ public:
     {
         std::lock_guard<std::mutex> lock(m_pool_mtx);
 
+        if (m_check && !m_check(*t))
+            return;
+
         if (m_pool_available.size() < m_max)
             m_pool_available.push(std::move(t));
     }
@@ -117,6 +146,7 @@ private:
     std::queue<Contained> m_pool_available;
 
     MakeFunc m_make;
+    CheckFunc m_check;
     size_t m_min;
     size_t m_max;
 };

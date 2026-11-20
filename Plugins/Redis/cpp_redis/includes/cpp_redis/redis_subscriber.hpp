@@ -57,6 +57,8 @@ public:
   //! calling repeatedly auth() is undefined concerning the execution of the associated callbacks
   typedef std::function<void(reply&)> reply_callback_t;
   redis_subscriber& auth(const std::string& password, const reply_callback_t& reply_callback = nullptr);
+  //! NWNX: Redis 6+ ACL form, AUTH username password
+  redis_subscriber& auth(const std::string& username, const std::string& password, const reply_callback_t& reply_callback);
 
   //! subscribe - unsubscribe
   typedef std::function<void(const std::string&, const std::string&)> subscribe_callback_t;
