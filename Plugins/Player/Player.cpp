@@ -494,13 +494,6 @@ NWNX_EXPORT ArgumentStack OpenInventory(ArgumentStack&& args)
           ASSERT_OR_THROW(oidTarget != Constants::OBJECT_INVALID);
         auto open = !!args.extract<int32_t>();
 
-        // The engine's inventory panel update crashes on a non-creature owner
-        if (open && !Globals::AppManager()->m_pServerExoApp->GetCreatureByGameObjectID(oidTarget))
-        {
-            LOG_ERROR("OpenInventory: target 0x%08x is not a creature.", oidTarget);
-            return {};
-        }
-
         CNWSPlayerInventoryGUI *pInventory = pPlayer->m_oidNWSObject == oidTarget ? pPlayer->m_pInventoryGUI :
                                                                                     pPlayer->m_pOtherInventoryGUI;
 
@@ -922,9 +915,9 @@ NWNX_EXPORT ArgumentStack SetPersistentLocation(ArgumentStack&& args)
 
                     // Fake some changes to their area/position as though they had a TURD
                     auto *pWP = Utils::AsNWSWaypoint(Utils::GetGameObject(wpOID));
-                    auto pCreature = Utils::AsNWSCreature(Utils::GetGameObject(pPlayer->m_oidNWSObject));
-                    if (pWP && pCreature)
+                    if (pWP)
                     {
+                        auto pCreature = Utils::AsNWSCreature(Utils::GetGameObject(pPlayer->m_oidNWSObject));
                         pCreature->m_oidDesiredArea = pWP->m_oidArea;
                         pCreature->m_vDesiredAreaLocation = pWP->m_vPosition;
                         pCreature->m_bDesiredAreaUpdateComplete = false;
@@ -1986,7 +1979,7 @@ NWNX_EXPORT ArgumentStack ReloadResources(ArgumentStack&& args)
         if (!flags)
             return {};
 
-        // Resman minor 0x4: one DWORD of reload flags, read by the client's CNWCMessage::HandleServerToPlayerResman.
+        // Same Resman 0x4 reload message as ReloadTlk() (0x10) and ReloadColorPalettes() (0x20).
         if (auto* pMessage = Globals::AppManager()->m_pServerExoApp->GetNWSMessage())
         {
             pMessage->CreateWriteMessage(4, pPlayer->m_nPlayerID, 1);

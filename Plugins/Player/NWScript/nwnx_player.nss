@@ -80,18 +80,13 @@ const int NWNX_PLAYER_PLATFORM_SONY_PS4          = 70;
 /// @anchor reload_resources_flags
 ///
 /// Flags for NWNX_Player_ReloadResources(), combine them with |.
-/// Each reload happens on the client of that one player only.
 /// @{
-/// Dump every cached texture (tga, dds, ktx, mtr) and rebuild every loaded texture and shared material,
-/// the same full texture refresh the client does when it joins a module. Unlike the reload that
-/// SetTextureOverride() triggers, this also reloads every same-name copy of a texture. Expect a short hitch.
-const int NWNX_PLAYER_RELOAD_TEXTURES = 0x2;
-/// Reload the mouse cursors, so a cursor override set with NWNX_Player_SetResManOverride() shows.
-const int NWNX_PLAYER_RELOAD_CURSORS  = 0x4;
-/// Reload the NUI skin on the next frame: re-read nui_skin.tml, empty its image cache and re-bake its fonts,
-/// as a GUI scale change does. Lets NUI skin overrides (SetTextureOverride() for its textures,
-/// NWNX_Player_SetResManOverride() for nui_skin.tml or ttf fonts) show without a relog.
-const int NWNX_PLAYER_RELOAD_NUI_SKIN = 0x200;
+/// Rebuild all cached textures and materials, as the client does when joining a module. Expect a short hitch.
+const int NWNX_PLAYER_RELOAD_RESOURCES_TEXTURES = 0x2;
+/// Reload the mouse cursors.
+const int NWNX_PLAYER_RELOAD_RESOURCES_CURSORS  = 0x4;
+/// Reload the NUI skin (nui_skin.tml, its images and fonts) on the next frame, as a GUI scale change does.
+const int NWNX_PLAYER_RELOAD_RESOURCES_NUI_SKIN = 0x200;
 /// @}
 
 /// @brief Force display placeable examine window for player
@@ -476,11 +471,10 @@ void NWNX_Player_ReloadColorPalettes(object oPlayer);
 /// @return The open store or OBJECT_INVALID if no store is open.
 object NWNX_Player_GetOpenStore(object oPlayer);
 
-/// @brief Make oPlayer's client reload cached resources.
-/// @note Only oPlayer is affected. Overrides sent before the reload (SetTextureOverride(),
-/// NWNX_Player_SetResManOverride()) are picked up by it.
+/// @brief Make oPlayer's client reload some of its cached resources.
+/// @note Use after SetTextureOverride() or NWNX_Player_SetResManOverride() to show the new resources without a relog.
 /// @param oPlayer The player.
-/// @param nFlags One or more @ref reload_resources_flags "NWNX_PLAYER_RELOAD_*" flags combined with |.
+/// @param nFlags One or more @ref reload_resources_flags "NWNX_PLAYER_RELOAD_RESOURCES_*" flags combined with |.
 void NWNX_Player_ReloadResources(object oPlayer, int nFlags);
 
 /// @}
