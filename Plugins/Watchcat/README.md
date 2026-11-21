@@ -4,7 +4,7 @@
 
 Monitors the server for stalls and kills it when it meets a threshold. Automatically restarting the server must be done outside of the process; this plugin only kills the process.
 
-During stalls, the plugin samples the main thread for stacks, tries to bucket them into similar stacks, and prints the top offenders on stall or process exit to the logfile/stdout.
+During stalls, the plugin samples the main thread for stacks, tries to bucket them into similar stacks, and prints the top offenders on stall or process exit to the logfile/stdout, along with the NWScript scripts (and their `OBJECT_SELF`) that were running.
 
 ## Environment Variables
 
