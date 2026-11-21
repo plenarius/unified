@@ -130,6 +130,7 @@ Added</h2>
 <li>Core: added <code>NWNX_CORE_ENCODING_BEST_FIT</code> to replace characters the codepage lacks with close equivalents instead of <code>?</code> when converting from UTF-8.</li>
 <li>Events: Added event <code>NWNX_ON_ENCUMBRANCE_CHANGE_AFTER</code> which fires when a creature's encumbrance state changes.</li>
 <li>SQL: Added <code>NWNX_SQL_QUERY_METRICS_ID_AS_FIELD</code> to send the query ID of <code>NWNX_SQL_QUERY_METRICS</code> as a field instead of a tag, so a long running server doesn't hit InfluxDB's <code>max-values-per-tag</code> limit.</li>
+<li>Core: the crash report now lists the NWScript call stack at the crash, each script with its OBJECT_SELF.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md12"></a>
 New Plugins</h4>
@@ -212,6 +213,7 @@ Fixed</h2>
 <li>WebHook: Fixed a crash when a webhook sent during shutdown got no response.</li>
 <li>HTTPClient: The README named the timeout variable <code>NWNX_HTTPCLIENT_REQUEST_TIMEOUT</code>; the code reads <code>NWNX_HTTPCLIENT_CLIENT_REQUEST_TIMEOUT</code>.</li>
 <li>Core: Fixed the crash handler looping forever without a backtrace when it runs on a small signal stack, as it does with the .NET runtime loaded.</li>
+<li>Core: Fixed the crash handler hanging without a backtrace after a fault inside malloc or free (heap corruption): it no longer allocates.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md18"></a>
 8193.37.13</h1>
@@ -1764,7 +1766,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Nov 21 2026 20:30:26 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Nov 21 2026 20:31:01 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>
