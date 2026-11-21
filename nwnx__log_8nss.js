@@ -1,0 +1,26 @@
+var nwnx__log_8nss =
+[
+    [ "NWNX_Log_Debug", "group__log.html#ga446c7a7a9ac8adb6c89d83705fcecdf3", null ],
+    [ "NWNX_Log_Info", "group__log.html#gabb159fc6de5b88063cec252ef905ff56", null ],
+    [ "NWNX_Log_Notice", "group__log.html#gad4e6d3fc052e9f047a5834e8c1b2da1b", null ],
+    [ "NWNX_Log_Warning", "group__log.html#ga4c8d87f51c199449b7611c4d82800ab4", null ],
+    [ "NWNX_Log_Error", "group__log.html#ga12632bc1c53756e1070384864d893adc", null ],
+    [ "NWNX_Log_Write", "group__log.html#ga00d9bd05b591d2c0aafe4d7c0e122eb6", null ],
+    [ "NWNX_Log_IsEnabled", "group__log.html#gae35e3877b679ceb994fb82d916f8497a", null ],
+    [ "NWNX_Log_Bind", "group__log.html#ga34bd939da1c70e13a3786d85cd2a0546", null ],
+    [ "NWNX_Log_Unbind", "group__log.html#ga88beeb829a316163bf7652791d671476", null ],
+    [ "NWNX_Log_GetBindings", "group__log.html#ga92f5ac8297da50b259fae67de415e837", null ],
+    [ "NWNX_Log_SetLogger", "group__log.html#ga61dd75fbca6546dcbc4e2e092ffb100b", null ],
+    [ "NWNX_Log_SetGlobal", "group__log.html#gad92c085a5b0066bb1ad30bba7aeafd8a", null ],
+    [ "NWNX_Log_Rotate", "group__log.html#ga9f47069e020a5efac5a0ae8e4f2eb753", null ],
+    [ "NWNX_Log", "group__log.html#gad3e395eb7c9ab3ef95912f1129ddcd87", null ],
+    [ "NWNX_LOG_LEVEL_DEBUG", "group__log.html#ga4b7465fd79adbca9e7d6e37aa728f173", null ],
+    [ "NWNX_LOG_LEVEL_INFO", "group__log.html#gaedcecc9e410b00da29950235c04af2a1", null ],
+    [ "NWNX_LOG_LEVEL_NOTICE", "group__log.html#ga0c21e85bedf3190d5666bc1391bc4ab1", null ],
+    [ "NWNX_LOG_LEVEL_WARNING", "group__log.html#ga9cdcc287cbfbd41f6090ca96e3d86099", null ],
+    [ "NWNX_LOG_LEVEL_ERROR", "group__log.html#ga54166652e6f35604bdf8082ca3ccd2fd", null ],
+    [ "NWNX_LOG_ROTATE_NWNX", "group__log.html#ga76751a7d0fad780b5083d8f6aa18751d", null ],
+    [ "NWNX_LOG_ROTATE_SERVER", "group__log.html#gaf1804b1450fd9a475a0fbc0e97c50097", null ],
+    [ "NWNX_LOG_ROTATE_ENGINE", "group__log.html#ga0e2c9b976010e561ed94614a6a35db1b", null ],
+    [ "NWNX_LOG_ROTATE_ALL", "group__log.html#ga9411cc75f5d1476b7699e5d381ffba11", null ]
+];

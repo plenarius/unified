@@ -102,13 +102,33 @@ $(document).ready(function(){initNavTree('group__serverlogredirector.html',''); 
 <div class="contents">
 
 
-<h3><a id="serverlogredirector"></a>Readme</h3><div class="textblock">Redirects server log output to the NWNX logger. </div></div><!-- contents -->
+<h3><a id="serverlogredirector"></a>Readme</h3><div class="textblock">Redirects server log output to the NWNX logger.In text mode, it logs each line of <code>nwserverLog1.txt</code> (script prints, <code>WriteTimestampedLogEntry</code>, server events) as <code>(Server) &lt;line&gt;</code> at info level.<h2><a class="anchor" id="autotoc_md684"></a>
+JSON</h2>
+<p>With <code>NWNX_CORE_LOG_FORMAT=json</code>, every line the engine logs becomes one record instead: both <code>nwserverLog1.txt</code> and <code>nwengineLog.txt</code>, so script errors, SQLite errors, network and NWSync lines too.</p>
+<div class="fragment"><div class="line">{&quot;time&quot;:1763680000000,&quot;level&quot;:50,&quot;lvl&quot;:&quot;error&quot;,&quot;msg&quot;:&quot;Script error: my_script OID: 8000012a, Tag: GUARD, ERROR: TOO MANY INSTRUCTIONS&quot;,&quot;src&quot;:&quot;engine&quot;,&quot;plugin&quot;:&quot;NWNX_ServerLogRedirector&quot;,&quot;file&quot;:&quot;nwsvmachinecommands.cpp&quot;,&quot;line&quot;:264,&quot;cat&quot;:&quot;ScriptVM&quot;,&quot;script&quot;:&quot;my_script&quot;,&quot;oid&quot;:&quot;8000012a&quot;,&quot;tag&quot;:&quot;GUARD&quot;,&quot;area&quot;:&quot;TOWN&quot;,&quot;func&quot;:&quot;ReportError&quot;,&quot;err&quot;:{&quot;message&quot;:&quot;TOO MANY INSTRUCTIONS&quot;,&quot;code&quot;:632}}</div>
+</div><!-- fragment --><ul>
+<li><code>level</code> from the engine's severity (debug, info, warn, error); <code>cat</code> is the engine's category: <code>User::NWScript</code>, <code>User::Chat</code>, <code>User::Info</code>, <code>Engine</code>, <code>ScriptVM</code>, <code>Network</code>, <code>NUI</code>, <code>ASSERT</code>, <code>NWNX::Core</code>, <code>NWNX::User</code>, or <code>General</code> for the lines the engine prints without one.</li>
+<li><code>file</code>, <code>line</code> and <code>func</code> are the engine's source location; <code>msg</code> is the line without its trailing newline, and a message with several lines stays one record.</li>
+<li>During a script: the script context (<code>NWNX_CORE_LOG_CONTEXT</code>), and <code>fn</code> for <code>PrintString</code>, <code>PrintInteger</code>, <code>PrintFloat</code>, <code>PrintObject</code>, <code>PrintVector</code> and <code>WriteTimestampedLogEntry</code>.</li>
+<li>Script errors are at error level with <code>err.code</code> and <code>err.message</code>; SQLite errors add <code>err</code> and the <code>query</code> when the engine has it.</li>
+<li>The engine's own files keep exactly the same content. Records the engine makes on other threads in the <code>User::</code> categories, which it discards, are kept.</li>
+<li><code>NWNX_SERVERLOGREDIRECTOR_LOG_LEVEL</code> filters records as for any plugin (7 includes the engine's debug lines).</li>
+</ul>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Variable Name   </th><th class="markdownTableHeadCenter">Value   </th><th class="markdownTableHeadCenter">Default   </th><th class="markdownTableHeadNone">Notes    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_SERVERLOGREDIRECTOR_DROP_CATEGORIES</code>   </td><td class="markdownTableBodyCenter">string   </td><td class="markdownTableBodyCenter"></td><td class="markdownTableBodyNone">A comma-separated list of categories left out of the records, e.g. <code>Network,NUI</code>. The engine's files are unaffected.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_SERVERLOGREDIRECTOR_ENGINE_FILES</code>   </td><td class="markdownTableBodyCenter">true/false   </td><td class="markdownTableBodyCenter">true   </td><td class="markdownTableBodyNone"><code>false</code> stops the engine writing <code>nwserverLog1.txt</code> and <code>nwengineLog.txt</code> (and their <code>NWN_ENABLE_DEBUG_SPEW</code> copy on <code>stderr</code>), which only repeat the records. JSON only.   </td></tr>
+</table>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Nov 21 2026 20:31:01 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Nov 21 2026 21:57:19 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>

@@ -23,6 +23,7 @@ var dir_0b4eaef40a1fe20bedafe9e8e719ce66 =
     [ "ItemAppearance", "dir_6983266ff02399a8a339edc393fb671c.html", "dir_6983266ff02399a8a339edc393fb671c" ],
     [ "ItemProperty", "dir_fad520b62fe1864a3ce89e5e537cfebd.html", "dir_fad520b62fe1864a3ce89e5e537cfebd" ],
     [ "Layonara", "dir_488ae121b45fa54c39c091338ec49326.html", "dir_488ae121b45fa54c39c091338ec49326" ],
+    [ "Log", "dir_5418700f976f23057b12d1f906c0a0d8.html", "dir_5418700f976f23057b12d1f906c0a0d8" ],
     [ "MaxLevel", "dir_b10c1c60be7e35fee5df313cec8c8dbb.html", null ],
     [ "Metrics_InfluxDB", "dir_dc689260d4f2167281a349267a85b2fa.html", null ],
     [ "NoStack", "dir_abc2ec1edc38b4d4d881e5748f6267a3.html", "dir_abc2ec1edc38b4d4d881e5748f6267a3" ],

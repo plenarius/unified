@@ -105,12 +105,12 @@ $(document).ready(function(){initNavTree('group__elc.html',''); initResizable();
 <div class="contents">
 
 
-<h3><a id="elc"></a>Readme</h3><div class="textblock">An NWNX replacement for ValidateCharacter: ELC &amp; ILR<h2><a class="anchor" id="autotoc_md321"></a>
+<h3><a id="elc"></a>Readme</h3><div class="textblock">An NWNX replacement for ValidateCharacter: ELC &amp; ILR<h2><a class="anchor" id="autotoc_md323"></a>
 Notes</h2>
 <p>If enabled and used without setting an ELC script it will function just like ELC/ILR in the base game.</p>
 <p>This is a pretty advanced plugin and may at times require you to dive into the source code to figure out what's going on.</p>
 <p>A <code>NON_PLAYER_RACE</code> or <code>NON_PLAYER_CLASS</code> failure for a race or class id outside <code>racialtypes.2da</code> or <code>classes.2da</code> can't be skipped: the character fails validation even if the ELC script calls <code><a class="el" href="group__elc.html#gad5c223e082822a98a478dcdfb0c58fa3" title="Skip an ELC Validation Failure Event.">NWNX_ELC_SkipValidationFailure()</a></code>.</p>
-<h2><a class="anchor" id="autotoc_md322"></a>
+<h2><a class="anchor" id="autotoc_md324"></a>
 Environment Variables</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -126,13 +126,13 @@ Environment Variables</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>NWNX_ELC_ENFORCE_CASTER_PRIMARY_STAT_IS_11</code>   </td><td class="markdownTableBodyCenter">true/false   </td><td class="markdownTableBodyCenter">false   </td><td class="markdownTableBodyNone">If enabled, check when a character's first level class is a spellcaster, if their primary casting stat is &gt;= 11.   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md323"></a>
+<h2><a class="anchor" id="autotoc_md325"></a>
 Events</h2>
 <p>This plugin adds the following events which can be subscribed to with NWNX_Events.</p>
 <p><code>NWNX_ON_ELC_VALIDATE_CHARACTER_BEFORE</code></p>
 <p><code>NWNX_ON_ELC_VALIDATE_CHARACTER_AFTER</code></p>
 <p><code>OBJECT_SELF</code> is the player object, the <code>_AFTER</code> event only runs if the character successfully validates.</p>
-<h2><a class="anchor" id="autotoc_md324"></a>
+<h2><a class="anchor" id="autotoc_md326"></a>
 Example Script</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;nwnx_elc&quot;</span></div>
 <div class="line"> </div>
@@ -1531,7 +1531,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Nov 21 2026 20:31:01 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Nov 21 2026 21:57:19 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>

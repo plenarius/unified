@@ -6,7 +6,7 @@ var searchData=
   ['lindex_281',['LINDEX',['../nwnx__redis__short_8nss.html#a0f748e83fa81a30c644930a241fe08e9',1,'nwnx_redis_short.nss']]],
   ['linsert_282',['LINSERT',['../nwnx__redis__short_8nss.html#a4cc399f43d81b5490e44e521e6186a36',1,'nwnx_redis_short.nss']]],
   ['llen_283',['LLEN',['../nwnx__redis__short_8nss.html#a389ba4a3d5f1438de8ced69bb34a314e',1,'nwnx_redis_short.nss']]],
-  ['log_284',['Log',['../array__example_8nss.html#a71f6011f9c84f74acca8b63d03303cb6',1,'array_example.nss']]],
+  ['log_284',['Log',['../array__example_8nss.html#a71f6011f9c84f74acca8b63d03303cb6',1,'Log(string msg):&#160;array_example.nss'],['../group__log.html',1,'(Global Namespace)']]],
   ['lpop_285',['LPOP',['../nwnx__redis__short_8nss.html#ac9e1458cdd6ab51366f5257d41d985e4',1,'nwnx_redis_short.nss']]],
   ['lpush_286',['LPUSH',['../nwnx__redis__short_8nss.html#a9f66318e878dab1a27896c1a18a3f242',1,'nwnx_redis_short.nss']]],
   ['lpushx_287',['LPUSHX',['../nwnx__redis__short_8nss.html#a174c161c43361ee07e4c62c38e584bc3',1,'nwnx_redis_short.nss']]],

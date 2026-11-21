@@ -105,14 +105,22 @@ $(document).ready(function(){initNavTree('group__chat.html',''); initResizable()
 <div class="contents">
 
 
-<h3><a id="chat"></a>Readme</h3><div class="textblock">Allows chat events to be captured, skipped, and manual chat messages to be dispatched.<h2><a class="anchor" id="autotoc_md287"></a>
+<h3><a id="chat"></a>Readme</h3><div class="textblock">Allows chat events to be captured, skipped, and manual chat messages to be dispatched.<h2><a class="anchor" id="autotoc_md289"></a>
 Environment Variables</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Variable Name   </th><th class="markdownTableHeadCenter">Value   </th><th class="markdownTableHeadNone">Notes    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>NWNX_CHAT_CHAT_SCRIPT</code>   </td><td class="markdownTableBodyCenter">string   </td><td class="markdownTableBodyNone">Set the nwscript that receives all the chat messages   </td></tr>
+<td class="markdownTableBodyNone"><code>NWNX_CHAT_CHAT_SCRIPT</code>   </td><td class="markdownTableBodyCenter">string   </td><td class="markdownTableBodyNone">Set the nwscript that receives all the chat messages    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CHAT_LOG_CHANNELS</code>   </td><td class="markdownTableBodyCenter">channel list   </td><td class="markdownTableBodyNone">Only these channels are logged. Default: all.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CHAT_LOG_CONTENT_CHANNELS</code>   </td><td class="markdownTableBodyCenter">channel list   </td><td class="markdownTableBodyNone">Only these channels are logged with their text. Default: all but tells, which never include their text unless named here.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CHAT_LOG_MESSAGE_LEVEL</code>   </td><td class="markdownTableBodyCenter">2-7   </td><td class="markdownTableBodyNone">The level chat messages are logged at, checked against <code>NWNX_CHAT_LOG_LEVEL</code>. Default: 7 (debug).   </td></tr>
 </table>
+<p>Channel lists are comma separated names: <code>talk</code>, <code>shout</code>, <code>whisper</code>, <code>tell</code>, <code>server</code>, <code>party</code>, <code>dm</code>, <code>dm_talk</code>, <code>dm_shout</code>, <code>dm_whisper</code>, <code>dm_tell</code>, <code>dm_party</code>, <code>dm_dm</code>. For example, to log public chat at info level without tells: <code>NWNX_CHAT_LOG_CHANNELS=talk,shout,whisper,party</code>, <code>NWNX_CHAT_LOG_MESSAGE_LEVEL=6</code>, <code>NWNX_CHAT_LOG_LEVEL=6</code>.</p>
+<p>In JSON logs (<code>NWNX_CORE_LOG_FORMAT=json</code>) a chat message is a <code>chat message</code> record with <code>channel</code>, <code>channel_id</code>, <code>speaker</code>, <code>speaker_name</code>, <code>skipped</code>, <code>target</code> (tells) and <code>text</code>. </p>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
@@ -649,7 +657,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Nov 21 2026 20:31:01 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Nov 21 2026 21:57:19 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>

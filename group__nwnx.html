@@ -118,7 +118,7 @@ Environment Variables</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>NWNX_CORE_SKIP_ALL</code>   </td><td class="markdownTableBodyCenter">0-1   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">Changes the default plugin load state from 'load all' to 'skip all'. Use <code>NWNX_{PLUGIN}_SKIP=n</code> to enable specific plugins in this case.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_LEVEL</code>   </td><td class="markdownTableBodyCenter">0-7   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">Sets the default log level. <code>6</code> is a good level for live servers. <code>7</code> includes debug messages which can be helpful if you're having issues.    </td></tr>
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_LEVEL</code>   </td><td class="markdownTableBodyCenter">0-7   </td><td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone">Sets the default log level. <code>6</code> is a good level for live servers. <code>7</code> includes debug messages which can be helpful if you're having issues.    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>NWNX_CORE_LOAD_EXPERIMENTAL_PLUGIN</code>   </td><td class="markdownTableBodyCenter">0-1   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">Allows loading of NWNX_Experimental, use at your own risk.    </td></tr>
 <tr class="markdownTableRowEven">
@@ -152,6 +152,54 @@ Environment Variables</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_FILE_PATH</code>   </td><td class="markdownTableBodyCenter">string   </td><td class="markdownTableBodyNone">Unset   </td><td class="markdownTableBodyNone">Sets the secondary (in addition to <code>stdout</code>) log file.    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_FORMAT</code>   </td><td class="markdownTableBodyCenter">text, json   </td><td class="markdownTableBodyNone">text   </td><td class="markdownTableBodyNone">The format of the logs printed to <code>stdout</code>. <code>json</code> prints one JSON object per line (see below); then only <code>LOG_SOURCE</code> of the options above applies.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_FILE_FORMAT</code>   </td><td class="markdownTableBodyCenter">text, json   </td><td class="markdownTableBodyNone"><code>LOG_FORMAT</code>   </td><td class="markdownTableBodyNone">The format of the log file.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_TEXT_FIELDS</code>   </td><td class="markdownTableBodyCenter">0-1   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">Appends the fields of structured records to text lines as <code>key=value</code>, strings in game-locale bytes like the rest of the line (quoted when they hold a space, <code>=</code>, <code>"</code> or a control character), other values as JSON writes them. By default text lines print only the message.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_JSON_LEVEL</code>   </td><td class="markdownTableBodyCenter">number, label   </td><td class="markdownTableBodyNone">number   </td><td class="markdownTableBodyNone"><code>number</code>: <code>"level":30,"lvl":"info"</code>. <code>label</code>: <code>"level":"info"</code>.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_JSON_ENCODING</code>   </td><td class="markdownTableBodyCenter">auto, locale, utf8   </td><td class="markdownTableBodyNone">auto   </td><td class="markdownTableBodyNone">How strings become UTF-8. <code>auto</code>: valid UTF-8 is kept, anything else is converted from <code>NWNX_CORE_LOCALE</code>. <code>locale</code>: always converted. <code>utf8</code>: invalid bytes become U+FFFD.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_JSON_STRIP_COLORS</code>   </td><td class="markdownTableBodyCenter">0-1   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">Removes NWN colour tokens (<code>&lt;cXYZ&gt;</code>, <code>&lt;/c&gt;</code>) from JSON strings.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_JSON_MAX_VALUE</code>   </td><td class="markdownTableBodyCenter">int   </td><td class="markdownTableBodyNone">8192   </td><td class="markdownTableBodyNone">Longer strings are cut (at a character boundary) and the record gets <code>"truncated":true</code>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_JSON_MAX_LINE</code>   </td><td class="markdownTableBodyCenter">int   </td><td class="markdownTableBodyNone">65536   </td><td class="markdownTableBodyNone">Longer records are shortened the same way: the message first, then the fields are dropped.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_JSON_STATIC</code>   </td><td class="markdownTableBodyCenter">JSON object   </td><td class="markdownTableBodyNone">Unset   </td><td class="markdownTableBodyNone">Added to every JSON record, e.g. <code>{"server":"main"}</code>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_CONTEXT</code>   </td><td class="markdownTableBodyCenter">string   </td><td class="markdownTableBodyNone"><code>script,oid,tag,area</code>   </td><td class="markdownTableBodyNone">The keys of the running script added to records with fields (JSON, <code>LOG_TEXT_FIELDS</code>) made during a script: <code>script</code>, <code>oid</code> (<code>OBJECT_SELF</code>), its <code>tag</code> and <code>area</code> tag, and, only when listed, <code>pc</code> (character name) and <code>player</code> (login name) for player-controlled creatures. <code>none</code> turns it off.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_CAPTURE_STDIO</code>   </td><td class="markdownTableBodyCenter">auto, true, false   </td><td class="markdownTableBodyNone">auto   </td><td class="markdownTableBodyNone">With <code>LOG_FORMAT=json</code>, turn every other line on <code>stdout</code> and <code>stderr</code> (the engine's and libraries' <code>printf</code>s) into a JSON record <code>{"level":30,"src":"stdout","msg":...}</code> on the same stream, so every line is JSON. Lines that are already one JSON object pass through unchanged; ANSI colour codes and blank lines are dropped. <code>auto</code> and <code>true</code> turn it on with JSON <code>stdout</code>; <code>false</code> leaves the streams alone. Decided at startup, like <code>LOG_ASYNC</code>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_ASYNC</code>   </td><td class="markdownTableBodyCenter">auto, true, false   </td><td class="markdownTableBodyNone">auto   </td><td class="markdownTableBodyNone">Write logs on a background thread, so a slow <code>stdout</code> or disk does not stall the server. <code>auto</code>: on when <code>LOG_FORMAT</code> or <code>LOG_FILE_FORMAT</code> is <code>json</code>. Decided at startup: switching to JSON later with <code>logformat</code> stays synchronous. The bytes are the same, but NWNX lines can reach <code>stdout</code> up to <code>LOG_ASYNC_FLUSH_MS</code> after other output.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_ASYNC_FLUSH_MS</code>   </td><td class="markdownTableBodyCenter">int   </td><td class="markdownTableBodyNone">50   </td><td class="markdownTableBodyNone">The longest a line waits before it is written. Warnings and worse, and every 64 KiB of lines, are written at once.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_ASYNC_MAX_BYTES</code>   </td><td class="markdownTableBodyCenter">int   </td><td class="markdownTableBodyNone">8388608   </td><td class="markdownTableBodyNone">How much may wait to be written (at least 262144).    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_ASYNC_FULL</code>   </td><td class="markdownTableBodyCenter">block, drop   </td><td class="markdownTableBodyNone">block   </td><td class="markdownTableBodyNone">When that is full: <code>block</code> waits for room; <code>drop</code> drops debug, info and notice lines and later logs a warning with the number dropped. Warnings and worse always wait.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_FILE_KEEP_PREVIOUS</code>   </td><td class="markdownTableBodyCenter">true/false   </td><td class="markdownTableBodyNone">false   </td><td class="markdownTableBodyNone">Move the previous run's <code>LOG_FILE_PATH</code> to <code>&lt;name&gt;.&lt;UTC time&gt;</code> at startup instead of appending to it.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_FILE_KEEP</code>   </td><td class="markdownTableBodyCenter">int   </td><td class="markdownTableBodyNone">7   </td><td class="markdownTableBodyNone">The number of archives of <code>LOG_FILE_PATH</code> kept, by <code>LOG_FILE_KEEP_PREVIOUS</code> and by rotation. <code>0</code> keeps all.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_FILE_ROTATE_SIZE</code>   </td><td class="markdownTableBodyCenter">bytes, with an optional <code>K</code>, <code>M</code> or <code>G</code>   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">When above 0, rotate <code>LOG_FILE_PATH</code> (as <code>logrotate nwnx</code>) once this much has been written to it.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_FILE_ROTATE_TIME</code>   </td><td class="markdownTableBodyCenter">off, hourly, daily   </td><td class="markdownTableBodyNone">off   </td><td class="markdownTableBodyNone">Rotate <code>LOG_FILE_PATH</code> at every full hour or at midnight UTC, unless nothing was written since the last rotation.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_REOPEN_SIGNAL</code>   </td><td class="markdownTableBodyCenter">off, HUP, USR1, USR2   </td><td class="markdownTableBodyNone">off   </td><td class="markdownTableBodyNone">On this signal, reopen the log files an external tool (e.g. logrotate without <code>copytruncate</code>) moved away, as <code>logreopen</code> does. <code>USR1</code> is the recommended choice; with <code>off</code> no handler is installed, so the signal keeps its default action.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_ENGINE_KEEP_PREVIOUS</code>   </td><td class="markdownTableBodyCenter">true/false   </td><td class="markdownTableBodyNone">false   </td><td class="markdownTableBodyNone">Keep the previous run's <code>nwengineLog.txt</code> and <code>nwserverLog1.txt</code> as <code>&lt;name&gt;.&lt;UTC time&gt;</code> instead of the engine overwriting them.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_ENGINE_KEEP</code>   </td><td class="markdownTableBodyCenter">int   </td><td class="markdownTableBodyNone">7   </td><td class="markdownTableBodyNone">The number of archives kept of each engine log file, by <code>NWNX_CORE_LOG_ENGINE_KEEP_PREVIOUS</code> and by rotation. <code>0</code> keeps all.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_ENGINE_ROTATE_SIZE</code>   </td><td class="markdownTableBodyCenter">bytes, with an optional <code>K</code>, <code>M</code> or <code>G</code>   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">When above 0, rotate an engine log file (as <code>logrotate</code>) once it reaches this size. Checked every 10 seconds.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>NWNX_CORE_LOG_ENGINE_ROTATE_TIME</code>   </td><td class="markdownTableBodyCenter">off, hourly, daily   </td><td class="markdownTableBodyNone">off   </td><td class="markdownTableBodyNone">Rotate the engine log files at every full hour or at midnight UTC, unless nothing was written since the last rotation.    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>NWNX_CORE_HARD_EXIT</code>   </td><td class="markdownTableBodyCenter">0-1   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">If set, NWNX will hard kill the process after it unloads.    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>NWNX_CORE_BASE_GAME_CRASH_HANDLER</code>   </td><td class="markdownTableBodyCenter">0-1   </td><td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">Sets whether to also call the base game handler in case of crash.   </td></tr>
@@ -170,18 +218,53 @@ Console Commands</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>loglevel &lt;plugin&gt; [&lt;loglevel&gt;]</code>   </td><td class="markdownTableBodyNone">Sets the log level of the given plugin. <code>&lt;plugin&gt;</code> should not have the <code>NWNX_</code> prefix. Example: <code>loglevel Events 7</code>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>logformat [timestamp\|notimestamp] [plugin\|noplugin] [source\|nosource] [color\|nocolor] [force\|noforce]</code>   </td><td class="markdownTableBodyNone">Control the output format of logs. Example: <code>logformat color timestamp noplugin nosource</code>   </td></tr>
+<td class="markdownTableBodyNone"><code>logformat [timestamp\|notimestamp] [plugin\|noplugin] [source\|nosource] [color\|nocolor] [force\|noforce] [text\|json]</code>   </td><td class="markdownTableBodyNone">Control the output format of logs. Example: <code>logformat color timestamp noplugin nosource</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>logrotate nwnx\|engine\|server\|all</code>   </td><td class="markdownTableBodyNone">Moves <code>LOG_FILE_PATH</code> (<code>nwnx</code>), <code>nwengineLog.txt</code> (<code>engine</code>), the current <code>nwserverLog&lt;N&gt;.txt</code> (<code>server</code>), or all of them to <code>&lt;name&gt;.&lt;UTC time&gt;</code>, and logging continues in a new file of the same name, which starts by naming the archive (<code>LOG_FILE_PATH</code> in its banner, <code>rotated_from</code> in JSON; a server log with the engine's banner, the engine log with a dated line). No line is lost or written twice.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>logreopen</code>   </td><td class="markdownTableBodyNone">Reopens the log files that were moved away (<code>LOG_FILE_PATH</code>, <code>nwengineLog.txt</code>, <code>nwserverLog&lt;N&gt;.txt</code>), for external rotation. <code>NWNX_CORE_LOG_REOPEN_SIGNAL</code> does the same on a signal.   </td></tr>
 </table>
 <h2><a class="anchor" id="autotoc_md205"></a>
+JSON Logs</h2>
+<p>With <code>NWNX_CORE_LOG_FORMAT=json</code>, every NWNX log line is one JSON object, in <a href="https://getpino.io">pino</a> style:</p>
+<div class="fragment"><div class="line">{&quot;time&quot;:1763648400123,&quot;level&quot;:35,&quot;lvl&quot;:&quot;notice&quot;,&quot;msg&quot;:&quot;Loading NWNX.&quot;,&quot;src&quot;:&quot;nwnx&quot;,&quot;plugin&quot;:&quot;NWNX_Core&quot;,&quot;file&quot;:&quot;NWNXCore.cpp&quot;,&quot;line&quot;:612}</div>
+</div><!-- fragment --><ul>
+<li><code>time</code>: milliseconds since the Unix epoch. <code>level</code>: 20 debug, 30 info, 35 notice, 40 warn, 50 error, 60 fatal.</li>
+<li><code>file</code> and <code>line</code> are left out when <code>NWNX_CORE_LOG_SOURCE=0</code>. Any other key is a field of that record; a field named like one of the keys above (or <code>cat</code>, <code>err</code>, <code>logger</code>, <code>truncated</code>) gets a leading <code>_</code>, with a warning the first time. A key given twice keeps its last value.</li>
+<li>Plugins add fields with <code>LOG_INFO_F("Text line %d", n).With("rows", n).Msg("stable message")</code>: the text line is unchanged, the JSON record gets <code>msg</code> and the fields. A filtered call evaluates none of its arguments.</li>
+<li>The startup banner, version checks and assertion failures become records too. A crash report stays plain text, since the crash handler must not allocate. Other lines printed to <code>stdout</code> and <code>stderr</code> become records with <code>src</code> <code>stdout</code> or <code>stderr</code> (<code>NWNX_CORE_LOG_CAPTURE_STDIO</code>); a line in the engine's console format (<code>NWN_ENABLE_DEBUG_SPEW</code>) gets its level and <code>cat</code>, and is dropped while ServerLogRedirector makes engine records itself, as is the engine's <code>!! Userdata log emitted from non-main thread discarded !!</code> notice (the record was kept). Load ServerLogRedirector for the engine's log as records.</li>
+<li><code>NWNX_CORE_LOG_MESSAGE</code> subscribers get the same payload as in text mode.</li>
+<li>Writing is async (<code>NWNX_CORE_LOG_ASYNC</code>), and <code>time</code> is when the record was made. Lines are never split: on a pipe, such as a container's <code>stdout</code>, NWNX writes at most 4096 bytes at a time and only whole lines, so other writers to the pipe cannot land inside them. A fatal error or a crash writes everything still queued first.</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md206"></a>
+Logging from DotNET, SWIG and Ruby</h3>
+<p><code>NWNX_Core.so</code> exports two C functions (declared in <code>Core/NWNXLog.h</code>) so other runtimes can write records into the same stream:</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> NWNX_Log_Emit(<span class="keywordtype">int</span> syslogLevel, <span class="keyword">const</span> <span class="keywordtype">char</span>* src, <span class="keyword">const</span> <span class="keywordtype">char</span>* logger, <span class="keyword">const</span> <span class="keywordtype">char</span>* msg, <span class="keyword">const</span> <span class="keywordtype">char</span>* fieldsJson);</div>
+<div class="line"><span class="keywordtype">int</span>  <a class="code" href="group__log.html#gae35e3877b679ceb994fb82d916f8497a">NWNX_Log_IsEnabled</a>(<span class="keywordtype">int</span> syslogLevel, <span class="keyword">const</span> <span class="keywordtype">char</span>* src, <span class="keyword">const</span> <span class="keywordtype">char</span>* logger);</div>
+<div class="ttc" id="agroup__log_html_gae35e3877b679ceb994fb82d916f8497a"><div class="ttname"><a href="group__log.html#gae35e3877b679ceb994fb82d916f8497a">NWNX_Log_IsEnabled</a></div><div class="ttdeci">int NWNX_Log_IsEnabled(int nLevel, string sLogger=&quot;&quot;)</div><div class="ttdoc">Checks whether a record at nLevel would be logged.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__log_8nss_source.html#l00138">nwnx_log.nss:138</a></div></div>
+</div><!-- fragment --><ul>
+<li><code>syslogLevel</code> as in <code>LOG_LEVEL</code> (7 debug to 3 error; fatal is treated as error). <code>src</code> is <code>dotnet</code>, <code>swig</code> or <code>ruby</code>: the record gets that <code>src</code>, the plugin name <code>NWNX_DotNET</code>, <code>NWNX_SWIG</code> or <code>NWNX_Ruby</code>, and that plugin's <code>LOG_LEVEL</code>. Any other <code>src</code> logs as <code>bridge</code> under Core's level.</li>
+<li><code>logger</code> (optional) becomes the <code>logger</code> key; <code>NWNX_LOG_LOGGER_LEVELS</code> can give it its own level. <code>fieldsJson</code> is a JSON object whose members become fields, or <code>NULL</code>; JSON that does not parse or nests deeper than 64 levels adds a <code>fields_error</code> field instead, and any other value goes under <code>data</code>.</li>
+<li>Strings are UTF-8 and every pointer may be <code>NULL</code>. Text lines get the message and string fields in game-locale bytes (<code>NWNX_CORE_LOCALE</code>) like the rest of the line; JSON keeps them as UTF-8 whatever <code>NWNX_CORE_LOG_JSON_ENCODING</code> says. Both functions can be called from any thread and never throw. Called on the main thread while a script runs, the record gets the script context (<code>NWNX_CORE_LOG_CONTEXT</code>). As for <code>NWNX_Log</code> records, text lines show the fields and JSON has no <code>file</code>/<code>line</code>.</li>
+<li><code>NWNX_Log_IsEnabled</code> lets a caller skip building the message and fields of a record that would be filtered.</li>
+</ul>
+<p>DotNET and Anvil (C# 11, .NET 7 or later): </p><div class="fragment"><div class="line">var emit = (delegate* unmanaged&lt;int, byte*, byte*, byte*, byte*, void&gt;)</div>
+<div class="line">    NativeLibrary.GetExport(NativeLibrary.GetMainProgramHandle(), &quot;NWNX_Log_Emit&quot;);</div>
+<div class="line">fixed (byte* src = &quot;dotnet\0&quot;u8, logger = &quot;Bank\0&quot;u8, msg = &quot;deposit\0&quot;u8, fields = &quot;{\&quot;gold\&quot;:250}\0&quot;u8)</div>
+<div class="line">    emit(6, src, logger, msg, fields);</div>
+</div><!-- fragment --><p>Code using the SWIG bindings (<code>NWN.Native</code>) calls it the same way, with <code>src</code> <code>swig</code>.</p>
+<p>Ruby (<code>fiddle</code>): </p><div class="fragment"><div class="line">emit = Fiddle::Function.new(Fiddle::Handle::DEFAULT[&quot;NWNX_Log_Emit&quot;], [Fiddle::TYPE_INT] + [Fiddle::TYPE_VOIDP] * 4, Fiddle::TYPE_VOID)</div>
+<div class="line">emit.call(6, &quot;ruby&quot;, &quot;bank&quot;, &quot;deposit&quot;, &#39;{&quot;gold&quot;:250}&#39;)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md207"></a>
 Custom Resman Definition File</h2>
 <p>A file that lets you specify additional resource directories that act the same as the <code>/development</code> and <code>/nwnx</code> folders.</p>
 <p>Each line in the file must contain the following: <code>ALIASNAME /full/path/to/folder &lt;priority&gt;</code></p>
 <p>Example:</p>
 <div class="fragment"><div class="line">TEST /home/nwnx/test 70000001</div>
 <div class="line">STUFF /home/nwnx/stuff 70000002</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md206"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md208"></a>
 Plugin Management</h2>
-<h3><a class="anchor" id="autotoc_md207"></a>
+<h3><a class="anchor" id="autotoc_md209"></a>
 Environment Variable Configuration</h3>
 <p>Configuration of NWNX plugins are controlled by environment variables exported prior to starting the <code>nwserver</code> binary. Typical usage would be in the script used to start the server.</p>
 <p>Basic control of the plugin includes enabling/disabling the plugin and setting the logging level of the plugin. The following format is used for all plugins:</p>
@@ -189,7 +272,7 @@ Environment Variable Configuration</h3>
 <li>NWNX_&lt;x&gt;<em>LOG_LEVEL</em></li>
 <li><em>NWNX</em>&lt;x&gt;_SKIP</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md208"></a>
+<h3><a class="anchor" id="autotoc_md210"></a>
 Plugin Loading</h3>
 <p>Inclusion or exclusion of the plugin at server startup time is contolled by the environment variable <code>NWNX_&lt;x&gt;_SKIP</code> where &lt;x&gt; is the plugin name (all caps).</p>
 <ul>
@@ -198,7 +281,7 @@ Plugin Loading</h3>
 </ul>
 <p><b>Example</b> </p><div class="fragment"><div class="line"># Load the sql plugin at startup</div>
 <div class="line">export NWNX_SQL_SKIP=N</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md209"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md211"></a>
 Plugin Log Level</h3>
 <p>The default plugin log level is the same as the overall Core logging level.</p>
 <p>It can be changed, however, by assinging a value to <code>NWNX_&lt;x&gt;_LOG_LEVEL</code> (where &lt;x&gt; is the plugin name in all caps) in the same manner as the Core logging level. See the Core documentation for a description of available logging levels.</p>
@@ -262,7 +345,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Nov 21 2026 20:31:00 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Nov 21 2026 21:57:18 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>

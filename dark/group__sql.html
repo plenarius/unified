@@ -105,12 +105,12 @@ $(document).ready(function(){initNavTree('group__sql.html',''); initResizable();
 <div class="contents">
 
 
-<h3><a id="sql"></a>Readme</h3><div class="textblock">General data access, storage and manipulation of persistent data in a database.<h2><a class="anchor" id="autotoc_md691"></a>
+<h3><a id="sql"></a>Readme</h3><div class="textblock">General data access, storage and manipulation of persistent data in a database.<h2><a class="anchor" id="autotoc_md695"></a>
 Migration</h2>
 <p><a class="el" href="md_Plugins_SQL_Migration_Guide.html#sql_migrate">Migration from Legacy NWNX</a></p>
-<h2><a class="anchor" id="autotoc_md692"></a>
+<h2><a class="anchor" id="autotoc_md696"></a>
 Environment Variables</h2>
-<h3><a class="anchor" id="autotoc_md693"></a>
+<h3><a class="anchor" id="autotoc_md697"></a>
 NWNX_SQL_TYPE</h3>
 <p>Controls the target database type used at runtime.</p>
 <p>Possible values (case insensitive):</p>
@@ -121,55 +121,63 @@ NWNX_SQL_TYPE</h3>
 </ul>
 <p><b>Example</b></p>
 <div class="fragment"><div class="line">export NWNX_SQL_TYPE=POSTGRESQL</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md694"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md698"></a>
 NWNX_SQL_HOST</h3>
 <p>Host name where the database resides. Typically <code>localhost</code> but can be any valid host name or IP address.</p>
 <p>Not used if using SQLite.</p>
 <p><b>Example</b></p>
 <div class="fragment"><div class="line">export NWNX_SQL_HOST=localhost</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md695"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md699"></a>
 NWNX_SQL_PORT</h3>
 <p>The port for the database connection. If left unset it will use the default port.</p>
 <p>Only used by MySQL.</p>
 <p><b>Example</b></p>
 <div class="fragment"><div class="line">export NWNX_SQL_PORT=3307</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md696"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md700"></a>
 NWNX_SQL_USERNAME</h3>
 <p>Database username used for the connection.</p>
 <p>Not used if using SQLite.</p>
 <p><b>Example</b></p>
 <div class="fragment"><div class="line">export NWNX_SQL_USERNAME=nwn_db</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md697"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md701"></a>
 NWNX_SQL_PASSWORD</h3>
 <p>Password for the database connection.</p>
 <p>Not used if using SQLite.</p>
 <p><b>Example</b></p>
 <div class="fragment"><div class="line">export NWNX_SQL_PASSWORD=lathander_rulez</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md698"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md702"></a>
 NWNX_SQL_DATABASE</h3>
 <p>The database to connect to.</p>
 <p>The filename of the database when using SQLite, it is stored in the UserDirectory/database folder.</p>
 <p><b>Example</b></p>
 <div class="fragment"><div class="line">export NWNX_SQL_DATABASE=mymodulename</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md699"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md703"></a>
+NWNX_SQL_LOG_SLOW_MS</h3>
+<p>Logs a warning, <code>Slow SQL query</code>, for each query that takes at least this many milliseconds, so slow queries show even when the per-query INFO lines are off (it needs <code>NWNX_SQL_LOG_LEVEL</code> 4 or higher). Unset or <code>0</code>: off.</p>
+<p><b>Example</b></p>
+<div class="fragment"><div class="line">export NWNX_SQL_LOG_SLOW_MS=50</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md704"></a>
+NWNX_SQL_LOG_QUERY_TEXT</h3>
+<p>With <code>NWNX_CORE_LOG_FORMAT=json</code>, each query is one record with <code>query_id</code>, <code>query</code>, <code>rows</code> or <code>results</code>, <code>ms</code>, <code>db</code> and, on failure, <code>err</code>. Set this to <code>false</code> to leave the query text out of those records. Text lines always include it. Default: <code>true</code>.</p>
+<h3><a class="anchor" id="autotoc_md705"></a>
 NWNX_SQL_QUERY_METRICS</h3>
 <p>Export query execution metrics.</p>
 <p>The Metrics_InfluxDB plugin and a visualizer like Grafana are required to view these metrics.</p>
 <p><b>Example</b></p>
 <div class="fragment"><div class="line">export NWNX_SQL_QUERY_METRICS=true</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md700"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md706"></a>
 NWNX_SQL_QUERY_METRICS_ID_AS_FIELD</h3>
 <p>Send the query ID as a field instead of a tag in the <code>SQLQueries</code> measurement. Each query is then pushed as its own point in a single series.</p>
 <p>With the ID as a tag (the default), every query creates a new InfluxDB series, so a long running server can reach InfluxDB's <code>max-values-per-tag</code> limit (default 100000) and its query metrics stop being written.</p>
 <p><b>Example</b></p>
 <div class="fragment"><div class="line">export NWNX_SQL_QUERY_METRICS_ID_AS_FIELD=true</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md701"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md707"></a>
 NWNX_SQL_USE_UTF8</h3>
 <p>Convert all strings going between the database and game to/from UTF8</p>
 <p>This takes into account the core locale as well.</p>
 <p><b>Example</b></p>
 <div class="fragment"><div class="line">export NWNX_SQL_USE_UTF8=true</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md702"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md708"></a>
 NWNX_SQL_CHARACTER_SET</h3>
 <p>Set the connection's character set to be used.</p>
 <p>Only supported on mysql and pgsql. For sqlite this can be achieved with a query.</p>
@@ -868,7 +876,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Nov 21 2026 20:31:01 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Nov 21 2026 21:57:19 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="../">Light version</a>
 				</li>

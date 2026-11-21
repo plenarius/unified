@@ -26,6 +26,7 @@ var modules =
     [ "Item", "group__item.html", "group__item" ],
     [ "ItemAppearance", "group__itemappearance.html", "group__itemappearance" ],
     [ "ItemProperty", "group__itemproperty.html", "group__itemproperty" ],
+    [ "Log", "group__log.html", "group__log" ],
     [ "MaxLevel", "group__maxlevel.html", "group__maxlevel" ],
     [ "Metrics InfluxDB", "group__metrics__influxdb.html", "group__metrics__influxdb" ],
     [ "NoStack", "group__nostack.html", "group__nostack" ],

@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('group__chess.html',''); initResizable(
 <div class="contents">
 
 
-<h3><a id="chess"></a>Readme</h3><div class="textblock">Chess games in plugin memory (move generation, check, mate, stalemate, the draw rules, FEN and PGN) and engine moves from <a href="https://stockfishchess.org/">Stockfish</a> for games against an NPC.The rules come from the header-only <a href="https://github.com/Disservin/chess-library">chess-library</a> (MIT, vendored in <code>External/chess-library</code> with its licence), so castling, en passant, promotion and the draw rules are not hand-written.<h2><a class="anchor" id="autotoc_md288"></a>
+<h3><a id="chess"></a>Readme</h3><div class="textblock">Chess games in plugin memory (move generation, check, mate, stalemate, the draw rules, FEN and PGN) and engine moves from <a href="https://stockfishchess.org/">Stockfish</a> for games against an NPC.The rules come from the header-only <a href="https://github.com/Disservin/chess-library">chess-library</a> (MIT, vendored in <code>External/chess-library</code> with its licence), so castling, en passant, promotion and the draw rules are not hand-written.<h2><a class="anchor" id="autotoc_md290"></a>
 Environment Variables</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -123,12 +123,12 @@ Environment Variables</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>NWNX_CHESS_MAX_GAMES</code>   </td><td class="markdownTableBodyCenter">int   </td><td class="markdownTableBodyNone">1000   </td><td class="markdownTableBodyNone">Games that can exist at once; <code><a class="el" href="group__chess.html#gad3e203aa792b99a37317f048c2eff001" title="Starts a game.">NWNX_Chess_NewGame()</a></code> returns 0 beyond it.   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md289"></a>
+<h2><a class="anchor" id="autotoc_md291"></a>
 Games</h2>
 <p><code><a class="el" href="group__chess.html#gad3e203aa792b99a37317f048c2eff001" title="Starts a game.">NWNX_Chess_NewGame()</a></code> returns a game id; the game lives in plugin memory until <code><a class="el" href="group__chess.html#gaa8537dbfc4749ac7db2ea157323d8fea" title="Ends a game and frees it. Any engine request for it is dropped.">NWNX_Chess_EndGame()</a></code> or a server restart. Moves are in UCI notation: <code>e2e4</code>, castling as the king's move (<code>e1g1</code>), promotion with the piece letter (<code>e7e8q</code>). <code><a class="el" href="group__chess.html#ga52bbb43e069e18e4194be0f1d8cfdec9" title="Gets the piece on a square.">NWNX_Chess_GetPieceAt()</a></code> and <code><a class="el" href="group__chess.html#gab56e8f58e92be4e8b4044a674c30b2ff" title="Gets the legal moves in the current position.">NWNX_Chess_GetLegalMoves()</a></code> give what a board UI needs.</p>
 <p><code><a class="el" href="group__chess.html#ga3dd0e086fd839c7f23051b363316bdfd" title="Gets the game status.">NWNX_Chess_GetStatus()</a></code> returns <code>NWNX_CHESS_STATUS_*</code>: playing, check, checkmate, stalemate, or a draw by threefold repetition, the fifty-move rule or insufficient material. The draws end the game at once (no claim needed). The game is over for any status other than playing and check: moves are refused then.</p>
 <p><b>Persistence:</b> to keep a game over a restart, store its start FEN (<code>""</code> for the normal start) and <code><a class="el" href="group__chess.html#ga48e7151c4b74e0b6c0bde055691a2ee6" title="Gets the moves played since NWNX_Chess_NewGame().">NWNX_Chess_GetMoves()</a></code> (a json array), and replay the moves into <code>NWNX_Chess_NewGame(sStartFEN)</code> with <code><a class="el" href="group__chess.html#gae152c7d34125e7d40dc80a05da7b0ed8" title="Plays a move for the side to move.">NWNX_Chess_MakeMove()</a></code>. That keeps the PGN and the repetition history. Restoring from <code><a class="el" href="group__chess.html#gacfd628676169259654596861b6eda184" title="Gets the current position.">NWNX_Chess_GetFEN()</a></code> alone works too, but repetitions before it don't count and the PGN starts there.</p>
-<h2><a class="anchor" id="autotoc_md290"></a>
+<h2><a class="anchor" id="autotoc_md292"></a>
 Engine moves</h2>
 <p><code>NWNX_Chess_RequestBestMove(nGameId, nSkill, nMoveTimeMs)</code> queues a request and returns at once. One Stockfish process, started on the first request, serves all games one request at a time on its own thread, so the server never waits for it. <code>nSkill</code> is Stockfish's Skill Level (0-20), <code>nMoveTimeMs</code> how long it thinks. If Stockfish isn't installed the call logs an error and returns FALSE; if it crashes or hangs (no answer within the move time plus 5 seconds) it is killed, the request fails, and the next request starts a new process.</p>
 <p>The answer reaches the module on the main thread in two ways; use either:</p>
@@ -147,7 +147,7 @@ Engine moves</h2>
 <td class="markdownTableBodyNone"><code>SUCCESS</code>   </td><td class="markdownTableBodyNone">int   </td><td class="markdownTableBodyNone">TRUE if there is a move.   </td></tr>
 </table>
 <p>The engine's move isn't played: the module plays it with <code><a class="el" href="group__chess.html#gae152c7d34125e7d40dc80a05da7b0ed8" title="Plays a move for the side to move.">NWNX_Chess_MakeMove()</a></code> (after an animation, say). A move played, a new request, or <code><a class="el" href="group__chess.html#gaa8537dbfc4749ac7db2ea157323d8fea" title="Ends a game and frees it. Any engine request for it is dropped.">NWNX_Chess_EndGame()</a></code> while the engine is thinking stops that search and discards its answer; no event fires for it.</p>
-<h2><a class="anchor" id="autotoc_md291"></a>
+<h2><a class="anchor" id="autotoc_md293"></a>
 Tests</h2>
 <p><code>NWScript/nwnx_chess_t.nss</code> is the in-game test. The rules and engine code also have a standalone test (perft, mate, stalemate, en passant, castling, promotion, the draw rules, FEN checks, and the engine with a real Stockfish, a missing one, a hanging one and one killed mid-game):</p>
 <div class="fragment"><div class="line">cmake --build &lt;build dir&gt; --target ChessTests</div>
@@ -879,7 +879,7 @@ Functions</h2></td></tr>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Nov 21 2026 20:31:00 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Nov 21 2026 21:57:18 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>

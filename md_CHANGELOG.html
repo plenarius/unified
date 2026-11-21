@@ -129,8 +129,21 @@ Added</h2>
 <li>Optimizations: added <code>NWNX_OPTIMIZATIONS_GET_OBJECT_BY_TAG</code> to keep the tag lookup table in a hash map, which makes <code>GetObjectByTag()</code> and adding or removing tagged objects faster on modules with many objects.</li>
 <li>Core: added <code>NWNX_CORE_ENCODING_BEST_FIT</code> to replace characters the codepage lacks with close equivalents instead of <code>?</code> when converting from UTF-8.</li>
 <li>Events: Added event <code>NWNX_ON_ENCUMBRANCE_CHANGE_AFTER</code> which fires when a creature's encumbrance state changes.</li>
+<li>Core: added <code>NWNX_CORE_LOG_ENGINE_KEEP_PREVIOUS</code> to keep the previous run's <code>nwengineLog.txt</code> and <code>nwserverLog1.txt</code> instead of overwriting them, the <code>logrotate engine|server</code> console command and <code>NWNX_CORE_LOG_ENGINE_ROTATE_SIZE|TIME</code> to rotate them while the server runs, and <code>NWNX_CORE_LOG_ENGINE_KEEP</code> for the number of archives kept.</li>
 <li>SQL: Added <code>NWNX_SQL_QUERY_METRICS_ID_AS_FIELD</code> to send the query ID of <code>NWNX_SQL_QUERY_METRICS</code> as a field instead of a tag, so a long running server doesn't hit InfluxDB's <code>max-values-per-tag</code> limit.</li>
 <li>Core: the crash report now lists the NWScript call stack at the crash, each script with its OBJECT_SELF.</li>
+<li>Core: added <code>NWNX_CORE_LOG_FORMAT=json</code> and <code>NWNX_CORE_LOG_FILE_FORMAT</code> to write NWNX's logs as one JSON object per line (pino style), set with the <code>NWNX_CORE_LOG_JSON_*</code> options; <code>logformat text|json</code> switches it at runtime.</li>
+<li>Core: added <code>NWNX_CORE_LOG_ASYNC</code> (on by default with JSON) to write logs on a background thread, with <code>NWNX_CORE_LOG_ASYNC_FLUSH_MS</code>, <code>_MAX_BYTES</code> and <code>_FULL</code>.</li>
+<li>Core: added <code>NWNX_CORE_LOG_CAPTURE_STDIO</code> (on by default with JSON) to write other <code>stdout</code> and <code>stderr</code> lines as JSON records, so every line is JSON.</li>
+<li>ServerLogRedirector: with <code>NWNX_CORE_LOG_FORMAT=json</code>, every engine log line (<code>nwserverLog1.txt</code>, <code>nwengineLog.txt</code>) is a record with its category, source, the running script, the print command, and script and SQLite errors as <code>err</code>; added <code>NWNX_SERVERLOGREDIRECTOR_DROP_CATEGORIES</code> and <code>NWNX_SERVERLOGREDIRECTOR_ENGINE_FILES</code>. Text mode is unchanged.</li>
+<li>Core: plugins can add fields to log records (<code>LOG_INFO_F(...).With(key, value).Msg(...)</code>), shown in JSON and, with <code>NWNX_CORE_LOG_TEXT_FIELDS</code>, as <code>key=value</code> after text lines; text lines are unchanged by default.</li>
+<li>SQL: each query is one log record with its id, text, rows and duration in JSON; added <code>NWNX_SQL_LOG_SLOW_MS</code> to log slow queries and <code>NWNX_SQL_LOG_QUERY_TEXT</code>.</li>
+<li>Chat: added <code>NWNX_CHAT_LOG_CHANNELS</code>, <code>NWNX_CHAT_LOG_CONTENT_CHANNELS</code> and <code>NWNX_CHAT_LOG_MESSAGE_LEVEL</code> to choose which chat is logged, with or without its text, and at what level.</li>
+<li>WebHook, HTTPClient: each request is one log record in JSON; added <code>NWNX_WEBHOOK_LOG_PATH|BODY</code> and <code>NWNX_HTTPCLIENT_LOG_PATH|BODY</code> (paths redacted by default).</li>
+<li>Watchcat: each stall callstack is one JSON log record with its frames.</li>
+<li>Core: added <code>NWNX_CORE_LOG_CONTEXT</code> to add the running script's <code>script</code>, <code>oid</code>, <code>tag</code> and <code>area</code> to records with fields.</li>
+<li>Core: added <code>NWNX_CORE_LOG_FILE_ROTATE_SIZE|TIME</code>, <code>NWNX_CORE_LOG_FILE_KEEP</code> and <code>NWNX_CORE_LOG_FILE_KEEP_PREVIOUS</code> to rotate NWNX's own log file like the engine's, <code>logrotate nwnx|all</code>, and <code>logreopen</code> and <code>NWNX_CORE_LOG_REOPEN_SIGNAL</code> to reopen log files moved by an external logrotate.</li>
+<li>Core: added the C functions <code>NWNX_Log_Emit</code> and <code>NWNX_Log_IsEnabled</code> (<code>Core/NWNXLog.h</code>) so DotNET, SWIG and Ruby can write records, with fields, into NWNX's log.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md12"></a>
 New Plugins</h4>
@@ -138,6 +151,7 @@ New Plugins</h4>
 <li>ItemAppearance: Lists the appearances an item can take, with blacklist and sync rules, and gets the next, previous or a random one for simple items and weapons.</li>
 <li>Chess: Chess games in plugin memory (rules from the vendored header-only chess-library: legal moves, check, mate, stalemate, repetition, fifty-move and insufficient-material draws, FEN, PGN) and engine moves from Stockfish over UCI on a worker thread, delivered by polling or the <code>NWNX_ON_CHESS_BESTMOVE</code> event.</li>
 <li>Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.</li>
+<li>Log: structured logging from NWScript into the NWNX log, with fields, per-script-run bindings, loggers and their own levels (<code>NWNX_LOG_LOGGER_LEVELS</code>).</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md13"></a>
 New NWScript Functions</h4>
@@ -160,6 +174,7 @@ New NWScript Functions</h4>
 <li>Administration: GetNWSyncAdvertHash(), GetNWSyncAdvertUrl(), SetNWSyncAdvert()</li>
 <li>Encounter: SetNumberOfCreaturesInEncounterList()</li>
 <li>Encounter: Set{Min|Max}NumSpawned()</li>
+<li>Log: Debug(), Info(), Notice(), Warning(), Error(), Write(), IsEnabled(), Bind(), Unbind(), GetBindings(), SetLogger(), SetGlobal(), Rotate()</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md14"></a>
 Changed</h2>
@@ -173,6 +188,9 @@ Changed</h2>
 <li>Item: <code>SetItemAppearance()</code> with <code>bUpdateCreatureAppearance</code> now also updates items held in either hand.</li>
 <li>Core: per-object storage lookups (<code>nwnxGet</code>) no longer copy the whole map, or create storage for objects that have none, on every call; this speeds up the Appearance and Player per-object update hooks.</li>
 <li>Race: the effect-apply hook no longer adds a child-race map entry for every new effect parameter or copies the child list, and does nothing when no child races are set.</li>
+<li>Core: a filtered <code>LOG_*</code> call is one atomic load and evaluates none of its arguments, and changing a level with <code>loglevel</code> no longer races plugins logging from other threads.</li>
+<li>Core: log lines are formatted in a reused thread-local buffer instead of allocating two string streams each.</li>
+<li>Core: <code>NWNX_CORE_LOG_MESSAGE</code> is only broadcast when something subscribes to it.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md15"></a>
 Deprecated</h2>
@@ -214,6 +232,8 @@ Fixed</h2>
 <li>HTTPClient: The README named the timeout variable <code>NWNX_HTTPCLIENT_REQUEST_TIMEOUT</code>; the code reads <code>NWNX_HTTPCLIENT_CLIENT_REQUEST_TIMEOUT</code>.</li>
 <li>Core: Fixed the crash handler looping forever without a backtrace when it runs on a small signal stack, as it does with the .NET runtime loaded.</li>
 <li>Core: Fixed the crash handler hanging without a backtrace after a fault inside malloc or free (heap corruption): it no longer allocates.</li>
+<li>Core: the README gave the default <code>NWNX_CORE_LOG_LEVEL</code> as 0; it is 5.</li>
+<li>Chat: Fixed some tells being logged with their text: the check compared the speaker's object ID with the target's player ID. Tells are now logged without their text unless named in <code>NWNX_CHAT_LOG_CONTENT_CHANNELS</code>.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md18"></a>
 8193.37.13</h1>
@@ -1766,7 +1786,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sat Nov 21 2026 20:31:00 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sat Nov 21 2026 21:57:18 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>
