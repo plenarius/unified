@@ -1,5 +1,11 @@
 var NAVTREEINDEX19 =
 {
+"nwnx__redis__short_8nss.html#ae05b8bc47bbf98f853c71a3d1865d724":[4,0,3,32,1,3,164],
+"nwnx__redis__short_8nss.html#ae074f94aa4e0caa434041a0edaf5eb3c":[4,0,3,32,1,3,7],
+"nwnx__redis__short_8nss.html#ae1f7076bfe8a702387f1cd24c2386a07":[4,0,3,32,1,3,107],
+"nwnx__redis__short_8nss.html#ae306f78bd94be6b92e358adbb227acc6":[4,0,3,32,1,3,202],
+"nwnx__redis__short_8nss.html#ae323f5fb1cdf6851b0bbf5488b93348d":[4,0,3,32,1,3,118],
+"nwnx__redis__short_8nss.html#ae3b9bd7019fa1ee5253799f1195080eb":[4,0,3,32,1,3,111],
 "nwnx__redis__short_8nss.html#ae44ed2a625234a957f29d7de1b42520a":[4,0,3,32,1,3,21],
 "nwnx__redis__short_8nss.html#ae5c145cbc18888cb1ca84f3e56d9e930":[4,0,3,32,1,3,131],
 "nwnx__redis__short_8nss.html#ae62e17295bf33a00dd67a98888782112":[4,0,3,32,1,3,170],
@@ -243,11 +249,5 @@ var NAVTREEINDEX19 =
 "structNWNX__EffectUnpacked.html#afda0d34cd6152afc231de7fd7f9fd374":[0,15,2,11],
 "structNWNX__Encounter__CreatureListEntry.html":[0,17,2],
 "structNWNX__Encounter__CreatureListEntry.html#a4b02de9028d3e4ddf4927ed1d3919be9":[0,17,2,3],
-"structNWNX__Encounter__CreatureListEntry.html#a9097b69d43e0f0e13d28b122f129c566":[0,17,2,1],
-"structNWNX__Encounter__CreatureListEntry.html#ad9fd36779fea2410a0c7c91ca019d601":[0,17,2,2],
-"structNWNX__Encounter__CreatureListEntry.html#afd224e140c4b64e6ad8e9c20c7e265c6":[0,17,2,0],
-"structNWNX__HTTPClient__Request.html":[0,22,2],
-"structNWNX__HTTPClient__Request.html#a10298e81c6d6fabcb6765f6a003a3995":[0,22,2,7],
-"structNWNX__HTTPClient__Request.html#a1a9a92cd04fed8f289e4f50dd1dadeeb":[0,22,2,3],
-"structNWNX__HTTPClient__Request.html#a1d4f9177155fe5b64a7e6b293ba7514f":[0,22,2,8]
+"structNWNX__Encounter__CreatureListEntry.html#a9097b69d43e0f0e13d28b122f129c566":[0,17,2,1]
 };

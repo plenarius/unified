@@ -1,5 +1,11 @@
 var NAVTREEINDEX20 =
 {
+"structNWNX__Encounter__CreatureListEntry.html#ad9fd36779fea2410a0c7c91ca019d601":[0,17,2,2],
+"structNWNX__Encounter__CreatureListEntry.html#afd224e140c4b64e6ad8e9c20c7e265c6":[0,17,2,0],
+"structNWNX__HTTPClient__Request.html":[0,22,2],
+"structNWNX__HTTPClient__Request.html#a10298e81c6d6fabcb6765f6a003a3995":[0,22,2,7],
+"structNWNX__HTTPClient__Request.html#a1a9a92cd04fed8f289e4f50dd1dadeeb":[0,22,2,3],
+"structNWNX__HTTPClient__Request.html#a1d4f9177155fe5b64a7e6b293ba7514f":[0,22,2,8],
 "structNWNX__HTTPClient__Request.html#a3a14a77cc0e40f4a4e3d8ceb273c8003":[0,22,2,5],
 "structNWNX__HTTPClient__Request.html#a3be08d4ee8eb994359cffb5df8afd6fc":[0,22,2,0],
 "structNWNX__HTTPClient__Request.html#a59a878131eaaa380b071e0b00cd70f8a":[0,22,2,11],
