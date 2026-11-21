@@ -43,6 +43,8 @@ private:
     ResultSet m_activeResults;
     ResultRow m_activeRow;
     int32_t m_nextQueryId;
+    double m_logSlowMs;
+    bool m_logQueryText;
     bool m_queryMetrics;
     bool m_queryMetricsIdAsField;
     bool m_queryPrepared;

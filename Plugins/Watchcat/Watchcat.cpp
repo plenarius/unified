@@ -207,6 +207,21 @@ static void callstack_register_handler()
     }
 }
 
+// A stack's frames as a "stack" array field.
+struct StackFrames
+{
+    char** symbols;
+    size_t count;
+
+    void AddTo(Log::Record& record) const
+    {
+        auto stack = nlohmann::json::array();
+        for (size_t i = 0; i < count; ++i)
+            stack.push_back(symbols[i]);
+        record.With("stack", stack);
+    }
+};
+
 static void DumpScripts(const ScriptStackMap& scriptstacks)
 {
     std::vector<std::pair<std::string, size_t>> sorted(scriptstacks.begin(), scriptstacks.end());
@@ -217,12 +232,14 @@ static void DumpScripts(const ScriptStackMap& scriptstacks)
     for (size_t i = 0; i < numstacks; ++i)
     {
         const auto& [scripts, occurs] = sorted[i];
-        LOG_ERROR("Script stack: %d occurrences: %s", occurs,
-            scripts.empty() ? "no script running" : scripts.c_str());
+        LOG_ERROR_F("Script stack: %d occurrences: %s", occurs,
+            scripts.empty() ? "no script running" : scripts.c_str())
+            .Msg("stall script stack").With("occurrences", occurs).With("scripts", scripts);
     }
     if (numstacks < sorted.size())
     {
-        LOG_WARNING("... and %d more", sorted.size() - numstacks);
+        LOG_WARNING_F("... and %d more", sorted.size() - numstacks)
+            .Msg("more stall script stacks").With("script_stacks", sorted.size() - numstacks);
     }
 }
 
@@ -246,16 +263,20 @@ static void DumpStacks(const CallstackMap& callstacks)
         }
 
         char** strstack = backtrace_symbols(raw_ptrs.data(), raw_ptrs.size());
-        LOG_ERROR("Callstack %d: %d occurrences", i, occurs);
+        // JSON gets one record per stack; text keeps a line per frame.
+        LOG_ERROR_F("Callstack %d: %d occurrences", i, occurs)
+            .Msg("stall callstack").With("callstack", i).With("occurrences", occurs)
+            .With(StackFrames{strstack, raw_ptrs.size()});
         for (size_t k = 0; k < raw_ptrs.size(); ++k)
         {
-            LOG_ERROR("  %s", strstack[k]);
+            LOG_ERROR_F("  %s", strstack[k]).TextOnly();
         }
         free(strstack);
     }
     if (numstacks < sortedCallstacks.size())
     {
-        LOG_WARNING("... and %d more", sortedCallstacks.size() - numstacks);
+        LOG_WARNING_F("... and %d more", sortedCallstacks.size() - numstacks)
+            .Msg("more stall callstacks").With("callstacks", sortedCallstacks.size() - numstacks);
     }
 }
 

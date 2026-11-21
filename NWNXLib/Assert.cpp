@@ -32,9 +32,25 @@ void FailInternal(const char* condition, const char* file, int line, const char*
     std::string stackTrace = Platform::GetStackTrace(20);
     MessageBus::Broadcast("NWNX_ASSERT_FAIL", { buffer, stackTrace });
     std::strncat(buffer, stackTrace.c_str(), sizeof(buffer)-1);
-    std::fputs(buffer, stdout);
-    std::fflush(stdout);
-    NWNXLib::Log::WriteToLogFile(buffer);
+    // Queued lines first, and the record out before a following abort.
+    Log::Flush();
+    if (Log::GetFormat() == Log::Format::Text)
+    {
+        std::fputs(buffer, stdout);
+        std::fflush(stdout);
+    }
+    if (Log::GetFileFormat() == Log::Format::Text)
+        Log::WriteToLogFile(buffer);
+
+    // The sinks that use JSON get one record instead of the text.
+    Log::Record record(Log::Channel::SEV_ERROR, nullptr, file, line);
+    record.Stream() << "Assertion failure";
+    if (condition)
+        record.With("condition", condition);
+    if (message && *message)
+        record.With("message", message);
+    record.WithStack("stack", stackTrace).WriteJson();
+    Log::Flush();
 
     if (Platform::IsDebuggerPresent())
     {

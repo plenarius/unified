@@ -2,6 +2,8 @@
 #include "External/httplib.h"
 #include <cmath>
 #include <cstring>
+#include "Log/Http.hpp"
+#include <chrono>
 
 enum RequestMethod
 {
@@ -84,6 +86,12 @@ static double ParseDelaySeconds(const std::string&);
 static double GetRateLimitDelaySeconds(const httplib::Response&);
 static int s_clientRequestId = 0;
 static int s_clientTimeout = Config::Get<int>("CLIENT_REQUEST_TIMEOUT", 2000);
+static const Log::Http::Options s_logOptions = Log::Http::ReadOptions(PLUGIN_NAME);
+
+static double MsSince(std::chrono::steady_clock::time_point start)
+{
+    return std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - start).count();
+}
 static std::unordered_map<std::string, std::unique_ptr<httplib::SSLClient>> s_clientHostCache;
 static std::unordered_map<int, Request> s_clientRequests;
 
@@ -150,26 +158,34 @@ void PerformRequest(const Request &client_req)
     {
         // Shorter timeout when shutting down
         cli->second->set_connection_timeout(0, 300000);
+        const auto start = std::chrono::steady_clock::now();
         auto result = GetResult(client_req);
+        const double ms = MsSince(start);
         auto res = result->value();
 
         if (res.status == 200)
-            LOG_INFO("Sent webhook '%s' to '%s%s'.", client_req.data, client_req.host, client_req.path);
+            LOG_INFO_F("Sent webhook '%s' to '%s%s'.", client_req.data, client_req.host, client_req.path)
+                .Msg("http request succeeded").With("request_id", client_req.id).With("status", res.status).With("ms", ms)
+                .With(Log::Http::Request{s_logOptions, client_req.host, client_req.path, client_req.data});
         else
-            LOG_WARNING("HTTP Client Request to '%s%s' failed, status code '%d'.", client_req.host, client_req.path,
-                        res.status);
+            LOG_WARNING_F("HTTP Client Request to '%s%s' failed, status code '%d'.",
+                          client_req.host, client_req.path, res.status)
+                .Msg("http request failed").With("request_id", client_req.id).With("status", res.status).With("ms", ms)
+                .With(Log::Http::Request{s_logOptions, client_req.host, client_req.path, client_req.data});
         return;
     }
     Tasks::QueueOnAsyncThread([cli, client_req]()
                               {
                                   cli->second->set_connection_timeout(0, s_clientTimeout * 1000);
+                                  const auto start = std::chrono::steady_clock::now();
                                   auto result = GetResult(client_req);
+                                  const double ms = MsSince(start);
 
                                   if (result == nullptr || result->error() != httplib::Error::Success)
                                   {
                                       auto clientError =
                                               result != nullptr ? result->error() : httplib::Error::Unknown;
-                                      Tasks::QueueOnMainThread([client_req, clientError]()
+                                      Tasks::QueueOnMainThread([client_req, clientError, ms]()
                                                                {
                                                                    MessageBus::Broadcast(
                                                                            "NWNX_EVENT_PUSH_EVENT_DATA",
@@ -182,15 +198,18 @@ void PerformRequest(const Request &client_req)
                                                                    MessageBus::Broadcast("NWNX_EVENT_SIGNAL_EVENT",
                                                                                          {"NWNX_ON_HTTPCLIENT_FAILED",
                                                                                           "0"});
-                                                                   LOG_ERROR(
+                                                                   LOG_ERROR_F(
                                                                            "HTTP Client Request to '%s%s' failed, [Error: %d].",
                                                                            client_req.host, client_req.path,
-                                                                           clientError);
+                                                                           clientError)
+                                                                       .Msg("http request failed").With("request_id", client_req.id).With("ms", ms)
+                                                                       .Err(httplib::to_string(clientError), static_cast<int64_t>(clientError))
+                                                                       .With(Log::Http::Request{s_logOptions, client_req.host, client_req.path, client_req.data});
                                                                });
                                       return;
                                   }
                                   auto response = result->value();
-                                  Tasks::QueueOnMainThread([client_req, response]()
+                                  Tasks::QueueOnMainThread([client_req, response, ms]()
                                                            {
                                                                if (Core::g_CoreShuttingDown)
                                                                    return;
@@ -278,9 +297,12 @@ void PerformRequest(const Request &client_req)
                                                                                "NWNX_EVENT_SIGNAL_EVENT",
                                                                                {"NWNX_ON_HTTPCLIENT_SUCCESS",
                                                                                 moduleOid});
-                                                                       LOG_INFO(
+                                                                       LOG_INFO_F(
                                                                                "HTTP Client Request to '%s%s' succeeded.",
-                                                                               client_req.host, client_req.path);
+                                                                               client_req.host, client_req.path)
+                                                                           .Msg("http request succeeded").With("request_id", client_req.id)
+                                                                           .With("status", response.status).With("ms", ms)
+                                                                           .With(Log::Http::Request{s_logOptions, client_req.host, client_req.path, client_req.data});
                                                                    }
                                                                    else
                                                                    {
@@ -288,9 +310,12 @@ void PerformRequest(const Request &client_req)
                                                                                "NWNX_EVENT_SIGNAL_EVENT",
                                                                                {"NWNX_ON_HTTPCLIENT_FAILED",
                                                                                 moduleOid});
-                                                                       LOG_WARNING(
+                                                                       LOG_WARNING_F(
                                                                                "HTTP Client Request to '%s%s' failed, rate limited.",
-                                                                               client_req.host, client_req.path);
+                                                                               client_req.host, client_req.path)
+                                                                           .Msg("http request rate limited").With("request_id", client_req.id)
+                                                                           .With("status", response.status).With("ms", ms)
+                                                                           .With(Log::Http::Request{s_logOptions, client_req.host, client_req.path, client_req.data});
                                                                    }
                                                                }
                                                                else
@@ -298,10 +323,13 @@ void PerformRequest(const Request &client_req)
                                                                    MessageBus::Broadcast("NWNX_EVENT_SIGNAL_EVENT",
                                                                                          {"NWNX_ON_HTTPCLIENT_FAILED",
                                                                                           moduleOid});
-                                                                   LOG_WARNING(
+                                                                   LOG_WARNING_F(
                                                                            "HTTP Client Request to '%s%s' failed, status code '%d'.",
                                                                            client_req.host, client_req.path,
-                                                                           response.status);
+                                                                           response.status)
+                                                                       .Msg("http request failed").With("request_id", client_req.id)
+                                                                       .With("status", response.status).With("ms", ms)
+                                                                       .With(Log::Http::Request{s_logOptions, client_req.host, client_req.path, client_req.data});
                                                                }
                                                            });
                               });

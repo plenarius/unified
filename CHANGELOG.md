@@ -29,13 +29,27 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Optimizations: added `NWNX_OPTIMIZATIONS_GET_OBJECT_BY_TAG` to keep the tag lookup table in a hash map, which makes `GetObjectByTag()` and adding or removing tagged objects faster on modules with many objects.
 - Core: added `NWNX_CORE_ENCODING_BEST_FIT` to replace characters the codepage lacks with close equivalents instead of `?` when converting from UTF-8.
 - Events: Added event `NWNX_ON_ENCUMBRANCE_CHANGE_AFTER` which fires when a creature's encumbrance state changes.
+- Core: added `NWNX_CORE_LOG_ENGINE_KEEP_PREVIOUS` to keep the previous run's `nwengineLog.txt` and `nwserverLog1.txt` instead of overwriting them, the `logrotate engine|server` console command and `NWNX_CORE_LOG_ENGINE_ROTATE_SIZE|TIME` to rotate them while the server runs, and `NWNX_CORE_LOG_ENGINE_KEEP` for the number of archives kept.
 - SQL: Added `NWNX_SQL_QUERY_METRICS_ID_AS_FIELD` to send the query ID of `NWNX_SQL_QUERY_METRICS` as a field instead of a tag, so a long running server doesn't hit InfluxDB's `max-values-per-tag` limit.
 - Core: the crash report now lists the NWScript call stack at the crash, each script with its OBJECT_SELF.
+- Core: added `NWNX_CORE_LOG_FORMAT=json` and `NWNX_CORE_LOG_FILE_FORMAT` to write NWNX's logs as one JSON object per line (pino style), set with the `NWNX_CORE_LOG_JSON_*` options; `logformat text|json` switches it at runtime.
+- Core: added `NWNX_CORE_LOG_ASYNC` (on by default with JSON) to write logs on a background thread, with `NWNX_CORE_LOG_ASYNC_FLUSH_MS`, `_MAX_BYTES` and `_FULL`.
+- Core: added `NWNX_CORE_LOG_CAPTURE_STDIO` (on by default with JSON) to write other `stdout` and `stderr` lines as JSON records, so every line is JSON.
+- ServerLogRedirector: with `NWNX_CORE_LOG_FORMAT=json`, every engine log line (`nwserverLog1.txt`, `nwengineLog.txt`) is a record with its category, source, the running script, the print command, and script and SQLite errors as `err`; added `NWNX_SERVERLOGREDIRECTOR_DROP_CATEGORIES` and `NWNX_SERVERLOGREDIRECTOR_ENGINE_FILES`. Text mode is unchanged.
+- Core: plugins can add fields to log records (`LOG_INFO_F(...).With(key, value).Msg(...)`), shown in JSON and, with `NWNX_CORE_LOG_TEXT_FIELDS`, as `key=value` after text lines; text lines are unchanged by default.
+- SQL: each query is one log record with its id, text, rows and duration in JSON; added `NWNX_SQL_LOG_SLOW_MS` to log slow queries and `NWNX_SQL_LOG_QUERY_TEXT`.
+- Chat: added `NWNX_CHAT_LOG_CHANNELS`, `NWNX_CHAT_LOG_CONTENT_CHANNELS` and `NWNX_CHAT_LOG_MESSAGE_LEVEL` to choose which chat is logged, with or without its text, and at what level.
+- WebHook, HTTPClient: each request is one log record in JSON; added `NWNX_WEBHOOK_LOG_PATH|BODY` and `NWNX_HTTPCLIENT_LOG_PATH|BODY` (paths redacted by default).
+- Watchcat: each stall callstack is one JSON log record with its frames.
+- Core: added `NWNX_CORE_LOG_CONTEXT` to add the running script's `script`, `oid`, `tag` and `area` to records with fields.
+- Core: added `NWNX_CORE_LOG_FILE_ROTATE_SIZE|TIME`, `NWNX_CORE_LOG_FILE_KEEP` and `NWNX_CORE_LOG_FILE_KEEP_PREVIOUS` to rotate NWNX's own log file like the engine's, `logrotate nwnx|all`, and `logreopen` and `NWNX_CORE_LOG_REOPEN_SIGNAL` to reopen log files moved by an external logrotate.
+- Core: added the C functions `NWNX_Log_Emit` and `NWNX_Log_IsEnabled` (`Core/NWNXLog.h`) so DotNET, SWIG and Ruby can write records, with fields, into NWNX's log.
 
 ##### New Plugins
 - ItemAppearance: Lists the appearances an item can take, with blacklist and sync rules, and gets the next, previous or a random one for simple items and weapons.
 - Chess: Chess games in plugin memory (rules from the vendored header-only chess-library: legal moves, check, mate, stalemate, repetition, fifty-move and insufficient-material draws, FEN, PGN) and engine moves from Stockfish over UCI on a worker thread, delivered by polling or the `NWNX_ON_CHESS_BESTMOVE` event.
 - Watchcat: Improved hang detection. When the main loop stalls, Watchcat repeatedly samples the main thread’s callstack, aggregates the most frequent stacks, and logs them to pinpoint the cause. Stalls that never recover force a fatal shutdown. Do not run alongside the Watchdog: They really don't get along.
+- Log: structured logging from NWScript into the NWNX log, with fields, per-script-run bindings, loggers and their own levels (`NWNX_LOG_LOGGER_LEVELS`).
 
 ##### New NWScript Functions
 - Chess: NewGame(), EndGame(), MakeMove(), GetLegalMoves(), GetMoves(), GetFEN(), GetPGN(), GetStatus(), GetSideToMove(), GetPieceAt(), RequestBestMove(), GetBestMoveResult(), GetBestMoveState()
@@ -56,6 +70,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Administration: GetNWSyncAdvertHash(), GetNWSyncAdvertUrl(), SetNWSyncAdvert()
 - Encounter: SetNumberOfCreaturesInEncounterList()
 - Encounter: Set{Min|Max}NumSpawned()
+- Log: Debug(), Info(), Notice(), Warning(), Error(), Write(), IsEnabled(), Bind(), Unbind(), GetBindings(), SetLogger(), SetGlobal(), Rotate()
 
 ### Changed
 - Damage: Added bRangedAttack to the NWNX_Damage_AttackEventData struct.
@@ -67,6 +82,9 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Item: `SetItemAppearance()` with `bUpdateCreatureAppearance` now also updates items held in either hand.
 - Core: per-object storage lookups (`nwnxGet`) no longer copy the whole map, or create storage for objects that have none, on every call; this speeds up the Appearance and Player per-object update hooks.
 - Race: the effect-apply hook no longer adds a child-race map entry for every new effect parameter or copies the child list, and does nothing when no child races are set.
+- Core: a filtered `LOG_*` call is one atomic load and evaluates none of its arguments, and changing a level with `loglevel` no longer races plugins logging from other threads.
+- Core: log lines are formatted in a reused thread-local buffer instead of allocating two string streams each.
+- Core: `NWNX_CORE_LOG_MESSAGE` is only broadcast when something subscribes to it.
 
 ### Deprecated
 - N/A
@@ -102,6 +120,8 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - HTTPClient: The README named the timeout variable `NWNX_HTTPCLIENT_REQUEST_TIMEOUT`; the code reads `NWNX_HTTPCLIENT_CLIENT_REQUEST_TIMEOUT`.
 - Core: Fixed the crash handler looping forever without a backtrace when it runs on a small signal stack, as it does with the .NET runtime loaded.
 - Core: Fixed the crash handler hanging without a backtrace after a fault inside malloc or free (heap corruption): it no longer allocates.
+- Core: the README gave the default `NWNX_CORE_LOG_LEVEL` as 0; it is 5.
+- Chat: Fixed some tells being logged with their text: the check compared the speaker's object ID with the target's player ID. Tells are now logged without their text unless named in `NWNX_CHAT_LOG_CONTENT_CHANNELS`.
 
 ## 8193.37.13
 https://github.com/nwnxee/unified/compare/build8193.36.10...build8193.37.13

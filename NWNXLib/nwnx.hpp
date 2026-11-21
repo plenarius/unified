@@ -5,6 +5,8 @@
 #include "API/Functions.hpp"
 #include "API/Globals.hpp"
 
+#include <array>
+#include <atomic>
 #include <string>
 #include <optional>
 #include <vector>
@@ -24,6 +26,13 @@ namespace NWNXLib
 #define LOG_WARNING(format, ...) LOG_IMPL(SEV_WARNING, format, ##__VA_ARGS__)
 #define LOG_ERROR(format, ...)   LOG_IMPL(SEV_ERROR,   format, ##__VA_ARGS__)
 #define LOG_FATAL(format, ...)   LOG_IMPL(SEV_FATAL,   format, ##__VA_ARGS__)
+
+#define LOG_DEBUG_F(format, ...)   LOG_IMPL_F(SEV_DEBUG,   format, ##__VA_ARGS__)
+#define LOG_INFO_F(format, ...)    LOG_IMPL_F(SEV_INFO,    format, ##__VA_ARGS__)
+#define LOG_NOTICE_F(format, ...)  LOG_IMPL_F(SEV_NOTICE,  format, ##__VA_ARGS__)
+#define LOG_WARNING_F(format, ...) LOG_IMPL_F(SEV_WARNING, format, ##__VA_ARGS__)
+#define LOG_ERROR_F(format, ...)   LOG_IMPL_F(SEV_ERROR,   format, ##__VA_ARGS__)
+#define LOG_FATAL_F(format, ...)   LOG_IMPL_F(SEV_FATAL,   format, ##__VA_ARGS__)
 
 #define ASSERT(condition)                   ASSERT_IMPL(condition)
 #define ASSERT_MSG(condition, format, ...)  ASSERT_MSG_IMPL(condition, format, ##__VA_ARGS__)
@@ -122,6 +131,9 @@ namespace MessageBus
     uint32_t Subscribe(const std::string& tag, const Handler& handler);
     void Unsubscribe(const uint32_t id);
     void Broadcast(const std::string& tag, const Message& message);
+    bool HasSubscribers(const std::string& tag);
+    // The flag behind HasSubscribers, for hot paths. It is never freed, so callers can keep the reference.
+    const std::atomic<bool>& GetSubscribedFlag(const std::string& tag);
 }
 
 namespace Platform
@@ -158,6 +170,14 @@ namespace String
     std::string ToUTF8(const std::string& str, Locale locale = Default);
     std::string FromUTF8(const char *str, Locale locale = Default);
     std::string FromUTF8(const std::string& str, Locale locale = Default);
+
+    struct UTF8Char
+    {
+        uint8_t bytes[3];
+        uint8_t length;
+    };
+    // The UTF-8 of bytes 0x80-0xFF in a codepage (cp1252 if unknown); undefined bytes map to their C1 controls.
+    const std::array<UTF8Char, 128>& CodepageToUTF8(Locale locale);
 
     std::string ToBase64(const std::vector<uint8_t>& in);
     std::vector<uint8_t> FromBase64(const std::string &in);

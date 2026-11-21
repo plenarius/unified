@@ -84,6 +84,20 @@ __Example__
 export NWNX_SQL_DATABASE=mymodulename
 ```
 
+### NWNX_SQL_LOG_SLOW_MS
+
+Logs a warning, `Slow SQL query`, for each query that takes at least this many milliseconds, so slow queries show even when the per-query INFO lines are off (it needs `NWNX_SQL_LOG_LEVEL` 4 or higher). Unset or `0`: off.
+
+__Example__
+
+```
+export NWNX_SQL_LOG_SLOW_MS=50
+```
+
+### NWNX_SQL_LOG_QUERY_TEXT
+
+With `NWNX_CORE_LOG_FORMAT=json`, each query is one record with `query_id`, `query`, `rows` or `results`, `ms`, `db` and, on failure, `err`. Set this to `false` to leave the query text out of those records. Text lines always include it. Default: `true`.
+
 ### NWNX_SQL_QUERY_METRICS
 
 Export query execution metrics.

@@ -125,12 +125,7 @@ static constexpr uint32_t ReverseSize = std::max({MaxCodePoint(s_cp1250), MaxCod
 
 struct Codepage
 {
-    struct UTF8Bytes
-    {
-        uint8_t bytes[3];
-        uint8_t length;
-    };
-    std::array<UTF8Bytes, 128> toUTF8;
+    std::array<UTF8Char, 128> toUTF8;
     std::array<uint8_t, ReverseSize> fromUnicode;
 };
 
@@ -172,6 +167,12 @@ static const Codepage* GetCodepage(Locale locale)
         case cp1252: return &s_codepages[2];
         default:     return nullptr;
     }
+}
+
+const std::array<UTF8Char, 128>& CodepageToUTF8(Locale locale)
+{
+    const Codepage* codepage = GetCodepage(locale == Default ? GetDefaultLocale() : locale);
+    return (codepage ? *codepage : s_codepages[2]).toUTF8;
 }
 
 static uint8_t FromUnicode(const Codepage& codepage, uint32_t cp)

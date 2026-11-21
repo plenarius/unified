@@ -1,6 +1,8 @@
 #include "nwnx.hpp"
 #include "API/CNWSModule.hpp"
 #include "External/httplib.h"
+#include "Log/Http.hpp"
+#include <chrono>
 #include <cmath>
 #include <sstream>
 #include <iomanip>
@@ -22,6 +24,13 @@ static std::string escape_json(const std::string &s) {
         }
     }
     return o.str();
+}
+
+static const Log::Http::Options s_logOptions = Log::Http::ReadOptions(PLUGIN_NAME);
+
+static double MsSince(std::chrono::steady_clock::time_point start)
+{
+    return std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - start).count();
 }
 
 NWNX_EXPORT ArgumentStack SendWebHookHTTPS(ArgumentStack&& args)
@@ -60,28 +69,38 @@ NWNX_EXPORT ArgumentStack SendWebHookHTTPS(ArgumentStack&& args)
 
     if (Core::g_CoreShuttingDown)
     {
+        const auto start = std::chrono::steady_clock::now();
         auto res = cli->second->post(path.c_str(), message, "application/json");
+        const double ms = MsSince(start);
 
         if (!res)
         {
-            LOG_WARNING("Failed to send WebHook (HTTPS) to '%s%s'.", host, path);
+            LOG_WARNING_F("Failed to send WebHook (HTTPS) to '%s%s'.", host, path)
+                .Msg("webhook failed").With("ms", ms).Err("no response")
+                .With(Log::Http::Request{s_logOptions, host, origPath, message});
         }
         else if (res->status == 200)
         {
-            LOG_INFO("Sent webhook '%s' to '%s%s'.", message, host, path);
+            LOG_INFO_F("Sent webhook '%s' to '%s%s'.", message, host, path)
+                .Msg("webhook sent").With("status", res->status).With("ms", ms)
+                .With(Log::Http::Request{s_logOptions, host, origPath, message});
         }
         else
         {
-            LOG_WARNING("Failed to send WebHook (HTTPS) message '%s' to '%s%s', status code '%d'.",
-                        message.c_str(), host.c_str(), path.c_str(), res->status);
+            LOG_WARNING_F("Failed to send WebHook (HTTPS) message '%s' to '%s%s', status code '%d'.",
+                        message.c_str(), host.c_str(), path.c_str(), res->status)
+                .Msg("webhook failed").With("status", res->status).With("ms", ms)
+                .With(Log::Http::Request{s_logOptions, host, origPath, message});
         }
     }
     else
     {
         Tasks::QueueOnAsyncThread([cli, message, host, path, origPath]()
         {
+            const auto start = std::chrono::steady_clock::now();
             auto res = cli->second->post(path.c_str(), message, "application/json");
-            Tasks::QueueOnMainThread([message, host, path, origPath, res]()
+            const double ms = MsSince(start);
+            Tasks::QueueOnMainThread([message, host, path, origPath, res, ms]()
             {
                 if (Core::g_CoreShuttingDown)
                     return;
@@ -115,26 +134,34 @@ NWNX_EXPORT ArgumentStack SendWebHookHTTPS(ArgumentStack&& args)
                         if (res->status != 429)
                         {
                             MessageBus::Broadcast("NWNX_EVENT_SIGNAL_EVENT", {"NWNX_ON_WEBHOOK_SUCCESS", moduleOid});
-                            LOG_INFO("Sent webhook '%s' to '%s%s'.", message, host, path);
+                            LOG_INFO_F("Sent webhook '%s' to '%s%s'.", message, host, path)
+                                .Msg("webhook sent").With("status", res->status).With("ms", ms)
+                                .With(Log::Http::Request{s_logOptions, host, origPath, message});
                         }
                         else
                         {
                             MessageBus::Broadcast("NWNX_EVENT_SIGNAL_EVENT", {"NWNX_ON_WEBHOOK_FAILED", moduleOid});
-                            LOG_WARNING("Failed to send WebHook (HTTPS) message '%s' to '%s%s'. Rate Limited.", message, host, path);
+                            LOG_WARNING_F("Failed to send WebHook (HTTPS) message '%s' to '%s%s'. Rate Limited.", message, host, path)
+                                .Msg("webhook rate limited").With("status", res->status).With("ms", ms)
+                                .With(Log::Http::Request{s_logOptions, host, origPath, message});
                         }
                     }
                     else
                     {
                         MessageBus::Broadcast("NWNX_EVENT_PUSH_EVENT_DATA", {"FAIL_INFO", res->body});
                         MessageBus::Broadcast("NWNX_EVENT_SIGNAL_EVENT", {"NWNX_ON_WEBHOOK_FAILED", moduleOid});
-                        LOG_WARNING("Failed to send WebHook (HTTPS) message '%s' to '%s%s', status code '%d'.", message, host, path, res->status);
+                        LOG_WARNING_F("Failed to send WebHook (HTTPS) message '%s' to '%s%s', status code '%d'.", message, host, path, res->status)
+                            .Msg("webhook failed").With("status", res->status).With("ms", ms)
+                            .With(Log::Http::Request{s_logOptions, host, origPath, message});
                     }
                 }
                 else
                 {
                     MessageBus::Broadcast("NWNX_EVENT_PUSH_EVENT_DATA", {"FAIL_INFO", "Failed to post to server. Is the url correct?"});
                     MessageBus::Broadcast("NWNX_EVENT_SIGNAL_EVENT", {"NWNX_ON_WEBHOOK_FAILED", moduleOid});
-                    LOG_WARNING("Failed to send WebHook (HTTPS) to '%s%s'.", host, path);
+                    LOG_WARNING_F("Failed to send WebHook (HTTPS) to '%s%s'.", host, path)
+                        .Msg("webhook failed").With("ms", ms).Err("no response")
+                        .With(Log::Http::Request{s_logOptions, host, origPath, message});
                 }
             });
         });

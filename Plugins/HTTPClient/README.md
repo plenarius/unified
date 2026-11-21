@@ -9,6 +9,10 @@ The HTTPClient Plugin provides access to an HTTP Client to perform requests and 
 | Variable Name                     |  Type      | Default Value      |
 | ----------------------------------| :--------: | ------------------ |
 | NWNX_HTTPCLIENT_CLIENT_REQUEST_TIMEOUT | int  | 2000               |
+| NWNX_HTTPCLIENT_LOG_PATH         | full, redacted, none | redacted |
+| NWNX_HTTPCLIENT_LOG_BODY         | bool       | false              |
+
+In JSON logs (`NWNX_CORE_LOG_FORMAT=json`) each request is one record with `request_id`, `host`, `path`, `status` and `ms`. `LOG_PATH=redacted` keeps only the first segment of the path, which can hold tokens; `none` leaves it out. The request body is logged only with `LOG_BODY=true`. Text log lines still print the full path, and some the body.
 
 ## Setup
 ### Client
