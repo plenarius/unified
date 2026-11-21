@@ -161,6 +161,15 @@ void PerformRequest(const Request &client_req)
         const auto start = std::chrono::steady_clock::now();
         auto result = GetResult(client_req);
         const double ms = MsSince(start);
+        if (result == nullptr || result->error() != httplib::Error::Success)
+        {
+            const auto clientError = result != nullptr ? result->error() : httplib::Error::Unknown;
+            LOG_WARNING_F("HTTP Client Request to '%s%s' failed, [Error: %d].", client_req.host, client_req.path, clientError)
+                .Msg("http request failed").With("request_id", client_req.id).With("ms", ms)
+                .Err(httplib::to_string(clientError), static_cast<int64_t>(clientError))
+                .With(Log::Http::Request{s_logOptions, client_req.host, client_req.path, client_req.data});
+            return;
+        }
         auto res = result->value();
 
         if (res.status == 200)
