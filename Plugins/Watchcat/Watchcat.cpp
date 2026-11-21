@@ -9,10 +9,13 @@
 #include <atomic>
 #include <chrono>
 #include <cstdint>
+#include <cstdio>
+#include <iterator>
 #include <dlfcn.h>
 #include <execinfo.h>
 #include <pthread.h>
 #include <signal.h>
+#include <string>
 #include <thread>
 #include <type_traits>
 #include <unordered_map>
@@ -98,12 +101,24 @@ struct CallstackEqual
 
 using CallstackMap = std::unordered_map<Callstack, size_t, CallstackHash, CallstackEqual>;
 
+// One NWScript recursion level, copied from the VM while the main thread is interrupted.
+struct ScriptFrame
+{
+    char name[17];
+    OBJECT_ID oid;
+};
+
+// Script stacks rendered as text ("" = no script running), by occurrence.
+using ScriptStackMap = std::unordered_map<std::string, size_t>;
+
 static pthread_t s_mainThreadId;
 static pthread_t s_watchcatThreadId;
 
 // Written by the signal handler on the main thread:
 static void* s_mainThreadStack[CALLSTACK_SIZE];
 static int s_mainThreadStackLen = 0;
+static ScriptFrame s_mainThreadScripts[std::extent_v<decltype(CVirtualMachine::m_oidObjectRunScript)>];
+static int s_mainThreadScriptsLen = 0;
 // Guarded by this:
 static std::atomic<bool> s_callstackCallback { false };
 
@@ -150,6 +165,25 @@ static void callstack_signal_handler(int, siginfo_t*, void*)
             s_mainThreadStackLen * sizeof(void*));
     }
 
+    // Read the VM's script stack here, where the main thread can't change it under us.
+    s_mainThreadScriptsLen = 0;
+    if (const auto* vm = g_pVirtualMachine)
+    {
+        const int depth = std::clamp(vm->m_nRecursionLevel + 1, 0,
+            (int)std::size(s_mainThreadScripts));
+        for (int i = 0; i < depth; ++i)
+        {
+            auto& frame = s_mainThreadScripts[i];
+            const char* name = vm->m_pVirtualMachineScript[i].m_sScriptName.m_sString;
+            size_t len = 0;
+            for (; name && len < sizeof(frame.name) - 1 && name[len]; ++len)
+                frame.name[len] = name[len];
+            frame.name[len] = '\0';
+            frame.oid = vm->m_oidObjectRunScript[i];
+        }
+        s_mainThreadScriptsLen = depth;
+    }
+
     pthread_kill(s_watchcatThreadId, CALLSTACK_SIG);
 }
 
@@ -170,6 +204,25 @@ static void callstack_register_handler()
     {
         LOG_FATAL("sigaction(%d) failed while registering Watchcat signal handler, errno=%d",
             CALLSTACK_SIG, errno);
+    }
+}
+
+static void DumpScripts(const ScriptStackMap& scriptstacks)
+{
+    std::vector<std::pair<std::string, size_t>> sorted(scriptstacks.begin(), scriptstacks.end());
+    std::sort(sorted.begin(), sorted.end(),
+        [](const auto& a, const auto& b) { return a.second > b.second; });
+
+    const size_t numstacks = std::min<size_t>(WATCHCAT_TOP_N_STACKS, sorted.size());
+    for (size_t i = 0; i < numstacks; ++i)
+    {
+        const auto& [scripts, occurs] = sorted[i];
+        LOG_ERROR("Script stack: %d occurrences: %s", occurs,
+            scripts.empty() ? "no script running" : scripts.c_str());
+    }
+    if (numstacks < sorted.size())
+    {
+        LOG_WARNING("... and %d more", sorted.size() - numstacks);
     }
 }
 
@@ -258,6 +311,7 @@ static void WatchcatThread()
         LOG_ERROR("Watchcat ^.^~ detected a stall.");
 
         CallstackMap callstacks;
+        ScriptStackMap scriptstacks;
 
         while (s_mainThreadCounter == lastObservedCounter && !g_bExitProgram)
         {
@@ -303,19 +357,35 @@ static void WatchcatThread()
 
             callstacks[callstack]++;
 
-            if (steady_clock::now() - lastObservedAt >
-                milliseconds(g_config->stall_msec + g_config->kill_msec))
+            std::string scripts;
+            for (int i = 0; i < s_mainThreadScriptsLen; ++i)
             {
+                const auto& frame = s_mainThreadScripts[i];
+                char oid[32];
+                std::snprintf(oid, sizeof(oid), " (OBJECT_SELF %x)", frame.oid);
+                scripts += i ? " > " : "";
+                scripts += frame.name[0] ? frame.name : "(no name)";
+                scripts += oid;
+            }
+            scriptstacks[scripts]++;
+
+            const auto stalledFor = steady_clock::now() - lastObservedAt;
+            if (stalledFor > milliseconds(g_config->stall_msec + g_config->kill_msec))
+            {
+                DumpScripts(scriptstacks);
                 DumpStacks(callstacks);
-                LOG_FATAL("Watchcat ^.^~ ran out of patience.");
+                LOG_FATAL("Watchcat ^.^~ ran out of patience after %lums.",
+                    duration_cast<milliseconds>(stalledFor).count());
             }
 
             std::this_thread::sleep_for(milliseconds(g_config->stall_sample_rate_msec));
         }
 
+        // Measured now, when the main thread has ticked again, not when the stall was detected.
         LOG_ERROR("Stall recovered after %lums",
-            duration_cast<milliseconds>(now - lastObservedAt).count());
+            duration_cast<milliseconds>(steady_clock::now() - lastObservedAt).count());
 
+        DumpScripts(scriptstacks);
         DumpStacks(callstacks);
 
         continue;
