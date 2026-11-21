@@ -21,6 +21,7 @@
 #include <cstdio>
 #include <sstream>
 #include <dlfcn.h>
+#include <algorithm>
 #include <atomic>
 #include <pthread.h>
 #include <execinfo.h>
@@ -32,10 +33,39 @@ static uint32_t s_PostFixVersion;
 
 static void (*nwn_crash_handler)(int);
 
+// BASE_GAME_CRASH_HANDLER, read when the handlers are installed: reading the config allocates, which
+// the handler must not do.
+static bool s_chainBaseGameCrashHandler = false;
+
 // The thread currently reporting a crash, 0 when none is. A glibc pthread_t is the address of the
 // thread's descriptor, so 0 never names a live thread.
 static std::atomic<pthread_t> s_crashReportingThread{0};
 static_assert(std::atomic<pthread_t>::is_always_lock_free, "the crash handler needs a lock-free atomic");
+
+// The NWScript call stack at the crash, read in place without allocating
+static void PrintScriptContext()
+{
+    const auto *pVM = Globals::VirtualMachine();
+    if (!pVM)
+        return;
+
+    const int32_t level = pVM->m_nRecursionLevel;
+    if (level < 0 || level >= 8)
+        return;
+
+    std::fprintf(stdout, " NWScript call stack (innermost last):\n");
+    for (int32_t i = 0; i <= level; i++)
+    {
+        const auto &name = pVM->m_pVirtualMachineScript[i].m_sScriptName;
+        const bool hasName = name.m_sString && name.m_nStringLength > 0;
+        const OBJECT_ID oidSelf = pVM->m_bValidObjectRunScript[i] ? pVM->m_oidObjectRunScript[i] : Constants::OBJECT_INVALID;
+        std::fprintf(stdout, "   [%d] %.*s (OBJECT_SELF 0x%08x)\n", i,
+                     hasName ? (int)std::min<uint32_t>(name.m_nStringLength, 64) : 9,
+                     hasName ? name.m_sString : "(unnamed)", oidSelf);
+    }
+    std::fprintf(stdout, "==============================================================\n");
+    std::fflush(stdout);
+}
 
 extern "C" void nwnx_signal_handler(int sig)
 {
@@ -85,10 +115,27 @@ extern "C" void nwnx_signal_handler(int sig)
     // so it survives if building the stack trace faults and the re-entry guard aborts.
     std::fflush(stdout);
 
-    std::fputs(NWNXLib::Platform::GetStackTrace(20).c_str(), stdout);
-    std::fflush(stdout);
+    // Nothing below allocates. A fault inside malloc or free leaves the allocator lock held, and any
+    // allocation here would wait on it forever: backtrace_symbols_fd writes each frame straight to the
+    // file descriptor instead of building strings.
+    void* frames[20];
+    const int numFrames = backtrace(frames, 20);
+    if (numFrames > 0)
+    {
+        const int fd = fileno(stdout);
+        std::fputs("\n  Backtrace:\n", stdout);
+        for (int i = 0; i < numFrames; ++i)
+        {
+            std::fputs("    ", stdout);
+            std::fflush(stdout);
+            backtrace_symbols_fd(&frames[i], 1, fd);
+        }
+    }
 
-    if (Config::Get<bool>("BASE_GAME_CRASH_HANDLER", false))
+    // After the backtrace, so a fault reading damaged VM state can't lose it
+    PrintScriptContext();
+
+    if (s_chainBaseGameCrashHandler)
     {
         nwn_crash_handler(sig);
     }
@@ -128,6 +175,8 @@ void InitCrashHandlers()
     // call here, so the handler does not have to make it on a small signal stack.
     void* warmUpFrame[1];
     backtrace(warmUpFrame, 1);
+
+    s_chainBaseGameCrashHandler = Config::Get<bool>("BASE_GAME_CRASH_HANDLER", false);
 
     nwn_crash_handler = std::signal(SIGABRT, nwnx_signal_handler);
     std::signal(SIGFPE,  nwnx_signal_handler);
