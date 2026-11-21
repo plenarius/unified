@@ -1,0 +1,185 @@
+## format=0
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"debug 0: std::string","src":"nwnx","plugin":"NWNX_LogGoldenJson"}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"info 42 3.142 ff %","src":"nwnx","plugin":"NWNX_LogGoldenJson"}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"notice left    |+7|-0002.50|0xbeef","src":"nwnx","plugin":"NWNX_LogGoldenJson"}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"warning bool=true char=Z 0.333333","src":"nwnx","plugin":"NWNX_LogGoldenJson"}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"error","src":"nwnx","plugin":"NWNX_LogGoldenJson"}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"absolute path","src":"nwnx","plugin":"NWNX_Direct"}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"no directory here","src":"nwnx","plugin":"NWNX_Direct"}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"trailing slash","src":"nwnx","plugin":"NWNX_Direct"}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"empty file","src":"nwnx","plugin":"NWNX_Direct"}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"plugin and file are escaped","src":"nwnx","plugin":"NWNX_\"Quoted\"\\"}
+## format=7
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"debug 7: std::string","src":"nwnx","plugin":"NWNX_LogGoldenJson"}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"info 42 3.142 ff %","src":"nwnx","plugin":"NWNX_LogGoldenJson"}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"notice left    |+7|-0002.50|0xbeef","src":"nwnx","plugin":"NWNX_LogGoldenJson"}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"warning bool=true char=Z 0.333333","src":"nwnx","plugin":"NWNX_LogGoldenJson"}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"error","src":"nwnx","plugin":"NWNX_LogGoldenJson"}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"absolute path","src":"nwnx","plugin":"NWNX_Direct"}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"no directory here","src":"nwnx","plugin":"NWNX_Direct"}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"trailing slash","src":"nwnx","plugin":"NWNX_Direct"}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"empty file","src":"nwnx","plugin":"NWNX_Direct"}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"plugin and file are escaped","src":"nwnx","plugin":"NWNX_\"Quoted\"\\"}
+## format=8
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"debug 8: std::string","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1002}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"info 42 3.142 ff %","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1003}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"notice left    |+7|-0002.50|0xbeef","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1004}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"warning bool=true char=Z 0.333333","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1005}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"error","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1006}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"absolute path","src":"nwnx","plugin":"NWNX_Direct","file":"Direct.cpp","line":12}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"no directory here","src":"nwnx","plugin":"NWNX_Direct","file":"Plain.cpp","line":0}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"trailing slash","src":"nwnx","plugin":"NWNX_Direct","file":"","line":-1}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"empty file","src":"nwnx","plugin":"NWNX_Direct","file":"","line":99999}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"plugin and file are escaped","src":"nwnx","plugin":"NWNX_\"Quoted\"\\","file":"a\"b.cpp","line":1}
+## format=15
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"debug 15: std::string","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1002}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"info 42 3.142 ff %","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1003}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"notice left    |+7|-0002.50|0xbeef","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1004}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"warning bool=true char=Z 0.333333","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1005}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"error","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1006}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"absolute path","src":"nwnx","plugin":"NWNX_Direct","file":"Direct.cpp","line":12}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"no directory here","src":"nwnx","plugin":"NWNX_Direct","file":"Plain.cpp","line":0}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"trailing slash","src":"nwnx","plugin":"NWNX_Direct","file":"","line":-1}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"empty file","src":"nwnx","plugin":"NWNX_Direct","file":"","line":99999}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"plugin and file are escaped","src":"nwnx","plugin":"NWNX_\"Quoted\"\\","file":"a\"b.cpp","line":1}
+## special
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3002,"truncated":true}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"short after long","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3003}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3004}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"two\nlines\r\tand \"quotes\" \\ \u0001\u001f\u007f","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3005}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"embedded a\u0000b nul","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3006}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"nested inner","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":904}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"outer-arg","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3007}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3008}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3009}
+## strings
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"unicode é € 😀","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3502}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"cp125x é € Àÿ ˜","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3503}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"invalid À€ í € â‚","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3504}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"red and white, a<count AND b>3","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3505}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"colour bytes around utf8 café","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3506}
+## strings: keep colours, locale encoding
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"unicode Ã© â‚¬ ðŸ˜€","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3502}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"cp125x é € Àÿ ˜","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3503}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"invalid À€ í € â‚","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3504}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"<cþ\u0001\u0001>red</c> and <cÿÿÿ>white</c>, a<count AND b>3","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3505}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"<cÿÿÿ>colour bytes around utf8 cafÃ©</c>","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3506}
+## strings: utf8 encoding, cp1251
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"unicode é € 😀","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3502}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"cp125x � � �� ��","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3503}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"invalid �� ��� �","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3504}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"red and white, a<count AND b>3","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3505}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"colour bytes around utf8 café","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3506}
+## strings: auto, cp1251
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"unicode é € 😀","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3502}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"cp125x й Ђ Ая Ѓ","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3503}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"invalid АЂ н Ђ в‚","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3504}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"red and white, a<count AND b>3","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3505}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"colour bytes around utf8 café","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3506}
+## level labels
+{"time":1709611569123,"level":"debug","msg":"debug -1: std::string","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1002}
+{"time":1709611569123,"level":"info","msg":"info 42 3.142 ff %","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1003}
+{"time":1709611569123,"level":"notice","msg":"notice left    |+7|-0002.50|0xbeef","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1004}
+{"time":1709611569123,"level":"warn","msg":"warning bool=true char=Z 0.333333","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1005}
+{"time":1709611569123,"level":"error","msg":"error","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1006}
+## fields and static
+static error: '' renamed level
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"Log field 'level' is a reserved key; it is written as '_level'.","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3702,"_level":9,"server":"main","tags":["a",1]}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"with fields","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3702,"tags":["a",1],"server":"overrides the static server","rows":3,"_level":"a reserved key","text":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyé","stack":["./nwserver(frame+0x1) [0x1]","/lib/libc.so.6(\"q\"+0x2) [0x2]"]}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"no fields after fields","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3710,"_level":9,"server":"main","tags":["a",1]}
+bad static: 'not a JSON object'
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"debug -2: std::string","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1002,"_level":9,"server":"main","tags":["a",1]}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"info 42 3.142 ff %","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1003,"_level":9,"server":"main","tags":["a",1]}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"notice left    |+7|-0002.50|0xbeef","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1004,"_level":9,"server":"main","tags":["a",1]}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"warning bool=true char=Z 0.333333","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1005,"_level":9,"server":"main","tags":["a",1]}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"error","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1006,"_level":9,"server":"main","tags":["a",1]}
+## _F records
+{"time":1709611569123,"level":30,"lvl":"info","msg":"sql query","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8002,"query_id":412,"query":"SELECT 1","rows":1,"ms":0.84,"db":"MYSQL"}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"sql query failed","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8004,"query_id":413,"query":"SELEC","err":{"message":"syntax error","code":1064}}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"no fields, no Msg 1","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8006}
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"chat","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8007,"channel":"talk","speaker":"7f000000","text":"hi é"}
+## limits
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3002,"truncated":true}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"short after long","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3003}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3004}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"two\nlines\r\tand \"quotes\" \\ \u0001\u001f\u007f","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3005}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"embedded a\u0000b nul","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3006}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"nested inner","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":904}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"outer-arg","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3007}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3008,"truncated":true}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"éééééééééééééééééééééééééééééééé","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3009,"truncated":true}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"with fields","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3702,"truncated":true,"server":"overrides the static server","rows":3,"_level":"a reserved key","text":"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","stack":["./nwserver(frame+0x1) [0x1]","/lib/libc.so.6(\"q\"+0x2) [0x2]"]}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"no fields after fields","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3710}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3002,"truncated":true}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"short after long","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3003}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3004}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"two\nlines\r\tand \"quotes\" \\ \u0001\u001f\u007f","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3005}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"embedded a\u0000b nul","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3006}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"nested inner","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":904}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"outer-arg","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3007}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3008}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3009,"truncated":true}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"with fields","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3702,"truncated":true}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"no fields after fields","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":3710,"truncated":true}
+## levels
+level 0
+level 2
+level 5
+{"time":1709611569123,"level":50,"lvl":"error","msg":"error at level 5","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":4008}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"notice at level 5","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":4009}
+level 7
+{"time":1709611569123,"level":50,"lvl":"error","msg":"error at level 7","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":4008}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"notice at level 7","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":4009}
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"debug at level 7","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":4010}
+level 255
+{"time":1709611569123,"level":50,"lvl":"error","msg":"error at level 255","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":4008}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"notice at level 255","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":4009}
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"debug at level 255","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":4010}
+## bus
+{"time":1709611569123,"level":30,"lvl":"info","msg":"bus 1","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":5002}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"bus direct","src":"nwnx","plugin":"NWNX_Direct","file":"Direct.cpp","line":7}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"logged from a subscriber","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":5009}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"bus nested","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":5004}
+## assert
+{"time":1709611569123,"level":50,"lvl":"error","msg":"Assertion failure","src":"nwnx","file":"Checked.cpp","line":42,"condition":"a == b","message":"the message","stack":[]}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"Assertion failure","src":"nwnx","file":"Checked.cpp","line":43,"stack":[]}
+## fatal
+{"time":1709611569123,"level":60,"lvl":"fatal","msg":"fatal 1","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":6002}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"Assertion failure","src":"nwnx","file":"Log.cpp","line":0,"stack":[]}
+signal=6
+## raw
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"internal trace","src":"nwnx"}
+## text stdout, json file
+D [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:1002] debug 15: std::string
+I [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:1003] info 42 3.142 ff %
+N [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:1004] notice left    |+7|-0002.50|0xbeef
+W [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:1005] warning bool=true char=Z 0.333333
+E [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:1006] error
+ASSERTION FAILURE
+  Summary: (a == b) failed at (/abs/path/Checked.cpp:42)
+  Message: the messageASSERTION FAILURE
+  Summary: Failed at (Checked.cpp:43)I [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:8002] Successful SQL query. Query ID: '412', Query: 'SELECT 1', Rows affected: '1'.
+W [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:8004] Failed SQL query. Query ID: '413', Query: 'SELEC'.
+N [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:8006] no fields, no Msg 1
+D [2024-03-05 04:06:09] [NWNX_LogGoldenJson] [GoldenJson.cpp:8007] chat
+internal trace to the file
+=== file ===
+{"time":1709611569123,"level":30,"lvl":"info","msg":"NWNX secondary log file opened","src":"nwnx"}
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"debug 15: std::string","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1002}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"info 42 3.142 ff %","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1003}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"notice left    |+7|-0002.50|0xbeef","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1004}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"warning bool=true char=Z 0.333333","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1005}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"error","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":1006}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"Assertion failure","src":"nwnx","file":"Checked.cpp","line":42,"condition":"a == b","message":"the message","stack":[]}
+{"time":1709611569123,"level":50,"lvl":"error","msg":"Assertion failure","src":"nwnx","file":"Checked.cpp","line":43,"stack":[]}
+{"time":1709611569123,"level":30,"lvl":"info","msg":"sql query","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8002,"query_id":412,"query":"SELECT 1","rows":1,"ms":0.84,"db":"MYSQL"}
+{"time":1709611569123,"level":40,"lvl":"warn","msg":"sql query failed","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8004,"query_id":413,"query":"SELEC","err":{"message":"syntax error","code":1064}}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"no fields, no Msg 1","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8006}
+{"time":1709611569123,"level":20,"lvl":"debug","msg":"chat","src":"nwnx","plugin":"NWNX_LogGoldenJson","file":"GoldenJson.cpp","line":8007,"channel":"talk","speaker":"7f000000","text":"hi é"}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"internal trace to the file","src":"nwnx"}
+{"time":1709611569123,"level":35,"lvl":"notice","msg":"written to the file","src":"nwnx"}
+=== bus ===
+6|NWNX_LogGoldenJson|/nwnx/home/NWNXLib/Log/tests/GoldenJson.cpp|5002|bus 1|
+4|NWNX_Direct|/abs/path/Direct.cpp|7|bus direct|
+5|NWNX_LogGoldenJson|/nwnx/home/NWNXLib/Log/tests/GoldenJson.cpp|5004|bus nested|
+5|NWNX_LogGoldenJson|/nwnx/home/NWNXLib/Log/tests/GoldenJson.cpp|5009|logged from a subscriber|

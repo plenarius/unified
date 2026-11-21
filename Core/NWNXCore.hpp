@@ -35,6 +35,7 @@ private:
     void CleanupPreload();
     void ConfigureLogLevel(const std::string& plugin);
 
+    void InitialSetupLogging();
     void InitialSetupHooks();
     void InitialVersionCheck();
     void InitialSetupPlugins();

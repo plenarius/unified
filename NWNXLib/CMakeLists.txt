@@ -19,6 +19,8 @@ endmacro()
 nwnxlib_add(
     "Assert.cpp"
     "Log.cpp"
+    "Log/Json.cpp"
+    "Log/Rotation.cpp"
     "Serialize.cpp"
     "Utils.cpp"
     "Encoding.cpp"
@@ -29,6 +31,8 @@ nwnxlib_add(
     "Hooks.cpp"
     "Tasks.cpp"
     "POS.cpp"
+    "Log/ScriptContext.cpp"
+    "Log/LoggerLevels.cpp"
 )
 
 add_subdirectory(API)

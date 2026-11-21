@@ -1,5 +1,6 @@
 #include "nwnx.hpp"
 #include "NWNXCore.hpp"
+#include "EngineLogFiles.hpp"
 
 #include "API/CAppManager.hpp"
 #include "API/CExoString.hpp"
@@ -13,23 +14,34 @@
 #include "API/CVirtualMachine.hpp"
 #include "API/CExoStringList.hpp"
 #include "API/CScriptCompiler.hpp"
+#include "Log/Json.hpp"
+#include "Log/Rotation.hpp"
+#include "Log/ScriptContext.hpp"
 
 #include <csignal>
 #include <regex>
 #include <dirent.h>
 #include <unistd.h>
 #include <cstdio>
+#include <cstring>
 #include <sstream>
 #include <dlfcn.h>
 #include <algorithm>
 #include <atomic>
 #include <pthread.h>
 #include <execinfo.h>
+#include <strings.h>
 
 using namespace NWNXLib;
 using namespace NWNXLib::API;
 
 static uint32_t s_PostFixVersion;
+
+static std::string NWNXVersion()
+{
+    return std::to_string(NWNX_TARGET_NWN_BUILD) + "." + std::to_string(NWNX_TARGET_NWN_BUILD_REVISION) + "-" +
+           std::to_string(NWNX_TARGET_NWN_BUILD_POSTFIX);
+}
 
 static void (*nwn_crash_handler)(int);
 
@@ -95,6 +107,11 @@ extern "C" void nwnx_signal_handler(int sig)
         case SIGILL:   err = "Illegal instruction";      break;
         default:       err = "Unknown error";            break;
     }
+
+    // The real stdout and stderr first, so nothing below waits in a pipe nobody reads any more.
+    Log::RestoreStdio();
+    // Queued lines first; the crash output below is then written directly.
+    Log::EmergencyFlush();
 
     std::fprintf(stdout, " NWNX Signal Handler:\n"
         "==============================================================\n"
@@ -191,6 +208,13 @@ void RestoreCrashHandlers()
     std::signal(SIGILL, nwn_crash_handler);
 }
 
+// Both engine files, for logreopen and the reopen signal. Returns whether either was reopened.
+bool ReopenEngineLogs()
+{
+    const bool engine = Core::EngineLogFiles::Reopen(Core::EngineLogFiles::File::Engine);
+    return Core::EngineLogFiles::Reopen(Core::EngineLogFiles::File::Server) || engine;
+}
+
 }
 
 // TODO: Remove and allow auto-init post-load
@@ -212,11 +236,16 @@ NWNXCore::NWNXCore()
 {
     g_core = this;
     CleanupPreload();
+    InitialSetupLogging();
 
     // NOTE: We should do the version check here, but the global in the binary hasn't been initialised yet at this point.
     // This will be fixed in a future release of NWNX:EE. For now, the version check will happen *too late* - we may
     // crash before the version check happens.
-    std::printf("Starting NWNX %d.%d-%d [%s]\n", NWNX_TARGET_NWN_BUILD, NWNX_TARGET_NWN_BUILD_REVISION, NWNX_TARGET_NWN_BUILD_POSTFIX, NWNX_BUILD_SHA);
+    if (Log::GetFormat() == Log::Format::Text)
+        std::printf("Starting NWNX %d.%d-%d [%s]\n", NWNX_TARGET_NWN_BUILD, NWNX_TARGET_NWN_BUILD_REVISION, NWNX_TARGET_NWN_BUILD_POSTFIX, NWNX_BUILD_SHA);
+    Log::Record banner(Log::Channel::SEV_NOTICE, PLUGIN_NAME, __FILE__, __LINE__);
+    banner.Stream() << "Starting NWNX";
+    banner.With("version", NWNXVersion()).With("sha", NWNX_BUILD_SHA).WriteJson();
 
     // Initialise export table. New plugin code should endeavour to use direct linking
     // for hook naming, but these might help if you want to target a overloaded function.
@@ -282,6 +311,158 @@ void NWNXCore::ConfigureLogLevel(const std::string& plugin)
     }
 }
 
+
+void NWNXCore::InitialSetupLogging()
+{
+    ConfigureLogLevel(NWNX_CORE_PLUGIN_NAME);
+    // We need to set the NWNXLib log level (separate from Core now) to match the core log level.
+    Log::SetLogLevel("NWNXLib", Log::GetLogLevel(NWNX_CORE_PLUGIN_NAME));
+    Log::SetPrintTimestamp(Config::Get<bool>("LOG_TIMESTAMP", true));
+    Log::SetPrintDate(Config::Get<bool>("LOG_DATE", false));
+    Log::SetPrintPlugin(Config::Get<bool>("LOG_PLUGIN", true));
+    Log::SetPrintSource(Config::Get<bool>("LOG_SOURCE", true));
+    Log::SetColorOutput(Config::Get<bool>("LOG_COLOR", true));
+    Log::SetForceColor(Config::Get<bool>("LOG_FORCE_COLOR", false));
+    const auto logFile = Config::Get<std::string>("LOG_FILE_PATH", "");
+    Log::SetLogFile(logFile);
+    Log::FileRotation rotation;
+    rotation.keep = Config::Get<int>("LOG_FILE_KEEP", int(rotation.keep));
+    // Before the file is first opened, so the new run starts a new file.
+    std::string keptFile;
+    if (!logFile.empty() && Config::Get<bool>("LOG_FILE_KEEP_PREVIOUS", false))
+        keptFile = Log::Rotation::KeepPrevious(logFile, rotation.keep);
+
+    // Problems are logged once the format is set, so they come out in it.
+    std::vector<std::string> problems;
+    auto getFormat = [&problems](const char* key, Log::Format def)
+    {
+        const auto value = Config::Get<std::string>(key);
+        if (!value)
+            return def;
+        if (*value == "json")
+            return Log::Format::Json;
+        if (*value != "text")
+            problems.push_back(std::string("NWNX_CORE_") + key + "='" + *value + "' is not text or json");
+        return *value == "text" ? Log::Format::Text : def;
+    };
+    const auto format = getFormat("LOG_FORMAT", Log::Format::Text);
+    Log::SetFormat(format);
+    const auto fileFormat = getFormat("LOG_FILE_FORMAT", format);
+    Log::SetFileFormat(fileFormat);
+    Log::SetTextFields(Config::Get<bool>("LOG_TEXT_FIELDS", false));
+
+    Log::Json::Options options;
+    const auto level = Config::Get<std::string>("LOG_JSON_LEVEL", "number");
+    options.levelLabel = level == "label";
+    if (level != "number" && level != "label")
+        problems.push_back("NWNX_CORE_LOG_JSON_LEVEL='" + level + "' is not number or label");
+    const auto encoding = Config::Get<std::string>("LOG_JSON_ENCODING", "auto");
+    if (encoding == "locale")
+        options.encoding = Log::Json::Encoding::Locale;
+    else if (encoding == "utf8")
+        options.encoding = Log::Json::Encoding::Utf8;
+    else if (encoding != "auto")
+        problems.push_back("NWNX_CORE_LOG_JSON_ENCODING='" + encoding + "' is not auto, locale or utf8");
+    options.stripColors = Config::Get<bool>("LOG_JSON_STRIP_COLORS", true);
+    // Floors keep room for the fixed keys of a record.
+    options.maxValue = std::max(Config::Get<uint32_t>("LOG_JSON_MAX_VALUE", 8 * 1024), 64u);
+    options.maxLine = std::max(Config::Get<uint32_t>("LOG_JSON_MAX_LINE", 64 * 1024), 1024u);
+    Log::SetJsonOptions(options);
+
+    if (auto json = Config::Get<std::string>("LOG_JSON_STATIC"))
+    {
+        std::vector<std::string> renamed;
+        const std::string error = Log::SetJsonStatic(*json, renamed);
+        if (!error.empty())
+            problems.push_back("NWNX_CORE_LOG_JSON_STATIC is not a JSON object: " + error);
+        for (const auto& key : renamed)
+            problems.push_back("NWNX_CORE_LOG_JSON_STATIC: '" + key + "' is a reserved key, renamed to '_" + key + "'");
+    }
+
+    if (auto locale = Config::Get<std::string>("LOCALE"))
+    {
+        String::SetDefaultLocale(*locale);
+    }
+    String::SetBestFit(Config::Get<bool>("ENCODING_BEST_FIT", false));
+
+    // The running script's context on records made during a script; "none" turns it off.
+    uint32_t contextKeys = Log::ContextKey::Default;
+    if (auto context = Config::Get<std::string>("LOG_CONTEXT"))
+    {
+        static constexpr std::pair<std::string_view, uint32_t> keys[] = {
+            {"script", Log::ContextKey::Script}, {"oid", Log::ContextKey::Oid}, {"tag", Log::ContextKey::Tag},
+            {"area", Log::ContextKey::Area}, {"pc", Log::ContextKey::Pc}, {"player", Log::ContextKey::Player}};
+        contextKeys = 0;
+        for (const auto& name : String::Split(*context == "none" ? std::string() : *context, ','))
+        {
+            auto key = std::find_if(std::begin(keys), std::end(keys), [&](const auto& k) { return name == k.first; });
+            if (key != std::end(keys))
+                contextKeys |= key->second;
+            else
+                problems.push_back("NWNX_CORE_LOG_CONTEXT: unknown key '" + name + "'");
+        }
+    }
+    Log::SetScriptContextKeys(contextKeys);
+    Log::SetContextSource(contextKeys ? &Log::AddScriptContext : nullptr);
+
+    const auto rotateSize = Config::Get<std::string>("LOG_FILE_ROTATE_SIZE", "0");
+    if (auto size = Log::Rotation::ParseSize(rotateSize))
+        rotation.size = *size;
+    else
+        problems.push_back("NWNX_CORE_LOG_FILE_ROTATE_SIZE='" + rotateSize + "' is not bytes with an optional K, M or G");
+    const auto rotateTime = Config::Get<std::string>("LOG_FILE_ROTATE_TIME", "off");
+    if (auto period = Log::Rotation::ParsePeriod(rotateTime))
+        rotation.period = *period;
+    else
+        problems.push_back("NWNX_CORE_LOG_FILE_ROTATE_TIME='" + rotateTime + "' is not hourly, daily or off");
+    Log::SetFileRotation(rotation);
+
+    // Installed only when asked for: by default SIGHUP still ends the server, as it always has.
+    const auto reopenSignal = Config::Get<std::string>("LOG_REOPEN_SIGNAL", "off");
+    const int sig = !strcasecmp(reopenSignal.c_str(), "HUP") ? SIGHUP : !strcasecmp(reopenSignal.c_str(), "USR1") ? SIGUSR1
+                  : !strcasecmp(reopenSignal.c_str(), "USR2") ? SIGUSR2 : 0;
+    if (sig)
+    {
+        struct sigaction action = {};
+        action.sa_handler = [](int) { Log::RequestReopen(); };
+        action.sa_flags = SA_RESTART;
+        sigemptyset(&action.sa_mask);
+        sigaction(sig, &action, nullptr);
+    }
+    else if (strcasecmp(reopenSignal.c_str(), "off"))
+        problems.push_back("NWNX_CORE_LOG_REOPEN_SIGNAL='" + reopenSignal + "' is not off, HUP, USR1 or USR2");
+
+    // Before the async writer, which then writes to the real stdout.
+    const auto capture = Config::Get<std::string>("LOG_CAPTURE_STDIO", "auto");
+    if (capture != "auto" && capture != "true" && capture != "false")
+        problems.push_back("NWNX_CORE_LOG_CAPTURE_STDIO='" + capture + "' is not auto, true or false");
+    if (capture == "true" && format != Log::Format::Json)
+        problems.push_back("NWNX_CORE_LOG_CAPTURE_STDIO=true needs NWNX_CORE_LOG_FORMAT=json");
+    if (capture != "false" && format == Log::Format::Json && !Log::StartStdioCapture())
+        problems.push_back(std::string("Cannot capture stdout and stderr: ") + std::strerror(errno));
+
+    const auto async = Config::Get<std::string>("LOG_ASYNC", "auto");
+    if (async != "auto" && async != "true" && async != "false")
+        problems.push_back("NWNX_CORE_LOG_ASYNC='" + async + "' is not auto, true or false");
+    const bool anyJson = format == Log::Format::Json || (!logFile.empty() && fileFormat == Log::Format::Json);
+    if (async == "true" || (async != "false" && anyJson))
+    {
+        Log::AsyncOptions asyncOptions;
+        asyncOptions.flushMs = Config::Get<uint32_t>("LOG_ASYNC_FLUSH_MS", uint32_t(asyncOptions.flushMs));
+        // A floor keeps room for a few long records.
+        asyncOptions.maxBytes = std::max(Config::Get<uint32_t>("LOG_ASYNC_MAX_BYTES", uint32_t(asyncOptions.maxBytes)), 256u * 1024);
+        const auto full = Config::Get<std::string>("LOG_ASYNC_FULL", "block");
+        asyncOptions.dropWhenFull = full == "drop";
+        if (full != "block" && full != "drop")
+            problems.push_back("NWNX_CORE_LOG_ASYNC_FULL='" + full + "' is not block or drop");
+        Log::StartAsync(asyncOptions);
+    }
+
+    for (const auto& problem : problems)
+        LOG_WARNING("%s", problem);
+    if (!keptFile.empty())
+        LOG_NOTICE("Kept the previous run's log as '%s'", keptFile);
+}
 
 void NWNXCore::InitialSetupHooks()
 {
@@ -366,25 +547,45 @@ void NWNXCore::InitialVersionCheck()
 
         s_PostFixVersion = postfix;
 
+        const bool text = Log::GetFormat() == Log::Format::Text;
         if (version != NWNX_TARGET_NWN_BUILD || revision != NWNX_TARGET_NWN_BUILD_REVISION)
         {
-            std::fprintf(stdout, "NWNX: Expected build %u.%u, got build %u.%u.\n", NWNX_TARGET_NWN_BUILD, NWNX_TARGET_NWN_BUILD_REVISION, version, revision);
-            std::fprintf(stdout, "NWNX: Will terminate. Please use the correct NWNX build for your game version.\n");
-            std::fflush(stdout);
+            if (text)
+            {
+                std::fprintf(stdout, "NWNX: Expected build %u.%u, got build %u.%u.\n", NWNX_TARGET_NWN_BUILD, NWNX_TARGET_NWN_BUILD_REVISION, version, revision);
+                std::fprintf(stdout, "NWNX: Will terminate. Please use the correct NWNX build for your game version.\n");
+                std::fflush(stdout);
+            }
+            Log::Record record(Log::Channel::SEV_FATAL, PLUGIN_NAME, __FILE__, __LINE__);
+            record.Stream() << "Wrong game build; use the NWNX build for your game version";
+            record.With("expected", std::to_string(NWNX_TARGET_NWN_BUILD) + "." + std::to_string(NWNX_TARGET_NWN_BUILD_REVISION))
+                  .With("got", std::to_string(version) + "." + std::to_string(revision)).WriteJson();
             std::exit(1);
         }
 
         if (postfix != NWNX_TARGET_NWN_BUILD_POSTFIX)
         {
-            std::fprintf(stdout, "NWNX: WARNING: POSTFIX VERSION MISMATCH: EXPECTED: %d, GOT: %d\n", NWNX_TARGET_NWN_BUILD_POSTFIX, postfix);
-            std::fprintf(stdout, "NWNX:          THE NWNX API MAY NOT BE UP TO DATE AND CRASH YOUR SERVER.\n");
-            std::fflush(stdout);
+            if (text)
+            {
+                std::fprintf(stdout, "NWNX: WARNING: POSTFIX VERSION MISMATCH: EXPECTED: %d, GOT: %d\n", NWNX_TARGET_NWN_BUILD_POSTFIX, postfix);
+                std::fprintf(stdout, "NWNX:          THE NWNX API MAY NOT BE UP TO DATE AND CRASH YOUR SERVER.\n");
+                std::fflush(stdout);
+            }
+            Log::Record record(Log::Channel::SEV_WARNING, PLUGIN_NAME, __FILE__, __LINE__);
+            record.Stream() << "Postfix version mismatch; the NWNX API may not be up to date and crash your server";
+            record.With("expected", NWNX_TARGET_NWN_BUILD_POSTFIX).With("got", postfix).WriteJson();
         }
     }
     else
     {
-        std::fprintf(stdout, "NWNX: Could not determine build version.\n");
-        std::fflush(stdout);
+        if (Log::GetFormat() == Log::Format::Text)
+        {
+            std::fprintf(stdout, "NWNX: Could not determine build version.\n");
+            std::fflush(stdout);
+        }
+        Log::Record record(Log::Channel::SEV_FATAL, PLUGIN_NAME, __FILE__, __LINE__);
+        record.Stream() << "Could not determine the game build";
+        record.WriteJson();
         std::abort();
     }
 }
@@ -622,9 +823,33 @@ void NWNXCore::InitialSetupCommands()
             Log::SetColorOutput(args.find("nocolor") == std::string::npos);
         if (args.find("force") != std::string::npos)
             Log::SetForceColor(args.find("noforce") == std::string::npos);
+        if (args.find("json") != std::string::npos)
+            Log::SetFormat(Log::Format::Json);
+        else if (args.find("text") != std::string::npos)
+            Log::SetFormat(Log::Format::Text);
         LOG_INFO("Log format updated: Timestamp:%s Date:%s Plugin:%s Source:%s Color:%s Force:%s.",
                  Log::GetPrintTimestamp(), Log::GetPrintDate(), Log::GetPrintPlugin(),
                  Log::GetPrintSource(), Log::GetColorOutput(), Log::GetForceColor());
+    });
+
+    Commands::Register("logrotate", [](std::string&, std::string& args)
+    {
+        const bool all = args == "all";
+        if (args == "nwnx" || (all && !Log::GetLogFile().empty()))
+            Log::RotateFile();
+        if (args == "engine" || all)
+            EngineLogFiles::Rotate(EngineLogFiles::File::Engine);
+        if (args == "server" || all)
+            EngineLogFiles::Rotate(EngineLogFiles::File::Server);
+        if (args != "nwnx" && args != "engine" && args != "server" && !all)
+            LOG_INFO("Usage: logrotate nwnx|engine|server|all");
+    });
+
+    Commands::Register("logreopen", [](std::string&, std::string&)
+    {
+        const bool nwnx = Log::ReopenFile();
+        if (!ReopenEngineLogs() && !nwnx)
+            LOG_INFO("No log file was moved: nothing to reopen");
     });
 
 }
@@ -642,6 +867,9 @@ void NWNXCore::Shutdown()
     {
         Plugin::UnloadAll();
         UnloadServices();
+        // Drains the log queue; anything logged later is written directly.
+        Log::Shutdown();
+        Log::StopStdioCapture();
         Tasks::StopAsyncWorkers();
         g_core = nullptr;
         if (Config::Get<bool>("HARD_EXIT", false))
@@ -656,22 +884,6 @@ void NWNXCore::CreateServerHandler(CAppManager* app)
 
     g_core->m_services = g_core->ConstructCoreServices();
     g_core->m_coreServices = g_core->ConstructProxyServices(NWNX_CORE_PLUGIN_NAME);
-
-    // We need to set the NWNXLib log level (separate from Core now) to match the core log level.
-    Log::SetLogLevel("NWNXLib", Log::GetLogLevel(NWNX_CORE_PLUGIN_NAME));
-    Log::SetPrintTimestamp(Config::Get<bool>("LOG_TIMESTAMP", true));
-    Log::SetPrintDate(Config::Get<bool>("LOG_DATE", false));
-    Log::SetPrintPlugin(Config::Get<bool>("LOG_PLUGIN", true));
-    Log::SetPrintSource(Config::Get<bool>("LOG_SOURCE", true));
-    Log::SetColorOutput(Config::Get<bool>("LOG_COLOR", true));
-    Log::SetForceColor(Config::Get<bool>("LOG_FORCE_COLOR", false));
-    Log::SetLogFile(Config::Get<std::string>("LOG_FILE_PATH", ""));
-
-    if (auto locale = Config::Get<std::string>("LOCALE"))
-    {
-        String::SetDefaultLocale(*locale);
-    }
-    String::SetBestFit(Config::Get<bool>("ENCODING_BEST_FIT", false));
 
     if (Config::Get<bool>("SKIP", false))
     {
@@ -730,6 +942,9 @@ int32_t NWNXCore::MainLoopInternalHandler(CServerExoAppInternal *pServerExoAppIn
     g_core->m_services->m_metrics->Update();
     Tasks::ProcessMainThreadWork();
     Commands::RunScheduled();
+    EngineLogFiles::Tick();
+    if (Log::Tick())
+        ReopenEngineLogs();
 
     return g_core->m_mainLoopInternalHook->CallOriginal<int32_t>(pServerExoAppInternal);
 }

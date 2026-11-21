@@ -96,6 +96,12 @@ add_subdirectory(Core)
 # The documentation generation.
 add_subdirectory(docgen)
 
+option(NWNX_BUILD_TESTS "Build the NWNXLib tests; run them with ctest" OFF)
+if (NWNX_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(NWNXLib/Log/tests)
+endif()
+
 # Detect every plugin and store it in plugins . . .
 file(GLOB plugins Plugins/*/CMakeLists.txt)
 

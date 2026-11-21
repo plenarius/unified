@@ -54,6 +54,8 @@ SQL::SQL(Services::ProxyServiceList* services)
 
 #undef REGISTER
 
+    m_logSlowMs = Config::Get<double>("LOG_SLOW_MS", 0.0);
+    m_logQueryText = Config::Get<bool>("LOG_QUERY_TEXT", true);
     m_queryMetrics = Config::Get<bool>("QUERY_METRICS", false);
     m_queryMetricsIdAsField = Config::Get<bool>("QUERY_METRICS_ID_AS_FIELD", false);
 
@@ -187,61 +189,71 @@ ArgumentStack SQL::ExecutePreparedQuery(ArgumentStack&&)
 
     const int32_t queryId = ++m_nextQueryId;
 
-    std::optional<ResultSet> query;
+    // Always timed: a steady_clock read is nothing next to a database round trip.
+    const auto timeBefore = std::chrono::steady_clock::now();
+    std::optional<ResultSet> query = m_target->ExecuteQuery();
+    const auto duration = std::chrono::steady_clock::now() - timeBefore;
+    const double ms = std::chrono::duration<double, std::milli>(duration).count();
 
     if (m_queryMetrics)
     {
-        const auto timeBefore = std::chrono::high_resolution_clock::now();
-        query = m_target->ExecuteQuery();
-        const auto timeAfter = std::chrono::high_resolution_clock::now();
-
-        using namespace std::chrono;
-        nanoseconds dur = duration_cast<nanoseconds>(timeAfter - timeBefore);
-
+        const auto ns = std::chrono::duration_cast<std::chrono::nanoseconds>(duration).count();
         if (m_queryMetricsIdAsField)
         {
             GetServices()->m_metrics->Push(
                 "SQLQueries",
-                { { "ns", std::to_string(dur.count()) }, { "ID", std::to_string(queryId) } });
+                { { "ns", std::to_string(ns) }, { "ID", std::to_string(queryId) } });
         }
         else
         {
             GetServices()->m_metrics->Push(
                 "SQLQueries",
-                { { "ns", std::to_string(dur.count()) } },
+                { { "ns", std::to_string(ns) } },
                 { { "ID", std::to_string(queryId) } });
         }
-    }
-    else
-    {
-        query = m_target->ExecuteQuery();
     }
 
     const bool querySucceeded = query.has_value();
 
     m_activeResults = query.value_or(ResultSet());
 
+    // JSON gets one record per query: a stable msg, the values as fields, and the query text unless disabled.
+    const auto queryText = m_logQueryText ? std::make_optional<std::string_view>(m_activeQuery) : std::nullopt;
     if (querySucceeded)
     {
         // queries that execute commands return the number of affected rows.
         // queries that fetch results return a results size.
-        if (m_target->GetAffectedRows() >= 0)
+        const int affectedRows = m_target->GetAffectedRows();
+        if (affectedRows >= 0)
         {
             // this was not a result set type query
-            LOG_INFO("Successful SQL query. Query ID: '%i', Query: '%s', Rows affected: '%u'.",
-                queryId, m_activeQuery, m_target->GetAffectedRows());
+            LOG_INFO_F("Successful SQL query. Query ID: '%i', Query: '%s', Rows affected: '%u'.",
+                queryId, m_activeQuery, affectedRows)
+                .Msg("sql query").With("query_id", queryId).With("query", queryText).With("rows", affectedRows)
+                .With("ms", ms).With("db", m_databaseType);
         }
         else
         {
-            LOG_INFO("Successful SQL query. Query ID: '%i', Query: '%s', Results Count: '%u'.",
-                queryId, m_activeQuery, m_activeResults.size());
+            LOG_INFO_F("Successful SQL query. Query ID: '%i', Query: '%s', Results Count: '%u'.",
+                queryId, m_activeQuery, m_activeResults.size())
+                .Msg("sql query").With("query_id", queryId).With("query", queryText).With("results", m_activeResults.size())
+                .With("ms", ms).With("db", m_databaseType);
         }
     }
     else
     {
-        LOG_WARNING("Failed SQL query. Query ID: '%i', Query: '%s'.", queryId, m_activeQuery);
-        std::string lastError = m_target->GetLastError();
-        LOG_WARNING("Failure Message. Query ID: '%i', \"%s\"", queryId, lastError);
+        const std::string lastError = m_target->GetLastError();
+        LOG_WARNING_F("Failed SQL query. Query ID: '%i', Query: '%s'.", queryId, m_activeQuery)
+            .Msg("sql query failed").With("query_id", queryId).With("query", queryText).With("ms", ms)
+            .With("db", m_databaseType).Err(lastError);
+        LOG_WARNING_F("Failure Message. Query ID: '%i', \"%s\"", queryId, lastError).TextOnly();
+    }
+
+    if (m_logSlowMs > 0 && ms >= m_logSlowMs)
+    {
+        LOG_WARNING_F("Slow SQL query. Query ID: '%i', %.3f ms, Query: '%s'.", queryId, ms, m_activeQuery)
+            .Msg("slow query").With("query_id", queryId).With("query", queryText).With("ms", ms)
+            .With("db", m_databaseType);
     }
 
     return querySucceeded ? queryId : 0;
