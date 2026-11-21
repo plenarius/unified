@@ -539,6 +539,7 @@ struct AsyncWriter
     std::deque<std::string> out;
     std::deque<std::string> file;
     std::vector<std::string> spare;   // written blocks, kept for reuse
+    bool abandoned = false;           // the crash handler wrote the queue and left it
     size_t bytes = 0;                 // queued, plus the block being written
     uint64_t dropped = 0;             // since the last report
     int outFd = -1;                   // the writer's dup of stdout; set while no writer runs
@@ -624,9 +625,11 @@ void WriteSync(Channel::Enum channel, const Lines& lines)
 // Writes the queue on the calling thread, after the block the writer has in hand. FATAL and the crash handler
 // wait for that only so long; without the lock at all this is a best effort, as the thread holding it is most
 // likely the one crashing.
-void Drain(std::unique_lock<std::mutex>& lock, bool bounded)
+void Drain(std::unique_lock<std::mutex>& lock, bool bounded, bool release = true)
 {
     AsyncWriter& w = Writer();
+    if (w.abandoned)
+        return;
     if (lock.owns_lock())
     {
         // The writer stops taking blocks while this waits.
@@ -641,6 +644,12 @@ void Drain(std::unique_lock<std::mutex>& lock, bool bounded)
         WriteLines(w.outFd, w.outChunked, block);
     for (auto& block : w.file)
         WriteFile(block);
+    // The crash handler's flush frees nothing: free() can wait on an allocator lock the crash holds.
+    if (!release)
+    {
+        w.abandoned = true;
+        return;
+    }
     for (auto* blocks : { &w.out, &w.file })
     {
         for (auto& block : *blocks)
@@ -752,7 +761,7 @@ void WriterThread()
     {
         w.wake.wait_for(lock, interval, [&w] { return w.urgent || w.stop; });
         w.urgent = false;
-        while ((!w.out.empty() || !w.file.empty() || w.dropped) && !w.draining)
+        while ((!w.out.empty() || !w.file.empty() || w.dropped) && !w.draining && !w.abandoned)
         {
             if (!w.out.empty() || !w.file.empty())
             {
@@ -874,7 +883,7 @@ void EmergencyFlush()
     if (!w.running || w.direct)
         return;
     w.direct = true;
-    Drain(lock, true);
+    Drain(lock, true, false);
 }
 
 namespace {
