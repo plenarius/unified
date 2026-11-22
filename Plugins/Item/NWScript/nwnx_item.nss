@@ -51,7 +51,7 @@ void NWNX_Item_SetBaseItemType(object oItem, int nBaseItem);
 /// ```
 /// nType                            nIndex                              nValue
 /// ITEM_APPR_TYPE_SIMPLE_MODEL      [Ignored]                           Model #
-/// ITEM_APPR_TYPE_WEAPON_COLOR      ITEM_APPR_WEAPON_COLOR_*            0-255
+/// ITEM_APPR_TYPE_WEAPON_COLOR      ITEM_APPR_WEAPON_COLOR_*            0-9
 /// ITEM_APPR_TYPE_WEAPON_MODEL      ITEM_APPR_WEAPON_MODEL_*            Model #
 /// ITEM_APPR_TYPE_ARMOR_MODEL       ITEM_APPR_ARMOR_MODEL_*             Model #
 /// ITEM_APPR_TYPE_ARMOR_COLOR       ITEM_APPR_ARMOR_COLOR_* [0]         0-255 [1]
@@ -72,7 +72,7 @@ void NWNX_Item_SetBaseItemType(object oItem, int nBaseItem);
 /// @param nType The type
 /// @param nIndex The index
 /// @param nValue The value
-/// @param bUpdateCreatureAppearance If TRUE, also update the appearance of oItem's possessor. Works for armor, helmets, cloaks and items in either hand (see NWNX_Item_RefreshWieldedItems() for the hands). Will remove the item from the quickbar as side effect; see NWNX_Item_RefreshInventoryWindow() for an open inventory window.
+/// @param bUpdateCreatureAppearance If TRUE, also update the appearance of oItem's possessor. Only works for armor/helmets/cloaks; for an item held in either hand, call NWNX_Item_RefreshWieldedItems() after a short delay instead. Will remove the item from the quickbar as side effect.
 void NWNX_Item_SetItemAppearance(object oItem, int nType, int nIndex, int nValue, int bUpdateCreatureAppearance = FALSE);
 
 /// @brief Close and reopen a player's inventory window and resend everything in it.
@@ -83,10 +83,9 @@ void NWNX_Item_SetItemAppearance(object oItem, int nType, int nIndex, int nValue
 void NWNX_Item_RefreshInventoryWindow(object oPlayer);
 
 /// @brief Make every player resend what oCreature holds in its hands, without destroying the items.
-/// @remark After NWNX_Item_SetItemAppearance() on a wielded weapon or shield, the client recreates the item
-/// but can't draw it straight away, so the hand looks empty. Call this every 0.05 s for about 0.5 s
-/// afterwards; once the client can draw it, a resend is invisible. Players still see a re-equip motion
-/// (the client's equip routine resets the animation state); nothing is unequipped on the server.
+/// @remark After the client recreates a wielded weapon or shield whose appearance changed, it can't draw it
+/// straight away, so the hand looks empty. Calling this every 0.05 s for about 0.5 s afterwards puts it back
+/// as soon as the client can draw it. Players see a re-equip motion; nothing is unequipped on the server.
 /// @param oCreature The creature holding the items.
 void NWNX_Item_RefreshWieldedItems(object oCreature);
 
