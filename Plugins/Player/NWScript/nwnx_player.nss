@@ -143,6 +143,17 @@ void NWNX_Player_SetQuickBarSlot(object player, int slot, struct NWNX_Player_Qui
 /// @return The filename for this player's bic. (Not including the ".bic")
 string NWNX_Player_GetBicFileName(object player);
 
+/// @brief Rename the .bic file of the player's servervault character and save it under the new name.
+/// @param player The player object.
+/// @param sBicFileName The new filename, without ".bic": 1-16 characters, lowercase letters, digits and underscores only.
+/// @param bDeleteOld TRUE to delete the old .bic file, only once the character has been saved under the new name.
+/// @return TRUE on success. FALSE, and nothing changes, if player is not a servervault character,
+/// sBicFileName is invalid or equals the current name, a .bic of that name already exists in the player's
+/// servervault folder, or the save fails.
+/// @note The character is always saved in the player's servervault folder (CD key, or player name with
+/// ServerVaultByPlayerName), which is created if needed, also when the current .bic is in the servervault root.
+int NWNX_Player_SetBicFileName(object player, string sBicFileName, int bDeleteOld = TRUE);
+
 /// @brief Plays the VFX at the target position in current area for the given player only
 /// @param player The player object.
 /// @param effectId The effect id.
@@ -592,6 +603,15 @@ string NWNX_Player_GetBicFileName(object player)
     NWNXPushObject(player);
     NWNXCall(NWNX_Player, "GetBicFileName");
     return NWNXPopString();
+}
+
+int NWNX_Player_SetBicFileName(object player, string sBicFileName, int bDeleteOld = TRUE)
+{
+    NWNXPushInt(bDeleteOld);
+    NWNXPushString(sBicFileName);
+    NWNXPushObject(player);
+    NWNXCall(NWNX_Player, "SetBicFileName");
+    return NWNXPopInt();
 }
 
 void NWNX_Player_ShowVisualEffect(object player, int effectId, vector position, float scale=1.0f, vector translate=[], vector rotate=[])

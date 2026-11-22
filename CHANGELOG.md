@@ -52,6 +52,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Encounter: SetNumberOfCreaturesInEncounterList()
 - Encounter: Set{Min|Max}NumSpawned()
 - Item: RefreshInventoryWindow(), RefreshWieldedItems()
+- Player: SetBicFileName()
 
 ### Changed
 - Damage: Added bRangedAttack to the NWNX_Damage_AttackEventData struct.

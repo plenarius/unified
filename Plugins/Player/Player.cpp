@@ -36,6 +36,8 @@
 #include "API/CExoLocString.hpp"
 #include "API/CNWSPlayerStoreGUI.hpp"
 #include "API/CExoResMan.hpp"
+#include "API/CExoBase.hpp"
+#include "API/CExoAliasList.hpp"
 #include "API/CTlkTable.hpp"
 #include "API/Constants.hpp"
 #include "API/Globals.hpp"
@@ -44,6 +46,10 @@
 
 
 #include <set>
+#include <algorithm>
+#include <filesystem>
+#include <optional>
+#include <strings.h>
 
 using namespace NWNXLib;
 using namespace NWNXLib::API;
@@ -258,6 +264,76 @@ NWNX_EXPORT ArgumentStack GetBicFileName(ArgumentStack&& args)
         return std::string(pPlayer->m_resFileName.GetResRef(), pPlayer->m_resFileName.GetLength());
 
     return "";
+}
+
+static std::optional<std::filesystem::path> FindBic(const std::filesystem::path& dir, const std::string& resRef)
+{
+    const auto fileName = resRef + ".bic";
+    std::error_code ec;
+    for (const auto& entry : std::filesystem::directory_iterator(dir, ec))
+    {
+        if (!strcasecmp(entry.path().filename().c_str(), fileName.c_str()))
+            return entry.path();
+    }
+    return std::nullopt;
+}
+
+NWNX_EXPORT ArgumentStack SetBicFileName(ArgumentStack&& args)
+{
+    auto *pPlayer = Utils::PopPlayer(args);
+    const auto newName = args.extract<std::string>();
+    const bool bDeleteOld = !!args.extract<int32_t>();
+
+    if (!pPlayer || (pPlayer->m_nCharacterType != Constants::CharacterType::Server &&
+                     pPlayer->m_nCharacterType != Constants::CharacterType::ServerSubdir))
+        return false;
+
+    if (newName.empty() || newName.size() > 16 ||
+        !std::all_of(newName.begin(), newName.end(), [](char c) { return (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c == '_'; }))
+        return false;
+
+    const std::string oldName = pPlayer->m_resFileName.GetResRefStr();
+    if (!strcasecmp(oldName.c_str(), newName.c_str()))
+        return false;
+
+    auto *pServer = Globals::AppManager()->m_pServerExoApp;
+    std::string subdir = pServer->GetServerInfo()->m_PersistantWorldOptions.bServerVaultByPlayerName
+                         ? pPlayer->GetPlayerName().CStr()
+                         : pServer->GetNetLayer()->GetPlayerInfo(pPlayer->m_nPlayerID)->m_cCDKey.sPublic.CStr();
+    if (subdir.empty())
+        subdir = "lost+found";
+
+    const std::filesystem::path vault = CExoString(Globals::ExoBase()->m_pcExoAliasList->GetAliasPath("SERVERVAULT", 0)).CStr();
+    if (FindBic(vault / subdir, newName))
+        return false;
+
+    const auto oldType = pPlayer->m_nCharacterType;
+    const auto oldFile = FindBic(oldType == Constants::CharacterType::Server ? vault : vault / subdir, oldName);
+
+    Globals::ExoResMan()->CreateDirectory(("SERVERVAULT:" + subdir).c_str());
+
+    pPlayer->m_resFileName = newName.c_str();
+    pPlayer->m_nCharacterType = Constants::CharacterType::ServerSubdir;
+
+    // The engine saves under a name of its own when writing the given one fails.
+    if (!pPlayer->SaveServerCharacter() || pPlayer->m_resFileName != newName.c_str())
+    {
+        LOG_WARNING("SetBicFileName: failed to save '%s' as '%s/%s'", oldName, subdir, newName);
+        pPlayer->m_resFileName = oldName.c_str();
+        pPlayer->m_nCharacterType = oldType;
+        return false;
+    }
+
+    if (bDeleteOld && oldFile)
+    {
+        std::error_code ec;
+        if (!std::filesystem::remove(*oldFile, ec))
+            LOG_WARNING("SetBicFileName: could not delete '%s': %s", oldFile->string(), ec.message());
+        else if (oldType == Constants::CharacterType::Server)
+            Globals::ExoResMan()->UpdateResourceDirectory("SERVERVAULT:");
+    }
+
+    return true;
 }
 
 NWNX_EXPORT ArgumentStack ShowVisualEffect(ArgumentStack&& args)
