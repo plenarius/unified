@@ -93,6 +93,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Removed NWNX_Lua and NWNX_SpellChecker due to presumably being unused and bitrotten.
 
 ### Fixed
+- Player: `PossessCreature()` with `bMindImmune = FALSE` now removes the possessor's mind immunity, and the immunity no longer stays after unpossessing when `PossessCreature()` was called from a spell script.
 - Watchcat: a stall report now gives the real length of the stall (it always said about `STALL_MSEC`), and names the NWScript script stack (resref and `OBJECT_SELF` per recursion level) the main thread was in, also when the stall kills the server.
 - SQL: `ReadFullObjectInActiveRow()` no longer warns "Failed to 'acquire' deserialized item" when an item is read without an owner; it is created outside the world as documented.
 - Player: Fixed `NWNX_Player_QBS_UseSpecialAbility()` making a slot of type `NWNX_PLAYER_QBS_TYPE_SPELL` instead of `NWNX_PLAYER_QBS_TYPE_SPELLLIKEABILITY`.

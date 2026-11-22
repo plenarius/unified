@@ -1025,7 +1025,6 @@ NWNX_EXPORT ArgumentStack PossessCreature(ArgumentStack&& args)
                                 eff->m_nSubType == Constants::EffectSubType::Magical &&
                                 eff->m_oidCreator == pPossessor->m_idSelf &&
                                 eff->m_fDuration == 4.0f &&
-                                eff->m_nCasterLevel == -1 &&
                                 eff->m_nParamInteger[0] == Constants::ImmunityType::MindSpells &&
                                 eff->m_nParamInteger[1] == Constants::RacialType::Invalid)
                             {
@@ -1085,7 +1084,11 @@ NWNX_EXPORT ArgumentStack PossessCreature(ArgumentStack&& args)
         pPossessor->RemoveAssociate(pFamiliarId);
 
     pPossessor->AddAssociate(possessedId, Constants::AssociateType::Familiar);
+    // From a spell script the immunity effect would take that spell's id, and UnpossessFamiliar() only removes it when it has none
+    const auto effectSpellId = pPossessor->GetEffectSpellId();
+    pPossessor->SetEffectSpellId(~0u);
     pPossessor->PossessFamiliar();
+    pPossessor->SetEffectSpellId(effectSpellId);
 
     if (pFamiliarId)
         pPossessor->AddAssociate(pFamiliarId, Constants::AssociateType::Familiar);
@@ -1106,7 +1109,6 @@ NWNX_EXPORT ArgumentStack PossessCreature(ArgumentStack&& args)
                 eff->m_nSubType == Constants::EffectSubType::Magical &&
                 eff->m_oidCreator == pPossessor->m_idSelf &&
                 eff->m_fDuration == 4.0f &&
-                eff->m_nCasterLevel == -1 &&
                 eff->m_nParamInteger[0] == Constants::ImmunityType::MindSpells &&
                 eff->m_nParamInteger[1] == Constants::RacialType::Invalid)
             {
