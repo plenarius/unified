@@ -208,6 +208,7 @@ Fixed</h2>
 <li>Player: <code>PossessCreature()</code> with <code>bMindImmune = FALSE</code> now removes the possessor's mind immunity, and the immunity no longer stays after unpossessing when <code>PossessCreature()</code> was called from a spell script.</li>
 <li>Watchcat: a stall report now gives the real length of the stall (it always said about <code>STALL_MSEC</code>), and names the NWScript script stack (resref and <code>OBJECT_SELF</code> per recursion level) the main thread was in, also when the stall kills the server.</li>
 <li>SQL: <code>ReadFullObjectInActiveRow()</code> no longer warns "Failed to 'acquire' deserialized item" when an item is read without an owner; it is created outside the world as documented.</li>
+<li>Core: Fixed a server crash, or the calling script silently stopping, after <code>AbortRunningScript()</code> in a script run with <code>ExecuteScript()</code> or <code>ExecuteScriptChunk()</code>. The caller now resumes as documented.</li>
 <li>Player: Fixed <code><a class="el" href="group__player.html#ga93b73395786bcc1c62df9dbb7d0aaeff" title="Create a QBS for casting a spell.">NWNX_Player_QBS_UseSpecialAbility()</a></code> making a slot of type <code>NWNX_PLAYER_QBS_TYPE_SPELL</code> instead of <code>NWNX_PLAYER_QBS_TYPE_SPELLLIKEABILITY</code>.</li>
 <li>Item: Fixed <code>SetItemAppearance()</code> rejecting color 0 for <code>ITEM_APPR_WEAPON_COLOR_*</code>.</li>
 <li>Fixed <code>NWNX_TWEAKS_SETAREA_CALLS_SETPOSITION</code> not working with <code>NWNX_ON_MATERIALCHANGE_*</code>.</li>
@@ -1788,7 +1789,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sun Nov 22 2026 03:51:53 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Nov 22 2026 06:17:07 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>
