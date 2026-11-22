@@ -159,6 +159,7 @@ New NWScript Functions</h4>
 <li>Chess: NewGame(), EndGame(), MakeMove(), GetLegalMoves(), GetMoves(), GetFEN(), GetPGN(), GetStatus(), GetSideToMove(), GetPieceAt(), RequestBestMove(), GetBestMoveResult(), GetBestMoveState()</li>
 <li>Player: GetOpenStore()</li>
 <li>Player: ReloadResources()</li>
+<li>Player: GetControllingPlayer()</li>
 <li>Creature: GetNumberOfBonusSpells(), ModifyNumberBonusSpells()</li>
 <li>Store: GetBlackMarket(), SetBlackMarket()</li>
 <li>Util: SetStartingLocation()</li>
@@ -185,7 +186,6 @@ Changed</h2>
 <li>Admin: Player/DM password functions no longer print the passwords to the log.</li>
 <li>SQL: Database passwords are no longer printed to the log when connecting.</li>
 <li>HTTPClient: Enable three custom fields to pass to response.</li>
-<li>Item: <code>SetItemAppearance()</code> with <code>bUpdateCreatureAppearance</code> now also updates items held in either hand.</li>
 <li>Core: per-object storage lookups (<code>nwnxGet</code>) no longer copy the whole map, or create storage for objects that have none, on every call; this speeds up the Appearance and Player per-object update hooks.</li>
 <li>Race: the effect-apply hook no longer adds a child-race map entry for every new effect parameter or copies the child list, and does nothing when no child races are set.</li>
 <li>Core: a filtered <code>LOG_*</code> call is one atomic load and evaluates none of its arguments, and changing a level with <code>loglevel</code> no longer races plugins logging from other threads.</li>
@@ -1788,7 +1788,7 @@ Fixed</h2>
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sun Nov 22 2026 03:23:09 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Nov 22 2026 03:51:53 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>

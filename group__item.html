@@ -205,7 +205,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00149">149</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00148">148</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -250,7 +250,7 @@ This value will also revert if item is identified or player relogs into server. 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00156">156</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00155">155</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -291,7 +291,7 @@ This value will also revert if item is identified or player relogs into server. 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00163">163</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00162">162</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -320,7 +320,7 @@ This value will also revert if item is identified or player relogs into server. 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The base gold piece value for the item. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00170">170</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00169">169</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -349,7 +349,7 @@ This value will also revert if item is identified or player relogs into server. 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The additional gold piece value for the item. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00177">177</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00176">176</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -389,7 +389,7 @@ This value will also revert if item is identified or player relogs into server. 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00184">184</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00183">183</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -441,7 +441,7 @@ This value will also revert if item is identified or player relogs into server. 
 <dl class="section warning"><dt>Warning</dt><dd>This will not be visible to PCs until the item is refreshed for them (e.g. by logging out and back in).</dd></dl>
 <p>Helmet models and simple items ignore nIndex. </p><div class="fragment"><div class="line">nType                            nIndex                              nValue</div>
 <div class="line">ITEM_APPR_TYPE_SIMPLE_MODEL      [Ignored]                           Model #</div>
-<div class="line">ITEM_APPR_TYPE_WEAPON_COLOR      ITEM_APPR_WEAPON_COLOR_*            0-255</div>
+<div class="line">ITEM_APPR_TYPE_WEAPON_COLOR      ITEM_APPR_WEAPON_COLOR_*            0-9</div>
 <div class="line">ITEM_APPR_TYPE_WEAPON_MODEL      ITEM_APPR_WEAPON_MODEL_*            Model #</div>
 <div class="line">ITEM_APPR_TYPE_ARMOR_MODEL       ITEM_APPR_ARMOR_MODEL_*             Model #</div>
 <div class="line">ITEM_APPR_TYPE_ARMOR_COLOR       ITEM_APPR_ARMOR_COLOR_* [0]         0-255 [1]</div>
@@ -454,12 +454,12 @@ This value will also revert if item is identified or player relogs into server. 
     <tr><td class="paramname">nType</td><td>The type </td></tr>
     <tr><td class="paramname">nIndex</td><td>The index </td></tr>
     <tr><td class="paramname">nValue</td><td>The value </td></tr>
-    <tr><td class="paramname">bUpdateCreatureAppearance</td><td>If TRUE, also update the appearance of oItem's possessor. Works for armor, helmets, cloaks and items in either hand (see <a class="el" href="group__item.html#ga92a28cdb97b242c7ea2c6ab02e1d409f" title="Make every player resend what oCreature holds in its hands, without destroying the items.">NWNX_Item_RefreshWieldedItems()</a> for the hands). Will remove the item from the quickbar as side effect; see <a class="el" href="group__item.html#ga7eec3080688df90df49234a8cbb9dec5" title="Close and reopen a player&#39;s inventory window and resend everything in it.">NWNX_Item_RefreshInventoryWindow()</a> for an open inventory window. </td></tr>
+    <tr><td class="paramname">bUpdateCreatureAppearance</td><td>If TRUE, also update the appearance of oItem's possessor. Only works for armor/helmets/cloaks; for an item held in either hand, call <a class="el" href="group__item.html#ga92a28cdb97b242c7ea2c6ab02e1d409f" title="Make every player resend what oCreature holds in its hands, without destroying the items.">NWNX_Item_RefreshWieldedItems()</a> after a short delay instead. Will remove the item from the quickbar as side effect. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00191">191</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00190">190</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -488,7 +488,7 @@ This value will also revert if item is identified or player relogs into server. 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00269">269</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00268">268</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -509,7 +509,7 @@ This value will also revert if item is identified or player relogs into server. 
 </div><div class="memdoc">
 
 <p>Make every player resend what oCreature holds in its hands, without destroying the items. </p>
-<dl class="section remark"><dt>Remarks</dt><dd>After <a class="el" href="group__item.html#ga521f6fb8560e5e15b3755006f533fd33" title="Make a single change to the appearance of an item.">NWNX_Item_SetItemAppearance()</a> on a wielded weapon or shield, the client recreates the item but can't draw it straight away, so the hand looks empty. Call this every 0.05 s for about 0.5 s afterwards; once the client can draw it, a resend is invisible. Players still see a re-equip motion (the client's equip routine resets the animation state); nothing is unequipped on the server. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>After the client recreates a wielded weapon or shield whose appearance changed, it can't draw it straight away, so the hand looks empty. Calling this every 0.05 s for about 0.5 s afterwards puts it back as soon as the client can draw it. Players see a re-equip motion; nothing is unequipped on the server. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">oCreature</td><td>The creature holding the items. </td></tr>
@@ -517,7 +517,7 @@ This value will also revert if item is identified or player relogs into server. 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00275">275</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00274">274</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -547,7 +547,7 @@ This value will also revert if item is identified or player relogs into server. 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string representing the item's appearance. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00201">201</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00200">200</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -586,7 +586,7 @@ This value will also revert if item is identified or player relogs into server. 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00208">208</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00207">207</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -615,7 +615,7 @@ This value will also revert if item is identified or player relogs into server. 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The base armor class. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00215">215</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00214">214</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -644,7 +644,7 @@ This value will also revert if item is identified or player relogs into server. 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The minimum level required to equip the item. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00222">222</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00221">221</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -692,7 +692,7 @@ This value will also revert if item is identified or player relogs into server. 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if the item was successfully moved to the target, otherwise FALSE </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00229">229</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00228">228</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -740,7 +740,7 @@ This value will also revert if item is identified or player relogs into server. 
 <dl class="section note"><dt>Note</dt><dd>This function (or override partner) must be used each server reset to re-enable persistence. Recommended use on OBJECT_INVALID OnModuleLoad. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>if Persistence is FALSE, or not re-enabled, beware characters may trigger ELC logging in with now-invalid ItemLevelRestrictions equipped. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00238">238</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00237">237</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -768,7 +768,7 @@ This value will also revert if item is identified or player relogs into server. 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00246">246</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00245">245</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -816,7 +816,7 @@ This value will also revert if item is identified or player relogs into server. 
 <dl class="section note"><dt>Note</dt><dd>This function (or modifier partner) must be used each server reset to re-enable persistence. Recommended use on OBJECT_INVALID OnModuleLoad. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>if Persistence is FALSE, or not re-enabled, beware characters may trigger ELC logging in with now-invalid ItemLevelRestrictions equipped. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00253">253</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00252">252</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -844,7 +844,7 @@ This value will also revert if item is identified or player relogs into server. 
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00262">262</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nwnx__item_8nss_source.html#l00261">261</a> of file <a class="el" href="nwnx__item_8nss_source.html">nwnx_item.nss</a>.</p>
 
 </div>
 </div>
@@ -854,7 +854,7 @@ This value will also revert if item is identified or player relogs into server. 
 		<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
 			<ul>
 				<li class="footer">
-					Generated on Sun Nov 22 2026 03:23:09 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Nov 22 2026 03:51:53 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>
