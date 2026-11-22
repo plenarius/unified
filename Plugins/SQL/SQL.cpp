@@ -112,12 +112,14 @@ bool SQL::Reconnect(int32_t attempts)
         {
             m_target->Connect();
             LOG_NOTICE("Reconnect successful.");
+            m_connectError.clear();
             break;
         }
         catch (std::runtime_error& e)
         {
             LOG_ERROR("Reconnect attempt %d out of %d failed: %s",
                 i+1, attempts, e.what());
+            m_connectError = e.what();
 
             // NOTE: We are on the main thread and cannot sleep for to long, as
             // it will stall the entire server. If a reconnect fails here, the
@@ -431,7 +433,13 @@ ArgumentStack SQL::DestroyPreparedQuery(ArgumentStack&&)
 
 ArgumentStack SQL::GetLastError(ArgumentStack&&)
 {
-    return m_target->GetLastError(true);
+    auto error = m_target->GetLastError(true);
+    if (!m_connectError.empty())
+    {
+        error = std::move(m_connectError);
+        m_connectError.clear();
+    }
+    return error;
 }
 
 ArgumentStack SQL::GetPreparedQueryParamCount(ArgumentStack&&)

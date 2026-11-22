@@ -48,6 +48,7 @@ private:
     bool m_queryPrepared;
     bool m_utf8;
     std::string m_databaseType;
+    std::string m_connectError;
 };
 
 }
