@@ -35,6 +35,12 @@ void MySQL::Connect()
 
     LOG_INFO("Connection info:  host=%s port=%i username=%s", host, port == 0 ? 3306 : port, username);
 
+    // A fresh handle per attempt, since a failed connect resets its options.
+    mysql_close(&m_mysql);
+    mysql_init(&m_mysql);
+    const unsigned int timeout = 5;
+    mysql_options(&m_mysql, MYSQL_OPT_CONNECT_TIMEOUT, &timeout);
+
     if (!mysql_real_connect(&m_mysql, host.c_str(), username.c_str(), password.c_str(),
             database ? (*database).c_str() : nullptr, port >= 0 ? port : 0, nullptr, 0))
     {

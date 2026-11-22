@@ -73,6 +73,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Race: favored enemy bonuses now use each race's `FavoredEnemyFeat` from racialtypes.2da, as the engine does, instead of a hardcoded list of the base races.
 - SQL: PostgreSQL: a lost connection is now detected from the connection itself and reconnected on the next query, instead of opening an extra connection per query to ping the server; also fixed a reused `$N` parameter breaking the query, passwords with spaces or quotes, a crash when the connection drops during a query, and memory freed with the wrong allocator.
 - SQL: `GetLastError()` now returns the connection error when a query fails because the database can't be reached, instead of an empty string.
+- SQL: MySQL: connecting to an unreachable database now gives up after 5 seconds instead of blocking the server for up to minutes per query, and reconnecting no longer leaks memory.
 - SQL: `ReadFullObjectInActiveRow()` no longer warns "Failed to 'acquire' deserialized item" when an item is read without an owner; it is created outside the world as documented.
 - Player: Fixed `NWNX_Player_QBS_UseSpecialAbility()` making a slot of type `NWNX_PLAYER_QBS_TYPE_SPELL` instead of `NWNX_PLAYER_QBS_TYPE_SPELLLIKEABILITY`.
 - Item: Fixed `SetItemAppearance()` rejecting color 0 for `ITEM_APPR_WEAPON_COLOR_*`.
