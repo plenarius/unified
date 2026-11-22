@@ -863,6 +863,9 @@ _______________________________________
     TARGET_INVISIBLE      | int    | TRUE/FALSE
     BEFORE_RESULT         | int    | TRUE/FALSE, only in _AFTER events
 
+    @note The LISTEN events only fire when the target is in stealth mode or invisible, and the SPOT events only
+    when the target is in stealth mode and neither invisible nor the detector blind. Other checks keep the game's result.
+
 _______________________________________
     ## Polymorph Events
     - NWNX_ON_POLYMORPH_BEFORE

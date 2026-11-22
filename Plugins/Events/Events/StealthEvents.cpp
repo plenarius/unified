@@ -160,19 +160,18 @@ int32_t HandleDetectionHook(const std::string& type, Hooks::FunctionHook* pHook,
 
 int32_t DoListenDetectionHook(CNWSCreature* pThis, CNWSCreature* pTarget, int32_t bTargetInvisible)
 {
+    // No event outside a stealth contest, but the engine still checks range, deafness and the sound path.
     if (!pTarget->m_nStealthMode && !bTargetInvisible)
-        return true;
+        return s_DoListenDetectionHook->CallOriginal<int32_t>(pThis, pTarget, bTargetInvisible);
 
     return HandleDetectionHook("LISTEN", s_DoListenDetectionHook.get(), pThis, pTarget, bTargetInvisible);
 }
 
 int32_t DoSpotDetectionHook(CNWSCreature* pThis, CNWSCreature* pTarget, int32_t bTargetInvisible)
 {
-    if (bTargetInvisible || pThis->GetBlind())
-        return false;
-
-    if (!pTarget->m_nStealthMode)
-        return true;
+    // No event outside a stealth contest, but the engine still checks range and vision.
+    if (bTargetInvisible || pThis->GetBlind() || !pTarget->m_nStealthMode)
+        return s_DoSpotDetectionHook->CallOriginal<int32_t>(pThis, pTarget, bTargetInvisible);
 
     return HandleDetectionHook("SPOT", s_DoSpotDetectionHook.get(), pThis, pTarget, bTargetInvisible);
 }
