@@ -23,6 +23,15 @@ string NWNX_Layonara_GetNWSyncAdvertUrl();
 /// @return TRUE if the advert changed, FALSE if sHash isn't a SHA1 or only one of the two is empty.
 int NWNX_Layonara_SetNWSyncAdvert(string sHash, string sUrl);
 
+/// @brief Drop a loaded tileset from the server, so the next area that uses it loads its .set and tile
+/// walkmeshes again from the resource manager.
+/// @note The server keeps every tileset it loads until it shuts down, so a tileset changed under the same name
+/// (and reindexed with NWNX_Util_UpdateResourceDirectory) only reaches new areas once it is dropped. Destroy
+/// every area that uses it first.
+/// @param sTileset The tileset's resref, e.g. "tms01".
+/// @return TRUE if the tileset was dropped, FALSE if it isn't loaded or an area still uses it.
+int NWNX_Layonara_DropTileSet(string sTileset);
+
 /// @}
 
 string NWNX_Layonara_GetNWSyncAdvertHash()
@@ -49,6 +58,17 @@ int NWNX_Layonara_SetNWSyncAdvert(string sHash, string sUrl)
 
     NWNXPushString(sUrl);
     NWNXPushString(sHash);
+
+    NWNXCall(NWNX_Layonara, sFunc);
+
+    return NWNXPopInt();
+}
+
+int NWNX_Layonara_DropTileSet(string sTileset)
+{
+    string sFunc = "DropTileSet";
+
+    NWNXPushString(sTileset);
 
     NWNXCall(NWNX_Layonara, sFunc);
 

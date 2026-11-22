@@ -22,6 +22,7 @@ private:
     ArgumentStack GetNWSyncAdvertHash             (ArgumentStack&& args);
     ArgumentStack GetNWSyncAdvertUrl              (ArgumentStack&& args);
     ArgumentStack SetNWSyncAdvert                 (ArgumentStack&& args);
+    ArgumentStack DropTileSet                     (ArgumentStack&& args);
 };
 
 }
