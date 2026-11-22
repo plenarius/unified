@@ -28,14 +28,13 @@ public:
     virtual void DestroyPreparedQuery() override;
 
 private:
-    PGconn *m_conn;
+    PGconn *m_conn = nullptr;
     int m_affectedRows = -1;
     size_t m_paramCount = 0;
     std::vector<std::optional<std::string>> m_params;
     std::vector<int> m_lengths;
     std::vector<int> m_formats;
     std::string m_lastError;
-    std::string m_connectString;
 };
 
 }

@@ -3,7 +3,7 @@
 #include "nwnx.hpp"
 #include <iostream>
 #include <cstdlib>
-#include <regex>
+#include <cctype>
 
 #include "PostgreSQL.hpp"
 using namespace NWNXLib;
@@ -31,72 +31,46 @@ PostgreSQL::~PostgreSQL()
 
 void PostgreSQL::Connect()
 {
-    const std::string host = "host=" + Config::Get<std::string>("HOST", "localhost");
-    const std::string user = "user=" + *Config::Get<std::string>("USERNAME");
-    const std::string pass = "password=" + *Config::Get<std::string>("PASSWORD");
-    const std::string sslmode = "sslmode=" + Config::Get<std::string>("SSL_MODE", "disable");
+    const auto host = Config::Get<std::string>("HOST", "localhost");
+    const auto port = Config::Get<std::string>("PORT", "5432");
+    const auto user = Config::Get<std::string>("USERNAME");
+    const auto pass = Config::Get<std::string>("PASSWORD");
+    const auto sslmode = Config::Get<std::string>("SSL_MODE", "disable");
+    // Database is optional, libpq defaults to the database named after USERNAME.
+    const auto db = Config::Get<std::string>("DATABASE");
+    const auto charset = Config::Get<std::string>("CHARACTER_SET");
 
-    // Database technically is optional.  If not given, it will connect to the default
-    // database of the given USERNAME.
-    const auto DB = Config::Get<std::string>("DATABASE");
-    if (DB)
-    {
-        LOG_DEBUG("DB set to %s", (*DB));
-    }
-    const std::string db   = DB ? "dbname=" + (*DB) : nullptr;
+    std::vector<const char*> keys = { "host", "port", "sslmode", "connect_timeout",
+        "keepalives", "keepalives_idle", "keepalives_interval", "keepalives_count" };
+    std::vector<const char*> values = { host.c_str(), port.c_str(), sslmode.c_str(), "5", "1", "60", "10", "3" };
+    if (user) { keys.push_back("user"); values.push_back(user->c_str()); }
+    if (pass) { keys.push_back("password"); values.push_back(pass->c_str()); }
+    if (db) { keys.push_back("dbname"); values.push_back(db->c_str()); }
+    // Set at connect time so PQreset() keeps it.
+    if (charset) { keys.push_back("client_encoding"); values.push_back(charset->c_str()); }
+    keys.push_back(nullptr);
+    values.push_back(nullptr);
 
-    const std::string port = "port=" + Config::Get<std::string>("PORT", "5432");
+    LOG_INFO("Connection info:  host=%s port=%s dbname=%s user=%s sslmode=%s",
+        host, port, db ? *db : "", user ? *user : "", sslmode);
+    if (charset)
+        LOG_INFO("Connection character set is '%s'", *charset);
 
-    // Build the m_connection string - this is used later in the PQping (PQping doesn't need the password).
-    m_connectString = host + " " + port + " " + db + " " + user + " " + sslmode;
-
-    LOG_INFO("Connect String:  %s", m_connectString);
-
-    m_connectString += " " + pass;
-
-    // Connect attempt
-    m_conn = PQconnectdb(m_connectString.c_str());
+    PQfinish(m_conn);
+    m_conn = PQconnectdbParams(keys.data(), values.data(), 0);
 
     if (PQstatus(m_conn) != CONNECTION_OK)
     {
-        throw std::runtime_error("Error connecting to Postgres DB");
+        throw std::runtime_error(std::string("Error connecting to Postgres DB: ") + PQerrorMessage(m_conn));
     }
 
     s_nextQueryBinaryResults = false;
-
-    if (auto charset = Config::Get<std::string>("CHARACTER_SET"))
-    {
-        LOG_INFO("Connection character set is '%s'", *charset);
-        const std::string query = "SET CLIENT_ENCODING TO '" + *charset + "';";
-        PGresult* ret = PQexec(m_conn, query.c_str());
-        SCOPEGUARD(PQclear(ret));
-        if (PQresultStatus(ret) != PGRES_COMMAND_OK)
-        {
-            throw std::runtime_error(std::string("unable to set connection character set: ") +
-                PQerrorMessage(m_conn));
-        }
-
-    }
 }
 
 bool PostgreSQL::IsConnected()
 {
-    /*
-     * Executing a query between a unmamed prepare and execute apparently resets the
-     * unnamed query.  Using a named query forces you to execute a DEALLOCATE after you're
-     * done or old queries will pile up forever.
-     *
-     * PQping is simpler, but probably less robust.  It does actively ping the server, though.
-     */
-    bool bConnected = true;
-
-    PGPing ping = PQping(m_connectString.c_str());
-    if (ping != PQPING_OK)
-    {
-        LOG_WARNING("Disconnected state identified.");
-        bConnected = false;
-    }
-    return bConnected;
+    // libpq only notices a lost session on the next I/O; PrepareQuery() resets it then.
+    return PQstatus(m_conn) == CONNECTION_OK;
 }
 
 bool PostgreSQL::PrepareQuery(const Query& query)
@@ -105,19 +79,18 @@ bool PostgreSQL::PrepareQuery(const Query& query)
 
     m_affectedRows = -1;
 
-    /*
-     * Determine the number of parameters in the query.
-     *
-     * Note this is kind of a hack.  Postgres doesn't support a "get number of bind parameters"
-     * function like MySQL does, so we're counting the things in the query that, to the parser
-     * should also look like bind parameters:  non-escaped dollar digit combinations.
-     * */
-    std::regex words_regex("[^\\\\]\\$\\d+");
-    auto words_begin = std::sregex_iterator(
-        query.begin(), query.end(), words_regex);
-    auto words_end = std::sregex_iterator();
-
-    m_paramCount = std::distance(words_begin, words_end);
+    // libpq needs the highest $N used, there is no call to ask the server for it.
+    m_paramCount = 0;
+    for (size_t i = 0; i < query.size(); i++)
+    {
+        if (query[i] != '$' || (i > 0 && (std::isalnum((unsigned char)query[i-1]) ||
+            query[i-1] == '_' || query[i-1] == '$' || query[i-1] == '\\')))
+            continue;
+        size_t n = 0;
+        while (i + 1 < query.size() && std::isdigit((unsigned char)query[i+1]))
+            n = n * 10 + (query[++i] - '0');
+        m_paramCount = std::max(m_paramCount, n);
+    }
 
     LOG_DEBUG("Detected %d parameters.", m_paramCount);
 
@@ -131,17 +104,19 @@ bool PostgreSQL::PrepareQuery(const Query& query)
                         m_paramCount,      // param count
                         NULL);             // param types (can be null to infer)
 
-    if (res == NULL)
+    if (PQresultStatus(res) != PGRES_COMMAND_OK && PQstatus(m_conn) == CONNECTION_BAD)
     {
-        LOG_WARNING("Possible out of memory condition on DB server.");
-        return false;
+        LOG_WARNING("Database connection lost. Reconnecting..");
+        PQclear(res);
+        PQreset(m_conn);
+        res = PQprepare(m_conn, "", query.c_str(), m_paramCount, NULL);
     }
 
     if (PQresultStatus(res) != PGRES_COMMAND_OK)
     {
+        m_lastError.assign(res ? PQresultErrorMessage(res) : PQerrorMessage(m_conn));
+        LOG_WARNING("Query '%s' failed due to error '%s'", query, m_lastError);
         PQclear(res);
-        LOG_WARNING("Query '%s' failed due to error '%s'", query, PQresultErrorMessage(res));
-
         return false;
     }
 
@@ -154,35 +129,20 @@ std::optional<ResultSet> PostgreSQL::ExecuteQuery()
 
     m_affectedRows = -1;
 
-    char** paramValues = nullptr;
-
-    // convert the m_params vector into a char ** required by Postgres.
-    if (m_paramCount > 0)
+    std::vector<char*> paramValues(m_paramCount);
+    for (size_t i = 0; i < m_paramCount; i++)
     {
-        LOG_DEBUG("Preparing query with %d parameters", m_paramCount);
-        paramValues = new char*[m_params.size()];
-
-        const unsigned int sz = m_params.size();
-        for (unsigned int i=0; i<sz; i++)
+        if (!m_params[i])
+            continue;
+        if (m_formats[i] == 1)
         {
-            if (m_params[i])
-            {
-                if (m_formats[i] == 1)
-                {
-                    size_t toLen;
-                    paramValues[i] = (char*) PQescapeByteaConn(m_conn,
-                        (const unsigned char*) m_params[i]->c_str(), m_params[i]->size(), &toLen);
-                }
-                else
-                {
-                    paramValues[i] = new char[m_params[i]->size()+1];
-                    strcpy(paramValues[i], m_params[i]->c_str());
-                }
-            }
-            else
-            {
-                paramValues[i] = nullptr;
-            }
+            size_t toLen;
+            paramValues[i] = (char*) PQescapeByteaConn(m_conn,
+                (const unsigned char*) m_params[i]->data(), m_params[i]->size(), &toLen);
+        }
+        else
+        {
+            paramValues[i] = m_params[i]->data();
         }
     }
 
@@ -190,21 +150,17 @@ std::optional<ResultSet> PostgreSQL::ExecuteQuery()
         m_conn,                                 // connection
         "",                                     // statement name (same as in the prepare above)
         m_paramCount,                           // m_paramCount from previous
-        paramValues,                            // param data (can be null)
+        paramValues.data(),                     // param data (can be null)
         // NB: Both of these are null; all data passed in is text mode.
         //     bytea data gets escaped automatically by setting m_format[i] in PrepareBinary().
         NULL,                                   // param lengths - only for binary data
         NULL,                                   // param formats - server will infer text
         0);                                     // result format, 0=text, 1=binary
 
-    // done with parameters.
-    if (paramValues != nullptr)
+    for (size_t i = 0; i < m_paramCount; i++)
     {
-        for (unsigned i = 0; i < m_params.size(); i++)
-        {
-            delete [] paramValues[i];
-        }
-        delete [] paramValues;
+        if (m_formats[i] == 1)
+            PQfreemem(paramValues[i]);
     }
 
     // Rows returned - collect and pass on
@@ -221,15 +177,21 @@ std::optional<ResultSet> PostgreSQL::ExecuteQuery()
             row.reserve(cols);
             for (int j=0; j<(int)cols; j++)
             {
-                const unsigned char* ptr = (unsigned char*) PQgetvalue(res, i, j);
+                const char* ptr = PQgetvalue(res, i, j);
                 size_t ptrLen = PQgetlength(res, i, j);
                 if (j == 0 && s_nextQueryBinaryResults)
                 {
                     LOG_DEBUG("Forcefully unescaping query result column %d.", j);
-                    ptr = PQunescapeBytea(ptr, &ptrLen);
+                    if (auto* unescaped = PQunescapeBytea((const unsigned char*) ptr, &ptrLen))
+                    {
+                        row.emplace_back((char*) unescaped, ptrLen);
+                        PQfreemem(unescaped);
+                        continue;
+                    }
+                    ptrLen = 0;
                 }
 
-                row.emplace_back(Result((char*) ptr, ptrLen));
+                row.emplace_back(ptr, ptrLen);
             }
             results.push(row);
         }
@@ -258,7 +220,8 @@ std::optional<ResultSet> PostgreSQL::ExecuteQuery()
     // Else.. something unexpected happened.
 
     const char* error = PQresultErrorField(res, PG_DIAG_MESSAGE_PRIMARY);
-
+    if (!error)
+        error = PQerrorMessage(m_conn);
     if (*error == '\0')
     {
         // No valid error.
@@ -295,7 +258,7 @@ void PostgreSQL::PrepareString(int32_t position, const std::string& value)
 
 void PostgreSQL::PrepareBinary(int32_t position, const std::vector<uint8_t> &value)
 {
-    LOG_DEBUG("Assigning position %d to value '%s'", position, value.data());
+    LOG_DEBUG("Assigning position %d to %d bytes of binary data", position, value.size());
     m_params[position] = std::string(value.begin(), value.end());
     m_lengths[position] = value.size();
     m_formats[position] = 1;
