@@ -9,6 +9,10 @@
 #include "API/CNWSInventory.hpp"
 #include "API/CNWSPlayer.hpp"
 #include "API/CNWSJournal.hpp"
+#include "API/CNWSArea.hpp"
+#include "API/CNWSModule.hpp"
+#include "API/CNWTileSet.hpp"
+#include "API/CNWTileSetManager.hpp"
 #include "API/CExoArrayList.hpp"
 #include "API/Constants.hpp"
 #include "API/Globals.hpp"
@@ -42,6 +46,7 @@ Layonara::Layonara(Services::ProxyServiceList* services)
     REGISTER(GetNWSyncAdvertHash);
     REGISTER(GetNWSyncAdvertUrl);
     REGISTER(SetNWSyncAdvert);
+    REGISTER(DropTileSet);
 
 #undef REGISTER
 
@@ -133,6 +138,37 @@ ArgumentStack Layonara::SetNWSyncAdvert(ArgumentStack&& args)
 
     LOG_INFO("NWSync advert changed from '%s' @ '%s' to '%s' @ '%s'", oldHash, oldUrl,
              advert.m_primary_manifest.m_empty ? "" : advert.m_primary_manifest.m_hex, advert.m_url);
+    return ScriptAPI::Arguments(1);
+}
+
+// CNWTileSetManager keeps every tileset it loads for the whole run, so a changed .set or .wok under the
+// same name never reaches a new area. Dropping it makes the next area that names it load it from ResMan again.
+ArgumentStack Layonara::DropTileSet(ArgumentStack&& args)
+{
+    const CResRef resRef(ScriptAPI::ExtractArgument<std::string>(args).c_str());
+    auto& tileSets = Globals::AppManager()->m_pNWTileSetManager->m_tileSets;
+
+    const auto it = tileSets.find(resRef.GetResRefStr());
+    if (it == tileSets.end())
+    {
+        LOG_DEBUG("DropTileSet: tileset '%s' is not loaded", resRef.GetResRefStr());
+        return ScriptAPI::Arguments(0);
+    }
+
+    // Areas and their tiles point into the tileset's data.
+    const auto& areas = Utils::GetModule()->m_lstModuleAreaID;
+    for (int i = 0; i < areas.num; i++)
+    {
+        auto* pArea = Globals::AppManager()->m_pServerExoApp->GetAreaByGameObjectID(areas.element[i]);
+        if (pArea && pArea->m_pTileSet == it->second.get())
+        {
+            LOG_DEBUG("DropTileSet: tileset '%s' is in use by area '%s'", resRef.GetResRefStr(), pArea->m_sTag);
+            return ScriptAPI::Arguments(0);
+        }
+    }
+
+    tileSets.erase(it);
+    LOG_DEBUG("DropTileSet: dropped tileset '%s'", resRef.GetResRefStr());
     return ScriptAPI::Arguments(1);
 }
 
