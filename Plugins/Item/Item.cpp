@@ -172,8 +172,7 @@ NWNX_EXPORT ArgumentStack SetItemAppearance(ArgumentStack&& args)
             if (!bUpdateCreatureAppearance || !pPossessor->m_pInventory->GetItemInInventory(pItem))
                 return {};
             uint32_t nSlot = pPossessor->m_pInventory->GetSlotFromItem(pItem);
-            if (nSlot != Constants::EquipmentSlot::Head && nSlot != Constants::EquipmentSlot::Chest && nSlot != Constants::EquipmentSlot::Cloak &&
-                nSlot != Constants::EquipmentSlot::RightHand && nSlot != Constants::EquipmentSlot::LeftHand)
+            if (nSlot != Constants::EquipmentSlot::Head && nSlot != Constants::EquipmentSlot::Chest && nSlot != Constants::EquipmentSlot::Cloak)
                 return {};
 
             auto *pMessage = Globals::AppManager()->m_pServerExoApp->GetNWSMessage();
@@ -190,22 +189,7 @@ NWNX_EXPORT ArgumentStack SetItemAppearance(ArgumentStack&& args)
                     UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidHeadItem)
                     UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidChestItem)
                     UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidCloakItem)
-                    UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidRightHandItem)
-                    UPDATE_ITEM_APPEARANCE(pLUO->m_cAppearance.m_oidLeftHandItem)
 #undef UPDATE_ITEM_APPEARANCE
-                }
-            }
-
-            // The destroy above deletes the item on the client, but not from the owner's own equipment box,
-            // so the server must forget it too and resend the item with the next inventory update.
-            // The box keeps its old icon until the window is reopened, see RefreshInventoryWindow().
-            if (auto *pPlayer = Globals::AppManager()->m_pServerExoApp->GetClientObjectByObjectId(pPossessor->m_idSelf))
-            {
-                if (pPlayer->m_pInventoryGUI && pPlayer->m_pInventoryGUI->m_pcLastUpdateInventory)
-                {
-                    auto& oidSlot = pPlayer->m_pInventoryGUI->m_pcLastUpdateInventory->m_oidInventorySlots[__builtin_ctz(nSlot)];
-                    if (oidSlot == pItem->m_idSelf)
-                        oidSlot = Constants::OBJECT_INVALID;
                 }
             }
         }

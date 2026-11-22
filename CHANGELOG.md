@@ -80,7 +80,6 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Admin: Player/DM password functions no longer print the passwords to the log.
 - SQL: Database passwords are no longer printed to the log when connecting.
 - HTTPClient: Enable three custom fields to pass to response.
-- Item: `SetItemAppearance()` with `bUpdateCreatureAppearance` now also updates items held in either hand.
 - Core: per-object storage lookups (`nwnxGet`) no longer copy the whole map, or create storage for objects that have none, on every call; this speeds up the Appearance and Player per-object update hooks.
 - Race: the effect-apply hook no longer adds a child-race map entry for every new effect parameter or copies the child list, and does nothing when no child races are set.
 - Core: a filtered `LOG_*` call is one atomic load and evaluates none of its arguments, and changing a level with `loglevel` no longer races plugins logging from other threads.
