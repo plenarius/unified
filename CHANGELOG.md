@@ -55,6 +55,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Chess: NewGame(), EndGame(), MakeMove(), GetLegalMoves(), GetMoves(), GetFEN(), GetPGN(), GetStatus(), GetSideToMove(), GetPieceAt(), RequestBestMove(), GetBestMoveResult(), GetBestMoveState()
 - Player: GetOpenStore()
 - Player: ReloadResources()
+- Player: GetControllingPlayer()
 - Creature: GetNumberOfBonusSpells(), ModifyNumberBonusSpells()
 - Store: GetBlackMarket(), SetBlackMarket()
 - Util: SetStartingLocation()

@@ -73,9 +73,7 @@ NWNX_EXPORT ArgumentStack SetBaseItemType(ArgumentStack&& args)
     return {};
 }
 
-// Close and reopen a player's inventory window, as the player would, and resend everything in it.
-// The client keeps an item's old icon while the window stays open (CGuiInvbox::AddItem returns
-// early for the item it already shows), so call this a moment after changing a worn item's look.
+// The client keeps an item's old icon while the window stays open, so reopen it and resend everything.
 NWNX_EXPORT ArgumentStack RefreshInventoryWindow(ArgumentStack&& args)
 {
     if (auto *pCreature = Utils::PopCreature(args))
@@ -94,9 +92,7 @@ NWNX_EXPORT ArgumentStack RefreshInventoryWindow(ArgumentStack&& args)
     return {};
 }
 
-// Make every player resend what oCreature holds in its hands, without destroying the items. After
-// SetItemAppearance on a wielded item the client recreates it but attaches it before its model has
-// loaded, leaving the hand empty; calling this a moment later puts it back.
+// Forgetting the hands in every player's last update makes the next update resend them.
 NWNX_EXPORT ArgumentStack RefreshWieldedItems(ArgumentStack&& args)
 {
     if (auto *pCreature = Utils::PopCreature(args))
