@@ -109,39 +109,53 @@ $(document).ready(function(){initNavTree('nwnx__layo_8nss_source.html',''); init
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__layonara.html#gaadfff34fc234e72cf008ffe5e0eeabfe">NWNX_Layonara_SetNWSyncAdvert</a>(<span class="keywordtype">string</span> sHash, <span class="keywordtype">string</span> sUrl);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="group__layonara.html#ga74a4de133429e5e147e330ecc67163ba">   28</a></span>&#160;<span class="keywordtype">string</span> <a class="code" href="group__layonara.html#ga74a4de133429e5e147e330ecc67163ba">NWNX_Layonara_GetNWSyncAdvertHash</a>()</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">string</span> sFunc = <span class="stringliteral">&quot;GetNWSyncAdvertHash&quot;</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    NWNXCall(NWNX_Layonara, sFunc);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> NWNXPopString();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__layonara.html#ga6fce14e7f31f1ff4a2cfe227a7dc13e4">NWNX_Layonara_DropTileSet</a>(<span class="keywordtype">string</span> sTileset);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="group__layonara.html#ga8fcb766585e077db6e4b5f5675ddc0b4">   37</a></span>&#160;<span class="keywordtype">string</span> <a class="code" href="group__layonara.html#ga8fcb766585e077db6e4b5f5675ddc0b4">NWNX_Layonara_GetNWSyncAdvertUrl</a>()</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="group__layonara.html#ga74a4de133429e5e147e330ecc67163ba">   37</a></span>&#160;<span class="keywordtype">string</span> <a class="code" href="group__layonara.html#ga74a4de133429e5e147e330ecc67163ba">NWNX_Layonara_GetNWSyncAdvertHash</a>()</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">string</span> sFunc = <span class="stringliteral">&quot;GetNWSyncAdvertUrl&quot;</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">string</span> sFunc = <span class="stringliteral">&quot;GetNWSyncAdvertHash&quot;</span>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    NWNXCall(NWNX_Layonara, sFunc);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> NWNXPopString();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="group__layonara.html#gaadfff34fc234e72cf008ffe5e0eeabfe">   46</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__layonara.html#gaadfff34fc234e72cf008ffe5e0eeabfe">NWNX_Layonara_SetNWSyncAdvert</a>(<span class="keywordtype">string</span> sHash, <span class="keywordtype">string</span> sUrl)</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="group__layonara.html#ga8fcb766585e077db6e4b5f5675ddc0b4">   46</a></span>&#160;<span class="keywordtype">string</span> <a class="code" href="group__layonara.html#ga8fcb766585e077db6e4b5f5675ddc0b4">NWNX_Layonara_GetNWSyncAdvertUrl</a>()</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">string</span> sFunc = <span class="stringliteral">&quot;SetNWSyncAdvert&quot;</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">string</span> sFunc = <span class="stringliteral">&quot;GetNWSyncAdvertUrl&quot;</span>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    NWNXPushString(sUrl);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    NWNXPushString(sHash);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    NWNXCall(NWNX_Layonara, sFunc);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    NWNXCall(NWNX_Layonara, sFunc);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> NWNXPopString();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> NWNXPopInt();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
-<div class="ttc" id="agroup__layonara_html_ga74a4de133429e5e147e330ecc67163ba"><div class="ttname"><a href="group__layonara.html#ga74a4de133429e5e147e330ecc67163ba">NWNX_Layonara_GetNWSyncAdvertHash</a></div><div class="ttdeci">string NWNX_Layonara_GetNWSyncAdvertHash()</div><div class="ttdoc">Get the NWSync manifest hash the server advertises to connecting clients.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__layo_8nss_source.html#l00028">nwnx_layo.nss:28</a></div></div>
-<div class="ttc" id="agroup__layonara_html_ga8fcb766585e077db6e4b5f5675ddc0b4"><div class="ttname"><a href="group__layonara.html#ga8fcb766585e077db6e4b5f5675ddc0b4">NWNX_Layonara_GetNWSyncAdvertUrl</a></div><div class="ttdeci">string NWNX_Layonara_GetNWSyncAdvertUrl()</div><div class="ttdoc">Get the NWSync URL the server advertises to connecting clients.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__layo_8nss_source.html#l00037">nwnx_layo.nss:37</a></div></div>
-<div class="ttc" id="agroup__layonara_html_gaadfff34fc234e72cf008ffe5e0eeabfe"><div class="ttname"><a href="group__layonara.html#gaadfff34fc234e72cf008ffe5e0eeabfe">NWNX_Layonara_SetNWSyncAdvert</a></div><div class="ttdeci">int NWNX_Layonara_SetNWSyncAdvert(string sHash, string sUrl)</div><div class="ttdoc">Change the NWSync manifest the server advertises, at runtime and without a restart.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__layo_8nss_source.html#l00046">nwnx_layo.nss:46</a></div></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="group__layonara.html#gaadfff34fc234e72cf008ffe5e0eeabfe">   55</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__layonara.html#gaadfff34fc234e72cf008ffe5e0eeabfe">NWNX_Layonara_SetNWSyncAdvert</a>(<span class="keywordtype">string</span> sHash, <span class="keywordtype">string</span> sUrl)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">string</span> sFunc = <span class="stringliteral">&quot;SetNWSyncAdvert&quot;</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    NWNXPushString(sUrl);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    NWNXPushString(sHash);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    NWNXCall(NWNX_Layonara, sFunc);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> NWNXPopInt();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="group__layonara.html#ga6fce14e7f31f1ff4a2cfe227a7dc13e4">   67</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="group__layonara.html#ga6fce14e7f31f1ff4a2cfe227a7dc13e4">NWNX_Layonara_DropTileSet</a>(<span class="keywordtype">string</span> sTileset)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">string</span> sFunc = <span class="stringliteral">&quot;DropTileSet&quot;</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    NWNXPushString(sTileset);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    NWNXCall(NWNX_Layonara, sFunc);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> NWNXPopInt();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="ttc" id="agroup__layonara_html_ga6fce14e7f31f1ff4a2cfe227a7dc13e4"><div class="ttname"><a href="group__layonara.html#ga6fce14e7f31f1ff4a2cfe227a7dc13e4">NWNX_Layonara_DropTileSet</a></div><div class="ttdeci">int NWNX_Layonara_DropTileSet(string sTileset)</div><div class="ttdoc">Drop a loaded tileset from the server, so the next area that uses it loads its .set and tile walkmesh...</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__layo_8nss_source.html#l00067">nwnx_layo.nss:67</a></div></div>
+<div class="ttc" id="agroup__layonara_html_ga74a4de133429e5e147e330ecc67163ba"><div class="ttname"><a href="group__layonara.html#ga74a4de133429e5e147e330ecc67163ba">NWNX_Layonara_GetNWSyncAdvertHash</a></div><div class="ttdeci">string NWNX_Layonara_GetNWSyncAdvertHash()</div><div class="ttdoc">Get the NWSync manifest hash the server advertises to connecting clients.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__layo_8nss_source.html#l00037">nwnx_layo.nss:37</a></div></div>
+<div class="ttc" id="agroup__layonara_html_ga8fcb766585e077db6e4b5f5675ddc0b4"><div class="ttname"><a href="group__layonara.html#ga8fcb766585e077db6e4b5f5675ddc0b4">NWNX_Layonara_GetNWSyncAdvertUrl</a></div><div class="ttdeci">string NWNX_Layonara_GetNWSyncAdvertUrl()</div><div class="ttdoc">Get the NWSync URL the server advertises to connecting clients.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__layo_8nss_source.html#l00046">nwnx_layo.nss:46</a></div></div>
+<div class="ttc" id="agroup__layonara_html_gaadfff34fc234e72cf008ffe5e0eeabfe"><div class="ttname"><a href="group__layonara.html#gaadfff34fc234e72cf008ffe5e0eeabfe">NWNX_Layonara_SetNWSyncAdvert</a></div><div class="ttdeci">int NWNX_Layonara_SetNWSyncAdvert(string sHash, string sUrl)</div><div class="ttdoc">Change the NWSync manifest the server advertises, at runtime and without a restart.</div><div class="ttdef"><b>Definition:</b> <a href="nwnx__layo_8nss_source.html#l00055">nwnx_layo.nss:55</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
@@ -149,7 +163,7 @@ $(document).ready(function(){initNavTree('nwnx__layo_8nss_source.html',''); init
 			<ul>
 				<li class="navelem"><a class="el" href="dir_0b4eaef40a1fe20bedafe9e8e719ce66.html">Plugins</a></li><li class="navelem"><a class="el" href="dir_488ae121b45fa54c39c091338ec49326.html">Layonara</a></li><li class="navelem"><a class="el" href="dir_d9639eb7d30bfc17b4b75c68160ac668.html">NWScript</a></li><li class="navelem"><a class="el" href="nwnx__layo_8nss.html">nwnx_layo.nss</a></li>
 				<li class="footer">
-					Generated on Sun Nov 22 2026 06:23:50 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
+					Generated on Sun Nov 22 2026 16:52:10 for NWNX:EE by <a href="http://www.doxygen.org/index.html">
 					<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.1.
 					<a href="dark/">Dark version</a>
 				</li>
