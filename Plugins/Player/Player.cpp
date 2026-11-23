@@ -41,9 +41,18 @@
 #include "API/Globals.hpp"
 #include "API/Functions.hpp"
 #include "API/CNWSFaction.hpp"
+#include "API/CExoBase.hpp"
+#include "API/CExoAliasList.hpp"
+#include "API/CResGFF.hpp"
+#include "API/CResStruct.hpp"
+#include "API/CResList.hpp"
+#include "API/JsonEngineStructure.hpp"
 
 
+#include <algorithm>
+#include <chrono>
 #include <set>
+#include <sys/stat.h>
 
 using namespace NWNXLib;
 using namespace NWNXLib::API;
@@ -2022,4 +2031,133 @@ NWNX_EXPORT ArgumentStack ReloadResources(ArgumentStack&& args)
     }
 
     return {};
+}
+
+// The folder the engine loads this player's server characters from.
+static CExoString GetVaultFolder(CNWSPlayer* pPlayer)
+{
+    auto* pExoApp = Globals::AppManager()->m_pServerExoApp;
+    if (pExoApp->GetServerInfo()->m_PersistantWorldOptions.bServerVaultByPlayerName)
+        return pPlayer->GetPlayerName();
+    auto* pInfo = pExoApp->GetNetLayer()->GetPlayerInfo(pPlayer->m_nPlayerID);
+    return pInfo ? pInfo->m_cCDKey.sPublic : CExoString("");
+}
+
+static bool HasVaultCharacters(CNWSPlayer* pPlayer)
+{
+    return pPlayer->m_nCharacterType == Constants::CharacterType::ServerSubdir && !pPlayer->GetIsDM();
+}
+
+struct NextCharacter
+{
+    std::string sFrom, sTo;
+    std::chrono::steady_clock::time_point tExpiry;
+};
+static std::unordered_map<std::string, NextCharacter> s_NextCharacter;
+
+NWNX_EXPORT ArgumentStack SetNextCharacter(ArgumentStack&& args)
+{
+    static Hooks::Hook pLoadServerCharacterHook = Hooks::HookFunction(&CNWSPlayer::LoadServerCharacter,
+        +[](CNWSPlayer* pPlayer, CResRef cResRef, BOOL bSubDirChar) -> STRREF
+        {
+            if (!s_NextCharacter.empty() && bSubDirChar)
+            {
+                auto it = s_NextCharacter.find(GetVaultFolder(pPlayer).CStr());
+                if (it != s_NextCharacter.end())
+                {
+                    if (it->second.sFrom == cResRef.GetResRefStr() && std::chrono::steady_clock::now() < it->second.tExpiry)
+                        cResRef = CResRef(it->second.sTo.c_str());
+                    s_NextCharacter.erase(it);
+                }
+            }
+            return pLoadServerCharacterHook->CallOriginal<STRREF>(pPlayer, cResRef, bSubDirChar);
+        }, Hooks::Order::Early);
+
+    auto* pPlayer = Utils::PopPlayer(args);
+    const auto sResRef = args.extract<std::string>();
+    const auto fExpiry = args.extract<float>();
+    if (!pPlayer || !HasVaultCharacters(pPlayer))
+        return 0;
+
+    const std::string sFolder = GetVaultFolder(pPlayer).CStr();
+    if (sFolder.empty())
+        return 0;
+    if (sResRef.empty())
+    {
+        s_NextCharacter.erase(sFolder);
+        return 1;
+    }
+
+    const std::string sCurrent = pPlayer->m_resFileName.GetResRefStr();
+    if (sResRef.size() > 16 || sResRef == sCurrent || sResRef.find_first_of("/\\.") != std::string::npos)
+        return 0;
+
+    struct stat st;
+    const auto sPath = std::string(Globals::ExoBase()->m_pcExoAliasList->GetAliasPath("SERVERVAULT").CStr()) +
+                       sFolder + "/" + sResRef + ".bic";
+    if (stat(sPath.c_str(), &st) != 0 || !S_ISREG(st.st_mode))
+        return 0;
+
+    s_NextCharacter[sFolder] = {sCurrent, sResRef,
+        std::chrono::steady_clock::now() + std::chrono::milliseconds(static_cast<int64_t>(std::max(fExpiry, 0.0f) * 1000))};
+    return 1;
+}
+
+NWNX_EXPORT ArgumentStack GetServerVaultCharacters(ArgumentStack&& args)
+{
+    json chars = json::array();
+    auto* pPlayer = Utils::PopPlayer(args);
+    if (!pPlayer || !HasVaultCharacters(pPlayer))
+        return JsonEngineStructure(std::move(chars), CExoString(""));
+
+    const CExoString sFolder = GetVaultFolder(pPlayer);
+    const CExoString sDirectory = CExoString("SERVERVAULT:") + sFolder;
+    const std::string sVaultPath = std::string(Globals::ExoBase()->m_pcExoAliasList->GetAliasPath("SERVERVAULT").CStr()) + sFolder.CStr() + "/";
+    const std::string sCurrent = pPlayer->m_resFileName.GetResRefStr();
+
+    CExoArrayList<CExoString> lstBicFiles;
+    Globals::ExoBase()->GetDirectoryList(&lstBicFiles, sDirectory, Constants::ResRefType::BIC);
+    if (lstBicFiles.num == 0)
+        return JsonEngineStructure(std::move(chars), CExoString(""));
+
+    Globals::ExoResMan()->AddResourceDirectory(sDirectory, 81000000);
+    for (int i = 0; i < lstBicFiles.num; i++)
+    {
+        const std::string sResRef = lstBicFiles[i].SubString(0, lstBicFiles[i].m_nStringLength - 4).CStr();
+        CResGFF gff(Constants::ResRefType::BIC, "BIC ", CResRef(sResRef.c_str()));
+        if (!gff.m_bLoaded || gff.m_bValidationFailed)
+            continue;
+
+        BOOL bSuccess;
+        CResStruct top;
+        gff.GetTopLevelStruct(&top);
+
+        json classes = json::array();
+        CResList classList;
+        if (gff.GetList(&classList, &top, "ClassList"))
+        {
+            for (uint32_t c = 0, n = gff.GetListCount(&classList); c < n; c++)
+            {
+                CResStruct cls;
+                if (gff.GetListElement(&cls, &classList, c))
+                    classes.push_back({{"class", gff.ReadFieldINT(&cls, "Class", bSuccess, -1)},
+                                       {"level", gff.ReadFieldSHORT(&cls, "ClassLevel", bSuccess)}});
+            }
+        }
+
+        struct stat st;
+        chars.push_back({
+            {"resref", sResRef},
+            {"first_name", String::ToUTF8(gff.ReadFieldCExoLocString(&top, "FirstName", bSuccess).GetSimple().CStr())},
+            {"last_name", String::ToUTF8(gff.ReadFieldCExoLocString(&top, "LastName", bSuccess).GetSimple().CStr())},
+            {"portrait", gff.ReadFieldCResRef(&top, "Portrait", bSuccess).GetResRefStr()},
+            {"portrait_id", gff.ReadFieldWORD(&top, "PortraitId", bSuccess, 0xFFFF)},
+            {"classes", std::move(classes)},
+            {"modified", stat((sVaultPath + sResRef + ".bic").c_str(), &st) == 0 ? (int64_t)st.st_mtime : 0},
+            {"current", sResRef == sCurrent}
+        });
+    }
+    Globals::ExoResMan()->RemoveResourceDirectory(sDirectory);
+
+    return JsonEngineStructure(std::move(chars), CExoString(""));
 }
