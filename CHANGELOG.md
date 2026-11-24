@@ -56,6 +56,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Player: GetOpenStore()
 - Player: ReloadResources()
 - Player: GetControllingPlayer()
+- Player: SetNextCharacter(), GetServerVaultCharacters()
 - Creature: GetNumberOfBonusSpells(), ModifyNumberBonusSpells()
 - Store: GetBlackMarket(), SetBlackMarket()
 - Util: SetStartingLocation()

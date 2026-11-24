@@ -485,6 +485,26 @@ object NWNX_Player_GetOpenStore(object oPlayer);
 /// @param nFlags One or more @ref reload_resources_flags "NWNX_PLAYER_RELOAD_RESOURCES_*" flags combined with |.
 void NWNX_Player_ReloadResources(object oPlayer, int nFlags);
 
+/// @brief Load another of oPlayer's server vault characters the next time their client logs in.
+/// @note Pair it with ActivatePortal() to this server with bSeamless TRUE: the client reconnects
+/// asking for its current character and is given sBicResRef instead, without the character select.
+/// The choice is used once, and only if the client asks for the character it plays now.
+/// Don't call ExportSingleCharacter() in the same script: the engine ignores ActivatePortal() while
+/// an export is pending, and saves the character on leaving anyway.
+/// @param oPlayer The player.
+/// @param sBicResRef A .bic in oPlayer's server vault folder other than the current one, or "" to clear the choice.
+/// @param fExpiry Seconds the choice stays valid.
+/// @return TRUE on success; FALSE if the .bic doesn't exist or is the current one, or oPlayer is a DM
+/// or plays a local vault character.
+int NWNX_Player_SetNextCharacter(object oPlayer, string sBicResRef, float fExpiry = 60.0);
+
+/// @brief Get the characters in oPlayer's server vault folder.
+/// @param oPlayer The player.
+/// @return A json array of objects with the keys resref, first_name, last_name, portrait, portrait_id,
+/// classes (an array of {class, level}), modified (the .bic's mtime) and current (TRUE for the one played now).
+/// Empty for DMs and local vault characters.
+json NWNX_Player_GetServerVaultCharacters(object oPlayer);
+
 /// @}
 
 void NWNX_Player_ForcePlaceableExamineWindow(object player, object placeable)
@@ -1028,4 +1048,20 @@ void NWNX_Player_ReloadResources(object oPlayer, int nFlags)
     NWNXPushInt(nFlags);
     NWNXPushObject(oPlayer);
     NWNXCall(NWNX_Player, "ReloadResources");
+}
+
+int NWNX_Player_SetNextCharacter(object oPlayer, string sBicResRef, float fExpiry = 60.0)
+{
+    NWNXPushFloat(fExpiry);
+    NWNXPushString(sBicResRef);
+    NWNXPushObject(oPlayer);
+    NWNXCall(NWNX_Player, "SetNextCharacter");
+    return NWNXPopInt();
+}
+
+json NWNX_Player_GetServerVaultCharacters(object oPlayer)
+{
+    NWNXPushObject(oPlayer);
+    NWNXCall(NWNX_Player, "GetServerVaultCharacters");
+    return NWNXPopJson();
 }
