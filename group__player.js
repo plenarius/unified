@@ -91,6 +91,8 @@ var group__player =
     [ "NWNX_Player_ReloadColorPalettes", "group__player.html#gabe690b8bb044a40722f2e424dfc89b1d", null ],
     [ "NWNX_Player_GetOpenStore", "group__player.html#ga544fa0a06d383a6ee5c92bb0dc641e06", null ],
     [ "NWNX_Player_ReloadResources", "group__player.html#ga6aec83cfa546924a8a286b924e934419", null ],
+    [ "NWNX_Player_SetNextCharacter", "group__player.html#gaafd692dbb8c939bd9775b00269547e28", null ],
+    [ "NWNX_Player_GetServerVaultCharacters", "group__player.html#ga4d3ab5ce409f62d2eb0e9704e403ec62", null ],
     [ "NWNX_Player_QBS_Empty", "group__player.html#ga12d642ac5b5fad0078ace6c222c7ab38", null ],
     [ "NWNX_Player_QBS_UseItem", "group__player.html#ga86c1edebbcfd652b79adf34e73b9c317", null ],
     [ "NWNX_Player_QBS_EquipItem", "group__player.html#gafcca025e7811f1b7babab77d6ef5d115", null ],

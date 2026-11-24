@@ -61,6 +61,8 @@ var nwnx__player_8nss =
     [ "NWNX_Player_ReloadColorPalettes", "group__player.html#gabe690b8bb044a40722f2e424dfc89b1d", null ],
     [ "NWNX_Player_GetOpenStore", "group__player.html#ga544fa0a06d383a6ee5c92bb0dc641e06", null ],
     [ "NWNX_Player_ReloadResources", "group__player.html#ga6aec83cfa546924a8a286b924e934419", null ],
+    [ "NWNX_Player_SetNextCharacter", "group__player.html#gaafd692dbb8c939bd9775b00269547e28", null ],
+    [ "NWNX_Player_GetServerVaultCharacters", "group__player.html#ga4d3ab5ce409f62d2eb0e9704e403ec62", null ],
     [ "NWNX_Player_INTERNAL_StopGuiTimingBar", "nwnx__player_8nss.html#a298b9ee34689c819b0b7a374319dccf4", null ],
     [ "NWNX_Player", "group__player.html#gacd1c1162e2432e9e61eea99322364c13", null ],
     [ "NWNX_PLAYER_TIMING_BAR_TRAP_FLAG", "group__player.html#ga6e4e9e99af2c8ebacacd2f8a9f8c3d4b", null ],
