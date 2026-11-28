@@ -58,6 +58,7 @@ https://github.com/nwnxee/unified/compare/build8193.37.13...HEAD
 - Creature: added a `bypass` parameter to `LevelUp()` to skip class prerequisites, alignment restrictions or all class requirements.
 - Damage: Added bRangedAttack to the NWNX_Damage_AttackEventData struct.
 - Events: Added ID to the NWNX_ON_ITEMPROPERTY_EFFECT_* events data.
+- Events: Added events `NWNX_ON_DEATH_ATTACK_{BEFORE|AFTER}`, `NWNX_ON_DEFENSIVE_ROLL_{BEFORE|AFTER}` and `NWNX_ON_EPIC_DODGE_{BEFORE|AFTER}`, which let scripts change the Death Attack and Defensive Roll save DCs or skip any of the three.
 - Utils: Change LOG_INFO to LOG_DEBUG for console commands.
 - Admin: Player/DM password functions no longer print the passwords to the log.
 - SQL: Database passwords are no longer printed to the log when connecting.

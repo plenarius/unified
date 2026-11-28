@@ -6,6 +6,7 @@ add_plugin(Events
     "Events/CalendarEvents.cpp"
     "Events/ClientEvents.cpp"
     "Events/CombatEvents.cpp"
+    "Events/DamageResolutionEvents.cpp"
     "Events/DebugEvents.cpp"
     "Events/DMActionEvents.cpp"
     "Events/EffectEvents.cpp"

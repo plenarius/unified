@@ -1776,6 +1776,55 @@ _______________________________________
     ----------------------|--------|-------
     OBJECT                | object | The object the creature is jumping to. Convert to object with StringToObject() |
 _______________________________________
+    ## Death Attack Events
+    - NWNX_ON_DEATH_ATTACK_BEFORE
+    - NWNX_ON_DEATH_ATTACK_AFTER
+
+    `OBJECT_SELF` = The creature making the death attack.
+
+    Event Data Tag        | Type   | Notes
+    ----------------------|--------|-------
+    TARGET_OBJECT_ID      | object | The creature saving against paralysis. Convert to object with StringToObject() |
+    DC                    | int    | The Fortitude save DC. In _AFTER, the DC that was rolled against. |
+    SAVE_RESULT           | int    | 0 failed, 1 succeeded, 2 immune; -1 if the BEFORE event was skipped. Only in _AFTER. |
+    BEFORE_SKIPPED        | int    | TRUE/FALSE, only in _AFTER events |
+
+    @note Fires when the game is about to roll the target's save: the first attack of the round,
+    a death attack hit, and a target that isn't in combat yet.
+    @note To change the DC, call NWNX_Events_SetEventResult() with the new DC in the BEFORE event.
+    @note Skipping the BEFORE event rolls no save and applies no paralysis.
+_______________________________________
+    ## Defensive Roll Events
+    - NWNX_ON_DEFENSIVE_ROLL_BEFORE
+    - NWNX_ON_DEFENSIVE_ROLL_AFTER
+
+    `OBJECT_SELF` = The creature using Defensive Roll.
+
+    Event Data Tag        | Type   | Notes
+    ----------------------|--------|-------
+    ATTACKER_OBJECT_ID    | object | The creature that dealt the damage. Convert to object with StringToObject() |
+    DC                    | int    | The Reflex save DC, which the game sets to the damage dealt. In _AFTER, the DC that was rolled against. |
+    SAVE_RESULT           | int    | 0 failed, 1 succeeded (damage halved), 2 immune; -1 if the BEFORE event was skipped. Only in _AFTER. |
+    BEFORE_SKIPPED        | int    | TRUE/FALSE, only in _AFTER events |
+
+    @note Fires when a hit would drop the creature below 1 hit point, it isn't flat-footed and it has a use left.
+    @note To change the DC, call NWNX_Events_SetEventResult() with the new DC in the BEFORE event.
+    @note Skipping the BEFORE event rolls no save, deals full damage and spends no use.
+_______________________________________
+    ## Epic Dodge Events
+    - NWNX_ON_EPIC_DODGE_BEFORE
+    - NWNX_ON_EPIC_DODGE_AFTER
+
+    `OBJECT_SELF` = The creature dodging.
+
+    Event Data Tag        | Type   | Notes
+    ----------------------|--------|-------
+    ATTACKER_OBJECT_ID    | object | The creature whose hit is being dodged. Convert to object with StringToObject() |
+    BEFORE_SKIPPED        | int    | TRUE/FALSE, only in _AFTER events |
+
+    @note Fires on the first damaging hit each round that Epic Dodge is about to turn into a miss.
+    @note Skipping the BEFORE event lets the hit land; the dodge stays available for a later hit this round.
+_______________________________________
     ## Item Property Effect Apply/Remove Events
     - NWNX_ON_ITEMPROPERTY_EFFECT_APPLIED_BEFORE
     - NWNX_ON_ITEMPROPERTY_EFFECT_APPLIED_AFTER
@@ -2192,6 +2241,12 @@ const string NWNX_ON_CREATURE_JUMP_TO_POINT_BEFORE = "NWNX_ON_CREATURE_JUMP_TO_P
 const string NWNX_ON_CREATURE_JUMP_TO_POINT_AFTER = "NWNX_ON_CREATURE_JUMP_TO_POINT_AFTER";
 const string NWNX_ON_CREATURE_JUMP_TO_OBJECT_BEFORE = "NWNX_ON_CREATURE_JUMP_TO_OBJECT_BEFORE";
 const string NWNX_ON_CREATURE_JUMP_TO_OBJECT_AFTER = "NWNX_ON_CREATURE_JUMP_TO_OBJECT_AFTER";
+const string NWNX_ON_DEATH_ATTACK_BEFORE = "NWNX_ON_DEATH_ATTACK_BEFORE";
+const string NWNX_ON_DEATH_ATTACK_AFTER = "NWNX_ON_DEATH_ATTACK_AFTER";
+const string NWNX_ON_DEFENSIVE_ROLL_BEFORE = "NWNX_ON_DEFENSIVE_ROLL_BEFORE";
+const string NWNX_ON_DEFENSIVE_ROLL_AFTER = "NWNX_ON_DEFENSIVE_ROLL_AFTER";
+const string NWNX_ON_EPIC_DODGE_BEFORE = "NWNX_ON_EPIC_DODGE_BEFORE";
+const string NWNX_ON_EPIC_DODGE_AFTER = "NWNX_ON_EPIC_DODGE_AFTER";
 const string NWNX_ON_ITEMPROPERTY_EFFECT_APPLIED_BEFORE = "NWNX_ON_ITEMPROPERTY_EFFECT_APPLIED_BEFORE";
 const string NWNX_ON_ITEMPROPERTY_EFFECT_APPLIED_AFTER = "NWNX_ON_ITEMPROPERTY_EFFECT_APPLIED_AFTER";
 const string NWNX_ON_ITEMPROPERTY_EFFECT_REMOVED_BEFORE = "NWNX_ON_ITEMPROPERTY_EFFECT_REMOVED_BEFORE";
